@@ -6,7 +6,7 @@ import {
   marginMap,
   borderRadius,
   fontSizeMap,
-} from '../../api/constants/styles';
+} from '../constants/styles';
 
 export const ListItemWrapper = styled.div`
   position: relative;

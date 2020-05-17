@@ -5,7 +5,7 @@ import {
   paddingMap,
   fontSizeMap,
   borderRadius,
-} from '../../../api/constants/styles';
+} from '../../constants/styles';
 
 export const ContentWrapper = styled.div`
   flex: 1;

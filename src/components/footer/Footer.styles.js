@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { fontSizeMap, colors, marginMap } from '../../api/constants/styles';
+import { fontSizeMap, colors, marginMap } from '../constants/styles';
 import { lightenDarkenColor } from '../../utils/colors';
 
 const Wrapper = styled.div`

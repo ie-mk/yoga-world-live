@@ -1,11 +1,12 @@
 import styled from 'styled-components';
-import { paddingMap } from '../../api/constants/styles';
+import { paddingMap, colors } from '../constants/styles';
 
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
   min-height: calc(100vh - 315px);
+  background-color: ${colors.background.gradient};
 `;
 
 const Content = styled.div`

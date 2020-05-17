@@ -2,7 +2,7 @@ import React from 'react';
 import { ContainerBase, Grid } from '../../../foundation';
 import ProfilePicture from '../../../profile/profilePicUploader/ProfilePicUploader';
 import Profile from '../../../profile/ProfileForm';
-import { IS_SERVER } from '../../../../api/constants';
+import { IS_SERVER } from '../../../constants';
 import ErrorBoundary from '../../../ErrorBoundary';
 import styled from 'styled-components';
 

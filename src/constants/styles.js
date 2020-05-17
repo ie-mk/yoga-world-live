@@ -8,6 +8,7 @@ export const background = {
   DashboardBackGroundColor: '#FFFFFF',
   DashboardContainersColor: '#F4F3EF',
 };
+
 export const boxShadow = {
   DashboardBoxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
 };
@@ -56,19 +57,25 @@ export const borders = {
 };
 
 export const colors = {
-  primary: 'gray',
-  secondary: 'blue',
-  danger: 'red',
-  warning: 'darkorange',
-  success: 'green',
-  gray: '#696969',
-  spinner: '#f3f3f3',
-  header: '#1A2036',
-  pink: '#C86DD7',
-  white: '#FFFFFF',
+  primary: '',
+  secondary: '',
+  danger: '',
+  warning: '',
+  success: '',
+  gray: '',
+  spinner: '',
+  header: '',
+  pink: '',
+  white: '',
   black: '#000000',
-  blue: '#7D8399',
-  lightBlue: '#D7DDF3',
+  blue: '',
+  lightBlue: '',
+  background: {
+    gradientStart: '#1A2036',
+    gradientMid: '#191F37',
+    gradientEnd: '#191F37',
+    //gradient: `transparent linear-gradient(180deg, ${colors.background.gradientStart} 0%, ${colors.background.gradientMid} 51%, ${colors.background.gradientEnd} 100%) 0% 0% no-repeat padding-box`,
+  },
   borders: {
     primary: styles.borderColorTableHead,
     secondary: styles.borderColorTag,
@@ -76,6 +83,7 @@ export const colors = {
     enabled: 'black',
   },
   button: {
+    primary: 'yellow',
     background: '#ffffff',
   },
   defaultButton: {

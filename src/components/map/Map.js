@@ -11,7 +11,7 @@ import {
   fontSizeMap,
   borderRadius,
   borders,
-} from '../../api/constants/styles';
+} from '../constants/styles';
 
 const markerStyle = {
   position: 'absolute',

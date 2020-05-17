@@ -69,6 +69,11 @@ export const colors = {
   black: '#000000',
   blue: '#7D8399',
   lightBlue: '#D7DDF3',
+  background: {
+    primary: '#1A2036',
+    secondary: '#191F37',
+    gradient: `transparent linear-gradient(180deg, ${colors.background.primary} 0%, ${colors.background.secondary} 51%, ${colors.background.secondary} 100%) 0% 0% no-repeat padding-box`,
+  },
   borders: {
     primary: styles.borderColorTableHead,
     secondary: styles.borderColorTag,

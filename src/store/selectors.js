@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { amenitiesMap, things_to_knowMap } from '../api/constants';
+import { amenitiesMap, things_to_knowMap } from '../components/constants';
 import moment from 'moment';
 
 export const getUserSelector = state => state.user;

@@ -6,7 +6,7 @@ import { CountryDropdown } from 'react-country-region-selector';
 import { getUserProfileSelector, getUserSelector } from '../../store/selectors';
 import profileFormValidation from './profileForm.validation';
 import PhoneInput from 'react-phone-number-input';
-import { IS_SERVER } from '../../api/constants';
+import { IS_SERVER } from '../constants';
 import styled from 'styled-components';
 import { userActions } from '../../store/actions';
 import SpinnerLarge from '../foundation/spinner/SpinnerLarge';

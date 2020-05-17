@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Button from '@kiwicom/orbit-components/lib/Button';
-import { borderRadius, colors } from '../../../../api/constants/styles';
+import { borderRadius, colors } from '../../../constants/styles';
 
 export const SubmitButton = styled(Button)`
   border-radius: ${borderRadius.md};

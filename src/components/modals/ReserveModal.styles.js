@@ -6,7 +6,7 @@ import {
   fontSizeMap,
   borderRadius,
   marginMap,
-} from '../../api/constants/styles';
+} from '../constants/styles';
 
 const Wrapper = styled.div``;
 

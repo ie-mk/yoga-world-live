@@ -8,7 +8,7 @@ import {
   colors,
   borderRadius,
   boxShadow,
-} from '../../api/constants/styles';
+} from '../constants/styles';
 
 const getfontSize = fontSize => css`
   font-size: ${fontSize ? fontSizeMap[fontSize] : ''};

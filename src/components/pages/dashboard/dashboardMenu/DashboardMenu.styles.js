@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { paddingMap } from '../../../../api/constants/styles';
+import { paddingMap } from '../../../constants/styles';
 
 export const MenuItem = styled.div`
   padding: ${paddingMap.sm};

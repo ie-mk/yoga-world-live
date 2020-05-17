@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { marginMap } from '../../../../api/constants/styles';
+import { marginMap } from '../../../constants/styles';
 
 const BackButton = styled.div`
   display: flex;

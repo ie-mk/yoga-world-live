@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { colors, fontSizeMap, marginMap } from '../../../api/constants/styles';
+import { colors, fontSizeMap, marginMap } from '../../constants/styles';
 import { lightenDarkenColor } from '../../../utils/colors';
 
 const Card = styled.div`
