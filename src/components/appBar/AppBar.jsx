@@ -60,7 +60,7 @@ const AppBar = ({ user, dispatch, userLanguage }) => {
               <i className="fa fa-user" />
             </MenuLink>
           )}
-          <MenuLink href="/story-book">Story Book</MenuLink>
+          <MenuLink href="/stories">Story Book</MenuLink>
           {user && user.uid ? (
             <LogoutButton type="secondary" onClick={handleLogout}>
               {t('Logout')}
