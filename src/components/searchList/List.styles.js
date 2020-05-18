@@ -2,16 +2,16 @@ import styled from 'styled-components';
 import customButoon from '@kiwicom/orbit-components/lib/Button';
 import {
   colors,
-  paddingMap,
-  marginMap,
+  spacing,
+  spacing,
   borderRadius,
   fontSizeMap,
-} from '../constants/styles';
+} from '../../constants/styles';
 
 export const ListItemWrapper = styled.div`
   position: relative;
   display: flex;
-  padding: ${paddingMap.md};
+  padding: ${spacing.md};
   border-bottom: 1px solid ${colors.borders.primary};
   cursor: pointer;
   background-color: ${({ highlighted }) => (highlighted ? 'grey' : '')};
@@ -20,7 +20,7 @@ export const ListItemWrapper = styled.div`
   height: 200px;
 `;
 export const DescriptionRow = styled.div`
-  padding: ${paddingMap.xxxS};
+  padding: ${spacing.xxxS};
 `;
 export const PricingContainer = styled.div`
   display: flex;
@@ -29,7 +29,7 @@ export const PricingContainer = styled.div`
   justify-content: flex-end;
 `;
 export const PricingTotal = styled.div`
-  padding-left: ${paddingMap.md};
+  padding-left: ${spacing.md};
 `;
 export const Image = styled.div`
   width: 300px;
@@ -51,7 +51,7 @@ export const RatingContainer = styled.div`
 export const Description = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: ${marginMap.sm};
+  margin-left: ${spacing.sm};
 `;
 
 export const CustomButton = styled(customButoon)`
@@ -64,7 +64,7 @@ export const CustomButton = styled(customButoon)`
 
 export const FavouritesIcon = styled.div`
   display: inline-block;
-  margin: ${marginMap.sm};
+  margin: ${spacing.sm};
   position: absolute;
   font-size: ${fontSizeMap.title3};
   bottom: 0;

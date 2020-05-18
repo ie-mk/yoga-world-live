@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import customButoon from '@kiwicom/orbit-components/lib/Button';
 import {
   colors,
-  paddingMap,
+  spacing,
   fontSizeMap,
   borderRadius,
-} from '../constants/styles';
+} from '../../constants/styles';
 const ValidationError = styled.div`
   position: absolute;
   padding: 2px;
@@ -18,17 +18,17 @@ export const CustomButton = styled(customButoon)`
   width: 200px;
 `;
 export const Title = styled.div`
-  padding-bottom: ${paddingMap.md};
+  padding-bottom: ${spacing.md};
   font-size: ${fontSizeMap.title1};
 `;
 export const InputStyles = styled.div`
   width: 100%;
-  padding-right: ${paddingMap.sm};
+  padding-right: ${spacing.sm};
   input {
     line-height: 40px;
     font-size: ${fontSizeMap.title3};
     width: 100%;
-    padding-left: ${paddingMap.sm};
+    padding-left: ${spacing.sm};
     color: black;
     border: 1px solid ${colors.primary};
     border-radius: ${borderRadius.xs};
@@ -37,7 +37,7 @@ export const InputStyles = styled.div`
     height: 40px;
     font-size: ${fontSizeMap.title3};
     width: 100%;
-    padding-left: ${paddingMap.sm};
+    padding-left: ${spacing.sm};
     color: black;
     border: 1px solid ${colors.primary};
     border-radius: ${borderRadius.xs};
@@ -48,7 +48,7 @@ export const InputStyles = styled.div`
 `;
 
 export const PhoneInputStyles = styled.div`
-  padding-left: ${paddingMap.sm};
+  padding-left: ${spacing.sm};
   border: 1px solid ${colors.primary};
   border-radius: ${borderRadius.xs};
   .PhoneInput {
@@ -64,8 +64,8 @@ export const PhoneInputStyles = styled.div`
   }
 `;
 export const Label = styled.div`
-  padding-top: ${paddingMap.sm};
-  padding-bottom: ${paddingMap.xxxS};
+  padding-top: ${spacing.sm};
+  padding-bottom: ${spacing.xxxS};
   color: ${colors.borders.disabled};
 `;
 
@@ -85,7 +85,7 @@ export const InputRow = styled.div`
   flex: 1;
   display: flex;
   justify-content: space-between;
-  padding-bottom: ${paddingMap.sm};
+  padding-bottom: ${spacing.sm};
   align-items: center;
 `;
 
@@ -93,7 +93,7 @@ export const ButtonContainer = styled.div`
   flex: 1;
   display: flex;
   justify-content: center;
-  padding: ${paddingMap.sm};
+  padding: ${spacing.sm};
 `;
 
 export default {

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colors, marginMap } from '../../../constants/styles';
+import { colors, spacing } from '../../../constants/styles';
 import { lightenDarkenColor } from '../../../utils/colors';
 
 const sizePaddingMap = {

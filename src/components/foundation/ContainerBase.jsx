@@ -3,12 +3,11 @@ import styled, { css } from 'styled-components';
 import {
   background,
   fontSizeMap,
-  marginMap,
-  paddingMap,
+  spacing,
   colors,
   borderRadius,
   boxShadow,
-} from '../constants/styles';
+} from '../../constants/styles';
 
 const getfontSize = fontSize => css`
   font-size: ${fontSize ? fontSizeMap[fontSize] : ''};
@@ -71,49 +70,45 @@ const getBackgroundColor = backgroundColor => css`
 `;
 
 const getPadding = padding => css`
-  padding: ${paddingMap[padding] ? paddingMap[padding] : padding};
+  padding: ${spacing[padding] ? spacing[padding] : padding};
 `;
 
 const getMargin = margin => css`
-  margin: ${marginMap[margin] ? marginMap[margin] : margin};
+  margin: ${spacing[margin] ? spacing[margin] : margin};
 `;
 
 const getPaddingBottom = paddingBottom => css`
-  padding-bottom: ${paddingMap[paddingBottom]
-    ? paddingMap[paddingBottom]
+  padding-bottom: ${spacing[paddingBottom]
+    ? spacing[paddingBottom]
     : paddingBottom};
 `;
 
 const getPaddingTop = paddingTop => css`
-  padding-top: ${paddingMap[paddingTop] ? paddingMap[paddingTop] : paddingTop};
+  padding-top: ${spacing[paddingTop] ? spacing[paddingTop] : paddingTop};
 `;
 
 const getPaddingLeft = paddingLeft => css`
-  padding-left: ${paddingMap[paddingLeft]
-    ? paddingMap[paddingLeft]
-    : paddingLeft};
+  padding-left: ${spacing[paddingLeft] ? spacing[paddingLeft] : paddingLeft};
 `;
 
 const getPaddingRight = paddingRight => css`
-  padding-left: ${paddingMap[paddingRight]
-    ? paddingMap[paddingRight]
-    : paddingRight};
+  padding-left: ${spacing[paddingRight] ? spacing[paddingRight] : paddingRight};
 `;
 
 const getMarginBottom = margin => css`
-  margin-bottom: ${marginMap[margin] ? marginMap[margin] : margin};
+  margin-bottom: ${spacing[margin] ? spacing[margin] : margin};
 `;
 
 const getMarginTop = marginTop => css`
-  margin-top: ${marginMap[marginTop] ? marginMap[marginTop] : marginTop};
+  margin-top: ${spacing[marginTop] ? spacing[marginTop] : marginTop};
 `;
 
 const getMarginLeft = marginLeft => css`
-  margin-left: ${marginMap[marginLeft] ? marginMap[marginLeft] : marginLeft};
+  margin-left: ${spacing[marginLeft] ? spacing[marginLeft] : marginLeft};
 `;
 
 const getMarginRight = marginRight => css`
-  margin-left: ${marginMap[marginRight] ? marginMap[marginRight] : marginRight};
+  margin-left: ${spacing[marginRight] ? spacing[marginRight] : marginRight};
 `;
 
 const getAlign = alignItems => css`

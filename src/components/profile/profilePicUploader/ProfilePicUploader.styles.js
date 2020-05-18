@@ -2,16 +2,16 @@ import styled from 'styled-components';
 import customButoon from '@kiwicom/orbit-components/lib/Button';
 import {
   colors,
-  paddingMap,
+  spacing,
   fontSizeMap,
   borderRadius,
-} from '../../constants/styles';
+} from '../../../constants/styles';
 
 export const ContentWrapper = styled.div`
   flex: 1;
   display: flex;
   justify-content: center;
-  padding: ${paddingMap.sm};
+  padding: ${spacing.sm};
   .image-input {
     display: none;
   }
@@ -37,14 +37,14 @@ export const Name = styled.div`
 export const SuccessResponse = styled.label`
   i {
     color: ${colors.success};
-    padding-right: ${paddingMap.sm};
+    padding-right: ${spacing.sm};
   }
 `;
 
 export const FailureResponse = styled.label`
   i {
     color: ${colors.danger};
-    padding-right: ${paddingMap.sm};
+    padding-right: ${spacing.sm};
   }
 `;
 

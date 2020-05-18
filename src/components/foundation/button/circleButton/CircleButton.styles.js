@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors, paddingMap } from '../../../constants/styles';
+import { colors, spacing } from '../../../../constants/styles';
 
 export const CircleButton = styled.button`
   width: 35px;
@@ -15,7 +15,7 @@ export const CircleButton = styled.button`
 `;
 
 export const ButtonWrapper = styled.span`
-  padding: 0 ${paddingMap.lg};
+  padding: 0 ${spacing.lg};
 `;
 
 export default {

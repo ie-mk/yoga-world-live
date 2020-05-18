@@ -2,11 +2,11 @@ import styled from 'styled-components';
 import customButoon from '@kiwicom/orbit-components/lib/Button';
 import {
   colors,
-  paddingMap,
+  spacing,
   fontSizeMap,
   borderRadius,
-  marginMap,
-} from '../constants/styles';
+  spacing,
+} from '../../constants/styles';
 
 const Wrapper = styled.div``;
 
@@ -14,34 +14,34 @@ export const CustomButton = styled(customButoon)`
   border-radius: ${borderRadius.md};
   background-color: ${colors.secondary};
   width: 100%;
-  margin-top: ${marginMap.md};
+  margin-top: ${spacing.md};
 `;
 
 const ContentWrapper = styled.div`
   flex: 1;
   display: flex;
   justify-content: space-between;
-  margin-bottom: ${marginMap.md};
+  margin-bottom: ${spacing.md};
 `;
 const CleanWrapper = styled.div`
   flex: 1;
   display: flex;
   justify-content: space-between;
-  padding-bottom: ${paddingMap.md};
+  padding-bottom: ${spacing.md};
   border-bottom: 1px dashed ${colors.primary};
 `;
 const TotalWrapper = styled.div`
   flex: 1;
   display: flex;
   justify-content: space-between;
-  margin-top: ${marginMap.md};
-  margin-bottom: ${marginMap.md};
+  margin-top: ${spacing.md};
+  margin-bottom: ${spacing.md};
 `;
 export const PriceRange = styled.div`
   flex: 1;
   display: flex;
   justify-content: space-between;
-  padding-bottom: ${paddingMap.xl};
+  padding-bottom: ${spacing.xl};
   align-items: center;
 `;
 
@@ -55,7 +55,7 @@ export const PriceContainer = styled.div`
   flex-direction: row;
 `;
 export const TextContainer = styled.div`
-  padding: ${paddingMap.xS};
+  padding: ${spacing.xS};
   width: ${({ width }) => (width ? width : '')};
   border-right: ${({ disabled }) =>
     disabled ? `1px solid ${colors.borders.disabled}` : ''};

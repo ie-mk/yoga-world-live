@@ -6,7 +6,7 @@ import api from '../../api';
 import Button from '@kiwicom/orbit-components/lib/Button';
 import styled from 'styled-components';
 import { userActions } from '../../store/actions';
-import { colors } from '../constants/styles';
+import { colors } from '../../constants/styles';
 import { lightenDarkenColor } from '../../utils/colors';
 import { useTranslation } from 'react-i18next';
 import { useRouter } from 'next/router';

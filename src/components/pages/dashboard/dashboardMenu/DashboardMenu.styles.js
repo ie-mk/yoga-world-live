@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { paddingMap } from '../../../constants/styles';
+import { spacing } from '../../../../constants/styles';
 
 export const MenuItem = styled.div`
-  padding: ${paddingMap.sm};
-  padding-bottom: ${paddingMap.md};
+  padding: ${spacing.sm};
+  padding-bottom: ${spacing.md};
   box-shadow: ${({ active }) => (active ? '1px 2px 2px 1px gray' : '')};
   i {
-    padding-right: ${paddingMap.md};
+    padding-right: ${spacing.md};
   }
 `;
 

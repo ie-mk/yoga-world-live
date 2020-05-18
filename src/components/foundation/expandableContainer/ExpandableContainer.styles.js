@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { colors, fontSizeMap, marginMap } from '../../constants/styles';
+import { colors, fontSizeMap, spacing } from '../../../constants/styles';
 import { lightenDarkenColor } from '../../../utils/colors';
 
 const Card = styled.div`
@@ -40,7 +40,7 @@ const CollapseButton = styled.span`
   cursor: pointer;
   i {
     display: inline-block;
-    margin-right: ${marginMap.xS};
+    margin-right: ${spacing.xS};
     font-size: ${fontSizeMap.title3};
   }
 `;

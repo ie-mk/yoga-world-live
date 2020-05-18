@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { marginMap } from '../../../constants/styles';
+import { spacing } from '../../../../constants/styles';
 
 const BackButton = styled.div`
   display: flex;
@@ -8,7 +8,7 @@ const BackButton = styled.div`
   align-items: center;
   top: 10px;
   i {
-    margin-right: ${marginMap.sm};
+    margin-right: ${spacing.sm};
   }
 `;
 

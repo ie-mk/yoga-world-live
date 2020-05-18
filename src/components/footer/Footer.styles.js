@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { fontSizeMap, colors, marginMap } from '../constants/styles';
+import { fontSizeMap, colors, spacing } from '../../constants/styles';
 import { lightenDarkenColor } from '../../utils/colors';
 
 const Wrapper = styled.div`
@@ -23,7 +23,7 @@ const Address = styled.div`
 
 const Header = styled.header`
   font-size: ${fontSizeMap.title2};
-  margin-bottom: ${marginMap.lg};
+  margin-bottom: ${spacing.lg};
 `;
 
 const Social = styled.div`
@@ -31,7 +31,7 @@ const Social = styled.div`
 `;
 
 const Line = styled.div`
-  margin-bottom: ${marginMap.xS};
+  margin-bottom: ${spacing.xS};
 `;
 
 export default {

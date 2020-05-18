@@ -7,11 +7,11 @@ import { MAP_API_KEY } from '../../config';
 import GoogleMap from 'google-map-react';
 import {
   colors,
-  paddingMap,
+  spacing,
   fontSizeMap,
   borderRadius,
   borders,
-} from '../constants/styles';
+} from '../../constants/styles';
 
 const markerStyle = {
   position: 'absolute',
@@ -26,7 +26,7 @@ const markerStyle = {
   color: colors.secondary,
   fontSize: fontSizeMap.title3,
   fontWeight: 'bold',
-  padding: paddingMap.xxS,
+  padding: spacing.xxS,
 };
 
 const highlightedMarker = {
@@ -42,7 +42,7 @@ const highlightedMarker = {
   color: colors.secondary,
   fontSize: fontSizeMap.title3,
   fontWeight: 'bold',
-  padding: paddingMap.xxS,
+  padding: spacing.xxS,
 };
 
 const Place = props => (

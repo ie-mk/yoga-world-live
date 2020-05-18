@@ -13,59 +13,6 @@ import moment from 'moment';
 import { getUID } from './selectors';
 import Router from 'next/router';
 
-const { fetchAds, fetchAd, fetchUserAds } = adActions;
-
-function* createNewAd() {
-  try {
-    const uid = yield select(getUID);
-    let createdAdId = yield api.ad.createAd({ ownerId: uid });
-
-    const url = `/edit?id=${createdAdId}`;
-    Router.push(url, url, { shallow: true });
-  } catch (e) {
-    yield put(adActions.createNewAd.failure(e));
-  }
-}
-
-function* updateAd({ payload }) {
-  try {
-    yield api.ad.updateAd(payload);
-    yield put(adActions.updateAd.success(null));
-    yield fetchAdData({ payload: payload.adId });
-  } catch (err) {
-    yield put(adActions.updateAd.failure(err));
-  }
-}
-
-function* fetchAdsData() {
-  try {
-    let res = yield api.ad.fetchAds();
-    yield put(fetchAds.success(res));
-  } catch (e) {
-    yield put(fetchAds.failure(e));
-  }
-}
-
-function* fetchUserAdsData() {
-  const uid = yield select(getUID);
-  try {
-    let res = yield api.ad.fetchUserAds(uid);
-    yield put(fetchUserAds.success(res));
-  } catch (e) {
-    yield put(fetchUserAds.failure(e));
-    console.error('-----fetchUserAds.failure: ', e);
-  }
-}
-
-function* fetchAdData({ payload }) {
-  try {
-    let data = yield api.ad.fetchAd(payload);
-    yield put(fetchAd.success({ adId: payload, data }));
-  } catch (e) {
-    yield put(fetchAd.failure(e));
-  }
-}
-
 function* handleLoginFlow({ payload: user }) {
   const uid = user && user.uid;
   if (!uid) return;
@@ -133,38 +80,7 @@ function* updateUserProfile({ payload }) {
   }
 }
 
-function* updateAdImages({ payload }) {
-  try {
-    yield api.ad.updateAdImages(payload);
-    yield put(adActions.updateAdImages.success(null));
-    yield fetchAdData({ payload: payload.adId });
-  } catch (err) {
-    yield put(adActions.updateAdImages.failure(err));
-  }
-}
-
-function* deleteAdImage({ payload }) {
-  try {
-    yield api.ad.deleteAdImage(payload);
-    yield put(adActions.deleteAdImage.success(null));
-    yield fetchAdData({ payload: payload.adId });
-  } catch (err) {
-    yield put(adActions.deleteAdImage.failure(err));
-  }
-}
-
 function* rootSaga() {
-  yield all([takeLatest(adActions.fetchAds.request.type, fetchAdsData)]);
-  yield all([takeEvery(adActions.fetchAd.request.type, fetchAdData)]);
-  yield all([
-    takeLatest(adActions.fetchUserAds.request.type, fetchUserAdsData),
-  ]);
-  yield all([takeLatest(adActions.createNewAd.request.type, createNewAd)]);
-  yield all([takeLatest(adActions.updateAd.request.type, updateAd)]);
-  yield all([
-    takeLatest(adActions.updateAdImages.request.type, updateAdImages),
-  ]);
-  yield all([takeLatest(adActions.deleteAdImage.request.type, deleteAdImage)]);
   yield all([
     takeLatest(userActions.fetchUserProfile.request.type, fetchUserProfile),
   ]);

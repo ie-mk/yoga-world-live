@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { paddingMap, colors } from '../constants/styles';
+import { spacing, colors } from '../../constants/styles';
 
 const Wrapper = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 const Content = styled.div`
   max-width: 1000px;
   width: 100%;
-  padding: ${paddingMap.lg};
+  padding: ${spacing.lg};
 `;
 
 export default {

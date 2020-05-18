@@ -1,48 +1,34 @@
-import { defaultTokens as styles } from '@kiwicom/orbit-design-tokens';
-
 export const background = {
-  darkPrim: styles.backgroundBadgeDark,
-  darkSec: styles.backgroundBadgeDark,
-  lightPrim: styles.backgroundBody,
-  lightSec: styles.backgroundBadgeNeutral,
+  darkPrim: '',
+  darkSec: '',
+  lightPrim: '',
+  lightSec: '',
   DashboardBackGroundColor: '#FFFFFF',
   DashboardContainersColor: '#F4F3EF',
 };
-
 export const boxShadow = {
   DashboardBoxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
 };
 
-export const paddingMap = {
+export const spacing = {
   xxxxl: '80px',
-  xxxl: styles.spaceXXXLarge,
-  xxl: styles.spaceXXLarge,
-  xl: styles.spaceXLarge,
-  md: styles.spaceMedium,
-  lg: styles.spaceLarge,
-  sm: styles.spaceSmall,
-  xS: styles.spaceXSmall,
-  xxS: styles.spaceXXSmall,
-  xxxS: '5px',
-};
-
-export const marginMap = {
-  xxxl: styles.spaceXXXLarge,
-  xxl: styles.spaceXXLarge,
-  xl: styles.spaceXLarge,
-  md: styles.spaceMedium,
-  lg: styles.spaceLarge,
-  sm: styles.spaceSmall,
-  xS: styles.spaceXSmall,
-  xxS: styles.spaceXXSmall,
+  xxxl: '60px',
+  xxl: '40px',
+  xl: '30px',
+  lg: '20px',
+  md: '16px',
+  sm: '10px',
+  xS: '8px',
+  xxS: '6px',
+  xxxS: '4px',
 };
 
 export const fontSizeMap = {
-  title1: styles.fontSizeHeadingTitle1,
-  title2: styles.fontSizeHeadingTitle2,
-  title3: styles.fontSizeHeadingTitle3,
-  title4: styles.fontSizeHeadingTitle4,
-  title5: styles.fontSizeHeadingTitle5,
+  title1: '',
+  title2: '',
+  title3: '',
+  title4: '',
+  title5: '',
 };
 
 export const borderRadius = {
@@ -57,33 +43,31 @@ export const borders = {
 };
 
 export const colors = {
-  primary: '',
-  secondary: '',
-  danger: '',
-  warning: '',
-  success: '',
-  gray: '',
-  spinner: '',
-  header: '',
-  pink: '',
-  white: '',
+  primary: 'gray',
+  secondary: 'blue',
+  danger: 'red',
+  warning: 'darkorange',
+  success: 'green',
+  gray: '#696969',
+  spinner: '#f3f3f3',
+  header: '#1A2036',
+  pink: '#C86DD7',
+  white: '#FFFFFF',
   black: '#000000',
-  blue: '',
-  lightBlue: '',
+  blue: '#7D8399',
+  lightBlue: '#D7DDF3',
   background: {
-    gradientStart: '#1A2036',
-    gradientMid: '#191F37',
-    gradientEnd: '#191F37',
-    //gradient: `transparent linear-gradient(180deg, ${colors.background.gradientStart} 0%, ${colors.background.gradientMid} 51%, ${colors.background.gradientEnd} 100%) 0% 0% no-repeat padding-box`,
+    primary: '#1A2036',
+    secondary: '#191F37',
+    gradient: `transparent linear-gradient(180deg, #1A2036 0%, #191F37 51%, #191F37 100%) 0% 0% no-repeat padding-box`,
   },
   borders: {
-    primary: styles.borderColorTableHead,
-    secondary: styles.borderColorTag,
+    primary: '',
+    secondary: '',
     disabled: 'gray',
     enabled: 'black',
   },
   button: {
-    primary: 'yellow',
     background: '#ffffff',
   },
   defaultButton: {

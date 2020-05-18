@@ -17,8 +17,6 @@ const composeEnhancers =
 
 const persistWhitelist = {
   user: true,
-  form: true,
-  ads: true,
 };
 
 const persistBlackList = {};
