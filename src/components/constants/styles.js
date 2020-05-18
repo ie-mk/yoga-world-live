@@ -1,10 +1,8 @@
-import { defaultTokens as styles } from '@kiwicom/orbit-design-tokens';
-
 export const background = {
-  darkPrim: styles.backgroundBadgeDark,
-  darkSec: styles.backgroundBadgeDark,
-  lightPrim: styles.backgroundBody,
-  lightSec: styles.backgroundBadgeNeutral,
+  darkPrim: '',
+  darkSec: '',
+  lightPrim: '',
+  lightSec: '',
   DashboardBackGroundColor: '#FFFFFF',
   DashboardContainersColor: '#F4F3EF',
 };
@@ -14,34 +12,34 @@ export const boxShadow = {
 
 export const paddingMap = {
   xxxxl: '80px',
-  xxxl: styles.spaceXXXLarge,
-  xxl: styles.spaceXXLarge,
-  xl: styles.spaceXLarge,
-  md: styles.spaceMedium,
-  lg: styles.spaceLarge,
-  sm: styles.spaceSmall,
-  xS: styles.spaceXSmall,
-  xxS: styles.spaceXXSmall,
+  xxxl: '',
+  xxl: '',
+  xl: '',
+  md: '',
+  lg: '',
+  sm: '',
+  xS: '',
+  xxS: '',
   xxxS: '5px',
 };
 
 export const marginMap = {
-  xxxl: styles.spaceXXXLarge,
-  xxl: styles.spaceXXLarge,
-  xl: styles.spaceXLarge,
-  md: styles.spaceMedium,
-  lg: styles.spaceLarge,
-  sm: styles.spaceSmall,
-  xS: styles.spaceXSmall,
-  xxS: styles.spaceXXSmall,
+  xxxl: '',
+  xxl: '',
+  xl: '',
+  md: '',
+  lg: '',
+  sm: '',
+  xS: '',
+  xxS: '',
 };
 
 export const fontSizeMap = {
-  title1: styles.fontSizeHeadingTitle1,
-  title2: styles.fontSizeHeadingTitle2,
-  title3: styles.fontSizeHeadingTitle3,
-  title4: styles.fontSizeHeadingTitle4,
-  title5: styles.fontSizeHeadingTitle5,
+  title1: '',
+  title2: '',
+  title3: '',
+  title4: '',
+  title5: '',
 };
 
 export const borderRadius = {
@@ -75,8 +73,8 @@ export const colors = {
     gradient: `transparent linear-gradient(180deg, #1A2036 0%, #191F37 51%, #191F37 100%) 0% 0% no-repeat padding-box`,
   },
   borders: {
-    primary: styles.borderColorTableHead,
-    secondary: styles.borderColorTag,
+    primary: '',
+    secondary: '',
     disabled: 'gray',
     enabled: 'black',
   },
