@@ -3,9 +3,15 @@ import styled from 'styled-components';
 import { colors, spacing } from '../../../constants/styles';
 import { lightenDarkenColor } from '../../../utils/colors';
 
-const sizePaddingMap = {
+const paddingMap = {
   sm: '10px',
   lg: '20px 70px',
+};
+
+const marginMap = {
+  sm: '0 10px 0 0',
+  md: '0 20px 0 0',
+  lg: '0 30px 0 0',
 };
 
 const fontSizeMap = {
@@ -29,9 +35,8 @@ const borderMap = {
 };
 
 const ButtonWrapper = styled.button`
-  margin: 0 50px;
-  padding: ${({ size }) =>
-    sizePaddingMap[size] ? sizePaddingMap[size] : '10px'};
+  margin: ${({ margin }) => (marginMap[margin] ? marginMap[margin] : margin)};
+  padding: ${({ size }) => (paddingMap[size] ? paddingMap[size] : '10px')};
   background: ${({ type }) =>
     backGroundMap[type] ? backGroundMap[type] : 'transparent'};
   border-radius: 2px;
