@@ -1,15 +1,16 @@
 import React, { useRef } from 'react';
-import { ContainerBase, Logo, MenuLink } from 'foundation';
 import { connect } from 'react-redux';
 import Styled from './AppBar.styles';
 import api from '../../api';
-import Button from '@kiwicom/orbit-components/lib/Button';
+import Button from '../foundation/button/Button';
 import styled from 'styled-components';
 import { userActions } from '../../store/actions';
 import { colors } from '../../constants/styles';
 import { lightenDarkenColor } from '../../utils/colors';
 import { useTranslation } from 'react-i18next';
-import { useRouter } from 'next/router';
+import MenuLink from '../foundation/MenuLink';
+import ContainerBase from '../foundation/ContainerBase';
+import Logo from '../foundation/Logo';
 
 const LogoutButton = styled(Button)`
   margin-left: 10px;
@@ -22,9 +23,6 @@ const AppBar = ({ user, dispatch, userLanguage }) => {
   };
 
   const { t } = useTranslation();
-  const { pathname } = useRouter();
-
-  const showFilters = pathname.includes('results');
 
   return (
     <ContainerBase
