@@ -52,7 +52,7 @@ const renderOutsideContainerCSS = css`
 `;
 
 const Content = styled.div`
-  padding: 10px;
+  padding: ${spacing.xxl};
   color: white;
   display: ${({ collapsed, renderHidden }) =>
     collapsed && !renderHidden ? 'none' : 'block'};

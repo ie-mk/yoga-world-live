@@ -35,7 +35,8 @@ const borderMap = {
 };
 
 const ButtonWrapper = styled.button`
-  margin: ${({ margin }) => (marginMap[margin] ? marginMap[margin] : margin)};
+  margin: ${({ margin }) =>
+    marginMap[margin] ? marginMap[margin] : '0 40px 0 0'};
   padding: ${({ size }) => (paddingMap[size] ? paddingMap[size] : '10px')};
   background: ${({ type }) =>
     backGroundMap[type] ? backGroundMap[type] : 'transparent'};
