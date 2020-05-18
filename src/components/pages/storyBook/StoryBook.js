@@ -10,9 +10,13 @@ const StoryBook = () => (
     <p>Component stories </p>
     <ExpandableContainer title="Buttons" isCollapsed={false}>
       <Button type="primary" size="lg">
-        Primary
+        VIEW COURSES
+      </Button>
+      <Button type="secondary" size="lg">
+        GET IN TOUCH
       </Button>
     </ExpandableContainer>
+    <ExpandableContainer title="Containers">TODO..</ExpandableContainer>
   </Wrapper>
 );
 
