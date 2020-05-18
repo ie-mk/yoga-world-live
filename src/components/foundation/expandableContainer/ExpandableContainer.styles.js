@@ -28,11 +28,12 @@ const StyledHeaderTitle = styled.header`
 
 const Wrapper = styled.div`
   box-shadow: 0 2px 0 rgba(0, 0, 0, 0.05);
-  background-color: ${colors.white};
+  //background-color: ${colors.white};
   margin-bottom: 10px;
   &:first-child {
     margin-top: 10px;
   }
+  color: black;
 `;
 
 const CollapseButton = styled.span`

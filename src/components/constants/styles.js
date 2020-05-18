@@ -72,7 +72,7 @@ export const colors = {
   background: {
     primary: '#1A2036',
     secondary: '#191F37',
-    gradient: `transparent linear-gradient(180deg, ${colors.background.primary} 0%, ${colors.background.secondary} 51%, ${colors.background.secondary} 100%) 0% 0% no-repeat padding-box`,
+    gradient: `transparent linear-gradient(180deg, #1A2036 0%, #191F37 51%, #191F37 100%) 0% 0% no-repeat padding-box`,
   },
   borders: {
     primary: styles.borderColorTableHead,
