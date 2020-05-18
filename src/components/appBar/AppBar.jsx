@@ -26,16 +26,14 @@ const AppBar = ({ user, dispatch, userLanguage }) => {
 
   return (
     <ContainerBase
-      backgroundColor={lightenDarkenColor(colors.header, 60)}
       id="appBar"
       padding="md"
       alignItems="center"
       display="flex"
       justifyContent="space-between"
-      borderBottom="1px"
       width="100%"
       boxSizing="border-box"
-      position="sticky"
+      position="absolute"
       top="0"
       height="65px"
       zIndex="99"

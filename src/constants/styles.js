@@ -24,11 +24,12 @@ export const spacing = {
 };
 
 export const fontSizeMap = {
-  title1: '',
-  title2: '',
-  title3: '',
-  title4: '',
-  title5: '',
+  h1: '56px',
+  h2: '48px',
+  h3: '',
+  h4: '',
+  h5: '',
+  text: '18px',
 };
 
 export const borderRadius = {

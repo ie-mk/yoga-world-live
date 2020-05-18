@@ -11,6 +11,8 @@ const ImageContainer = styled.div`
   background-size: ${({ backGroundSize }) => backGroundSize || 'cover'};
   flex: ${({ flex }) => flex || ''};
   cursor: ${({ cursor }) => cursor || ''};
+  position: ${({ position }) => position || ''};
+  z-index: ${({ zIndex }) => zIndex || ''};
 `;
 
 export default {
