@@ -4,7 +4,7 @@ import { colors, fontSizeMap } from '../../../constants/styles';
 
 const Wrapper = styled.div`
   letter-spacing: 0;
-  font: ${fontSizeMap.text} Montserrat;
+  font-size: ${fontSizeMap.text};
   color: ${colors.text.primary};
 `;
 

@@ -26,7 +26,7 @@ export const spacing = {
 export const fontSizeMap = {
   h1: '56px',
   h2: '48px',
-  h3: '32px',
+  h3: '36px',
   h4: '24px',
   h5: '20px',
   text: '18px',
