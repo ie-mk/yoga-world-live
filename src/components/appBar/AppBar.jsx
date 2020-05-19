@@ -41,22 +41,13 @@ const AppBar = ({ user, dispatch, userLanguage }) => {
       <Logo title="LOGO" width="200px" />
       <ContainerBase display="flex">
         <Styled.Wrapper>
-          <select
-            value={userLanguage || 'en'}
-            onChange={e => {
-              dispatch(userActions.setLanguage(e.target.value));
-            }}
-          >
-            <option value="en">EN</option>
-            <option value="lt">LT</option>
-          </select>
-
+          <MenuLink href="/stories">Story Book</MenuLink>
+          <MenuLink href="/courses">Courses</MenuLink>
           {user && user.uid && (
             <MenuLink href="/dashboard">
               <i className="fa fa-user" />
             </MenuLink>
           )}
-          <MenuLink href="/stories">Story Book</MenuLink>
           {user && user.uid ? (
             <LogoutButton type="secondary" onClick={handleLogout}>
               {t('Logout')}
@@ -68,6 +59,15 @@ const AppBar = ({ user, dispatch, userLanguage }) => {
               text={t('login')}
             />
           )}
+          <select
+            value={userLanguage || 'en'}
+            onChange={e => {
+              dispatch(userActions.setLanguage(e.target.value));
+            }}
+          >
+            <option value="en">EN</option>
+            <option value="lt">LT</option>
+          </select>
         </Styled.Wrapper>
       </ContainerBase>
     </ContainerBase>
