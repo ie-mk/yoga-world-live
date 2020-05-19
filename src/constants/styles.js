@@ -26,9 +26,9 @@ export const spacing = {
 export const fontSizeMap = {
   h1: '56px',
   h2: '48px',
-  h3: '',
-  h4: '',
-  h5: '',
+  h3: '32px',
+  h4: '24px',
+  h5: '20px',
   text: '18px',
 };
 
@@ -57,6 +57,9 @@ export const colors = {
   black: '#000000',
   blue: '#7D8399',
   lightBlue: '#D7DDF3',
+  text: {
+    primary: '#D5D5D5',
+  },
   background: {
     primary: '#1A2036',
     secondary: '#191F37',

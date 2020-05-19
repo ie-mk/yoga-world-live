@@ -18,12 +18,13 @@ const HeroFront = () => {
       <Styled.Content>
         <HeroTitle text="THE TECHNOLOGY SKILL PLATFORM" />
         <BodyText>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua. At vero eos et Lorem ipsum dolor sit amet,
-          consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-          labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos
-          et
+          With real world projects and immersive content built in partnership
+          with top tier companies, you’ll master the tech skills companies want.
+          Our knowledgeable mentors guide your learning and are focused on
+          answering your questions, motivating you and keeping you on track. Get
+          a custom learning plan tailored to fit your busy life. Learn at your
+          own pace and reach your personal goals on the schedule that works best
+          for you.
         </BodyText>
         <Styled.ButtonWrapper>
           <Button size="lg" type="primary">

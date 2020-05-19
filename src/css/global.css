@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat.ttf') format('truetype');
+}
+
 html {
   box-sizing: border-box;
   font-family: Helvetica, sans-serif;
