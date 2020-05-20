@@ -4,9 +4,14 @@ import styled from 'styled-components';
 import Button from '../../foundation/button/Button';
 import HeroTitle from '../../foundation/typography/HeroTitle';
 import BodyText from '../../foundation/typography/BodyText';
+import SectionTitle from '../../foundation/typography/SectionTitle';
 
 const Wrapper = styled.div`
   margin-top: 150px;
+  p {
+    color: orange;
+    margin-top: 50px;
+  }
 `;
 
 const StoryBook = () => (
@@ -26,9 +31,9 @@ const StoryBook = () => (
     <ExpandableContainer title="Images">TODO..</ExpandableContainer>
     <ExpandableContainer title="Modal">TODO..</ExpandableContainer>
     <ExpandableContainer title="Typography" isCollapsed={false}>
-      <p>COMPONENT: HeroTitle </p>
+      <p>COMPONENT: HeroTitle 48px</p>
       <HeroTitle text="THE TECHNOLOGY SKILL PLATFORM" />
-      <p>COMPONENT: BodyText </p>
+      <p>COMPONENT: BodyText 18px</p>
       <BodyText>
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
         eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
@@ -36,8 +41,11 @@ const StoryBook = () => (
         sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
         dolore magna aliquyam erat, sed diam voluptua. At vero eos et
       </BodyText>
+      <p>COMPONENT: SectionTitle 36px</p>
+      <SectionTitle text="Title of the section" />
     </ExpandableContainer>
     <ExpandableContainer title="Footer">TODO..</ExpandableContainer>
+    <ExpandableContainer title="Dashboard">TODO..</ExpandableContainer>
   </Wrapper>
 );
 

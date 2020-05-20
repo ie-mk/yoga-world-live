@@ -14,7 +14,10 @@ export const Label = styled.label`
   font-weight: bold;
 `;
 
+export const Wrapper = styled.div``;
+
 export default {
+  Wrapper,
   MenuItem,
   Label,
 };

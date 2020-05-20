@@ -10,6 +10,7 @@ import Head from 'next/head';
 import SetLanguageFromStoreWrapper from '../i18n/SetLanguageFromStoreWrapper';
 import '../i18n/i18n';
 import ScrollTracker from '../components/foundation/scrollTracker/ScrollTracker';
+import { IS_SERVER } from '../constants';
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -26,6 +27,9 @@ class MyApp extends App {
 
   render() {
     const { Component, pageProps, store } = this.props;
+    const url = !IS_SERVER && window.location.pathname;
+    const showAppbar = url && !url.includes('dashboard');
+
     logIsServer('MyApp');
     return (
       <>
@@ -40,11 +44,11 @@ class MyApp extends App {
         <Provider store={store}>
           <SetLanguageFromStoreWrapper>
             <ScrollTracker>
-              <AppBar />
-              <main>
+              {showAppbar ? <AppBar /> : null}
+              <main className={showAppbar ? 'darkTheme' : ''}>
                 <Component {...pageProps} />
               </main>
-              <Footer />
+              {showAppbar ? <Footer /> : null}
             </ScrollTracker>
           </SetLanguageFromStoreWrapper>
         </Provider>
