@@ -38,6 +38,8 @@ const ButtonWrapper = styled.button`
   margin: ${({ margin }) =>
     marginMap[margin] ? marginMap[margin] : '0 40px 0 0'};
   padding: ${({ size }) => (paddingMap[size] ? paddingMap[size] : '10px')};
+  padding: ${({ padding }) =>
+    paddingMap[padding] ? paddingMap[padding] : padding};
   background: ${({ type }) =>
     backGroundMap[type] ? backGroundMap[type] : 'transparent'};
   border-radius: 2px;
@@ -47,6 +49,8 @@ const ButtonWrapper = styled.button`
   color: ${({ type }) => (colorMap[type] ? colorMap[type] : 'white')};
   font-weight: bold;
   font-size: ${({ size }) => (fontSizeMap[size] ? fontSizeMap[size] : '12px')};
+  font-size: ${({ fontSize }) =>
+    fontSizeMap[fontSize] ? fontSizeMap[fontSize] : fontSize};
   z-index: 1;
   &:hover {
     background-color: ${({ type }) =>

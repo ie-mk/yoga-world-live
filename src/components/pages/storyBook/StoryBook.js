@@ -5,7 +5,9 @@ import Button from '../../foundation/button/Button';
 import HeroTitle from '../../foundation/typography/HeroTitle';
 import BodyText from '../../foundation/typography/BodyText';
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  margin-top: 100px;
+`;
 
 const StoryBook = () => (
   <Wrapper>

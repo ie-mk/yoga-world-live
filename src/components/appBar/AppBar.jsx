@@ -12,6 +12,12 @@ import MenuLink from '../foundation/MenuLink';
 import ContainerBase from '../foundation/ContainerBase';
 import Logo from '../foundation/Logo';
 
+const JoinButton = () => (
+  <Button type="primary" size="lg">
+    JOIN
+  </Button>
+);
+
 const LogoutButton = styled(Button)`
   margin-left: 10px;
 `;
@@ -51,7 +57,7 @@ const AppBar = ({ user, dispatch, userLanguage }) => {
           <MenuLink href="/">Home</MenuLink>
           <MenuLink href="/courses">Courses</MenuLink>
           <MenuLink href="/">Community</MenuLink>
-          <MenuLink href="/stories">Story Book</MenuLink>
+          <MenuLink href="/stories">Stories</MenuLink>
         </Styled.LinkWrapper>
 
         <Styled.LoginWrapper>
@@ -71,15 +77,18 @@ const AppBar = ({ user, dispatch, userLanguage }) => {
               text={t('LOGIN')}
             />
           )}
-          <select
-            value={userLanguage || 'en'}
-            onChange={e => {
-              dispatch(userActions.setLanguage(e.target.value));
-            }}
-          >
-            <option value="en">EN</option>
-            <option value="lt">LT</option>
-          </select>
+          <Button type="primary" padding="17px 64px" fontSize="lg">
+            JOIN
+          </Button>
+          {/*<select*/}
+          {/*  value={userLanguage || 'en'}*/}
+          {/*  onChange={e => {*/}
+          {/*    dispatch(userActions.setLanguage(e.target.value));*/}
+          {/*  }}*/}
+          {/*>*/}
+          {/*  <option value="en">EN</option>*/}
+          {/*  <option value="lt">LT</option>*/}
+          {/*</select>*/}
         </Styled.LoginWrapper>
       </ContainerBase>
     </ContainerBase>
