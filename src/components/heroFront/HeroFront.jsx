@@ -18,8 +18,7 @@ const HeroFront = () => {
       <Styled.Content>
         <HeroTitle text="THE TECHNOLOGY SKILL PLATFORM" />
         <BodyText>
-          With real world projects and immersive content built in partnership
-          with top tier companies, you’ll master the tech skills companies want.
+          With real world projects you’ll master the tech skills companies want.
           Our knowledgeable mentors guide your learning and are focused on
           answering your questions, motivating you and keeping you on track. Get
           a custom learning plan tailored to fit your busy life. Learn at your

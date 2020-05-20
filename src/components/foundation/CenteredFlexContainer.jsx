@@ -1,5 +1,5 @@
 import React from 'react';
-import { ContainerBase } from 'foundation';
+import ContainerBase from '../foundation/ContainerBase';
 
 const CenteredFlexContainer = ({ children, ...props }) => {
   return (

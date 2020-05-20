@@ -12,7 +12,7 @@ const ChooseLearningPath = () => {
   const { t } = useTranslation();
 
   return (
-    <CenteredFlexContainer marginTop="xxl">
+    <CenteredFlexContainer marginTop="100px">
       <SectionTitle text="Choose a Learning Path" />
       <BodyText>
         Learning paths guide you through exactly what you need to learn to build

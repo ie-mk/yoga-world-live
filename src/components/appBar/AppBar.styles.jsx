@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
+const LoginWrapper = styled.div`
   display: flex;
   i {
     font-size: 20px;
@@ -15,6 +15,11 @@ const Wrapper = styled.div`
   }
 `;
 
+const LinkWrapper = styled.div`
+  display: flex;
+`;
+
 export default {
-  Wrapper,
+  LoginWrapper,
+  LinkWrapper,
 };

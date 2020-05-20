@@ -26,23 +26,35 @@ const AppBar = ({ user, dispatch, userLanguage }) => {
 
   return (
     <ContainerBase
-      id="appBar"
-      padding="md"
-      alignItems="center"
       display="flex"
-      justifyContent="space-between"
-      width="100%"
-      boxSizing="border-box"
+      justifyContent="center"
+      paddingTop="lg"
       position="absolute"
       top="0"
-      height="65px"
-      zIndex="99"
+      width="100%"
     >
-      <Logo title="LOGO" width="200px" />
-      <ContainerBase display="flex">
-        <Styled.Wrapper>
-          <MenuLink href="/stories">Story Book</MenuLink>
+      <ContainerBase
+        id="appBar"
+        padding="md"
+        alignItems="center"
+        display="flex"
+        justifyContent="space-between"
+        width="100%"
+        boxSizing="border-box"
+        height="65px"
+        zIndex="99"
+        paddingRight="xxxl"
+        maxWidth="1400px"
+      >
+        <Logo imgSrc="/logo/logo_with_name.png" width="200px" />
+        <Styled.LinkWrapper>
+          <MenuLink href="/">Home</MenuLink>
           <MenuLink href="/courses">Courses</MenuLink>
+          <MenuLink href="/">Community</MenuLink>
+          <MenuLink href="/stories">Story Book</MenuLink>
+        </Styled.LinkWrapper>
+
+        <Styled.LoginWrapper>
           {user && user.uid && (
             <MenuLink href="/dashboard">
               <i className="fa fa-user" />
@@ -56,7 +68,7 @@ const AppBar = ({ user, dispatch, userLanguage }) => {
             <MenuLink
               dataTest="go-to-login-page"
               href="/login"
-              text={t('login')}
+              text={t('LOGIN')}
             />
           )}
           <select
@@ -68,7 +80,7 @@ const AppBar = ({ user, dispatch, userLanguage }) => {
             <option value="en">EN</option>
             <option value="lt">LT</option>
           </select>
-        </Styled.Wrapper>
+        </Styled.LoginWrapper>
       </ContainerBase>
     </ContainerBase>
   );
