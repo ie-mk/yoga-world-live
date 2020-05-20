@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { spacing } from '../../constants/styles';
+import { spacing } from '../../../constants/styles';
 
 const Wrapper = styled.div`
   height: 100vh;

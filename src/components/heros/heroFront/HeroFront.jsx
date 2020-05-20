@@ -1,9 +1,9 @@
 import React from 'react';
 import Styled from './HeroFront.styles';
-import ResponsiveImage from '../foundation/ResponsiveImage';
-import HeroTitle from '../foundation/typography/HeroTitle';
-import BodyText from '../foundation/typography/BodyText';
-import Button from '../foundation/button/Button';
+import ResponsiveImage from '../../foundation/ResponsiveImage';
+import HeroTitle from '../../foundation/typography/HeroTitle';
+import BodyText from '../../foundation/typography/BodyText';
+import Button from '../../foundation/button/Button';
 
 const HeroFront = () => {
   return (
