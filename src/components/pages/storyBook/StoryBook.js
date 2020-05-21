@@ -19,14 +19,14 @@ const StoryBook = () => (
     <p>Component stories </p>
     <ExpandableContainer title="Navbar">TODO..</ExpandableContainer>
     <ExpandableContainer title="Buttons" isCollapsed={true}>
-      <p>COMPONENT: Button type=primary size=lg, size=sm</p>
+      <p>COMPONENT: Button type=primary size=lg</p>
       <Button type="primary" size="lg">
         VIEW COURSES
       </Button>
       <Button type="primary" size="sm">
         VIEW COURSES
       </Button>
-      <p>COMPONENT: Button type=secondary size=lg</p>
+      <p>COMPONENT: Button type=secondary </p>
       <Button type="secondary" size="lg">
         GET IN TOUCH
       </Button>
