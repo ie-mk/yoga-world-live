@@ -10,7 +10,7 @@ const DashboardMenu = ({ setActiveComponent, active }) => {
           active={active === 'profile'}
           onClick={() => setActiveComponent('profile')}
         >
-          <i className="fa fa-user-o" aria-hidden="true" />
+          <img src="/svg/icon_dashboard.svg" />
           <Styled.Label>MY PROFILE</Styled.Label>
         </Styled.MenuItem>
         <Styled.MenuItem
