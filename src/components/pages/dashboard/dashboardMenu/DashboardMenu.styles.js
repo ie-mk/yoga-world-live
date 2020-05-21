@@ -15,6 +15,7 @@ export const MenuItem = styled.div`
 
 export const Label = styled.label`
   font-weight: bold;
+  padding-left: ${spacing.md};
 `;
 
 export const Wrapper = styled.div``;

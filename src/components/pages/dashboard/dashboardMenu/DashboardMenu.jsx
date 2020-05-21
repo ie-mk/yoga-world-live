@@ -10,14 +10,14 @@ const DashboardMenu = ({ setActiveComponent, active }) => {
           active={active === 'dashboard'}
           onClick={() => setActiveComponent('dashboard')}
         >
-          <i className="fa fa-user-o" aria-hidden="true" />
+          <img src="svg/icon_dashboard.svg" />
           <Styled.Label>Dashboard</Styled.Label>
         </Styled.MenuItem>
         <Styled.MenuItem
           active={active === 'inbox'}
           onClick={() => setActiveComponent('inbox')}
         >
-          <i className="fa fa-inbox" aria-hidden="true" />
+          <img src="svg/icon_inbox.svg" />
           <Styled.Label>Inbox</Styled.Label>
         </Styled.MenuItem>
         <Styled.MenuItem
@@ -25,28 +25,28 @@ const DashboardMenu = ({ setActiveComponent, active }) => {
           active={active === 'coursesList'}
           onClick={() => setActiveComponent('coursesList')}
         >
-          <i className="fa fa-graduation-cap" aria-hidden="true" />
+          <img src="svg/icon_courses.svg" />
           <Styled.Label>Courses</Styled.Label>
         </Styled.MenuItem>
         <Styled.MenuItem
           active={active === 'tasksList'}
           onClick={() => setActiveComponent('tasksList')}
         >
-          <i className="fa fa-heart-o" aria-hidden="true" />
+          <img src="svg/icon_practical_task.svg" />
           <Styled.Label>Practical Tasks</Styled.Label>
         </Styled.MenuItem>
         <Styled.MenuItem
           active={active === 'studentsList'}
           onClick={() => setActiveComponent('studentsList')}
         >
-          <i className="fa fa-user-o" aria-hidden="true" />
+          <img src="svg/icon_student.svg" />
           <Styled.Label>Students</Styled.Label>
         </Styled.MenuItem>
         <Styled.MenuItem
           active={active === 'authorsList'}
           onClick={() => setActiveComponent('authorsList')}
         >
-          <i className="fa fa-heart-o" aria-hidden="true" />
+          <img src="svg/icon_Authors & Learning Paths.svg" />
           <Styled.Label>Authors & Learning Paths</Styled.Label>
         </Styled.MenuItem>
       </ContainerBase>
