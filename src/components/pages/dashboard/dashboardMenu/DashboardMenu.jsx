@@ -5,35 +5,49 @@ import { ContainerBase } from '../../../foundation';
 const DashboardMenu = ({ setActiveComponent, active }) => {
   return (
     <Styled.Wrapper>
-      <ContainerBase minWidth="200px" backgroundColor="black">
+      <ContainerBase minWidth="300px">
         <Styled.MenuItem
-          active={active === 'profile'}
-          onClick={() => setActiveComponent('profile')}
+          active={active === 'dashboard'}
+          onClick={() => setActiveComponent('dashboard')}
         >
           <i className="fa fa-user-o" aria-hidden="true" />
-          <Styled.Label>MY PROFILE</Styled.Label>
+          <Styled.Label>Dashboard</Styled.Label>
         </Styled.MenuItem>
         <Styled.MenuItem
-          active={active === 'notifications'}
-          onClick={() => setActiveComponent('notifications')}
+          active={active === 'inbox'}
+          onClick={() => setActiveComponent('inbox')}
         >
-          <i className="fa fa-bell-o" aria-hidden="true" />
-          <Styled.Label>NOTIFICATIONS</Styled.Label>
+          <i className="fa fa-inbox" aria-hidden="true" />
+          <Styled.Label>Inbox</Styled.Label>
         </Styled.MenuItem>
         <Styled.MenuItem
           data-test="results-properties"
-          active={active === 'propertiesList'}
-          onClick={() => setActiveComponent('propertiesList')}
+          active={active === 'coursesList'}
+          onClick={() => setActiveComponent('coursesList')}
         >
-          <i className="fa fa-list" aria-hidden="true" />
-          <Styled.Label>PROPERTIES LIST</Styled.Label>
+          <i className="fa fa-graduation-cap" aria-hidden="true" />
+          <Styled.Label>Courses</Styled.Label>
         </Styled.MenuItem>
         <Styled.MenuItem
-          active={active === 'favoriteList'}
-          onClick={() => setActiveComponent('favoriteList')}
+          active={active === 'tasksList'}
+          onClick={() => setActiveComponent('tasksList')}
         >
           <i className="fa fa-heart-o" aria-hidden="true" />
-          <Styled.Label>FAVOURITE LIST</Styled.Label>
+          <Styled.Label>Practical Tasks</Styled.Label>
+        </Styled.MenuItem>
+        <Styled.MenuItem
+          active={active === 'studentsList'}
+          onClick={() => setActiveComponent('studentsList')}
+        >
+          <i className="fa fa-user-o" aria-hidden="true" />
+          <Styled.Label>Students</Styled.Label>
+        </Styled.MenuItem>
+        <Styled.MenuItem
+          active={active === 'authorsList'}
+          onClick={() => setActiveComponent('authorsList')}
+        >
+          <i className="fa fa-heart-o" aria-hidden="true" />
+          <Styled.Label>Authors & Learning Paths</Styled.Label>
         </Styled.MenuItem>
       </ContainerBase>
     </Styled.Wrapper>

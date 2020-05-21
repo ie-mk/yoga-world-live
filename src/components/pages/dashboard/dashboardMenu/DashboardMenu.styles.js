@@ -1,10 +1,13 @@
 import styled from 'styled-components';
-import { spacing } from '../../../../constants/styles';
+import { spacing, background } from '../../../../constants/styles';
 
 export const MenuItem = styled.div`
   padding: ${spacing.sm};
   padding-bottom: ${spacing.md};
-  box-shadow: ${({ active }) => (active ? '1px 2px 2px 1px gray' : '')};
+  padding-left: ${spacing.xl};
+  background-color: ${({ active }) =>
+    active ? background.DashboardMenuItemBackgroundColor : ''};
+
   i {
     padding-right: ${spacing.md};
   }

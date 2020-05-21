@@ -5,6 +5,7 @@ export const background = {
   lightSec: '',
   DashboardBackGroundColor: '#FFFFFF',
   DashboardContainersColor: '#F4F3EF',
+  DashboardMenuItemBackgroundColor: '#4A6A8F',
 };
 export const boxShadow = {
   DashboardBoxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
