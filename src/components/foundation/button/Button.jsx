@@ -53,8 +53,7 @@ const ButtonWrapper = styled.button`
     fontSizeMap[fontSize] ? fontSizeMap[fontSize] : fontSize};
   z-index: 1;
   &:hover {
-    background-color: ${({ type }) =>
-      colorMap[type] ? lightenDarkenColor(colorMap[type], -30) : 'white'};
+    box-shadow: 0 0 2px 2px white;
   }
 `;
 
