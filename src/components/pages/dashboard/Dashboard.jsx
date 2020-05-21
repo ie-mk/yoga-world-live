@@ -7,7 +7,8 @@ import Router, { useRouter } from 'next/router';
 import { userActions } from '../../../store/actions';
 import Styled from './Dashboard.styles';
 import Logo from '../../foundation/Logo';
-
+import DashboardItem from './dashboardItem/DashboardItem';
+import DashboardContent from './DashboardContent';
 const Dashboard = ({ dispatch, user }) => {
   useEffect(() => {
     if (!user) return;
@@ -48,7 +49,8 @@ const Dashboard = ({ dispatch, user }) => {
         </Styled.MenuWrapper>
         <Styled.Wrapper>
           {/*{showProfile && <ProfileTab />}*/}
-          {showNotifications && <NotificationsTab />}
+          {/*showNotifications && <NotificationsTab />*/}
+          <DashboardContent />
         </Styled.Wrapper>
       </Grid>
     </Styled.Wrapper>
