@@ -5,9 +5,15 @@ export const background = {
   lightSec: '',
   DashboardBackGroundColor: '#FFFFFF',
   DashboardContainersColor: '#F4F3EF',
+  DashboardMenuItemBackgroundColor: '#4A6A8F',
 };
 export const boxShadow = {
   DashboardBoxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
+};
+
+export const dashboard = {
+  activeMenuItemShadow: 'inset 4px 0 0 0 #0EC9B0',
+  activeMenuItemBackground: '#2385D94D',
 };
 
 export const spacing = {

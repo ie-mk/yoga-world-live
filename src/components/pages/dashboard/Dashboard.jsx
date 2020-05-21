@@ -12,6 +12,7 @@ const Dashboard = ({ dispatch, user }) => {
   useEffect(() => {
     if (!user) return;
     if (!user.uid) {
+      debugger;
       Router.push('/login');
     }
     dispatch(userActions.fetchUserProfile.request(user.uid));
@@ -41,7 +42,7 @@ const Dashboard = ({ dispatch, user }) => {
           <Logo
             imgSrc="/logo/logo_with_name.png"
             width="150px"
-            padding="30px 20px 50px"
+            padding="30px 50px 50px"
           />
           <DashboardMenu active={activeTab} setActiveComponent={makeActive} />
         </Styled.MenuWrapper>
