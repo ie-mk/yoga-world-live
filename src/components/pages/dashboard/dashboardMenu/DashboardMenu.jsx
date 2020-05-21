@@ -22,29 +22,29 @@ const DashboardMenu = ({ setActiveComponent, active }) => {
         </Styled.MenuItem>
         <Styled.MenuItem
           data-test="results-properties"
-          active={active === 'coursesList'}
-          onClick={() => setActiveComponent('coursesList')}
+          active={active === 'courses'}
+          onClick={() => setActiveComponent('courses')}
         >
           <img src="svg/icon_courses.svg" />
           <Styled.Label>Courses</Styled.Label>
         </Styled.MenuItem>
         <Styled.MenuItem
-          active={active === 'tasksList'}
-          onClick={() => setActiveComponent('tasksList')}
+          active={active === 'practicalTasks'}
+          onClick={() => setActiveComponent('practicalTasks')}
         >
           <img src="svg/icon_practical_task.svg" />
           <Styled.Label>Practical Tasks</Styled.Label>
         </Styled.MenuItem>
         <Styled.MenuItem
-          active={active === 'studentsList'}
-          onClick={() => setActiveComponent('studentsList')}
+          active={active === 'students'}
+          onClick={() => setActiveComponent('students')}
         >
           <img src="svg/icon_student.svg" />
           <Styled.Label>Students</Styled.Label>
         </Styled.MenuItem>
         <Styled.MenuItem
-          active={active === 'authorsList'}
-          onClick={() => setActiveComponent('authorsList')}
+          active={active === 'authors'}
+          onClick={() => setActiveComponent('authors')}
         >
           <img src="svg/icon_Authors & Learning Paths.svg" />
           <Styled.Label>Authors & Learning Paths</Styled.Label>
