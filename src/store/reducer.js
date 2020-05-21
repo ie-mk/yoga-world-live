@@ -106,8 +106,6 @@ export const userReducer = handleActions(
     loadingPicture: false,
     error: null,
     isFirstLogin: null,
-    favourites: {},
-    ads: null,
   },
 );
 

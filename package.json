@@ -1,5 +1,5 @@
 {
-  "name": "prop-rent",
+  "name": "code-school",
   "version": "1.0.0",
   "author": "Justinas Simutis",
   "license": "UNLICENSED",
@@ -64,9 +64,6 @@
     "pretty-quick": "^1.11.1",
     "redux-devtools-extension": "2.13.8",
     "rimraf": "^3.0.2"
-  },
-  "resolutions": {
-    "@babel/runtime": "^7.9.6"
   },
   "husky": {
     "hooks": {
