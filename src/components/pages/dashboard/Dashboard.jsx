@@ -13,7 +13,7 @@ const Dashboard = ({ dispatch, user }) => {
   useEffect(() => {
     if (!user) return;
     if (!user.uid) {
-      debugger;
+      // debugger;
       Router.push('/login');
     }
     dispatch(userActions.fetchUserProfile.request(user.uid));
