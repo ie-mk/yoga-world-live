@@ -1,6 +1,6 @@
 import app from '../firebase/app';
 
-const { storage, firestore, geo, auth, firebase } = app;
+const { storage, firestore, auth, firebase } = app;
 
 export const fetchAds = async () => {
   const result = {};
@@ -153,10 +153,6 @@ export const updateAd = async ({ adId, data }) => {
   try {
     const adRef = firestore.collection('ads').doc(adId);
 
-    if (data.longtitude && data.latitude) {
-      data.position = geo.point(data.latitude, data.longtitude);
-    }
-
     await adRef.update(data);
 
     return Promise.resolve('ok');
@@ -173,10 +169,6 @@ export const createAd = async data => {
     const adId = collectionRef.id;
 
     const images = data.images;
-
-    if (data.longtitude && data.latitude) {
-      data.position = geo.point(data.latitude, data.longtitude);
-    }
 
     if (images && images.length) {
       delete data.images;
@@ -195,10 +187,6 @@ export const createAdFromJson = async data => {
   if (!Object.keys(data).length) return;
 
   try {
-    if (data.longtitude && data.latitude) {
-      data.position = geo.point(data.latitude, data.longtitude);
-    }
-
     const collectionRef = firestore.collection('ads').doc();
     collectionRef.set(data);
   } catch (e) {

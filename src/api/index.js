@@ -1,3 +1,3 @@
-import api from 'apiPath';
+import api from './api';
 
 export default api;
