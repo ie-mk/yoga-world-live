@@ -22,7 +22,7 @@ const SearchIcon = styled.img`
   height: 26px;
 `;
 const Input = styled.input`
-  margin-left: ${spacing.left};
+  margin-left: ${spacing.xls};
   width: 391px;
   font-size: ${fontSizeMap.text};
   border: none;
@@ -43,7 +43,7 @@ const NotificationIcon = styled.img`
   margin-right: ${spacing.xxl};
 `;
 const Label = styled.label`
-  margin-left: ${spacing.left};
+  margin-left: ${spacing.xls};
   font-size: ${fontSizeMap.text};
   color: ${colors.label.primary};
 `;

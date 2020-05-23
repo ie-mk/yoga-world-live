@@ -24,13 +24,13 @@ export const spacing = {
   xxxl: '60px',
   xxl: '40px',
   xl: '30px',
+  xls: '25px',
   lg: '20px',
   md: '16px',
   sm: '10px',
   xS: '8px',
   xxS: '6px',
   xxxS: '4px',
-  left: '25px',
 };
 
 export const fontSizeMap = {
