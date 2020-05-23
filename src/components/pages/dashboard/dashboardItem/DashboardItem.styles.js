@@ -10,13 +10,14 @@ import {
 export const ItemWrapper = styled.div`
   flex: 1;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin-left: ${spacing.xl};
   margin-right: ${spacing.xl};
   background-color: ${({ highlighted }) => (highlighted ? 'grey' : 'white')};
   flex-direction: column;
   width: 30%;
+  padding: ${spacing.xxl};
   //max-width: 30%;
   height: 320px;
   border: 1px solid #707070;
@@ -46,12 +47,15 @@ export const CountContainer = styled.div`
 `;
 
 export const RowContainer = styled.div`
+  ${({ renderEmpty }) => (renderEmpty ? 'height: 42px;' : '')}
   display: flex;
   justify-content: space-between;
   padding-top: ${spacing.md};
   flex-direction:row;
   //margin-top: ${spacing.sm};
   //margin-bottom: ${spacing.sm};
+  width: 100%;
+  ${({ renderEmpty }) => (renderEmpty ? 'height: 42px;' : '')}
 `;
 export const grayContainer = styled.span`
   color: ${colors.gray};
@@ -60,7 +64,6 @@ export const grayContainer = styled.span`
 
 export const NewContainer = styled.span`
   color: black;
-  padding-right: ${spacing.md};
   font-size: ${fontSizeMap.h4};
   font-weight: bold;
 `;
