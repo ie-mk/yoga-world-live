@@ -82,7 +82,10 @@ export const userReducer = handleActions(
 
     [userActions.adToFavourites]: (state, action) => ({
       ...state,
-      favourites: { ...state.favourites, ...action.payload },
+      favourites: {
+        ...state.favourites,
+        ...action.payload,
+      },
     }),
 
     /*===============================================================*/

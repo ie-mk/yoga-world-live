@@ -8,7 +8,7 @@
   },
   "main": "firebaseFunctions.js",
   "scripts": {
-    "dev": "next src/ -p 8181",
+    "dev": "next src/ -p 8282",
     "build": "next build src/",
     "start": "next start src/",
     "serve": "npm run build && firebase emulators:start --only functions,hosting",
@@ -45,6 +45,7 @@
     "redux-notifications": "4.0.1",
     "redux-saga": "1.1.3",
     "reselect": "4.0.0",
+    "rxjs": "^6.2.1",
     "seamless-immutable": "7.1.4",
     "styled-components": "5.1.0",
     "webpack": "4.29.6",

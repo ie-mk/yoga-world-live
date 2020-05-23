@@ -14,8 +14,11 @@ module.exports = withCSS({
     alias['foundation'] = path.join(projectRoot, 'components/foundation');
     alias['modules'] = path.join(projectRoot, 'modules');
     alias['store'] = path.join(projectRoot, 'store');
-    // alias['apiPath'] = path.join(projectRoot, '../api/api');
-    alias['apiPath'] = path.join(projectRoot, './api/api.min');
+    alias['apiPath'] = path.join(projectRoot, 'api/api');
+    // alias['apiPath'] = path.join(
+    //   projectRoot,
+    //   './api/api.min',
+    // );
     return config;
   },
 });
