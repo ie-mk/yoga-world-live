@@ -35,7 +35,7 @@ const SectionPictureDescButton = () => {
             nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
             erat, sed diam voluptua. At vero eos et
           </BodyText>
-          <Button type="primary" size="lg">
+          <Button maxWidth="300px" type="primary" size="lg">
             VIEW COURSES
           </Button>
         </ContainerBase>

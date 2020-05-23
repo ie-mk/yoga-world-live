@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 `;
 
 const Content = styled.div`
-  max-width: 1000px;
+  max-width: 1200px;
   width: 100%;
   padding: ${spacing.lg};
 `;
