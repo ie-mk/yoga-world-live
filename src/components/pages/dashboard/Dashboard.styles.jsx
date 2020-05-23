@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  max-width: 1200px;
   min-height: calc(100vh - 915px);
-  background-color: white;
+  background-color: #f0f0f7;
+  color: black;
 `;
 
 const MenuWrapper = styled.div`
