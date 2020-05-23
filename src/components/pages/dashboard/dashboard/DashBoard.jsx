@@ -1,8 +1,8 @@
 import React from 'react';
-import { ContainerBase } from '../../../foundation';
+import DashboardContent from '../DashboardContent';
 
 const DashBoard = () => {
-  return <ContainerBase>TODO: DashBoard content</ContainerBase>;
+  return <DashboardContent />;
 };
 
 export default DashBoard;
