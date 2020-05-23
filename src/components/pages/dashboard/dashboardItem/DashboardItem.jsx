@@ -8,31 +8,22 @@ const DashBoardItem = ({ data }) => {
 
   return (
     <Styled.ItemWrapper>
-      <div>
-        <Styled.TextContainer>
-          <strong>{data.title}</strong>
-        </Styled.TextContainer>
-        <Styled.CountContainer>
-          <strong>{data.count}</strong>
-        </Styled.CountContainer>
-        {data.Active && data.New ? (
-          <div>
+      <Styled.TitleContainer>{data.title}</Styled.TitleContainer>
+      <Styled.CountContainer>{data.count}</Styled.CountContainer>
+      {data.Active && data.New ? (
+        <Styled.RowContainer>
+          <span>
             <Styled.grayContainer> New </Styled.grayContainer>
-            <Styled.NewContainer>
-              {' '}
-              <strong>{data.New}</strong>
-            </Styled.NewContainer>
-
+            <Styled.NewContainer>{data.New}</Styled.NewContainer>
+          </span>
+          <span>
             <Styled.grayContainer> Active </Styled.grayContainer>
-            <Styled.NewContainer>
-              {' '}
-              <strong>{data.Active}</strong>
-            </Styled.NewContainer>
-          </div>
-        ) : (
-          ''
-        )}
-      </div>
+            <Styled.NewContainer>{data.Active}</Styled.NewContainer>
+          </span>
+        </Styled.RowContainer>
+      ) : (
+        ''
+      )}
     </Styled.ItemWrapper>
   );
 };
