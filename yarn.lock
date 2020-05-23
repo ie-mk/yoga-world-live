@@ -5406,11 +5406,6 @@ gcs-resumable-upload@^2.2.4:
     pumpify "^2.0.0"
     stream-events "^1.0.4"
 
-geofirex@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/geofirex/-/geofirex-0.1.0.tgz#db6214d31307bc98d15b4addbd64e79cc9f7ec91"
-  integrity sha512-3I1HJuWYUI4Re85meprZZapcwq4Zc47ZaL8Z16dRT3Z3OT1yRl6l9Zcepz86mEqk2VmejtwBfERXfl0YcbAWJQ==
-
 get-stdin@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/get-stdin/-/get-stdin-7.0.0.tgz#8d5de98f15171a125c5e516643c7a6d0ea8a96f6"
@@ -9888,7 +9883,7 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   dependencies:
     aproba "^1.1.1"
 
-rxjs@^6.2.1, rxjs@^6.3.3, rxjs@^6.4.0:
+rxjs@^6.3.3, rxjs@^6.4.0:
   version "6.5.5"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.5.5.tgz#c5c884e3094c8cfee31bf27eb87e54ccfc87f9ec"
   integrity sha512-WfQI+1gohdf0Dai/Bbmk5L5ItH5tYqm3ki2c5GdWhKjalzjg93N3avFjVStyZZz+A2Em+ZxKH5bNghw9UeylGQ==
