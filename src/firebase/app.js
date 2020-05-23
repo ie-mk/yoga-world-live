@@ -1,7 +1,6 @@
 import firebase from 'firebase';
 import { FIREBASE_CONFIG } from './config';
 import { IS_SERVER } from '../constants';
-import * as geofirex from 'geofirex';
 
 let app = {};
 
@@ -12,7 +11,6 @@ if (!IS_SERVER) {
   const storage = firebase.storage().ref();
   const firestore = firebase.firestore();
   const auth = firebase.auth();
-  const geo = geofirex.init(firebase);
 
   app = {
     db,
@@ -20,7 +18,6 @@ if (!IS_SERVER) {
     firestore,
     firebase,
     auth,
-    geo,
   };
 }
 
