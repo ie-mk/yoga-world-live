@@ -1,11 +1,7 @@
 import React from 'react';
 import Styled from './DashboardItem.styles';
-import ContainerBase from '../../../foundation/ContainerBase';
 
 const DashBoardItem = ({ data }) => {
-  const items = Object.values(data);
-  const ids = Object.keys(data);
-
   return (
     <Styled.ItemWrapper>
       <Styled.TitleContainer>{data.title}</Styled.TitleContainer>
