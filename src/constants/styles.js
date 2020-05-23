@@ -46,6 +46,7 @@ export const borderRadius = {
   md: '20px',
   sm: '10px',
   xs: '5px',
+  profile: '50%',
 };
 
 export const borders = {

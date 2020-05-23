@@ -1,5 +1,10 @@
 import styled from 'styled-components';
-import { spacing, fontSizeMap, colors } from '../../../../constants/styles';
+import {
+  spacing,
+  fontSizeMap,
+  colors,
+  borderRadius,
+} from '../../../../constants/styles';
 
 const Wrapper = styled.div`
   flex: 1;
@@ -25,7 +30,7 @@ const Input = styled.input`
 const ProfileIcon = styled.img`
   width: 38px;
   height: 38px;
-  border-radius: 50%;
+  border-radius: ${borderRadius.profile};
 `;
 const ProfileWrapper = styled.div`
   display: flex;
