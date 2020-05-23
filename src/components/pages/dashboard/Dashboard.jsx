@@ -38,8 +38,7 @@ const Dashboard = ({ dispatch, user }) => {
   const practicalTasks = activeTab === 'practicalTasks';
   const students = activeTab === 'students';
   const authors = activeTab === 'authors';
-  // if (!user) return null;
-  console.log(dashboard);
+
   return (
     <Styled.Wrapper>
       <Grid
