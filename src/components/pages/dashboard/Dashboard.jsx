@@ -57,7 +57,7 @@ const Dashboard = ({ dispatch, user }) => {
         </Styled.MenuWrapper>
 
         <div>
-          <DashboardHeader />
+          <DashboardHeader user={user} />
           <Styled.Wrapper>
             {dashboard && <DashboardTab />}
             {inbox && <Inbox />}

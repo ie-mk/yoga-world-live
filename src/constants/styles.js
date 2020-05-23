@@ -67,6 +67,9 @@ export const colors = {
   black: '#000000',
   blue: '#7D8399',
   lightBlue: '#D7DDF3',
+  label: {
+    primary: '#414141',
+  },
   text: {
     primary: '#D5D5D5',
   },

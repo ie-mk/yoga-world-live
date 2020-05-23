@@ -2,7 +2,7 @@ import React from 'react';
 import { ContainerBase } from '../../../foundation';
 import Styled from './DashboardHeader.styles';
 
-const DashBoardHeader = () => {
+const DashBoardHeader = ({ user }) => {
   return (
     <ContainerBase
       height="70px"
@@ -20,8 +20,8 @@ const DashBoardHeader = () => {
           />
         </Styled.SearchWrapper>
         <Styled.ProfileWrapper>
-          <Styled.ProfileIcon src="svg/icon_profile.svg" />
-          <Styled.Label>User Name</Styled.Label>
+          <Styled.ProfileIcon src={user.photoURL} />
+          <Styled.Label>{user.displayName}</Styled.Label>
           <Styled.NotificationIcon src="svg/icon_notification_2.svg" />
         </Styled.ProfileWrapper>
       </Styled.Wrapper>

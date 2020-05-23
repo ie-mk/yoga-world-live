@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { spacing, fontSizeMap } from '../../../../constants/styles';
+import { spacing, fontSizeMap, colors } from '../../../../constants/styles';
 
 const Wrapper = styled.div`
   flex: 1;
@@ -25,6 +25,7 @@ const Input = styled.input`
 const ProfileIcon = styled.img`
   width: 38px;
   height: 38px;
+  border-radius: 50%;
 `;
 const ProfileWrapper = styled.div`
   display: flex;
@@ -39,7 +40,7 @@ const NotificationIcon = styled.img`
 const Label = styled.label`
   margin-left: ${spacing.left};
   font-size: ${fontSizeMap.text};
-  width: 101px;
+  color: ${colors.label.primary};
 `;
 
 export default {
