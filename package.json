@@ -8,7 +8,7 @@
   },
   "main": "firebaseFunctions.js",
   "scripts": {
-    "dev": "next src/ -p 8282",
+    "dev": "next src/ -p 8081",
     "build": "next build src/ && npm run predeploy",
     "start": "next start src/",
     "serve": "npm run build && npm run predeploy && firebase emulators:start --only functions,hosting",
