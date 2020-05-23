@@ -14,13 +14,17 @@ export const boxShadow = {
 export const dashboard = {
   activeMenuItemShadow: 'inset 4px 0 0 0 #0EC9B0',
   activeMenuItemBackground: '#2385D94D',
+  dashboardBackground: '#f0f0f7',
 };
 
 export const spacing = {
+  xxxxxxl: '150px',
+  xxxxxl: '90px',
   xxxxl: '80px',
   xxxl: '60px',
   xxl: '40px',
   xl: '30px',
+  xls: '25px',
   lg: '20px',
   md: '16px',
   sm: '10px',
@@ -42,6 +46,7 @@ export const borderRadius = {
   md: '20px',
   sm: '10px',
   xs: '5px',
+  profile: '50%',
 };
 
 export const borders = {
@@ -63,12 +68,16 @@ export const colors = {
   black: '#000000',
   blue: '#7D8399',
   lightBlue: '#D7DDF3',
+  label: {
+    primary: '#414141',
+  },
   text: {
     primary: '#D5D5D5',
   },
   background: {
     primary: '#1A2036',
     secondary: '#191F37',
+
     gradient: `transparent linear-gradient(180deg, #1A2036 0%, #191F37 51%, #191F37 100%) 0% 0% no-repeat padding-box`,
   },
   borders: {
