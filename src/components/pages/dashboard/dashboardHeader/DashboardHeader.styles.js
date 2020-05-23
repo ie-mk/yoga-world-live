@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { spacing, dashboard } from '../../../../constants/styles';
+import { spacing, fontSizeMap } from '../../../../constants/styles';
 
 const Wrapper = styled.div`
   flex: 1;
@@ -8,29 +8,38 @@ const Wrapper = styled.div`
 `;
 
 const SearchWrapper = styled.div`
-  margin-left: 180px;
+  margin-left: ${spacing.xxxxxxl};
+  display: flex;
+  align-items: center;
 `;
 const SearchIcon = styled.img`
   width: 26px;
   height: 26px;
 `;
 const Input = styled.input`
-  margin-left: ${spacing.lg};
-  width: 392px;
+  margin-left: ${spacing.left};
+  width: 391px;
+  font-size: ${fontSizeMap.text};
   border: none;
 `;
 const ProfileIcon = styled.img`
   width: 38px;
   height: 38px;
 `;
+const ProfileWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
 const NotificationIcon = styled.img`
-  margin-left: ${spacing.xxxxl};
+  margin-left: ${spacing.xxxxxl};
   width: 16px;
   height: 16px;
   margin-right: ${spacing.xxl};
 `;
 const Label = styled.label`
-  margin-left: ${spacing.lg};
+  margin-left: ${spacing.left};
+  font-size: ${fontSizeMap.text};
+  width: 101px;
 `;
 
 export default {
@@ -41,4 +50,5 @@ export default {
   ProfileIcon,
   NotificationIcon,
   Label,
+  ProfileWrapper,
 };

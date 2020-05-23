@@ -19,11 +19,11 @@ const DashBoardHeader = () => {
             placeholder="students,courses or onsite locations"
           />
         </Styled.SearchWrapper>
-        <div>
+        <Styled.ProfileWrapper>
           <Styled.ProfileIcon src="svg/icon_profile.svg" />
           <Styled.Label>User Name</Styled.Label>
           <Styled.NotificationIcon src="svg/icon_notification_2.svg" />
-        </div>
+        </Styled.ProfileWrapper>
       </Styled.Wrapper>
     </ContainerBase>
   );

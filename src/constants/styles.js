@@ -14,9 +14,12 @@ export const boxShadow = {
 export const dashboard = {
   activeMenuItemShadow: 'inset 4px 0 0 0 #0EC9B0',
   activeMenuItemBackground: '#2385D94D',
+  dashboardBackground: '#f0f0f7',
 };
 
 export const spacing = {
+  xxxxxxl: '150px',
+  xxxxxl: '90px',
   xxxxl: '80px',
   xxxl: '60px',
   xxl: '40px',
@@ -27,6 +30,7 @@ export const spacing = {
   xS: '8px',
   xxS: '6px',
   xxxS: '4px',
+  left: '25px',
 };
 
 export const fontSizeMap = {
@@ -69,6 +73,7 @@ export const colors = {
   background: {
     primary: '#1A2036',
     secondary: '#191F37',
+
     gradient: `transparent linear-gradient(180deg, #1A2036 0%, #191F37 51%, #191F37 100%) 0% 0% no-repeat padding-box`,
   },
   borders: {
