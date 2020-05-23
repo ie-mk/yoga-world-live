@@ -5406,11 +5406,6 @@ gcs-resumable-upload@^2.2.4:
     pumpify "^2.0.0"
     stream-events "^1.0.4"
 
-geofirex@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/geofirex/-/geofirex-0.1.0.tgz#db6214d31307bc98d15b4addbd64e79cc9f7ec91"
-  integrity sha512-3I1HJuWYUI4Re85meprZZapcwq4Zc47ZaL8Z16dRT3Z3OT1yRl6l9Zcepz86mEqk2VmejtwBfERXfl0YcbAWJQ==
-
 get-stdin@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/get-stdin/-/get-stdin-7.0.0.tgz#8d5de98f15171a125c5e516643c7a6d0ea8a96f6"
@@ -7607,6 +7602,11 @@ moment@2.24.0:
   version "2.24.0"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
   integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
+
+moment@^2.26.0:
+  version "2.26.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.26.0.tgz#5e1f82c6bafca6e83e808b30c8705eed0dcbd39a"
+  integrity sha512-oIixUO+OamkUkwjhAVE18rAMfRJNsNe/Stid/gwHSOfHrOtw9EhAY2AHvdKZ/k/MggcYELFCJz/Sn2pL8b8JMw==
 
 morgan@^1.10.0, morgan@^1.8.2:
   version "1.10.0"

@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { connect } from 'react-redux';
 import Styled from './AppBar.styles';
-import api from '../../api';
+import api from '../../api/api.min';
 import Button from '../foundation/button/Button';
 import styled from 'styled-components';
 import { userActions } from '../../store/actions';
