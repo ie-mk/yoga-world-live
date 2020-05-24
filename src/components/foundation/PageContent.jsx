@@ -8,7 +8,6 @@ const Wrapper = styled.div`
   position: relative;
   min-height: calc(100vh - 315px);
   background: ${colors.background.gradient};
-  padding: 0 ${spacing.lg};
 `;
 
 const Content = styled.div`

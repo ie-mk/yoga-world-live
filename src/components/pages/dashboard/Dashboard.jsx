@@ -32,7 +32,7 @@ const Dashboard = ({ dispatch, user }) => {
 
   const activeTab = query && query.activeTab;
 
-  const dashboard = activeTab === 'dashboard';
+  const dashboard = activeTab === 'dashboard' || !activeTab;
   const inbox = activeTab === 'inbox';
   const courses = activeTab === 'courses';
   const practicalTasks = activeTab === 'practicalTasks';

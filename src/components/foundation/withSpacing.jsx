@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { spacing } from '../../constants/styles';
+import getMedia from '../../utils/media';
 
 const getPadding = padding => css`
   padding: ${spacing[padding] ? spacing[padding] : padding};
@@ -52,6 +53,8 @@ const ContainerRoot = styled.div`
   ${({ marginTop }) => (marginTop ? getMarginTop(marginTop) : '')}
   ${({ marginLeft }) => (marginLeft ? getMarginLeft(marginLeft) : '')}
   ${({ marginRight }) => (marginRight ? getMarginRight(marginRight) : '')}
+
+  ${({ mediaConfig }) => (mediaConfig ? getMedia(mediaConfig) : '')}
 `;
 
 const withSpacing = Component => ({

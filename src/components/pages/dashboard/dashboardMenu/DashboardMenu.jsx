@@ -7,7 +7,7 @@ const DashboardMenu = ({ setActiveComponent, active }) => {
     <Styled.Wrapper>
       <ContainerBase minWidth="300px">
         <Styled.MenuItem
-          active={active === 'dashboard'}
+          active={active === 'dashboard' || !active}
           onClick={() => setActiveComponent('dashboard')}
         >
           <img src="svg/icon_dashboard.svg" />

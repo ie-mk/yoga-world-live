@@ -17,8 +17,13 @@ const SectionCards = () => {
       />
       <Grid
         columns="1fr"
-        mediaColConfig={{
-          aboveTablet: '1fr 1fr',
+        mediaConfig={{
+          aboveTablet: {
+            'grid-template-columns': '1fr 1fr',
+          },
+          belowDesktop: {
+            'grid-gap': spacing.xl,
+          },
         }}
         gridGap={spacing.xxxxl}
       >

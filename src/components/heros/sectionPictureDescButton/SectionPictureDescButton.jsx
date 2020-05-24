@@ -8,10 +8,19 @@ import Button from '../../foundation/button/Button';
 
 const SectionPictureDescButton = () => {
   return (
-    <ContainerBase marginTop="xxxl">
+    <ContainerBase
+      marginTop="xxxl"
+      mediaConfig={{
+        belowDesktop: {
+          padding: 0,
+        },
+      }}
+    >
       <Grid
-        mediaColConfig={{
-          aboveMobileLarge: 'minmax(0, 1fr) 1fr',
+        mediaConfig={{
+          aboveMobileLarge: {
+            'grid-template-columns': 'minmax(0, 1fr) 1fr',
+          },
         }}
         columns="1fr"
       >
