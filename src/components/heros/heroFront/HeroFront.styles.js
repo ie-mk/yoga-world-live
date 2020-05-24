@@ -12,6 +12,7 @@ const Wrapper = styled.div`
 
 const Content = styled.div`
   max-width: 900px;
+  z-index: 1;
 `;
 
 const ButtonWrapper = styled.div`
