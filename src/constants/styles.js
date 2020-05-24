@@ -6,6 +6,8 @@ export const background = {
   DashboardBackGroundColor: '#FFFFFF',
   DashboardContainersColor: '#F4F3EF',
   DashboardMenuItemBackgroundColor: '#4A6A8F',
+  cardBackground:
+    'transparent linear-gradient(180deg, #293150 0%, #1E2540 100%) 0% 0% no-repeat padding-box',
 };
 export const boxShadow = {
   DashboardBoxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
@@ -33,6 +35,7 @@ export const fontSizeMap = {
   h1: '56px',
   h2: '48px',
   h3: '36px',
+  h3s: '32px',
   h4: '24px',
   h5: '20px',
   text: '18px',
