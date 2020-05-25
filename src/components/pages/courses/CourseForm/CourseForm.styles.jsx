@@ -49,6 +49,16 @@ export const InputStyles = styled.div`
     border-radius: ${borderRadius.sm};
     opacity: 1;
   }
+  .textarea {
+    height: 200px;
+    font-size: ${fontSizeMap.title3};
+    width: 100%;
+    padding-left: ${spacing.sm};
+    color: black;
+    border: 1px solid #909090;
+    border-radius: ${borderRadius.sm};
+    opacity: 1;
+  }
   .countryUpdate-input1 {
     height: 40px;
     font-size: ${fontSizeMap.title3};
@@ -92,10 +102,10 @@ export const NameContainer = styled.div`
 `;
 
 export const AddressContainer = styled.div`
-  width: 30%;
+  width: 40%;
 `;
 export const MidContainer = styled.div`
-  width: 60%;
+  width: 80%;
 `;
 export const Container = styled.div`
   width: 100%;

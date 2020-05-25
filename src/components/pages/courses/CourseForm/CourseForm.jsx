@@ -159,6 +159,7 @@ let CourseForm = () => {
                     name="learn"
                     rows="10"
                     cols="110"
+                    className="textarea"
                     component="textarea"
                   />
                 </Styled.InputStyles>
@@ -172,6 +173,7 @@ let CourseForm = () => {
                     name="prerequisites"
                     rows="10"
                     cols="110"
+                    className="textarea"
                     component="textarea"
                   />
                 </Styled.InputStyles>
