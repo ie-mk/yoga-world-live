@@ -1,8 +1,9 @@
 import React from 'react';
 import { ContainerBase } from '../../../foundation';
+import CourseForm from '../../courses/CourseForm/CourseForm';
 
 const Cources = () => {
-  return <ContainerBase>TODO: Cources content</ContainerBase>;
+  return <CourseForm />;
 };
 
 export default Cources;
