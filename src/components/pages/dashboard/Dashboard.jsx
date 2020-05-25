@@ -9,7 +9,7 @@ import Logo from '../../foundation/Logo';
 import DashboardTab from './dashboard/DashBoard';
 import DashboardHeader from './dashboardHeader/DashboardHeader';
 import Inbox from './inbox/Inbox';
-import Courses from './courses/Cources';
+import DashboardCourses from './courses/DashboardCourses';
 import PracticalTasks from './practicalTasks/PracticalTasks';
 import Students from './students/Students';
 import Authors from './authors/Authors';
@@ -61,7 +61,7 @@ const Dashboard = ({ dispatch, user }) => {
           <Styled.Wrapper>
             {dashboard && <DashboardTab />}
             {inbox && <Inbox />}
-            {courses && <Courses />}
+            {courses && <DashboardCourses />}
             {practicalTasks && <PracticalTasks />}
             {students && <Students />}
             {authors && <Authors />}

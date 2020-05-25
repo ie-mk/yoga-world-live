@@ -7,7 +7,8 @@ import { Formik, ErrorMessage, Field } from 'formik';
 //import PhoneInput from 'react-phone-number-input';
 import styled from 'styled-components';
 // import { userActions } from '../../store/actions';
-import { ContainerBase } from '../../../foundation';
+import { ContainerBase } from '../../../../foundation';
+import AdminInput from '../../../../foundation/input/AdminInput';
 
 const StyledError = styled.div`
   color: red;
@@ -38,10 +39,15 @@ let CourseForm = () => {
           <form onSubmit={handleSubmit}>
             <Styled.InputRow>
               <Styled.MidContainer>
-                <Styled.Label>Course Title</Styled.Label>
-                <Styled.InputStyles>
-                  <Field name="coursetitle" type="text" />
-                </Styled.InputStyles>
+                {/*<Styled.Label>Course Title</Styled.Label>*/}
+                {/*<Styled.InputStyles>*/}
+                {/*  <Field name="coursetitle" type="text" />*/}
+                {/*</Styled.InputStyles>*/}
+                <AdminInput
+                  name="courseTitle"
+                  type="text"
+                  label="Course Title"
+                />
               </Styled.MidContainer>
               <Styled.AddressContainer>
                 <Styled.Label>Thumbnail</Styled.Label>

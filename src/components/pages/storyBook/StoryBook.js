@@ -5,6 +5,9 @@ import Button from '../../foundation/button/Button';
 import HeroTitle from '../../foundation/typography/HeroTitle';
 import BodyText from '../../foundation/typography/BodyText';
 import SectionTitle from '../../foundation/typography/SectionTitle';
+import AdminInput from '../../foundation/input/AdminInput';
+import Styled from '../dashboard/courses/CourseForm/CourseForm.styles';
+import { Field, Formik } from 'formik';
 
 const Wrapper = styled.div`
   margin-top: 150px;
@@ -13,6 +16,8 @@ const Wrapper = styled.div`
     margin-top: 50px;
   }
 `;
+
+const initialFormValues = {};
 
 const StoryBook = () => (
   <Wrapper>
@@ -35,10 +40,24 @@ const StoryBook = () => (
       </Button>
     </ExpandableContainer>
     <ExpandableContainer title="Section">TODO..</ExpandableContainer>
-    <ExpandableContainer title="Form">TODO..</ExpandableContainer>
+    <ExpandableContainer title="Form" isCollapsed={false}>
+      <Formik>
+        {({ handleSubmit }) => (
+          <form onSubmit={handleSubmit}>
+            <p>COMPONENT: Admin input </p>
+            <AdminInput
+              classNameString="someString"
+              label="label"
+              type="text"
+              width="50%"
+            />
+          </form>
+        )}
+      </Formik>
+    </ExpandableContainer>
     <ExpandableContainer title="Images">TODO..</ExpandableContainer>
     <ExpandableContainer title="Modal">TODO..</ExpandableContainer>
-    <ExpandableContainer title="Typography" isCollapsed={false}>
+    <ExpandableContainer title="Typography" isCollapsed={true}>
       <p>COMPONENT: HeroTitle 48px</p>
       <HeroTitle text="THE TECHNOLOGY SKILL PLATFORM" />
       <p>COMPONENT: BodyText 18px</p>

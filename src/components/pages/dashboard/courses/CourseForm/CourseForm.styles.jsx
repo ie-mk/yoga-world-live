@@ -5,7 +5,7 @@ import {
   spacing,
   fontSizeMap,
   borderRadius,
-} from '../../../../constants/styles';
+} from '../../../../../constants/styles';
 const ValidationError = styled.div`
   position: absolute;
   padding: 2px;

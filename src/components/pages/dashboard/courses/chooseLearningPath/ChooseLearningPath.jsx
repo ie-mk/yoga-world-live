@@ -1,12 +1,12 @@
 import React from 'react';
 import Styled from './ChooseLearningPath.styles';
 import { useTranslation } from 'react-i18next';
-import LearningPathCard from '../../../foundation/learningPathCard/LearningPathCard';
-import { ContainerBase } from '../../../foundation';
-import PathTitle from '../../../foundation/typography/PathTitle';
-import BodyText from '../../../foundation/typography/BodyText';
-import CenteredFlexContainer from '../../../foundation/CenteredFlexContainer';
-import SectionTitle from '../../../foundation/typography/SectionTitle';
+import LearningPathCard from '../../../../foundation/learningPathCard/LearningPathCard';
+import { ContainerBase } from '../../../../foundation';
+import PathTitle from '../../../../foundation/typography/PathTitle';
+import BodyText from '../../../../foundation/typography/BodyText';
+import CenteredFlexContainer from '../../../../foundation/CenteredFlexContainer';
+import SectionTitle from '../../../../foundation/typography/SectionTitle';
 
 const ChooseLearningPath = () => {
   const { t } = useTranslation();
