@@ -19,12 +19,23 @@ const Td = styled.td`
 `;
 const THead = styled.thead`
   background-color: #191f36;
-
   color: white;
 `;
 const Th = styled.th`
   height: 60px;
   font-size: 24px;
+
+  &:first-child {
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    padding-left: ${spacing.lg};
+  }
+
+  &:last-child {
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    padding-right: ${spacing.xl};
+  }
 `;
 const Tbody = styled.tbody`
   height: 50px;

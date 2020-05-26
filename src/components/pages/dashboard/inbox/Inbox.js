@@ -1,7 +1,6 @@
 import React from 'react';
 import { ContainerBase } from '../../../foundation';
 import Table from '../table/Table';
-import { object } from 'firebase-functions/lib/providers/storage';
 
 const Inbox = () => {
   const messages = {
