@@ -15,36 +15,46 @@ const Wrapper = styled.div`
   }
 `;
 
+const Story = styled.div`
+  width: 25%;
+`;
+
 const StoryBook = () => (
   <Wrapper>
     <p>Component stories </p>
     <ExpandableContainer title="Navbar">TODO..</ExpandableContainer>
     <ExpandableContainer title="Buttons" isCollapsed={true}>
-      <ContainerBase display="flex">
-        <div>
+      <ContainerBase display="flex" flexWrap="wrap">
+        <Story>
           <p>COMPONENT: Button type=primary size=lg</p>
           <Button type="primary" size="lg">
             VIEW COURSES
           </Button>
-        </div>
-        <div>
+        </Story>
+        <Story>
           <p>COMPONENT: Button type=primary size=sm</p>
           <Button type="primary" size="sm">
             VIEW COURSES
           </Button>
-        </div>
-        <div>
+        </Story>
+        <Story>
           <p>COMPONENT: Button type=secondary size=lg </p>
           <Button type="secondary" size="lg">
             GET IN TOUCH
           </Button>
-        </div>
-        <div>
+        </Story>
+        <Story>
           <p>COMPONENT: Button type=secondary size=sm </p>
           <Button type="secondary" size="sm">
             GET IN TOUCH
           </Button>
-        </div>
+        </Story>
+        <Story>
+          <p>COMPONENT: Button type=action borderRadius=sm </p>
+          <Button type="action" fontSize="20px" borderRadius="sm">
+            Reply
+          </Button>
+        </Story>
       </ContainerBase>
     </ExpandableContainer>
     <ExpandableContainer title="Section">TODO..</ExpandableContainer>
