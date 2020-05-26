@@ -1,5 +1,6 @@
 import React from 'react';
 import Styled from './Table.styles';
+import Button from '../../../foundation/button/Button';
 
 const Table = ({ columnHeaders, data }) => {
   const handleReply = messageId => {
@@ -22,7 +23,16 @@ const Table = ({ columnHeaders, data }) => {
         <Styled.Td>{rowData.senderPhone}</Styled.Td>
         <Styled.Td>{rowData.message}</Styled.Td>
         <Styled.Td>
-          <Styled.Button onClick={() => handleReply(id)}>Reply</Styled.Button>
+          <Button
+            width="100px"
+            height="48px"
+            type="action"
+            fontSize="20px"
+            borderRadius="sm"
+            onClick={() => handleReply(id)}
+          >
+            Reply
+          </Button>
         </Styled.Td>
       </Styled.Tr>
     );

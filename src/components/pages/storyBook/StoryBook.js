@@ -33,6 +33,15 @@ const StoryBook = () => (
       <Button type="secondary" size="sm">
         GET IN TOUCH
       </Button>
+      <Button
+        width="100px"
+        height="48px"
+        type="action"
+        fontSize="20px"
+        borderRadius="sm"
+      >
+        Reply
+      </Button>
     </ExpandableContainer>
     <ExpandableContainer title="Section">TODO..</ExpandableContainer>
     <ExpandableContainer title="Form">TODO..</ExpandableContainer>

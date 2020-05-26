@@ -4,6 +4,7 @@ import {
   fontSizeMap,
   colors,
   borderRadius,
+  table,
 } from '../../../../constants/styles';
 
 const Table = styled.table`
@@ -14,27 +15,26 @@ const Table = styled.table`
 
 const Td = styled.td`
   height: 92px;
-  font-size: 24px;
-  color: #333333;
+  font-size: ${fontSizeMap.h4};
 `;
 const THead = styled.thead`
-  background-color: #191f36;
-  color: white;
+  background-color: ${table.headerBackground};
+  color: ${colors.white};
 `;
 const Th = styled.th`
   height: 60px;
-  font-size: 24px;
+  font-size: ${fontSizeMap.h4};
   font-weight: lighter;
 
   &:first-child {
-    border-bottom-left-radius: 10px;
-    border-top-left-radius: 10px;
+    border-bottom-left-radius: ${borderRadius.sm};
+    border-top-left-radius: ${borderRadius.sm};
     padding-left: ${spacing.lg};
   }
 
   &:last-child {
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
+    border-bottom-right-radius: ${borderRadius.sm};
+    border-top-right-radius: ${borderRadius.sm};
     padding-right: ${spacing.xl};
   }
 `;
@@ -46,21 +46,11 @@ const Tbody = styled.tbody`
 
 const Tr = styled.tr`
   :nth-child(even) {
-    background-color: #e8e8e8;
+    background-color: ${table.rowBackground};
   }
-  :nth-child(odd) {
-    margin-top: 33px;
-  }
-`;
-const Button = styled.button`
-  border: 1px solid #909090;
-  border-radius: 10px;
-  height: 48px;
-  width: 100px;
 `;
 
 export default {
-  Button,
   Tbody,
   Table,
   Td,
