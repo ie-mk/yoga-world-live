@@ -24,6 +24,7 @@ const THead = styled.thead`
 const Th = styled.th`
   height: 60px;
   font-size: 24px;
+  font-weight: lighter;
 
   &:first-child {
     border-bottom-left-radius: 10px;
