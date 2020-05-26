@@ -7,34 +7,37 @@ import {
 } from '../../../../constants/styles';
 
 const Table = styled.table`
-  border-radius: 10px;
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
   width: 100%;
-  color: #ffffff;
-  font-size: 24px;
+  text-align: center;
+  border-spacing: 0;
 `;
 
 const Td = styled.td`
-  text-align: center;
   height: 92px;
-  color: #333333;
   font-size: 24px;
-  padding-left: 24px;
+  color: #333333;
+`;
+const THead = styled.thead`
+  background-color: #191f36;
+
+  color: white;
 `;
 const Th = styled.th`
-  background-color: black;
-  text-align: center;
-  padding-top: 15px;
-  padding-bottom: 16px;
-  padding-left: 24px;
-  :last-child {
-    padding-right: 24px;
-  }
+  height: 60px;
+  font-size: 24px;
 `;
+const Tbody = styled.tbody`
+  height: 50px;
+  overflow-y: auto;
+  overflow-x: hidden;
+`;
+
 const Tr = styled.tr`
-  :nth-child(odd) {
+  :nth-child(even) {
     background-color: #e8e8e8;
+  }
+  :nth-child(odd) {
+    margin-top: 33px;
   }
 `;
 const Button = styled.button`
@@ -46,8 +49,10 @@ const Button = styled.button`
 
 export default {
   Button,
+  Tbody,
   Table,
   Td,
   Th,
+  THead,
   Tr,
 };

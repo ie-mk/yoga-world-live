@@ -29,8 +29,10 @@ const Table = ({ columnHeaders, data }) => {
   });
   return (
     <Styled.Table>
-      <Styled.Tr>{headers}</Styled.Tr>
-      {tableRows}
+      <Styled.THead>
+        <tr>{headers}</tr>
+      </Styled.THead>
+      <Styled.Tbody>{tableRows}</Styled.Tbody>
     </Styled.Table>
   );
 };
