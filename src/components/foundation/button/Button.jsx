@@ -35,7 +35,6 @@ const borderMap = {
 };
 
 const ButtonWrapper = styled.button`
-  font-weight: 600;
   max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : 'none')};
   width: ${({ width }) => (width ? width : 'none')};
   margin: ${({ margin }) =>
@@ -50,7 +49,7 @@ const ButtonWrapper = styled.button`
   cursor: pointer;
   outline: none;
   color: ${({ type }) => (colorMap[type] ? colorMap[type] : 'white')};
-  font-weight: bold;
+  font-weight: 500;
   font-size: ${({ size }) => (fontSizeMap[size] ? fontSizeMap[size] : '12px')};
   font-size: ${({ fontSize }) =>
     fontSizeMap[fontSize] ? fontSizeMap[fontSize] : fontSize};
