@@ -8,6 +8,8 @@ export const background = {
   DashboardMenuItemBackgroundColor: '#4A6A8F',
   cardBackground:
     'transparent linear-gradient(180deg, #293150 0%, #1E2540 100%) 0% 0% no-repeat padding-box',
+  footer:
+    'transparent linear-gradient(180deg, #1F9888 0%, #2385D9 100%) 0% 0% no-repeat padding-box',
 };
 export const boxShadow = {
   DashboardBoxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
