@@ -35,6 +35,7 @@ const borderMap = {
 };
 
 const ButtonWrapper = styled.button`
+  font-weight: 600;
   max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : 'none')};
   width: ${({ width }) => (width ? width : 'none')};
   margin: ${({ margin }) =>
