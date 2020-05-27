@@ -75,15 +75,17 @@ const AppBar = ({ user, dispatch, userLanguage }) => {
               {t('Logout')}
             </LogoutButton>
           ) : (
-            <MenuLink
-              dataTest="go-to-login-page"
-              href="/login"
-              text={t('LOGIN')}
-            />
+            <>
+              <MenuLink
+                dataTest="go-to-login-page"
+                href="/login"
+                text={t('LOGIN')}
+              />
+              <Button type="primary" padding="17px 64px" fontSize="lg">
+                JOIN
+              </Button>
+            </>
           )}
-          <Button type="primary" padding="17px 64px" fontSize="lg">
-            JOIN
-          </Button>
           {/*<select*/}
           {/*  value={userLanguage || 'en'}*/}
           {/*  onChange={e => {*/}
