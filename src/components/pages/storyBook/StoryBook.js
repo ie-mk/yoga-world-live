@@ -20,12 +20,7 @@ const Wrapper = styled.div`
     margin-top: 50px;
   }
 `;
-/*
-<option value="">Choose difficulty</option>
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-*/
+
 const arr = [
   { show: 'Choose one item', value: '' },
   { show: '1', value: '1' },
@@ -40,8 +35,6 @@ const optionsArr = arr.map(k => {
     </option>
   );
 });
-
-const initialFormValues = {};
 
 const StoryBook = () => (
   <Wrapper>
