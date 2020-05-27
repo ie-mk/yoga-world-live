@@ -111,7 +111,7 @@ const getMarginLeft = marginLeft => css`
 `;
 
 const getMarginRight = marginRight => css`
-  margin-left: ${spacing[marginRight] ? spacing[marginRight] : marginRight};
+  margin-right: ${spacing[marginRight] ? spacing[marginRight] : marginRight};
 `;
 
 const getAlign = alignItems => css`
@@ -148,6 +148,7 @@ const ContainerRoot = styled.div`
   background: ${({ background }) => background || ''};
   z-index: ${({ zIndex }) => zIndex || ''};
   flex: ${({ flex }) => flex || ''};
+  flex-wrap: ${({ flexWrap }) => flexWrap || ''};
 
   overflow: ${({ overflow }) => overflow || ''};
   overflow-y: ${({ overflowY }) => overflowY || ''};

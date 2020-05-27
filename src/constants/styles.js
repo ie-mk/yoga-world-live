@@ -8,6 +8,8 @@ export const background = {
   DashboardMenuItemBackgroundColor: '#4A6A8F',
   cardBackground:
     'transparent linear-gradient(180deg, #293150 0%, #1E2540 100%) 0% 0% no-repeat padding-box',
+  footer:
+    'transparent linear-gradient(180deg, #1F9888 0%, #2385D9 100%) 0% 0% no-repeat padding-box',
 };
 export const boxShadow = {
   DashboardBoxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
@@ -17,6 +19,11 @@ export const dashboard = {
   activeMenuItemShadow: 'inset 4px 0 0 0 #0EC9B0',
   activeMenuItemBackground: '#2385D94D',
   dashboardBackground: '#f0f0f7',
+};
+
+export const table = {
+  headerBackground: '#191f36',
+  rowBackground: '#e8e8e8',
 };
 
 export const spacing = {
@@ -77,6 +84,7 @@ export const colors = {
   text: {
     primary: '#D5D5D5',
   },
+
   background: {
     primary: '#1A2036',
     secondary: '#191F37',

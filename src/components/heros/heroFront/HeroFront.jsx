@@ -13,7 +13,6 @@ const HeroFront = () => {
         height="100vh"
         width="100%"
         position="absolute"
-        zIndex="-1"
       />
       <Styled.Content>
         <HeroTitle text="THE TECHNOLOGY SKILL PLATFORM" />

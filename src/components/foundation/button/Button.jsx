@@ -18,6 +18,9 @@ const fontSizeMap = {
   sm: '16px',
   lg: '20px',
 };
+const borderRadiusMap = {
+  sm: '10px',
+};
 
 const backGroundMap = {
   primary:
@@ -28,15 +31,18 @@ const colorMap = {
   primary: colors.button.secondary,
   warning: colors.button.warning,
   danger: 'red',
+  action: 'black',
 };
 
 const borderMap = {
   secondary: '2px solid white',
+  action: '1px solid #909090',
 };
 
 const ButtonWrapper = styled.button`
   max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : 'none')};
   width: ${({ width }) => (width ? width : 'none')};
+  height: ${({ height }) => (height ? height : 'none')};
   margin: ${({ margin }) =>
     marginMap[margin] ? marginMap[margin] : '0 40px 0 0'};
   padding: ${({ size }) => (paddingMap[size] ? paddingMap[size] : '10px')};
@@ -45,11 +51,13 @@ const ButtonWrapper = styled.button`
   background: ${({ type }) =>
     backGroundMap[type] ? backGroundMap[type] : 'transparent'};
   border-radius: 2px;
+  border-radius: ${({ borderRadius }) =>
+    borderRadiusMap[borderRadius] ? borderRadiusMap[borderRadius] : 'none'};
   border: ${({ type }) => (borderMap[type] ? borderMap[type] : 'none')};
   cursor: pointer;
   outline: none;
   color: ${({ type }) => (colorMap[type] ? colorMap[type] : 'white')};
-  font-weight: bold;
+  font-weight: 500;
   font-size: ${({ size }) => (fontSizeMap[size] ? fontSizeMap[size] : '12px')};
   font-size: ${({ fontSize }) =>
     fontSizeMap[fontSize] ? fontSizeMap[fontSize] : fontSize};

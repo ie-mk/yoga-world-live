@@ -5,6 +5,7 @@ import Button from '../../foundation/button/Button';
 import HeroTitle from '../../foundation/typography/HeroTitle';
 import BodyText from '../../foundation/typography/BodyText';
 import SectionTitle from '../../foundation/typography/SectionTitle';
+import { ContainerBase } from '../../foundation';
 import AdminInput from '../../foundation/input/AdminInput';
 import AdminDropDown from '../../foundation/dropdown/AdminDropDown';
 import AdminTextArea from '../../foundation/textarea/AdminTextArea';
@@ -21,6 +22,10 @@ const Wrapper = styled.div`
   }
 `;
 
+const Story = styled.div`
+  width: 25%;
+`;
+
 const arr = [
   { show: 'Choose one item', value: '' },
   { show: '1', value: '1' },
@@ -35,26 +40,43 @@ const optionsArr = arr.map(k => {
     </option>
   );
 });
-
 const StoryBook = () => (
   <Wrapper>
     <p>Component stories </p>
     <ExpandableContainer title="Navbar">TODO..</ExpandableContainer>
     <ExpandableContainer title="Buttons" isCollapsed={true}>
-      <p>COMPONENT: Button type=primary size=lg</p>
-      <Button type="primary" size="lg">
-        VIEW COURSES
-      </Button>
-      <Button type="primary" size="sm">
-        VIEW COURSES
-      </Button>
-      <p>COMPONENT: Button type=secondary </p>
-      <Button type="secondary" size="lg">
-        GET IN TOUCH
-      </Button>
-      <Button type="secondary" size="sm">
-        GET IN TOUCH
-      </Button>
+      <ContainerBase display="flex" flexWrap="wrap">
+        <Story>
+          <p>COMPONENT: Button type=primary size=lg</p>
+          <Button type="primary" size="lg">
+            VIEW COURSES
+          </Button>
+        </Story>
+        <Story>
+          <p>COMPONENT: Button type=primary size=sm</p>
+          <Button type="primary" size="sm">
+            VIEW COURSES
+          </Button>
+        </Story>
+        <Story>
+          <p>COMPONENT: Button type=secondary size=lg </p>
+          <Button type="secondary" size="lg">
+            GET IN TOUCH
+          </Button>
+        </Story>
+        <Story>
+          <p>COMPONENT: Button type=secondary size=sm </p>
+          <Button type="secondary" size="sm">
+            GET IN TOUCH
+          </Button>
+        </Story>
+        <Story>
+          <p>COMPONENT: Button type=action borderRadius=sm </p>
+          <Button type="action" fontSize="20px" borderRadius="sm">
+            Reply
+          </Button>
+        </Story>
+      </ContainerBase>
     </ExpandableContainer>
     <ExpandableContainer title="Section">TODO..</ExpandableContainer>
     <ExpandableContainer title="Form" isCollapsed={false}>
