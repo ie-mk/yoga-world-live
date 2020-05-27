@@ -9,10 +9,82 @@ import styled from 'styled-components';
 // import { userActions } from '../../store/actions';
 import { ContainerBase } from '../../../../foundation';
 import AdminInput from '../../../../foundation/input/AdminInput';
-
+import AdminDropDown from '../../../../foundation/dropdown/AdminDropDown';
+import AdminTextArea from '../../../../foundation/textarea/AdminTextArea';
+import AdminUploadImage from '../../../../foundation/uploadimage/AdminUploadImage';
 const StyledError = styled.div`
   color: red;
 `;
+
+const difficultyarr = [
+  { show: 'Choose difficulty', value: '' },
+  { show: '1', value: '1' },
+  { show: '2', value: '2' },
+  { show: '3', value: '3' },
+];
+const difficultyoptions = difficultyarr.map(k => {
+  return (
+    <option key={k.show} value={k.value}>
+      {k.show}
+    </option>
+  );
+});
+
+const durationarr = [
+  { show: 'Set duration', value: '' },
+  { show: '1', value: '1' },
+  { show: '2', value: '2' },
+  { show: '3', value: '3' },
+];
+const durationoptions = durationarr.map(k => {
+  return (
+    <option key={k.show} value={k.value}>
+      {k.show}
+    </option>
+  );
+});
+
+const authorarr = [
+  { show: 'Select Author', value: '' },
+  { show: '1', value: '1' },
+  { show: '2', value: '2' },
+  { show: '3', value: '3' },
+];
+const authoroptions = authorarr.map(k => {
+  return (
+    <option key={k.show} value={k.value}>
+      {k.show}
+    </option>
+  );
+});
+
+const categoryarr = [
+  { show: 'Choose category', value: '' },
+  { show: '1', value: '1' },
+  { show: '2', value: '2' },
+  { show: '3', value: '3' },
+];
+const categoryoptions = categoryarr.map(k => {
+  return (
+    <option key={k.show} value={k.value}>
+      {k.show}
+    </option>
+  );
+});
+
+const learningpatharr = [
+  { show: 'Choose a learning path', value: '' },
+  { show: '1', value: '1' },
+  { show: '2', value: '2' },
+  { show: '3', value: '3' },
+];
+const pathoptions = learningpatharr.map(k => {
+  return (
+    <option key={k.show} value={k.value}>
+      {k.show}
+    </option>
+  );
+});
 
 let CourseForm = () => {
   return (
@@ -38,152 +110,84 @@ let CourseForm = () => {
         {({ values, handleSubmit, setFieldValue }) => (
           <form onSubmit={handleSubmit}>
             <Styled.InputRow>
-              <Styled.MidContainer>
-                {/*<Styled.Label>Course Title</Styled.Label>*/}
-                {/*<Styled.InputStyles>*/}
-                {/*  <Field name="coursetitle" type="text" />*/}
-                {/*</Styled.InputStyles>*/}
-                <AdminInput
-                  name="courseTitle"
-                  type="text"
-                  label="Course Title"
-                />
-              </Styled.MidContainer>
-              <Styled.AddressContainer>
-                <Styled.Label>Thumbnail</Styled.Label>
-                <Styled.InputStyles>
-                  <input
-                    id="file"
-                    name="file"
-                    type="file"
-                    onChange={event => {
-                      setFieldValue('file', event.currentTarget.files[0]);
-                    }}
-                  />
-                </Styled.InputStyles>
-              </Styled.AddressContainer>
+              <AdminInput
+                name="courseTitle"
+                type="text"
+                label="Course Title"
+                width="80%"
+              />
+              <AdminUploadImage width="40%" label="Thumbnail" />
             </Styled.InputRow>
             <Styled.InputRow>
-              <Styled.Container>
-                <Styled.Label>Difficulty</Styled.Label>
-                <Styled.InputStyles>
-                  <Field
-                    name="difficulty"
-                    className="select"
-                    component="select"
-                    placeholder="Choose difficulty"
-                  >
-                    <option value="">Choose difficulty</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                  </Field>
-                </Styled.InputStyles>
-              </Styled.Container>
-
-              <Styled.Container>
-                <Styled.Label>Duration</Styled.Label>
-                <Styled.InputStyles>
-                  <Field
-                    name="duration"
-                    className="select"
-                    component="select"
-                    placeholder="Set duration"
-                  >
-                    <option value="">Set duration</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                  </Field>
-                </Styled.InputStyles>
-              </Styled.Container>
-
-              <Styled.Container>
-                <Styled.Label>Author</Styled.Label>
-                <Styled.InputStyles>
-                  <Field
-                    name="author"
-                    className="select"
-                    component="select"
-                    placeholder="Select author"
-                  >
-                    <option value="">Select author </option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                  </Field>
-                </Styled.InputStyles>
-              </Styled.Container>
+              <AdminDropDown
+                classNameString="select"
+                name="difficulty"
+                label="Difficulty"
+                width="100%"
+                placeholder="Choose Difficulty"
+                options={difficultyoptions}
+              />
+              <AdminDropDown
+                classNameString="select"
+                name="duration"
+                label="Duration"
+                width="100%"
+                placeholder="Set duration"
+                options={durationoptions}
+              />
+              <AdminDropDown
+                classNameString="select"
+                name="author"
+                label="Author"
+                width="100%"
+                placeholder="Select author"
+                options={authoroptions}
+              />
             </Styled.InputRow>
             <Styled.InputRow>
-              <Styled.Container>
-                <Styled.Label>Category</Styled.Label>
-                <Styled.InputStyles>
-                  <Field
-                    name="category"
-                    className="select"
-                    component="select"
-                    placeholder="Choose category"
-                  >
-                    <option value="">Choose category</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                  </Field>
-                </Styled.InputStyles>
-              </Styled.Container>
+              <AdminDropDown
+                classNameString="select"
+                name="category"
+                label="Category"
+                width="100%"
+                placeholder="Choose category"
+                options={categoryoptions}
+              />
 
-              <Styled.Container>
-                <Styled.Label>Learning path</Styled.Label>
-                <Styled.InputStyles>
-                  <Field
-                    name="learningpath"
-                    className="select"
-                    component="select"
-                    placeholder="Choose a learning path"
-                  >
-                    <option value="">Choose a learning path</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                  </Field>
-                </Styled.InputStyles>
-              </Styled.Container>
-
-              <Styled.Container>
-                <Styled.Label>Number of chapters</Styled.Label>
-                <Styled.InputStyles>
-                  <Field name="NumberOfChapters" type="text" />
-                </Styled.InputStyles>
-              </Styled.Container>
+              <AdminDropDown
+                classNameString="select"
+                name="learningpath"
+                label="Learning path"
+                width="100%"
+                placeholder="Choose a learning path"
+                options={pathoptions}
+              />
+              <AdminInput
+                name="NumberOfChapters"
+                type="text"
+                label="Number of chapters"
+                width="100%"
+              />
             </Styled.InputRow>
             <Styled.InputRow>
-              <Styled.Container>
-                <Styled.Label>What you will learn ?</Styled.Label>
-                <Styled.InputStyles>
-                  <Field
-                    name="learn"
-                    rows="10"
-                    cols="110"
-                    className="textarea"
-                    component="textarea"
-                  />
-                </Styled.InputStyles>
-              </Styled.Container>
+              <AdminTextArea
+                name="learn"
+                rows="10"
+                cols="110"
+                component="textarea"
+                label="What you will learn ?"
+                width="100%"
+              />
             </Styled.InputRow>
             <Styled.InputRow>
-              <Styled.Container>
-                <Styled.Label>Pre-requisites ?</Styled.Label>
-                <Styled.InputStyles>
-                  <Field
-                    name="prerequisites"
-                    rows="10"
-                    cols="110"
-                    className="textarea"
-                    component="textarea"
-                  />
-                </Styled.InputStyles>
-              </Styled.Container>
+              <AdminTextArea
+                name="learn"
+                rows="10"
+                cols="110"
+                component="textarea"
+                label="Pre-requisites ?"
+                width="100%"
+              />
             </Styled.InputRow>
           </form>
         )}

@@ -39,6 +39,7 @@ export const InputStyles = styled.div`
     opacity: 1;
   }
   .textarea {
+    background-color: #f0f0f7;
     height: 200px;
     font-size: ${fontSizeMap.title3};
     width: 100%;
@@ -66,26 +67,18 @@ const Wrapper = styled.div`
   width: ${({ width }) => (width ? width : 'auto')};
 `;
 
-const AdminInput = ({
-  name,
-  label,
-  type,
-  value,
-  classNameString,
-  placeholder,
-  width,
-  onChange,
-}) => {
+const AdminTextArea = ({ name, label, value, rows, cols, width, onChange }) => {
   return (
     <Wrapper width={width}>
       <Label>{label}</Label>
       <InputStyles>
         <Field
-          className={classNameString}
+          className="textarea"
           name={name}
-          type={type}
+          component="textarea"
+          rows={rows}
+          cols={cols}
           value={value}
-          placeholder={placeholder}
           onChange={onChange}
         />
       </InputStyles>
@@ -93,4 +86,4 @@ const AdminInput = ({
   );
 };
 
-export default AdminInput;
+export default AdminTextArea;

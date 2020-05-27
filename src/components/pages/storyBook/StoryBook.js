@@ -6,6 +6,10 @@ import HeroTitle from '../../foundation/typography/HeroTitle';
 import BodyText from '../../foundation/typography/BodyText';
 import SectionTitle from '../../foundation/typography/SectionTitle';
 import AdminInput from '../../foundation/input/AdminInput';
+import AdminDropDown from '../../foundation/dropdown/AdminDropDown';
+import AdminTextArea from '../../foundation/textarea/AdminTextArea';
+import AdminUploadImage from '../../foundation/uploadimage/AdminUploadImage';
+
 import Styled from '../dashboard/courses/CourseForm/CourseForm.styles';
 import { Field, Formik } from 'formik';
 
@@ -16,6 +20,26 @@ const Wrapper = styled.div`
     margin-top: 50px;
   }
 `;
+/*
+<option value="">Choose difficulty</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+*/
+const arr = [
+  { show: 'Choose one item', value: '' },
+  { show: '1', value: '1' },
+  { show: '2', value: '2' },
+  { show: '3', value: '3' },
+];
+
+const optionsArr = arr.map(k => {
+  return (
+    <option key={k.show} value={k.value}>
+      {k.show}
+    </option>
+  );
+});
 
 const initialFormValues = {};
 
@@ -51,6 +75,28 @@ const StoryBook = () => (
               type="text"
               width="50%"
             />
+
+            <p>COMPONENT: AdminDropDown</p>
+            <AdminDropDown
+              classNameString="select"
+              label="label"
+              width="50%"
+              options={optionsArr}
+            />
+
+            <p>COMPONENT: AdminTextArea</p>
+            <AdminTextArea
+              name="label"
+              className="textarea"
+              rows="10"
+              cols="110"
+              component="textarea"
+              label="label"
+              width="100%"
+            />
+
+            <p>COMPONENT: AdminUploadImage</p>
+            <AdminUploadImage width="40%" label="label" />
           </form>
         )}
       </Formik>

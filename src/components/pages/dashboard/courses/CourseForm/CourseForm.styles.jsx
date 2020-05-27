@@ -134,6 +134,30 @@ export const RowContainer = styled.div`
   flex-direction: row;
 `;
 
+export const UploadImageButton = styled.label`
+  width: 100%;
+  padding-right: ${spacing.sm};
+
+  //.custom-file-upload {
+  height: 40px;
+  border: 1px solid #909090;
+  font-size: ${fontSizeMap.text};
+  border-radius: ${borderRadius.sm};
+  opacity: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // border: 1px solid #ccc;
+  //  display: inline-block;
+  // padding: 6px 12px;
+  cursor: pointer;
+  //}
+
+  input[type='file'] {
+    display: none;
+  }
+`;
+
 export default {
   InputRow,
   ButtonContainer,
@@ -148,4 +172,5 @@ export default {
   // CustomButton,
   RowContainer,
   MidContainer,
+  UploadImageButton,
 };

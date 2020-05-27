@@ -18,7 +18,6 @@ export const InputStyles = styled.div`
   width: 100%;
   padding-right: ${spacing.sm};
   input {
-    background-color: #f0f0f7;
     line-height: 40px;
     font-size: ${fontSizeMap.title3};
     width: 100%;
@@ -29,6 +28,7 @@ export const InputStyles = styled.div`
     opacity: 1;
   }
   .select {
+    background-color: #f0f0f7;
     height: 40px;
     font-size: ${fontSizeMap.title3};
     width: 100%;
@@ -48,33 +48,21 @@ export const InputStyles = styled.div`
     border-radius: ${borderRadius.sm};
     opacity: 1;
   }
-  .countryUpdate-input1 {
-    height: 40px;
-    font-size: ${fontSizeMap.title3};
-    width: 100%;
-    padding-left: ${spacing.sm};
-    color: black;
-    border: 1px solid ${colors.primary};
-    border-radius: ${borderRadius.xs};
-  }
-  .search-input:focus {
-    outline: none;
-  }
 `;
 
 const Wrapper = styled.div`
   width: ${({ width }) => (width ? width : 'auto')};
 `;
 
-const AdminInput = ({
+const AdminDropDown = ({
   name,
   label,
-  type,
   value,
   classNameString,
   placeholder,
   width,
   onChange,
+  options,
 }) => {
   return (
     <Wrapper width={width}>
@@ -83,14 +71,16 @@ const AdminInput = ({
         <Field
           className={classNameString}
           name={name}
-          type={type}
+          component="select"
           value={value}
           placeholder={placeholder}
           onChange={onChange}
-        />
+        >
+          {options}
+        </Field>
       </InputStyles>
     </Wrapper>
   );
 };
 
-export default AdminInput;
+export default AdminDropDown;
