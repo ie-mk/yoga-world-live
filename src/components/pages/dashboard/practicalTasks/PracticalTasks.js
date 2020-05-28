@@ -1,6 +1,7 @@
 import React from 'react';
 import { ContainerBase } from '../../../foundation';
 import PracticalTasksTable from './practicalTaskTable/PracticalTaskTable';
+import Styled from './PracticalTasks.style';
 
 const PracticalTasks = () => {
   const messages = {
@@ -31,63 +32,29 @@ const PracticalTasks = () => {
   ];
   return (
     <ContainerBase marginTop="30px">
-      <div
-        style={{
-          textAlign: 'center',
-          flex: 1,
-          display: 'flex',
-          justifyContent: 'center',
-        }}
-      >
+      <Styled.DropdownWrapper>
         <div>
-          <label style={{ marginRight: '22px' }}>Category</label>
-          <select
-            style={{
-              width: '250px',
-              height: '47px',
-              borderRadius: '10px',
-              marginRight: '62px',
-              textAlignLast: 'center',
-            }}
-          >
+          <Styled.Label>Category</Styled.Label>
+          <Styled.Select>
             <option value="">Choose category</option>
-          </select>
+          </Styled.Select>
         </div>
         <div>
-          <label style={{ marginRight: '22px' }}>Skill</label>
-          <select
-            style={{
-              width: '250px',
-              height: '47px',
-              borderRadius: '10px',
-              marginRight: '62px',
-              textAlignLast: 'center',
-            }}
-          >
+          <Styled.Label>Skill</Styled.Label>
+          <Styled.Select>
             <option value="">Choose Skill</option>
-          </select>
+          </Styled.Select>
         </div>
         <div>
-          <label style={{ marginRight: '22px' }}>Level</label>
-          <select
-            style={{
-              width: '250px',
-              height: '47px',
-              border: '1px solid #909090',
-              borderRadius: '10px',
-              textAlignLast: 'center',
-              backgroundColor: 'grey',
-            }}
-          >
-            <option value="volvo">Choose Level</option>
-          </select>
+          <Styled.Label>Level</Styled.Label>
+          <Styled.Select>
+            <option value="">Choose Level</option>
+          </Styled.Select>
         </div>
-      </div>
-      <div
-        style={{ marginLeft: '25px', marginRight: '25px', marginTop: '49px' }}
-      >
+      </Styled.DropdownWrapper>
+      <Styled.TableWrapper>
         <PracticalTasksTable columnHeaders={columnHeaders} data={messages} />
-      </div>
+      </Styled.TableWrapper>
     </ContainerBase>
   );
 };
