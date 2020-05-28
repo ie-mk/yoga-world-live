@@ -11,7 +11,6 @@ import AdminDropDown from '../../foundation/dropdown/AdminDropDown';
 import AdminTextArea from '../../foundation/textarea/AdminTextArea';
 import AdminUploadImage from '../../foundation/uploadimage/AdminUploadImage';
 
-import Styled from '../dashboard/courses/CourseForm/CourseForm.styles';
 import { Field, Formik } from 'formik';
 
 const Wrapper = styled.div`
@@ -95,6 +94,7 @@ const StoryBook = () => (
             <AdminDropDown
               classNameString="select"
               label="label"
+              component="select"
               width="50%"
               options={optionsArr}
             />

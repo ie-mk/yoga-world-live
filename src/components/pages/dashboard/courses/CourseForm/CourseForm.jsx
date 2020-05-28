@@ -123,6 +123,7 @@ let CourseForm = () => {
                 classNameString="select"
                 name="difficulty"
                 label="Difficulty"
+                component="select"
                 width="100%"
                 placeholder="Choose Difficulty"
                 options={difficultyoptions}
@@ -131,6 +132,7 @@ let CourseForm = () => {
                 classNameString="select"
                 name="duration"
                 label="Duration"
+                component="select"
                 width="100%"
                 placeholder="Set duration"
                 options={durationoptions}
@@ -139,6 +141,7 @@ let CourseForm = () => {
                 classNameString="select"
                 name="author"
                 label="Author"
+                component="select"
                 width="100%"
                 placeholder="Select author"
                 options={authoroptions}
@@ -149,6 +152,7 @@ let CourseForm = () => {
                 classNameString="select"
                 name="category"
                 label="Category"
+                component="select"
                 width="100%"
                 placeholder="Choose category"
                 options={categoryoptions}
@@ -158,6 +162,7 @@ let CourseForm = () => {
                 classNameString="select"
                 name="learningpath"
                 label="Learning path"
+                component="select"
                 width="100%"
                 placeholder="Choose a learning path"
                 options={pathoptions}
