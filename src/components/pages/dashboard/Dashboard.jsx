@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { ContainerBase, Grid } from '../../foundation';
+import { ContainerBase, Grid, Container } from '../../foundation';
 import DashboardMenu from './dashboardMenu/DashboardMenu';
-import NotificationsTab from './notificationsTab/NotificationsTab';
 import { connect } from 'react-redux';
 import Router, { useRouter } from 'next/router';
 import { userActions } from '../../../store/actions';
 import Styled from './Dashboard.styles';
 import Logo from '../../foundation/Logo';
+import DashboardTab from './dashboard/DashBoard';
+import DashboardHeader from './dashboardHeader/DashboardHeader';
+import Inbox from './inbox/Inbox';
+import Courses from './courses/Cources';
+import PracticalTasks from './practicalTasks/PracticalTasks';
+import Students from './students/Students';
+import Authors from './authors/Authors';
 
 const Dashboard = ({ dispatch, user }) => {
   useEffect(() => {
@@ -26,9 +32,13 @@ const Dashboard = ({ dispatch, user }) => {
 
   const activeTab = query && query.activeTab;
 
-  const showNotifications = activeTab === 'notifications';
+  const dashboard = activeTab === 'dashboard' || !activeTab;
+  const inbox = activeTab === 'inbox';
+  const courses = activeTab === 'courses';
+  const practicalTasks = activeTab === 'practicalTasks';
+  const students = activeTab === 'students';
+  const authors = activeTab === 'authors';
 
-  // if (!user) return null;
   return (
     <Styled.Wrapper>
       <Grid
@@ -41,14 +51,22 @@ const Dashboard = ({ dispatch, user }) => {
           <Logo
             imgSrc="/logo/logo_with_name.png"
             width="150px"
-            padding="30px 20px 50px"
+            padding="30px 50px 50px"
           />
           <DashboardMenu active={activeTab} setActiveComponent={makeActive} />
         </Styled.MenuWrapper>
-        <Styled.Wrapper>
-          {/*{showProfile && <ProfileTab />}*/}
-          {showNotifications && <NotificationsTab />}
-        </Styled.Wrapper>
+
+        <div>
+          <DashboardHeader user={user} />
+          <Styled.Wrapper>
+            {dashboard && <DashboardTab />}
+            {inbox && <Inbox />}
+            {courses && <Courses />}
+            {practicalTasks && <PracticalTasks />}
+            {students && <Students />}
+            {authors && <Authors />}
+          </Styled.Wrapper>
+        </div>
       </Grid>
     </Styled.Wrapper>
   );

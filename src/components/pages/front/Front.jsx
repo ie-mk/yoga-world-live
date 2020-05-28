@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import PageContent from '../../foundation/PageContent';
 import HeroFront from '../../heros/heroFront/HeroFront';
 import SectionPictureDescButton from '../../heros/sectionPictureDescButton/SectionPictureDescButton';
+import SectionCards from '../../heros/sectionCards/SectionCards';
 
 const Front = () => {
   const { t } = useTranslation();
@@ -13,6 +14,7 @@ const Front = () => {
       <HeroFront />
       <PageContent>
         <SectionPictureDescButton />
+        <SectionCards />
       </PageContent>
     </>
   );

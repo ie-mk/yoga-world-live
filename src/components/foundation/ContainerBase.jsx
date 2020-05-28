@@ -8,6 +8,7 @@ import {
   borderRadius,
   boxShadow,
 } from '../../constants/styles';
+import getMedia from '../../utils/media';
 
 const getfontSize = fontSize => css`
   font-size: ${fontSize ? fontSizeMap[fontSize] : ''};
@@ -92,7 +93,9 @@ const getPaddingLeft = paddingLeft => css`
 `;
 
 const getPaddingRight = paddingRight => css`
-  padding-left: ${spacing[paddingRight] ? spacing[paddingRight] : paddingRight};
+  padding-right: ${spacing[paddingRight]
+    ? spacing[paddingRight]
+    : paddingRight};
 `;
 
 const getMarginBottom = margin => css`
@@ -108,7 +111,7 @@ const getMarginLeft = marginLeft => css`
 `;
 
 const getMarginRight = marginRight => css`
-  margin-left: ${spacing[marginRight] ? spacing[marginRight] : marginRight};
+  margin-right: ${spacing[marginRight] ? spacing[marginRight] : marginRight};
 `;
 
 const getAlign = alignItems => css`
@@ -121,10 +124,6 @@ const getJustifyContent = justifyContent => css`
 
 const getFlexDirection = flexDirection => css`
   flex-direction: ${flexDirection};
-`;
-
-const getfontWeight = fontBold => css`
-  font-weight: ${fontBold};
 `;
 
 const ContainerRoot = styled.div`
@@ -149,6 +148,7 @@ const ContainerRoot = styled.div`
   background: ${({ background }) => background || ''};
   z-index: ${({ zIndex }) => zIndex || ''};
   flex: ${({ flex }) => flex || ''};
+  flex-wrap: ${({ flexWrap }) => flexWrap || ''};
 
   overflow: ${({ overflow }) => overflow || ''};
   overflow-y: ${({ overflowY }) => overflowY || ''};
@@ -190,6 +190,7 @@ const ContainerRoot = styled.div`
   ${({ flexDirection }) =>
     flexDirection ? getFlexDirection(flexDirection) : ''}
   ${({ styles }) => (styles ? styles : '')};
+  ${({ mediaConfig }) => (mediaConfig ? getMedia(mediaConfig) : '')}
 `;
 
 const ContainerBase = props => {

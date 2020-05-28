@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { spacing } from '../../constants/styles';
+import getMedia from '../../utils/media';
 
 const getPadding = padding => css`
   padding: ${spacing[padding] ? spacing[padding] : padding};
@@ -17,7 +18,9 @@ const getPaddingLeft = paddingLeft => css`
   padding-left: ${spacing[paddingLeft] ? spacing[paddingLeft] : paddingLeft};
 `;
 const getPaddingRight = paddingRight => css`
-  padding-left: ${spacing[paddingRight] ? spacing[paddingRight] : paddingRight};
+  padding-right: ${spacing[paddingRight]
+    ? spacing[paddingRight]
+    : paddingRight};
 `;
 
 const getMargin = margin => css`
@@ -36,7 +39,7 @@ const getMarginLeft = marginLeft => css`
   margin-left: ${spacing[marginLeft] ? spacing[marginLeft] : marginLeft};
 `;
 const getMarginRight = marginRight => css`
-  margin-left: ${spacing[marginRight] ? spacing[marginRight] : marginRight};
+  margin-right: ${spacing[marginRight] ? spacing[marginRight] : marginRight};
 `;
 
 const ContainerRoot = styled.div`
@@ -52,6 +55,8 @@ const ContainerRoot = styled.div`
   ${({ marginTop }) => (marginTop ? getMarginTop(marginTop) : '')}
   ${({ marginLeft }) => (marginLeft ? getMarginLeft(marginLeft) : '')}
   ${({ marginRight }) => (marginRight ? getMarginRight(marginRight) : '')}
+
+  ${({ mediaConfig }) => (mediaConfig ? getMedia(mediaConfig) : '')}
 `;
 
 const withSpacing = Component => ({

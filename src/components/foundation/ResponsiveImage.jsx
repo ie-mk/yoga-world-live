@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const ImageContainer = styled.div`
   width: ${({ width }) => width || ''};
+  max-width: ${({ maxWidth }) => maxWidth || ''};
   height: ${({ height }) => height || ''};
   padding: ${({ padding }) => padding || ''};
   margin: ${({ margin }) => margin || ''};
