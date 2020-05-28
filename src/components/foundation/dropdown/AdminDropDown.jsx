@@ -10,11 +10,12 @@ const AdminDropDown = ({
   placeholder,
   component,
   width,
+  height,
   onChange,
   options,
 }) => {
   return (
-    <Styled.Wrapper width={width}>
+    <Styled.Wrapper width={width} height={height}>
       <Styled.Label>{label}</Styled.Label>
       <Styled.InputStyles>
         <Field

@@ -9,7 +9,6 @@ import {
 } from '../../../../constants/styles';
 
 const DropdownWrapper = styled.div`
-  align-items: center;
   flex: 1;
   display: flex;
   justify-content: center;
@@ -19,12 +18,9 @@ const TableWrapper = styled.div`
   margin-right: ${spacing.xls};
   margin-top: ${spacing.xxxls};
 `;
-const Select = styled.select`
-  width: 250px;
-  height: 47px;
-  border-radius: ${borderRadius.sm};
-  text-align-last: center;
-  background-color: ${dashboard.dashboardBackground};
+const DropdownItemWrapper = styled.div`
+  display: flex;
+  align-items: center;
 `;
 const Label = styled.label`
   margin-right: ${spacing.xls};
@@ -33,7 +29,7 @@ const Label = styled.label`
 
 export default {
   DropdownWrapper,
+  DropdownItemWrapper,
   TableWrapper,
-  Select,
   Label,
 };

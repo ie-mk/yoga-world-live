@@ -6,6 +6,7 @@ import {
   colors,
   fontSizeMap,
   spacing,
+  dashboard,
 } from '../../constants/styles';
 
 export const Label = styled.div`
@@ -36,6 +37,8 @@ export const InputStyles = styled.div`
     color: black;
     border: 1px solid #909090;
     border-radius: ${borderRadius.sm};
+    text-align-last: center;
+    background-color: ${dashboard.dashboardBackground};
     opacity: 1;
   }
   .textarea {
