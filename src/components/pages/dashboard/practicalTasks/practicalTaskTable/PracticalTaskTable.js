@@ -1,5 +1,6 @@
 import React from 'react';
-import Styled from './PracticalTaskTable.styles';
+
+import Styled from '../../table/Table.styles';
 import Button from '../../../../foundation/button/Button';
 
 const Table = ({ columnHeaders, data }) => {
@@ -23,10 +24,7 @@ const Table = ({ columnHeaders, data }) => {
         <Styled.Td>{rowData.Level}</Styled.Td>
         <Styled.Td>{rowData.Skills}</Styled.Td>
         <Styled.Td>
-          <img
-            style={{ width: '28px', height: '28px' }}
-            src="svg/noun_link.svg"
-          />
+          <img src="svg/noun_link.svg" />
         </Styled.Td>
         <Styled.Td>
           <Button
