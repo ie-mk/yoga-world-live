@@ -5,7 +5,7 @@ import {
   colors,
   borderRadius,
   table,
-} from '../../../../constants/styles';
+} from '../../../../../constants/styles';
 
 const Table = styled.table`
   width: 100%;

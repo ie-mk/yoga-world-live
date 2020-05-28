@@ -1,5 +1,6 @@
 import React from 'react';
 import { ContainerBase } from '../../../foundation';
+import PracticalTasksTable from './practicalTaskTable/PracticalTaskTable';
 
 const PracticalTasks = () => {
   const messages = {
@@ -24,6 +25,7 @@ const PracticalTasks = () => {
     'Task Name',
     'Category',
     'Level',
+    'Skills',
     'Link',
     'Actions',
   ];
@@ -71,13 +73,20 @@ const PracticalTasks = () => {
             style={{
               width: '250px',
               height: '47px',
+              border: '1px solid #909090',
               borderRadius: '10px',
               textAlignLast: 'center',
+              backgroundColor: 'grey',
             }}
           >
             <option value="volvo">Choose Level</option>
           </select>
         </div>
+      </div>
+      <div
+        style={{ marginLeft: '25px', marginRight: '25px', marginTop: '49px' }}
+      >
+        <PracticalTasksTable columnHeaders={columnHeaders} data={messages} />
       </div>
     </ContainerBase>
   );

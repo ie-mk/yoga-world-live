@@ -1,6 +1,6 @@
 import React from 'react';
-import Styled from './Table.styles';
-import Button from '../../../foundation/button/Button';
+import Styled from './PracticalTaskTable.styles';
+import Button from '../../../../foundation/button/Button';
 
 const Table = ({ columnHeaders, data }) => {
   const handleReply = messageId => {
@@ -18,11 +18,28 @@ const Table = ({ columnHeaders, data }) => {
     return (
       <Styled.Tr key={id}>
         <Styled.Td>{idx + 1}</Styled.Td>
-        <Styled.Td>{rowData.senderName}</Styled.Td>
-        <Styled.Td>{rowData.email}</Styled.Td>
-        <Styled.Td>{rowData.senderPhone}</Styled.Td>
-        <Styled.Td>{rowData.message}</Styled.Td>
+        <Styled.Td>{rowData.taskName}</Styled.Td>
+        <Styled.Td>{rowData.Category}</Styled.Td>
+        <Styled.Td>{rowData.Level}</Styled.Td>
+        <Styled.Td>{rowData.Skills}</Styled.Td>
         <Styled.Td>
+          <img
+            style={{ width: '28px', height: '28px' }}
+            src="svg/noun_link.svg"
+          />
+        </Styled.Td>
+        <Styled.Td>
+          <Button
+            margin="22px"
+            width="100px"
+            height="48px"
+            type="action"
+            fontSize="20px"
+            borderRadius="sm"
+            onClick={() => handleReply(id)}
+          >
+            Edit
+          </Button>
           <Button
             width="100px"
             height="48px"
@@ -31,7 +48,7 @@ const Table = ({ columnHeaders, data }) => {
             borderRadius="sm"
             onClick={() => handleReply(id)}
           >
-            Reply
+            Delete
           </Button>
         </Styled.Td>
       </Styled.Tr>
