@@ -3,9 +3,8 @@ import { ContainerBase } from '../../../foundation';
 import Button from '../../../foundation/button/Button';
 import Styled from './PracticalTasks.style';
 import Table from '../table/Table';
-import AdminDropDown from '../../../foundation/dropdown/AdminDropDown';
-import { Formik, ErrorMessage, Field } from 'formik';
-
+import { Formik } from 'formik';
+import CustomAdminDropDown from './customAdminDropDown/CustomAdminDropDown';
 const PracticalTasks = () => {
   const messages = {
     '124jq23j234': {
@@ -78,52 +77,25 @@ const PracticalTasks = () => {
         <form>
           <Styled.DropdownWrapper>
             <Styled.DropdownItemWrapper>
-              <AdminDropDown
-                classNameString="select"
-                name="category"
+              <CustomAdminDropDown
                 label="Category"
-                component="select"
-                displayLabelLeft="flex"
-                align="center"
-                width="100%"
-                dropdownWidth="250px"
-                marginRight="20px"
-                height="47px"
+                name="category"
                 placeholder="Choose Category"
                 options={categoryoptions}
               />
             </Styled.DropdownItemWrapper>
             <Styled.DropdownItemWrapper>
-              <AdminDropDown
-                classNameString="select"
+              <CustomAdminDropDown
                 name="skill"
                 label="Skill"
-                component="select"
-                marginLeft="25px"
-                marginRight="20px"
-                width="100%"
-                dropdownWidth="250px"
-                height="47px"
-                displayLabelLeft="flex"
-                align="center"
                 placeholder="Choose Skill"
                 options={skilloptions}
               />
             </Styled.DropdownItemWrapper>
             <Styled.DropdownItemWrapper>
-              <AdminDropDown
-                classNameString="select"
+              <CustomAdminDropDown
                 name="level"
                 label="Level"
-                component="select"
-                width="100%"
-                dropdownWidth="250px"
-                marginLeft="25px"
-                marginRight="20px"
-                height="47px"
-                displayLabelLeft="flex"
-                align="center"
-                placeholder="Choose Level"
                 options={leveloptions}
               />
             </Styled.DropdownItemWrapper>

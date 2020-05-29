@@ -14,17 +14,12 @@ const AdminDropDown = ({
   onChange,
   options,
   displayLabelLeft,
-  align,
   dropdownWidth,
   marginLeft,
   marginRight,
 }) => {
   return (
-    <Styled.Wrapper
-      width={width}
-      display={displayLabelLeft}
-      justifyContent={align}
-    >
+    <Styled.Wrapper width={width} displayLabelLeft={displayLabelLeft}>
       <Styled.Label marginLeft={marginLeft} marginRight={marginRight}>
         {label}
       </Styled.Label>

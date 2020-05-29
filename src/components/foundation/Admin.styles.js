@@ -58,9 +58,9 @@ export const InputStyles = styled.div`
 
 const Wrapper = styled.div`
   width: ${({ width }) => (width ? width : 'auto')};
-  display: ${({ display }) => (display ? display : '')};
-  justify-content: ${({ justifyContent }) =>
-    justifyContent ? justifyContent : ''};
+  display: ${({ displayLabelLeft }) => (displayLabelLeft ? 'flex' : '')};
+  justify-content: ${({ displayLabelLeft }) =>
+    displayLabelLeft ? 'center' : ''};
 `;
 
 const UploadImageButton = styled.label`

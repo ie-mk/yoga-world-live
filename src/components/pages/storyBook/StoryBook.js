@@ -109,12 +109,20 @@ const StoryBook = () => (
               label="label"
               component="select"
               width="50%"
-              dropdownWidth="250px"
+              options={optionsArr}
+            />
+
+            <p>COMPONENT: AdminDropDown displayLabelLeft={true}</p>
+            <AdminDropDown
+              classNameString="select"
+              label="label"
+              component="select"
               marginLeft="25px"
               marginRight="20px"
+              width="100%"
+              dropdownWidth="250px"
               height="47px"
-              displayLabelLeft="flex"
-              align="center"
+              displayLabelLeft={true}
               options={optionsArr}
             />
 
