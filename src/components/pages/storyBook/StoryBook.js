@@ -75,6 +75,19 @@ const StoryBook = () => (
             Reply
           </Button>
         </Story>
+        <Story>
+          <p>COMPONENT: Button type=action borderRadius=sm margin="22px" </p>
+          <Button
+            margin="22px"
+            width="100px"
+            height="48px"
+            type="action"
+            fontSize="20px"
+            borderRadius="sm"
+          >
+            Edit/Delete
+          </Button>
+        </Story>
       </ContainerBase>
     </ExpandableContainer>
     <ExpandableContainer title="Section">TODO..</ExpandableContainer>
@@ -96,6 +109,20 @@ const StoryBook = () => (
               label="label"
               component="select"
               width="50%"
+              options={optionsArr}
+            />
+
+            <p>COMPONENT: AdminDropDown displayLabelLeft={true}</p>
+            <AdminDropDown
+              classNameString="select"
+              label="label"
+              component="select"
+              marginLeft="25px"
+              marginRight="20px"
+              width="100%"
+              dropdownWidth="250px"
+              height="47px"
+              displayLabelLeft={true}
               options={optionsArr}
             />
 
