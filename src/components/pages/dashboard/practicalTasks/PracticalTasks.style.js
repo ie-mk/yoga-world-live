@@ -22,14 +22,9 @@ const DropdownItemWrapper = styled.div`
   display: flex;
   align-items: center;
 `;
-const Label = styled.label`
-  margin-right: ${spacing.xls};
-  margin-left: ${spacing.xxxls};
-`;
 
 export default {
   DropdownWrapper,
   DropdownItemWrapper,
   TableWrapper,
-  Label,
 };
