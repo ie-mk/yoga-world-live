@@ -13,11 +13,22 @@ const AdminDropDown = ({
   height,
   onChange,
   options,
+  displayLabelLeft,
+  align,
+  dropdownWidth,
+  marginLeft,
+  marginRight,
 }) => {
   return (
-    <Styled.Wrapper width={width} height={height}>
-      <Styled.Label>{label}</Styled.Label>
-      <Styled.InputStyles>
+    <Styled.Wrapper
+      width={width}
+      display={displayLabelLeft}
+      justifyContent={align}
+    >
+      <Styled.Label marginLeft={marginLeft} marginRight={marginRight}>
+        {label}
+      </Styled.Label>
+      <Styled.InputStyles dropdownWidth={dropdownWidth} height={height}>
         <Field
           className={classNameString}
           name={name}

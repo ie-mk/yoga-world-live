@@ -13,6 +13,8 @@ export const Label = styled.div`
   padding-top: ${spacing.sm};
   padding-bottom: ${spacing.xxxS};
   font-size: ${fontSizeMap.h5};
+  margin-left: ${({ marginLeft }) => (marginLeft ? marginLeft : '')};
+  margin-right: ${({ marginRight }) => (marginRight ? marginRight : '')};
 `;
 
 export const InputStyles = styled.div`
@@ -30,9 +32,9 @@ export const InputStyles = styled.div`
     opacity: 1;
   }
   .select {
-    height: 40px;
+    height: ${({ height }) => (height ? height : '40px')};
     font-size: ${fontSizeMap.text};
-    width: 100%;
+    width: ${({ dropdownWidth }) => (dropdownWidth ? dropdownWidth : '100%')};
     padding-left: ${spacing.sm};
     color: black;
     border: 1px solid #909090;
@@ -56,6 +58,9 @@ export const InputStyles = styled.div`
 
 const Wrapper = styled.div`
   width: ${({ width }) => (width ? width : 'auto')};
+  display: ${({ display }) => (display ? display : '')};
+  justify-content: ${({ justifyContent }) =>
+    justifyContent ? justifyContent : ''};
 `;
 
 const UploadImageButton = styled.label`

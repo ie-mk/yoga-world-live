@@ -109,6 +109,12 @@ const StoryBook = () => (
               label="label"
               component="select"
               width="50%"
+              dropdownWidth="250px"
+              marginLeft="25px"
+              marginRight="20px"
+              height="47px"
+              displayLabelLeft="flex"
+              align="center"
               options={optionsArr}
             />
 
@@ -147,51 +153,6 @@ const StoryBook = () => (
     </ExpandableContainer>
     <ExpandableContainer title="Footer">TODO..</ExpandableContainer>
     <ExpandableContainer title="Dashboard">TODO..</ExpandableContainer>
-    <ExpandableContainer
-      title="Dashboard Practical Task DropDowns"
-      isCollapsed={false}
-    >
-      <Formik enableReinitialize={true}>
-        <form>
-          <Styled.DropdownWrapper>
-            <Styled.DropdownItemWrapper>
-              <Styled.Label>Category</Styled.Label>
-              <AdminDropDown
-                classNameString="select"
-                name="category"
-                component="select"
-                width="250px"
-                placeholder="Choose Category"
-                options={categoryoptions}
-              />
-            </Styled.DropdownItemWrapper>
-            <Styled.DropdownItemWrapper>
-              <Styled.Label>Skill</Styled.Label>
-              <AdminDropDown
-                classNameString="select"
-                name="skill"
-                component="select"
-                width="250px"
-                placeholder="Choose Skill"
-                options={skilloptions}
-              />
-            </Styled.DropdownItemWrapper>
-            <Styled.DropdownItemWrapper>
-              <Styled.Label>Level</Styled.Label>
-              <AdminDropDown
-                classNameString="select"
-                name="level"
-                component="select"
-                width="250px"
-                height="47px"
-                placeholder="Choose Level"
-                options={leveloptions}
-              />
-            </Styled.DropdownItemWrapper>
-          </Styled.DropdownWrapper>
-        </form>
-      </Formik>
-    </ExpandableContainer>
   </Wrapper>
 );
 

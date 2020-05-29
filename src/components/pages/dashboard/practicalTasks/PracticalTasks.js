@@ -78,35 +78,51 @@ const PracticalTasks = () => {
         <form>
           <Styled.DropdownWrapper>
             <Styled.DropdownItemWrapper>
-              <Styled.Label>Category</Styled.Label>
               <AdminDropDown
                 classNameString="select"
                 name="category"
+                label="Category"
                 component="select"
-                width="250px"
+                displayLabelLeft="flex"
+                align="center"
+                width="100%"
+                dropdownWidth="250px"
+                marginRight="20px"
+                height="47px"
                 placeholder="Choose Category"
                 options={categoryoptions}
               />
             </Styled.DropdownItemWrapper>
             <Styled.DropdownItemWrapper>
-              <Styled.Label>Skill</Styled.Label>
               <AdminDropDown
                 classNameString="select"
                 name="skill"
+                label="Skill"
                 component="select"
-                width="250px"
+                marginLeft="25px"
+                marginRight="20px"
+                width="100%"
+                dropdownWidth="250px"
+                height="47px"
+                displayLabelLeft="flex"
+                align="center"
                 placeholder="Choose Skill"
                 options={skilloptions}
               />
             </Styled.DropdownItemWrapper>
             <Styled.DropdownItemWrapper>
-              <Styled.Label>Level</Styled.Label>
               <AdminDropDown
                 classNameString="select"
                 name="level"
+                label="Level"
                 component="select"
-                width="250px"
+                width="100%"
+                dropdownWidth="250px"
+                marginLeft="25px"
+                marginRight="20px"
                 height="47px"
+                displayLabelLeft="flex"
+                align="center"
                 placeholder="Choose Level"
                 options={leveloptions}
               />
