@@ -8,7 +8,7 @@ export const getAsyncReducers = (
   loadingProp = 'loading',
   errorProp = 'error',
 ) => {
-  return ['request', 'success', 'error'].reduce((acc, type) => {
+  return ['request', 'success', 'failure'].reduce((acc, type) => {
     acc[action[type]] = (state, action) => {
       const newState = { ...state };
 
