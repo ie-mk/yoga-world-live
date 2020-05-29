@@ -2,7 +2,16 @@ import React from 'react';
 import { Field } from 'formik';
 import Styled from '../Admin.styles';
 
-const AdminTextArea = ({ name, label, value, rows, cols, width, onChange }) => {
+const AdminTextArea = ({
+  name,
+  label,
+  value,
+  rows,
+  cols,
+  width,
+  placeholder,
+  onChange,
+}) => {
   return (
     <Styled.Wrapper width={width}>
       <Styled.Label>{label}</Styled.Label>
@@ -14,6 +23,7 @@ const AdminTextArea = ({ name, label, value, rows, cols, width, onChange }) => {
           rows={rows}
           cols={cols}
           value={value}
+          placeholder={placeholder}
           onChange={onChange}
         />
       </Styled.InputStyles>

@@ -1,6 +1,4 @@
-import React from 'react';
 import styled from 'styled-components';
-import { Field } from 'formik';
 import {
   borderRadius,
   colors,
@@ -40,7 +38,7 @@ export const InputStyles = styled.div`
   }
   .textarea {
     background-color: #f0f0f7;
-    height: 200px;
+    // height: 200px;
     font-size: ${fontSizeMap.text};
     width: 100%;
     padding-left: ${spacing.sm};

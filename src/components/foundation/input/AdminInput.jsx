@@ -22,6 +22,7 @@ const AdminInput = ({
           type={type}
           value={value}
           placeholder={placeholder}
+          ///  placeholder={placeholder}
           onChange={onChange}
         />
       </Styled.InputStyles>
