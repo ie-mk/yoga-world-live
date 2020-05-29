@@ -15,6 +15,8 @@ export const userActions = {
   setLanguage: createAction('SET_LANGUAGE'),
   updateUserProfile: createAsyncAction('update-user-profile'),
   updateUserProfilePicture: createAsyncAction('update-user-profile-picture'),
+
+  fetchUsers: createAsyncAction('fetch-users'),
   fetchUserProfile: createAsyncAction('fetch-user-profile'),
   fetchUserPermissions: createAsyncAction('fetch-user-permissions'),
 
@@ -22,6 +24,32 @@ export const userActions = {
 
   resetUser: createAction('RESET_USER'),
   adToFavourites: createAction('AD_TO_FAVOURITES'),
+};
+
+export const resourceActions = {
+  createCourse: createAsyncAction('create-course'),
+  updateCourse: createAsyncAction('update-course'),
+  deleteCourse: createAsyncAction('delete-course'),
+  fetchCourse: createAsyncAction('fetch-course'),
+  fetchCourses: createAsyncAction('fetch-courses'),
+
+  createTask: createAsyncAction('create-task'),
+  updateTask: createAsyncAction('update-task'),
+  deleteTask: createAsyncAction('delete-task'),
+  fetchTask: createAsyncAction('fetch-task'),
+  fetchTasks: createAsyncAction('fetch-tasks'),
+
+  createMessage: createAsyncAction('create-message'),
+  updateMessage: createAsyncAction('update-message'),
+  deleteMessage: createAsyncAction('delete-message'),
+  fetchMessage: createAsyncAction('fetch-message'),
+  fetchMessages: createAsyncAction('fetch-messages'),
+
+  createLearningPath: createAsyncAction('create-learning-path'),
+  updateLearningPath: createAsyncAction('update-learning-path'),
+  deleteLearningPath: createAsyncAction('delete-learning-path'),
+  fetchLearningPath: createAsyncAction('fetch-learning-path'),
+  fetchLearningPaths: createAsyncAction('fetch-learning-paths'),
 };
 
 export const layoutActions = {
