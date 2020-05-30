@@ -14,9 +14,57 @@ import AdminTextArea from '../../../../foundation/textarea/AdminTextArea';
 import AdminUploadImage from '../../../../foundation/uploadimage/AdminUploadImage';
 import Button from '../../../../foundation/button/Button';
 
+const RadioButton = ({
+  field: { name, value, onChange, onBlur },
+  id,
+  label,
+  className,
+  ...props
+}) => {
+  return (
+    <Styled.Row>
+      <input
+        name={name}
+        id={id}
+        type="radio"
+        value={id} // could be something else for output?
+        checked={id === value}
+        onChange={onChange}
+        onBlur={onBlur}
+        // className={classNames('radio-button')}
+        {...props}
+      />
+      <Styled.Label>{label}</Styled.Label>
+    </Styled.Row>
+  );
+};
+
+const FieldRadioButton = ({ id, name, label }) => {
+  return (
+    <div>
+      <Field component={RadioButton} name={name} id={id} label={label} />
+    </div>
+  );
+};
+
+// const arr = [1,2,3];
+
+// const comp = arr.map((item, idx) => {
+
+//   return(
+//    <div key={idx}>
+//      <FieldRadioButton
+//         label="Lesson `${item}`"
+//         name = "Lesson `${item}`"
+//         id = "Lesson `${item}`"
+//      />
+//    </div>
+//   )
+// })
+
 let CourseAddNew = () => {
   return (
-    <ContainerBase paddingLeft="xxxl" paddingRight="xxxl">
+    <ContainerBase paddingLeft="xxxl" paddingRight="xxxl" paddingBottom="xxxxl">
       <Styled.ChapterHeader> Chapter-01</Styled.ChapterHeader>
 
       <Formik
@@ -47,7 +95,125 @@ let CourseAddNew = () => {
               />
             </Styled.InputRow>
             <Styled.MidContainer>
-              <Styled.AddLesson></Styled.AddLesson>
+              <Styled.AddLesson>
+                <Styled.LessonContainer>
+                  <Field
+                    component={RadioButton}
+                    name="Lesson 01"
+                    id="Lesson 01"
+                    label="Lesson 01"
+                  />
+                  <Button
+                    type="action"
+                    fontSize="18px"
+                    borderRadius="sm"
+                    width="25%"
+                    margin="null"
+                  >
+                    Edit
+                  </Button>
+                  <Button
+                    type="action"
+                    fontSize="18px"
+                    borderRadius="sm"
+                    width="25%"
+                    margin="null"
+                  >
+                    Delete
+                  </Button>
+                </Styled.LessonContainer>
+                <Styled.LessonContainer>
+                  <Field
+                    component={RadioButton}
+                    name="Lesson 02"
+                    id="Lesson 02"
+                    label="Lesson 02"
+                  />
+
+                  <Button
+                    type="action"
+                    fontSize="18px"
+                    borderRadius="sm"
+                    width="25%"
+                    margin="null"
+                  >
+                    Edit
+                  </Button>
+                  <Button
+                    type="action"
+                    fontSize="18px"
+                    borderRadius="sm"
+                    width="25%"
+                    margin="null"
+                  >
+                    Delete
+                  </Button>
+                </Styled.LessonContainer>
+                <Styled.LessonContainer>
+                  <Field
+                    component={RadioButton}
+                    name="Lesson 03"
+                    id="Lesson 03"
+                    label="Lesson 03"
+                  />
+
+                  <Button
+                    type="action"
+                    fontSize="18px"
+                    borderRadius="sm"
+                    width="25%"
+                    margin="null"
+                  >
+                    Edit
+                  </Button>
+                  <Button
+                    type="action"
+                    fontSize="18px"
+                    borderRadius="sm"
+                    width="25%"
+                    margin="null"
+                  >
+                    Delete
+                  </Button>
+                </Styled.LessonContainer>
+                <Styled.LessonContainer>
+                  <Field
+                    component={RadioButton}
+                    name="Lesson 04"
+                    id="Lesson 04"
+                    label="Lesson 04"
+                  />
+
+                  <Button
+                    type="action"
+                    fontSize="18px"
+                    borderRadius="sm"
+                    width="25%"
+                    margin="null"
+                  >
+                    Edit
+                  </Button>
+                  <Button
+                    type="action"
+                    fontSize="18px"
+                    borderRadius="sm"
+                    width="25%"
+                    margin="null"
+                  >
+                    Delete
+                  </Button>
+                </Styled.LessonContainer>
+                <Styled.AddNewWrapper>
+                  <Button
+                    type="primary"
+                    fontSize="18px"
+                    borderRadius="sm"
+                    width="50%"
+                  >
+                    + Add Lesson
+                  </Button>
+                </Styled.AddNewWrapper>
+              </Styled.AddLesson>
               <Styled.LessonFormContainer>
                 <AdminInput
                   name="chapter01Title"
@@ -55,6 +221,7 @@ let CourseAddNew = () => {
                   label="Lesson Title"
                   //  placeholder="Enter chapter title"
                   width="100%"
+                  backgroundColor="white"
                 />
                 <AdminTextArea
                   name="learn"
@@ -64,47 +231,29 @@ let CourseAddNew = () => {
                   placeholder="Lesson Breif"
                   label="Lesson Breif"
                   width="100%"
+                  backgroundColor="white"
                 />
-                <Styled.Row>
+                <ContainerBase flexDirection="row" display="flex">
                   <AdminInput
                     name="chapter01Title"
                     type="text"
                     label="Video Link"
                     //  placeholder="Enter chapter title"
+                    backgroundColor="white"
                     width="70%"
                   />
-                  <Styled.Upload>upload</Styled.Upload>
-                </Styled.Row>
+                  <Styled.Upload marginTop="xxl">upload</Styled.Upload>
+                </ContainerBase>
                 <AdminInput
                   name="chapter01Title"
                   type="text"
                   label="Practice Page Link/Assignment"
                   //  placeholder="Enter chapter title"
+                  backgroundColor="white"
                   width="100%"
                 />
               </Styled.LessonFormContainer>
             </Styled.MidContainer>
-            <Styled.InputRow></Styled.InputRow>
-            <Styled.InputRow>
-              <AdminTextArea
-                name="learn"
-                rows="10"
-                cols="110"
-                component="textarea"
-                label="What you will learn ?"
-                width="100%"
-              />
-            </Styled.InputRow>
-            <Styled.InputRow>
-              <AdminTextArea
-                name="learn"
-                rows="10"
-                cols="110"
-                component="textarea"
-                label="Pre-requisites ?"
-                width="100%"
-              />
-            </Styled.InputRow>
           </form>
         )}
       </Formik>

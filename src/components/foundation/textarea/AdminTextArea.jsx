@@ -11,11 +11,12 @@ const AdminTextArea = ({
   width,
   placeholder,
   onChange,
+  backgroundColor,
 }) => {
   return (
     <Styled.Wrapper width={width}>
       <Styled.Label>{label}</Styled.Label>
-      <Styled.InputStyles>
+      <Styled.InputStyles backgroundColor={backgroundColor}>
         <Field
           className="textarea"
           name={name}

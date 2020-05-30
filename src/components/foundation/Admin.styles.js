@@ -16,7 +16,8 @@ export const InputStyles = styled.div`
   width: 100%;
   padding-right: ${spacing.sm};
   input {
-    background-color: #f0f0f7;
+    background-color: ${({ backgroundColor }) =>
+      backgroundColor ? backgroundColor : '#f0f0f7'};
     line-height: 40px;
     font-size: ${fontSizeMap.text};
     width: 100%;
@@ -37,7 +38,8 @@ export const InputStyles = styled.div`
     opacity: 1;
   }
   .textarea {
-    background-color: #f0f0f7;
+    background-color: ${({ backgroundColor }) =>
+      backgroundColor ? backgroundColor : '#f0f0f7'};
     // height: 200px;
     font-size: ${fontSizeMap.text};
     width: 100%;

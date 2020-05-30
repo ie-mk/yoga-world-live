@@ -9,6 +9,7 @@ const paddingMap = {
 };
 
 const marginMap = {
+  null: '0 0 0 0',
   sm: '0 10px 0 0',
   md: '0 20px 0 0',
   lg: '0 30px 0 0',
