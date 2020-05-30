@@ -49,8 +49,11 @@ export const fontSizeMap = {
   h3: '36px',
   h3s: '32px',
   h4: '24px',
+  h4m: '22px',
+  h4s: '21px',
   h5: '20px',
   text: '18px',
+  textMobile: '12px',
 };
 
 export const borderRadius = {
