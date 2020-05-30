@@ -20,6 +20,9 @@ export const Label = styled.div`
 export const InputStyles = styled.div`
   width: 100%;
   padding-right: ${spacing.sm};
+  display: ${({ displayLabelLeft }) => (displayLabelLeft ? 'flex' : '')};
+  justify-content: ${({ displayLabelLeft }) =>
+    displayLabelLeft ? 'space-between' : ''};
   input {
     background-color: #f0f0f7;
     line-height: 40px;
