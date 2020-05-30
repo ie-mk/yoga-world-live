@@ -76,6 +76,44 @@ const StoryBook = () => (
           </Button>
         </Story>
         <Story>
+          <p>COMPONENT: Button type=action borderRadius=sm height="45px"</p>
+          <Button
+            type="primary"
+            width="200px"
+            borderRadius="sm"
+            height="45px"
+            size="sm"
+          >
+            <i className="fa fa-plus" aria-hidden="true" />
+            ADD NEW
+          </Button>
+        </Story>
+        <Story>
+          <p>COMPONENT: Button type=primary borderRadius=sm height="48px"</p>
+          <Button
+            type="primary"
+            width="200px"
+            borderRadius="sm"
+            height="48px"
+            size="sm"
+          >
+            Save
+          </Button>
+        </Story>
+        <Story>
+          <p>COMPONENT: Button type=action borderRadius=sm height="48px"</p>
+          <Button
+            width="200px"
+            height="48px"
+            type="action"
+            fontSize="20px"
+            borderRadius="sm"
+            onClick={() => handleReply(id)}
+          >
+            Cancel
+          </Button>
+        </Story>
+        <Story>
           <p>COMPONENT: Button type=action borderRadius=sm margin="22px" </p>
           <Button
             margin="22px"
