@@ -56,7 +56,7 @@ const leveloptions = levelarr.map(k => {
     </option>
   );
 });
-let AddNew = ({ editTask }) => {
+let AddNew = ({ editTask, setEdit }) => {
   return (
     <ContainerBase paddingLeft="xxxl" paddingRight="xxxl">
       <Styled.RowContainer>
@@ -101,7 +101,7 @@ let AddNew = ({ editTask }) => {
                 name="category"
                 label="Category"
                 component="select"
-                width="100%"
+                dropdownWidth="300px"
                 placeholder="Choose Category"
                 options={categoryoptions}
               />
@@ -110,7 +110,7 @@ let AddNew = ({ editTask }) => {
                 name="Skill"
                 label="Skill"
                 component="select"
-                width="100%"
+                dropdownWidth="300px"
                 placeholder="Choose Skill"
                 options={skilloptions}
               />
@@ -119,7 +119,7 @@ let AddNew = ({ editTask }) => {
                 name="level"
                 label="Level"
                 component="select"
-                width="100%"
+                dropdownWidth="300px"
                 placeholder="Choose Level"
                 options={leveloptions}
               />
@@ -169,7 +169,7 @@ let AddNew = ({ editTask }) => {
                 type="action"
                 fontSize="20px"
                 borderRadius="sm"
-                onClick={() => handleReply(id)}
+                onClick={() => setEdit(false)}
               >
                 Cancel
               </Button>

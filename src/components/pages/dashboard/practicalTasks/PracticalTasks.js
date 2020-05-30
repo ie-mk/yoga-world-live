@@ -75,6 +75,7 @@ const PracticalTasks = () => {
 
   const [newAdd, setNewAdd] = useState(false);
   const [edit, setEdit] = useState(false);
+
   return (
     <>
       {!newAdd && !edit ? (
@@ -170,7 +171,7 @@ const PracticalTasks = () => {
         </ContainerBase>
       ) : (
         <ContainerBase>
-          <AddNew editTask={edit} />
+          <AddNew editTask={edit} setEdit={setEdit} />
         </ContainerBase>
       )}
     </>
