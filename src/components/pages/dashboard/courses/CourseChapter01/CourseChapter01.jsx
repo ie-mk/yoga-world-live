@@ -18,7 +18,6 @@ const RadioButton = ({
   field: { name, value, onChange, onBlur },
   id,
   label,
-  className,
   ...props
 }) => {
   return (
@@ -27,23 +26,14 @@ const RadioButton = ({
         name={name}
         id={id}
         type="radio"
-        value={id} // could be something else for output?
+        value={id}
         checked={id === value}
         onChange={onChange}
         onBlur={onBlur}
-        // className={classNames('radio-button')}
         {...props}
       />
       <Styled.Label>{label}</Styled.Label>
     </Styled.Row>
-  );
-};
-
-const FieldRadioButton = ({ id, name, label }) => {
-  return (
-    <div>
-      <Field component={RadioButton} name={name} id={id} label={label} />
-    </div>
   );
 };
 
