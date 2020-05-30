@@ -56,7 +56,11 @@ const leveloptions = levelarr.map(k => {
     </option>
   );
 });
-let AddNew = ({ editTask, setEdit }) => {
+let AddNew = ({ editTask, setEdit, setNewAdd }) => {
+  const handleCancel = () => {
+    setEdit(false);
+    setNewAdd(false);
+  };
   return (
     <ContainerBase paddingLeft="xxxl" paddingRight="xxxl">
       <Styled.RowContainer>
@@ -169,7 +173,7 @@ let AddNew = ({ editTask, setEdit }) => {
                 type="action"
                 fontSize="20px"
                 borderRadius="sm"
-                onClick={() => setEdit(false)}
+                onClick={() => handleCancel()}
               >
                 Cancel
               </Button>

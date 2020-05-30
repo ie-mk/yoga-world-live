@@ -5,7 +5,7 @@ import Styled from './PracticalTasks.style';
 import Table from '../table/Table';
 import { Formik } from 'formik';
 import CustomAdminDropDown from './customAdminDropDown/CustomAdminDropDown';
-import AddNew from './addNew/AddNew';
+import AddNewTask from './addNew/AddNew';
 const PracticalTasks = () => {
   const messages = {
     '124jq23j234': {
@@ -171,7 +171,7 @@ const PracticalTasks = () => {
         </ContainerBase>
       ) : (
         <ContainerBase>
-          <AddNew editTask={edit} setEdit={setEdit} />
+          <AddNewTask editTask={edit} setEdit={setEdit} setNewAdd={setNewAdd} />
         </ContainerBase>
       )}
     </>
