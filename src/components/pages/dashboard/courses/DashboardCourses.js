@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ContainerBase } from '../../../foundation';
-import CourseForm from './CourseForm/CourseForm';
+import CourseForm from './courseForm/CourseForm';
 import CenteredFlexContainer from '../../../foundation/CenteredFlexContainer';
 import Styled from './DashboardCourses.styles';
 import CoursesTable from './coursesTable/CoursesTable';

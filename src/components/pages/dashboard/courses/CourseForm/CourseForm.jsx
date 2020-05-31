@@ -1,6 +1,6 @@
 import React from 'react';
-import CourseAddNew from '../CourseAddNew/CourseAddNew';
-import CourseChapter01 from '../CourseChapter01/CourseChapter01';
+import CourseAddNew from '../courseAddNew/CourseAddNew';
+import CourseChapter01 from '../courseChapter01/CourseChapter01';
 import { ContainerBase } from '../../../../foundation';
 
 const CourseForm = () => {
