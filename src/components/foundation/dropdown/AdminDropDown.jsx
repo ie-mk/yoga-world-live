@@ -10,13 +10,20 @@ const AdminDropDown = ({
   placeholder,
   component,
   width,
+  height,
   onChange,
   options,
+  displayLabelLeft,
+  dropdownWidth,
+  marginLeft,
+  marginRight,
 }) => {
   return (
-    <Styled.Wrapper width={width}>
-      <Styled.Label>{label}</Styled.Label>
-      <Styled.InputStyles>
+    <Styled.Wrapper width={width} displayLabelLeft={displayLabelLeft}>
+      <Styled.Label marginLeft={marginLeft} marginRight={marginRight}>
+        {label}
+      </Styled.Label>
+      <Styled.InputStyles dropdownWidth={dropdownWidth} height={height}>
         <Field
           className={classNameString}
           name={name}

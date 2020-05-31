@@ -6,3 +6,5 @@ export const getUID = state =>
   state.user &&
   state.user.loginProviderData &&
   state.user.loginProviderData.uid;
+
+export const getPermissions = state => state.user.permissions;
