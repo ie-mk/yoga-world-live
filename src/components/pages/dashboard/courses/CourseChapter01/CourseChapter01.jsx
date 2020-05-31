@@ -14,6 +14,21 @@ import AdminTextArea from '../../../../foundation/textarea/AdminTextArea';
 import AdminUploadImage from '../../../../foundation/uploadimage/AdminUploadImage';
 import Button from '../../../../foundation/button/Button';
 
+const lessonsDataMock = {
+  someId: {
+    title: 'someTitle',
+    desc: 'Some description',
+    videoLink: 'someLink',
+    task: 'link to the task',
+  },
+  someId2: {
+    title: 'someTitle',
+    desc: 'Some description',
+    videoLink: 'someLink',
+    task: 'link to the task',
+  },
+};
+
 const RadioButton = ({
   field: { name, value, onChange, onBlur },
   id,
@@ -96,113 +111,36 @@ let CourseAddNew = () => {
             </Styled.InputRow>
             <Styled.MidContainer>
               <Styled.AddLesson>
-                <Styled.LessonContainer>
-                  <Field
-                    component={RadioButton}
-                    name="Lesson 01"
-                    id="Lesson 01"
-                    label="Lesson 01"
-                  />
-                  <Button
-                    type="action"
-                    fontSize="18px"
-                    borderRadius="sm"
-                    width="25%"
-                    margin="null"
-                  >
-                    Edit
-                  </Button>
-                  <Button
-                    type="action"
-                    fontSize="18px"
-                    borderRadius="sm"
-                    width="25%"
-                    margin="null"
-                  >
-                    Delete
-                  </Button>
-                </Styled.LessonContainer>
-                <Styled.LessonContainer>
-                  <Field
-                    component={RadioButton}
-                    name="Lesson 02"
-                    id="Lesson 02"
-                    label="Lesson 02"
-                  />
-
-                  <Button
-                    type="action"
-                    fontSize="18px"
-                    borderRadius="sm"
-                    width="25%"
-                    margin="null"
-                  >
-                    Edit
-                  </Button>
-                  <Button
-                    type="action"
-                    fontSize="18px"
-                    borderRadius="sm"
-                    width="25%"
-                    margin="null"
-                  >
-                    Delete
-                  </Button>
-                </Styled.LessonContainer>
-                <Styled.LessonContainer>
-                  <Field
-                    component={RadioButton}
-                    name="Lesson 03"
-                    id="Lesson 03"
-                    label="Lesson 03"
-                  />
-
-                  <Button
-                    type="action"
-                    fontSize="18px"
-                    borderRadius="sm"
-                    width="25%"
-                    margin="null"
-                  >
-                    Edit
-                  </Button>
-                  <Button
-                    type="action"
-                    fontSize="18px"
-                    borderRadius="sm"
-                    width="25%"
-                    margin="null"
-                  >
-                    Delete
-                  </Button>
-                </Styled.LessonContainer>
-                <Styled.LessonContainer>
-                  <Field
-                    component={RadioButton}
-                    name="Lesson 04"
-                    id="Lesson 04"
-                    label="Lesson 04"
-                  />
-
-                  <Button
-                    type="action"
-                    fontSize="18px"
-                    borderRadius="sm"
-                    width="25%"
-                    margin="null"
-                  >
-                    Edit
-                  </Button>
-                  <Button
-                    type="action"
-                    fontSize="18px"
-                    borderRadius="sm"
-                    width="25%"
-                    margin="null"
-                  >
-                    Delete
-                  </Button>
-                </Styled.LessonContainer>
+                {Object.keys(lessonsDataMock).map((key, idx) => {
+                  const data = lessonsDataMock[key];
+                  return (
+                    <Styled.LessonContainer key={key}>
+                      <Field
+                        component={RadioButton}
+                        name={data.title}
+                        label={`Lesson ${idx + 1}`}
+                      />
+                      <Button
+                        type="action"
+                        fontSize="18px"
+                        borderRadius="sm"
+                        width="25%"
+                        margin="null"
+                      >
+                        Edit
+                      </Button>
+                      <Button
+                        type="action"
+                        fontSize="18px"
+                        borderRadius="sm"
+                        width="25%"
+                        margin="null"
+                      >
+                        Delete
+                      </Button>
+                    </Styled.LessonContainer>
+                  );
+                })}
                 <Styled.AddNewWrapper>
                   <Button
                     type="primary"

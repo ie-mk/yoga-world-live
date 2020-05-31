@@ -6,7 +6,7 @@ import Styled from './DashboardCourses.styles';
 import CoursesTable from './coursesTable/CoursesTable';
 
 const DashboardCourses = () => {
-  const [activeTab, setActiveTab] = useState('published');
+  const [activeTab, setActiveTab] = useState('addNew');
 
   const showPublished = activeTab === 'published';
   const showUnpublished = activeTab === 'unpublished';
