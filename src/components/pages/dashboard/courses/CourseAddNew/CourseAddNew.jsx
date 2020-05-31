@@ -93,14 +93,6 @@ let CourseAddNew = () => {
       paddingRight="xxxl"
       paddingBottom="xxxxxl"
     >
-      <Styled.RowContainer>
-        <Styled.Title>Published(10)</Styled.Title>
-        <Styled.Title>Unpublished(06)</Styled.Title>
-        <Styled.Title isStrong={true} textDecor={true}>
-          Add New
-        </Styled.Title>
-      </Styled.RowContainer>
-
       <Formik
         initialValues={initialFormValues}
         enableReinitialize={true}
