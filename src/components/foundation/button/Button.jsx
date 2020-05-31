@@ -49,7 +49,7 @@ const ButtonWrapper = styled.button`
   width: ${({ width }) => (width ? width : 'none')};
   height: ${({ height }) => (height ? height : 'none')};
   margin: ${({ margin }) =>
-    marginMap[margin] ? marginMap[margin] : '0 40px 0 0'};
+    marginMap[margin] ? marginMap[margin] : margin ? margin : '0 40px 0 0'};
   padding: ${({ size }) => (paddingMap[size] ? paddingMap[size] : '10px')};
   padding: ${({ padding }) =>
     paddingMap[padding] ? paddingMap[padding] : padding};

@@ -85,13 +85,13 @@ let CourseAddNew = () => {
                 type="text"
                 label="Chapter 01 Title"
                 placeholder="Enter chapter title"
-                width="100%"
+                width="46.5%"
               />
               <AdminInput
                 name="numberoflessons"
                 type="text"
                 label="Number of Lessons"
-                width="100%"
+                width="46.5%"
               />
             </Styled.InputRow>
             <Styled.MidContainer>
