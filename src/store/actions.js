@@ -33,6 +33,7 @@ export const resourceActions = {
   deleteCourse: createAsyncAction('delete-course'),
   fetchCourse: createAsyncAction('fetch-course'),
   fetchCourses: createAsyncAction('fetch-courses'),
+  resetCourses: createAction('reset-courses'),
 
   createTask: createAsyncAction('create-task'),
   updateTask: createAsyncAction('update-task'),

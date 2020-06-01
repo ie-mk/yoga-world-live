@@ -194,6 +194,11 @@ export const courseReducer = handleActions(
     ...getAsyncReducers(resourceActions.deleteCourse, 'data'),
     ...getAsyncReducers(resourceActions.fetchCourse, 'data'),
     ...getAsyncReducers(resourceActions.fetchCourses, 'data'),
+
+    [resourceActions.resetCourses]: state => ({
+      ...state,
+      data: {},
+    }),
   },
   {
     data: {},
