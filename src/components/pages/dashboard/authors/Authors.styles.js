@@ -32,8 +32,13 @@ export const RowContainer = styled.div`
   flex-direction: row;
 `;
 
+export const Wrapper = styled.div`
+  margin-top: ${spacing.xl};
+`;
+
 export default {
   InputRow,
   Title,
   RowContainer,
+  Wrapper,
 };
