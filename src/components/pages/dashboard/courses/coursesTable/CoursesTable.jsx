@@ -1,28 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Styled from './CoursesTable.styles';
 import Table from '../../table/Table';
+import ContainerBase from '../../../../foundation/ContainerBase';
+import { spacing } from '../../../../../constants/styles';
+import { connect } from 'react-redux';
+import { resourceActions } from '../../../../../store/actions';
+import { getCourses } from '../../../../../store/selectors';
+import Button from '../../../../foundation/button/Button';
 
-const mockData = {
-  someId: {
-    name: 'bla',
-    category: 'bla',
-    path: 'frontend',
-  },
-  someotherId: {
-    name: 'bla',
-    category: 'bla',
-    path: 'frontend',
-  },
-};
+const CoursesTable = ({ dispatch, courses, showPublished }) => {
+  useEffect(() => {
+    dispatch(resourceActions.fetchCourses.request());
+  }, []);
 
-const CoursesTable = ({ showPublished }) => {
   return (
-    <Styled.Wrapper>
+    <ContainerBase margin={`0 ${spacing.xl}`}>
       <Table
         columnHeaders={[
           'S.No',
           'Name',
-          'Category',
           'Path',
           'Level',
           'Published',
@@ -30,24 +26,31 @@ const CoursesTable = ({ showPublished }) => {
           'Actions',
         ]}
       >
-        {Object.keys(mockData).map(key => {
-          const data = mockData[key];
+        {Object.keys(courses).map((key, idx) => {
+          const data = courses[key];
           return (
             <Table.Tr key={key}>
-              <Table.Td>{data.name}</Table.Td>
-              <Table.Td>{data.category}</Table.Td>
-              <Table.Td>{data.path}</Table.Td>
-              <Table.Td>{data.name}</Table.Td>
-              <Table.Td>{data.name}</Table.Td>
-              <Table.Td>{data.name}</Table.Td>
-              <Table.Td>{data.name}</Table.Td>
-              <Table.Td>{data.name}</Table.Td>
+              <Table.Td>{idx + 1}</Table.Td>
+              <Table.Td>{data.title}</Table.Td>
+              <Table.Td>{data.learningPath}</Table.Td>
+              <Table.Td>{data.level}</Table.Td>
+              <Table.Td>{data.published}</Table.Td>
+              <Table.Td>{data.edited}</Table.Td>
+              <Table.Td>
+                <Button type="action" fontSize="20px" borderRadius="sm">
+                  Edit
+                </Button>
+              </Table.Td>
             </Table.Tr>
           );
         })}
       </Table>
-    </Styled.Wrapper>
+    </ContainerBase>
   );
 };
 
-export default CoursesTable;
+const mapStateToProps = state => ({
+  courses: getCourses(state),
+});
+
+export default connect(mapStateToProps)(CoursesTable);

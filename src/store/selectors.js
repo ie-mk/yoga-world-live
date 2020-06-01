@@ -8,3 +8,5 @@ export const getUID = state =>
   state.user.loginProviderData.uid;
 
 export const getPermissions = state => state.user.permissions;
+
+export const getCourses = state => state.courses.data;

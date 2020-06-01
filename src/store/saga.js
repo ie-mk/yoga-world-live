@@ -83,7 +83,7 @@ function* updateUserProfile({ payload }) {
 
 // ============================ COURSES =====================================
 
-function* fetchCourses({ payload }) {
+function* fetchCourses({ payload = {} }) {
   try {
     const courses = yield api.resource.fetchResources(
       'courses',
