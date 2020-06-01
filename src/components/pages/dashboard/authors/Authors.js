@@ -14,15 +14,15 @@ const Authors = () => {
     <ContainerBase paddingLeft="xl" paddingRight="xl">
       <Styled.RowContainer>
         <Styled.Title
-          isStrong={activeAuthors}
-          textDecor={activeAuthors}
+          isStrong={isActiveAuthors}
+          textDecor={isActiveAuthors}
           onClick={() => setActiveTab('authors')}
         >
           Authors
         </Styled.Title>
         <Styled.Title
-          isStrong={activeLearning}
-          textDecor={activeLearning}
+          isStrong={isActiveLearningPaths}
+          textDecor={isActiveLearningPaths}
           onClick={() => setActiveTab('learningPath')}
         >
           Learning Paths
