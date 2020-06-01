@@ -296,61 +296,81 @@ function* rootSaga() {
   yield all([
     takeLatest(userActions.updateUserProfile.request.type, updateUserProfile),
   ]);
-  yield all([takeLatest(resourceActions.updateUserProfilePicture)]);
+  yield all([
+    takeLatest(
+      userActions.updateUserProfilePicture.request.type,
+      updateUserProfilePicture,
+    ),
+  ]);
   yield all([
     takeLatest(userActions.saveUserInfoFromLoginProvider, handleLoginFlow),
   ]);
   // ========================== COURSES ===============================
-  yield all([takeLatest(resourceActions.fetchCourses.request(), fetchCourses)]);
-  yield all([takeLatest(resourceActions.fetchCourse.request(), fetchCourse)]);
-  yield all([takeLatest(resourceActions.createCourse.request(), createCourse)]);
-  yield all([takeLatest(resourceActions.updateCourse.request(), updateCourse)]);
-  yield all([takeLatest(resourceActions.deleteCourse.request(), deleteCourse)]);
+  yield all([
+    takeLatest(resourceActions.fetchCourses.request.type, fetchCourses),
+  ]);
+  yield all([
+    takeLatest(resourceActions.fetchCourse.request.type, fetchCourse),
+  ]);
+  yield all([
+    takeLatest(resourceActions.createCourse.request.type, createCourse),
+  ]);
+  yield all([
+    takeLatest(resourceActions.updateCourse.request.type, updateCourse),
+  ]);
+  yield all([
+    takeLatest(resourceActions.deleteCourse.request.type, deleteCourse),
+  ]);
   // ========================== TASKS ===============================
-  yield all([takeLatest(resourceActions.fetchTasks.request(), fetchTasks)]);
-  yield all([takeLatest(resourceActions.fetchTask.request(), fetchTask)]);
-  yield all([takeLatest(resourceActions.createTask.request(), createTask)]);
-  yield all([takeLatest(resourceActions.updateTask.request(), updateTask)]);
-  yield all([takeLatest(resourceActions.deleteTask.request(), deleteTask)]);
+  yield all([takeLatest(resourceActions.fetchTasks.request.type, fetchTasks)]);
+  yield all([takeLatest(resourceActions.fetchTask.request.type, fetchTask)]);
+  yield all([takeLatest(resourceActions.createTask.request.type, createTask)]);
+  yield all([takeLatest(resourceActions.updateTask.request.type, updateTask)]);
+  yield all([takeLatest(resourceActions.deleteTask.request.type, deleteTask)]);
   // ========================== MESSAGES ===============================
   yield all([
-    takeLatest(resourceActions.fetchMessages.request(), fetchMessages),
-  ]);
-  yield all([takeLatest(resourceActions.fetchMessage.request(), fetchMessage)]);
-  yield all([
-    takeLatest(resourceActions.createMessage.request(), createMessage),
+    takeLatest(resourceActions.fetchMessages.request.type, fetchMessages),
   ]);
   yield all([
-    takeLatest(resourceActions.updateMessage.request(), updateMessage),
+    takeLatest(resourceActions.fetchMessage.request.type, fetchMessage),
   ]);
   yield all([
-    takeLatest(resourceActions.deleteMessage.request(), deleteMessage),
+    takeLatest(resourceActions.createMessage.request.type, createMessage),
+  ]);
+  yield all([
+    takeLatest(resourceActions.updateMessage.request.type, updateMessage),
+  ]);
+  yield all([
+    takeLatest(resourceActions.deleteMessage.request.type, deleteMessage),
   ]);
   // ========================== LEARNING PATH ===============================
   yield all([
     takeLatest(
-      resourceActions.fetchLearningPaths.request(),
+      resourceActions.fetchLearningPaths.request.type,
       fetchLearningPaths,
     ),
   ]);
   yield all([
-    takeLatest(resourceActions.fetchLearningPath.request(), fetchLearningPath),
+    takeLatest(
+      resourceActions.fetchLearningPath.request.type,
+      fetchLearningPath,
+    ),
   ]);
   yield all([
     takeLatest(
-      resourceActions.createLearningPath.request(),
+      resourceActions.createLearningPath.request.type,
       createLearningPath,
     ),
   ]);
   yield all([
     takeLatest(
-      resourceActions.updateLearningPath.request(),
+      resourceActions.updateLearningPath.request.type,
       updateLearningPath,
     ),
   ]);
   yield all([
     takeLatest(
-      resourceActions.deleteLearningPath.request(),
+      resourceActions.deleteLearningPath.request.type,
       deleteLearningPath,
     ),
   ]);
