@@ -1,4 +1,5 @@
 import { createAction } from 'redux-actions';
+import { IS_SERVER } from '../constants';
 
 const createAsyncAction = prefix =>
   ['request', 'success', 'failure'].reduce((acc, str) => {
@@ -51,6 +52,10 @@ export const resourceActions = {
   fetchLearningPath: createAsyncAction('fetch-learning-path'),
   fetchLearningPaths: createAsyncAction('fetch-learning-paths'),
 };
+
+if (!IS_SERVER) {
+  window.resourceActions = resourceActions;
+}
 
 export const layoutActions = {
   setScrollFromTop: createAction('SET_SCROLL_FROM_TOP'),
