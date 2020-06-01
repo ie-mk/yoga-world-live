@@ -11,11 +11,12 @@ const AdminInput = ({
   placeholder,
   width,
   onChange,
+  backgroundColor,
 }) => {
   return (
     <Styled.Wrapper width={width}>
       <Styled.Label>{label}</Styled.Label>
-      <Styled.InputStyles>
+      <Styled.InputStyles backgroundColor={backgroundColor}>
         <Field
           className={classNameString}
           name={name}

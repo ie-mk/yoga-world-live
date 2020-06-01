@@ -24,12 +24,13 @@ export const InputStyles = styled.div`
   justify-content: ${({ displayLabelLeft }) =>
     displayLabelLeft ? 'space-between' : ''};
   input {
-    background-color: #f0f0f7;
+    background-color: ${({ backgroundColor }) =>
+      backgroundColor ? backgroundColor : '#f0f0f7'};
     line-height: 40px;
     font-size: ${fontSizeMap.text};
     width: 100%;
     padding-left: ${spacing.sm};
-    color: black;
+    color: #f0f0f7;
     border: 1px solid #909090;
     border-radius: ${borderRadius.sm};
     opacity: 1;
@@ -47,12 +48,13 @@ export const InputStyles = styled.div`
     opacity: 1;
   }
   .textarea {
-    background-color: #f0f0f7;
-    height: 200px;
+    background-color: ${({ backgroundColor }) =>
+      backgroundColor ? backgroundColor : '#f0f0f7'};
+    height: ${({ height }) => (height ? height : '200px')};
     font-size: ${fontSizeMap.text};
     width: 100%;
     padding-left: ${spacing.sm};
-    color: black;
+    color: #f0f0f7;
     border: 1px solid #909090;
     border-radius: ${borderRadius.sm};
     opacity: 1;
