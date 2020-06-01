@@ -10,8 +10,16 @@ import Button from '../../../../foundation/button/Button';
 
 const CoursesTable = ({ dispatch, courses, showPublished }) => {
   useEffect(() => {
-    dispatch(resourceActions.fetchCourses.request());
-  }, []);
+    dispatch(resourceActions.resetCourses());
+
+    dispatch(
+      resourceActions.fetchCourses.request({
+        queries: {
+          published: ['==', showPublished],
+        },
+      }),
+    );
+  }, [showPublished]);
 
   return (
     <ContainerBase margin={`0 ${spacing.xl}`}>

@@ -40,9 +40,9 @@ const Items = () => {
 };
 
 const DashboardContent = ({ dispatch }) => {
-  useEffect(() => {
-    dispatch(resourceActions.createCourse.request());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(resourceActions.createCourse.request());
+  // }, []);
 
   return (
     <DescriptionSection>

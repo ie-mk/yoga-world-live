@@ -104,7 +104,7 @@ function* fetchCourse({ payload }) {
   }
 }
 
-function* createCourse({ payload }) {
+function* createCourse({ payload = {} }) {
   const uid = yield select(getUID);
   const data = { ...payload.data, ownerId: uid };
   try {
