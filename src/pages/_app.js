@@ -26,7 +26,6 @@ class MyApp extends App {
 
       if (!IS_SERVER) {
         const path = window.location.pathname;
-
         const needsLogin = path.includes('dashboard');
 
         const state = getOrCreateStore().getState();

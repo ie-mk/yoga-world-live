@@ -2,12 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 import { colors, fontSizeMap } from '../../../constants/styles';
 import withSpacing from '../../foundation/withSpacing';
+import media from '../media';
 
 const Wrapper = styled.div`
   letter-spacing: 0;
-  font-size: ${fontSizeMap.text};
+  font-size: ${fontSizeMap.textMobile};
   color: ${colors.text.primary};
   font-weight: 200;
+
+  ${media.aboveTablet`
+     font-size: ${fontSizeMap.text};
+  `}
 `;
 
 const BodyText = ({ children }) => {

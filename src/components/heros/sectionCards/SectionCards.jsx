@@ -28,7 +28,7 @@ const SectionCards = () => {
         gridGap={spacing.xxxxl}
       >
         <SectionCard
-          imgSrc="/svg/free.svg"
+          imgSrc="/svg/premium.svg"
           title="Pro"
           text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
           sed diam nonumy eirmod tempor invidunt ut labore et dolore magna

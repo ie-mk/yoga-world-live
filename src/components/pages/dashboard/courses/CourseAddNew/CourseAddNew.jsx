@@ -93,14 +93,6 @@ let CourseAddNew = () => {
       paddingRight="xxxl"
       paddingBottom="xxxxxl"
     >
-      <Styled.RowContainer>
-        <Styled.Title>Published(10)</Styled.Title>
-        <Styled.Title>Unpublished(06)</Styled.Title>
-        <Styled.Title isStrong={true} textDecor={true}>
-          Add New
-        </Styled.Title>
-      </Styled.RowContainer>
-
       <Formik
         initialValues={initialFormValues}
         enableReinitialize={true}
@@ -118,9 +110,9 @@ let CourseAddNew = () => {
                 name="courseTitle"
                 type="text"
                 label="Course Title"
-                width="80%"
+                width="65%"
               />
-              <AdminUploadImage width="40%" label="Thumbnail" />
+              <AdminUploadImage width="30%" label="Thumbnail" />
             </Styled.InputRow>
             <Styled.InputRow>
               <AdminDropDown
@@ -128,7 +120,7 @@ let CourseAddNew = () => {
                 name="difficulty"
                 label="Difficulty"
                 component="select"
-                width="100%"
+                width="30%"
                 placeholder="Choose Difficulty"
                 options={difficultyoptions}
               />
@@ -137,7 +129,7 @@ let CourseAddNew = () => {
                 name="duration"
                 label="Duration"
                 component="select"
-                width="100%"
+                width="30%"
                 placeholder="Set duration"
                 options={durationoptions}
               />
@@ -146,7 +138,7 @@ let CourseAddNew = () => {
                 name="author"
                 label="Author"
                 component="select"
-                width="100%"
+                width="30%"
                 placeholder="Select author"
                 options={authoroptions}
               />
@@ -157,7 +149,7 @@ let CourseAddNew = () => {
                 name="category"
                 label="Category"
                 component="select"
-                width="100%"
+                width="30%"
                 placeholder="Choose category"
                 options={categoryoptions}
               />
@@ -167,7 +159,7 @@ let CourseAddNew = () => {
                 name="learningpath"
                 label="Learning path"
                 component="select"
-                width="100%"
+                width="30%"
                 placeholder="Choose a learning path"
                 options={pathoptions}
               />
@@ -175,7 +167,7 @@ let CourseAddNew = () => {
                 name="NumberOfChapters"
                 type="text"
                 label="Number of chapters"
-                width="100%"
+                width="30%"
               />
             </Styled.InputRow>
             <Styled.InputRow>

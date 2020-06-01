@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { colors, spacing } from '../../../constants/styles';
-import { lightenDarkenColor } from '../../../utils/colors';
+import getMedia from '../../../utils/media';
 
 const paddingMap = {
   sm: '10px',
   lg: '20px 70px',
+  mobile: '10px 30px',
 };
 
 const marginMap = {
@@ -13,14 +14,17 @@ const marginMap = {
   sm: '0 10px 0 0',
   md: '0 20px 0 0',
   lg: '0 30px 0 0',
+  mobile: '0 15px 0 0',
 };
 
 const fontSizeMap = {
   sm: '16px',
   lg: '20px',
+  mobile: '10px',
 };
 const borderRadiusMap = {
   sm: '10px',
+  mobile: '5px',
 };
 
 const backGroundMap = {
@@ -45,7 +49,7 @@ const ButtonWrapper = styled.button`
   width: ${({ width }) => (width ? width : 'none')};
   height: ${({ height }) => (height ? height : 'none')};
   margin: ${({ margin }) =>
-    marginMap[margin] ? marginMap[margin] : '0 40px 0 0'};
+    marginMap[margin] ? marginMap[margin] : margin ? margin : '0 40px 0 0'};
   padding: ${({ size }) => (paddingMap[size] ? paddingMap[size] : '10px')};
   padding: ${({ padding }) =>
     paddingMap[padding] ? paddingMap[padding] : padding};
@@ -66,6 +70,19 @@ const ButtonWrapper = styled.button`
   &:hover {
     box-shadow: 0 0 2px 2px white;
   }
+
+  ${({ mediaConfig }) =>
+    mediaConfig
+      ? getMedia(mediaConfig)
+      : getMedia({
+          belowTablet: {
+            padding: paddingMap.mobile,
+            fontSize: fontSizeMap.mobile,
+            margin: `0 0 ${spacing.xl}`,
+            width: 'auto',
+            minWidth: '150px',
+          },
+        })}
 `;
 
 const Button = ({ children, ...props }) => {

@@ -4,17 +4,22 @@ import {
   colors,
   fontSizeMap,
   spacing,
+  dashboard,
 } from '../../constants/styles';
 
 export const Label = styled.div`
   padding-top: ${spacing.sm};
   padding-bottom: ${spacing.xxxS};
   font-size: ${fontSizeMap.h5};
+  margin-left: ${({ marginLeft }) => (marginLeft ? marginLeft : '')};
+  margin-right: ${({ marginRight }) => (marginRight ? marginRight : '')};
 `;
 
 export const InputStyles = styled.div`
   width: 100%;
-  padding-right: ${spacing.sm};
+  display: ${({ displayLabelLeft }) => (displayLabelLeft ? 'flex' : '')};
+  justify-content: ${({ displayLabelLeft }) =>
+    displayLabelLeft ? 'space-between' : ''};
   input {
     background-color: ${({ backgroundColor }) =>
       backgroundColor ? backgroundColor : '#f0f0f7'};
@@ -28,13 +33,15 @@ export const InputStyles = styled.div`
     opacity: 1;
   }
   .select {
-    height: 40px;
+    height: ${({ height }) => (height ? height : '40px')};
     font-size: ${fontSizeMap.text};
-    width: 100%;
+    width: ${({ dropdownWidth }) => (dropdownWidth ? dropdownWidth : '100%')};
     padding-left: ${spacing.sm};
     color: black;
     border: 1px solid #909090;
     border-radius: ${borderRadius.sm};
+    text-align-last: center;
+    background-color: ${dashboard.dashboardBackground};
     opacity: 1;
   }
   .textarea {
@@ -53,6 +60,9 @@ export const InputStyles = styled.div`
 
 const Wrapper = styled.div`
   width: ${({ width }) => (width ? width : 'auto')};
+  display: ${({ displayLabelLeft }) => (displayLabelLeft ? 'flex' : '')};
+  justify-content: ${({ displayLabelLeft }) =>
+    displayLabelLeft ? 'center' : ''};
 `;
 
 const UploadImageButton = styled.label`
@@ -67,7 +77,7 @@ const UploadImageButton = styled.label`
     opacity: 1;
     display:flex;
     justify-content: center;
-    align-items:center;  
+    align-items:center;
     cursor: pointer;
 
 input[type="file"] {
