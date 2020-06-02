@@ -1,17 +1,16 @@
 import React from 'react';
-import CourseAddNew from '../courseAddNew/CourseAddNew';
-import CourseChapter01 from '../courseChapter01/CourseChapter01';
+import CourseDescription from '../courseDesctiption/CourseDescription';
 import { ContainerBase } from '../../../../foundation';
 import CourseChapter from '../courseChapter/CourseChapter';
 
-const CourseForm = () => {
+const AddNewCourse = () => {
   return (
     <ContainerBase>
-      <CourseAddNew />
+      <CourseDescription />
       {/* <CourseChapter01 /> */}
       <CourseChapter />
     </ContainerBase>
   );
 };
 
-export default CourseForm;
+export default AddNewCourse;

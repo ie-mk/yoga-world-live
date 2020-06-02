@@ -1,20 +1,13 @@
 import React, { useState, memo } from 'react';
-import Styled from './CourseAddNew.styles';
+import Styled from './CourseDescription.styles';
 import { connect } from 'react-redux';
 import { Formik, ErrorMessage, Field } from 'formik';
-//import { getUserProfileSelector, getUserSelector } from '../../store/selectors';
-// import profileFormValidation from './profileForm.validation';
-//import PhoneInput from 'react-phone-number-input';
 import styled from 'styled-components';
-// import { userActions } from '../../store/actions';
 import { ContainerBase } from '../../../../foundation';
 import AdminInput from '../../../../foundation/input/AdminInput';
 import AdminDropDown from '../../../../foundation/dropdown/AdminDropDown';
 import AdminTextArea from '../../../../foundation/textarea/AdminTextArea';
 import AdminUploadImage from '../../../../foundation/uploadimage/AdminUploadImage';
-const StyledError = styled.div`
-  color: red;
-`;
 
 const difficultyarr = [
   { show: 'Choose difficulty', value: '' },
@@ -86,7 +79,7 @@ const pathoptions = learningpatharr.map(k => {
   );
 });
 
-let CourseAddNew = () => {
+let CourseDescription = () => {
   return (
     <ContainerBase
       paddingLeft="xxxl"
@@ -99,7 +92,7 @@ let CourseAddNew = () => {
         //  validationSchema={profileFormValidation}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
-          dispatch(userActions.updateUserProfile.request(values));
+          //dispatch(userActions.updateUserProfile.request(values));
           setTimeout(() => setSubmitting(false), 1000);
         }}
       >
@@ -210,4 +203,4 @@ const initialFormValues = {
   prerequisites: '',
 };
 
-export default CourseAddNew;
+export default CourseDescription;
