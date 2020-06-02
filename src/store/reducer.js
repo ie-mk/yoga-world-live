@@ -194,6 +194,7 @@ export const courseReducer = handleActions(
     ...getAsyncReducers(resourceActions.deleteCourse, 'data'),
     ...getAsyncReducers(resourceActions.fetchCourse, 'data'),
     ...getAsyncReducers(resourceActions.fetchCourses, 'data'),
+    ...getAsyncReducers(resourceActions.fetchChapters, 'chapters'),
 
     [resourceActions.resetCourses]: state => ({
       ...state,
@@ -208,6 +209,7 @@ export const courseReducer = handleActions(
     data: {},
     editableCourseId: null,
     loading: false,
+    chapters: {},
   },
 );
 

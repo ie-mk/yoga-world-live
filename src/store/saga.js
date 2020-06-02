@@ -191,6 +191,71 @@ function* deleteTask({ payload }) {
   }
 }
 
+// ============================ CHAPTERS =====================================
+
+function* fetchChapters() {
+  const courseId = select(getEditingCourseId);
+  try {
+    const tasks = yield api.resource.fetchResources(
+      'courses',
+      courseId,
+      'chapters',
+    );
+    yield put(resourceActions.fetchChapters.success(tasks));
+  } catch (err) {
+    yield put(resourceActions.fetchChapters.failure(err));
+  }
+}
+
+function* fetchChapter({ payload }) {
+  try {
+    const task = yield api.resource.fetchResource('tasks', payload.docId);
+    yield put(resourceActions.fetchChapter.success(task));
+  } catch (err) {
+    yield put(resourceActions.fetchChapter.failure(err));
+  }
+}
+
+function* createChapter() {
+  const courseId = select(getEditingCourseId);
+  try {
+    const createdCourseId = yield api.resource.createSubCollection(
+      'courses',
+      courseId,
+      'chapters',
+      {
+        created: moment().transform(),
+      },
+    );
+    debugger;
+    yield put(resourceActions.createChapter.success(createdCourseId));
+  } catch (err) {
+    yield put(resourceActions.createChapter.failure(err));
+  }
+}
+
+function* updateChapter({ payload }) {
+  const courseId = select(getEditingCourseId);
+  try {
+    const tasks = yield api.resource.updateSubCollection(
+      'courses',
+      courseId,
+      'chapters',
+    );
+  } catch (err) {
+    yield put(resourceActions.updateChapter.failure(err));
+  }
+}
+
+function* deleteChapter({ payload }) {
+  try {
+    yield api.resource.deleteResource('tasks', payload.docId);
+    yield put(resourceActions.deleteChapter.success());
+  } catch (err) {
+    yield put(resourceActions.deleteChapter.failure(err));
+  }
+}
+
 // ============================ Messages =====================================
 
 function* fetchMessages({ payload }) {
@@ -330,6 +395,22 @@ function* rootSaga() {
   ]);
   yield all([
     takeLatest(resourceActions.deleteCourse.request.type, deleteCourse),
+  ]);
+  // ========================== CHAPTERS ===============================
+  yield all([
+    takeLatest(resourceActions.fetchChapters.request.type, fetchChapters),
+  ]);
+  yield all([
+    takeLatest(resourceActions.fetchChapter.request.type, fetchChapter),
+  ]);
+  yield all([
+    takeLatest(resourceActions.createChapter.request.type, createChapter),
+  ]);
+  yield all([
+    takeLatest(resourceActions.updateChapter.request.type, updateChapter),
+  ]);
+  yield all([
+    takeLatest(resourceActions.deleteChapter.request.type, deleteChapter),
   ]);
   // ========================== TASKS ===============================
   yield all([takeLatest(resourceActions.fetchTasks.request.type, fetchTasks)]);

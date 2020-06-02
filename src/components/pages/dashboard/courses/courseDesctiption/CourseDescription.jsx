@@ -115,6 +115,15 @@ let CourseDescription = ({ dispatch, editableCourseData }) => {
             <Styled.InputRow>
               <AdminDropDown
                 classNameString="select"
+                name="learningpath"
+                label="Learning path"
+                component="select"
+                width="30%"
+                placeholder="Choose a learning path"
+                options={pathoptions}
+              />
+              <AdminDropDown
+                classNameString="select"
                 name="difficulty"
                 label="Difficulty"
                 component="select"
@@ -131,36 +140,8 @@ let CourseDescription = ({ dispatch, editableCourseData }) => {
                 placeholder="Set duration"
                 options={durationoptions}
               />
-              <AdminDropDown
-                classNameString="select"
-                name="author"
-                label="author"
-                component="select"
-                width="30%"
-                placeholder="Select author"
-                options={authoroptions}
-              />
             </Styled.InputRow>
             <Styled.InputRow>
-              <AdminDropDown
-                classNameString="select"
-                name="category"
-                label="Category"
-                component="select"
-                width="30%"
-                placeholder="Choose category"
-                options={categoryoptions}
-              />
-
-              <AdminDropDown
-                classNameString="select"
-                name="learningpath"
-                label="Learning path"
-                component="select"
-                width="30%"
-                placeholder="Choose a learning path"
-                options={pathoptions}
-              />
               <AdminInput
                 name="NumberOfChapters"
                 type="text"
