@@ -10,7 +10,6 @@ const AdminTextArea = ({
   cols,
   width,
   placeholder,
-  onChange,
   backgroundColor,
 }) => {
   return (
@@ -25,7 +24,6 @@ const AdminTextArea = ({
           cols={cols}
           value={value}
           placeholder={placeholder}
-          onChange={onChange}
         />
       </Styled.InputStyles>
     </Styled.Wrapper>

@@ -82,7 +82,7 @@ const pathoptions = learningpatharr.map(k => {
   );
 });
 
-let CourseDescription = ({ editableCourseData }) => {
+let CourseDescription = ({ dispatch, editableCourseData }) => {
   console.log('-------editableCourseData: ', editableCourseData);
 
   return (
@@ -97,8 +97,7 @@ let CourseDescription = ({ editableCourseData }) => {
         //  validationSchema={profileFormValidation}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
-          debugger;
-          //dispatch(userActions.updateUserProfile.request(values));
+          dispatch(resourceActions.updateCourse.request({ data: values }));
           setTimeout(() => setSubmitting(false), 1000);
         }}
       >
@@ -171,7 +170,7 @@ let CourseDescription = ({ editableCourseData }) => {
             </Styled.InputRow>
             <Styled.InputRow>
               <AdminTextArea
-                name="learn"
+                name="whatWillLearn"
                 rows="10"
                 cols="110"
                 component="textarea"
@@ -181,7 +180,7 @@ let CourseDescription = ({ editableCourseData }) => {
             </Styled.InputRow>
             <Styled.InputRow>
               <AdminTextArea
-                name="learn"
+                name="prerequisites"
                 rows="10"
                 cols="110"
                 component="textarea"
@@ -220,8 +219,7 @@ const initialFormValues = {
   author: '',
   category: '',
   learningPath: '',
-  numberOfChapters: 2,
-  learn: '',
+  whatWillLearn: '',
   prerequisites: '',
 };
 

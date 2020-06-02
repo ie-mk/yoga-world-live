@@ -27,6 +27,12 @@ const CoursesTable = ({ dispatch, courses, showPublished, setActiveTab }) => {
     dispatch(resourceActions.fetchCourse.request(courseId));
   };
 
+  const handleDelete = courseId => {
+    if (confirm('Are you sure you want to delete this course?')) {
+      dispatch(resourceActions.deleteCourse.request(courseId));
+    }
+  };
+
   return (
     <ContainerBase margin={`0 ${spacing.xl}`}>
       <Table
@@ -58,6 +64,14 @@ const CoursesTable = ({ dispatch, courses, showPublished, setActiveTab }) => {
                   borderRadius="sm"
                 >
                   Edit
+                </Button>
+                <Button
+                  onClick={() => handleDelete(courseId)}
+                  type="action"
+                  fontSize="20px"
+                  borderRadius="sm"
+                >
+                  Delete
                 </Button>
               </Table.Td>
             </Table.Tr>
