@@ -199,9 +199,14 @@ export const courseReducer = handleActions(
       ...state,
       data: {},
     }),
+    [resourceActions.setEditableCourseId]: (state, payload) => ({
+      ...state,
+      editableCourseId: payload,
+    }),
   },
   {
     data: {},
+    editableCourseId: null,
     loading: false,
   },
 );

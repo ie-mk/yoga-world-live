@@ -13,6 +13,7 @@ import moment from 'moment';
 import { getUID } from './selectors';
 import Router from 'next/router';
 import { resourceActions } from './actions';
+import { courseReducer } from './reducer';
 
 function* handleLoginFlow({ payload: user }) {
   const uid = user && user.uid;
@@ -106,20 +107,26 @@ function* fetchCourse({ payload }) {
 
 function* createCourse({ payload = {} }) {
   const uid = yield select(getUID);
-  const data = { ...payload.data, ownerId: uid };
+
+  const data = {
+    ...payload.data,
+    ownerId: uid,
+    published: false,
+    edited: moment().format(),
+  };
   try {
     const courseId = yield api.resource.createResource('courses', data);
-    yield put(resourceActions.createCourse.success(courseId));
+    yield put(resourceActions.createCourse.success());
+    yield put(resourceActions.setEditableCourseId(courseId));
   } catch (err) {
-    const bla = err;
-    debugger;
     yield put(resourceActions.createCourse.failure(err));
   }
 }
 
 function* updateCourse({ payload }) {
+  const courseId = yield select(getUID);
   try {
-    yield api.resource.updateResource('courses', payload.docId, payload.data);
+    yield api.resource.updateResource('courses', courseId, payload.data);
     yield put(resourceActions.updateCourse.success());
   } catch (err) {
     yield put(resourceActions.updateCourse.failure(err));
