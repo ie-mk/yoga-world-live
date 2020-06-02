@@ -10,16 +10,16 @@ import { Formik, ErrorMessage, Field } from 'formik';
 
 const lessonsDataMock = {
   someId: {
-    title: 'someTitle',
-    desc: 'Some description',
-    videoLink: 'someLink',
-    task: 'link to the task',
+    lessontitle: 'someTitle1',
+    description: 'Some description1',
+    videolink: 'someLink1',
+    assignment: 'link to the task1',
   },
   someId2: {
-    title: 'someTitle',
-    desc: 'Some description',
-    videoLink: 'someLink',
-    task: 'link to the task',
+    lessontitle: 'someTitle',
+    description: 'Some description',
+    videolink: 'someLink',
+    assignment: 'link to the task',
   },
 };
 
@@ -46,11 +46,21 @@ const RadioButton = ({
   );
 };
 
-const CourseLesson = () => {
+let CourseLesson = () => {
   // return <Styled.Wrapper>Course lesson</Styled.Wrapper>;
-
+  let initialFormValues = {
+    lessontitle: '',
+    description: '',
+    videolink: '',
+    assignment: '',
+  };
   const [KeyValue, setKeyValue] = useState(null);
-
+  var lessons = Object.values(lessonsDataMock);
+  if (lessons.length !== 0) {
+    initialFormValues = lessons[0];
+  }
+  console.log('initialFormValues');
+  console.log(initialFormValues);
   return (
     <Styled.MidContainer>
       <Styled.AddLesson>
@@ -104,7 +114,7 @@ const CourseLesson = () => {
           <form onSubmit={handleSubmit}>
             <Styled.LessonFormContainer>
               <AdminInput
-                name="lessonTitle"
+                name="lessontitle"
                 type="text"
                 label="Lesson Title"
                 placeholder="Lesson Title"
@@ -136,7 +146,7 @@ const CourseLesson = () => {
                 name="assignment"
                 type="text"
                 label="Practice Page Link/Assignment"
-                //  placeholder="Enter chapter title"
+                placeholder="Assignment"
                 backgroundColor="white"
                 width="100%"
               />
@@ -146,19 +156,6 @@ const CourseLesson = () => {
       </Formik>
     </Styled.MidContainer>
   );
-};
-
-const initialFormValues = {
-  coursetitle: '',
-  file: '',
-  difficulty: '',
-  duration: '',
-  author: '',
-  category: '',
-  learningpath: '',
-  NumberOfChapters: 2,
-  learn: '',
-  prerequisites: '',
 };
 
 export default CourseLesson;
