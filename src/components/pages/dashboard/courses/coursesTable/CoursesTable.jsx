@@ -8,7 +8,7 @@ import { resourceActions } from '../../../../../store/actions';
 import { getCourses } from '../../../../../store/selectors';
 import Button from '../../../../foundation/button/Button';
 
-const CoursesTable = ({ dispatch, courses, showPublished }) => {
+const CoursesTable = ({ dispatch, courses, showPublished, setActiveTab }) => {
   useEffect(() => {
     dispatch(resourceActions.resetCourses());
 
@@ -20,6 +20,12 @@ const CoursesTable = ({ dispatch, courses, showPublished }) => {
       }),
     );
   }, [showPublished]);
+
+  const handleEdit = courseId => {
+    setActiveTab('addNew');
+    dispatch(resourceActions.setEditableCourseId(courseId));
+    dispatch(resourceActions.fetchCourse.request(courseId));
+  };
 
   return (
     <ContainerBase margin={`0 ${spacing.xl}`}>
@@ -34,10 +40,10 @@ const CoursesTable = ({ dispatch, courses, showPublished }) => {
           'Actions',
         ]}
       >
-        {Object.keys(courses).map((key, idx) => {
-          const data = courses[key];
+        {Object.keys(courses).map((courseId, idx) => {
+          const data = courses[courseId];
           return (
-            <Table.Tr key={key}>
+            <Table.Tr key={courseId}>
               <Table.Td>{idx + 1}</Table.Td>
               <Table.Td>{data.title}</Table.Td>
               <Table.Td>{data.learningPath}</Table.Td>
@@ -45,7 +51,12 @@ const CoursesTable = ({ dispatch, courses, showPublished }) => {
               <Table.Td>{data.published}</Table.Td>
               <Table.Td>{data.edited}</Table.Td>
               <Table.Td>
-                <Button type="action" fontSize="20px" borderRadius="sm">
+                <Button
+                  onClick={() => handleEdit(courseId)}
+                  type="action"
+                  fontSize="20px"
+                  borderRadius="sm"
+                >
                   Edit
                 </Button>
               </Table.Td>
