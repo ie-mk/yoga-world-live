@@ -24,7 +24,7 @@ const CoursesTable = ({ dispatch, courses, showPublished, setActiveTab }) => {
   const handleEdit = courseId => {
     setActiveTab('addNew');
     dispatch(resourceActions.setEditableCourseId(courseId));
-    dispatch(resourceActions.fetchCourse(courseId));
+    dispatch(resourceActions.fetchCourse.request(courseId));
   };
 
   return (
