@@ -13,6 +13,7 @@ import DashboardCourses from './courses/DashboardCourses';
 import PracticalTasks from './practicalTasks/PracticalTasks';
 import Students from './students/Students';
 import Authors from './authors/Authors';
+import Staff from './staff/Staff';
 
 const Dashboard = ({ dispatch, user }) => {
   useEffect(() => {
@@ -38,6 +39,7 @@ const Dashboard = ({ dispatch, user }) => {
   const practicalTasks = activeTab === 'practicalTasks';
   const students = activeTab === 'students';
   const authors = activeTab === 'authors';
+  const staff = activeTab === 'staff';
 
   return (
     <Styled.Wrapper>
@@ -65,6 +67,7 @@ const Dashboard = ({ dispatch, user }) => {
             {practicalTasks && <PracticalTasks />}
             {students && <Students />}
             {authors && <Authors />}
+            {staff && <Staff />}
           </Styled.Wrapper>
         </div>
       </Grid>

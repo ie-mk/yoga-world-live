@@ -44,7 +44,8 @@ export const InputStyles = styled.div`
     border: 1px solid #909090;
     border-radius: ${borderRadius.sm};
     text-align-last: center;
-    background-color: ${dashboard.dashboardBackground};
+    background-color: ${({ backgroundColor }) =>
+      backgroundColor ? backgroundColor : dashboard.dashboardBackground};
     opacity: 1;
   }
   .textarea {

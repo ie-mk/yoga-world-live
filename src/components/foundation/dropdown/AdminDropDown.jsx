@@ -17,13 +17,18 @@ const AdminDropDown = ({
   dropdownWidth,
   marginLeft,
   marginRight,
+  backgroundColor,
 }) => {
   return (
     <Styled.Wrapper width={width} displayLabelLeft={displayLabelLeft}>
       <Styled.Label marginLeft={marginLeft} marginRight={marginRight}>
         {label}
       </Styled.Label>
-      <Styled.InputStyles dropdownWidth={dropdownWidth} height={height}>
+      <Styled.InputStyles
+        dropdownWidth={dropdownWidth}
+        height={height}
+        backgroundColor={backgroundColor}
+      >
         <Field
           className={classNameString}
           name={name}
