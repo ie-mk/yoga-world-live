@@ -190,6 +190,20 @@ const ContainerRoot = styled.div`
   ${({ flexDirection }) =>
     flexDirection ? getFlexDirection(flexDirection) : ''}
   ${({ styles }) => (styles ? styles : '')};
+
+  // example
+  //  mediaConfig={{
+  //    aboveTablet: {
+  //      'grid-template-columns': '1fr 1fr',
+  //      width: '200px',
+  //      margin: 'lg',
+  //    },
+  //    belowDesktop: {
+  //      'grid-gap': spacing.xl,
+  //      width: '100px',
+  //      margin: 'sm'
+  //    },
+  //  }}
   ${({ mediaConfig }) => (mediaConfig ? getMedia(mediaConfig) : '')}
 `;
 
