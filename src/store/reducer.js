@@ -199,7 +199,7 @@ export const courseReducer = handleActions(
       ...state,
       data: {},
     }),
-    [resourceActions.setEditableCourseId]: (state, payload) => ({
+    [resourceActions.setEditableCourseId]: (state, { payload }) => ({
       ...state,
       editableCourseId: payload,
     }),

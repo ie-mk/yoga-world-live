@@ -10,7 +10,7 @@ import {
 import { adActions, userActions } from './actions';
 import api from '../api/api.min';
 import moment from 'moment';
-import { getUID } from './selectors';
+import { getUID, getEditingCourseId } from './selectors';
 import Router from 'next/router';
 import { resourceActions } from './actions';
 import { courseReducer } from './reducer';
@@ -124,10 +124,11 @@ function* createCourse({ payload = {} }) {
 }
 
 function* updateCourse({ payload }) {
-  const courseId = yield select(getUID);
+  const courseId = yield select(getEditingCourseId);
   try {
     yield api.resource.updateResource('courses', courseId, payload.data);
     yield put(resourceActions.updateCourse.success());
+    yield fetchCourse(courseId);
   } catch (err) {
     yield put(resourceActions.updateCourse.failure(err));
   }

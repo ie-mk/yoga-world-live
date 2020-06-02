@@ -8,6 +8,9 @@ import AdminInput from '../../../../foundation/input/AdminInput';
 import AdminDropDown from '../../../../foundation/dropdown/AdminDropDown';
 import AdminTextArea from '../../../../foundation/textarea/AdminTextArea';
 import AdminUploadImage from '../../../../foundation/uploadimage/AdminUploadImage';
+import Button from '../../../../foundation/button/Button';
+import { spacing } from '../../../../../constants/styles';
+import { getEditableCourseData } from '../../../../../store/selectors';
 
 const difficultyarr = [
   { show: 'Choose difficulty', value: '' },
@@ -79,7 +82,9 @@ const pathoptions = learningpatharr.map(k => {
   );
 });
 
-let CourseDescription = () => {
+let CourseDescription = ({ editableCourseData }) => {
+  console.log('-------editableCourseData: ', editableCourseData);
+
   return (
     <ContainerBase
       paddingLeft="xxxl"
@@ -87,11 +92,12 @@ let CourseDescription = () => {
       paddingBottom="xxxxxl"
     >
       <Formik
-        initialValues={initialFormValues}
+        initialValues={editableCourseData}
         enableReinitialize={true}
         //  validationSchema={profileFormValidation}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
+          debugger;
           //dispatch(userActions.updateUserProfile.request(values));
           setTimeout(() => setSubmitting(false), 1000);
         }}
@@ -100,7 +106,7 @@ let CourseDescription = () => {
           <form onSubmit={handleSubmit}>
             <Styled.InputRow>
               <AdminInput
-                name="courseTitle"
+                name="title"
                 type="text"
                 label="Course Title"
                 width="65%"
@@ -129,7 +135,7 @@ let CourseDescription = () => {
               <AdminDropDown
                 classNameString="select"
                 name="author"
-                label="Author"
+                label="author"
                 component="select"
                 width="30%"
                 placeholder="Select author"
@@ -183,6 +189,22 @@ let CourseDescription = () => {
                 width="100%"
               />
             </Styled.InputRow>
+            <ContainerBase
+              display="flex"
+              justifyContent="flex-end"
+              marginTop={spacing.md}
+            >
+              <Button
+                type="primary"
+                fontSize="18px"
+                borderRadius="sm"
+                width="300px"
+                submit="true"
+                onClick={handleSubmit}
+              >
+                Update Description
+              </Button>
+            </ContainerBase>
           </form>
         )}
       </Formik>
@@ -191,16 +213,20 @@ let CourseDescription = () => {
 };
 
 const initialFormValues = {
-  coursetitle: '',
+  title: '',
   file: '',
   difficulty: '',
   duration: '',
   author: '',
   category: '',
-  learningpath: '',
-  NumberOfChapters: 2,
+  learningPath: '',
+  numberOfChapters: 2,
   learn: '',
   prerequisites: '',
 };
 
-export default CourseDescription;
+const mapStateToProps = state => ({
+  editableCourseData: { ...initialFormValues, ...getEditableCourseData(state) },
+});
+
+export default connect(mapStateToProps)(CourseDescription);

@@ -6,11 +6,9 @@ const AdminInput = ({
   name,
   label,
   type,
-  value,
   classNameString,
   placeholder,
   width,
-  onChange,
   backgroundColor,
 }) => {
   return (
@@ -21,10 +19,7 @@ const AdminInput = ({
           className={classNameString}
           name={name}
           type={type}
-          value={value}
           placeholder={placeholder}
-          ///  placeholder={placeholder}
-          onChange={onChange}
         />
       </Styled.InputStyles>
     </Styled.Wrapper>
