@@ -98,7 +98,7 @@ function* fetchCourses({ payload = {} }) {
 
 function* fetchCourse({ payload }) {
   try {
-    const course = yield api.resource.fetchResource('courses', payload.docId);
+    const course = yield api.resource.fetchResource('courses', payload);
     yield put(resourceActions.fetchCourse.success(course));
   } catch (err) {
     yield put(resourceActions.fetchCourse.failure(err));
