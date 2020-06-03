@@ -128,7 +128,7 @@ function* updateCourse({ payload }) {
   try {
     yield api.resource.updateResource('courses', courseId, payload.data);
     yield put(resourceActions.updateCourse.success());
-    yield fetchCourse(courseId);
+    yield fetchCourse({ payload: courseId });
   } catch (err) {
     yield put(resourceActions.updateCourse.failure(err));
   }

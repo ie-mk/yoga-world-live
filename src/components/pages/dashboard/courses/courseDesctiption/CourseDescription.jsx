@@ -86,8 +86,6 @@ const pathoptions = learningpatharr.map(k => {
 });
 
 let CourseDescription = ({ dispatch, editableCourseData }) => {
-  console.log('-------editableCourseData: ', editableCourseData);
-
   return (
     <ContainerBase
       paddingLeft="xxxl"
@@ -118,7 +116,7 @@ let CourseDescription = ({ dispatch, editableCourseData }) => {
             <Styled.InputRow>
               <AdminDropDown
                 classNameString="select"
-                name="learningpath"
+                name="learningPath"
                 label="Learning path"
                 component="select"
                 width="30%"
@@ -146,7 +144,7 @@ let CourseDescription = ({ dispatch, editableCourseData }) => {
             </Styled.InputRow>
             <Styled.InputRow>
               <AdminInput
-                name="NumberOfChapters"
+                name="numberOfChapters"
                 type="text"
                 label="Number of chapters"
                 width="30%"
@@ -200,8 +198,8 @@ const initialFormValues = {
   file: '',
   difficulty: '',
   duration: '',
+  numberOfChapters: '',
   author: '',
-  category: '',
   learningPath: '',
   whatWillLearn: '',
   prerequisites: '',
