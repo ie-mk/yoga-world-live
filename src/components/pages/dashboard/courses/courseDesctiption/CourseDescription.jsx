@@ -11,6 +11,7 @@ import AdminUploadImage from '../../../../foundation/uploadimage/AdminUploadImag
 import Button from '../../../../foundation/button/Button';
 import { spacing } from '../../../../../constants/styles';
 import { getEditableCourseData } from '../../../../../store/selectors';
+import { resourceActions } from '../../../../../store/actions';
 
 const difficultyarr = [
   { show: 'Choose difficulty', value: '' },
@@ -46,6 +47,7 @@ const authorarr = [
   { show: '2', value: '2' },
   { show: '3', value: '3' },
 ];
+
 const authoroptions = authorarr.map(k => {
   return (
     <option key={k.show} value={k.value}>
@@ -60,6 +62,7 @@ const categoryarr = [
   { show: '2', value: '2' },
   { show: '3', value: '3' },
 ];
+
 const categoryoptions = categoryarr.map(k => {
   return (
     <option key={k.show} value={k.value}>

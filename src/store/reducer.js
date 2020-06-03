@@ -200,10 +200,22 @@ export const courseReducer = handleActions(
       ...state,
       data: {},
     }),
+
     [resourceActions.setEditableCourseId]: (state, { payload }) => ({
       ...state,
       editableCourseId: payload,
     }),
+
+    [resourceActions.deleteCourseFromState]: (state, { payload }) => {
+      const courses = { ...state.data };
+
+      delete courses[payload];
+
+      return {
+        ...state,
+        data: courses,
+      };
+    },
   },
   {
     data: {},

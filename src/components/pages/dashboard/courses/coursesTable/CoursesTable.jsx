@@ -48,6 +48,8 @@ const CoursesTable = ({ dispatch, courses, showPublished, setActiveTab }) => {
       >
         {Object.keys(courses).map((courseId, idx) => {
           const data = courses[courseId];
+
+          console.log('----data: ', data);
           return (
             <Table.Tr key={courseId}>
               <Table.Td>{idx + 1}</Table.Td>
