@@ -20,6 +20,7 @@ export const InputStyles = styled.div`
   display: ${({ displayLabelLeft }) => (displayLabelLeft ? 'flex' : '')};
   justify-content: ${({ displayLabelLeft }) =>
     displayLabelLeft ? 'space-between' : ''};
+  color: ${colors.black};
   input {
     background-color: ${({ backgroundColor }) =>
       backgroundColor ? backgroundColor : '#f0f0f7'};
@@ -27,7 +28,6 @@ export const InputStyles = styled.div`
     font-size: ${fontSizeMap.text};
     width: 100%;
     padding-left: ${spacing.sm};
-    color: #f0f0f7;
     border: 1px solid #909090;
     border-radius: ${borderRadius.sm};
     opacity: 1;
@@ -37,7 +37,6 @@ export const InputStyles = styled.div`
     font-size: ${fontSizeMap.text};
     width: ${({ dropdownWidth }) => (dropdownWidth ? dropdownWidth : '100%')};
     padding-left: ${spacing.sm};
-    color: black;
     border: 1px solid #909090;
     border-radius: ${borderRadius.sm};
     text-align-last: center;
@@ -52,7 +51,6 @@ export const InputStyles = styled.div`
     font-size: ${fontSizeMap.text};
     width: 100%;
     padding-left: ${spacing.sm};
-    color: #f0f0f7;
     border: 1px solid #909090;
     border-radius: ${borderRadius.sm};
     opacity: 1;
@@ -64,6 +62,7 @@ const Wrapper = styled.div`
   display: ${({ displayLabelLeft }) => (displayLabelLeft ? 'flex' : '')};
   justify-content: ${({ displayLabelLeft }) =>
     displayLabelLeft ? 'center' : ''};
+  color: ${colors.black};
 `;
 
 const UploadImageButton = styled.label`

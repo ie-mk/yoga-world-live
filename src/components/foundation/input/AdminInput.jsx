@@ -19,7 +19,7 @@ const AdminInput = ({
           className={classNameString}
           name={name}
           type={type}
-          // placeholder={placeholder}
+          placeholder={placeholder}
         />
       </Styled.InputStyles>
     </Styled.Wrapper>
