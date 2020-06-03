@@ -8,19 +8,7 @@ import AdminTextArea from '../../../../foundation/textarea/AdminTextArea';
 import AdminUploadImage from '../../../../foundation/uploadimage/AdminUploadImage';
 import Button from '../../../../foundation/button/Button';
 
-let AddNewMember = ({ setNewAdd }) => {
-  const rolearr = [
-    { show: 'Select Role', value: '' },
-    { show: 'Author', value: 'Author' },
-    { show: 'Admin', value: 'Admin' },
-  ];
-  const roleoptions = rolearr.map(k => {
-    return (
-      <option key={k.show} value={k.value}>
-        {k.show}
-      </option>
-    );
-  });
+let AddNewMessage = ({ setNewAdd }) => {
   return (
     <Styled.ModalWrapper>
       <Styled.RowContainer>
@@ -40,7 +28,7 @@ let AddNewMember = ({ setNewAdd }) => {
           <form onSubmit={handleSubmit}>
             <Styled.InputRow>
               <AdminInput
-                name="courseTitle"
+                name="memberId"
                 type="text"
                 label="Enter Member ID(Name / Email / Phone)"
                 width="60%"
@@ -62,7 +50,7 @@ let AddNewMember = ({ setNewAdd }) => {
 
             <Styled.InputRow>
               <AdminTextArea
-                name="learn"
+                name="message"
                 rows="10"
                 cols="110"
                 component="textarea"
@@ -102,16 +90,9 @@ let AddNewMember = ({ setNewAdd }) => {
 };
 
 const initialFormValues = {
-  coursetitle: '',
-  file: '',
-  difficulty: '',
-  duration: '',
-  author: '',
-  category: '',
-  learningpath: '',
-  NumberOfChapters: 2,
-  learn: '',
-  prerequisites: '',
+  memberId: '',
+  subject: '',
+  message: '',
 };
 
-export default AddNewMember;
+export default AddNewMessage;
