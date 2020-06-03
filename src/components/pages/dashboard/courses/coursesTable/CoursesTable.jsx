@@ -55,12 +55,16 @@ const CoursesTable = ({ dispatch, courses, showPublished, setActiveTab }) => {
               <Table.Td>{data.learningPath}</Table.Td>
               <Table.Td>{data.level}</Table.Td>
               <Table.Td>{data.published}</Table.Td>
-              <Table.Td>{data.edited}</Table.Td>
+              <Table.Td>
+                {data.edited ? data.edited.substring(0, 10) : ''}
+              </Table.Td>
               <Table.Td>
                 <Button
                   onClick={() => handleEdit(courseId)}
                   type="action"
-                  fontSize="20px"
+                  size="sm"
+                  fontSize="12px"
+                  margin="0 10px 0 0"
                   borderRadius="sm"
                 >
                   Edit
@@ -68,7 +72,9 @@ const CoursesTable = ({ dispatch, courses, showPublished, setActiveTab }) => {
                 <Button
                   onClick={() => handleDelete(courseId)}
                   type="action"
-                  fontSize="20px"
+                  size="sm"
+                  fontSize="12px"
+                  margin="0 10px 0 0"
                   borderRadius="sm"
                 >
                   Delete
