@@ -5,6 +5,7 @@ import withSpacing from '../withSpacing';
 
 const StyledH3 = styled.h3`
   font-size: ${fontSizeMap.h3};
+  z-index: 1;
 `;
 
 const SectionTitle = ({ text }) => {
