@@ -1,6 +1,4 @@
-import React from 'react';
 import styled from 'styled-components';
-import { Field } from 'formik';
 import {
   borderRadius,
   colors,
@@ -19,7 +17,6 @@ export const Label = styled.div`
 
 export const InputStyles = styled.div`
   width: 100%;
-  padding-right: ${spacing.sm};
   display: ${({ displayLabelLeft }) => (displayLabelLeft ? 'flex' : '')};
   justify-content: ${({ displayLabelLeft }) =>
     displayLabelLeft ? 'space-between' : ''};
@@ -81,7 +78,7 @@ const UploadImageButton = styled.label`
     opacity: 1;
     display:flex;
     justify-content: center;
-    align-items:center;  
+    align-items:center;
     cursor: pointer;
 
 input[type="file"] {

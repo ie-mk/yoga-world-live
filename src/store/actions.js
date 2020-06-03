@@ -33,6 +33,14 @@ export const resourceActions = {
   deleteCourse: createAsyncAction('delete-course'),
   fetchCourse: createAsyncAction('fetch-course'),
   fetchCourses: createAsyncAction('fetch-courses'),
+  resetCourses: createAction('reset-courses'),
+  setEditableCourseId: createAction('set-editing-course-id'),
+
+  createChapter: createAsyncAction('create-chapter'),
+  updateChapter: createAsyncAction('update-chapter'),
+  deleteChapter: createAsyncAction('delete-chapter'),
+  fetchChapter: createAsyncAction('fetch-chapter'),
+  fetchChapters: createAsyncAction('fetch-chapters'),
 
   createTask: createAsyncAction('create-task'),
   updateTask: createAsyncAction('update-task'),

@@ -35,7 +35,6 @@ const AdminDropDown = ({
           component={component}
           value={value}
           placeholder={placeholder}
-          onChange={onChange}
         >
           {options}
         </Field>

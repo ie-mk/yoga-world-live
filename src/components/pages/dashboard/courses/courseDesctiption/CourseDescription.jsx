@@ -1,20 +1,16 @@
 import React, { useState, memo } from 'react';
-import Styled from './CourseForm.styles';
+import Styled from './CourseDescription.styles';
 import { connect } from 'react-redux';
 import { Formik, ErrorMessage, Field } from 'formik';
-//import { getUserProfileSelector, getUserSelector } from '../../store/selectors';
-// import profileFormValidation from './profileForm.validation';
-//import PhoneInput from 'react-phone-number-input';
 import styled from 'styled-components';
-// import { userActions } from '../../store/actions';
 import { ContainerBase } from '../../../../foundation';
 import AdminInput from '../../../../foundation/input/AdminInput';
 import AdminDropDown from '../../../../foundation/dropdown/AdminDropDown';
 import AdminTextArea from '../../../../foundation/textarea/AdminTextArea';
 import AdminUploadImage from '../../../../foundation/uploadimage/AdminUploadImage';
-const StyledError = styled.div`
-  color: red;
-`;
+import Button from '../../../../foundation/button/Button';
+import { spacing } from '../../../../../constants/styles';
+import { getEditableCourseData } from '../../../../../store/selectors';
 
 const difficultyarr = [
   { show: 'Choose difficulty', value: '' },
@@ -86,24 +82,22 @@ const pathoptions = learningpatharr.map(k => {
   );
 });
 
-let CourseForm = () => {
-  return (
-    <ContainerBase paddingLeft="xxxl" paddingRight="xxxl">
-      <Styled.RowContainer>
-        <Styled.Title>Published(10)</Styled.Title>
-        <Styled.Title>Unpublished(06)</Styled.Title>
-        <Styled.Title isStrong={true} textDecor={true}>
-          Add New
-        </Styled.Title>
-      </Styled.RowContainer>
+let CourseDescription = ({ dispatch, editableCourseData }) => {
+  console.log('-------editableCourseData: ', editableCourseData);
 
+  return (
+    <ContainerBase
+      paddingLeft="xxxl"
+      paddingRight="xxxl"
+      paddingBottom="xxxxxl"
+    >
       <Formik
-        initialValues={initialFormValues}
+        initialValues={editableCourseData}
         enableReinitialize={true}
         //  validationSchema={profileFormValidation}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
-          dispatch(userActions.updateUserProfile.request(values));
+          dispatch(resourceActions.updateCourse.request({ data: values }));
           setTimeout(() => setSubmitting(false), 1000);
         }}
       >
@@ -111,20 +105,29 @@ let CourseForm = () => {
           <form onSubmit={handleSubmit}>
             <Styled.InputRow>
               <AdminInput
-                name="courseTitle"
+                name="title"
                 type="text"
                 label="Course Title"
-                width="80%"
+                width="65%"
               />
-              <AdminUploadImage width="40%" label="Thumbnail" />
+              <AdminUploadImage width="30%" label="Thumbnail" />
             </Styled.InputRow>
             <Styled.InputRow>
+              <AdminDropDown
+                classNameString="select"
+                name="learningpath"
+                label="Learning path"
+                component="select"
+                width="30%"
+                placeholder="Choose a learning path"
+                options={pathoptions}
+              />
               <AdminDropDown
                 classNameString="select"
                 name="difficulty"
                 label="Difficulty"
                 component="select"
-                width="100%"
+                width="30%"
                 placeholder="Choose Difficulty"
                 options={difficultyoptions}
               />
@@ -133,50 +136,22 @@ let CourseForm = () => {
                 name="duration"
                 label="Duration"
                 component="select"
-                width="100%"
+                width="30%"
                 placeholder="Set duration"
                 options={durationoptions}
               />
-              <AdminDropDown
-                classNameString="select"
-                name="author"
-                label="Author"
-                component="select"
-                width="100%"
-                placeholder="Select author"
-                options={authoroptions}
-              />
             </Styled.InputRow>
             <Styled.InputRow>
-              <AdminDropDown
-                classNameString="select"
-                name="category"
-                label="Category"
-                component="select"
-                width="100%"
-                placeholder="Choose category"
-                options={categoryoptions}
-              />
-
-              <AdminDropDown
-                classNameString="select"
-                name="learningpath"
-                label="Learning path"
-                component="select"
-                width="100%"
-                placeholder="Choose a learning path"
-                options={pathoptions}
-              />
               <AdminInput
                 name="NumberOfChapters"
                 type="text"
                 label="Number of chapters"
-                width="100%"
+                width="30%"
               />
             </Styled.InputRow>
             <Styled.InputRow>
               <AdminTextArea
-                name="learn"
+                name="whatWillLearn"
                 rows="10"
                 cols="110"
                 component="textarea"
@@ -186,7 +161,7 @@ let CourseForm = () => {
             </Styled.InputRow>
             <Styled.InputRow>
               <AdminTextArea
-                name="learn"
+                name="prerequisites"
                 rows="10"
                 cols="110"
                 component="textarea"
@@ -194,6 +169,22 @@ let CourseForm = () => {
                 width="100%"
               />
             </Styled.InputRow>
+            <ContainerBase
+              display="flex"
+              justifyContent="flex-end"
+              marginTop={spacing.md}
+            >
+              <Button
+                type="primary"
+                fontSize="18px"
+                borderRadius="sm"
+                width="300px"
+                submit="true"
+                onClick={handleSubmit}
+              >
+                Update Description
+              </Button>
+            </ContainerBase>
           </form>
         )}
       </Formik>
@@ -202,16 +193,19 @@ let CourseForm = () => {
 };
 
 const initialFormValues = {
-  coursetitle: '',
+  title: '',
   file: '',
   difficulty: '',
   duration: '',
   author: '',
   category: '',
-  learningpath: '',
-  NumberOfChapters: 2,
-  learn: '',
+  learningPath: '',
+  whatWillLearn: '',
   prerequisites: '',
 };
 
-export default CourseForm;
+const mapStateToProps = state => ({
+  editableCourseData: { ...initialFormValues, ...getEditableCourseData(state) },
+});
+
+export default connect(mapStateToProps)(CourseDescription);

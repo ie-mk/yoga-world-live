@@ -10,9 +10,10 @@ import {
 import { adActions, userActions } from './actions';
 import api from '../api/api.min';
 import moment from 'moment';
-import { getUID } from './selectors';
+import { getUID, getEditingCourseId } from './selectors';
 import Router from 'next/router';
 import { resourceActions } from './actions';
+import { courseReducer } from './reducer';
 
 function* handleLoginFlow({ payload: user }) {
   const uid = user && user.uid;
@@ -83,7 +84,7 @@ function* updateUserProfile({ payload }) {
 
 // ============================ COURSES =====================================
 
-function* fetchCourses({ payload }) {
+function* fetchCourses({ payload = {} }) {
   try {
     const courses = yield api.resource.fetchResources(
       'courses',
@@ -104,23 +105,30 @@ function* fetchCourse({ payload }) {
   }
 }
 
-function* createCourse({ payload }) {
+function* createCourse({ payload = {} }) {
   const uid = yield select(getUID);
-  const data = { ...payload.data, ownerId: uid };
+
+  const data = {
+    ...payload.data,
+    ownerId: uid,
+    published: false,
+    edited: moment().format(),
+  };
   try {
     const courseId = yield api.resource.createResource('courses', data);
-    yield put(resourceActions.createCourse.success(courseId));
+    yield put(resourceActions.createCourse.success());
+    yield put(resourceActions.setEditableCourseId(courseId));
   } catch (err) {
-    const bla = err;
-    debugger;
     yield put(resourceActions.createCourse.failure(err));
   }
 }
 
 function* updateCourse({ payload }) {
+  const courseId = yield select(getEditingCourseId);
   try {
-    yield api.resource.updateResource('courses', payload.docId, payload.data);
+    yield api.resource.updateResource('courses', courseId, payload.data);
     yield put(resourceActions.updateCourse.success());
+    yield fetchCourse(courseId);
   } catch (err) {
     yield put(resourceActions.updateCourse.failure(err));
   }
@@ -128,8 +136,9 @@ function* updateCourse({ payload }) {
 
 function* deleteCourse({ payload }) {
   try {
-    yield api.resource.deleteResource('courses', payload.docId);
+    yield api.resource.deleteResource('courses', payload);
     yield put(resourceActions.deleteCourse.success());
+    yield fetchCourses();
   } catch (err) {
     yield put(resourceActions.deleteCourse.failure(err));
   }
@@ -179,6 +188,71 @@ function* deleteTask({ payload }) {
     yield put(resourceActions.deleteTask.success());
   } catch (err) {
     yield put(resourceActions.deleteTask.failure(err));
+  }
+}
+
+// ============================ CHAPTERS =====================================
+
+function* fetchChapters() {
+  const courseId = select(getEditingCourseId);
+  try {
+    const tasks = yield api.resource.fetchResources(
+      'courses',
+      courseId,
+      'chapters',
+    );
+    yield put(resourceActions.fetchChapters.success(tasks));
+  } catch (err) {
+    yield put(resourceActions.fetchChapters.failure(err));
+  }
+}
+
+function* fetchChapter({ payload }) {
+  try {
+    const task = yield api.resource.fetchResource('tasks', payload.docId);
+    yield put(resourceActions.fetchChapter.success(task));
+  } catch (err) {
+    yield put(resourceActions.fetchChapter.failure(err));
+  }
+}
+
+function* createChapter() {
+  const courseId = select(getEditingCourseId);
+  try {
+    const createdCourseId = yield api.resource.createSubCollection(
+      'courses',
+      courseId,
+      'chapters',
+      {
+        created: moment().transform(),
+      },
+    );
+    debugger;
+    yield put(resourceActions.createChapter.success(createdCourseId));
+  } catch (err) {
+    yield put(resourceActions.createChapter.failure(err));
+  }
+}
+
+function* updateChapter({ payload }) {
+  const courseId = select(getEditingCourseId);
+  try {
+    const tasks = yield api.resource.updateSubCollection(
+      'courses',
+      courseId,
+      'chapters',
+    );
+  } catch (err) {
+    yield put(resourceActions.updateChapter.failure(err));
+  }
+}
+
+function* deleteChapter({ payload }) {
+  try {
+    yield api.resource.deleteResource('tasks', payload.docId);
+    yield put(resourceActions.deleteChapter.success());
+  } catch (err) {
+    yield put(resourceActions.deleteChapter.failure(err));
   }
 }
 
@@ -321,6 +395,22 @@ function* rootSaga() {
   ]);
   yield all([
     takeLatest(resourceActions.deleteCourse.request.type, deleteCourse),
+  ]);
+  // ========================== CHAPTERS ===============================
+  yield all([
+    takeLatest(resourceActions.fetchChapters.request.type, fetchChapters),
+  ]);
+  yield all([
+    takeLatest(resourceActions.fetchChapter.request.type, fetchChapter),
+  ]);
+  yield all([
+    takeLatest(resourceActions.createChapter.request.type, createChapter),
+  ]);
+  yield all([
+    takeLatest(resourceActions.updateChapter.request.type, updateChapter),
+  ]);
+  yield all([
+    takeLatest(resourceActions.deleteChapter.request.type, deleteChapter),
   ]);
   // ========================== TASKS ===============================
   yield all([takeLatest(resourceActions.fetchTasks.request.type, fetchTasks)]);
