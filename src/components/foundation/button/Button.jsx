@@ -30,6 +30,8 @@ const borderRadiusMap = {
 const backGroundMap = {
   primary:
     'transparent linear-gradient(90deg, #2385D9 0%, #0EC9B0 100%) 0% 0% no-repeat padding-box;',
+  button:
+    'transparent linear-gradient(90deg, #2385D9 0%, #0EC9B0 100%) 0% 0% no-repeat padding-box;',
 };
 
 const colorMap = {

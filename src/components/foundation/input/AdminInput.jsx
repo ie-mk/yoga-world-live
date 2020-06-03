@@ -10,6 +10,7 @@ const AdminInput = ({
   placeholder,
   width,
   backgroundColor,
+  disabled,
 }) => {
   return (
     <Styled.Wrapper width={width}>
@@ -20,6 +21,7 @@ const AdminInput = ({
           name={name}
           type={type}
           placeholder={placeholder}
+          disabled={disabled}
         />
       </Styled.InputStyles>
     </Styled.Wrapper>

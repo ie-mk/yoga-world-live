@@ -54,7 +54,7 @@ const CoursesTable = ({ dispatch, courses, showPublished, setActiveTab }) => {
               <Table.Td>{data.title}</Table.Td>
               <Table.Td>{data.learningPath}</Table.Td>
               <Table.Td>{data.level}</Table.Td>
-              <Table.Td>{data.published}</Table.Td>
+              <Table.Td>{data.published ? 'Yes' : 'No'}</Table.Td>
               <Table.Td>
                 {data.edited ? data.edited.substring(0, 10) : ''}
               </Table.Td>

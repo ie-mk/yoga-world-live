@@ -3,13 +3,13 @@ import { userActions, layoutActions, resourceActions } from './actions';
 import { IS_SERVER } from '../constants';
 
 export const getAsyncReducers = (
-  action,
+  mainActionName,
   resultProp,
   loadingProp = 'loading',
   errorProp = 'error',
 ) => {
   return ['request', 'success', 'failure'].reduce((acc, type) => {
-    acc[action[type]] = (state, action) => {
+    acc[mainActionName[type]] = (state, action) => {
       const newState = { ...state };
 
       switch (type) {
@@ -24,6 +24,7 @@ export const getAsyncReducers = (
               ...action.payload,
             };
           }
+
           newState[loadingProp] = false;
           break;
 
@@ -192,8 +193,8 @@ export const courseReducer = handleActions(
     ...getAsyncReducers(resourceActions.createCourse, 'data'),
     ...getAsyncReducers(resourceActions.updateCourse, 'data'),
     ...getAsyncReducers(resourceActions.deleteCourse, 'data'),
-    ...getAsyncReducers(resourceActions.fetchCourse, 'data'),
     ...getAsyncReducers(resourceActions.fetchCourses, 'data'),
+    ...getAsyncReducers(resourceActions.fetchCourse, 'data'),
     ...getAsyncReducers(resourceActions.fetchChapters, 'chapters'),
 
     [resourceActions.resetCourses]: state => ({

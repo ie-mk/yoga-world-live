@@ -12,17 +12,12 @@ import Button from '../../../../foundation/button/Button';
 import { spacing } from '../../../../../constants/styles';
 import { getEditableCourseData } from '../../../../../store/selectors';
 import { resourceActions } from '../../../../../store/actions';
+import { LEVEL } from '../../../../../constants';
 
-const difficultyarr = [
-  { show: 'Choose difficulty', value: '' },
-  { show: '1', value: '1' },
-  { show: '2', value: '2' },
-  { show: '3', value: '3' },
-];
-const difficultyoptions = difficultyarr.map(k => {
+const levelOptions = Object.keys(LEVEL).map(key => {
   return (
-    <option key={k.show} value={k.value}>
-      {k.show}
+    <option key={key} value={key}>
+      {LEVEL[key]}
     </option>
   );
 });
@@ -86,6 +81,16 @@ const pathoptions = learningpatharr.map(k => {
 });
 
 let CourseDescription = ({ dispatch, editableCourseData }) => {
+  const published = editableCourseData.published;
+
+  const handlePublish = e => {
+    e.stopPropagation();
+
+    dispatch(
+      resourceActions.updateCourse.request({ data: { published: !published } }),
+    );
+  };
+
   return (
     <ContainerBase
       paddingLeft="xxxl"
@@ -95,9 +100,9 @@ let CourseDescription = ({ dispatch, editableCourseData }) => {
       <Formik
         initialValues={editableCourseData}
         enableReinitialize={true}
-        //  validationSchema={profileFormValidation}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
+          debugger;
           dispatch(resourceActions.updateCourse.request({ data: values }));
           setTimeout(() => setSubmitting(false), 1000);
         }}
@@ -125,12 +130,12 @@ let CourseDescription = ({ dispatch, editableCourseData }) => {
               />
               <AdminDropDown
                 classNameString="select"
-                name="difficulty"
-                label="Difficulty"
+                name="level"
+                label="Level"
                 component="select"
                 width="30%"
-                placeholder="Choose Difficulty"
-                options={difficultyoptions}
+                placeholder="Choose Level"
+                options={levelOptions}
               />
               <AdminDropDown
                 classNameString="select"
@@ -149,6 +154,16 @@ let CourseDescription = ({ dispatch, editableCourseData }) => {
                 label="Number of chapters"
                 width="30%"
               />
+              <AdminInput
+                name="published"
+                type="checkbox"
+                label="Published"
+                width="30%"
+                disabled={true}
+              />
+              <Button onClick={handlePublish} type="button" size="sm" bac>
+                {published ? 'Unpublish' : 'Publish'}
+              </Button>
             </Styled.InputRow>
             <Styled.InputRow>
               <AdminTextArea

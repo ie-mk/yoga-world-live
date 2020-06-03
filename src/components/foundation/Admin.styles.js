@@ -32,6 +32,11 @@ export const InputStyles = styled.div`
     border-radius: ${borderRadius.sm};
     opacity: 1;
   }
+
+  input[type='checkbox'] {
+    height: 40px;
+  }
+
   .select {
     height: ${({ height }) => (height ? height : '40px')};
     font-size: ${fontSizeMap.text};
@@ -66,23 +71,23 @@ const Wrapper = styled.div`
 `;
 
 const UploadImageButton = styled.label`
-    width: 100%;
-   // padding-right: ${spacing.sm};
-    height: 40px;
-    border: 1px solid #909090;
-    font-size: ${fontSizeMap.text};
-    color:${colors.black};
-    border-radius: ${borderRadius.sm};
-    background-color: #f0f0f7;
-    opacity: 1;
-    display:flex;
-    justify-content: center;
-    align-items:center;
-    cursor: pointer;
+  width: 100%;
+  // padding-right: ${spacing.sm};
+  height: 40px;
+  border: 1px solid #909090;
+  font-size: ${fontSizeMap.text};
+  color:${colors.black};
+  border-radius: ${borderRadius.sm};
+  background-color: #f0f0f7;
+  opacity: 1;
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  cursor: pointer;
 
-input[type="file"] {
-    display: none;
-}
+  input[type="file"] {
+      display: none;
+  }
 `;
 
 export default {
