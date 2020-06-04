@@ -6,6 +6,7 @@ import SectionTitle from '../../../../foundation/typography/SectionTitle';
 import BodyText from '../../../../foundation/typography/BodyText';
 import Button from '../../../../foundation/button/Button';
 import Styled from './CourseFeatures.styles';
+import CenteredFlexContainer from '../../../../foundation/CenteredFlexContainer';
 
 const CourseFeatures = () => {
   return (
@@ -15,20 +16,24 @@ const CourseFeatures = () => {
         height="100vh"
         width="100%"
         position="absolute"
+        mediaConfig={{
+          belowTabletLarge: {
+            height: '176vh',
+            backgroundImage: 'url("/img/mobile/Background.png")',
+          },
+        }}
       />
       <Styled.Content>
         <Grid
           mediaConfig={{
-            aboveMobileLarge: {
-              'grid-template-columns': 'minmax(0, 1fr) 1fr',
+            aboveTabletLarge: {
+              'grid-template-columns': '350px 1fr',
             },
           }}
           columns="1fr"
         >
-          <ContainerBase
+          <CenteredFlexContainer
             display="flex"
-            paddingLeft="xxl"
-            flex="1"
             flexDirection="column"
             zIndex="1"
           >
@@ -36,19 +41,34 @@ const CourseFeatures = () => {
 
             <Styled.ItemsWrapper>
               <Styled.ItemContainer>
-                <input type="checkbox" /> Take all our courses online
+                <img
+                  src="/svg/checkmark-circle-outline.svg"
+                  aria-hidden="true"
+                  alt="icon"
+                />{' '}
+                Take all our courses online
               </Styled.ItemContainer>
               <Styled.ItemContainer>
-                <input type="checkbox" /> Course available in On-site
+                <img
+                  src="/svg/checkmark-circle-outline.svg"
+                  aria-hidden="true"
+                  alt="icon"
+                />{' '}
+                Course available in On-site
               </Styled.ItemContainer>
               <Styled.ItemContainer>
-                <input type="checkbox" /> Self-paced and interactive
+                <img
+                  src="/svg/checkmark-circle-outline.svg"
+                  aria-hidden="true"
+                  alt="icon"
+                />{' '}
+                Self-paced and interactive
               </Styled.ItemContainer>
             </Styled.ItemsWrapper>
-            <Button maxWidth="350px" type="primary" size="lg">
+            <Button type="primary" size="lg" padding="20px 50px">
               START LEARNING
             </Button>
-          </ContainerBase>
+          </CenteredFlexContainer>
           <ContainerBase position="relative">
             <ResponsiveImage
               src="/img/Learning_Path_Illustration.png"

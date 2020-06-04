@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { fontSizeMap, spacing } from '../../../../../constants/styles';
+import media from '../../../../foundation/media';
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -8,11 +9,22 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   padding: 0 ${spacing.lg};
+
+  ${media.belowTabletLarge`
+    height: auto;
+  `}
 `;
 
 const ItemContainer = styled.div`
-  padding: ${spacing.md};
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: ${spacing.md} 0;
   font-size: ${fontSizeMap.text};
+  img {
+    padding-right: ${spacing.lg};
+  }
 `;
 
 const ItemsWrapper = styled.div`
@@ -30,7 +42,13 @@ const FootWrapper = styled.div`
 
 const Content = styled.div`
   max-width: 1100px;
+  margin: 250px 10%;
+  width: 100%;
   z-index: 1;
+
+  ${media.belowTabletLarge`
+    margin: 100px;
+  `}
 `;
 
 export default {

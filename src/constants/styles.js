@@ -28,7 +28,7 @@ export const table = {
 
 export const spacing = {
   xxxxxxl: '150px',
-  xxxxxl: '90px',
+  xxxxxl: '100px',
   xxxxl: '80px',
   xxxl: '60px',
   xxxls: '50px',

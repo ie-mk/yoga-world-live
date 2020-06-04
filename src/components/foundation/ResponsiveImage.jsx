@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import getMedia from '../../utils/media';
 
 const ImageContainer = styled.div`
   width: ${({ width }) => width || ''};
@@ -16,6 +17,8 @@ const ImageContainer = styled.div`
   position: ${({ position }) => position || ''};
   z-index: ${({ zIndex }) => zIndex || ''};
   min-width: 0;
+
+  ${({ mediaConfig }) => (mediaConfig ? getMedia(mediaConfig) : '')}
 `;
 
 const ResponsiveImage = props => {
