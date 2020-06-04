@@ -36,6 +36,11 @@ const CourseFeatures = () => {
             display="flex"
             flexDirection="column"
             zIndex="1"
+            mediaConfig={{
+              belowTabletLarge: {
+                order: '3',
+              },
+            }}
           >
             <SectionTitle text="Course Features" />
 
@@ -69,7 +74,14 @@ const CourseFeatures = () => {
               START LEARNING
             </Button>
           </CenteredFlexContainer>
-          <ContainerBase position="relative">
+          <ContainerBase
+            position="relative"
+            mediaConfig={{
+              belowTabletLarge: {
+                order: '1',
+              },
+            }}
+          >
             <ResponsiveImage
               src="/img/Learning_Path_Illustration.png"
               width="100%"
@@ -77,10 +89,19 @@ const CourseFeatures = () => {
               backGroundSize="contain"
             />
           </ContainerBase>
+          <ContainerBase
+            width="100%"
+            mediaConfig={{
+              belowTabletLarge: {
+                order: '2',
+              },
+            }}
+          >
+            <Styled.FootWrapper>
+              Learn new skills and grow your career
+            </Styled.FootWrapper>
+          </ContainerBase>
         </Grid>
-        <Styled.FootWrapper>
-          Learn new skills and grow your career
-        </Styled.FootWrapper>
       </Styled.Content>
     </Styled.Wrapper>
   );
