@@ -21,7 +21,7 @@ const LearningPathData = ({ dispatch, loading, learningPaths }) => {
     }
   };
 
-  const [newAdd, setNewAdd] = useState(false);
+  const [addingNew, setAddingNew] = useState(false);
   const [edit, setEdit] = useState(false);
   const [ediTableLearningPathId, setEdiTableLearningPathId] = useState(null);
 
@@ -77,18 +77,18 @@ const LearningPathData = ({ dispatch, loading, learningPaths }) => {
           borderRadius="sm"
           height="45px"
           size="sm"
-          onClick={() => setNewAdd(true)}
+          onClick={() => setAddingNew(true)}
         >
           <i className="fa fa-plus" aria-hidden="true" />
           ADD NEW
         </Button>
       </Styled.ButtonWrapper>
 
-      {(newAdd || edit) && (
+      {(addingNew || edit) && (
         <AddLearningPath
-          editTask={edit}
+          editPath={edit}
           setEdit={setEdit}
-          setNewAdd={setNewAdd}
+          setAddingNew={setAddingNew}
           ediTableLearningPathId={ediTableLearningPathId}
         />
       )}

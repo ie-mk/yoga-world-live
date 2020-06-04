@@ -17,21 +17,21 @@ const initialFormValues = {
 
 let NewLearningPath = ({
   dispatch,
-  editTask,
+  editPath,
   setEdit,
-  setNewAdd,
+  setAddingNew,
   ediTableLearningPathId,
   learningPaths,
 }) => {
   const handleCancel = () => {
     setEdit(false);
-    setNewAdd(false);
+    setAddingNew(false);
   };
 
   return (
     <Styled.ModalWrapper>
       <Styled.RowContainer>
-        {editTask ? (
+        {editPath ? (
           <Styled.Title isStrong={true}>Edit Learning Path</Styled.Title>
         ) : (
           <Styled.Title isStrong={true}>New Learning Path</Styled.Title>
@@ -46,16 +46,18 @@ let NewLearningPath = ({
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
           dispatch(
-            editTask
+            editPath
               ? resourceActions.updateLearningPath.request({
                   docId: ediTableLearningPathId,
                   data: values,
                 })
               : resourceActions.createLearningPath.request({ data: values }),
           );
-          debugger;
-          setEdit(false);
-          setTimeout(() => setSubmitting(false), 1000);
+          setTimeout(() => {
+            setSubmitting(false);
+            setEdit(false);
+            setAddingNew(false);
+          }, 100);
         }}
       >
         {({ values, handleSubmit }) => (
@@ -96,7 +98,7 @@ let NewLearningPath = ({
               />
             </Styled.InputRow>
             <Styled.ButtonWrapper>
-              {editTask ? (
+              {editPath ? (
                 <Button
                   type="primary"
                   width="200px"

@@ -146,7 +146,7 @@ function* deleteCourse({ payload }) {
 
 // ============================ COURSES =====================================
 
-function* fetchTasks({ payload }) {
+function* fetchTasks({ payload = {} }) {
   try {
     const tasks = yield api.resource.fetchResources('tasks', payload.queries);
     yield put(resourceActions.fetchTasks.success(tasks));
@@ -155,36 +155,36 @@ function* fetchTasks({ payload }) {
   }
 }
 
-function* fetchTask({ payload }) {
+function* fetchTask({ payload: docId }) {
   try {
-    const task = yield api.resource.fetchResource('tasks', payload.docId);
-    yield put(resourceActions.fetchTask.success(task));
+    const task = yield api.resource.fetchResource('tasks', docId);
+    yield put(resourceActions.fetchTask.success({ [docId]: task }));
   } catch (err) {
     yield put(resourceActions.fetchTask.failure(err));
   }
 }
 
-function* createTask({ payload }) {
+function* createTask({ payload: { data } }) {
   try {
-    yield api.resource.createResource('tasks', payload.data);
+    yield api.resource.createResource('tasks', data);
     yield put(resourceActions.createTask.success());
   } catch (err) {
     yield put(resourceActions.createTask.failure(err));
   }
 }
 
-function* updateTask({ payload }) {
+function* updateTask({ payload: { docId, data } }) {
   try {
-    yield api.resource.updateResource('tasks', payload.docId, payload.data);
+    yield api.resource.updateResource('tasks', docId, data);
     yield put(resourceActions.updateTask.success());
   } catch (err) {
     yield put(resourceActions.updateTask.failure(err));
   }
 }
 
-function* deleteTask({ payload }) {
+function* deleteTask({ payload: docId }) {
   try {
-    yield api.resource.deleteResource('tasks', payload.docId);
+    yield api.resource.deleteResource('tasks', docId);
     yield put(resourceActions.deleteTask.success());
   } catch (err) {
     yield put(resourceActions.deleteTask.failure(err));
@@ -196,21 +196,21 @@ function* deleteTask({ payload }) {
 function* fetchChapters() {
   const courseId = select(getEditingCourseId);
   try {
-    const tasks = yield api.resource.fetchResources(
+    const result = yield api.resource.fetchResources(
       'courses',
       courseId,
       'chapters',
     );
-    yield put(resourceActions.fetchChapters.success(tasks));
+    yield put(resourceActions.fetchChapters.success(result));
   } catch (err) {
     yield put(resourceActions.fetchChapters.failure(err));
   }
 }
 
-function* fetchChapter({ payload }) {
+function* fetchChapter({ payload: { docId } }) {
   try {
-    const task = yield api.resource.fetchResource('tasks', payload.docId);
-    yield put(resourceActions.fetchChapter.success(task));
+    const result = yield api.resource.fetchResource('tasks', docId);
+    yield put(resourceActions.fetchChapter.success({ [docId]: result }));
   } catch (err) {
     yield put(resourceActions.fetchChapter.failure(err));
   }
@@ -227,21 +227,22 @@ function* createChapter() {
         created: moment().transform(),
       },
     );
-    debugger;
     yield put(resourceActions.createChapter.success(createdCourseId));
   } catch (err) {
     yield put(resourceActions.createChapter.failure(err));
   }
 }
 
-function* updateChapter({ payload }) {
+function* updateChapter({ payload: chapterId }) {
   const courseId = select(getEditingCourseId);
   try {
-    const tasks = yield api.resource.updateSubCollection(
+    yield api.resource.updateSubCollection(
       'courses',
       courseId,
       'chapters',
+      chapterId,
     );
+    yield fetchChapter({ payload: chapterId });
   } catch (err) {
     yield put(resourceActions.updateChapter.failure(err));
   }
@@ -270,10 +271,10 @@ function* fetchMessages({ payload }) {
   }
 }
 
-function* fetchMessage({ payload }) {
+function* fetchMessage({ payload: docId }) {
   try {
-    const message = yield api.resource.fetchResource('messages', payload.docId);
-    yield put(resourceActions.fetchMessage.success(message));
+    const result = yield api.resource.fetchResource('messages', docId);
+    yield put(resourceActions.fetchMessage.success({ [docId]: result }));
   } catch (err) {
     yield put(resourceActions.fetchMessage.failure(err));
   }
@@ -320,21 +321,18 @@ function* fetchLearningPaths({ payload = {} }) {
   }
 }
 
-function* fetchLearningPath({ payload }) {
+function* fetchLearningPath({ payload: { docId } }) {
   try {
-    const message = yield api.resource.fetchResource(
-      'learningPaths',
-      payload.docId,
-    );
-    yield put(resourceActions.fetchLearningPath.success(message));
+    const result = yield api.resource.fetchResource('learningPaths', docId);
+    yield put(resourceActions.fetchLearningPath.success({ [docId]: result }));
   } catch (err) {
     yield put(resourceActions.fetchLearningPath.failure(err));
   }
 }
 
-function* createLearningPath({ payload }) {
+function* createLearningPath({ payload: { data } }) {
   try {
-    yield api.resource.createResource('learningPaths', payload.data);
+    yield api.resource.createResource('learningPaths', data);
     yield put(resourceActions.createLearningPath.success());
     yield fetchLearningPaths();
   } catch (err) {
@@ -342,14 +340,15 @@ function* createLearningPath({ payload }) {
   }
 }
 
-function* updateLearningPath({ payload }) {
+function* updateLearningPath({ payload: { docId, data } }) {
   try {
-    yield api.resource.updateResource(
-      'learningPaths',
-      payload.docId,
-      payload.data,
-    );
+    yield api.resource.updateResource('learningPaths', docId, data);
     yield put(resourceActions.updateLearningPath.success());
+    yield fetchLearningPath({
+      payload: {
+        docId,
+      },
+    });
   } catch (err) {
     yield put(resourceActions.updateLearningPath.failure(err));
   }
