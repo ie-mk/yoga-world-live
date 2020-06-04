@@ -10,7 +10,7 @@ import {
 export const Label = styled.div`
   padding-top: ${spacing.sm};
   padding-bottom: ${spacing.xxxS};
-  font-size: ${fontSizeMap.h5};
+  font-size: ${fontSizeMap.textS};
   margin-left: ${({ marginLeft }) => (marginLeft ? marginLeft : '')};
   margin-right: ${({ marginRight }) => (marginRight ? marginRight : '')};
 `;

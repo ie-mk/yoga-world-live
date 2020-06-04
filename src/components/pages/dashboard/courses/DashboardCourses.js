@@ -25,7 +25,7 @@ const DashboardCourses = ({ dispatch, loading, editableCourseId }) => {
   return (
     <>
       {loading ? <SpinnerLarge /> : null}
-      <CenteredFlexContainer paddingTop="xxxxl" flexDirection="row">
+      <CenteredFlexContainer paddingTop="xl" flexDirection="row">
         <Styled.Title
           onClick={() => setActiveTab('published')}
           active={showPublished}
