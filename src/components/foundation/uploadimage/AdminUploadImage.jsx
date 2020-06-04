@@ -8,7 +8,7 @@ const AdminUploadImage = ({ label, width }) => {
       <Styled.Label>{label}</Styled.Label>
       <Styled.UploadImageButton>
         <input type="file" />
-        Upload Image
+        {label !== 'Attachements' ? 'Upload Image' : 'Add Attachment'}
       </Styled.UploadImageButton>
     </Styled.Wrapper>
   );

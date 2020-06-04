@@ -14,7 +14,7 @@ const reducersCombined = combineReducers({
   user: userReducer,
   courses: courseReducer,
   tasks: taskReducer,
-  learningPath: learningPathReducer,
+  learningPaths: learningPathReducer,
   messages: messageReducer,
   layout: layoutReducer,
   notifs: notifReducer,

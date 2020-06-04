@@ -1,6 +1,4 @@
-import React from 'react';
 import styled from 'styled-components';
-import { Field } from 'formik';
 import {
   borderRadius,
   colors,
@@ -12,17 +10,17 @@ import {
 export const Label = styled.div`
   padding-top: ${spacing.sm};
   padding-bottom: ${spacing.xxxS};
-  font-size: ${fontSizeMap.h5};
+  font-size: ${fontSizeMap.textS};
   margin-left: ${({ marginLeft }) => (marginLeft ? marginLeft : '')};
   margin-right: ${({ marginRight }) => (marginRight ? marginRight : '')};
 `;
 
 export const InputStyles = styled.div`
   width: 100%;
-  padding-right: ${spacing.sm};
   display: ${({ displayLabelLeft }) => (displayLabelLeft ? 'flex' : '')};
   justify-content: ${({ displayLabelLeft }) =>
     displayLabelLeft ? 'space-between' : ''};
+  color: ${colors.black};
   input {
     background-color: ${({ backgroundColor }) =>
       backgroundColor ? backgroundColor : '#f0f0f7'};
@@ -30,17 +28,22 @@ export const InputStyles = styled.div`
     font-size: ${fontSizeMap.text};
     width: 100%;
     padding-left: ${spacing.sm};
-    color: #f0f0f7;
     border: 1px solid #909090;
     border-radius: ${borderRadius.sm};
     opacity: 1;
   }
+
+  input[type='checkbox'] {
+    height: 42px;
+    width: 42px;
+    padding: 0;
+  }
+
   .select {
     height: ${({ height }) => (height ? height : '40px')};
     font-size: ${fontSizeMap.text};
     width: ${({ dropdownWidth }) => (dropdownWidth ? dropdownWidth : '100%')};
     padding-left: ${spacing.sm};
-    color: black;
     border: 1px solid #909090;
     border-radius: ${borderRadius.sm};
     text-align-last: center;
@@ -51,11 +54,10 @@ export const InputStyles = styled.div`
   .textarea {
     background-color: ${({ backgroundColor }) =>
       backgroundColor ? backgroundColor : '#f0f0f7'};
-    height: ${({ height }) => (height ? height : '200px')};
+    height: ${({ height }) => (height ? height : 'auto')};
     font-size: ${fontSizeMap.text};
     width: 100%;
     padding-left: ${spacing.sm};
-    color: #f0f0f7;
     border: 1px solid #909090;
     border-radius: ${borderRadius.sm};
     opacity: 1;
@@ -67,26 +69,27 @@ const Wrapper = styled.div`
   display: ${({ displayLabelLeft }) => (displayLabelLeft ? 'flex' : '')};
   justify-content: ${({ displayLabelLeft }) =>
     displayLabelLeft ? 'center' : ''};
+  color: ${colors.black};
 `;
 
 const UploadImageButton = styled.label`
-    width: 100%;
-   // padding-right: ${spacing.sm};
-    height: 40px;
-    border: 1px solid #909090;
-    font-size: ${fontSizeMap.text};
-    color:${colors.black};
-    border-radius: ${borderRadius.sm};
-    background-color: #f0f0f7;
-    opacity: 1;
-    display:flex;
-    justify-content: center;
-    align-items:center;  
-    cursor: pointer;
+  width: 100%;
+  // padding-right: ${spacing.sm};
+  height: 40px;
+  border: 1px solid #909090;
+  font-size: ${fontSizeMap.text};
+  color:${colors.black};
+  border-radius: ${borderRadius.sm};
+  background-color: #f0f0f7;
+  opacity: 1;
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  cursor: pointer;
 
-input[type="file"] {
-    display: none;
-}
+  input[type="file"] {
+      display: none;
+  }
 `;
 
 export default {

@@ -14,8 +14,8 @@ const Table = styled.table`
 `;
 
 const Td = styled.td`
-  height: 92px;
-  font-size: ${fontSizeMap.h4};
+  padding: ${spacing.sm};
+  font-size: ${fontSizeMap.textS};
 `;
 const THead = styled.thead`
   background-color: ${table.headerBackground};
@@ -23,7 +23,7 @@ const THead = styled.thead`
 `;
 const Th = styled.th`
   height: 60px;
-  font-size: ${fontSizeMap.h4};
+  font-size: ${fontSizeMap.h5};
   font-weight: lighter;
 
   &:first-child {

@@ -1,4 +1,4 @@
-import React, { useState, memo } from 'react';
+import React, { useState, memo, useEffect } from 'react';
 import Styled from './NewLearningPath.styles';
 import { connect } from 'react-redux';
 import { Formik, ErrorMessage, Field } from 'formik';
@@ -7,47 +7,79 @@ import AdminInput from '../../../../../foundation/input/AdminInput';
 import AdminTextArea from '../../../../../foundation/textarea/AdminTextArea';
 import AdminUploadImage from '../../../../../foundation/uploadimage/AdminUploadImage';
 import Button from '../../../../../foundation/button/Button';
+import { resourceActions } from '../../../../../../store/actions';
+import AdminDropDown from '../../../../../foundation/dropdown/AdminDropDown';
+import { LEARNING_PATH_OPTIONS } from '../../../../../../constants';
 
-let NewLearningPath = ({ editTask, setEdit, setNewAdd }) => {
+const initialFormValues = {
+  title: '',
+  descr: '',
+  skillSet: '',
+};
+
+let NewLearningPath = ({
+  dispatch,
+  editPath,
+  setEdit,
+  setAddingNew,
+  ediTableLearningPathId,
+  learningPaths,
+}) => {
   const handleCancel = () => {
     setEdit(false);
-    setNewAdd(false);
+    setAddingNew(false);
   };
+
   return (
     <Styled.ModalWrapper>
       <Styled.RowContainer>
-        {editTask ? (
+        {editPath ? (
           <Styled.Title isStrong={true}>Edit Learning Path</Styled.Title>
         ) : (
           <Styled.Title isStrong={true}>New Learning Path</Styled.Title>
         )}
       </Styled.RowContainer>
       <Formik
-        initialValues={initialFormValues}
+        initialValues={{
+          ...initialFormValues,
+          ...learningPaths[ediTableLearningPathId],
+        }}
         enableReinitialize={true}
-        //  validationSchema={profileFormValidation}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
-          dispatch(userActions.updateUserProfile.request(values));
-          setTimeout(() => setSubmitting(false), 1000);
+          dispatch(
+            editPath
+              ? resourceActions.updateLearningPath.request({
+                  docId: ediTableLearningPathId,
+                  data: values,
+                })
+              : resourceActions.createLearningPath.request({ data: values }),
+          );
+          setTimeout(() => {
+            setSubmitting(false);
+            setEdit(false);
+            setAddingNew(false);
+          }, 100);
         }}
       >
-        {({ values, handleSubmit, setFieldValue }) => (
+        {({ values, handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <Styled.InputRow>
-              <AdminInput
-                name="courseTitle"
-                type="text"
-                label="Learning Path Name"
-                width="70%"
-                backgroundColor="white"
+              <AdminDropDown
+                classNameString="select"
+                name="title"
+                label="Learning path"
+                component="select"
+                width="50%"
+                placeholder="Choose a learning path"
+                options={LEARNING_PATH_OPTIONS}
               />
               <AdminUploadImage width="40%" label="Thumbnail" />
             </Styled.InputRow>
 
             <Styled.InputRow>
               <AdminTextArea
-                name="learn"
+                name="descr"
                 rows="10"
                 cols="110"
                 component="textarea"
@@ -59,7 +91,7 @@ let NewLearningPath = ({ editTask, setEdit, setNewAdd }) => {
             </Styled.InputRow>
             <Styled.InputRow>
               <AdminTextArea
-                name="learn"
+                name="skillSet"
                 rows="5"
                 cols="50"
                 component="textarea"
@@ -70,7 +102,7 @@ let NewLearningPath = ({ editTask, setEdit, setNewAdd }) => {
               />
             </Styled.InputRow>
             <Styled.ButtonWrapper>
-              {editTask ? (
+              {editPath ? (
                 <Button
                   type="primary"
                   width="200px"
@@ -109,17 +141,8 @@ let NewLearningPath = ({ editTask, setEdit, setNewAdd }) => {
   );
 };
 
-const initialFormValues = {
-  coursetitle: '',
-  file: '',
-  difficulty: '',
-  duration: '',
-  author: '',
-  category: '',
-  learningpath: '',
-  NumberOfChapters: 2,
-  learn: '',
-  prerequisites: '',
-};
+const mapStateToProps = state => ({
+  learningPaths: state.learningPaths.data,
+});
 
-export default NewLearningPath;
+export default connect(mapStateToProps)(NewLearningPath);

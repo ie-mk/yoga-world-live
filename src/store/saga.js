@@ -10,9 +10,10 @@ import {
 import { adActions, userActions } from './actions';
 import api from '../api/api.min';
 import moment from 'moment';
-import { getUID } from './selectors';
+import { getUID, getEditingCourseId } from './selectors';
 import Router from 'next/router';
 import { resourceActions } from './actions';
+import { courseReducer } from './reducer';
 
 function* handleLoginFlow({ payload: user }) {
   const uid = user && user.uid;
@@ -83,7 +84,7 @@ function* updateUserProfile({ payload }) {
 
 // ============================ COURSES =====================================
 
-function* fetchCourses({ payload }) {
+function* fetchCourses({ payload = {} }) {
   try {
     const courses = yield api.resource.fetchResources(
       'courses',
@@ -95,32 +96,43 @@ function* fetchCourses({ payload }) {
   }
 }
 
-function* fetchCourse({ payload }) {
+function* fetchCourse({ payload: courseId }) {
   try {
-    const course = yield api.resource.fetchResource('courses', payload.docId);
-    yield put(resourceActions.fetchCourse.success(course));
+    const course = yield api.resource.fetchResource('courses', courseId);
+    yield put(resourceActions.fetchCourse.success({ [courseId]: course }));
   } catch (err) {
     yield put(resourceActions.fetchCourse.failure(err));
   }
 }
 
-function* createCourse({ payload }) {
+function* createCourse({ payload = {} }) {
   const uid = yield select(getUID);
-  const data = { ...payload.data, ownerId: uid };
+
+  const data = {
+    ...payload.data,
+    ownerId: uid,
+    published: false,
+    edited: moment().format(),
+  };
   try {
     const courseId = yield api.resource.createResource('courses', data);
-    yield put(resourceActions.createCourse.success(courseId));
+    yield put(resourceActions.createCourse.success());
+    yield put(resourceActions.setEditableCourseId(courseId));
   } catch (err) {
-    const bla = err;
-    debugger;
     yield put(resourceActions.createCourse.failure(err));
   }
 }
 
 function* updateCourse({ payload }) {
+  const courseId = yield select(getEditingCourseId);
+
   try {
-    yield api.resource.updateResource('courses', payload.docId, payload.data);
+    yield api.resource.updateResource('courses', courseId, {
+      ...payload.data,
+      edited: moment().format(),
+    });
     yield put(resourceActions.updateCourse.success());
+    yield fetchCourse({ payload: courseId });
   } catch (err) {
     yield put(resourceActions.updateCourse.failure(err));
   }
@@ -128,8 +140,9 @@ function* updateCourse({ payload }) {
 
 function* deleteCourse({ payload }) {
   try {
-    yield api.resource.deleteResource('courses', payload.docId);
+    yield api.resource.deleteResource('courses', payload);
     yield put(resourceActions.deleteCourse.success());
+    yield put(resourceActions.deleteCourseFromState(payload));
   } catch (err) {
     yield put(resourceActions.deleteCourse.failure(err));
   }
@@ -137,7 +150,7 @@ function* deleteCourse({ payload }) {
 
 // ============================ COURSES =====================================
 
-function* fetchTasks({ payload }) {
+function* fetchTasks({ payload = {} }) {
   try {
     const tasks = yield api.resource.fetchResources('tasks', payload.queries);
     yield put(resourceActions.fetchTasks.success(tasks));
@@ -146,39 +159,105 @@ function* fetchTasks({ payload }) {
   }
 }
 
-function* fetchTask({ payload }) {
+function* fetchTask({ payload: docId }) {
   try {
-    const task = yield api.resource.fetchResource('tasks', payload.docId);
-    yield put(resourceActions.fetchTask.success(task));
+    const task = yield api.resource.fetchResource('tasks', docId);
+    yield put(resourceActions.fetchTask.success({ [docId]: task }));
   } catch (err) {
     yield put(resourceActions.fetchTask.failure(err));
   }
 }
 
-function* createTask({ payload }) {
+function* createTask({ payload: { data } }) {
   try {
-    yield api.resource.createResource('tasks', payload.data);
+    yield api.resource.createResource('tasks', data);
     yield put(resourceActions.createTask.success());
   } catch (err) {
     yield put(resourceActions.createTask.failure(err));
   }
 }
 
-function* updateTask({ payload }) {
+function* updateTask({ payload: { docId, data } }) {
   try {
-    yield api.resource.updateResource('tasks', payload.docId, payload.data);
+    yield api.resource.updateResource('tasks', docId, data);
     yield put(resourceActions.updateTask.success());
   } catch (err) {
     yield put(resourceActions.updateTask.failure(err));
   }
 }
 
-function* deleteTask({ payload }) {
+function* deleteTask({ payload: docId }) {
   try {
-    yield api.resource.deleteResource('tasks', payload.docId);
+    yield api.resource.deleteResource('tasks', docId);
     yield put(resourceActions.deleteTask.success());
   } catch (err) {
     yield put(resourceActions.deleteTask.failure(err));
+  }
+}
+
+// ============================ CHAPTERS =====================================
+
+function* fetchChapters() {
+  const courseId = yield select(getEditingCourseId);
+  try {
+    const result = yield api.resource.fetchResources(
+      'courses',
+      courseId,
+      'chapters',
+    );
+    yield put(resourceActions.fetchChapters.success(result));
+  } catch (err) {
+    yield put(resourceActions.fetchChapters.failure(err));
+  }
+}
+
+function* fetchChapter({ payload: { docId } }) {
+  try {
+    const result = yield api.resource.fetchResource('tasks', docId);
+    yield put(resourceActions.fetchChapter.success({ [docId]: result }));
+  } catch (err) {
+    yield put(resourceActions.fetchChapter.failure(err));
+  }
+}
+
+function* createChapter() {
+  const courseId = yield select(getEditingCourseId);
+  try {
+    const createdChapterId = yield api.resource.createSubCollection(
+      'courses',
+      courseId,
+      'chapters',
+      {
+        created: moment().transform(),
+      },
+    );
+    yield put(resourceActions.createChapter.success(createdChapterId));
+  } catch (err) {
+    yield put(resourceActions.createChapter.failure(err));
+  }
+}
+
+function* updateChapter({ payload: chapterId }) {
+  const courseId = yield select(getEditingCourseId);
+  try {
+    yield api.resource.updateSubCollection(
+      'courses',
+      courseId,
+      'chapters',
+      chapterId,
+    );
+    yield fetchChapter({ payload: chapterId });
+  } catch (err) {
+    yield put(resourceActions.updateChapter.failure(err));
+  }
+}
+
+function* deleteChapter({ payload }) {
+  try {
+    yield api.resource.deleteResource('tasks', payload.docId);
+    yield put(resourceActions.deleteChapter.success());
+  } catch (err) {
+    yield put(resourceActions.deleteChapter.failure(err));
   }
 }
 
@@ -196,10 +275,10 @@ function* fetchMessages({ payload }) {
   }
 }
 
-function* fetchMessage({ payload }) {
+function* fetchMessage({ payload: docId }) {
   try {
-    const message = yield api.resource.fetchResource('messages', payload.docId);
-    yield put(resourceActions.fetchMessage.success(message));
+    const result = yield api.resource.fetchResource('messages', docId);
+    yield put(resourceActions.fetchMessage.success({ [docId]: result }));
   } catch (err) {
     yield put(resourceActions.fetchMessage.failure(err));
   }
@@ -234,10 +313,10 @@ function* deleteMessage({ payload }) {
 
 // ============================ Learning Path =====================================
 
-function* fetchLearningPaths({ payload }) {
+function* fetchLearningPaths({ payload = {} }) {
   try {
     const messages = yield api.resource.fetchResources(
-      'messages',
+      'learningPaths',
       payload.queries,
     );
     yield put(resourceActions.fetchLearningPaths.success(messages));
@@ -246,35 +325,36 @@ function* fetchLearningPaths({ payload }) {
   }
 }
 
-function* fetchLearningPath({ payload }) {
+function* fetchLearningPath({ payload: docId }) {
   try {
-    const message = yield api.resource.fetchResource(
-      'learningPaths',
-      payload.docId,
-    );
-    yield put(resourceActions.fetchLearningPath.success(message));
+    const result = yield api.resource.fetchResource('learningPaths', docId);
+    yield put(resourceActions.fetchLearningPath.success({ [docId]: result }));
   } catch (err) {
     yield put(resourceActions.fetchLearningPath.failure(err));
   }
 }
 
-function* createLearningPath({ payload }) {
+function* createLearningPath({ payload: { data } }) {
   try {
-    yield api.resource.createResource('learningPaths', payload.data);
+    const learningPathId = yield api.resource.createResource(
+      'learningPaths',
+      data,
+    );
+
     yield put(resourceActions.createLearningPath.success());
+    yield fetchLearningPath({ payload: learningPathId });
   } catch (err) {
     yield put(resourceActions.createLearningPath.failure(err));
   }
 }
 
-function* updateLearningPath({ payload }) {
+function* updateLearningPath({ payload: { docId, data } }) {
   try {
-    yield api.resource.updateResource(
-      'learningPaths',
-      payload.docId,
-      payload.data,
-    );
+    yield api.resource.updateResource('learningPaths', docId, data);
     yield put(resourceActions.updateLearningPath.success());
+    yield fetchLearningPath({
+      payload: docId,
+    });
   } catch (err) {
     yield put(resourceActions.updateLearningPath.failure(err));
   }
@@ -282,8 +362,9 @@ function* updateLearningPath({ payload }) {
 
 function* deleteLearningPath({ payload }) {
   try {
-    yield api.resource.deleteResource('learningPaths', payload.docId);
+    yield api.resource.deleteResource('learningPaths', payload);
     yield put(resourceActions.deleteLearningPath.success());
+    yield put(resourceActions.deleteLearningPathFromState(payload));
   } catch (err) {
     yield put(resourceActions.deleteLearningPath.failure(err));
   }
@@ -321,6 +402,22 @@ function* rootSaga() {
   ]);
   yield all([
     takeLatest(resourceActions.deleteCourse.request.type, deleteCourse),
+  ]);
+  // ========================== CHAPTERS ===============================
+  yield all([
+    takeLatest(resourceActions.fetchChapters.request.type, fetchChapters),
+  ]);
+  yield all([
+    takeLatest(resourceActions.fetchChapter.request.type, fetchChapter),
+  ]);
+  yield all([
+    takeLatest(resourceActions.createChapter.request.type, createChapter),
+  ]);
+  yield all([
+    takeLatest(resourceActions.updateChapter.request.type, updateChapter),
+  ]);
+  yield all([
+    takeLatest(resourceActions.deleteChapter.request.type, deleteChapter),
   ]);
   // ========================== TASKS ===============================
   yield all([takeLatest(resourceActions.fetchTasks.request.type, fetchTasks)]);

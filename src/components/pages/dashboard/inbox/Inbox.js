@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ContainerBase } from '../../../foundation';
 import Table from '../table/Table';
 import Button from '../../../foundation/button/Button';
+import Styled from './Inbox.styles';
+import AddNewMessage from './addNew/AddNewMessage';
 
 const messages = {
   '124jq23j234': {
@@ -34,6 +36,8 @@ const Inbox = () => {
     // TODO
   };
 
+  const [newAdd, setNewAdd] = useState(false);
+
   return (
     <ContainerBase margin="25px" marginRight="25px" marginTop="30px">
       <Table columnHeaders={columnHeaders}>
@@ -64,6 +68,23 @@ const Inbox = () => {
           );
         })}
       </Table>
+      <Styled.ButtonWrapper>
+        <Button
+          type="primary"
+          width="200px"
+          borderRadius="sm"
+          height="45px"
+          size="sm"
+          onClick={() => setNewAdd(true)}
+        >
+          <i className="fa fa-plus" aria-hidden="true" />
+          New Message
+        </Button>
+      </Styled.ButtonWrapper>
+
+      <ContainerBase>
+        {newAdd && <AddNewMessage setNewAdd={setNewAdd} />}
+      </ContainerBase>
     </ContainerBase>
   );
 };
