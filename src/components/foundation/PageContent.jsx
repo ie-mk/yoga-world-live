@@ -11,9 +11,9 @@ const Wrapper = styled.div`
 `;
 
 const Content = styled.div`
-  max-width: 1200px;
+  max-width: 1400px;
   width: 100%;
-  padding: ${spacing.lg};
+  //padding: ${spacing.lg};
 `;
 
 const PageContent = ({ children }) => {

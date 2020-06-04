@@ -6,11 +6,13 @@ import SectionTitle from '../../../../foundation/typography/SectionTitle';
 import BodyText from '../../../../foundation/typography/BodyText';
 import Button from '../../../../foundation/button/Button';
 import Styled from './CourseFeatures.styles';
+import { background, spacing } from '../../../../../constants/styles';
 
 const CourseFeatures = () => {
   return (
     <ContainerBase
-      marginTop="xxxl"
+      marginTop="xxxxl"
+      marginBottom="xxxxl"
       flexDirection="row"
       mediaConfig={{
         belowDesktop: {
@@ -25,13 +27,25 @@ const CourseFeatures = () => {
           width="100%"
           position="absolute"
         />
-        <Grid
+        {/* <Grid
           mediaConfig={{
             aboveMobileLarge: {
               'grid-template-columns': 'minmax(0, 1fr) 1fr',
             },
           }}
           columns="1fr"
+        > */}
+        <Grid
+          columns="1fr"
+          mediaConfig={{
+            aboveTablet: {
+              'grid-template-columns': '1fr 1fr',
+            },
+            belowDesktop: {
+              'grid-gap': spacing.xl,
+            },
+          }}
+          gridGap={spacing.xxxxl}
         >
           <ContainerBase
             display="flex"
