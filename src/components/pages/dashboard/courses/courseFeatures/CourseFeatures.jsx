@@ -9,22 +9,14 @@ import Styled from './CourseFeatures.styles';
 
 const CourseFeatures = () => {
   return (
-    <ContainerBase
-      marginTop="xxxl"
-      flexDirection="row"
-      mediaConfig={{
-        belowDesktop: {
-          padding: 0,
-        },
-      }}
-    >
-      <Styled.Wrapper>
-        <ResponsiveImage
-          src="/img/Background.png"
-          height="100vh"
-          width="100%"
-          position="absolute"
-        />
+    <Styled.Wrapper>
+      <ResponsiveImage
+        src="/img/Background.png"
+        height="100vh"
+        width="100%"
+        position="absolute"
+      />
+      <Styled.Content>
         <Grid
           mediaConfig={{
             aboveMobileLarge: {
@@ -69,8 +61,8 @@ const CourseFeatures = () => {
         <Styled.FootWrapper>
           Learn new skills and grow your career
         </Styled.FootWrapper>
-      </Styled.Wrapper>
-    </ContainerBase>
+      </Styled.Content>
+    </Styled.Wrapper>
   );
 };
 

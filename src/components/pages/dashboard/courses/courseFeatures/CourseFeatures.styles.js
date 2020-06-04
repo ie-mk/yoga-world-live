@@ -1,16 +1,13 @@
 import styled from 'styled-components';
 import { fontSizeMap, spacing } from '../../../../../constants/styles';
 
-//export const Wrapper = styled.div``;
-
 const Wrapper = styled.div`
   height: 100vh;
   position: relative;
-  margin-top:${spacing.xxl};
- // display: flex;
-  //justify-content: center;
-  //align-items: center;
-  //padding: 0 ${spacing.lg};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 ${spacing.lg};
 `;
 
 const ItemContainer = styled.div`
@@ -31,9 +28,15 @@ const FootWrapper = styled.div`
   margin-top: ${spacing.xxl};
 `;
 
+const Content = styled.div`
+  max-width: 1100px;
+  z-index: 1;
+`;
+
 export default {
   Wrapper,
   ItemContainer,
   ItemsWrapper,
   FootWrapper,
+  Content,
 };
