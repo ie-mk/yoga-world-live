@@ -321,7 +321,7 @@ function* fetchLearningPaths({ payload = {} }) {
   }
 }
 
-function* fetchLearningPath({ payload: { docId } }) {
+function* fetchLearningPath({ payload: docId }) {
   try {
     const result = yield api.resource.fetchResource('learningPaths', docId);
     yield put(resourceActions.fetchLearningPath.success({ [docId]: result }));
@@ -332,9 +332,13 @@ function* fetchLearningPath({ payload: { docId } }) {
 
 function* createLearningPath({ payload: { data } }) {
   try {
-    yield api.resource.createResource('learningPaths', data);
+    const learningPathId = yield api.resource.createResource(
+      'learningPaths',
+      data,
+    );
+
     yield put(resourceActions.createLearningPath.success());
-    yield fetchLearningPaths();
+    yield fetchLearningPath({ payload: learningPathId });
   } catch (err) {
     yield put(resourceActions.createLearningPath.failure(err));
   }
@@ -345,9 +349,7 @@ function* updateLearningPath({ payload: { docId, data } }) {
     yield api.resource.updateResource('learningPaths', docId, data);
     yield put(resourceActions.updateLearningPath.success());
     yield fetchLearningPath({
-      payload: {
-        docId,
-      },
+      payload: docId,
     });
   } catch (err) {
     yield put(resourceActions.updateLearningPath.failure(err));
