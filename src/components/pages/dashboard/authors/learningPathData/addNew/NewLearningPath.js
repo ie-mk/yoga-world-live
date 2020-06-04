@@ -1,4 +1,4 @@
-import React, { useState, memo } from 'react';
+import React, { useState, memo, useEffect } from 'react';
 import Styled from './NewLearningPath.styles';
 import { connect } from 'react-redux';
 import { Formik, ErrorMessage, Field } from 'formik';
@@ -7,12 +7,27 @@ import AdminInput from '../../../../../foundation/input/AdminInput';
 import AdminTextArea from '../../../../../foundation/textarea/AdminTextArea';
 import AdminUploadImage from '../../../../../foundation/uploadimage/AdminUploadImage';
 import Button from '../../../../../foundation/button/Button';
+import { resourceActions } from '../../../../../../store/actions';
 
-let NewLearningPath = ({ editTask, setEdit, setNewAdd }) => {
+const initialFormValues = {
+  title: '',
+  descr: '',
+  skillSet: '',
+};
+
+let NewLearningPath = ({
+  dispatch,
+  editTask,
+  setEdit,
+  setNewAdd,
+  ediTableLearningPathId,
+  learningPaths,
+}) => {
   const handleCancel = () => {
     setEdit(false);
     setNewAdd(false);
   };
+
   return (
     <Styled.ModalWrapper>
       <Styled.RowContainer>
@@ -23,20 +38,31 @@ let NewLearningPath = ({ editTask, setEdit, setNewAdd }) => {
         )}
       </Styled.RowContainer>
       <Formik
-        initialValues={initialFormValues}
+        initialValues={{
+          ...initialFormValues,
+          ...learningPaths[ediTableLearningPathId],
+        }}
         enableReinitialize={true}
-        //  validationSchema={profileFormValidation}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
-          dispatch(userActions.updateUserProfile.request(values));
+          dispatch(
+            editTask
+              ? resourceActions.updateLearningPath.request({
+                  docId: ediTableLearningPathId,
+                  data: values,
+                })
+              : resourceActions.createLearningPath.request({ data: values }),
+          );
+          debugger;
+          setEdit(false);
           setTimeout(() => setSubmitting(false), 1000);
         }}
       >
-        {({ values, handleSubmit, setFieldValue }) => (
+        {({ values, handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <Styled.InputRow>
               <AdminInput
-                name="courseTitle"
+                name="title"
                 type="text"
                 label="Learning Path Name"
                 width="70%"
@@ -47,7 +73,7 @@ let NewLearningPath = ({ editTask, setEdit, setNewAdd }) => {
 
             <Styled.InputRow>
               <AdminTextArea
-                name="learn"
+                name="descr"
                 rows="10"
                 cols="110"
                 component="textarea"
@@ -59,7 +85,7 @@ let NewLearningPath = ({ editTask, setEdit, setNewAdd }) => {
             </Styled.InputRow>
             <Styled.InputRow>
               <AdminTextArea
-                name="learn"
+                name="skillSet"
                 rows="5"
                 cols="50"
                 component="textarea"
@@ -109,17 +135,8 @@ let NewLearningPath = ({ editTask, setEdit, setNewAdd }) => {
   );
 };
 
-const initialFormValues = {
-  coursetitle: '',
-  file: '',
-  difficulty: '',
-  duration: '',
-  author: '',
-  category: '',
-  learningpath: '',
-  NumberOfChapters: 2,
-  learn: '',
-  prerequisites: '',
-};
+const mapStateToProps = state => ({
+  learningPaths: state.learningPaths.data,
+});
 
-export default NewLearningPath;
+export default connect(mapStateToProps)(NewLearningPath);

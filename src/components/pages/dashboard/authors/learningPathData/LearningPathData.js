@@ -1,53 +1,44 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ContainerBase } from '../../../../foundation';
 import Button from '../../../../foundation/button/Button';
 import Styled from './LearningPathData.styles';
 import Table from '../../table/Table';
 import AddLearningPath from './addNew/NewLearningPath';
-const LearningPathData = () => {
-  const messages = {
-    '124jq23j234': {
-      senderId: '845235o2u35',
-      learningPath: 'Learning Path Name',
-      Courses: '03',
-      Skills: 'Html,CSS',
-    },
-    '124jq23ddj234': {
-      senderId: '845235o2u35',
-      learningPath: 'Learning Path Name',
-      Courses: '02',
-      Skills: 'PHP',
-    },
-  };
+import { connect } from 'react-redux';
+import { resourceActions } from '../../../../../store/actions';
+import SpinnerLarge from '../../../../foundation/spinner/SpinnerLarge';
 
-  const columnHeaders = [
-    'S.No',
-    'Learning Path',
-    'Courses',
-    'Skills',
-    'Image',
-    'Actions',
-  ];
+const LearningPathData = ({ dispatch, loading, learningPaths }) => {
+  const columnHeaders = ['S.No', 'Learning Path', 'Image', 'Actions'];
+
+  useEffect(() => {
+    dispatch(resourceActions.fetchLearningPaths.request());
+  }, []);
+
+  const handleDelete = id => {
+    if (confirm('Are you sure you want to delete?')) {
+      dispatch(resourceActions.deleteLearningPath.request(id));
+    }
+  };
 
   const [newAdd, setNewAdd] = useState(false);
   const [edit, setEdit] = useState(false);
+  const [ediTableLearningPathId, setEdiTableLearningPathId] = useState(null);
 
   return (
     <ContainerBase>
+      {loading ? <SpinnerLarge /> : null}
       <Table columnHeaders={columnHeaders}>
-        {Object.keys(messages).map((id, idx) => {
-          const rowData = messages[id];
+        {Object.keys(learningPaths).map((id, idx) => {
+          const rowData = learningPaths[id];
           if (!rowData) return null;
 
           return (
             <Table.Tr key={id}>
               <Table.Td>{idx + 1}</Table.Td>
-              <Table.Td>{rowData.learningPath}</Table.Td>
-              <Table.Td>{rowData.Courses}</Table.Td>
-              <Table.Td>{rowData.Skills}</Table.Td>
+              <Table.Td>{rowData.title}</Table.Td>
               <Table.Td>
-                {' '}
-                <img src="svg/noun_link.svg" />
+                <img src="/svg/noun_link.svg" />
               </Table.Td>
               <Table.Td>
                 <Button
@@ -57,7 +48,10 @@ const LearningPathData = () => {
                   type="action"
                   fontSize="20px"
                   borderRadius="sm"
-                  onClick={() => setEdit(true)}
+                  onClick={() => {
+                    setEdit(true);
+                    setEdiTableLearningPathId(id);
+                  }}
                 >
                   Edit
                 </Button>
@@ -67,7 +61,7 @@ const LearningPathData = () => {
                   type="action"
                   fontSize="20px"
                   borderRadius="sm"
-                  onClick={() => handleReply(id)}
+                  onClick={() => handleDelete(id)}
                 >
                   Delete
                 </Button>
@@ -95,10 +89,16 @@ const LearningPathData = () => {
           editTask={edit}
           setEdit={setEdit}
           setNewAdd={setNewAdd}
+          ediTableLearningPathId={ediTableLearningPathId}
         />
       )}
     </ContainerBase>
   );
 };
 
-export default LearningPathData;
+const mapStateToProps = state => ({
+  learningPaths: state.learningPaths.data,
+  loading: state.learningPaths.loading,
+});
+
+export default connect(mapStateToProps)(LearningPathData);

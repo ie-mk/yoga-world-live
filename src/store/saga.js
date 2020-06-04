@@ -308,10 +308,10 @@ function* deleteMessage({ payload }) {
 
 // ============================ Learning Path =====================================
 
-function* fetchLearningPaths({ payload }) {
+function* fetchLearningPaths({ payload = {} }) {
   try {
     const messages = yield api.resource.fetchResources(
-      'messages',
+      'learningPaths',
       payload.queries,
     );
     yield put(resourceActions.fetchLearningPaths.success(messages));
@@ -336,6 +336,7 @@ function* createLearningPath({ payload }) {
   try {
     yield api.resource.createResource('learningPaths', payload.data);
     yield put(resourceActions.createLearningPath.success());
+    yield fetchLearningPaths();
   } catch (err) {
     yield put(resourceActions.createLearningPath.failure(err));
   }
@@ -356,8 +357,9 @@ function* updateLearningPath({ payload }) {
 
 function* deleteLearningPath({ payload }) {
   try {
-    yield api.resource.deleteResource('learningPaths', payload.docId);
+    yield api.resource.deleteResource('learningPaths', payload);
     yield put(resourceActions.deleteLearningPath.success());
+    yield put(resourceActions.deleteLearningPathFromState(payload));
   } catch (err) {
     yield put(resourceActions.deleteLearningPath.failure(err));
   }

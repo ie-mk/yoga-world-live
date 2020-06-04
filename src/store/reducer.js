@@ -261,6 +261,17 @@ export const learningPathReducer = handleActions(
     ...getAsyncReducers(resourceActions.deleteLearningPath, 'data'),
     ...getAsyncReducers(resourceActions.fetchLearningPath, 'data'),
     ...getAsyncReducers(resourceActions.fetchLearningPaths, 'data'),
+
+    [resourceActions.deleteLearningPathFromState]: (state, { payload }) => {
+      const learningPaths = { ...state.data };
+
+      delete learningPaths[payload];
+
+      return {
+        ...state,
+        data: learningPaths,
+      };
+    },
   },
   {
     data: {},

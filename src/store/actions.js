@@ -60,6 +60,7 @@ export const resourceActions = {
   deleteLearningPath: createAsyncAction('delete-learning-path'),
   fetchLearningPath: createAsyncAction('fetch-learning-path'),
   fetchLearningPaths: createAsyncAction('fetch-learning-paths'),
+  deleteLearningPathFromState: createAction('delete-learning-path-from-state'),
 };
 
 if (!IS_SERVER) {
