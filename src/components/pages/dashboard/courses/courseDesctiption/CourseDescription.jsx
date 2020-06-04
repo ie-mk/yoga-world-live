@@ -119,14 +119,12 @@ let CourseDescription = ({ dispatch, editableCourseData }) => {
                 placeholder="Choose Level"
                 options={LEVEL_OPTIONS}
               />
-              <AdminDropDown
-                classNameString="select"
+              <AdminInput
                 name="duration"
+                type="text"
                 label="Duration"
-                component="select"
                 width="30%"
-                placeholder="Set duration"
-                options={durationoptions}
+                placeholder="...hours, days, weeks"
               />
             </Styled.InputRow>
             <Styled.InputRow>
@@ -143,14 +141,19 @@ let CourseDescription = ({ dispatch, editableCourseData }) => {
                 width="30%"
                 disabled={true}
               />
-              <Button onClick={handlePublish} type="button" size="sm" bac>
+              <Button
+                onClick={handlePublish}
+                type="button"
+                size="sm"
+                margin="45px 40px 0 0"
+              >
                 {published ? 'Unpublish' : 'Publish'}
               </Button>
             </Styled.InputRow>
             <Styled.InputRow>
               <AdminTextArea
                 name="whatWillLearn"
-                rows="10"
+                rows="5"
                 cols="110"
                 component="textarea"
                 label="What you will learn ?"
@@ -160,7 +163,7 @@ let CourseDescription = ({ dispatch, editableCourseData }) => {
             <Styled.InputRow>
               <AdminTextArea
                 name="prerequisites"
-                rows="10"
+                rows="5"
                 cols="110"
                 component="textarea"
                 label="Pre-requisites ?"

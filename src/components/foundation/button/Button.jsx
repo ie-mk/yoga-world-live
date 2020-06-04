@@ -30,8 +30,7 @@ const borderRadiusMap = {
 const backGroundMap = {
   primary:
     'transparent linear-gradient(90deg, #2385D9 0%, #0EC9B0 100%) 0% 0% no-repeat padding-box;',
-  button:
-    'transparent linear-gradient(90deg, #2385D9 0%, #0EC9B0 100%) 0% 0% no-repeat padding-box;',
+  button: 'gray',
 };
 
 const colorMap = {
@@ -39,11 +38,13 @@ const colorMap = {
   warning: colors.button.warning,
   danger: 'red',
   action: 'black',
+  button: 'black',
 };
 
 const borderMap = {
   secondary: '2px solid white',
   action: '1px solid #909090',
+  button: '1px solid #909090',
 };
 
 const ButtonWrapper = styled.button`

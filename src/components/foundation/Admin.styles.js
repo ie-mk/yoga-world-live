@@ -34,7 +34,9 @@ export const InputStyles = styled.div`
   }
 
   input[type='checkbox'] {
-    height: 40px;
+    height: 42px;
+    width: 42px;
+    padding: 0;
   }
 
   .select {
@@ -52,7 +54,7 @@ export const InputStyles = styled.div`
   .textarea {
     background-color: ${({ backgroundColor }) =>
       backgroundColor ? backgroundColor : '#f0f0f7'};
-    height: ${({ height }) => (height ? height : '200px')};
+    height: ${({ height }) => (height ? height : 'auto')};
     font-size: ${fontSizeMap.text};
     width: 100%;
     padding-left: ${spacing.sm};
