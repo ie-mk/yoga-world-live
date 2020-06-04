@@ -12,15 +12,11 @@ import Button from '../../../../foundation/button/Button';
 import { spacing } from '../../../../../constants/styles';
 import { getEditableCourseData } from '../../../../../store/selectors';
 import { resourceActions } from '../../../../../store/actions';
-import { LEVEL } from '../../../../../constants';
-
-const levelOptions = Object.keys(LEVEL).map(key => {
-  return (
-    <option key={key} value={key}>
-      {LEVEL[key]}
-    </option>
-  );
-});
+import {
+  LEARNING_PATH_OPTIONS,
+  LEVEL,
+  LEVEL_OPTIONS,
+} from '../../../../../constants';
 
 const durationarr = [
   { show: 'Set duration', value: '' },
@@ -66,20 +62,6 @@ const categoryoptions = categoryarr.map(k => {
   );
 });
 
-const learningpatharr = [
-  { show: 'Choose a learning path', value: '' },
-  { show: '1', value: '1' },
-  { show: '2', value: '2' },
-  { show: '3', value: '3' },
-];
-const pathoptions = learningpatharr.map(k => {
-  return (
-    <option key={k.show} value={k.value}>
-      {k.show}
-    </option>
-  );
-});
-
 let CourseDescription = ({ dispatch, editableCourseData }) => {
   const published = editableCourseData.published;
 
@@ -102,12 +84,12 @@ let CourseDescription = ({ dispatch, editableCourseData }) => {
         enableReinitialize={true}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
-          debugger;
+          // debugger;
           dispatch(resourceActions.updateCourse.request({ data: values }));
           setTimeout(() => setSubmitting(false), 1000);
         }}
       >
-        {({ values, handleSubmit, setFieldValue }) => (
+        {({ values, handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <Styled.InputRow>
               <AdminInput
@@ -126,7 +108,7 @@ let CourseDescription = ({ dispatch, editableCourseData }) => {
                 component="select"
                 width="30%"
                 placeholder="Choose a learning path"
-                options={pathoptions}
+                options={LEARNING_PATH_OPTIONS}
               />
               <AdminDropDown
                 classNameString="select"
@@ -135,7 +117,7 @@ let CourseDescription = ({ dispatch, editableCourseData }) => {
                 component="select"
                 width="30%"
                 placeholder="Choose Level"
-                options={levelOptions}
+                options={LEVEL_OPTIONS}
               />
               <AdminDropDown
                 classNameString="select"

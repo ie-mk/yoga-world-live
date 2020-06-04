@@ -8,6 +8,14 @@ export const LEVEL = {
   advanced: 'Advanced',
 };
 
+export const LEVEL_OPTIONS = Object.keys(LEVEL).map(key => {
+  return (
+    <option key={key} value={key}>
+      {LEVEL[key]}
+    </option>
+  );
+});
+
 export const LEARNING_PATH = {
   frontend: 'Frontend developer',
   backend: 'Backend developer',

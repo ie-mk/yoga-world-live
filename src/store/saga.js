@@ -125,8 +125,12 @@ function* createCourse({ payload = {} }) {
 
 function* updateCourse({ payload }) {
   const courseId = yield select(getEditingCourseId);
+
   try {
-    yield api.resource.updateResource('courses', courseId, payload.data);
+    yield api.resource.updateResource('courses', courseId, {
+      ...payload.data,
+      edited: moment().format(),
+    });
     yield put(resourceActions.updateCourse.success());
     yield fetchCourse({ payload: courseId });
   } catch (err) {

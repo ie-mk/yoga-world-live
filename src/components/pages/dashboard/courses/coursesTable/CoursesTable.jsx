@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { resourceActions } from '../../../../../store/actions';
 import { getCourses } from '../../../../../store/selectors';
 import Button from '../../../../foundation/button/Button';
+import { LEARNING_PATH, LEVEL } from '../../../../../constants';
 
 const CoursesTable = ({ dispatch, courses, showPublished, setActiveTab }) => {
   useEffect(() => {
@@ -52,8 +53,8 @@ const CoursesTable = ({ dispatch, courses, showPublished, setActiveTab }) => {
             <Table.Tr key={courseId}>
               <Table.Td>{idx + 1}</Table.Td>
               <Table.Td>{data.title}</Table.Td>
-              <Table.Td>{data.learningPath}</Table.Td>
-              <Table.Td>{data.level}</Table.Td>
+              <Table.Td>{LEARNING_PATH[data.learningPath]}</Table.Td>
+              <Table.Td>{LEVEL[data.level]}</Table.Td>
               <Table.Td>{data.published ? 'Yes' : 'No'}</Table.Td>
               <Table.Td>
                 {data.edited ? data.edited.substring(0, 10) : ''}
