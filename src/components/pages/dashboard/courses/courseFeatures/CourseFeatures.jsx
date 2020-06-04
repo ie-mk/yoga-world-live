@@ -95,6 +95,10 @@ const CourseFeatures = () => {
               belowTabletLarge: {
                 order: '2',
               },
+              aboveTabletLarge: {
+                gridColumn: '1/3',
+                gridRow: 2,
+              },
             }}
           >
             <Styled.FootWrapper>
