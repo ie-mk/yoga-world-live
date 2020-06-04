@@ -7,6 +7,7 @@ import AddLearningPath from './addNew/NewLearningPath';
 import { connect } from 'react-redux';
 import { resourceActions } from '../../../../../store/actions';
 import SpinnerLarge from '../../../../foundation/spinner/SpinnerLarge';
+import { LEARNING_PATH } from '../../../../../constants';
 
 const LearningPathData = ({ dispatch, loading, learningPaths }) => {
   const columnHeaders = ['S.No', 'Learning Path', 'Image', 'Actions'];
@@ -36,7 +37,7 @@ const LearningPathData = ({ dispatch, loading, learningPaths }) => {
           return (
             <Table.Tr key={id}>
               <Table.Td>{idx + 1}</Table.Td>
-              <Table.Td>{rowData.title}</Table.Td>
+              <Table.Td>{LEARNING_PATH[rowData.title]}</Table.Td>
               <Table.Td>
                 <img src="/svg/noun_link.svg" />
               </Table.Td>

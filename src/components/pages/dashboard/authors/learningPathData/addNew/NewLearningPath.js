@@ -8,6 +8,8 @@ import AdminTextArea from '../../../../../foundation/textarea/AdminTextArea';
 import AdminUploadImage from '../../../../../foundation/uploadimage/AdminUploadImage';
 import Button from '../../../../../foundation/button/Button';
 import { resourceActions } from '../../../../../../store/actions';
+import AdminDropDown from '../../../../../foundation/dropdown/AdminDropDown';
+import { LEARNING_PATH_OPTIONS } from '../../../../../../constants';
 
 const initialFormValues = {
   title: '',
@@ -63,12 +65,14 @@ let NewLearningPath = ({
         {({ values, handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <Styled.InputRow>
-              <AdminInput
+              <AdminDropDown
+                classNameString="select"
                 name="title"
-                type="text"
-                label="Learning Path Name"
-                width="70%"
-                backgroundColor="white"
+                label="Learning path"
+                component="select"
+                width="50%"
+                placeholder="Choose a learning path"
+                options={LEARNING_PATH_OPTIONS}
               />
               <AdminUploadImage width="40%" label="Thumbnail" />
             </Styled.InputRow>
