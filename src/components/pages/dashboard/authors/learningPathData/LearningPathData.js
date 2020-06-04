@@ -42,11 +42,8 @@ const LearningPathData = ({ dispatch, loading, learningPaths }) => {
               </Table.Td>
               <Table.Td>
                 <Button
-                  margin="22px"
-                  width="100px"
-                  height="48px"
                   type="action"
-                  fontSize="20px"
+                  fontSize="14px"
                   borderRadius="sm"
                   onClick={() => {
                     setEdit(true);
@@ -56,10 +53,8 @@ const LearningPathData = ({ dispatch, loading, learningPaths }) => {
                   Edit
                 </Button>
                 <Button
-                  width="100px"
-                  height="48px"
                   type="action"
-                  fontSize="20px"
+                  fontSize="14px"
                   borderRadius="sm"
                   onClick={() => handleDelete(id)}
                 >
