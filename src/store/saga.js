@@ -198,7 +198,7 @@ function* deleteTask({ payload: docId }) {
 // ============================ CHAPTERS =====================================
 
 function* fetchChapters() {
-  const courseId = select(getEditingCourseId);
+  const courseId = yield select(getEditingCourseId);
   try {
     const result = yield api.resource.fetchResources(
       'courses',
@@ -221,9 +221,9 @@ function* fetchChapter({ payload: { docId } }) {
 }
 
 function* createChapter() {
-  const courseId = select(getEditingCourseId);
+  const courseId = yield select(getEditingCourseId);
   try {
-    const createdCourseId = yield api.resource.createSubCollection(
+    const createdChapterId = yield api.resource.createSubCollection(
       'courses',
       courseId,
       'chapters',
@@ -231,14 +231,14 @@ function* createChapter() {
         created: moment().transform(),
       },
     );
-    yield put(resourceActions.createChapter.success(createdCourseId));
+    yield put(resourceActions.createChapter.success(createdChapterId));
   } catch (err) {
     yield put(resourceActions.createChapter.failure(err));
   }
 }
 
 function* updateChapter({ payload: chapterId }) {
-  const courseId = select(getEditingCourseId);
+  const courseId = yield select(getEditingCourseId);
   try {
     yield api.resource.updateSubCollection(
       'courses',

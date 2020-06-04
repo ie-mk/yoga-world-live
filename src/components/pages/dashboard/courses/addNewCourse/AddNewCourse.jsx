@@ -18,7 +18,6 @@ const AddNewCourse = ({ dispatch, courseData, chapters }) => {
 
   const handleCreateNewChapter = () => {
     dispatch(resourceActions.createChapter.request());
-    dispatch(resourceActions.fetchChapters.request());
   };
 
   return (
