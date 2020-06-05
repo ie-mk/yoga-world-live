@@ -26,7 +26,8 @@ class MyApp extends App {
 
       if (!IS_SERVER) {
         const path = window.location.pathname;
-        const needsLogin = path.includes('dashboard');
+        const needsLogin =
+          path.includes('dashboard') || path.includes('profile');
 
         const state = getOrCreateStore().getState();
         const uid = getUID(state);

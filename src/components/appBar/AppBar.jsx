@@ -6,11 +6,11 @@ import Button from '../foundation/button/Button';
 import styled from 'styled-components';
 import { userActions } from '../../store/actions';
 import { colors, spacing } from '../../constants/styles';
-import { lightenDarkenColor } from '../../utils/colors';
 import { useTranslation } from 'react-i18next';
 import MenuLink from '../foundation/MenuLink';
 import ContainerBase from '../foundation/ContainerBase';
 import Logo from '../foundation/Logo';
+import { isStaff } from '../../store/selectors';
 
 const JoinButton = () => (
   <Button type="primary" size="lg">
@@ -22,7 +22,7 @@ const LogoutButton = styled(Button)`
   margin-left: 10px;
 `;
 
-const AppBar = ({ user, dispatch, userLanguage }) => {
+const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
   const handleLogout = () => {
     api.user.logout && api.user.logout();
     dispatch(userActions.resetUser());
@@ -65,8 +65,13 @@ const AppBar = ({ user, dispatch, userLanguage }) => {
         </Styled.LinkWrapper>
 
         <Styled.LoginWrapper>
-          {user && user.uid && (
+          {user && user.uid && isStaff && (
             <MenuLink href="/dashboard">
+              <i className="fa fa-briefcase" />
+            </MenuLink>
+          )}
+          {user && user.uid && (
+            <MenuLink href="/profile">
               <i className="fa fa-user" />
             </MenuLink>
           )}
@@ -104,6 +109,7 @@ const AppBar = ({ user, dispatch, userLanguage }) => {
 const mapStateToProps = state => ({
   user: state.user && state.user.loginProviderData,
   userLanguage: state.user && state.user.userLanguage,
+  isStaff: isStaff(state),
 });
 
 export default connect(mapStateToProps)(AppBar);

@@ -20,3 +20,7 @@ export const getEditableCourseData = createSelector(
 );
 
 export const getCourseChapters = state => state.courses.chapters;
+
+export const isStaff = state =>
+  state.user.permissions.data &&
+  (state.user.permissions.data.admin || state.user.permissions.data.author);
