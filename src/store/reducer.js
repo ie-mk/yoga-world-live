@@ -197,6 +197,17 @@ export const courseReducer = handleActions(
     ...getAsyncReducers(resourceActions.fetchCourse, 'data'),
     ...getAsyncReducers(resourceActions.fetchChapters, 'chapters'),
 
+    [resourceActions.fetchChapters.success.type]: (
+      state,
+      { courseId, chapters },
+    ) => ({
+      ...state,
+      data: {
+        ...state.data,
+        [courseId]: { ...state.data[courseId], chapters },
+      },
+    }),
+
     [resourceActions.resetCourses]: state => ({
       ...state,
       data: {},
