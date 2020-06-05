@@ -3,10 +3,10 @@ import ContainerBase from '../../../../foundation/ContainerBase';
 import Grid from '../../../../foundation/Grid';
 import ResponsiveImage from '../../../../foundation/ResponsiveImage';
 import SectionTitle from '../../../../foundation/typography/SectionTitle';
+import BodyText from '../../../../foundation/typography/BodyText';
 import Button from '../../../../foundation/button/Button';
 import Styled from './CourseFeatures.styles';
 import CenteredFlexContainer from '../../../../foundation/CenteredFlexContainer';
-import { spacing } from '../../../../../constants/styles';
 
 const CourseFeatures = () => {
   return (
@@ -24,25 +24,13 @@ const CourseFeatures = () => {
         }}
       />
       <Styled.Content>
-        {/* <Grid
+        <Grid
           mediaConfig={{
             aboveTabletLarge: {
               'grid-template-columns': '350px 1fr',
             },
           }}
           columns="1fr"
-        >  */}
-        <Grid
-          columns="1fr"
-          mediaConfig={{
-            aboveTablet: {
-              'grid-template-columns': '1fr 1fr',
-            },
-            belowDesktop: {
-              'grid-gap': spacing.xl,
-            },
-          }}
-          gridGap={spacing.xxxxl}
         >
           <CenteredFlexContainer
             display="flex"
