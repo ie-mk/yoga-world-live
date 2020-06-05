@@ -3,13 +3,13 @@ import { userActions, layoutActions, resourceActions } from './actions';
 import { IS_SERVER } from '../constants';
 
 export const getAsyncReducers = (
-  action,
+  mainActionName,
   resultProp,
   loadingProp = 'loading',
   errorProp = 'error',
 ) => {
   return ['request', 'success', 'failure'].reduce((acc, type) => {
-    acc[action[type]] = (state, action) => {
+    acc[mainActionName[type]] = (state, action) => {
       const newState = { ...state };
 
       switch (type) {
@@ -24,6 +24,7 @@ export const getAsyncReducers = (
               ...action.payload,
             };
           }
+
           newState[loadingProp] = false;
           break;
 
@@ -192,11 +193,46 @@ export const courseReducer = handleActions(
     ...getAsyncReducers(resourceActions.createCourse, 'data'),
     ...getAsyncReducers(resourceActions.updateCourse, 'data'),
     ...getAsyncReducers(resourceActions.deleteCourse, 'data'),
-    ...getAsyncReducers(resourceActions.fetchCourse, 'data'),
     ...getAsyncReducers(resourceActions.fetchCourses, 'data'),
+    ...getAsyncReducers(resourceActions.fetchCourse, 'data'),
+
+    [resourceActions.fetchChapters.success.type]: (
+      state,
+      { payload: { courseId, chapters } },
+    ) => {
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          [courseId]: { ...state.data[courseId], chapters },
+        },
+      };
+    },
+
+    [resourceActions.resetCourses]: state => ({
+      ...state,
+      data: {},
+    }),
+
+    [resourceActions.setEditableCourseId]: (state, { payload }) => ({
+      ...state,
+      editableCourseId: payload,
+    }),
+
+    [resourceActions.deleteCourseFromState]: (state, { payload }) => {
+      const courses = { ...state.data };
+
+      delete courses[payload];
+
+      return {
+        ...state,
+        data: courses,
+      };
+    },
   },
   {
     data: {},
+    editableCourseId: null,
     loading: false,
   },
 );
@@ -236,6 +272,17 @@ export const learningPathReducer = handleActions(
     ...getAsyncReducers(resourceActions.deleteLearningPath, 'data'),
     ...getAsyncReducers(resourceActions.fetchLearningPath, 'data'),
     ...getAsyncReducers(resourceActions.fetchLearningPaths, 'data'),
+
+    [resourceActions.deleteLearningPathFromState]: (state, { payload }) => {
+      const learningPaths = { ...state.data };
+
+      delete learningPaths[payload];
+
+      return {
+        ...state,
+        data: learningPaths,
+      };
+    },
   },
   {
     data: {},

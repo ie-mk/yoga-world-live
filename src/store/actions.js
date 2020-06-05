@@ -33,6 +33,15 @@ export const resourceActions = {
   deleteCourse: createAsyncAction('delete-course'),
   fetchCourse: createAsyncAction('fetch-course'),
   fetchCourses: createAsyncAction('fetch-courses'),
+  resetCourses: createAction('reset-courses'),
+  setEditableCourseId: createAction('set-editing-course-id'),
+  deleteCourseFromState: createAction('delete-course-from-state'),
+
+  createChapter: createAsyncAction('create-chapter'),
+  updateChapter: createAsyncAction('update-chapter'),
+  deleteChapter: createAsyncAction('delete-chapter'),
+  fetchChapter: createAsyncAction('fetch-chapter'),
+  fetchChapters: createAsyncAction('fetch-chapters'),
 
   createTask: createAsyncAction('create-task'),
   updateTask: createAsyncAction('update-task'),
@@ -51,6 +60,7 @@ export const resourceActions = {
   deleteLearningPath: createAsyncAction('delete-learning-path'),
   fetchLearningPath: createAsyncAction('fetch-learning-path'),
   fetchLearningPaths: createAsyncAction('fetch-learning-paths'),
+  deleteLearningPathFromState: createAction('delete-learning-path-from-state'),
 };
 
 if (!IS_SERVER) {

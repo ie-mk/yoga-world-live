@@ -5,13 +5,11 @@ import Styled from '../Admin.styles';
 const AdminDropDown = ({
   name,
   label,
-  value,
   classNameString,
   placeholder,
   component,
   width,
   height,
-  onChange,
   options,
   displayLabelLeft,
   dropdownWidth,
@@ -33,9 +31,7 @@ const AdminDropDown = ({
           className={classNameString}
           name={name}
           component={component}
-          value={value}
           placeholder={placeholder}
-          onChange={onChange}
         >
           {options}
         </Field>

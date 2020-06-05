@@ -5,12 +5,11 @@ import Styled from '../Admin.styles';
 const AdminTextArea = ({
   name,
   label,
-  value,
   rows,
   cols,
   width,
-  onChange,
   backgroundColor,
+  placeholder,
   height,
 }) => {
   return (
@@ -23,8 +22,7 @@ const AdminTextArea = ({
           component="textarea"
           rows={rows}
           cols={cols}
-          value={value}
-          onChange={onChange}
+          placeholder={placeholder}
         />
       </Styled.InputStyles>
     </Styled.Wrapper>

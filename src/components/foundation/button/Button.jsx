@@ -10,6 +10,7 @@ const paddingMap = {
 };
 
 const marginMap = {
+  null: '0 0 0 0',
   sm: '0 10px 0 0',
   md: '0 20px 0 0',
   lg: '0 30px 0 0',
@@ -29,6 +30,7 @@ const borderRadiusMap = {
 const backGroundMap = {
   primary:
     'transparent linear-gradient(90deg, #2385D9 0%, #0EC9B0 100%) 0% 0% no-repeat padding-box;',
+  button: 'gray',
 };
 
 const colorMap = {
@@ -36,11 +38,13 @@ const colorMap = {
   warning: colors.button.warning,
   danger: 'red',
   action: 'black',
+  button: 'black',
 };
 
 const borderMap = {
   secondary: '2px solid white',
   action: '1px solid #909090',
+  button: '1px solid #909090',
 };
 
 const ButtonWrapper = styled.button`
@@ -48,7 +52,7 @@ const ButtonWrapper = styled.button`
   width: ${({ width }) => (width ? width : 'none')};
   height: ${({ height }) => (height ? height : 'none')};
   margin: ${({ margin }) =>
-    marginMap[margin] ? marginMap[margin] : '0 40px 0 0'};
+    marginMap[margin] ? marginMap[margin] : margin ? margin : '0 40px 0 0'};
   padding: ${({ size }) => (paddingMap[size] ? paddingMap[size] : '10px')};
   padding: ${({ padding }) =>
     paddingMap[padding] ? paddingMap[padding] : padding};

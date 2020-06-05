@@ -8,3 +8,19 @@ export const getUID = state =>
   state.user.loginProviderData.uid;
 
 export const getPermissions = state => state.user.permissions;
+
+export const getCourses = state => state.courses.data;
+
+export const getEditingCourseId = state => state.courses.editableCourseId;
+
+export const getEditableCourseData = createSelector(
+  getCourses,
+  getEditingCourseId,
+  (courses, editableCourseId) => courses[editableCourseId] || {},
+);
+
+export const getCourseChapters = state => state.courses.chapters;
+
+export const isStaff = state =>
+  state.user.permissions.data &&
+  (state.user.permissions.data.admin || state.user.permissions.data.author);

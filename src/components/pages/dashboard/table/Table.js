@@ -3,7 +3,7 @@ import Styled from './Table.styles';
 
 const Table = ({ columnHeaders, children }) => {
   const headers = columnHeaders.map((key, index) => (
-    <Styled.Th>{columnHeaders[index]}</Styled.Th>
+    <Styled.Th key={key}>{columnHeaders[index]}</Styled.Th>
   ));
 
   return (
