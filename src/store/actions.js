@@ -40,8 +40,13 @@ export const resourceActions = {
   createChapter: createAsyncAction('create-chapter'),
   updateChapter: createAsyncAction('update-chapter'),
   deleteChapter: createAsyncAction('delete-chapter'),
-  fetchChapter: createAsyncAction('fetch-chapter'),
   fetchChapters: createAsyncAction('fetch-chapters'),
+
+  createLesson: createAsyncAction('create-lesson'),
+  updateLesson: createAsyncAction('update-lesson'),
+  deleteLesson: createAsyncAction('delete-lesson'),
+  fetchLessons: createAsyncAction('fetch-lessons'),
+  fetchLesson: createAsyncAction('fetch-lesson'),
 
   createTask: createAsyncAction('create-task'),
   updateTask: createAsyncAction('update-task'),
