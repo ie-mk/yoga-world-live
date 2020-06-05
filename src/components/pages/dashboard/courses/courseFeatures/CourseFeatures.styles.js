@@ -22,6 +22,7 @@ const ItemContainer = styled.div`
   align-items: center;
   padding: ${spacing.md} 0;
   font-size: ${fontSizeMap.text};
+  font-weight: 300;
   img {
     padding-right: ${spacing.lg};
   }

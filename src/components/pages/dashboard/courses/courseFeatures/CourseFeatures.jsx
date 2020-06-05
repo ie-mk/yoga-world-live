@@ -32,13 +32,15 @@ const CourseFeatures = () => {
           }}
           columns="1fr"
         >
-          <CenteredFlexContainer
+          <ContainerBase
             display="flex"
             flexDirection="column"
             zIndex="1"
             mediaConfig={{
               belowTabletLarge: {
                 order: '3',
+                justifyContent: 'center',
+                alignItems: 'center',
               },
             }}
           >
@@ -70,10 +72,16 @@ const CourseFeatures = () => {
                 Self-paced and interactive
               </Styled.ItemContainer>
             </Styled.ItemsWrapper>
-            <Button type="primary" size="lg" padding="20px 50px">
+            <Button
+              type="primary"
+              size="lg"
+              padding="20px 50px"
+              maxWidth="280px"
+              margin="0"
+            >
               START LEARNING
             </Button>
-          </CenteredFlexContainer>
+          </ContainerBase>
           <ContainerBase
             position="relative"
             mediaConfig={{
@@ -94,6 +102,7 @@ const CourseFeatures = () => {
             mediaConfig={{
               belowTabletLarge: {
                 order: '2',
+                marginBottom: '60px',
               },
               aboveTabletLarge: {
                 gridColumn: '1/3',
