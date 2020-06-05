@@ -42,7 +42,8 @@ const FootWrapper = styled.div`
 
 const Content = styled.div`
   max-width: 1100px;
-  margin: 250px 10%;
+  margin: 250px 5% 250px 1%;
+  padding-top: 150px;
   width: 100%;
   z-index: 1;
 

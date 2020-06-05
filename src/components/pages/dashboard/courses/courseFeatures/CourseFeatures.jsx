@@ -24,14 +24,6 @@ const CourseFeatures = () => {
         }}
       />
       <Styled.Content>
-        {/* <Grid
-          mediaConfig={{
-            aboveTabletLarge: {
-              'grid-template-columns': '350px 1fr',
-            },
-          }}
-          columns="1fr"
-        >  */}
         <Grid
           columns="1fr"
           mediaConfig={{
