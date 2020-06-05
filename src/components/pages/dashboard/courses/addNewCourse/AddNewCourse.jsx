@@ -11,22 +11,25 @@ import {
 import Button from '../../../../foundation/button/Button';
 import CenteredFlexContainer from '../../../../foundation/CenteredFlexContainer';
 
-const AddNewCourse = ({ dispatch, courseData, chapters }) => {
+const AddNewCourse = ({ dispatch, courseData }) => {
   useEffect(() => {
-    //dispatch(resourceActions.fetchChapters.request());
-  });
+    dispatch(resourceActions.fetchChapters.request());
+  }, []);
 
   const handleCreateNewChapter = () => {
     dispatch(resourceActions.createChapter.request());
   };
 
+  const chapters = courseData.chapters;
+
   return (
     <ContainerBase>
       <CourseDescription />
-      {Object.keys(chapters).map(chapterId => {
-        const data = chapters[chapterId];
-        return <CourseChapter data={data} />;
-      })}
+      {chapters &&
+        Object.keys(chapters).map(chapterId => {
+          const data = chapters[chapterId];
+          return <CourseChapter data={data} />;
+        })}
       <CenteredFlexContainer margin="lg">
         <Button type="primary" size="lg" onClick={handleCreateNewChapter}>
           Add New Chapter
@@ -38,7 +41,6 @@ const AddNewCourse = ({ dispatch, courseData, chapters }) => {
 
 const mapStateToProps = state => ({
   courseData: getEditableCourseData(state),
-  chapters: getCourseChapters(state),
 });
 
 export default connect(mapStateToProps)(AddNewCourse);

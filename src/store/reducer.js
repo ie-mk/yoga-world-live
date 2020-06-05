@@ -195,18 +195,19 @@ export const courseReducer = handleActions(
     ...getAsyncReducers(resourceActions.deleteCourse, 'data'),
     ...getAsyncReducers(resourceActions.fetchCourses, 'data'),
     ...getAsyncReducers(resourceActions.fetchCourse, 'data'),
-    ...getAsyncReducers(resourceActions.fetchChapters, 'chapters'),
 
     [resourceActions.fetchChapters.success.type]: (
       state,
-      { courseId, chapters },
-    ) => ({
-      ...state,
-      data: {
-        ...state.data,
-        [courseId]: { ...state.data[courseId], chapters },
-      },
-    }),
+      { payload: { courseId, chapters } },
+    ) => {
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          [courseId]: { ...state.data[courseId], chapters },
+        },
+      };
+    },
 
     [resourceActions.resetCourses]: state => ({
       ...state,
@@ -233,7 +234,6 @@ export const courseReducer = handleActions(
     data: {},
     editableCourseId: null,
     loading: false,
-    chapters: {},
   },
 );
 

@@ -200,12 +200,12 @@ function* deleteTask({ payload: docId }) {
 function* fetchChapters() {
   const courseId = yield select(getEditingCourseId);
   try {
-    const chapters = yield api.resource.fetchResources(
+    const chapters = yield api.resource.fetchSubCollection(
       'courses',
       courseId,
       'chapters',
     );
-    debugger;
+
     yield put(
       resourceActions.fetchChapters.success({
         courseId,
