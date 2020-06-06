@@ -10,6 +10,7 @@ import AdminInput from '../../foundation/input/AdminInput';
 import AdminDropDown from '../../foundation/dropdown/AdminDropDown';
 import AdminTextArea from '../../foundation/textarea/AdminTextArea';
 import AdminUploadImage from '../../foundation/uploadimage/AdminUploadImage';
+import CheckBoxWithText from '../../foundation/checkboxwithtext/CheckBoxWithText';
 
 import { Field, Formik } from 'formik';
 
@@ -159,6 +160,14 @@ const StoryBook = () => (
       </BodyText>
       <p>COMPONENT: SectionTitle 36px</p>
       <SectionTitle text="Title of the section" />
+
+      <p>COMPONENT: CheckBoxWithText 36px</p>
+      <CheckBoxWithText
+        label="CheckBoxWithText"
+        width="30%"
+        color="white"
+        fontSize="h3"
+      />
     </ExpandableContainer>
     <ExpandableContainer title="Footer">TODO..</ExpandableContainer>
     <ExpandableContainer title="Dashboard">TODO..</ExpandableContainer>

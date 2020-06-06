@@ -14,13 +14,14 @@ const Content = styled.div`
   max-width: 1200px;
   width: 100%;
   padding: ${spacing.lg};
-  margin-top: 100px;
+  margin-top: ${({ hasDefaultMarginTop }) =>
+    hasDefaultMarginTop ? '100px' : ''};
 `;
 
-const PageContent = ({ children }) => {
+const PageContent = ({ children, hasDefaultMarginTop }) => {
   return (
     <Wrapper>
-      <Content>{children}</Content>
+      <Content hasDefaultMarginTop={hasDefaultMarginTop}>{children}</Content>
     </Wrapper>
   );
 };

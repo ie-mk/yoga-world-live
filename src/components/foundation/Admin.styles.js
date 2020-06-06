@@ -6,11 +6,17 @@ import {
   spacing,
   dashboard,
 } from '../../constants/styles';
+import media from '../foundation/media';
 
 export const Label = styled.div`
   padding-top: ${spacing.sm};
   padding-bottom: ${spacing.xxxS};
-  font-size: ${fontSizeMap.textS};
+  font-size: ${({ fontSize }) =>
+    fontSizeMap[fontSize] ? fontSizeMap[fontSize] : fontSizeMap.textS};
+  // font-size: ${fontSizeMap.textS};
+  ${media.belowTabletLarge`
+    font-size: ${fontSizeMap.textMobile};
+  `}
   margin-left: ${({ marginLeft }) => (marginLeft ? marginLeft : '')};
   margin-right: ${({ marginRight }) => (marginRight ? marginRight : '')};
 `;
@@ -92,9 +98,30 @@ const UploadImageButton = styled.label`
   }
 `;
 
+const ItemContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: ${spacing.md} 0;
+  font-size: ${fontSizeMap.h3};
+  font-weight: 300;
+  color: ${({ color }) => (color ? color : 'black')};
+  img {
+    padding-right: ${spacing.lg};
+    ${media.belowTabletLarge`
+      width: 35px;
+   `}
+  }
+  ${media.belowTabletLarge`
+     padding: ${spacing.xS} 0;
+   `};
+`;
+
 export default {
   InputStyles,
   Label,
   Wrapper,
   UploadImageButton,
+  ItemContainer,
 };

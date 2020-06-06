@@ -6,7 +6,7 @@ import UserProfile from '../components/profile/Profile';
 const Profile = () => {
   return (
     <ErrorBoundary>
-      <PageContent>
+      <PageContent hasDefaultMarginTop={true}>
         <UserProfile />
       </PageContent>
     </ErrorBoundary>
