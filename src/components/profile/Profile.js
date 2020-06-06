@@ -4,7 +4,8 @@ import ContainerBase from '../foundation/ContainerBase';
 import { connect } from 'react-redux';
 import Button from '../foundation/button/Button';
 import HeroTitle from '../foundation/typography/HeroTitle';
-
+import CardTitle from '../foundation/typography/CardTitle';
+import BodyText from '../foundation/typography/BodyText';
 const Profile = ({ user }) => {
   const [activeTab, setActiveTab] = useState('learning');
 
@@ -33,14 +34,13 @@ const Profile = ({ user }) => {
         <Styled.ProfileDetails>
           <Styled.DetailsWrapper>
             <HeroTitle margin="0" text="Student Name" />
-            <Styled.Role>Frontend Developer</Styled.Role>
-            <Styled.Place>
-              <i className="fa fa-map-marker" aria-hidden="true" /> Wembley
-            </Styled.Place>
-            <Styled.Place>
-              <i className="fa fa-globe" aria-hidden="true" />{' '}
-              www.studentwebsite.com
-            </Styled.Place>
+            <CardTitle margin="0" text="Frontend Developer" />
+
+            {/* <i className="fa fa-map-marker" aria-hidden="true" /> */}
+            <BodyText margin="0" children="Wembley" />
+
+            {/* <i className="fa fa-globe" aria-hidden="true" />{' '} */}
+            <BodyText margin="0" children="www.studentwebsite.com" />
           </Styled.DetailsWrapper>
 
           <Styled.ShowDesktopOnly>

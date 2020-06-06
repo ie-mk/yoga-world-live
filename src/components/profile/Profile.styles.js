@@ -30,13 +30,12 @@ export const ProfileInfoPageWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 70px;
   background-color: #2385d92b;
   opacity: 0.4;
-  //@media only screen and (min-width: 600px) {
-  //  padding-left: 200px;
-  //  padding-right: 200px;
-  //}
+  padding: 43px 278px 36px 298px;
+  ${media.belowTabletLarge`
+   padding:33px 20px 30px 20px;
+`}
 `;
 
 export const ShowDesktopOnly = styled.div`
@@ -62,7 +61,10 @@ export const ImageWrapper = styled.div`
   }
 `;
 export const DetailsWrapper = styled.div`
+  margin-left: 30px;
+  ${media.aboveTabletLarge`
   margin-left: 50px;
+`}
 `;
 
 export const Tab = styled.div`
@@ -72,18 +74,6 @@ export const Tab = styled.div`
 `;
 export const SocialImage = styled.img`
   padding: 5px;
-`;
-export const Name = styled.div`
-  padding: 7px;
-  font-size: 30px;
-`;
-export const Role = styled.div`
-  padding: 7px;
-  font-size: 24px;
-`;
-export const Place = styled.div`
-  padding: 7px;
-  font-size: 20px;
 `;
 
 export const ProfileDetails = styled.div`
@@ -102,7 +92,4 @@ export default {
   DetailsWrapper,
   Tab,
   SocialImage,
-  Name,
-  Role,
-  Place,
 };
