@@ -14,6 +14,7 @@ const Content = styled.div`
   max-width: 1200px;
   width: 100%;
   padding: ${spacing.lg};
+  margin-top: 100px;
 `;
 
 const PageContent = ({ children }) => {
