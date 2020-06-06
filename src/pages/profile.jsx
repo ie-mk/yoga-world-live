@@ -1,13 +1,13 @@
 import React from 'react';
 import ErrorBoundary from '../components/ErrorBoundary';
 import PageContent from '../components/foundation/PageContent';
-import ContainerBase from '../components/foundation/ContainerBase';
+import UserProfile from '../components/profile/Profile';
 
 const Profile = () => {
   return (
     <ErrorBoundary>
       <PageContent>
-        <ContainerBase marginTop="xxxxxl">Profile page</ContainerBase>
+        <UserProfile />
       </PageContent>
     </ErrorBoundary>
   );

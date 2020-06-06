@@ -5,14 +5,14 @@ import media from '../media';
 
 const StyledH2 = styled.h2`
   font-size: ${fontSizeMap.h4};
-
+  margin: ${({ margin }) => margin || ''};
   ${media.aboveTablet`
     font-size: ${fontSizeMap.h2};
-  `}
+  `};
 `;
 
-const HeroTitle = ({ text }) => {
-  return <StyledH2>{text}</StyledH2>;
+const HeroTitle = ({ text, margin }) => {
+  return <StyledH2 margin={margin}>{text}</StyledH2>;
 };
 
 export default HeroTitle;

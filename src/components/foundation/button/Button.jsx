@@ -74,10 +74,11 @@ const ButtonWrapper = styled.button`
     box-shadow: 0 0 2px 2px white;
   }
 
-  ${({ mediaConfig }) =>
+  ${({ mediaConfig, mobileSameSize }) =>
     mediaConfig
       ? getMedia(mediaConfig)
-      : getMedia({
+      : !mobileSameSize &&
+        getMedia({
           belowTablet: {
             padding: paddingMap.mobile,
             fontSize: fontSizeMap.mobile,

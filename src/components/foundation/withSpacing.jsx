@@ -87,7 +87,7 @@ const withSpacing = Component => ({
         marginLeft,
       }}
     >
-      <Component {...props} />
+      <Component margin={margin} {...props} />
     </ContainerRoot>
   );
 };
