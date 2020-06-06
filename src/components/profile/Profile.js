@@ -3,6 +3,7 @@ import Styled from './Profile.styles';
 import ContainerBase from '../foundation/ContainerBase';
 import { connect } from 'react-redux';
 import Button from '../foundation/button/Button';
+import HeroTitle from '../foundation/typography/HeroTitle';
 
 const Profile = ({ user }) => {
   const [activeTab, setActiveTab] = useState('learning');
@@ -14,7 +15,7 @@ const Profile = ({ user }) => {
   return (
     <ContainerBase>
       <Styled.ProfileWrapper>
-        <Styled.Wrapper>
+        <Styled.ImageWrapper>
           <Styled.Image src={user.photoURL} />
           <Button
             className="mobileView"
@@ -23,46 +24,33 @@ const Profile = ({ user }) => {
             borderRadius="sm"
             height="45px"
             size="sm"
+            margin="34px 0 0"
+            mobileSameSize={true}
           >
             Edit
           </Button>
-        </Styled.Wrapper>
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        </Styled.ImageWrapper>
+        <Styled.ProfileDetails>
           <Styled.DetailsWrapper>
-            <Styled.Name>Student Name</Styled.Name>
+            <HeroTitle margin="0" text="Student Name" />
             <Styled.Role>Frontend Developer</Styled.Role>
             <Styled.Place>
-              <i class="fa fa-map-marker" aria-hidden="true" /> Wembley
+              <i className="fa fa-map-marker" aria-hidden="true" /> Wembley
             </Styled.Place>
             <Styled.Place>
-              <i class="fa fa-globe" aria-hidden="true" />{' '}
+              <i className="fa fa-globe" aria-hidden="true" />{' '}
               www.studentwebsite.com
             </Styled.Place>
-            <Styled.SocialImage
-              className="mobileViewImage"
-              src="img/fb_image.png"
-            />
-            <Styled.SocialImage
-              className="mobileViewImage"
-              src="img/image 9.png"
-            />
-            <Styled.SocialImage
-              className="mobileViewImage"
-              src="img/image 10.png"
-            />
-            <Styled.SocialImage
-              className="mobileViewImage"
-              src="img/image 11.png"
-            />
           </Styled.DetailsWrapper>
 
-          <Styled.DesktopView>
+          <Styled.ShowDesktopOnly>
             <Button
               type="primary"
               width="100px"
               borderRadius="sm"
               height="45px"
               size="sm"
+              margin="0"
             >
               Edit
             </Button>
@@ -72,8 +60,8 @@ const Profile = ({ user }) => {
               <Styled.SocialImage src="img/image 10.png" />
               <Styled.SocialImage src="img/image 11.png" />
             </div>
-          </Styled.DesktopView>
-        </div>
+          </Styled.ShowDesktopOnly>
+        </Styled.ProfileDetails>
       </Styled.ProfileWrapper>
 
       <Styled.ProfileInfoPageWrapper>

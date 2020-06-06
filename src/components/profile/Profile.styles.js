@@ -6,26 +6,24 @@ import {
   fontSizeMap,
   borderRadius,
 } from '../../constants/styles';
+import media from '../foundation/media';
 
 export const ProfileWrapper = styled.div`
-  flex: 1;
   display: flex;
-  align-items: center;
-  height: 300px;
-  margin-top: 100px;
   background-color: #2385d92b;
-  @media only screen and (min-width: 600px) {
-    margin-right: 100px;
-    margin-left: 70px;
-  }
+  padding: 86px 90px 86px 165px;
+  ${media.belowTabletLarge`
+    padding: 42px 20px;
+  `}
 `;
 export const Image = styled.img`
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
-  @media only screen and (min-width: 600px) {
-    margin-left: 100px;
-  }
+  ${media.belowTabletLarge`
+    width: 100px;
+    height: 100px;
+  `}
 `;
 export const ProfileInfoPageWrapper = styled.div`
   flex: 1;
@@ -35,39 +33,36 @@ export const ProfileInfoPageWrapper = styled.div`
   height: 70px;
   background-color: #2385d92b;
   opacity: 0.4;
-  @media only screen and (min-width: 600px) {
-    margin-right: 100px;
-    margin-left: 70px;
-    padding-left: 200px;
-    padding-right: 200px;
-  }
+  //@media only screen and (min-width: 600px) {
+  //  padding-left: 200px;
+  //  padding-right: 200px;
+  //}
 `;
-export const DesktopView = styled.div`
-  @media only screen and (min-width: 600px) {
-    flex: 1;
+
+export const ShowDesktopOnly = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  ${media.belowTabletLarge`
+    display: none
+  `}
+`;
+
+export const ImageWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    margin-left: 200px;
-  }
-  @media only screen and (max-width: 600px) {
-    display: none;
-  }
-`;
-export const Wrapper = styled.div`
-  @media only screen and (min-width: 600px) {
+    align-items: center;
     .mobileView {
-      display: none;
+      ${media.aboveTabletLarge`
+        display: none;
+      `}
     }
   }
 `;
 export const DetailsWrapper = styled.div`
   margin-left: 50px;
-  @media only screen and (min-width: 600px) {
-    .mobileViewImage {
-      display: none;
-    }
-  }
 `;
 
 export const Tab = styled.div`
@@ -91,12 +86,19 @@ export const Place = styled.div`
   font-size: 20px;
 `;
 
+export const ProfileDetails = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+`;
+
 export default {
+  ProfileDetails,
   Image,
   ProfileWrapper,
   ProfileInfoPageWrapper,
-  DesktopView,
-  Wrapper,
+  ShowDesktopOnly,
+  ImageWrapper,
   DetailsWrapper,
   Tab,
   SocialImage,
