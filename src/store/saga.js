@@ -260,9 +260,15 @@ function* updateChapter({ payload: chapterId }) {
   }
 }
 
-function* deleteChapter({ payload }) {
+function* deleteChapter({ payload: docId }) {
+  const courseId = yield select(getEditingCourseId);
   try {
-    yield api.resource.deleteResource('tasks', payload.docId);
+    yield api.resource.deleteSubCollectionDoc(
+      'courses',
+      courseId,
+      'chapters',
+      docId,
+    );
     yield put(resourceActions.deleteChapter.success());
   } catch (err) {
     yield put(resourceActions.deleteChapter.failure(err));

@@ -7,11 +7,22 @@ import AdminInput from '../../../../foundation/input/AdminInput';
 import { Formik, ErrorMessage, Field } from 'formik';
 import { resourceActions } from '../../../../../store/actions';
 
-const CourseChapter = ({ dispatch, data = {} }) => {
-  // return <Styled.Wrapper>Course chapter</Styled.Wrapper>;
+const CourseChapter = ({ dispatch, chapterId, data }) => {
+  const handleChapterDelete = () => {
+    if (confirm('Are you sure you want to delete this chapter?')) {
+      dispatch(resourceActions.deleteChapter.request(chapterId));
+    }
+  };
+
   return (
     <ContainerBase paddingLeft="xxxl" paddingRight="xxxl" paddingBottom="xxxxl">
-      <Styled.ChapterHeader> Chapter</Styled.ChapterHeader>
+      <Styled.ChapterHeader>
+        {' '}
+        Chapter
+        <Styled.DeleteChapterButton onClick={handleChapterDelete}>
+          Delete <i className="fa fa-close" />
+        </Styled.DeleteChapterButton>
+      </Styled.ChapterHeader>
 
       <Formik
         initialValues={{ ...initialFormValues, ...data }}
@@ -19,7 +30,7 @@ const CourseChapter = ({ dispatch, data = {} }) => {
         //  validationSchema={profileFormValidation}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
-          dispatch(resourceActions.updateLesson.request(values));
+          dispatch(resourceActions.updateChapter.request(values));
           setTimeout(() => setSubmitting(false), 1000);
         }}
       >
@@ -29,7 +40,7 @@ const CourseChapter = ({ dispatch, data = {} }) => {
               <AdminInput
                 name="title"
                 type="text"
-                label="Chapter 01 Title"
+                label="Chapter title"
                 placeholder="Enter chapter title"
                 width="46.5%"
               />
