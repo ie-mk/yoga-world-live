@@ -7,6 +7,13 @@ import BodyText from '../../../../foundation/typography/BodyText';
 import Button from '../../../../foundation/button/Button';
 import Styled from './CourseFeatures.styles';
 import CenteredFlexContainer from '../../../../foundation/CenteredFlexContainer';
+import CheckBoxWithText from '../../../../foundation/checkboxwithtext/CheckBoxWithText';
+
+var data = [
+  { Feature: 'Take all our courses online' },
+  { Feature: 'Course available in On-site' },
+  { Feature: 'Self-paced and interactive' },
+];
 
 const CourseFeatures = () => {
   return (
@@ -47,30 +54,17 @@ const CourseFeatures = () => {
             <SectionTitle text="Course Features" />
 
             <Styled.ItemsWrapper>
-              <Styled.ItemContainer>
-                <img
-                  src="/svg/checkmark-circle-outline.svg"
-                  aria-hidden="true"
-                  alt="icon"
-                />{' '}
-                Take all our courses online
-              </Styled.ItemContainer>
-              <Styled.ItemContainer>
-                <img
-                  src="/svg/checkmark-circle-outline.svg"
-                  aria-hidden="true"
-                  alt="icon"
-                />{' '}
-                Course available in On-site
-              </Styled.ItemContainer>
-              <Styled.ItemContainer>
-                <img
-                  src="/svg/checkmark-circle-outline.svg"
-                  aria-hidden="true"
-                  alt="icon"
-                />{' '}
-                Self-paced and interactive
-              </Styled.ItemContainer>
+              {data.map((s, i) => {
+                return (
+                  <CheckBoxWithText
+                    key={i}
+                    label={s.Feature}
+                    // width="30%"
+                    color="white"
+                    fontSize="text"
+                  />
+                );
+              })}
             </Styled.ItemsWrapper>
             <Button
               type="primary"

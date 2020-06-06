@@ -15,30 +15,18 @@ const Wrapper = styled.div`
   `}
 `;
 
-const ItemContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  padding: ${spacing.md} 0;
-  font-size: ${fontSizeMap.text};
-  font-weight: 300;
-  img {
-    padding-right: ${spacing.lg};
-  }
-`;
-
 const ItemsWrapper = styled.div`
-  margin-bottom: ${spacing.xxl};
+  margin-bottom: ${spacing.xls};
 `;
 
 const FootWrapper = styled.div`
   position: relative;
-  font-size: ${fontSizeMap.h3};
-  //justify-content: center;
-  //align-items:center;
   text-align: center;
   margin-top: ${spacing.xxl};
+  font-size: ${fontSizeMap.h3};
+  ${media.belowTabletLarge`
+    font-size: ${fontSizeMap.text};
+  `}
 `;
 
 const Content = styled.div`
@@ -49,13 +37,12 @@ const Content = styled.div`
   z-index: 1;
 
   ${media.belowTabletLarge`
-    margin: 100px;
+    margin: 70px;
   `}
 `;
 
 export default {
   Wrapper,
-  ItemContainer,
   ItemsWrapper,
   FootWrapper,
   Content,
