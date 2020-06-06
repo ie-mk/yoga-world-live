@@ -21,7 +21,7 @@ const AddNewCourse = ({ dispatch, courseData }) => {
   };
 
   const chapters = courseData.chapters;
-
+  debugger;
   return (
     <ContainerBase>
       <CourseDescription />

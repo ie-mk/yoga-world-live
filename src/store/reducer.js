@@ -206,7 +206,10 @@ export const courseReducer = handleActions(
         ...state,
       };
 
-      newState.data[courseId].chapters = chapters;
+      const newCourseState = { ...state.data[courseId] };
+      newCourseState.chapters = chapters;
+
+      newState.data[courseId] = newCourseState;
 
       return newState;
     },
