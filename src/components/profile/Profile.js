@@ -54,9 +54,9 @@ const Profile = ({ user }) => {
             <Styled.ShowMobileOnly>
               <ContainerBase maxWidth="140px" margin="0 auto 0">
                 <Styled.SocialImage src="img/fb_image.png" />
-                <Styled.SocialImage src="img/image 9.png" />
-                <Styled.SocialImage src="img/image 10.png" />
-                <Styled.SocialImage src="img/image 11.png" />
+                <Styled.SocialImage src="img/instagram_image.png" />
+                <Styled.SocialImage src="img/twitter_image.png" />
+                <Styled.SocialImage src="img/linkdin_image.png" />
               </ContainerBase>
             </Styled.ShowMobileOnly>
           </Styled.DetailsWrapper>
@@ -74,9 +74,9 @@ const Profile = ({ user }) => {
             </Button>
             <div>
               <Styled.SocialImage src="img/fb_image.png" />
-              <Styled.SocialImage src="img/image 9.png" />
-              <Styled.SocialImage src="img/image 10.png" />
-              <Styled.SocialImage src="img/image 11.png" />
+              <Styled.SocialImage src="img/instagram_image.png" />
+              <Styled.SocialImage src="img/twitter_image.png" />
+              <Styled.SocialImage src="img/linkdin_image.png" />
             </div>
           </Styled.ShowDesktopOnly>
         </Styled.ProfileDetails>
