@@ -200,12 +200,18 @@ function* deleteTask({ payload: docId }) {
 function* fetchChapters() {
   const courseId = yield select(getEditingCourseId);
   try {
-    const result = yield api.resource.fetchResources(
+    const chapters = yield api.resource.fetchSubCollection(
       'courses',
       courseId,
       'chapters',
     );
-    yield put(resourceActions.fetchChapters.success(result));
+
+    yield put(
+      resourceActions.fetchChapters.success({
+        courseId,
+        chapters,
+      }),
+    );
   } catch (err) {
     yield put(resourceActions.fetchChapters.failure(err));
   }
@@ -228,10 +234,12 @@ function* createChapter() {
       courseId,
       'chapters',
       {
-        created: moment().transform(),
+        created: moment().format(),
+        parentId: courseId,
       },
     );
     yield put(resourceActions.createChapter.success(createdChapterId));
+    yield fetchChapters();
   } catch (err) {
     yield put(resourceActions.createChapter.failure(err));
   }
