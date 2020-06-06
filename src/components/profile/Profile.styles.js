@@ -45,7 +45,17 @@ export const ShowDesktopOnly = styled.div`
   align-items: flex-end;
 
   ${media.belowTabletLarge`
-    display: none
+    display: none;
+  `}
+`;
+
+export const ShowMobileOnly = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  ${media.aboveTabletLarge`
+    display: none;
   `}
 `;
 
@@ -62,9 +72,15 @@ export const ImageWrapper = styled.div`
 `;
 export const DetailsWrapper = styled.div`
   margin-left: 30px;
+
   ${media.aboveTabletLarge`
-  margin-left: 50px;
-`}
+    margin-left: 50px;
+  `}
+
+  i {
+    font-size: ${fontSizeMap.h4m};
+    padding-right: ${spacing.md};
+  }
 `;
 
 export const Tab = styled.div`
@@ -73,7 +89,12 @@ export const Tab = styled.div`
   text-decoration: ${({ activeTab }) => (activeTab ? 'underline' : '')};
 `;
 export const SocialImage = styled.img`
-  padding: 5px;
+  margin-right: 15px;
+
+  ${media.belowTabletLarge`
+    height: 17px;
+    width: 17px;
+  `}
 `;
 
 export const ProfileDetails = styled.div`
@@ -88,6 +109,7 @@ export default {
   ProfileWrapper,
   ProfileInfoPageWrapper,
   ShowDesktopOnly,
+  ShowMobileOnly,
   ImageWrapper,
   DetailsWrapper,
   Tab,

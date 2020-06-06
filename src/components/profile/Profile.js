@@ -6,6 +6,8 @@ import Button from '../foundation/button/Button';
 import HeroTitle from '../foundation/typography/HeroTitle';
 import CardTitle from '../foundation/typography/CardTitle';
 import BodyText from '../foundation/typography/BodyText';
+import FlexContainer from '../foundation/FlexContainer';
+
 const Profile = ({ user }) => {
   const [activeTab, setActiveTab] = useState('learning');
 
@@ -13,6 +15,7 @@ const Profile = ({ user }) => {
   const isActiveInbox = activeTab === 'inbox';
   const isActiveBilling = activeTab === 'billing';
   const isActivePreferences = activeTab === 'preferences';
+
   return (
     <ContainerBase>
       <Styled.ProfileWrapper>
@@ -33,14 +36,29 @@ const Profile = ({ user }) => {
         </Styled.ImageWrapper>
         <Styled.ProfileDetails>
           <Styled.DetailsWrapper>
-            <HeroTitle margin="0" text="Student Name" />
-            <CardTitle margin="0" text="Frontend Developer" />
+            <HeroTitle margin="0 0 16px 0" text="Student Name" />
+            <CardTitle
+              margin="0 0 16px 0"
+              fontWeight="400"
+              text="Frontend Developer"
+            />
+            <FlexContainer margin="0 0 8px 0" alignItems="center">
+              <i className="fa fa-map-marker" aria-hidden="true" />
+              <BodyText>Wembley</BodyText>
+            </FlexContainer>
 
-            {/* <i className="fa fa-map-marker" aria-hidden="true" /> */}
-            <BodyText margin="0" children="Wembley" />
-
-            {/* <i className="fa fa-globe" aria-hidden="true" />{' '} */}
-            <BodyText margin="0" children="www.studentwebsite.com" />
+            <FlexContainer margin="0 0 16px 0" alignItems="center">
+              <i className="fa fa-globe" aria-hidden="true" />{' '}
+              <BodyText>www.studentwebsite.com</BodyText>
+            </FlexContainer>
+            <Styled.ShowMobileOnly>
+              <ContainerBase maxWidth="140px" margin="0 auto 0">
+                <Styled.SocialImage src="img/fb_image.png" />
+                <Styled.SocialImage src="img/image 9.png" />
+                <Styled.SocialImage src="img/image 10.png" />
+                <Styled.SocialImage src="img/image 11.png" />
+              </ContainerBase>
+            </Styled.ShowMobileOnly>
           </Styled.DetailsWrapper>
 
           <Styled.ShowDesktopOnly>
