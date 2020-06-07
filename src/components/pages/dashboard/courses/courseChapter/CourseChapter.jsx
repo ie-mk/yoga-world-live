@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import Styled from './CourseChapter.styles';
 import CourseLesson from '../courseLesson/CourseLesson';
@@ -11,6 +11,8 @@ import CenteredFlexContainer from '../../../../foundation/CenteredFlexContainer'
 import FlexContainer from '../../../../foundation/FlexContainer';
 
 const CourseChapter = ({ dispatch, chapterId, data, idx }) => {
+  const [expanded, setExpanded] = useState(false);
+
   const handleChapterDelete = () => {
     if (confirm('Are you sure you want to delete this chapter?')) {
       dispatch(resourceActions.deleteChapter.request(chapterId));
@@ -20,62 +22,66 @@ const CourseChapter = ({ dispatch, chapterId, data, idx }) => {
   console.log('----chapter data: ', data);
 
   return (
-    <ContainerBase paddingLeft="xxxl" paddingRight="xxxl" paddingBottom="xxxxl">
+    <ContainerBase paddingLeft="xxxl" paddingRight="xxxl">
       <Styled.ChapterHeader>
+        <Styled.ExpandButton onClick={() => setExpanded(!expanded)}>
+          <i className={`fa fa-${expanded ? 'minus' : 'plus'}`} />{' '}
+        </Styled.ExpandButton>
         Chapter {idx + 1}
         <Styled.DeleteChapterButton onClick={handleChapterDelete}>
           Delete <i className="fa fa-close" />
         </Styled.DeleteChapterButton>
       </Styled.ChapterHeader>
-
-      <Formik
-        initialValues={{ ...initialFormValues, ...data }}
-        enableReinitialize={true}
-        onSubmit={(values, { setSubmitting }) => {
-          setSubmitting(true);
-          dispatch(
-            resourceActions.updateChapter.request({
-              chapterId,
-              data: values,
-            }),
-          );
-          setTimeout(() => setSubmitting(false), 1000);
-        }}
-      >
-        {({ values, handleSubmit }) => (
-          <form onSubmit={handleSubmit}>
-            <Styled.InputRow>
-              <AdminInput
-                name="title"
-                type="text"
-                label="Chapter title"
-                //placeholder="Enter chapter title"
-                width="28%"
-              />
-              <AdminInput
-                name="sequenceNr"
-                type="number"
-                label="Sequence Nr"
-                //placeholder="Enter chapter title"
-                width="28%"
-              />
-              <AdminInput
-                name="numberOfLessons"
-                type="text"
-                label="Number of Lessons"
-                width="28%"
-              />
-            </Styled.InputRow>
-            {/*{Object.keys(data.lessons)}*/}
-            {/*<CourseLesson />*/}
-            <FlexContainer justifyContent="flex-end" marginTop="xxl">
-              <Button type="button" size="lg" onClick={handleSubmit}>
-                Update Chapter
-              </Button>
-            </FlexContainer>
-          </form>
-        )}
-      </Formik>
+      <Styled.Content expanded={expanded}>
+        <Formik
+          initialValues={{ ...initialFormValues, ...data }}
+          enableReinitialize={true}
+          onSubmit={(values, { setSubmitting }) => {
+            setSubmitting(true);
+            dispatch(
+              resourceActions.updateChapter.request({
+                chapterId,
+                data: values,
+              }),
+            );
+            setTimeout(() => setSubmitting(false), 1000);
+          }}
+        >
+          {({ values, handleSubmit }) => (
+            <form onSubmit={handleSubmit}>
+              <Styled.InputRow>
+                <AdminInput
+                  name="title"
+                  type="text"
+                  label="Chapter title"
+                  //placeholder="Enter chapter title"
+                  width="28%"
+                />
+                <AdminInput
+                  name="sequenceNr"
+                  type="number"
+                  label="Sequence Nr"
+                  //placeholder="Enter chapter title"
+                  width="28%"
+                />
+                <AdminInput
+                  name="numberOfLessons"
+                  type="text"
+                  label="Number of Lessons"
+                  width="28%"
+                />
+              </Styled.InputRow>
+              {/*{Object.keys(data.lessons)}*/}
+              {/*<CourseLesson />*/}
+              <FlexContainer justifyContent="flex-end" marginTop="xxl">
+                <Button type="button" size="lg" onClick={handleSubmit}>
+                  Update Chapter
+                </Button>
+              </FlexContainer>
+            </form>
+          )}
+        </Formik>
+      </Styled.Content>
     </ContainerBase>
   );
 };

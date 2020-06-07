@@ -135,6 +135,20 @@ const DeleteChapterButton = styled.a`
   cursor: pointer;
 `;
 
+const ExpandButton = styled.span`
+  display: inline-block;
+  position: absolute;
+  left: 20px;
+  font-size: 28px;
+`;
+
+const Content = styled.div`
+  height: ${({ expanded }) => (expanded ? 'auto' : 0)};
+  overflow: hidden;
+  transition: all 1s ease-out;
+  padding-bottom: ${({ expanded }) => (expanded ? spacing.xxxxl : 0)};
+`;
+
 export default {
   InputRow,
   Title,
@@ -150,4 +164,6 @@ export default {
   AddNewWrapper,
   Wrapper,
   DeleteChapterButton,
+  ExpandButton,
+  Content,
 };
