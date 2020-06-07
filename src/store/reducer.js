@@ -241,7 +241,6 @@ export const courseReducer = handleActions(
           ...state.data[courseId].chapters,
           ...data,
         };
-        debugger;
       } catch (e) {
         //
       }

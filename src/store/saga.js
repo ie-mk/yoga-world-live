@@ -221,7 +221,6 @@ function* fetchChapter({ payload: chapterId }) {
     const result = yield api.resource.fetchResource(
       `courses/${courseId}/chapters/${chapterId}`,
     );
-    debugger;
     yield put(
       resourceActions.fetchChapter.success({
         courseId,
