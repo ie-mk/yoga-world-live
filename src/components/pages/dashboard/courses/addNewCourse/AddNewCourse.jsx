@@ -23,6 +23,8 @@ const AddNewCourse = ({ dispatch, courseData, loading }) => {
 
   const chapters = courseData.chapters;
 
+  console.log('----chapters: ', chapters);
+
   return (
     <ContainerBase>
       {loading && <SpinnerLarge />}

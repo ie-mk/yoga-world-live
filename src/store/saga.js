@@ -218,16 +218,14 @@ function* fetchChapters() {
 function* fetchChapter({ payload: chapterId }) {
   const courseId = yield select(getEditingCourseId);
   try {
-    const result = yield api.resource.fetchSubCollection(
-      'courses',
-      courseId,
-      'chapters',
-      chapterId,
+    const result = yield api.resource.fetchResource(
+      `courses/${courseId}/chapters/${chapterId}`,
     );
+    debugger;
     yield put(
       resourceActions.fetchChapter.success({
         courseId,
-        data: result,
+        data: { [chapterId]: result },
       }),
     );
   } catch (err) {
