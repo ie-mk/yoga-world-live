@@ -10,8 +10,9 @@ import {
 } from '../../../../../store/selectors';
 import Button from '../../../../foundation/button/Button';
 import CenteredFlexContainer from '../../../../foundation/CenteredFlexContainer';
+import SpinnerLarge from '../../../../foundation/spinner/SpinnerLarge';
 
-const AddNewCourse = ({ dispatch, courseData }) => {
+const AddNewCourse = ({ dispatch, courseData, loading }) => {
   useEffect(() => {
     dispatch(resourceActions.fetchChapters.request());
   }, []);
@@ -24,6 +25,7 @@ const AddNewCourse = ({ dispatch, courseData }) => {
 
   return (
     <ContainerBase>
+      {loading && <SpinnerLarge />}
       <CourseDescription />
       {chapters &&
         Object.keys(chapters).map(chapterId => {
@@ -41,6 +43,7 @@ const AddNewCourse = ({ dispatch, courseData }) => {
 
 const mapStateToProps = state => ({
   courseData: getEditableCourseData(state),
+  loading: state.courses.loading,
 });
 
 export default connect(mapStateToProps)(AddNewCourse);

@@ -2,43 +2,46 @@ import { handleActions } from 'redux-actions';
 import { userActions, layoutActions, resourceActions } from './actions';
 import { IS_SERVER } from '../constants';
 
-export const getAsyncReducers = (
-  mainActionName,
-  resultProp,
+export const getAsyncReducers = ({
+  action,
+  resultProp = 'data',
   loadingProp = 'loading',
   errorProp = 'error',
-) => {
-  return ['request', 'success', 'failure'].reduce((acc, type) => {
-    acc[mainActionName[type]] = (state, action) => {
-      const newState = { ...state };
+  exclude = {},
+}) => {
+  return ['request', 'success', 'failure']
+    .filter(subAction => !exclude[subAction])
+    .reduce((acc, subAction) => {
+      acc[action[subAction]] = (state, action) => {
+        const newState = { ...state };
 
-      switch (type) {
-        case (type = 'request'):
-          newState[loadingProp] = true;
-          break;
+        switch (subAction) {
+          case (subAction = 'request'):
+            newState[loadingProp] = true;
+            break;
 
-        case (type = 'success'):
-          if (resultProp) {
-            newState[resultProp] = {
-              ...state[resultProp],
-              ...action.payload,
-            };
-          }
+          case (subAction = 'success'):
+            if (resultProp) {
+              newState[resultProp] = {
+                ...state[resultProp],
+                ...action.payload,
+              };
+            }
 
-          newState[loadingProp] = false;
-          break;
+            newState[loadingProp] = false;
+            break;
 
-        case (type = 'error'):
-          newState[loadingProp] = false;
-          newState[errorProp] = action.payload;
-          break;
-      }
+          case (subAction = 'error'):
+            newState[loadingProp] = false;
+            newState[errorProp] = action.payload;
+            break;
+        }
 
-      return newState;
-    };
+        return newState;
+      };
 
-    return acc;
-  }, {});
+      return acc;
+    }, {});
 };
 
 export const userReducer = handleActions(
@@ -67,12 +70,11 @@ export const userReducer = handleActions(
     //   loading: false,
     //   fetchPermissionsError: action.payload,
     // }),
-    ...getAsyncReducers(
-      userActions.fetchUserPermissions,
-      'permissions',
-      'loading',
-      'fetchPermissionsError',
-    ),
+    ...getAsyncReducers({
+      action: userActions.fetchUserPermissions,
+      resultProp: 'permissions',
+      errorProp: 'fetchPermissionsError',
+    }),
 
     /*===============================================================*/
 
@@ -91,12 +93,11 @@ export const userReducer = handleActions(
     //   fetchProfileError: action.payload,
     // }),
 
-    ...getAsyncReducers(
-      userActions.fetchUserProfile,
-      'profile',
-      'loading',
-      'fetchProfileError',
-    ),
+    ...getAsyncReducers({
+      action: userActions.fetchUserProfile,
+      resultProp: 'profile',
+      errorProp: 'fetchProfileError',
+    }),
 
     /*===============================================================*/
 
@@ -115,12 +116,11 @@ export const userReducer = handleActions(
     //   saveProfileError: action.payload,
     // }),
 
-    ...getAsyncReducers(
-      userActions.updateUserProfile,
-      'profile',
-      'loading',
-      'saveProfileError',
-    ),
+    ...getAsyncReducers({
+      action: userActions.updateUserProfile,
+      resultProp: 'profile',
+      errorProp: 'saveProfileError',
+    }),
 
     /*===============================================================*/
 
@@ -138,12 +138,11 @@ export const userReducer = handleActions(
     //   saveProfilePictureError: action.payload,
     // }),
 
-    ...getAsyncReducers(
-      userActions.updateUserProfilePicture,
-      null,
-      'loadingPicture',
-      'saveProfilePictureError',
-    ),
+    ...getAsyncReducers({
+      action: userActions.updateUserProfilePicture,
+      loadingProp: 'loadingPicture',
+      errorProp: 'saveProfilePictureError',
+    }),
 
     /*===============================================================*/
 
@@ -179,25 +178,22 @@ export const userReducer = handleActions(
   },
 );
 
-// if (!IS_SERVER) {
-//   window.getAsyncReducers = getAsyncReducers;
-//   window.resourceActions = resourceActions;
-//   // console.log(
-//   //   '-------getAsyncReducers(resourceActions.createCourse: ',
-//   //   getAsyncReducers(resourceActions.createCourse, 'courses'),
-//   // );
-// }
-
 export const courseReducer = handleActions(
   {
-    ...getAsyncReducers(resourceActions.createCourse, 'data'),
-    ...getAsyncReducers(resourceActions.updateCourse, 'data'),
-    ...getAsyncReducers(resourceActions.deleteCourse, 'data'),
-    ...getAsyncReducers(resourceActions.fetchCourses, 'data'),
-    ...getAsyncReducers(resourceActions.fetchCourse, 'data'),
+    ...getAsyncReducers({ action: resourceActions.createCourse }),
+    ...getAsyncReducers({ action: resourceActions.updateCourse }),
+    ...getAsyncReducers({ action: resourceActions.deleteCourse }),
+    ...getAsyncReducers({ action: resourceActions.fetchCourses }),
+    ...getAsyncReducers({ action: resourceActions.fetchCourse }),
 
     //=================== COURSE CHAPTERS ===========================
-
+    ...getAsyncReducers({ action: resourceActions.deleteChapter }),
+    ...getAsyncReducers({ action: resourceActions.createChapter }),
+    ...getAsyncReducers({ action: resourceActions.updateChapter }),
+    ...getAsyncReducers({
+      action: resourceActions.fetchChapters,
+      exclude: { success: true },
+    }),
     [resourceActions.fetchChapters.success.type]: (
       state,
       { payload: { courseId, chapters } },
@@ -207,6 +203,7 @@ export const courseReducer = handleActions(
         // we need this line only to trigger recalculate in the selector
         // as otherwise data stays same object and the selector will return prev value
         data: { ...state.data },
+        loading: false,
       };
 
       const newCourseData = { ...state.data[courseId] };
@@ -300,11 +297,11 @@ export const courseReducer = handleActions(
 
 export const taskReducer = handleActions(
   {
-    ...getAsyncReducers(resourceActions.createTask, 'data'),
-    ...getAsyncReducers(resourceActions.updateTask, 'data'),
-    ...getAsyncReducers(resourceActions.deleteTask, 'data'),
-    ...getAsyncReducers(resourceActions.fetchTask, 'data'),
-    ...getAsyncReducers(resourceActions.fetchTasks, 'data'),
+    ...getAsyncReducers({ action: resourceActions.createTask }),
+    ...getAsyncReducers({ action: resourceActions.updateTask }),
+    ...getAsyncReducers({ action: resourceActions.deleteTask }),
+    ...getAsyncReducers({ action: resourceActions.fetchTask }),
+    ...getAsyncReducers({ action: resourceActions.fetchTasks }),
   },
   {
     data: {},
@@ -314,11 +311,11 @@ export const taskReducer = handleActions(
 
 export const messageReducer = handleActions(
   {
-    ...getAsyncReducers(resourceActions.createMessage, 'data'),
-    ...getAsyncReducers(resourceActions.updateMessage, 'data'),
-    ...getAsyncReducers(resourceActions.deleteMessage, 'data'),
-    ...getAsyncReducers(resourceActions.fetchMessage, 'data'),
-    ...getAsyncReducers(resourceActions.fetchMessages, 'data'),
+    ...getAsyncReducers({ action: resourceActions.createMessage }),
+    ...getAsyncReducers({ action: resourceActions.updateMessage }),
+    ...getAsyncReducers({ action: resourceActions.deleteMessage }),
+    ...getAsyncReducers({ action: resourceActions.fetchMessage }),
+    ...getAsyncReducers({ action: resourceActions.fetchMessages }),
   },
   {
     data: {},
@@ -328,11 +325,11 @@ export const messageReducer = handleActions(
 
 export const learningPathReducer = handleActions(
   {
-    ...getAsyncReducers(resourceActions.createLearningPath, 'data'),
-    ...getAsyncReducers(resourceActions.updateLearningPath, 'data'),
-    ...getAsyncReducers(resourceActions.deleteLearningPath, 'data'),
-    ...getAsyncReducers(resourceActions.fetchLearningPath, 'data'),
-    ...getAsyncReducers(resourceActions.fetchLearningPaths, 'data'),
+    ...getAsyncReducers({ action: resourceActions.createLearningPath }),
+    ...getAsyncReducers({ action: resourceActions.updateLearningPath }),
+    ...getAsyncReducers({ action: resourceActions.deleteLearningPath }),
+    ...getAsyncReducers({ action: resourceActions.fetchLearningPath }),
+    ...getAsyncReducers({ action: resourceActions.fetchLearningPaths }),
 
     [resourceActions.deleteLearningPathFromState]: (state, { payload }) => {
       const learningPaths = { ...state.data };
