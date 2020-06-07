@@ -21,14 +21,14 @@ const AddNewCourse = ({ dispatch, courseData }) => {
   };
 
   const chapters = courseData.chapters;
-
+  debugger;
   return (
     <ContainerBase>
       <CourseDescription />
       {chapters &&
         Object.keys(chapters).map(chapterId => {
           const data = chapters[chapterId];
-          return <CourseChapter data={data} />;
+          return <CourseChapter chapterId={chapterId} data={data} />;
         })}
       <CenteredFlexContainer margin="lg">
         <Button type="primary" size="lg" onClick={handleCreateNewChapter}>

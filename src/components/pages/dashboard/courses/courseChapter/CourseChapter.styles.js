@@ -31,6 +31,7 @@ export const RowContainer = styled.div`
 `;
 
 const ChapterHeader = styled.label`
+  position: relative;
   width: 100%;
   height: 40px;
   border: 1px solid #909090;
@@ -89,7 +90,7 @@ const Upload = styled.div`
     opacity: 1;
     display:flex;
     justify-content: center;
-    align-items:center;  
+    align-items:center;
     margin-top: ${({ marginTop }) => spacing[marginTop] || ''};
     margin-right:${spacing.sm};
     //padding:${spacing.sm};
@@ -125,6 +126,15 @@ const Wrapper = styled.div`
   //
 `;
 
+const DeleteChapterButton = styled.a`
+  position: absolute;
+  right: 0;
+  font-size: ${fontSizeMap.textMobile};
+  color: white;
+  margin-right: ${spacing.sm};
+  cursor: pointer;
+`;
+
 export default {
   InputRow,
   Title,
@@ -139,4 +149,5 @@ export default {
   LessonContainer,
   AddNewWrapper,
   Wrapper,
+  DeleteChapterButton,
 };

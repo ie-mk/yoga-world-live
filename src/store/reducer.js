@@ -196,17 +196,75 @@ export const courseReducer = handleActions(
     ...getAsyncReducers(resourceActions.fetchCourses, 'data'),
     ...getAsyncReducers(resourceActions.fetchCourse, 'data'),
 
+    //=================== COURSE CHAPTERS ===========================
+
     [resourceActions.fetchChapters.success.type]: (
       state,
       { payload: { courseId, chapters } },
     ) => {
-      return {
+      const newState = {
         ...state,
-        data: {
-          ...state.data,
-          [courseId]: { ...state.data[courseId], chapters },
-        },
       };
+
+      const newCourseState = { ...state.data[courseId] };
+      newCourseState.chapters = chapters;
+
+      newState.data[courseId] = newCourseState;
+
+      return newState;
+    },
+
+    [resourceActions.fetchChapter.success.type]: (
+      state,
+      { payload: { courseId, chapterId, data } },
+    ) => {
+      const newState = {
+        ...state,
+      };
+
+      try {
+        newState.data[courseId].chapters[chapterId] = data;
+      } catch (e) {
+        //
+      }
+
+      return newState;
+    },
+
+    //=================== COURSE LESSONS ===========================
+
+    [resourceActions.fetchLessons.success.type]: (
+      state,
+      { payload: { courseId, chapterId, lessons } },
+    ) => {
+      const newState = {
+        ...state,
+      };
+
+      try {
+        newState.data[courseId].chapters[chapterId].lessons = lessons;
+      } catch (e) {
+        //
+      }
+
+      return newState;
+    },
+
+    [resourceActions.fetchLesson.success.type]: (
+      state,
+      { payload: { courseId, chapterId, data } },
+    ) => {
+      const newState = {
+        ...state,
+      };
+
+      try {
+        newState.data[courseId].chapters[chapterId] = data;
+      } catch (e) {
+        //
+      }
+
+      return newState;
     },
 
     [resourceActions.resetCourses]: state => ({

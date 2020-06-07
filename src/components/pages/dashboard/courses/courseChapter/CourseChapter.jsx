@@ -1,47 +1,57 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Styled from './CourseChapter.styles';
 import CourseLesson from '../courseLesson/CourseLesson';
 import { ContainerBase } from '../../../../foundation';
 import AdminInput from '../../../../foundation/input/AdminInput';
-import AdminDropDown from '../../../../foundation/dropdown/AdminDropDown';
-import AdminTextArea from '../../../../foundation/textarea/AdminTextArea';
-import AdminUploadImage from '../../../../foundation/uploadimage/AdminUploadImage';
-import Button from '../../../../foundation/button/Button';
 import { Formik, ErrorMessage, Field } from 'formik';
+import { resourceActions } from '../../../../../store/actions';
 
-const CourseChapter = () => {
-  // return <Styled.Wrapper>Course chapter</Styled.Wrapper>;
+const CourseChapter = ({ dispatch, chapterId, data }) => {
+  const handleChapterDelete = () => {
+    if (confirm('Are you sure you want to delete this chapter?')) {
+      dispatch(resourceActions.deleteChapter.request(chapterId));
+    }
+  };
+
   return (
     <ContainerBase paddingLeft="xxxl" paddingRight="xxxl" paddingBottom="xxxxl">
-      <Styled.ChapterHeader> Chapter</Styled.ChapterHeader>
+      <Styled.ChapterHeader>
+        {' '}
+        Chapter
+        <Styled.DeleteChapterButton onClick={handleChapterDelete}>
+          Delete <i className="fa fa-close" />
+        </Styled.DeleteChapterButton>
+      </Styled.ChapterHeader>
 
       <Formik
-        initialValues={initialFormValues}
+        initialValues={{ ...initialFormValues, ...data }}
         enableReinitialize={true}
         //  validationSchema={profileFormValidation}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
-          dispatch(userActions.updateUserProfile.request(values));
+          dispatch(resourceActions.updateChapter.request(values));
           setTimeout(() => setSubmitting(false), 1000);
         }}
       >
-        {({ values, handleSubmit, setFieldValue }) => (
+        {({ values, handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <Styled.InputRow>
               <AdminInput
-                name="chapter01Title"
+                name="title"
                 type="text"
-                label="Chapter 01 Title"
+                label="Chapter title"
                 placeholder="Enter chapter title"
                 width="46.5%"
               />
               <AdminInput
-                name="numberoflessons"
+                name="numberOfLessons"
                 type="text"
                 label="Number of Lessons"
                 width="46.5%"
               />
             </Styled.InputRow>
+            {Object.keys(data.lessons)}
             <CourseLesson />
           </form>
         )}
@@ -51,16 +61,9 @@ const CourseChapter = () => {
 };
 
 const initialFormValues = {
-  coursetitle: '',
-  file: '',
-  difficulty: '',
-  duration: '',
-  author: '',
-  category: '',
-  learningpath: '',
-  NumberOfChapters: 2,
-  learn: '',
-  prerequisites: '',
+  title: '',
+  numberOfLessons: 0,
+  lessons: {},
 };
 
-export default CourseChapter;
+export default connect()(CourseChapter);
