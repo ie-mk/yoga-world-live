@@ -187,6 +187,7 @@ export const courseReducer = handleActions(
     ...getAsyncReducers({ action: resourceActions.fetchCourse }),
 
     //=================== COURSE CHAPTERS ===========================
+
     ...getAsyncReducers({ action: resourceActions.deleteChapter }),
     ...getAsyncReducers({ action: resourceActions.createChapter }),
     ...getAsyncReducers({ action: resourceActions.updateChapter }),
