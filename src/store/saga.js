@@ -217,10 +217,21 @@ function* fetchChapters() {
   }
 }
 
-function* fetchChapter({ payload: { docId } }) {
+function* fetchChapter({ payload: chapterId }) {
+  const courseId = yield select(getEditingCourseId);
   try {
-    const result = yield api.resource.fetchResource('tasks', docId);
-    yield put(resourceActions.fetchChapter.success({ [docId]: result }));
+    const result = yield api.resource.fetchSubCollection(
+      'courses',
+      courseId,
+      'chapters',
+      chapterId,
+    );
+    yield put(
+      resourceActions.fetchChapter.success({
+        courseId,
+        data: result,
+      }),
+    );
   } catch (err) {
     yield put(resourceActions.fetchChapter.failure(err));
   }
@@ -245,7 +256,7 @@ function* createChapter() {
   }
 }
 
-function* updateChapter({ payload: chapterId }) {
+function* updateChapter({ payload: { chapterId, data } }) {
   const courseId = yield select(getEditingCourseId);
   try {
     yield api.resource.updateSubCollection(
@@ -253,7 +264,9 @@ function* updateChapter({ payload: chapterId }) {
       courseId,
       'chapters',
       chapterId,
+      data,
     );
+    yield put(resourceActions.updateChapter.success());
     yield fetchChapter({ payload: chapterId });
   } catch (err) {
     yield put(resourceActions.updateChapter.failure(err));

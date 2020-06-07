@@ -191,10 +191,12 @@ export const courseReducer = handleActions(
     ...getAsyncReducers({ action: resourceActions.deleteChapter }),
     ...getAsyncReducers({ action: resourceActions.createChapter }),
     ...getAsyncReducers({ action: resourceActions.updateChapter }),
+
     ...getAsyncReducers({
       action: resourceActions.fetchChapters,
       exclude: { success: true },
     }),
+
     [resourceActions.fetchChapters.success.type]: (
       state,
       { payload: { courseId, chapters } },
@@ -215,16 +217,31 @@ export const courseReducer = handleActions(
       return newState;
     },
 
+    ...getAsyncReducers({
+      action: resourceActions.fetchChapter,
+      exclude: { success: true },
+    }),
+
     [resourceActions.fetchChapter.success.type]: (
       state,
-      { payload: { courseId, chapterId, data } },
+      { payload: { courseId, data } },
     ) => {
       const newState = {
         ...state,
+        // we need this line only to trigger recalculate in the selector
+        // as otherwise data stays same object and the selector will return prev value
+        data: { ...state.data },
+        loading: false,
       };
 
       try {
-        newState.data[courseId].chapters[chapterId] = data;
+        // we need to create new objects for the data so it is caught by React and selectors
+        newState.data[courseId] = { ...state.data[courseId] };
+        newState.data[courseId].chapters = {
+          ...state.data[courseId].chapters,
+          ...data,
+        };
+        debugger;
       } catch (e) {
         //
       }

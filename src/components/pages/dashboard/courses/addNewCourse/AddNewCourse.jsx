@@ -30,7 +30,9 @@ const AddNewCourse = ({ dispatch, courseData, loading }) => {
       {chapters &&
         Object.keys(chapters).map(chapterId => {
           const data = chapters[chapterId];
-          return <CourseChapter chapterId={chapterId} data={data} />;
+          return (
+            <CourseChapter key={chapterId} chapterId={chapterId} data={data} />
+          );
         })}
       <CenteredFlexContainer margin="lg">
         <Button type="primary" size="lg" onClick={handleCreateNewChapter}>

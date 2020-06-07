@@ -6,6 +6,8 @@ import { ContainerBase } from '../../../../foundation';
 import AdminInput from '../../../../foundation/input/AdminInput';
 import { Formik, ErrorMessage, Field } from 'formik';
 import { resourceActions } from '../../../../../store/actions';
+import Button from '../../../../foundation/button/Button';
+import CenteredFlexContainer from '../../../../foundation/CenteredFlexContainer';
 
 const CourseChapter = ({ dispatch, chapterId, data }) => {
   const handleChapterDelete = () => {
@@ -13,6 +15,8 @@ const CourseChapter = ({ dispatch, chapterId, data }) => {
       dispatch(resourceActions.deleteChapter.request(chapterId));
     }
   };
+
+  console.log('----chapter data: ', data);
 
   return (
     <ContainerBase paddingLeft="xxxl" paddingRight="xxxl" paddingBottom="xxxxl">
@@ -27,10 +31,14 @@ const CourseChapter = ({ dispatch, chapterId, data }) => {
       <Formik
         initialValues={{ ...initialFormValues, ...data }}
         enableReinitialize={true}
-        //  validationSchema={profileFormValidation}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
-          dispatch(resourceActions.updateChapter.request(values));
+          dispatch(
+            resourceActions.updateChapter.request({
+              chapterId,
+              data: values,
+            }),
+          );
           setTimeout(() => setSubmitting(false), 1000);
         }}
       >
@@ -41,7 +49,7 @@ const CourseChapter = ({ dispatch, chapterId, data }) => {
                 name="title"
                 type="text"
                 label="Chapter title"
-                placeholder="Enter chapter title"
+                //placeholder="Enter chapter title"
                 width="46.5%"
               />
               <AdminInput
@@ -52,7 +60,10 @@ const CourseChapter = ({ dispatch, chapterId, data }) => {
               />
             </Styled.InputRow>
             {/*{Object.keys(data.lessons)}*/}
-            <CourseLesson />
+            {/*<CourseLesson />*/}
+            <Button type="button" size="lg" onClick={handleSubmit}>
+              Update Section
+            </Button>
           </form>
         )}
       </Formik>
@@ -63,7 +74,6 @@ const CourseChapter = ({ dispatch, chapterId, data }) => {
 const initialFormValues = {
   title: '',
   numberOfLessons: '',
-  lessons: {},
 };
 
 export default connect()(CourseChapter);
