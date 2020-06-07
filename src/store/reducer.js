@@ -204,12 +204,15 @@ export const courseReducer = handleActions(
     ) => {
       const newState = {
         ...state,
+        // we need this line only to trigger recalculate in the selector
+        // as otherwise data stays same object and the selector will return prev value
+        data: { ...state.data },
       };
 
-      const newCourseState = { ...state.data[courseId] };
-      newCourseState.chapters = chapters;
+      const newCourseData = { ...state.data[courseId] };
+      newCourseData.chapters = chapters;
 
-      newState.data[courseId] = newCourseState;
+      newState.data[courseId] = newCourseData;
 
       return newState;
     },

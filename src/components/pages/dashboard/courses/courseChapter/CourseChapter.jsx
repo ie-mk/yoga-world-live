@@ -51,7 +51,7 @@ const CourseChapter = ({ dispatch, chapterId, data }) => {
                 width="46.5%"
               />
             </Styled.InputRow>
-            {Object.keys(data.lessons)}
+            {/*{Object.keys(data.lessons)}*/}
             <CourseLesson />
           </form>
         )}
@@ -62,7 +62,7 @@ const CourseChapter = ({ dispatch, chapterId, data }) => {
 
 const initialFormValues = {
   title: '',
-  numberOfLessons: 0,
+  numberOfLessons: '',
   lessons: {},
 };
 

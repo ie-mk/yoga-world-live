@@ -16,7 +16,9 @@ export const getEditingCourseId = state => state.courses.editableCourseId;
 export const getEditableCourseData = createSelector(
   getCourses,
   getEditingCourseId,
-  (courses, editableCourseId) => courses[editableCourseId] || {},
+  (courses, editableCourseId) => {
+    return courses[editableCourseId] || {};
+  },
 );
 
 export const getCourseChapters = state => state.courses.chapters;
