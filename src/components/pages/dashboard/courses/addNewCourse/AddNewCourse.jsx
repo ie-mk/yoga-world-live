@@ -28,12 +28,21 @@ const AddNewCourse = ({ dispatch, courseData, loading }) => {
       {loading && <SpinnerLarge />}
       <CourseDescription />
       {chapters &&
-        Object.keys(chapters).map(chapterId => {
-          const data = chapters[chapterId];
-          return (
-            <CourseChapter key={chapterId} chapterId={chapterId} data={data} />
-          );
-        })}
+        Object.keys(chapters)
+          .sort(
+            (a, b) => chapters[a].sequenceNr - (chapters[b].sequenceNr || 999),
+          )
+          .map((chapterId, idx) => {
+            const data = chapters[chapterId];
+            return (
+              <CourseChapter
+                key={chapterId}
+                chapterId={chapterId}
+                data={data}
+                idx={idx}
+              />
+            );
+          })}
       <CenteredFlexContainer margin="lg">
         <Button type="primary" size="lg" onClick={handleCreateNewChapter}>
           Add New Chapter
