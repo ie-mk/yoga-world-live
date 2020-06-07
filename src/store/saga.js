@@ -270,6 +270,7 @@ function* deleteChapter({ payload: docId }) {
       docId,
     );
     yield put(resourceActions.deleteChapter.success());
+    yield fetchChapters();
   } catch (err) {
     yield put(resourceActions.deleteChapter.failure(err));
   }
