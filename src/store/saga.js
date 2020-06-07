@@ -127,7 +127,7 @@ function* updateCourse({ payload }) {
   const courseId = yield select(getEditingCourseId);
 
   try {
-    yield api.resource.updateResource('courses', courseId, {
+    yield api.resource.updateResource(`courses/${courseId}`, {
       ...payload.data,
       edited: moment().format(),
     });
@@ -179,7 +179,7 @@ function* createTask({ payload: { data } }) {
 
 function* updateTask({ payload: { docId, data } }) {
   try {
-    yield api.resource.updateResource('tasks', docId, data);
+    yield api.resource.updateResource(`tasks/${docId}`, data);
     yield put(resourceActions.updateTask.success());
   } catch (err) {
     yield put(resourceActions.updateTask.failure(err));
@@ -259,11 +259,8 @@ function* createChapter() {
 function* updateChapter({ payload: { chapterId, data } }) {
   const courseId = yield select(getEditingCourseId);
   try {
-    yield api.resource.updateSubCollection(
-      'courses',
-      courseId,
-      'chapters',
-      chapterId,
+    yield api.resource.updateResource(
+      `courses/${courseId}/chapters/${chapterId}`,
       data,
     );
     yield put(resourceActions.updateChapter.success());
@@ -339,14 +336,12 @@ function* createLesson() {
   }
 }
 
-function* updateLesson({ payload: chapterId }) {
+function* updateLesson({ payload: { chapterId, lessonId, data } }) {
   const courseId = yield select(getEditingCourseId);
   try {
-    yield api.resource.updateSubCollection(
-      'courses',
-      courseId,
-      'chapters',
-      chapterId,
+    yield api.resource.updateResource(
+      `courses/${courseId}/chapters/${chapterId}/lessons/${lessonId}`,
+      data,
     );
     yield fetchLesson({ payload: chapterId });
   } catch (err) {
@@ -395,9 +390,9 @@ function* createMessage({ payload }) {
   }
 }
 
-function* updateMessage({ payload }) {
+function* updateMessage({ payload: { docId, data } }) {
   try {
-    yield api.resource.updateResource('messages', payload.docId, payload.data);
+    yield api.resource.updateResource(`messages/${docId}`, data);
     yield put(resourceActions.updateMessage.success());
   } catch (err) {
     yield put(resourceActions.updateMessage.failure(err));
@@ -452,7 +447,7 @@ function* createLearningPath({ payload: { data } }) {
 
 function* updateLearningPath({ payload: { docId, data } }) {
   try {
-    yield api.resource.updateResource('learningPaths', docId, data);
+    yield api.resource.updateResource(`learningPaths/${docId}`, data);
     yield put(resourceActions.updateLearningPath.success());
     yield fetchLearningPath({
       payload: docId,
