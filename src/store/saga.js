@@ -138,11 +138,11 @@ function* updateCourse({ payload }) {
   }
 }
 
-function* deleteCourse({ payload }) {
+function* deleteCourse({ payload: courseId }) {
   try {
-    yield api.resource.deleteResource('courses', payload);
+    yield api.resource.deleteResource(`courses/${courseId}`);
     yield put(resourceActions.deleteCourse.success());
-    yield put(resourceActions.deleteCourseFromState(payload));
+    yield put(resourceActions.deleteCourseFromState(courseId));
   } catch (err) {
     yield put(resourceActions.deleteCourse.failure(err));
   }

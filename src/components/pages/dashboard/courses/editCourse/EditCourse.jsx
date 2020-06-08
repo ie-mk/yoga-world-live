@@ -12,7 +12,7 @@ import Button from '../../../../foundation/button/Button';
 import CenteredFlexContainer from '../../../../foundation/CenteredFlexContainer';
 import SpinnerLarge from '../../../../foundation/spinner/SpinnerLarge';
 
-const AddNewCourse = ({ dispatch, courseData, loading }) => {
+const EditCourse = ({ dispatch, courseData, loading }) => {
   useEffect(() => {
     dispatch(resourceActions.fetchChapters.request());
   }, []);
@@ -59,4 +59,4 @@ const mapStateToProps = state => ({
   loading: state.courses.loading,
 });
 
-export default connect(mapStateToProps)(AddNewCourse);
+export default connect(mapStateToProps)(EditCourse);
