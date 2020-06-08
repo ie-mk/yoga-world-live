@@ -10,9 +10,7 @@ const steps = [
   { title: 'Step 4' },
 ];
 
-const Stepper = ({ showNumber, onSelect }) => {
-  const [activeStep, setActiveStep] = useState(0);
-
+const Stepper = ({ activeStep, setActiveStep }) => {
   return (
     <ContainerBase marginTop="100px">
       <FlexContainer width="100%">
@@ -20,9 +18,15 @@ const Stepper = ({ showNumber, onSelect }) => {
           const active = activeStep >= idx;
           return (
             <Styled.Step active={active} key={idx}>
-              <Styled.Circle active={active} onClick={() => setActiveStep(idx)}>
+              <Styled.Circle
+                active={active}
+                onClick={() => {
+                  setActiveStep(idx);
+                }}
+              >
                 {idx + 1}
               </Styled.Circle>
+              <Styled.Label>BLA</Styled.Label>
             </Styled.Step>
           );
         })}

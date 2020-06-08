@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
-  //
-`;
-
 const Step = styled.div`
   position: relative;
   width: 25%;
@@ -28,8 +24,17 @@ const Circle = styled.div`
   color: black;
 `;
 
+const Label = styled.div`
+  position: absolute;
+  right: 0;
+  top: 42px;
+  color: white;
+  font-weight: bold;
+  font-size: 32px;
+`;
+
 export default {
-  Wrapper,
   Step,
   Circle,
+  Label,
 };
