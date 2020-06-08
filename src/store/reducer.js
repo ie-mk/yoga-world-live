@@ -249,6 +249,13 @@ export const courseReducer = handleActions(
     },
 
     //=================== COURSE LESSONS ===========================
+    ...getAsyncReducers({ action: resourceActions.deleteLesson }),
+    ...getAsyncReducers({ action: resourceActions.createLesson }),
+    ...getAsyncReducers({ action: resourceActions.updateLesson }),
+    ...getAsyncReducers({
+      action: resourceActions.fetchLessons,
+      exclude: { success: true },
+    }),
 
     [resourceActions.fetchLessons.success.type]: (
       state,
@@ -256,16 +263,25 @@ export const courseReducer = handleActions(
     ) => {
       const newState = {
         ...state,
+        // we need this line only to trigger recalculate in the selector
+        // as otherwise data stays same object and the selector will return prev value
+        data: { ...state.data },
+        loading: false,
       };
 
-      try {
-        newState.data[courseId].chapters[chapterId].lessons = lessons;
-      } catch (e) {
-        //
-      }
+      const newCourseData = { ...state.data[courseId] };
+      newCourseData.chapters = { ...state.data[courseId].chapters };
+      newCourseData.chapters[chapterId].lessons = lessons;
+
+      newState.data[courseId] = newCourseData;
 
       return newState;
     },
+
+    ...getAsyncReducers({
+      action: resourceActions.fetchLesson,
+      exclude: { success: true },
+    }),
 
     [resourceActions.fetchLesson.success.type]: (
       state,
@@ -273,13 +289,20 @@ export const courseReducer = handleActions(
     ) => {
       const newState = {
         ...state,
+        // we need this line only to trigger recalculate in the selector
+        // as otherwise data stays same object and the selector will return prev value
+        data: { ...state.data },
+        loading: false,
       };
 
-      try {
-        newState.data[courseId].chapters[chapterId] = data;
-      } catch (e) {
-        //
-      }
+      const newCourseData = { ...state.data[courseId] };
+      newCourseData.chapters = { ...state.data[courseId].chapters };
+      newCourseData.chapters[chapterId].lessons = {
+        ...state.data[courseId].chapters[chapterId].lessons,
+        ...data,
+      };
+
+      newState.data[courseId] = newCourseData;
 
       return newState;
     },

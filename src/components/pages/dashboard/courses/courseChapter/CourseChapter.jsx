@@ -1,17 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import Styled from './CourseChapter.styles';
-import CourseLesson from '../courseLesson/CourseLesson';
+import CourseLessonHeader from '../courseLesson/CourseLessonHeader';
 import { ContainerBase } from '../../../../foundation';
 import AdminInput from '../../../../foundation/input/AdminInput';
 import { Formik, ErrorMessage, Field } from 'formik';
 import { resourceActions } from '../../../../../store/actions';
 import Button from '../../../../foundation/button/Button';
-import CenteredFlexContainer from '../../../../foundation/CenteredFlexContainer';
 import FlexContainer from '../../../../foundation/FlexContainer';
+import CourseLessonsContainer from '../courseLesson/CourseLessonsContainer';
 
-const CourseChapter = ({ dispatch, chapterId, data, idx }) => {
+const CourseChapter = ({ dispatch, courseId, chapterId, data, idx }) => {
   const [expanded, setExpanded] = useState(false);
+
+  useEffect(() => {
+    dispatch(
+      resourceActions.fetchLessons.request({
+        courseId,
+        chapterId,
+      }),
+    );
+  }, []);
 
   const handleChapterDelete = () => {
     if (confirm('Are you sure you want to delete this chapter?')) {
@@ -19,7 +28,13 @@ const CourseChapter = ({ dispatch, chapterId, data, idx }) => {
     }
   };
 
-  console.log('----chapter data: ', data);
+  const createLesson = () => {
+    dispatch(resourceActions.createLesson.request(chapterId));
+  };
+
+  const lessons = data.lessons;
+
+  // console.log('-----lessons: ', lessons);
 
   return (
     <ContainerBase paddingLeft="xxxl" paddingRight="xxxl">
@@ -71,16 +86,31 @@ const CourseChapter = ({ dispatch, chapterId, data, idx }) => {
                   width="28%"
                 />
               </Styled.InputRow>
-              {/*{Object.keys(data.lessons)}*/}
-              {/*<CourseLesson />*/}
               <FlexContainer justifyContent="flex-end" marginTop="xxl">
-                <Button type="button" size="lg" onClick={handleSubmit}>
+                <Button type="button" size="sm" onClick={handleSubmit}>
                   Update Chapter
                 </Button>
               </FlexContainer>
             </form>
           )}
         </Formik>
+        {lessons && (
+          <CourseLessonsContainer
+            courseId={courseId}
+            chapterId={chapterId}
+            data={lessons}
+          />
+        )}
+        <Button
+          onClick={createLesson}
+          type="primary"
+          fontSize="18px"
+          borderRadius="sm"
+          width="200px"
+          margin="40px"
+        >
+          + Add Lesson
+        </Button>
       </Styled.Content>
     </ContainerBase>
   );

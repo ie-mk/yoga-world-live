@@ -6,13 +6,13 @@ import { connect } from 'react-redux';
 import { resourceActions } from '../../../../../store/actions';
 import {
   getEditableCourseData,
-  getCourseChapters,
+  getEditingCourseId,
 } from '../../../../../store/selectors';
 import Button from '../../../../foundation/button/Button';
 import CenteredFlexContainer from '../../../../foundation/CenteredFlexContainer';
 import SpinnerLarge from '../../../../foundation/spinner/SpinnerLarge';
 
-const EditCourse = ({ dispatch, courseData, loading }) => {
+const EditCourse = ({ dispatch, courseId, courseData, loading }) => {
   useEffect(() => {
     dispatch(resourceActions.fetchChapters.request());
   }, []);
@@ -22,8 +22,6 @@ const EditCourse = ({ dispatch, courseData, loading }) => {
   };
 
   const chapters = courseData.chapters;
-
-  console.log('----chapters: ', chapters);
 
   return (
     <ContainerBase>
@@ -39,6 +37,7 @@ const EditCourse = ({ dispatch, courseData, loading }) => {
             return (
               <CourseChapter
                 key={chapterId}
+                courseId={courseId}
                 chapterId={chapterId}
                 data={data}
                 idx={idx}
@@ -57,6 +56,7 @@ const EditCourse = ({ dispatch, courseData, loading }) => {
 const mapStateToProps = state => ({
   courseData: getEditableCourseData(state),
   loading: state.courses.loading,
+  courseId: getEditingCourseId(state),
 });
 
 export default connect(mapStateToProps)(EditCourse);

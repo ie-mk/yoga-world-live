@@ -239,7 +239,7 @@ function* createChapter() {
       `courses/${courseId}/chapters`,
       {
         created: moment().format(),
-        parentId: courseId,
+        courseId: courseId,
       },
     );
     yield put(resourceActions.createChapter.success(createdChapterId));
@@ -276,19 +276,17 @@ function* deleteChapter({ payload: docId }) {
 
 // ============================ LESSONS =====================================
 
-function* fetchLessons() {
-  const courseId = yield select(getEditingCourseId);
+function* fetchLessons({ payload: { courseId, chapterId } }) {
   try {
-    const chapters = yield api.resource.fetchSubCollection(
-      'courses',
-      courseId,
-      'chapters',
+    const lessons = yield api.resource.fetchResources(
+      `courses/${courseId}/chapters/${chapterId}/lessons`,
     );
 
     yield put(
       resourceActions.fetchLessons.success({
         courseId,
-        chapters,
+        chapterId,
+        lessons,
       }),
     );
   } catch (err) {
@@ -296,29 +294,39 @@ function* fetchLessons() {
   }
 }
 
-function* fetchLesson({ payload: { docId } }) {
+function* fetchLesson({ payload: { courseId, chapterId, lessonId } }) {
   try {
-    const result = yield api.resource.fetchResource('tasks', docId);
-    yield put(resourceActions.fetchLesson.success({ [docId]: result }));
+    const result = yield api.resource.fetchResource(
+      `courses/${courseId}/chapters/${chapterId}/lessons/${lessonId}`,
+    );
+    debugger;
+    yield put(
+      resourceActions.fetchLesson.success({
+        courseId,
+        chapterId,
+        data: { [lessonId]: result },
+      }),
+    );
   } catch (err) {
     yield put(resourceActions.fetchLesson.failure(err));
   }
 }
 
-function* createLesson() {
+function* createLesson({ payload: chapterId }) {
   const courseId = yield select(getEditingCourseId);
   try {
-    const createdLessonId = yield api.resource.createSubCollection(
-      'courses',
-      courseId,
-      'chapters',
+    const createdLessonId = yield api.resource.createResource(
+      `courses/${courseId}/chapters/${chapterId}/lessons`,
       {
         created: moment().format(),
-        parentId: courseId,
+        chapterId: chapterId,
+        courseId: courseId,
       },
     );
     yield put(resourceActions.createLesson.success(createdLessonId));
-    yield fetchLessons();
+    yield fetchLesson({
+      payload: { courseId, chapterId, lessonId: createdLessonId },
+    });
   } catch (err) {
     yield put(resourceActions.createLesson.failure(err));
   }

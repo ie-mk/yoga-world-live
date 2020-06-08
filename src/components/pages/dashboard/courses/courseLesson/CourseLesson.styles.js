@@ -55,7 +55,6 @@ export const MidContainer = styled.div`
   width: 100%;
   height: 500px;
   margin-top: ${spacing.xxl};
-  background: #D3D3D326 0% 0% no-repeat padding-box;
 `;
 
 export const AddLesson = styled.div`
@@ -89,7 +88,7 @@ const Upload = styled.div`
     opacity: 1;
     display:flex;
     justify-content: center;
-    align-items:center;  
+    align-items:center;
     margin-top: ${({ marginTop }) => spacing[marginTop] || ''};
     margin-left:${spacing.sm};
     //padding:${spacing.sm};
@@ -116,14 +115,9 @@ export const Label = styled.label`
   font-size: ${fontSizeMap.h5};
 `;
 
-export const AddNewWrapper = styled.div`
-  display: flex;
-  margin-top: ${spacing.xl};
-  justify-content: center;
-`;
-
 const Wrapper = styled.div`
-  //
+  background-color: #d3d3d326;
+  margin-top: ${spacing.lg};
 `;
 
 export default {
@@ -138,6 +132,5 @@ export default {
   Row,
   Label,
   LessonContainer,
-  AddNewWrapper,
   Wrapper,
 };
