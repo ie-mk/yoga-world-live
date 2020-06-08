@@ -1,49 +1,35 @@
 import styled from 'styled-components';
-// import {
-//   borderRadius,
-//   colors,
-//   fontSizeMap,
-//   spacing,
-//   dashboard,
-// } from  //'../../constants/styles';
 
-export const liLabel = styled.li`
-    width: 2em;
-    height: 2em;
-    text-align: center;
-    line-height: 2em;
-    border-radius: 1em;
-    background: dodgerblue;
-    margin: 0 1em;
-    display: inline-block;
-    color: white;
-    position: relative;
+const Wrapper = styled.div`
+  //
+`;
+
+const Step = styled.div`
+  position: relative;
+  width: 25%;
+  border-bottom: 2px solid white;
+  height: 25px;
+  &:first-child {
+    width: 25px;
   }
- `;
+`;
 
-//   li::before{
-//     content: '';
-//     position: absolute;
-//     top: .9em;
-//     left: -4em;
-//     width: 4em;
-//     height: .2em;
-//     background: dodgerblue;
-//     z-index: -1;
-//   }
-
-//   li:first-child::before {
-//     display: none;
-//   }
-
-//   .active {
-//     background: dodgerblue;
-//   }
-
-//   .active ~ li {
-//     background: lightblue;
-//   }
+const Circle = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  position: absolute;
+  right: 0;
+  top: 11px;
+  color: black;
+`;
 
 export default {
-  liLabel,
+  Wrapper,
+  Step,
+  Circle,
 };
