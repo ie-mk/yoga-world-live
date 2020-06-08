@@ -48,6 +48,7 @@ export const resourceActions = {
   deleteLesson: createAsyncAction('delete-lesson'),
   fetchLessons: createAsyncAction('fetch-lessons'),
   fetchLesson: createAsyncAction('fetch-lesson'),
+  deleteLessonFromState: createAction('delete-lesson-from-state'),
 
   createTask: createAsyncAction('create-task'),
   updateTask: createAsyncAction('update-task'),

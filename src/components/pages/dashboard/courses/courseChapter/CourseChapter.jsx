@@ -28,10 +28,6 @@ const CourseChapter = ({ dispatch, courseId, chapterId, data, idx }) => {
     }
   };
 
-  const createLesson = () => {
-    dispatch(resourceActions.createLesson.request(chapterId));
-  };
-
   const lessons = data.lessons;
 
   // console.log('-----lessons: ', lessons);
@@ -101,16 +97,6 @@ const CourseChapter = ({ dispatch, courseId, chapterId, data, idx }) => {
             data={lessons}
           />
         )}
-        <Button
-          onClick={createLesson}
-          type="primary"
-          fontSize="18px"
-          borderRadius="sm"
-          width="200px"
-          margin="40px"
-        >
-          + Add Lesson
-        </Button>
       </Styled.Content>
     </ContainerBase>
   );

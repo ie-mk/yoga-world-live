@@ -345,12 +345,15 @@ function* updateLesson({ payload: { chapterId, lessonId, data } }) {
   }
 }
 
-function* deleteLesson({ payload }) {
+function* deleteLesson({ payload: { courseId, chapterId, lessonId } }) {
   try {
-    yield api.resource.deleteResource('tasks', payload.docId);
-    yield put(resourceActions.deleteChapter.success());
+    yield api.resource.deleteResource(
+      `courses/${courseId}/chapters/${chapterId}/lessons/${lessonId}`,
+    );
+    yield put(resourceActions.deleteLesson.success());
+    yield put(resourceActions.deleteLessonFromState(lessonId));
   } catch (err) {
-    yield put(resourceActions.deleteChapter.failure(err));
+    yield put(resourceActions.deleteLesson.failure(err));
   }
 }
 

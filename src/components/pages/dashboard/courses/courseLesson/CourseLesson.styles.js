@@ -120,6 +120,17 @@ const Wrapper = styled.div`
   margin-top: ${spacing.lg};
 `;
 
+const LessonNumber = styled.span`
+  display: flex;
+  align-items: center;
+  font-size: ${fontSizeMap.h4s};
+  input {
+    margin-right: ${spacing.md};
+    width: 28px;
+    height: 28px;
+  }
+`;
+
 export default {
   InputRow,
   Title,
@@ -133,4 +144,5 @@ export default {
   Label,
   LessonContainer,
   Wrapper,
+  LessonNumber,
 };
