@@ -7,6 +7,7 @@ import HeroTitle from '../foundation/typography/HeroTitle';
 import CardTitle from '../foundation/typography/CardTitle';
 import BodyText from '../foundation/typography/BodyText';
 import FlexContainer from '../foundation/FlexContainer';
+import Billing from './billing/Billing';
 
 const Profile = ({ user }) => {
   const [activeTab, setActiveTab] = useState('learning');
@@ -108,6 +109,7 @@ const Profile = ({ user }) => {
           Preferences
         </Styled.Tab>
       </Styled.ProfileInfoPageWrapper>
+      {isActiveBilling && <Billing />}
     </ContainerBase>
   );
 };

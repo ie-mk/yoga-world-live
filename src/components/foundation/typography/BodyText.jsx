@@ -7,16 +7,20 @@ import media from '../media';
 const Wrapper = styled.div`
   letter-spacing: 0;
   font-size: ${fontSizeMap.textMobile};
-  color: ${colors.text.primary};
-  font-weight: 200;
-
-  ${media.aboveTablet`
+  color: ${({ color }) => (color ? color : colors.text.primary)};
+  font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : '200')};
+  padding-top: ${({ paddingTop }) => (paddingTop ? paddingTop : '')}
+    ${media.aboveTablet`
      font-size: ${fontSizeMap.text};
-  `}
+  `};
 `;
 
-const BodyText = ({ children }) => {
-  return <Wrapper>{children}</Wrapper>;
+const BodyText = ({ children, color, fontWeight, paddingTop }) => {
+  return (
+    <Wrapper color={color} fontWeight={fontWeight} paddingTop={paddingTop}>
+      {children}
+    </Wrapper>
+  );
 };
 
 export default withSpacing(BodyText);
