@@ -15,6 +15,10 @@ let CourseLessonsContainer = ({ dispatch, data, chapterId, courseId }) => {
 
   const [activeLesson, setActiveLesson] = useState(0);
 
+  console.log(
+    `=========== chapter lessons container rendered id: ${chapterId}`,
+  );
+
   return (
     <Styled.Wrapper>
       <FlexContainer justifyContent="space-between">
@@ -26,6 +30,7 @@ let CourseLessonsContainer = ({ dispatch, data, chapterId, courseId }) => {
               <CourseLessonHeader
                 key={lessonId}
                 courseId={courseId}
+                chapterId={chapterId}
                 lessonId={lessonId}
                 activeLesson={activeLesson}
                 setActiveLesson={setActiveLesson}

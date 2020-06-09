@@ -37,7 +37,7 @@ let CourseLessonHeader = ({
     >
       <Styled.LessonNumber>
         <input
-          onClick={() => setActiveLesson(idx)}
+          onChange={() => setActiveLesson(idx)}
           type="checkbox"
           checked={activeLesson === idx}
         />

@@ -12,7 +12,12 @@ import Button from '../../../../foundation/button/Button';
 import CenteredFlexContainer from '../../../../foundation/CenteredFlexContainer';
 import SpinnerLarge from '../../../../foundation/spinner/SpinnerLarge';
 
-const EditCourse = ({ dispatch, courseId, courseData, loading }) => {
+const EditCourse = ({
+  dispatch,
+  courseId,
+  courseData: { chapters, edited },
+  loading,
+}) => {
   useEffect(() => {
     dispatch(resourceActions.fetchChapters.request());
   }, []);
@@ -21,10 +26,10 @@ const EditCourse = ({ dispatch, courseId, courseData, loading }) => {
     dispatch(resourceActions.createChapter.request());
   };
 
-  const chapters = courseData.chapters;
+  console.log(`=========== course rendered id: ${courseId}`);
 
   return (
-    <ContainerBase>
+    <ContainerBase key={edited}>
       {loading && <SpinnerLarge />}
       <CourseDescription />
       {chapters &&

@@ -1,7 +1,6 @@
 import { handleActions } from 'redux-actions';
 import { userActions, layoutActions, resourceActions } from './actions';
 import { IS_SERVER } from '../constants';
-import { cloneDeep } from 'lodash';
 
 export const getAsyncReducers = ({
   action,
@@ -270,6 +269,27 @@ export const courseReducer = handleActions(
       return newState;
     },
 
+    [resourceActions.deleteChapterFromState]: (
+      state,
+      { payload: { courseId, chapterId } },
+    ) => {
+      const newState = {
+        ...state,
+        data: { ...state.data },
+      };
+
+      const newCourseData = { ...state.data[courseId] };
+      newCourseData.chapters = {
+        ...state.data[courseId].chapters,
+      };
+
+      delete newCourseData.chapters[chapterId];
+
+      newState.data[courseId] = newCourseData;
+
+      return newState;
+    },
+
     //=================== COURSE LESSONS ===========================
 
     ...getAsyncReducers({ action: resourceActions.deleteLesson }),
@@ -293,7 +313,12 @@ export const courseReducer = handleActions(
       };
 
       const newCourseData = { ...state.data[courseId] };
+
       newCourseData.chapters = { ...state.data[courseId].chapters };
+
+      newCourseData.chapters[chapterId] = {
+        ...state.data[courseId].chapters[chapterId],
+      };
 
       newCourseData.chapters[chapterId].lessons = lessons;
 
@@ -320,7 +345,12 @@ export const courseReducer = handleActions(
       };
 
       const newCourseData = { ...state.data[courseId] };
+
       newCourseData.chapters = { ...state.data[courseId].chapters };
+
+      newCourseData.chapters[chapterId] = {
+        ...state.data[courseId].chapters[chapterId],
+      };
 
       newCourseData.chapters[chapterId].lessons = {
         ...state.data[courseId].chapters[chapterId].lessons,
@@ -342,14 +372,22 @@ export const courseReducer = handleActions(
       };
 
       const newCourseData = { ...state.data[courseId] };
+
       newCourseData.chapters = { ...state.data[courseId].chapters };
-      newCourseData[courseId].chapters[chapterId].lessons = {
+
+      newCourseData.chapters[chapterId] = {
+        ...state.data[courseId].chapters[chapterId],
+      };
+
+      newCourseData.chapters[chapterId].lessons = {
         ...state.data[courseId].chapters[chapterId].lessons,
       };
 
-      delete newCourseData[courseId].chapters[chapterId].lessons[lessonId];
+      delete newCourseData.chapters[chapterId].lessons[lessonId];
 
       newState.data[courseId] = newCourseData;
+
+      debugger;
 
       return newState;
     },
