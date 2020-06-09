@@ -9,15 +9,15 @@ const Wrapper = styled.div`
   font-size: ${fontSizeMap.textMobile};
   color: ${({ color }) => (color ? color : colors.text.primary)};
   font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : '200')};
-  padding-top: ${({ paddingTop }) => (paddingTop ? paddingTop : '')}
-    ${media.aboveTablet`
+
+  ${media.aboveTablet`
      font-size: ${fontSizeMap.text};
   `};
 `;
 
-const BodyText = ({ children, color, fontWeight, paddingTop }) => {
+const BodyText = ({ children, color, fontWeight }) => {
   return (
-    <Wrapper color={color} fontWeight={fontWeight} paddingTop={paddingTop}>
+    <Wrapper color={color} fontWeight={fontWeight}>
       {children}
     </Wrapper>
   );
