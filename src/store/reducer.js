@@ -1,6 +1,7 @@
 import { handleActions } from 'redux-actions';
 import { userActions, layoutActions, resourceActions } from './actions';
 import { IS_SERVER } from '../constants';
+import { cloneDeep } from 'lodash';
 
 export const getAsyncReducers = ({
   action,
@@ -278,10 +279,10 @@ export const courseReducer = handleActions(
         data: { ...state.data },
       };
 
-      const newCourseData = { ...state.data[courseId] };
-      newCourseData.chapters = {
-        ...state.data[courseId].chapters,
-      };
+      const newCourseData = cloneDeep(state.data[courseId]);
+      // newCourseData.chapters = {
+      //   ...state.data[courseId].chapters,
+      // };
 
       delete newCourseData.chapters[chapterId];
 
@@ -312,13 +313,13 @@ export const courseReducer = handleActions(
         loading: false,
       };
 
-      const newCourseData = { ...state.data[courseId] };
+      const newCourseData = cloneDeep(state.data[courseId]);
 
-      newCourseData.chapters = { ...state.data[courseId].chapters };
-
-      newCourseData.chapters[chapterId] = {
-        ...state.data[courseId].chapters[chapterId],
-      };
+      // newCourseData.chapters = { ...state.data[courseId].chapters };
+      //
+      // newCourseData.chapters[chapterId] = {
+      //   ...state.data[courseId].chapters[chapterId],
+      // };
 
       newCourseData.chapters[chapterId].lessons = lessons;
 
@@ -344,13 +345,13 @@ export const courseReducer = handleActions(
         loading: false,
       };
 
-      const newCourseData = { ...state.data[courseId] };
+      const newCourseData = cloneDeep(state.data[courseId]);
 
-      newCourseData.chapters = { ...state.data[courseId].chapters };
-
-      newCourseData.chapters[chapterId] = {
-        ...state.data[courseId].chapters[chapterId],
-      };
+      // newCourseData.chapters = { ...state.data[courseId].chapters };
+      //
+      // newCourseData.chapters[chapterId] = {
+      //   ...state.data[courseId].chapters[chapterId],
+      // };
 
       newCourseData.chapters[chapterId].lessons = {
         ...state.data[courseId].chapters[chapterId].lessons,
@@ -371,23 +372,21 @@ export const courseReducer = handleActions(
         data: { ...state.data },
       };
 
-      const newCourseData = { ...state.data[courseId] };
+      const newCourseData = cloneDeep(state.data[courseId]);
 
-      newCourseData.chapters = { ...state.data[courseId].chapters };
-
-      newCourseData.chapters[chapterId] = {
-        ...state.data[courseId].chapters[chapterId],
-      };
-
-      newCourseData.chapters[chapterId].lessons = {
-        ...state.data[courseId].chapters[chapterId].lessons,
-      };
+      // newCourseData.chapters = { ...state.data[courseId].chapters };
+      //
+      // newCourseData.chapters[chapterId] = {
+      //   ...state.data[courseId].chapters[chapterId],
+      // };
+      //
+      // newCourseData.chapters[chapterId].lessons = {
+      //   ...state.data[courseId].chapters[chapterId].lessons,
+      // };
 
       delete newCourseData.chapters[chapterId].lessons[lessonId];
 
       newState.data[courseId] = newCourseData;
-
-      debugger;
 
       return newState;
     },

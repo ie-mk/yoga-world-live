@@ -26,7 +26,7 @@ const EditCourse = ({
     dispatch(resourceActions.createChapter.request());
   };
 
-  console.log(`=========== course rendered id: ${courseId}`);
+  // console.log(`=========== course rendered id: ${courseId}`);
 
   return (
     <ContainerBase key={edited}>

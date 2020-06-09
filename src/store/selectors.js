@@ -17,7 +17,6 @@ export const getEditableCourseData = createSelector(
   getCourses,
   getEditingCourseId,
   (courses, editableCourseId) => {
-    console.log('>>>>>>>>>>>> selector: getEditableCourseData');
     return courses[editableCourseId] || {};
   },
 );

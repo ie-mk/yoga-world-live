@@ -15,9 +15,9 @@ let CourseLessonsContainer = ({ dispatch, data, chapterId, courseId }) => {
 
   const [activeLesson, setActiveLesson] = useState(0);
 
-  console.log(
-    `=========== chapter lessons container rendered id: ${chapterId}`,
-  );
+  // console.log(
+  //   `=========== chapter lessons container rendered id: ${chapterId}`,
+  // );
 
   return (
     <Styled.Wrapper>

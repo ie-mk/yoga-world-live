@@ -30,8 +30,8 @@ const CourseChapter = ({ dispatch, courseId, chapterId, data, idx }) => {
 
   const lessons = data.lessons;
 
-  console.log(`=========== chapter rendered id: ${chapterId}`);
-  console.log('+++++++++++ chapter data: ', data);
+  // console.log(`=========== chapter rendered id: ${chapterId}`);
+  // console.log('+++++++++++ chapter data: ', data);
 
   return (
     <ContainerBase paddingLeft="xxxl" paddingRight="xxxl">
