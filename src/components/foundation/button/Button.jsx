@@ -38,6 +38,7 @@ const colorMap = {
   warning: colors.button.warning,
   danger: 'red',
   action: 'black',
+  secondary: 'white',
   button: 'black',
 };
 

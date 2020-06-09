@@ -6,6 +6,7 @@ import media from '../media';
 
 const StyledH3 = styled.h3`
   font-size: ${fontSizeMap.text};
+  width: ${({ width }) => width || ''};
   margin: ${({ margin }) => margin || ''};
   font-weight: ${({ fontWeight }) => fontWeight || ''};
 
@@ -14,9 +15,9 @@ const StyledH3 = styled.h3`
   `};
 `;
 
-const CardTitle = ({ text, margin, fontWeight }) => {
+const CardTitle = ({ text, margin, fontWeight, width }) => {
   return (
-    <StyledH3 margin={margin} fontWeight={fontWeight}>
+    <StyledH3 margin={margin} width={width} fontWeight={fontWeight}>
       {text}
     </StyledH3>
   );
