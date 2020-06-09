@@ -187,6 +187,27 @@ export const courseReducer = handleActions(
     ...getAsyncReducers({ action: resourceActions.fetchCourses }),
     ...getAsyncReducers({ action: resourceActions.fetchCourse }),
 
+    [resourceActions.resetCourses]: state => ({
+      ...state,
+      data: {},
+    }),
+
+    [resourceActions.setEditableCourseId]: (state, { payload }) => ({
+      ...state,
+      editableCourseId: payload,
+    }),
+
+    [resourceActions.deleteCourseFromState]: (state, { payload }) => {
+      const courses = { ...state.data };
+
+      delete courses[payload];
+
+      return {
+        ...state,
+        data: courses,
+      };
+    },
+
     //=================== COURSE CHAPTERS ===========================
 
     ...getAsyncReducers({ action: resourceActions.deleteChapter }),
@@ -250,6 +271,7 @@ export const courseReducer = handleActions(
     },
 
     //=================== COURSE LESSONS ===========================
+
     ...getAsyncReducers({ action: resourceActions.deleteLesson }),
     ...getAsyncReducers({ action: resourceActions.createLesson }),
     ...getAsyncReducers({ action: resourceActions.updateLesson }),
@@ -270,7 +292,8 @@ export const courseReducer = handleActions(
         loading: false,
       };
 
-      const newCourseData = cloneDeep(state.data[courseId]);
+      const newCourseData = { ...state.data[courseId] };
+      newCourseData.chapters = { ...state.data[courseId].chapters };
 
       newCourseData.chapters[chapterId].lessons = lessons;
 
@@ -296,7 +319,8 @@ export const courseReducer = handleActions(
         loading: false,
       };
 
-      const newCourseData = cloneDeep(state.data[courseId]);
+      const newCourseData = { ...state.data[courseId] };
+      newCourseData.chapters = { ...state.data[courseId].chapters };
 
       newCourseData.chapters[chapterId].lessons = {
         ...state.data[courseId].chapters[chapterId].lessons,
