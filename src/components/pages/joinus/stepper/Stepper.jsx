@@ -3,17 +3,10 @@ import Styled from './Stepper.styles';
 import FlexContainer from '../../../foundation/FlexContainer';
 import ContainerBase from '../../../foundation/ContainerBase';
 
-const steps = [
-  { title: 'Step 1' },
-  { title: 'Step 2' },
-  { title: 'Step 3' },
-  { title: 'Step 4' },
-];
-
-const Stepper = ({ activeStep, setActiveStep }) => {
+const Stepper = ({ steps, activeStep, setActiveStep }) => {
   return (
-    <ContainerBase marginTop="100px">
-      <FlexContainer width="100%">
+    <ContainerBase marginTop="100px" display="flex" justifyContent="center">
+      <FlexContainer width="85%" justifyContent="center">
         {steps.map((step, idx) => {
           const active = activeStep >= idx;
           return (
@@ -26,7 +19,7 @@ const Stepper = ({ activeStep, setActiveStep }) => {
               >
                 {idx + 1}
               </Styled.Circle>
-              <Styled.Label>BLA</Styled.Label>
+              <Styled.Label>{step.title}</Styled.Label>
             </Styled.Step>
           );
         })}

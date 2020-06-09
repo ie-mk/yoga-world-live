@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import Stepper from './stepper/Stepper';
 import { ContainerBase } from '../../foundation';
+import SectionCards from '../../heros/sectionCards/SectionCards';
+import SelectMembership from '../joinus/selectMembership/SelectMembership';
+
+const steps = [
+  { title: 'Select Your Membership' },
+  { title: 'Your Details' },
+  { title: 'Payment' },
+  { title: 'Start Learning' },
+];
 
 const JoinUs = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -11,9 +20,13 @@ const JoinUs = () => {
 
   return (
     <>
-      <Stepper activeStep={activeStep} setActiveStep={setActiveStep} />
+      <Stepper
+        steps={steps}
+        activeStep={activeStep}
+        setActiveStep={setActiveStep}
+      />
       <ContainerBase marginTop="100px">
-        {showPage1 && <div>this is step 1</div>}
+        {showPage1 && <SelectMembership />}
         {showPage2 && <div>this is step 2</div>}
         {showPage3 && <div>this is step 3</div>}
       </ContainerBase>

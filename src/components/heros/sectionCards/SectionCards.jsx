@@ -7,11 +7,11 @@ import CenteredFlexContainer from '../../foundation/CenteredFlexContainer';
 import SectionCard from '../../cards/SectionCard';
 import { background, spacing } from '../../../constants/styles';
 
-const SectionCards = () => {
+const SectionCards = ({ title }) => {
   return (
     <CenteredFlexContainer marginTop="xxl">
       <SectionTitle
-        text="How it works"
+        text={title}
         marginBottom={spacing.xl}
         marginTop={spacing.xl}
       />

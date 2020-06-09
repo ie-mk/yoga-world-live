@@ -1,4 +1,11 @@
 import styled from 'styled-components';
+import {
+  borderRadius,
+  colors,
+  fontSizeMap,
+  spacing,
+  dashboard,
+} from '../../../../constants/styles';
 
 const Step = styled.div`
   position: relative;
@@ -22,15 +29,16 @@ const Circle = styled.div`
   right: 0;
   top: 11px;
   color: black;
+  cursor: pointer;
 `;
 
 const Label = styled.div`
   position: absolute;
-  right: 0;
+  right: -70px;
   top: 42px;
   color: white;
   font-weight: bold;
-  font-size: 32px;
+  font-size: 24px;
 `;
 
 export default {
