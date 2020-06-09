@@ -341,7 +341,11 @@ export const courseReducer = handleActions(
         data: { ...state.data },
       };
 
-      const newCourseData = cloneDeep(state.data[courseId]);
+      const newCourseData = { ...state.data[courseId] };
+      newCourseData.chapters = { ...state.data[courseId].chapters };
+      newCourseData[courseId].chapters[chapterId].lessons = {
+        ...state.data[courseId].chapters[chapterId].lessons,
+      };
 
       delete newCourseData[courseId].chapters[chapterId].lessons[lessonId];
 

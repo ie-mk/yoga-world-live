@@ -5,6 +5,7 @@ import Button from '../../../../foundation/button/Button';
 import FlexContainer from '../../../../foundation/FlexContainer';
 import { spacing } from '../../../../../constants/styles';
 import { resourceActions } from '../../../../../store/actions';
+import { connect } from 'react-redux';
 
 let CourseLessonHeader = ({
   dispatch,
@@ -65,4 +66,4 @@ let CourseLessonHeader = ({
   );
 };
 
-export default CourseLessonHeader;
+export default connect()(CourseLessonHeader);
