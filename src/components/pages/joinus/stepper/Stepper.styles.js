@@ -29,15 +29,16 @@ const Circle = styled.div`
   border-radius: 50%;
   position: absolute;
   right: 0;
-  top: 0px;
+  top: 0;
   color: black;
   cursor: pointer;
   font-size: ${fontSizeMap.h3s};
   border: 2px solid white;
   ${media.belowTabletLarge`
     font-size: ${fontSizeMap.textS};
-    width: '25px';
-    height: '25px';
+    width: 25px;
+    height: 25px;
+    top: 10px;
   `}
 `;
 

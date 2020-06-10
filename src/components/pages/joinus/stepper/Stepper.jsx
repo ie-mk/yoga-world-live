@@ -2,10 +2,16 @@ import React, { useState } from 'react';
 import Styled from './Stepper.styles';
 import FlexContainer from '../../../foundation/FlexContainer';
 import ContainerBase from '../../../foundation/ContainerBase';
+import CenteredFlexContainer from '../../../foundation/CenteredFlexContainer';
 
 const Stepper = ({ steps, activeStep, setActiveStep }) => {
   return (
-    <ContainerBase marginTop="100px" display="flex" justifyContent="center">
+    <CenteredFlexContainer
+      marginTop="100px"
+      display="flex"
+      justifyContent="center"
+      width="100%"
+    >
       <FlexContainer width="85%" justifyContent="center">
         {steps.map((step, idx) => {
           const active = activeStep >= idx;
@@ -24,7 +30,7 @@ const Stepper = ({ steps, activeStep, setActiveStep }) => {
           );
         })}
       </FlexContainer>
-    </ContainerBase>
+    </CenteredFlexContainer>
   );
 };
 
