@@ -19,7 +19,7 @@ const Stepper = ({ steps, activeStep, setActiveStep }) => {
               >
                 {idx + 1}
               </Styled.Circle>
-              <Styled.Label>{step.title}</Styled.Label>
+              <Styled.Label active={active}>{step.title}</Styled.Label>
             </Styled.Step>
           );
         })}

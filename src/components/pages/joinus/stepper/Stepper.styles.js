@@ -42,12 +42,15 @@ const Circle = styled.div`
 `;
 
 const Label = styled.div`
+  width: 180px;
   position: absolute;
-  right: -60px;
+  right: -63px;
   top: 60px;
-  color: white;
-  font-weight: bold;
+  color: ${({ active }) => (active ? '#0EC9B0' : 'white')};
+  font-weight: 300;
   font-size: ${fontSizeMap.h4};
+  text-align: center;
+
   ${media.belowTabletLarge`
     font-size: ${fontSizeMap.textMobile};
     right: -20px;

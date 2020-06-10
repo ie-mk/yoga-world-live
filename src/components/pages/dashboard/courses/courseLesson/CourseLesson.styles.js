@@ -89,7 +89,7 @@ const Upload = styled.div`
     opacity: 1;
     display:flex;
     justify-content: center;
-    align-items:center;  
+    align-items:center;
     margin-top: ${({ marginTop }) => spacing[marginTop] || ''};
     margin-left:${spacing.sm};
     //padding:${spacing.sm};
