@@ -5,6 +5,7 @@ import media from '../media';
 
 const StyledH4 = styled.h4`
   font-size: ${fontSizeMap.textMobile};
+  font-weight: 400;
   color: ${({ color }) => (color ? color : colors.text.primary)};
   margin: ${({ margin }) => margin || ''};
   ${media.aboveTablet`

@@ -3,7 +3,7 @@ import media from '../../foundation/media';
 export const Wrapper = styled.div``;
 
 export const BillingWrapper = styled.div`
-  padding: 0 90px 0 165px;
+  padding: 0 90px 0 110px;
   ${media.belowTabletLarge`
     padding: 42px 20px;
   `}
@@ -14,9 +14,9 @@ export const BillingWrapper = styled.div`
   }
   .desktopView {
     ${media.belowTabletLarge`
-    
+
     display: none;
-   
+
   `}
 `;
 
@@ -27,8 +27,8 @@ export const MembershipType = styled.div`
   justify-content: space-between;
   ${media.belowTabletLarge`
   margin-top: 44px;
- 
- 
+
+
 `}
   .mobileView {
     ${media.aboveTabletLarge`
@@ -39,7 +39,7 @@ export const MembershipType = styled.div`
     ${media.belowTabletLarge`
     margin-top: 44px;
     display: none;
-   
+
   `}
   }
 `;
@@ -49,23 +49,7 @@ export const CardWrapper = styled.div`
   display: flex;
   align-items: center;
 `;
-export const GridWrapper = styled.div`
- flex:1;
-  display:flex;
- 
-  margin-top: 44px;
-  .mobileView {
-    ${media.aboveTabletLarge`
-    display: none;
-  `}
-  }
-  .desktopView {
-    ${media.belowTabletLarge`
-    
-    display: none;
-   
-  `}
-`;
+
 export const CardImage = styled.img`
   width: 168px;
   height: 75px;
@@ -76,7 +60,6 @@ export default {
   Wrapper,
   BillingWrapper,
   MembershipType,
-  GridWrapper,
   CardWrapper,
   CardImage,
 };

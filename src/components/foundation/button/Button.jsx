@@ -49,9 +49,11 @@ const borderMap = {
 };
 
 const ButtonWrapper = styled.button`
-  max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : 'none')};
-  width: ${({ width }) => (width ? width : 'none')};
-  height: ${({ height }) => (height ? height : 'none')};
+  max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : 'auto')};
+  min-width: ${({ minWidth }) => (minWidth ? minWidth : 'auto')};
+  min-height: ${({ minHeight }) => (minHeight ? minHeight : 'auto')};
+  width: ${({ width }) => (width ? width : '')};
+  height: ${({ height }) => (height ? height : 'auto')};
   margin: ${({ margin }) =>
     marginMap[margin] ? marginMap[margin] : margin ? margin : '0 40px 0 0'};
   padding: ${({ size }) => (paddingMap[size] ? paddingMap[size] : '10px')};
@@ -71,6 +73,7 @@ const ButtonWrapper = styled.button`
   font-size: ${({ fontSize }) =>
     fontSizeMap[fontSize] ? fontSizeMap[fontSize] : fontSize};
   z-index: 1;
+  overflow: ${({ overflow }) => (overflow ? overflow : '')};
   &:hover {
     box-shadow: 0 0 2px 2px white;
   }

@@ -6,12 +6,13 @@ import media from '../media';
 
 const H5 = styled.h5`
   font-size: ${fontSizeMap.textMobile};
-  color: ${({ color }) => (color ? color : colors.text.primary)};
+  color: ${({ color }) => (color ? color : 'white')};
   margin: ${({ margin }) => margin || ''};
-  font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : '')};
-  padding-top: ${({ paddingTop }) => (paddingTop ? paddingTop : '')}
-    ${media.aboveTablet`
-     font-size: ${fontSizeMap.h5};
+  font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : '300')};
+  padding-top: ${({ paddingTop }) => (paddingTop ? paddingTop : '')};
+
+  ${media.aboveTabletLarge`
+     font-size: ${fontSizeMap.h4};
   `};
 `;
 

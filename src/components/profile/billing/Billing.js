@@ -7,10 +7,34 @@ import BodyText from '../../foundation/typography/BodyText';
 import PathTitle from '../../foundation/typography/PathTitle';
 import CenteredFlexContainer from '../../foundation/CenteredFlexContainer';
 import ContainerBase from '../../foundation/ContainerBase';
-import { background, spacing } from '../../../constants/styles';
+import { background, fontSizeMap, spacing } from '../../../constants/styles';
 import Styled from './Billing.styles';
 import Grid from '../../foundation/Grid';
 import Button from '../../foundation/button/Button';
+
+const CustomButton = props => (
+  <Button
+    type="secondary"
+    borderRadius="mobile"
+    size="sm"
+    margin="0"
+    mediaConfig={{
+      belowDesktop: {
+        padding: '14px 27px',
+        fontSize: fontSizeMap.buttonMobile,
+        margin: props.margin ? props.margin : '0',
+        width: 'auto',
+      },
+    }}
+    {...props}
+  >
+    {props.children}
+  </Button>
+);
+
+const CustomTitle = props => (
+  <CardTitle margin="113px 0 44px 0" fontWeight="500" {...props} />
+);
 
 const Billig = () => {
   const { t } = useTranslation();
@@ -18,234 +42,118 @@ const Billig = () => {
   return (
     <ContainerBase marginTop="xxl">
       <Styled.BillingWrapper>
-        <CardTitle margin="0" text="Your Membership" />
-        <Styled.GridWrapper>
-          <Grid
-            columns="1fr 1fr"
-            mediaConfig={{
-              aboveTabletLarge: {
-                'grid-template-columns': '1fr 1fr 1fr',
-              },
-              belowDesktop: {
-                'grid-gap': spacing.xl,
-              },
-            }}
-            gridGap={spacing.xxxxl}
-          >
-            <div>
-              <BodyHeader text="MemberShip Type" />
-              <Styled.MembershipType>
-                <BodyHeader margin="0" color="#0EC9B0" text="Paid" />
-                <Button
-                  className="mobileView"
-                  type="primary"
-                  width="80px"
-                  borderRadius="mobile"
-                  height="30px"
-                  size="mobile"
-                  mobileSameSize={true}
-                  padding="0"
-                  margin="0"
-                >
-                  Change
-                </Button>
-                <Button
-                  className="desktopView"
-                  type="primary"
-                  width="160px"
-                  borderRadius="sm"
-                  height="60px"
-                  size="sm"
-                  margin="0"
-                  mobileSameSize={true}
-                >
-                  Change
-                </Button>
-              </Styled.MembershipType>
-            </div>
+        <CardTitle
+          margin="0 0 44px 0"
+          fontWeight="500"
+          text="Your Membership"
+        />
+        <Grid
+          columns="1fr 1fr"
+          mediaConfig={{
+            aboveTabletLarge: {
+              'grid-template-columns': '1fr 1fr 1fr',
+            },
+            belowDesktop: {
+              'grid-gap': spacing.xl,
+            },
+          }}
+          gridGap={spacing.xxxxl}
+        >
+          <div>
+            <BodyHeader text="MemberShip Type" />
+            <Styled.MembershipType>
+              <BodyHeader margin="0" color="#0EC9B0" text="Paid" />
+              <CustomButton type="primary">Change</CustomButton>
+            </Styled.MembershipType>
+          </div>
 
-            <div>
-              <BodyHeader text="MemberShip Fee" />
-              <BodyHeader
-                margin="44px 0 0 0"
-                color="#0EC9B0"
-                text="€ 3999/ year"
-              />
-            </div>
-            <div>
-              <BodyHeader text="Last Payment Date" />
-              <BodyHeader
-                margin="44px 0 0 0"
-                color="#0EC9B0"
-                text="March 23,2020"
-              />
-            </div>
-          </Grid>
-        </Styled.GridWrapper>
-
-        <CardTitle margin="113px 0 0 0" text="Invoices" />
-        <Styled.GridWrapper>
-          <Grid
-            columns="1fr 1fr 1fr"
-            mediaConfig={{
-              aboveTabletLarge: {
-                'grid-template-columns': '1fr 1fr 1fr 1fr',
-              },
-              belowDesktop: {
-                'grid-gap': spacing.xl,
-              },
-            }}
-            gridGap={spacing.xxxxl}
-          >
-            <div>
-              <BodyHeader margin="0" text="Description" />
-
-              <PathTitle margin="44px 0 0 0" text="MemberShip Fee" />
-            </div>
-
-            <div>
-              <BodyHeader margin="0" text="Amount" />
-              <PathTitle margin="44px 0 0 0" text="€ 3999" />
-            </div>
-            <div>
-              <BodyHeader margin="0" text="Date" />
-              <PathTitle margin="44px 0 0 0" text="March 23,2020" />
-            </div>
-            <div>
-              <Button
-                className="desktopView"
-                type="secondary"
-                width="160px"
-                borderRadius="sm"
-                height="60px"
-                size="sm"
-                mobileSameSize={true}
-                margin="44px 0 0 0"
-              >
-                View Invoice
-              </Button>
-              <Button
-                className="mobileView"
-                type="secondary"
-                width="80px"
-                borderRadius="mobile"
-                height="30px"
-                size="mobile"
-                mobileSameSize={true}
-                margin="0 0 0 0"
-                padding="0"
-              >
-                View Invoice
-              </Button>
-            </div>
-          </Grid>
-        </Styled.GridWrapper>
-        <CardTitle margin="113px 0 0 0" text="Payment Methods" />
-        <Styled.GridWrapper>
-          <Grid
-            columns="1fr"
-            mediaConfig={{
-              aboveTabletLarge: {
-                'grid-template-columns': '1fr 1fr',
-              },
-              belowDesktop: {
-                'grid-gap': spacing.xl,
-              },
-            }}
-            gridGap={spacing.xxxxl}
-          >
-            <Styled.CardWrapper>
-              <Styled.CardImage src="img/visaImage.png" />
-              <CardTitle
-                width="500px"
-                fontWeight="200"
-                text="xxxx xxxx xxxx 3267"
-              />
-            </Styled.CardWrapper>
-
-            <Button
-              className="desktopView"
-              type="secondary"
-              width="160px"
-              borderRadius="sm"
-              height="60px"
-              size="sm"
-              mobileSameSize={true}
+          <div>
+            <BodyHeader text="MemberShip Fee" />
+            <BodyHeader
               margin="44px 0 0 0"
-            >
-              Remove
-            </Button>
-            <Button
-              className="mobileView"
-              type="secondary"
-              width="80px"
-              borderRadius="mobile"
-              height="30px"
-              size="mobile"
-              mobileSameSize={true}
-              margin="0"
-              padding="0"
-            >
-              Remove
-            </Button>
+              color="#0EC9B0"
+              text="€ 3999/ year"
+            />
+          </div>
+          <div>
+            <BodyHeader text="Last Payment Date" />
+            <BodyHeader
+              margin="44px 0 0 0"
+              color="#0EC9B0"
+              text="March 23,2020"
+            />
+          </div>
+        </Grid>
 
-            <Button
-              className="desktopView"
-              type="primary"
-              width="300px"
-              borderRadius="sm"
-              height="60px"
-              size="sm"
-              mobileSameSize={true}
-              margin="0"
-            >
-              Add Payment Method
-            </Button>
-            <Button
-              className="mobileView"
-              type="primary"
-              width="150px"
-              borderRadius="mobile"
-              height="30px"
-              size="mobile"
-              mobileSameSize={true}
-              margin="0"
-              padding="0"
-            >
-              Add Payment Method
-            </Button>
-          </Grid>
-        </Styled.GridWrapper>
-        <CardTitle margin="113px 0 0 0" text="Cancel Membership" />
+        <CustomTitle text="Invoices" />
+        <Grid
+          columns="1fr 1fr 1fr"
+          mediaConfig={{
+            aboveTabletLarge: {
+              'grid-template-columns': '1fr 1fr 1fr 1fr',
+            },
+            belowDesktop: {
+              'grid-gap': spacing.xl,
+            },
+          }}
+          gridGap={spacing.xxxxl}
+        >
+          <div>
+            <BodyHeader margin="0" text="Description" />
+
+            <PathTitle margin="44px 0 0 0" text="MemberShip Fee" />
+          </div>
+
+          <div>
+            <BodyHeader margin="0" text="Amount" />
+            <PathTitle margin="44px 0 0 0" text="€ 3999" />
+          </div>
+          <div>
+            <BodyHeader margin="0" text="Date" />
+            <PathTitle margin="44px 0 0 0" text="March 23,2020" />
+          </div>
+          <div>
+            <CustomButton>View Invoice</CustomButton>
+          </div>
+        </Grid>
+        <CustomTitle text="Payment Methods" />
+        <Grid
+          columns="1fr"
+          mediaConfig={{
+            aboveTabletLarge: {
+              'grid-template-columns': '1fr 1fr',
+            },
+            belowDesktop: {
+              'grid-gap': spacing.xl,
+            },
+          }}
+          gridGap={spacing.xxxxl}
+        >
+          <Styled.CardWrapper>
+            <Styled.CardImage src="img/visaImage.png" />
+            <CardTitle
+              width="500px"
+              fontWeight="200"
+              text="xxxx xxxx xxxx 3267"
+            />
+          </Styled.CardWrapper>
+          <div>
+            <CustomButton type="secondary" minWidth="180px">
+              Remove
+            </CustomButton>
+          </div>
+          <di>
+            <CustomButton type="primary">Add Payment Method</CustomButton>
+          </di>
+        </Grid>
+        <CustomTitle margin="50px 0 20px 0" text="Cancel Membership" />
         <PathTitle
-          margin="29px 0 0 0"
+          margin="0 0 25px 0"
           text="you will loss access to your courses and program"
         />
-        <Button
-          className="desktopView"
-          type="secondary"
-          width="300px"
-          borderRadius="sm"
-          height="60px"
-          size="sm"
-          mobileSameSize={true}
-          margin="54px 0 0 0"
-        >
+        <CustomButton type="secondary" margin="0 0 40px">
           Cancel Membership
-        </Button>
-        <Button
-          className="mobileView"
-          type="secondary"
-          width="150px"
-          borderRadius="mobile"
-          height="30px"
-          size="mobile"
-          mobileSameSize={true}
-          margin="54px 0 0 0"
-          padding="0"
-        >
-          Cancel Membership
-        </Button>
+        </CustomButton>
       </Styled.BillingWrapper>
     </ContainerBase>
   );
