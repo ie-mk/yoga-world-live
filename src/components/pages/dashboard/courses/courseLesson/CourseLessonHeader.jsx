@@ -21,13 +21,12 @@ const CustomButton = props => (
 
 let CourseLessonHeader = ({
   dispatch,
-  data,
   courseId,
   chapterId,
   lessonId,
   idx,
-  activeLesson,
-  setActiveLesson,
+  editableLessonId,
+  setEditableLessonId,
 }) => {
   const deleteLesson = () => {
     if (confirm('Are you sure you want to delete this lesson?')) {
@@ -41,7 +40,7 @@ let CourseLessonHeader = ({
     }
   };
 
-  const editing = activeLesson === idx;
+  const editing = editableLessonId === lessonId;
 
   return (
     <FlexContainer
@@ -59,7 +58,7 @@ let CourseLessonHeader = ({
           <>
             <CustomButton
               margin="0 20px 0 0"
-              onClick={() => setActiveLesson(idx)}
+              onClick={() => setEditableLessonId(lessonId)}
             >
               Edit
             </CustomButton>

@@ -358,7 +358,8 @@ function* updateLesson({ payload: { chapterId, lessonId, data } }) {
     );
     // yield updateCourseEditedTime();
     // yield fetchCourse({ payload: courseId });
-    yield fetchLesson({ payload: chapterId });
+    yield put(resourceActions.updateLesson.success());
+    yield fetchLesson({ payload: { courseId, chapterId, lessonId } });
   } catch (err) {
     yield put(resourceActions.updateLesson.failure(err));
   }

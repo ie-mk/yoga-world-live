@@ -27,10 +27,10 @@ const CustomButton = props => (
 
 const CourseLessonContent = ({
   dispatch,
-  setActiveLesson,
+  setEditableLessonId,
   data,
-  courseId,
   chapterId,
+  lessonId,
 }) => {
   const initialFormValues = {
     title: '',
@@ -46,11 +46,10 @@ const CourseLessonContent = ({
         enableReinitialize={true}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
-
           dispatch(
             resourceActions.updateLesson.request({
-              courseId,
               chapterId,
+              lessonId,
               data: values,
             }),
           );
@@ -102,7 +101,7 @@ const CourseLessonContent = ({
                 justifyContent="flex-end"
                 margin={`${spacing.md} 0`}
               >
-                <CustomButton onClick={() => setActiveLesson(null)}>
+                <CustomButton onClick={() => setEditableLessonId(null)}>
                   Cancel
                 </CustomButton>
                 <CustomButton
