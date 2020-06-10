@@ -12,6 +12,10 @@ const Wrapper = styled.div`
 
   ${media.aboveTablet`
      font-size: ${fontSizeMap.text};
+  `};
+
+  ${media.belowTablet`
+     font-size: ${fontSizeMap.textMobile};
   `}
 `;
 
