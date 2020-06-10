@@ -13,11 +13,7 @@ let CourseLessonsContainer = ({ dispatch, data, chapterId, courseId }) => {
     dispatch(resourceActions.createLesson.request(chapterId));
   };
 
-  const [activeLesson, setActiveLesson] = useState(0);
-
-  // console.log(
-  //   `=========== chapter lessons container rendered id: ${chapterId}`,
-  // );
+  const [activeLesson, setActiveLesson] = useState(null);
 
   return (
     <Styled.Wrapper>

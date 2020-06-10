@@ -23,11 +23,11 @@ const borderSecondary = css`
 `;
 
 const getBorder = border => css`
-  ${border && border === 'primary'
+  ${border === 'primary'
     ? borderPrimary
     : border === 'secondary'
     ? borderSecondary
-    : ''}
+    : `border: ${border};`}
 `;
 
 const getBorderRadius = radius => css`
