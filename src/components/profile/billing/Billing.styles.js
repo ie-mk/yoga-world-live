@@ -7,17 +7,6 @@ export const BillingWrapper = styled.div`
   ${media.belowTabletLarge`
     padding: 42px 20px;
   `}
-  .mobileView {
-    ${media.aboveTabletLarge`
-    display: none;
-  `}
-  }
-  .desktopView {
-    ${media.belowTabletLarge`
-
-    display: none;
-
-  `}
 `;
 
 export const MembershipType = styled.div`
@@ -25,23 +14,6 @@ export const MembershipType = styled.div`
   align-items: center;
   margin-top: 22px;
   justify-content: space-between;
-  ${media.belowTabletLarge`
-  margin-top: 44px;
-
-
-`}
-  .mobileView {
-    ${media.aboveTabletLarge`
-    display: none;
-  `}
-  }
-  .desktopView {
-    ${media.belowTabletLarge`
-    margin-top: 44px;
-    display: none;
-
-  `}
-  }
 `;
 
 export const CardWrapper = styled.div`
@@ -53,6 +25,7 @@ export const CardWrapper = styled.div`
 export const CardImage = styled.img`
   width: 168px;
   height: 75px;
+  object-fit: cover;
   padding-right: 52px;
 `;
 
