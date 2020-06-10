@@ -27,10 +27,11 @@ const CustomButton = props => (
 
 const CourseLessonContent = ({
   dispatch,
-  setEditableLessonId,
+  editMode,
+  setEditMode,
   data,
   chapterId,
-  lessonId,
+  activeLessonId,
 }) => {
   const initialFormValues = {
     title: '',
@@ -49,12 +50,15 @@ const CourseLessonContent = ({
           dispatch(
             resourceActions.updateLesson.request({
               chapterId,
-              lessonId,
+              lessonId: activeLessonId,
               data: values,
             }),
           );
 
-          setTimeout(() => setSubmitting(false), 1000);
+          setTimeout(() => {
+            setEditMode(false);
+            setSubmitting(false);
+          }, 200);
         }}
       >
         {({ values, handleSubmit }) => (
@@ -67,6 +71,7 @@ const CourseLessonContent = ({
                 placeholder="Lesson Title"
                 width="100%"
                 backgroundColor="white"
+                disabled={!editMode}
               />
               <AdminTextArea
                 name="descr"
@@ -77,6 +82,7 @@ const CourseLessonContent = ({
                 label="Lesson Breif"
                 width="100%"
                 backgroundColor="white"
+                disabled={!editMode}
               />
               <ContainerBase flexDirection="row" display="flex">
                 <AdminInput
@@ -86,6 +92,7 @@ const CourseLessonContent = ({
                   placeholder="video link"
                   backgroundColor="white"
                   width="70%"
+                  disabled={!editMode}
                 />
                 <Styled.Upload marginTop="xxl">upload</Styled.Upload>
               </ContainerBase>
@@ -96,22 +103,25 @@ const CourseLessonContent = ({
                 placeholder="Assignment"
                 backgroundColor="white"
                 width="100%"
+                disabled={!editMode}
               />
-              <FlexContainer
-                justifyContent="flex-end"
-                margin={`${spacing.md} 0`}
-              >
-                <CustomButton onClick={() => setEditableLessonId(null)}>
-                  Cancel
-                </CustomButton>
-                <CustomButton
-                  type="primary"
-                  onClick={handleSubmit}
-                  margin="null"
+              {editMode ? (
+                <FlexContainer
+                  justifyContent="flex-end"
+                  margin={`${spacing.md} 0`}
                 >
-                  Save
-                </CustomButton>
-              </FlexContainer>
+                  <CustomButton onClick={() => setEditMode(null)}>
+                    Cancel
+                  </CustomButton>
+                  <CustomButton
+                    type="primary"
+                    onClick={handleSubmit}
+                    margin="null"
+                  >
+                    Save
+                  </CustomButton>
+                </FlexContainer>
+              ) : null}
             </Styled.LessonFormContainer>
           </form>
         )}

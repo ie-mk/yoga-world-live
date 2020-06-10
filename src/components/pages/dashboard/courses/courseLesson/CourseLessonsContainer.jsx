@@ -13,7 +13,8 @@ let CourseLessonsContainer = ({ dispatch, data, chapterId, courseId }) => {
     dispatch(resourceActions.createLesson.request(chapterId));
   };
 
-  const [editableLessonId, setEditableLessonId] = useState(null);
+  const [editMode, setEditMode] = useState(false);
+  const [activeLessonId, setActiveLessonId] = useState(Object.keys(data)[0]);
 
   return (
     <Styled.Wrapper>
@@ -28,8 +29,10 @@ let CourseLessonsContainer = ({ dispatch, data, chapterId, courseId }) => {
                 courseId={courseId}
                 chapterId={chapterId}
                 lessonId={lessonId}
-                editableLessonId={editableLessonId}
-                setEditableLessonId={setEditableLessonId}
+                editMode={editMode}
+                setEditMode={setEditMode}
+                activeLessonId={activeLessonId}
+                setActiveLessonId={setActiveLessonId}
                 data={lesson}
                 idx={idx}
               />
@@ -47,12 +50,14 @@ let CourseLessonsContainer = ({ dispatch, data, chapterId, courseId }) => {
           </Button>
         </ContainerBase>
         <ContainerBase width="55%">
-          {editableLessonId !== null ? (
+          {activeLessonId !== null ? (
             <CourseLessonContent
               chapterId={chapterId}
-              lessonId={editableLessonId}
-              setEditableLessonId={setEditableLessonId}
-              data={data[editableLessonId]}
+              activeLessonId={activeLessonId}
+              setActiveLessonId={setActiveLessonId}
+              data={data[activeLessonId]}
+              editMode={editMode}
+              setEditMode={setEditMode}
             />
           ) : null}
         </ContainerBase>

@@ -25,8 +25,10 @@ let CourseLessonHeader = ({
   chapterId,
   lessonId,
   idx,
-  editableLessonId,
-  setEditableLessonId,
+  editMode,
+  setEditMode,
+  activeLessonId,
+  setActiveLessonId,
 }) => {
   const deleteLesson = () => {
     if (confirm('Are you sure you want to delete this lesson?')) {
@@ -39,26 +41,37 @@ let CourseLessonHeader = ({
       );
     }
   };
-
-  const editing = editableLessonId === lessonId;
+  const active = activeLessonId === lessonId;
+  const editing = active && editMode;
 
   return (
     <FlexContainer
       justifyContent="space-between"
       padding={spacing.lg}
       alignItems="center"
-      border={editing ? '2px dashed gray' : 'inherit'}
+      border={active ? '2px dashed gray' : 'inherit'}
     >
-      <Styled.LessonNumber editing={editing}>{`Lesson ${idx +
+      <Styled.LessonNumber editing={editing || active}>{`Lesson ${idx +
         1}`}</Styled.LessonNumber>
       <div>
-        {editing ? (
-          <></>
-        ) : (
+        {!editing ? (
           <>
+            {!active ? (
+              <CustomButton
+                margin="0 20px 0 0"
+                onClick={() => {
+                  setActiveLessonId(lessonId);
+                }}
+              >
+                View
+              </CustomButton>
+            ) : null}
             <CustomButton
               margin="0 20px 0 0"
-              onClick={() => setEditableLessonId(lessonId)}
+              onClick={() => {
+                setActiveLessonId(lessonId);
+                setEditMode(true);
+              }}
             >
               Edit
             </CustomButton>
@@ -66,7 +79,7 @@ let CourseLessonHeader = ({
               Delete
             </CustomButton>
           </>
-        )}
+        ) : null}
       </div>
     </FlexContainer>
   );

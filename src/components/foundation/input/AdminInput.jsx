@@ -15,7 +15,7 @@ const AdminInput = ({
   return (
     <Styled.Wrapper width={width}>
       <Styled.Label>{label}</Styled.Label>
-      <Styled.InputStyles backgroundColor={backgroundColor}>
+      <Styled.InputStyles backgroundColor={backgroundColor} disabled={disabled}>
         <Field
           className={classNameString}
           name={name}

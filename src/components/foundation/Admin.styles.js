@@ -7,6 +7,7 @@ import {
   dashboard,
 } from '../../constants/styles';
 import media from '../foundation/media';
+import { lightenDarkenColor } from '../../utils/colors';
 
 export const Label = styled.div`
   padding-top: ${spacing.sm};
@@ -30,6 +31,8 @@ export const InputStyles = styled.div`
   input {
     background-color: ${({ backgroundColor }) =>
       backgroundColor ? backgroundColor : '#f0f0f7'};
+    background-color: ${({ disabled }) =>
+      disabled ? lightenDarkenColor('#f0f0f7', -20) : ''};
     line-height: 40px;
     font-size: ${fontSizeMap.text};
     width: 100%;
@@ -60,6 +63,8 @@ export const InputStyles = styled.div`
   .textarea {
     background-color: ${({ backgroundColor }) =>
       backgroundColor ? backgroundColor : '#f0f0f7'};
+    background-color: ${({ disabled }) =>
+      disabled ? lightenDarkenColor('#f0f0f7', -20) : ''};
     height: ${({ height }) => (height ? height : 'auto')};
     font-size: ${fontSizeMap.text};
     width: 100%;
@@ -91,7 +96,8 @@ const UploadImageButton = styled.label`
   display:flex;
   justify-content: center;
   align-items:center;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+
 
   input[type="file"] {
       display: none;
