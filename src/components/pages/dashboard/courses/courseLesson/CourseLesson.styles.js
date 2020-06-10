@@ -46,15 +46,13 @@ const ChapterHeader = styled.label`
   margin-bottom: ${spacing.xxl};
 `;
 
-export const MidContainer = styled.div`
+export const LessonContent = styled.div`
   flex: 1;
   display: flex;
-  //justify-content: space-between;
-  //padding-bottom: ${spacing.sm};
-  //align-items: center;
   width: 100%;
-  height: 500px;
-  margin-top: ${spacing.xxl};
+  form {
+    flex: 1;
+  }
 `;
 
 export const AddLesson = styled.div`
@@ -64,7 +62,6 @@ export const AddLesson = styled.div`
   height: 100%;
   padding-right: ${spacing.xxl};
   padding-left: ${spacing.xl};
-  //padding-top: ${spacing.xl};
   flex-direction: column;
 `;
 
@@ -124,6 +121,7 @@ const LessonNumber = styled.span`
   display: flex;
   align-items: center;
   font-size: ${fontSizeMap.h4s};
+  font-weight: ${({ editing }) => (editing ? 'bold' : 'normal')};
   input {
     margin-right: ${spacing.md};
     width: 28px;
@@ -136,7 +134,7 @@ export default {
   Title,
   RowContainer,
   ChapterHeader,
-  MidContainer,
+  LessonContent,
   AddLesson,
   LessonFormContainer,
   Upload,

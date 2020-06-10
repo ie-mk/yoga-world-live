@@ -47,7 +47,9 @@ let CourseLessonsContainer = ({ dispatch, data, chapterId, courseId }) => {
           </Button>
         </ContainerBase>
         <ContainerBase width="55%">
-          <CourseLessonContent />
+          {activeLesson !== null ? (
+            <CourseLessonContent setActiveLesson={setActiveLesson} />
+          ) : null}
         </ContainerBase>
       </FlexContainer>
     </Styled.Wrapper>

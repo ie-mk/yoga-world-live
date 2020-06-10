@@ -9,8 +9,29 @@ import Button from '../../../../foundation/button/Button';
 import { Formik, ErrorMessage, Field } from 'formik';
 import { resourceActions } from '../../../../../store/actions';
 import { connect } from 'react-redux';
+import FlexContainer from '../../../../foundation/FlexContainer';
+import { spacing } from '../../../../../constants/styles';
 
-const CourseLessonContent = ({ dispatch, data, courseId, chapterId }) => {
+const CustomButton = props => (
+  <Button
+    type="action"
+    fontSize="18px"
+    borderRadius="sm"
+    margin="0 20px 0 0"
+    padding="10px 30px"
+    {...props}
+  >
+    {props.children}
+  </Button>
+);
+
+const CourseLessonContent = ({
+  dispatch,
+  setActiveLesson,
+  data,
+  courseId,
+  chapterId,
+}) => {
   const initialFormValues = {
     title: '',
     descr: '',
@@ -19,7 +40,7 @@ const CourseLessonContent = ({ dispatch, data, courseId, chapterId }) => {
   };
 
   return (
-    <Styled.MidContainer>
+    <Styled.LessonContent>
       <Formik
         initialValues={{ ...initialFormValues, ...data }}
         enableReinitialize={true}
@@ -77,11 +98,26 @@ const CourseLessonContent = ({ dispatch, data, courseId, chapterId }) => {
                 backgroundColor="white"
                 width="100%"
               />
+              <FlexContainer
+                justifyContent="flex-end"
+                margin={`${spacing.md} 0`}
+              >
+                <CustomButton onClick={() => setActiveLesson(null)}>
+                  Cancel
+                </CustomButton>
+                <CustomButton
+                  type="primary"
+                  onClick={handleSubmit}
+                  margin="null"
+                >
+                  Save
+                </CustomButton>
+              </FlexContainer>
             </Styled.LessonFormContainer>
           </form>
         )}
       </Formik>
-    </Styled.MidContainer>
+    </Styled.LessonContent>
   );
 };
 

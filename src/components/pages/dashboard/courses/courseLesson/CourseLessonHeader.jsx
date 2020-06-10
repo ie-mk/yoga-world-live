@@ -50,17 +50,11 @@ let CourseLessonHeader = ({
       alignItems="center"
       border={editing ? '2px dashed gray' : 'inherit'}
     >
-      <Styled.LessonNumber>{`Lesson ${idx + 1}`}</Styled.LessonNumber>
+      <Styled.LessonNumber editing={editing}>{`Lesson ${idx +
+        1}`}</Styled.LessonNumber>
       <div>
         {editing ? (
-          <>
-            <CustomButton onClick={() => setActiveLesson(idx)}>
-              Cancel
-            </CustomButton>
-            <CustomButton type="primary" onClick={deleteLesson} margin="null">
-              Save
-            </CustomButton>
-          </>
+          <></>
         ) : (
           <>
             <CustomButton
