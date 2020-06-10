@@ -7,10 +7,15 @@ import CenteredFlexContainer from '../../../foundation/CenteredFlexContainer';
 const Stepper = ({ steps, activeStep, setActiveStep }) => {
   return (
     <CenteredFlexContainer
-      marginTop="100px"
+      marginTop="150px"
       display="flex"
       justifyContent="center"
       width="100%"
+      mediaConfig={{
+        belowTabletLarge: {
+          marginTop: '100px',
+        },
+      }}
     >
       <FlexContainer width="85%" justifyContent="center">
         {steps.map((step, idx) => {

@@ -54,7 +54,8 @@ const Label = styled.div`
 
   ${media.belowTabletLarge`
     font-size: ${fontSizeMap.textMobile};
-    right: -20px;
+    right: -18px;
+    width: 60px;
   `}
 `;
 
