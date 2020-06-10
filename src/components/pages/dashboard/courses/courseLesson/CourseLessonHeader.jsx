@@ -51,8 +51,12 @@ let CourseLessonHeader = ({
       alignItems="center"
       border={active ? '2px dashed gray' : 'inherit'}
     >
-      <Styled.LessonNumber editing={editing || active}>{`Lesson ${idx +
-        1}`}</Styled.LessonNumber>
+      <Styled.LessonNumber
+        onClick={() => {
+          setActiveLessonId(lessonId);
+        }}
+        editing={editing || active}
+      >{`Lesson ${idx + 1}`}</Styled.LessonNumber>
       <div>
         {!editing ? (
           <>
