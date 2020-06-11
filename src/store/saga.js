@@ -247,17 +247,24 @@ function* fetchChapter({ payload: chapterId }) {
 }
 
 function* createChapter() {
+  const uid = yield select(getUID);
   const courseId = yield select(getEditingCourseId);
   try {
     const createdChapterId = yield api.resource.createResource(
       `courses/${courseId}/chapters`,
       {
         created: moment().format(),
-        courseId: courseId,
+        parentId: courseId,
+        ownerId: uid,
       },
     );
-    yield put(resourceActions.createChapter.success(createdChapterId));
-    yield fetchChapter({ payload: createdChapterId });
+
+    if (createdChapterId) {
+      yield put(resourceActions.createChapter.success(createdChapterId));
+      yield fetchChapter({ payload: createdChapterId });
+    } else {
+      throw 'create course chapter fail';
+    }
   } catch (err) {
     yield put(resourceActions.createChapter.failure(err));
   }
@@ -328,22 +335,28 @@ function* fetchLesson({ payload: { courseId, chapterId, lessonId } }) {
 }
 
 function* createLesson({ payload: chapterId }) {
+  const uid = yield select(getUID);
   const courseId = yield select(getEditingCourseId);
   try {
     const createdLessonId = yield api.resource.createResource(
       `courses/${courseId}/chapters/${chapterId}/lessons`,
       {
         created: moment().format(),
-        chapterId: chapterId,
+        parentId: chapterId,
         courseId: courseId,
+        ownerId: uid,
       },
     );
-    yield put(resourceActions.createLesson.success(createdLessonId));
-    // yield updateCourseEditedTime();
-    // yield fetchCourse({ payload: courseId });
-    yield fetchLesson({
-      payload: { courseId, chapterId, lessonId: createdLessonId },
-    });
+    if (createdLessonId) {
+      yield put(resourceActions.createLesson.success(createdLessonId));
+      // yield updateCourseEditedTime();
+      // yield fetchCourse({ payload: courseId });
+      yield fetchLesson({
+        payload: { courseId, chapterId, lessonId: createdLessonId },
+      });
+    } else {
+      console.error('Create lesson failure');
+    }
   } catch (err) {
     yield put(resourceActions.createLesson.failure(err));
   }
