@@ -26,7 +26,11 @@ export const CardImage = styled.img`
   width: 168px;
   height: 75px;
   object-fit: cover;
-  padding-right: 52px;
+  border-radius: 10px;
+  ${media.belowTabletLarge`
+  width: 84px;
+  height: 38px;
+`}
 `;
 
 export default {

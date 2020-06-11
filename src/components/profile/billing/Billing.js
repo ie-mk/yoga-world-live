@@ -134,6 +134,7 @@ const Billig = () => {
             <CardTitle
               width="500px"
               fontWeight="200"
+              padding="0 0 0 53px"
               text="xxxx xxxx xxxx 3267"
             />
           </Styled.CardWrapper>
