@@ -12,18 +12,20 @@ import Styled from './Billing.styles';
 import Grid from '../../foundation/Grid';
 import Button from '../../foundation/button/Button';
 
-const CustomButton = props => (
+const CustomButton = ({ customMinWidth, customMobileMinWidth, ...props }) => (
   <Button
     type="secondary"
     borderRadius="mobile"
-    size="sm"
+    size="lg"
     margin="0"
+    padding="20px 30px"
+    minWidth={customMinWidth}
     mediaConfig={{
       belowDesktop: {
-        padding: '14px 27px',
+        padding: '10px 15px',
         fontSize: fontSizeMap.buttonMobile,
         margin: props.margin ? props.margin : '0',
-        width: 'auto',
+        minWidth: customMobileMinWidth ? customMobileMinWidth : '100px',
       },
     }}
     {...props}
@@ -43,9 +45,14 @@ const Billig = () => {
     <ContainerBase marginTop="xxl">
       <Styled.BillingWrapper>
         <CardTitle
-          margin="0 0 44px 0"
+          margin="0 0 22px 0"
           fontWeight="500"
           text="Your Membership"
+          mediaConfig={{
+            belowDesktop: {
+              margin: '0 0 11px 0',
+            },
+          }}
         />
         <Grid
           columns="1fr 1fr"
@@ -60,15 +67,17 @@ const Billig = () => {
           gridGap={spacing.xxxxl}
         >
           <div>
-            <BodyHeader text="MemberShip Type" />
+            <BodyHeader margin="0" text="MemberShip Type" />
             <Styled.MembershipType>
               <BodyHeader margin="0" color="#0EC9B0" text="Paid" />
-              <CustomButton type="primary">Change</CustomButton>
+              <CustomButton customMobileMinWidth="auto" type="primary">
+                Change
+              </CustomButton>
             </Styled.MembershipType>
           </div>
 
           <div>
-            <BodyHeader text="MemberShip Fee" />
+            <BodyHeader margin="0" text="MemberShip Fee" />
             <BodyHeader
               margin="44px 0 0 0"
               color="#0EC9B0"
@@ -113,7 +122,7 @@ const Billig = () => {
             <PathTitle margin="44px 0 0 0" text="March 23,2020" />
           </div>
           <div>
-            <CustomButton>View Invoice</CustomButton>
+            <CustomButton customMinWidth="200px">View Invoice</CustomButton>
           </div>
         </Grid>
         <CustomTitle text="Payment Methods" />

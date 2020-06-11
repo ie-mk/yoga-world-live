@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { fontSizeMap } from '../../../constants/styles';
 import withSpacing from '../withSpacing';
 import media from '../media';
+import getMedia from '../../../utils/media';
 
 const StyledH3 = styled.h3`
   font-size: ${fontSizeMap.text};
@@ -15,7 +16,10 @@ const StyledH3 = styled.h3`
   `};
   ${media.belowTablet`
      font-size: ${fontSizeMap.text};
+     margin-bottom: 22px;
   `}
+
+  ${({ mediaConfig }) => (mediaConfig ? getMedia(mediaConfig) : '')};
 `;
 
 const CardTitle = ({ text, margin, fontWeight, width }) => {

@@ -5,7 +5,7 @@ export const Wrapper = styled.div``;
 export const BillingWrapper = styled.div`
   padding: 0 90px 0 110px;
   ${media.belowTabletLarge`
-    padding: 42px 20px;
+    padding: 21px 10px;
   `}
 `;
 
