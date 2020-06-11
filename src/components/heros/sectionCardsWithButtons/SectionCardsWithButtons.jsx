@@ -1,13 +1,13 @@
 import React from 'react';
-import Styled from './SectionCards.styles';
+import Styled from './SectionCardsWithButtons.style';
 import Grid from '../../foundation/Grid';
 import SectionTitle from '../../foundation/typography/SectionTitle';
-import ContainerBase from '../../foundation/ContainerBase';
 import CenteredFlexContainer from '../../foundation/CenteredFlexContainer';
 import SectionCard from '../../cards/SectionCard';
 import { background, spacing } from '../../../constants/styles';
+import Button from '../../foundation/button/Button';
 
-const SectionCards = ({ title }) => {
+const SectionCardsWithButtons = ({ title }) => {
   return (
     <CenteredFlexContainer marginTop="xxl">
       <SectionTitle
@@ -27,23 +27,38 @@ const SectionCards = ({ title }) => {
         }}
         gridGap={spacing.xxxxl}
       >
-        <SectionCard
-          imgSrc="/svg/premium.svg"
-          title="Pro"
-          text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+        <div>
+          <SectionCard
+            imgSrc="/svg/premium.svg"
+            title="Pro"
+            text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
           sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
           aliquyam erat, sed diam voluptua. At vero eos"
-        />
-        <SectionCard
-          imgSrc="/svg/free.svg"
-          title="Basic"
-          text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+          />
+          <Styled.ButtonWrapper>
+            <Button size="lg" type="primary">
+              JOIN
+            </Button>
+          </Styled.ButtonWrapper>
+        </div>
+
+        <div>
+          <SectionCard
+            imgSrc="/svg/free.svg"
+            title="Basic"
+            text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
           sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
           aliquyam erat, sed diam voluptua. At vero eos"
-        />
+          />
+          <Styled.ButtonWrapper>
+            <Button size="lg" type="secondary">
+              JOIN
+            </Button>
+          </Styled.ButtonWrapper>
+        </div>
       </Grid>
     </CenteredFlexContainer>
   );
 };
 
-export default SectionCards;
+export default SectionCardsWithButtons;

@@ -46,16 +46,13 @@ const ChapterHeader = styled.label`
   margin-bottom: ${spacing.xxl};
 `;
 
-export const MidContainer = styled.div`
+export const LessonContent = styled.div`
   flex: 1;
   display: flex;
-  //justify-content: space-between;
-  //padding-bottom: ${spacing.sm};
-  //align-items: center;
   width: 100%;
-  height: 500px;
-  margin-top: ${spacing.xxl};
-  background: #D3D3D326 0% 0% no-repeat padding-box;
+  form {
+    flex: 1;
+  }
 `;
 
 export const AddLesson = styled.div`
@@ -65,7 +62,6 @@ export const AddLesson = styled.div`
   height: 100%;
   padding-right: ${spacing.xxl};
   padding-left: ${spacing.xl};
-  //padding-top: ${spacing.xl};
   flex-direction: column;
 `;
 
@@ -89,7 +85,7 @@ const Upload = styled.div`
     opacity: 1;
     display:flex;
     justify-content: center;
-    align-items:center;  
+    align-items:center;
     margin-top: ${({ marginTop }) => spacing[marginTop] || ''};
     margin-left:${spacing.sm};
     //padding:${spacing.sm};
@@ -116,14 +112,21 @@ export const Label = styled.label`
   font-size: ${fontSizeMap.h5};
 `;
 
-export const AddNewWrapper = styled.div`
-  display: flex;
-  margin-top: ${spacing.xl};
-  justify-content: center;
+const Wrapper = styled.div`
+  background-color: #d3d3d326;
+  margin-top: ${spacing.lg};
 `;
 
-const Wrapper = styled.div`
-  //
+const LessonNumber = styled.span`
+  display: flex;
+  align-items: center;
+  font-size: ${fontSizeMap.h4s};
+  font-weight: ${({ editing }) => (editing ? 'bold' : 'normal')};
+  input {
+    margin-right: ${spacing.md};
+    width: 28px;
+    height: 28px;
+  }
 `;
 
 export default {
@@ -131,13 +134,13 @@ export default {
   Title,
   RowContainer,
   ChapterHeader,
-  MidContainer,
+  LessonContent,
   AddLesson,
   LessonFormContainer,
   Upload,
   Row,
   Label,
   LessonContainer,
-  AddNewWrapper,
   Wrapper,
+  LessonNumber,
 };

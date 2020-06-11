@@ -145,7 +145,7 @@ const ExpandButton = styled.span`
 const Content = styled.div`
   height: ${({ expanded }) => (expanded ? 'auto' : 0)};
   overflow: hidden;
-  transition: all 1s ease-out;
+  transition: all 0.5s ease-in;
   padding-bottom: ${({ expanded }) => (expanded ? spacing.xxxxl : 0)};
 `;
 

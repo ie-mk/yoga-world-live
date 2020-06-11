@@ -138,11 +138,25 @@ function* updateCourse({ payload }) {
   }
 }
 
-function* deleteCourse({ payload }) {
+function* updateCourseEditedTime() {
+  const courseId = yield select(getEditingCourseId);
+
   try {
-    yield api.resource.deleteResource('courses', payload);
+    yield api.resource.updateResource(`courses/${courseId}`, {
+      edited: moment().format(),
+    });
+    yield put(resourceActions.updateCourse.success());
+    yield fetchCourse({ payload: courseId });
+  } catch (err) {
+    yield put(resourceActions.updateCourse.failure(err));
+  }
+}
+
+function* deleteCourse({ payload: courseId }) {
+  try {
+    yield api.resource.deleteResource(`courses/${courseId}`);
     yield put(resourceActions.deleteCourse.success());
-    yield put(resourceActions.deleteCourseFromState(payload));
+    yield put(resourceActions.deleteCourseFromState(courseId));
   } catch (err) {
     yield put(resourceActions.deleteCourse.failure(err));
   }
@@ -239,11 +253,11 @@ function* createChapter() {
       `courses/${courseId}/chapters`,
       {
         created: moment().format(),
-        parentId: courseId,
+        courseId: courseId,
       },
     );
     yield put(resourceActions.createChapter.success(createdChapterId));
-    yield fetchChapters();
+    yield fetchChapter({ payload: createdChapterId });
   } catch (err) {
     yield put(resourceActions.createChapter.failure(err));
   }
@@ -263,12 +277,14 @@ function* updateChapter({ payload: { chapterId, data } }) {
   }
 }
 
-function* deleteChapter({ payload: docId }) {
+function* deleteChapter({ payload: chapterId }) {
   const courseId = yield select(getEditingCourseId);
   try {
-    yield api.resource.deleteResource(`courses/${courseId}/chapters/${docId}`);
+    yield api.resource.deleteResource(
+      `courses/${courseId}/chapters/${chapterId}`,
+    );
     yield put(resourceActions.deleteChapter.success());
-    yield fetchChapters();
+    yield put(resourceActions.deleteChapterFromState({ courseId, chapterId }));
   } catch (err) {
     yield put(resourceActions.deleteChapter.failure(err));
   }
@@ -276,19 +292,17 @@ function* deleteChapter({ payload: docId }) {
 
 // ============================ LESSONS =====================================
 
-function* fetchLessons() {
-  const courseId = yield select(getEditingCourseId);
+function* fetchLessons({ payload: { courseId, chapterId } }) {
   try {
-    const chapters = yield api.resource.fetchSubCollection(
-      'courses',
-      courseId,
-      'chapters',
+    const lessons = yield api.resource.fetchResources(
+      `courses/${courseId}/chapters/${chapterId}/lessons`,
     );
 
     yield put(
       resourceActions.fetchLessons.success({
         courseId,
-        chapters,
+        chapterId,
+        lessons,
       }),
     );
   } catch (err) {
@@ -296,29 +310,40 @@ function* fetchLessons() {
   }
 }
 
-function* fetchLesson({ payload: { docId } }) {
+function* fetchLesson({ payload: { courseId, chapterId, lessonId } }) {
   try {
-    const result = yield api.resource.fetchResource('tasks', docId);
-    yield put(resourceActions.fetchLesson.success({ [docId]: result }));
+    const result = yield api.resource.fetchResource(
+      `courses/${courseId}/chapters/${chapterId}/lessons/${lessonId}`,
+    );
+    yield put(
+      resourceActions.fetchLesson.success({
+        courseId,
+        chapterId,
+        data: { [lessonId]: result },
+      }),
+    );
   } catch (err) {
     yield put(resourceActions.fetchLesson.failure(err));
   }
 }
 
-function* createLesson() {
+function* createLesson({ payload: chapterId }) {
   const courseId = yield select(getEditingCourseId);
   try {
-    const createdLessonId = yield api.resource.createSubCollection(
-      'courses',
-      courseId,
-      'chapters',
+    const createdLessonId = yield api.resource.createResource(
+      `courses/${courseId}/chapters/${chapterId}/lessons`,
       {
         created: moment().format(),
-        parentId: courseId,
+        chapterId: chapterId,
+        courseId: courseId,
       },
     );
     yield put(resourceActions.createLesson.success(createdLessonId));
-    yield fetchLessons();
+    // yield updateCourseEditedTime();
+    // yield fetchCourse({ payload: courseId });
+    yield fetchLesson({
+      payload: { courseId, chapterId, lessonId: createdLessonId },
+    });
   } catch (err) {
     yield put(resourceActions.createLesson.failure(err));
   }
@@ -331,18 +356,28 @@ function* updateLesson({ payload: { chapterId, lessonId, data } }) {
       `courses/${courseId}/chapters/${chapterId}/lessons/${lessonId}`,
       data,
     );
-    yield fetchLesson({ payload: chapterId });
+    // yield updateCourseEditedTime();
+    // yield fetchCourse({ payload: courseId });
+    yield put(resourceActions.updateLesson.success());
+    yield fetchLesson({ payload: { courseId, chapterId, lessonId } });
   } catch (err) {
     yield put(resourceActions.updateLesson.failure(err));
   }
 }
 
-function* deleteLesson({ payload }) {
+function* deleteLesson({ payload: { courseId, chapterId, lessonId } }) {
   try {
-    yield api.resource.deleteResource('tasks', payload.docId);
-    yield put(resourceActions.deleteChapter.success());
+    yield api.resource.deleteResource(
+      `courses/${courseId}/chapters/${chapterId}/lessons/${lessonId}`,
+    );
+    yield put(resourceActions.deleteLesson.success());
+    // yield updateCourseEditedTime();
+    // yield fetchCourse({ payload: courseId });
+    yield put(
+      resourceActions.deleteLessonFromState({ courseId, chapterId, lessonId }),
+    );
   } catch (err) {
-    yield put(resourceActions.deleteChapter.failure(err));
+    yield put(resourceActions.deleteLesson.failure(err));
   }
 }
 
@@ -490,7 +525,7 @@ function* rootSaga() {
   ]);
   // ========================== CHAPTERS ===============================
   yield all([
-    takeLatest(resourceActions.fetchChapters.request.type, fetchChapters),
+    takeEvery(resourceActions.fetchChapters.request.type, fetchChapters),
   ]);
   yield all([
     takeLatest(resourceActions.fetchChapter.request.type, fetchChapter),
@@ -506,7 +541,7 @@ function* rootSaga() {
   ]);
   // ========================== LESSONS ===============================
   yield all([
-    takeLatest(resourceActions.fetchLessons.request.type, fetchLessons),
+    takeEvery(resourceActions.fetchLessons.request.type, fetchLessons),
   ]);
   yield all([
     takeLatest(resourceActions.fetchLesson.request.type, fetchLesson),

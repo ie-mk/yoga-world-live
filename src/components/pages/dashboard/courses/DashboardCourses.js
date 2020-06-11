@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ContainerBase } from '../../../foundation';
-import AddNewCourse from './addNewCourse/AddNewCourse';
+import AddNewCourse from './editCourse/EditCourse';
 import CenteredFlexContainer from '../../../foundation/CenteredFlexContainer';
 import Styled from './DashboardCourses.styles';
 import CoursesTable from './coursesTable/CoursesTable';

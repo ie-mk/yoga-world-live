@@ -42,12 +42,14 @@ export const resourceActions = {
   deleteChapter: createAsyncAction('delete-chapter'),
   fetchChapters: createAsyncAction('fetch-chapters'),
   fetchChapter: createAsyncAction('fetch-chapter'),
+  deleteChapterFromState: createAction('delete-chapter-from-state'),
 
   createLesson: createAsyncAction('create-lesson'),
   updateLesson: createAsyncAction('update-lesson'),
   deleteLesson: createAsyncAction('delete-lesson'),
   fetchLessons: createAsyncAction('fetch-lessons'),
   fetchLesson: createAsyncAction('fetch-lesson'),
+  deleteLessonFromState: createAction('delete-lesson-from-state'),
 
   createTask: createAsyncAction('create-task'),
   updateTask: createAsyncAction('update-task'),

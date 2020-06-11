@@ -6,13 +6,18 @@ import { connect } from 'react-redux';
 import { resourceActions } from '../../../../../store/actions';
 import {
   getEditableCourseData,
-  getCourseChapters,
+  getEditingCourseId,
 } from '../../../../../store/selectors';
 import Button from '../../../../foundation/button/Button';
 import CenteredFlexContainer from '../../../../foundation/CenteredFlexContainer';
 import SpinnerLarge from '../../../../foundation/spinner/SpinnerLarge';
 
-const AddNewCourse = ({ dispatch, courseData, loading }) => {
+const EditCourse = ({
+  dispatch,
+  courseId,
+  courseData: { chapters, edited },
+  loading,
+}) => {
   useEffect(() => {
     dispatch(resourceActions.fetchChapters.request());
   }, []);
@@ -21,12 +26,10 @@ const AddNewCourse = ({ dispatch, courseData, loading }) => {
     dispatch(resourceActions.createChapter.request());
   };
 
-  const chapters = courseData.chapters;
-
-  console.log('----chapters: ', chapters);
+  // console.log(`=========== course rendered id: ${courseId}`);
 
   return (
-    <ContainerBase>
+    <ContainerBase key={edited}>
       {loading && <SpinnerLarge />}
       <CourseDescription />
       {chapters &&
@@ -39,6 +42,7 @@ const AddNewCourse = ({ dispatch, courseData, loading }) => {
             return (
               <CourseChapter
                 key={chapterId}
+                courseId={courseId}
                 chapterId={chapterId}
                 data={data}
                 idx={idx}
@@ -57,6 +61,7 @@ const AddNewCourse = ({ dispatch, courseData, loading }) => {
 const mapStateToProps = state => ({
   courseData: getEditableCourseData(state),
   loading: state.courses.loading,
+  courseId: getEditingCourseId(state),
 });
 
-export default connect(mapStateToProps)(AddNewCourse);
+export default connect(mapStateToProps)(EditCourse);
