@@ -38,6 +38,17 @@ const CustomTitle = props => (
   <CardTitle margin="113px 0 44px 0" fontWeight="500" {...props} />
 );
 
+const CustomBodyHeader = props => (
+  <BodyHeader
+    mediaConfig={{
+      belowDesktop: {
+        margin: 0,
+      },
+    }}
+    {...props}
+  />
+);
+
 const Billig = () => {
   const { t } = useTranslation();
 
@@ -67,9 +78,9 @@ const Billig = () => {
           gridGap={spacing.xxxxl}
         >
           <div>
-            <BodyHeader margin="0" text="MemberShip Type" />
+            <CustomBodyHeader text="MemberShip Type" />
             <Styled.MembershipType>
-              <BodyHeader margin="0" color="#0EC9B0" text="Paid" />
+              <CustomBodyHeader color="#0EC9B0" text="Paid" />
               <CustomButton customMobileMinWidth="auto" type="primary">
                 Change
               </CustomButton>
@@ -77,20 +88,16 @@ const Billig = () => {
           </div>
 
           <div>
-            <BodyHeader margin="0" text="MemberShip Fee" />
+            <CustomBodyHeader text="MemberShip Fee" />
             <BodyHeader
-              margin="44px 0 0 0"
+              margin="12px 0 0 0"
               color="#0EC9B0"
               text="€ 3999/ year"
             />
           </div>
           <div>
-            <BodyHeader text="Last Payment Date" />
-            <BodyHeader
-              margin="44px 0 0 0"
-              color="#0EC9B0"
-              text="March 23,2020"
-            />
+            <CustomBodyHeader text="Last Payment Date" />
+            <CustomBodyHeader color="#0EC9B0" text="March 23,2020" />
           </div>
         </Grid>
 
@@ -108,17 +115,17 @@ const Billig = () => {
           gridGap={spacing.xxxxl}
         >
           <div>
-            <BodyHeader margin="0" text="Description" />
+            <CustomBodyHeader text="Description" />
 
             <PathTitle margin="44px 0 0 0" text="MemberShip Fee" />
           </div>
 
           <div>
-            <BodyHeader margin="0" text="Amount" />
+            <CustomBodyHeader text="Amount" />
             <PathTitle margin="44px 0 0 0" text="€ 3999" />
           </div>
           <div>
-            <BodyHeader margin="0" text="Date" />
+            <CustomBodyHeader text="Date" />
             <PathTitle margin="44px 0 0 0" text="March 23,2020" />
           </div>
           <div>

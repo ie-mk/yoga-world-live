@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { fontSizeMap, colors } from '../../../constants/styles';
 import media from '../media';
+import getMedia from '../../../utils/media';
 
 const StyledH4 = styled.h4`
   font-size: ${fontSizeMap.textMobile};
@@ -11,6 +12,8 @@ const StyledH4 = styled.h4`
   ${media.aboveTablet`
     font-size: ${fontSizeMap.h4};
   `};
+
+  ${({ mediaConfig }) => (mediaConfig ? getMedia(mediaConfig) : '')};
 `;
 
 const BodyHeader = ({ text, margin, color }) => {
