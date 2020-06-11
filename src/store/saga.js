@@ -246,7 +246,7 @@ function* fetchChapter({ payload: chapterId }) {
   }
 }
 
-function* createChapter() {
+function* createChapter({ payload: { sequenceNr } }) {
   const uid = yield select(getUID);
   const courseId = yield select(getEditingCourseId);
   try {
@@ -256,6 +256,7 @@ function* createChapter() {
         created: moment().format(),
         parentId: courseId,
         ownerId: uid,
+        sequenceNr,
       },
     );
 
@@ -334,7 +335,7 @@ function* fetchLesson({ payload: { courseId, chapterId, lessonId } }) {
   }
 }
 
-function* createLesson({ payload: chapterId }) {
+function* createLesson({ payload: { chapterId, sequenceNr } }) {
   const uid = yield select(getUID);
   const courseId = yield select(getEditingCourseId);
   try {
@@ -345,6 +346,7 @@ function* createLesson({ payload: chapterId }) {
         parentId: chapterId,
         courseId: courseId,
         ownerId: uid,
+        sequenceNr,
       },
     );
     if (createdLessonId) {

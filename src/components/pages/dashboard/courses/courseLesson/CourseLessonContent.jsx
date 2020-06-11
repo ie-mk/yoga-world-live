@@ -34,6 +34,7 @@ const CourseLessonContent = ({
   activeLessonId,
 }) => {
   const initialFormValues = {
+    sequenceNr: '',
     title: '',
     descr: '',
     videoLink: '',
@@ -64,6 +65,25 @@ const CourseLessonContent = ({
         {({ values, handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <Styled.LessonFormContainer>
+              <FlexContainer justifyContent="space-between">
+                <AdminInput
+                  name="sequenceNr"
+                  type="text"
+                  label="Sequence Nr"
+                  width="15%"
+                  backgroundColor="white"
+                  disabled={!editMode}
+                />
+                <AdminInput
+                  name="title"
+                  type="text"
+                  label="Lesson Title"
+                  placeholder="Lesson Title"
+                  width="80%"
+                  backgroundColor="white"
+                  disabled={!editMode}
+                />
+              </FlexContainer>
               <AdminInput
                 name="title"
                 type="text"
