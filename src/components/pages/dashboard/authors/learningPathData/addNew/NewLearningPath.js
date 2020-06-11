@@ -2,10 +2,9 @@ import React, { useState, memo, useEffect } from 'react';
 import Styled from './NewLearningPath.styles';
 import { connect } from 'react-redux';
 import { Formik, ErrorMessage, Field } from 'formik';
-import AdminInput from '../../../../../foundation/input/AdminInput';
 
 import AdminTextArea from '../../../../../foundation/textarea/AdminTextArea';
-import AdminUploadImage from '../../../../../foundation/uploadimage/AdminUploadImage';
+import PictureUploader from '../../../../../foundation/pictureUploader/PictureUploader';
 import Button from '../../../../../foundation/button/Button';
 import { resourceActions } from '../../../../../../store/actions';
 import AdminDropDown from '../../../../../foundation/dropdown/AdminDropDown';
@@ -74,7 +73,7 @@ let NewLearningPath = ({
                 placeholder="Choose a learning path"
                 options={LEARNING_PATH_OPTIONS}
               />
-              <AdminUploadImage width="40%" label="Thumbnail" />
+              <PictureUploader width="40%" label="Thumbnail" />
             </Styled.InputRow>
 
             <Styled.InputRow>

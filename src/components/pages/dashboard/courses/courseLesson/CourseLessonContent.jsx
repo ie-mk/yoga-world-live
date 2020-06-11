@@ -4,7 +4,7 @@ import { ContainerBase } from '../../../../foundation';
 import AdminInput from '../../../../foundation/input/AdminInput';
 import AdminDropDown from '../../../../foundation/dropdown/AdminDropDown';
 import AdminTextArea from '../../../../foundation/textarea/AdminTextArea';
-import AdminUploadImage from '../../../../foundation/uploadimage/AdminUploadImage';
+import AdminUploadImage from '../../../../foundation/pictureUploader/PictureUploader';
 import Button from '../../../../foundation/button/Button';
 import { Formik, ErrorMessage, Field } from 'formik';
 import { resourceActions } from '../../../../../store/actions';

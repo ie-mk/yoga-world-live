@@ -11,12 +11,7 @@ import MenuLink from '../foundation/MenuLink';
 import ContainerBase from '../foundation/ContainerBase';
 import Logo from '../foundation/Logo';
 import { isStaff } from '../../store/selectors';
-
-const JoinButton = () => (
-  <Button type="primary" size="lg">
-    JOIN
-  </Button>
-);
+import Router from 'next/router';
 
 const LogoutButton = styled(Button)`
   margin-left: 10px;
@@ -86,7 +81,14 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
                 href="/login"
                 text={t('LOGIN')}
               />
-              <Button type="primary" padding="17px 64px" fontSize="lg">
+              <Button
+                onClick={() =>
+                  Router.push('/joinus', '/joinus', { shallow: true })
+                }
+                type="primary"
+                padding="17px 64px"
+                fontSize="lg"
+              >
                 JOIN
               </Button>
             </>

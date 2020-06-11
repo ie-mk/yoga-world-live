@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Formik, ErrorMessage, Field } from 'formik';
 import AdminInput from '../../../../foundation/input/AdminInput';
 import AdminTextArea from '../../../../foundation/textarea/AdminTextArea';
-import AdminUploadImage from '../../../../foundation/uploadimage/AdminUploadImage';
+import AdminUploadImage from '../../../../foundation/pictureUploader/PictureUploader';
 import Button from '../../../../foundation/button/Button';
 
 let AddNewMessage = ({ setNewAdd }) => {

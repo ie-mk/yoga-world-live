@@ -9,7 +9,7 @@ import { ContainerBase } from '../../foundation';
 import AdminInput from '../../foundation/input/AdminInput';
 import AdminDropDown from '../../foundation/dropdown/AdminDropDown';
 import AdminTextArea from '../../foundation/textarea/AdminTextArea';
-import AdminUploadImage from '../../foundation/uploadimage/AdminUploadImage';
+import AdminUploadImage from '../../foundation/pictureUploader/PictureUploader';
 import CheckBoxWithText from '../../foundation/checkboxwithtext/CheckBoxWithText';
 
 import { Field, Formik } from 'formik';
