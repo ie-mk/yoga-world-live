@@ -14,10 +14,10 @@ export const Label = styled.div`
   padding-bottom: ${spacing.xxxS};
   font-size: ${({ fontSize }) =>
     fontSizeMap[fontSize] ? fontSizeMap[fontSize] : fontSizeMap.textS};
-  // font-size: ${fontSizeMap.textS};
   ${media.belowTabletLarge`
     font-size: ${fontSizeMap.textMobile};
   `}
+  color: ${colors.white};
   margin-left: ${({ marginLeft }) => (marginLeft ? marginLeft : '')};
   margin-right: ${({ marginRight }) => (marginRight ? marginRight : '')};
 `;
@@ -81,6 +81,9 @@ const Wrapper = styled.div`
   justify-content: ${({ displayLabelLeft }) =>
     displayLabelLeft ? 'center' : ''};
   color: ${colors.black};
+  ${media.belowTabletLarge`
+  width: 300px;
+  `}
 `;
 
 const UploadImageButton = styled.label`
