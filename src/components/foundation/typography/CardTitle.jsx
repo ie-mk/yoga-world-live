@@ -16,7 +16,7 @@ const StyledH3 = styled.h3`
   `};
   ${media.belowTablet`
      font-size: ${fontSizeMap.text};
-     margin-bottom: 22px;
+     
   `}
 
   ${({ mediaConfig }) => (mediaConfig ? getMedia(mediaConfig) : '')};

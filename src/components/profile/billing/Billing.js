@@ -12,12 +12,17 @@ import Styled from './Billing.styles';
 import Grid from '../../foundation/Grid';
 import Button from '../../foundation/button/Button';
 
-const CustomButton = ({ customMinWidth, customMobileMinWidth, ...props }) => (
+const CustomButton = ({
+  customMinWidth,
+  customMargin,
+  customMobileMinWidth,
+  ...props
+}) => (
   <Button
     type="secondary"
     borderRadius="mobile"
     size="lg"
-    margin="0"
+    margin={customMargin}
     padding="20px 30px"
     minWidth={customMinWidth}
     mediaConfig={{
@@ -34,15 +39,35 @@ const CustomButton = ({ customMinWidth, customMobileMinWidth, ...props }) => (
   </Button>
 );
 
-const CustomTitle = props => (
-  <CardTitle margin="113px 0 44px 0" fontWeight="500" {...props} />
-);
-
-const CustomBodyHeader = props => (
+const CustomBodyHeader = ({ margin, ...props }) => (
   <BodyHeader
     mediaConfig={{
       belowDesktop: {
         margin: 0,
+      },
+    }}
+    {...props}
+  />
+);
+
+const CustomPathTitle = props => (
+  <PathTitle
+    mediaConfig={{
+      belowDesktop: {
+        margin: 0,
+      },
+    }}
+    {...props}
+  />
+);
+
+const CustomCardTitle = ({ customMargin, ...props }) => (
+  <CardTitle
+    margin={customMargin}
+    fontWeight="500"
+    mediaConfig={{
+      belowDesktop: {
+        margin: '0 0 11px 0',
       },
     }}
     {...props}
@@ -55,16 +80,7 @@ const Billig = () => {
   return (
     <ContainerBase marginTop="xxl">
       <Styled.BillingWrapper>
-        <CardTitle
-          margin="0 0 22px 0"
-          fontWeight="500"
-          text="Your Membership"
-          mediaConfig={{
-            belowDesktop: {
-              margin: '0 0 11px 0',
-            },
-          }}
-        />
+        <CustomCardTitle margin="0 0 22px 0" text="Your Membership" />
         <Grid
           columns="1fr 1fr"
           mediaConfig={{
@@ -81,7 +97,11 @@ const Billig = () => {
             <CustomBodyHeader text="MemberShip Type" />
             <Styled.MembershipType>
               <CustomBodyHeader color="#0EC9B0" text="Paid" />
-              <CustomButton customMobileMinWidth="auto" type="primary">
+              <CustomButton
+                margin="11px 0 11px 0"
+                customMobileMinWidth="auto"
+                type="primary"
+              >
                 Change
               </CustomButton>
             </Styled.MembershipType>
@@ -90,7 +110,7 @@ const Billig = () => {
           <div>
             <CustomBodyHeader text="MemberShip Fee" />
             <BodyHeader
-              margin="12px 0 0 0"
+              margin="22px 0 0 0"
               color="#0EC9B0"
               text="€ 3999/ year"
             />
@@ -100,8 +120,8 @@ const Billig = () => {
             <CustomBodyHeader color="#0EC9B0" text="March 23,2020" />
           </div>
         </Grid>
+        <CustomCardTitle margin="0 0 22px 0" text="Invoices" />
 
-        <CustomTitle text="Invoices" />
         <Grid
           columns="1fr 1fr 1fr"
           mediaConfig={{
@@ -117,22 +137,25 @@ const Billig = () => {
           <div>
             <CustomBodyHeader text="Description" />
 
-            <PathTitle margin="44px 0 0 0" text="MemberShip Fee" />
+            <CustomPathTitle text="MemberShip Fee" />
           </div>
 
           <div>
             <CustomBodyHeader text="Amount" />
-            <PathTitle margin="44px 0 0 0" text="€ 3999" />
+            <CustomPathTitle text="€ 3999" />
           </div>
           <div>
             <CustomBodyHeader text="Date" />
-            <PathTitle margin="44px 0 0 0" text="March 23,2020" />
+            <CustomPathTitle text="March 23,2020" />
           </div>
           <div>
-            <CustomButton customMinWidth="200px">View Invoice</CustomButton>
+            <CustomButton customMargin="70px 0 0 0" customMinWidth="200px">
+              View Invoice
+            </CustomButton>
           </div>
         </Grid>
-        <CustomTitle text="Payment Methods" />
+        <CustomCardTitle margin="0 0 22px 0" text="Payment Methods" />
+
         <Grid
           columns="1fr"
           mediaConfig={{
@@ -163,11 +186,17 @@ const Billig = () => {
             <CustomButton type="primary">Add Payment Method</CustomButton>
           </di>
         </Grid>
-        <CustomTitle margin="50px 0 20px 0" text="Cancel Membership" />
-        <PathTitle
-          margin="0 0 25px 0"
-          text="you will loss access to your courses and program"
+        <CardTitle
+          fontWeight="500"
+          text="Cancel Membership"
+          mediaConfig={{
+            belowDesktop: {
+              margin: '0 0 11px 0',
+            },
+          }}
         />
+
+        <CustomPathTitle text="you will loss access to your courses and program" />
         <CustomButton type="secondary" margin="0 0 40px">
           Cancel Membership
         </CustomButton>

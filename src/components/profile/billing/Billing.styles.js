@@ -12,7 +12,6 @@ export const BillingWrapper = styled.div`
 export const MembershipType = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 22px;
   justify-content: space-between;
 `;
 

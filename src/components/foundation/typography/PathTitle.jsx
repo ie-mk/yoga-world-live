@@ -13,6 +13,7 @@ const H5 = styled.h5`
 
   ${media.aboveTabletLarge`
      font-size: ${fontSizeMap.h4};
+  
   `};
 `;
 
