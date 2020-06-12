@@ -34,7 +34,11 @@ let NewLearningPath = ({
   };
 
   const [selectedImages, setSelectedImages] = useState(null);
-  const imageSrc = selectedImages && selectedImages.fileUrls[0];
+  const newImageSrc = selectedImages && selectedImages.fileUrls[0];
+
+  const data = learningPaths[ediTableLearningPathId];
+  const imageSrc =
+    newImageSrc || (Array.isArray(data.images) && data.images[0]);
 
   return (
     <Styled.ModalWrapper>
@@ -48,7 +52,7 @@ let NewLearningPath = ({
       <Formik
         initialValues={{
           ...initialFormValues,
-          ...learningPaths[ediTableLearningPathId],
+          ...data,
         }}
         enableReinitialize={true}
         onSubmit={(values, { setSubmitting }) => {
@@ -57,7 +61,7 @@ let NewLearningPath = ({
           let finalValues = { ...values };
 
           if (selectedImages) {
-            finalValues.images = selectedImages.files;
+            finalValues.imagesToUpload = selectedImages.files;
           }
 
           dispatch(

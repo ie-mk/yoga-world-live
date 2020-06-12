@@ -175,7 +175,7 @@ function* fetchTasks({ payload = {} }) {
 
 function* fetchTask({ payload: docId }) {
   try {
-    const task = yield api.resource.fetchResource('tasks', docId);
+    const task = yield api.resource.fetchResource(`tasks/${docId}`);
     yield put(resourceActions.fetchTask.success({ [docId]: task }));
   } catch (err) {
     yield put(resourceActions.fetchTask.failure(err));
@@ -412,7 +412,7 @@ function* fetchMessages({ payload }) {
 
 function* fetchMessage({ payload: docId }) {
   try {
-    const result = yield api.resource.fetchResource('messages', docId);
+    const result = yield api.resource.fetchResource(`messages/${docId}`);
     yield put(resourceActions.fetchMessage.success({ [docId]: result }));
   } catch (err) {
     yield put(resourceActions.fetchMessage.failure(err));
@@ -462,7 +462,7 @@ function* fetchLearningPaths({ payload = {} }) {
 
 function* fetchLearningPath({ payload: docId }) {
   try {
-    const result = yield api.resource.fetchResource('learningPaths', docId);
+    const result = yield api.resource.fetchResource(`learningPaths/${docId}`);
     yield put(resourceActions.fetchLearningPath.success({ [docId]: result }));
   } catch (err) {
     yield put(resourceActions.fetchLearningPath.failure(err));
@@ -487,9 +487,10 @@ function* createLearningPath({ payload: { data } }) {
 }
 
 function* updateLearningPath({ payload: { docId, data } }) {
-  if (data.images) {
-    data.imageSavePath = 'images/learningPaths';
+  if (data.imagesToUpload) {
+    data.imageUploadPath = 'images/learningPaths';
   }
+  debugger;
   try {
     yield api.resource.updateResource(`learningPaths/${docId}`, data);
     yield put(resourceActions.updateLearningPath.success());
