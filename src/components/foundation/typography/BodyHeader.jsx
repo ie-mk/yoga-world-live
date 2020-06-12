@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { fontSizeMap, colors } from '../../../constants/styles';
 import media from '../media';
 import getMedia from '../../../utils/media';
+import withSpacing from '../withSpacing';
 
 const StyledH4 = styled.h4`
   font-size: ${fontSizeMap.textMobile};
@@ -16,12 +17,12 @@ const StyledH4 = styled.h4`
   ${({ mediaConfig }) => (mediaConfig ? getMedia(mediaConfig) : '')};
 `;
 
-const BodyHeader = ({ text, margin, color }) => {
+const BodyHeader = ({ text, color }) => {
   return (
-    <StyledH4 color={color} margin={margin}>
+    <StyledH4 color={color} margin="0">
       {text}
     </StyledH4>
   );
 };
 
-export default BodyHeader;
+export default withSpacing(BodyHeader);

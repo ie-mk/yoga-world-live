@@ -16,15 +16,15 @@ const StyledH3 = styled.h3`
   `};
   ${media.belowTablet`
      font-size: ${fontSizeMap.text};
-     
+
   `}
 
   ${({ mediaConfig }) => (mediaConfig ? getMedia(mediaConfig) : '')};
 `;
 
-const CardTitle = ({ text, margin, fontWeight, width }) => {
+const CardTitle = ({ text, fontWeight, width }) => {
   return (
-    <StyledH3 margin={margin} width={width} fontWeight={fontWeight}>
+    <StyledH3 margin="0" width={width} fontWeight={fontWeight}>
       {text}
     </StyledH3>
   );

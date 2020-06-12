@@ -13,12 +13,11 @@ const H5 = styled.h5`
 
   ${media.aboveTabletLarge`
      font-size: ${fontSizeMap.h4};
-  
   `};
 `;
 
-const PathTitle = ({ text, margin }) => {
-  return <H5 margin={margin}>{text}</H5>;
+const PathTitle = ({ text }) => {
+  return <H5 margin="0">{text}</H5>;
 };
 
-export default PathTitle;
+export default withSpacing(PathTitle);

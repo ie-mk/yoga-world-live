@@ -10,7 +10,7 @@ import FlexContainer from '../foundation/FlexContainer';
 import Billing from './billing/Billing';
 
 const Profile = ({ user }) => {
-  const [activeTab, setActiveTab] = useState('learning');
+  const [activeTab, setActiveTab] = useState('billing');
 
   const isActiveLearning = activeTab === 'learning';
   const isActiveInbox = activeTab === 'inbox';

@@ -13,6 +13,7 @@ const Grid = styled.div`
   grid-template-columns: ${({ columns }) => columns || ''};
   grid-template-rows: ${({ rows }) => rows || ''};
   grid-gap: ${({ gridGap }) => gridGap || ''};
+  align-items: ${({ alignItems }) => (alignItems ? alignItems : '')};
   ${({ mediaConfig }) => (mediaConfig ? getMedia(mediaConfig) : '')}
 `;
 
