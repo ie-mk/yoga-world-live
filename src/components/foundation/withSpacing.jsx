@@ -70,6 +70,7 @@ const withSpacing = Component => ({
   marginRight,
   marginBottom,
   marginLeft,
+  mediaConfig,
   ...props
 }) => {
   return (
@@ -85,6 +86,7 @@ const withSpacing = Component => ({
         marginRight,
         marginBottom,
         marginLeft,
+        mediaConfig,
       }}
     >
       <Component {...props} />

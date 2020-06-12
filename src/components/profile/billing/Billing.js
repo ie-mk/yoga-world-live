@@ -16,6 +16,7 @@ import FlexContainer from '../../foundation/FlexContainer';
 const CustomButton = ({
   customMinWidth,
   customMargin,
+  mobileMargin,
   customMobileMinWidth,
   ...props
 }) => (
@@ -27,10 +28,10 @@ const CustomButton = ({
     padding="18px 27px"
     minWidth={customMinWidth}
     mediaConfig={{
-      belowDesktop: {
+      belowTabletLarge: {
         padding: '10px 15px',
         fontSize: fontSizeMap.buttonMobile,
-        margin: props.margin ? props.margin : '0',
+        margin: mobileMargin ? mobileMargin : '0',
         minWidth: customMobileMinWidth ? customMobileMinWidth : '100px',
       },
     }}
@@ -43,8 +44,8 @@ const CustomButton = ({
 const CustomBodyHeader = props => (
   <BodyHeader
     mediaConfig={{
-      belowDesktop: {
-        margin: 0,
+      belowTabletLarge: {
+        margin: '0  0 15px 0',
       },
     }}
     {...props}
@@ -54,7 +55,7 @@ const CustomBodyHeader = props => (
 const CustomPathTitle = props => (
   <PathTitle
     mediaConfig={{
-      belowDesktop: {
+      belowTabletLarge: {
         margin: 0,
       },
     }}
@@ -62,17 +63,36 @@ const CustomPathTitle = props => (
   />
 );
 
-const CustomCardTitle = ({ customMargin, ...props }) => (
+const CustomCardTitle1 = ({ customMargin, ...props }) => (
   <CardTitle
     margin={customMargin}
     fontWeight="500"
     mediaConfig={{
-      belowDesktop: {
-        margin: '0 0 11px 0',
+      belowTabletLarge: {
+        margin: '0 0 22px 0',
       },
     }}
     {...props}
   />
+);
+
+const CustomCardTitle2 = ({ customMargin, ...props }) => (
+  <CardTitle
+    margin={customMargin}
+    fontWeight="500"
+    mediaConfig={{
+      belowTabletLarge: {
+        margin: '56px 0 15px 0',
+      },
+    }}
+    {...props}
+  />
+);
+
+const CustomBodyText = props => (
+  <BodyText color="#0EC9B0" fontWeight="400" {...props}>
+    {props.text}
+  </BodyText>
 );
 
 const Billig = () => {
@@ -81,7 +101,7 @@ const Billig = () => {
   return (
     <ContainerBase marginTop="xxxl">
       <Styled.BillingWrapper>
-        <CustomCardTitle margin="0 0 44px 0" text="Your Membership" />
+        <CustomCardTitle1 margin="0 0 44px 0" text="Your Membership" />
         <Grid
           columns="1fr 1fr"
           marginBottom
@@ -89,7 +109,7 @@ const Billig = () => {
             aboveTabletLarge: {
               'grid-template-columns': '1fr 1fr 1fr',
             },
-            belowDesktop: {
+            belowTabletLarge: {
               'grid-gap': spacing.xl,
             },
           }}
@@ -98,7 +118,7 @@ const Billig = () => {
           <div>
             <CustomBodyHeader margin="0 0 30px 0" text="MemberShip Type" />
             <Styled.MembershipType>
-              <CustomBodyHeader color="#0EC9B0" text="Paid" />
+              <CustomBodyText text="Paid" />
               <CustomButton
                 margin="0"
                 customMobileMinWidth="auto"
@@ -111,21 +131,28 @@ const Billig = () => {
 
           <div>
             <CustomBodyHeader margin="0 0 44px 0" text="MemberShip Fee" />
-            <BodyHeader color="#0EC9B0" text="€ 3999/ year" />
+            <CustomBodyText
+              text="€ 3999/ year"
+              mediaConfig={{
+                belowTabletLarge: {
+                  margin: '24px 0 0',
+                },
+              }}
+            />
           </div>
           <div>
             <CustomBodyHeader margin="0 0 44px 0" text="Last Payment Date" />
-            <CustomBodyHeader color="#0EC9B0" text="March 23,2020" />
+            <CustomBodyText text="March 23, 2020" />
           </div>
         </Grid>
-        <CustomCardTitle margin="113px 0 30px 0" text="Invoices" />
+        <CustomCardTitle2 margin="113px 0 30px 0" media text="Invoices" />
         <Grid
           columns="1fr 1fr 1fr"
           mediaConfig={{
             aboveTabletLarge: {
               'grid-template-columns': '1fr 1fr 1fr 1fr',
             },
-            belowDesktop: {
+            belowTabletLarge: {
               'grid-gap': spacing.xl,
             },
           }}
@@ -151,16 +178,16 @@ const Billig = () => {
           </div>
         </Grid>
 
-        <CustomCardTitle margin="113px 0 40px 0" text="Payment Methods" />
+        <CustomCardTitle2 margin="113px 0 40px 0" text="Payment Methods" />
 
         <Grid
-          columns="1fr"
+          columns="90px 1fr"
           alignItems="center"
           mediaConfig={{
             aboveTabletLarge: {
               'grid-template-columns': '140px 1fr 1fr',
             },
-            belowDesktop: {
+            belowTabletLarge: {
               'grid-gap': spacing.xl,
             },
           }}
@@ -169,28 +196,31 @@ const Billig = () => {
           <Styled.CardImage src="img/visaImage.png" />
           <CardTitle fontWeight="200" text="xxxx xxxx xxxx 3267" />
           <FlexContainer justifyContent="flex-end">
-            <CustomButton type="secondary" customMargin="0" minWidth="180px">
+            <CustomButton
+              type="secondary"
+              customMargin="0"
+              customMobileMinWidth="90px"
+              minWidth="180px"
+            >
               Remove
             </CustomButton>
           </FlexContainer>
         </Grid>
 
-        <CustomButton customMargin="50px 0 0 0" type="primary">
+        <CustomButton
+          customMargin="50px 0 0 0"
+          mobileMargin="20px 0 0 "
+          type="primary"
+        >
           Add Payment Method
         </CustomButton>
-        <CardTitle
-          fontWeight="500"
-          text="Cancel Membership"
-          margin="100px 0 30px 0"
-          mediaConfig={{
-            belowDesktop: {
-              margin: '0 0 11px 0',
-            },
-          }}
-        />
-
+        <CustomCardTitle2 text="Cancel Membership" margin="100px 0 30px 0" />
         <CustomPathTitle text="you will loss access to your courses and program" />
-        <CustomButton type="secondary" margin="50px 0 100px">
+        <CustomButton
+          type="secondary"
+          margin="50px 0 100px"
+          mobileMargin="20px 0 0 "
+        >
           Cancel Membership
         </CustomButton>
       </Styled.BillingWrapper>
