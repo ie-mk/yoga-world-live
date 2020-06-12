@@ -202,7 +202,7 @@ function* updateTask({ payload: { docId, data } }) {
 
 function* deleteTask({ payload: docId }) {
   try {
-    yield api.resource.deleteResource('tasks', docId);
+    yield api.resource.deleteResource(`tasks/${docId}`);
     yield put(resourceActions.deleteTask.success());
   } catch (err) {
     yield put(resourceActions.deleteTask.failure(err));
@@ -437,9 +437,9 @@ function* updateMessage({ payload: { docId, data } }) {
   }
 }
 
-function* deleteMessage({ payload }) {
+function* deleteMessage({ payload: docId }) {
   try {
-    yield api.resource.deleteResource('messages', payload.docId);
+    yield api.resource.deleteResource(`messages/${docId}`);
     yield put(resourceActions.deleteMessage.success());
   } catch (err) {
     yield put(resourceActions.deleteMessage.failure(err));
@@ -502,11 +502,11 @@ function* updateLearningPath({ payload: { docId, data } }) {
   }
 }
 
-function* deleteLearningPath({ payload }) {
+function* deleteLearningPath({ payload: id }) {
   try {
-    yield api.resource.deleteResource('learningPaths', payload);
+    yield api.resource.deleteResource(`learningPaths/${id}`);
     yield put(resourceActions.deleteLearningPath.success());
-    yield put(resourceActions.deleteLearningPathFromState(payload));
+    yield put(resourceActions.deleteLearningPathFromState(id));
   } catch (err) {
     yield put(resourceActions.deleteLearningPath.failure(err));
   }
