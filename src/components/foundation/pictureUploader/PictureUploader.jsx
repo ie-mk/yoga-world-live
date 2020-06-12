@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import Styled from './PictureUploader.styles';
 import usePrevious from '../../../utils/hooks/usePrevious';
 import Button from '../button/Button';
+import ResponsiveImage from '../ResponsiveImage';
+import CenteredFlexContainer from '../CenteredFlexContainer';
+import { spacing } from '../../../constants/styles';
 
 const PictureUploaderCopy = ({ label, width }) => {
   return (
@@ -17,7 +20,15 @@ const PictureUploaderCopy = ({ label, width }) => {
   );
 };
 
-const PictureUploader = ({ dispatch, ad, loading, uploadAction }) => {
+const PictureUploader = ({
+  dispatch,
+  ad,
+  loading,
+  uploadAction,
+  width,
+  setSelectedImages,
+  uploadAsync,
+}) => {
   const { query } = useRouter();
 
   const fileInputRef = useRef(null);
@@ -45,6 +56,11 @@ const PictureUploader = ({ dispatch, ad, loading, uploadAction }) => {
 
     setFileArray(fileUrls);
     setFileObj(files);
+
+    setSelectedImages({
+      fileUrls,
+      files,
+    });
   };
 
   const handleUpload = () => {
@@ -57,17 +73,16 @@ const PictureUploader = ({ dispatch, ad, loading, uploadAction }) => {
   };
 
   return (
-    <div>
+    <Styled.Wrapper width={width}>
       <input
         className="hidden"
         type="file"
-        name="files[]"
         multiple
         onChange={event => handleChange(event)}
         ref={fileInputRef}
       />
       <Styled.ButtonWrapper>
-        {!fileArray.length && !loading ? (
+        {!uploadAsync || (!fileArray.length && !loading) ? (
           <Button
             type="button"
             size="sm"
@@ -76,18 +91,25 @@ const PictureUploader = ({ dispatch, ad, loading, uploadAction }) => {
             Select Pictures
           </Button>
         ) : null}
-        {fileArray.length && !loading ? (
+        {fileArray.length && !loading && uploadAsync ? (
           <>
             <Button type="primary" size="sm" onClick={handleUpload}>
-              Upload New Pictures
+              Upload
             </Button>
-            <Button type="button" size="sm" onClick={() => setFileArray([])}>
-              Cancel selection
+            <Button
+              type="button"
+              size="sm"
+              onClick={() => {
+                setSelectedImages(null);
+                setFileArray([]);
+              }}
+            >
+              Cancel
             </Button>
           </>
         ) : null}
       </Styled.ButtonWrapper>
-    </div>
+    </Styled.Wrapper>
   );
 };
 

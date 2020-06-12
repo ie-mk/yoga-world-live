@@ -9,6 +9,10 @@ import Button from '../../../../../foundation/button/Button';
 import { resourceActions } from '../../../../../../store/actions';
 import AdminDropDown from '../../../../../foundation/dropdown/AdminDropDown';
 import { LEARNING_PATH_OPTIONS } from '../../../../../../constants';
+import FlexContainer from '../../../../../foundation/FlexContainer';
+import CenteredFlexContainer from '../../../../../foundation/CenteredFlexContainer';
+import { spacing } from '../../../../../../constants/styles';
+import ResponsiveImage from '../../../../../foundation/ResponsiveImage';
 
 const initialFormValues = {
   title: '',
@@ -29,6 +33,9 @@ let NewLearningPath = ({
     setAddingNew(false);
   };
 
+  const [selectedImages, setSelectedImages] = useState(null);
+  const imageSrc = selectedImages && selectedImages.fileUrls[0];
+
   return (
     <Styled.ModalWrapper>
       <Styled.RowContainer>
@@ -46,13 +53,22 @@ let NewLearningPath = ({
         enableReinitialize={true}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
+
+          let finalValues = { ...values };
+
+          if (selectedImages) {
+            finalValues.images = selectedImages.files;
+          }
+
           dispatch(
             editPath
               ? resourceActions.updateLearningPath.request({
                   docId: ediTableLearningPathId,
-                  data: values,
+                  data: finalValues,
                 })
-              : resourceActions.createLearningPath.request({ data: values }),
+              : resourceActions.createLearningPath.request({
+                  data: finalValues,
+                }),
           );
           setTimeout(() => {
             setSubmitting(false);
@@ -69,13 +85,24 @@ let NewLearningPath = ({
                 name="title"
                 label="Learning path"
                 component="select"
-                width="50%"
+                width="30%"
                 placeholder="Choose a learning path"
                 options={LEARNING_PATH_OPTIONS}
               />
-              <PictureUploader width="40%" label="Thumbnail" />
+              <PictureUploader
+                width="30%"
+                setSelectedImages={setSelectedImages}
+              />
+              {imageSrc ? (
+                <CenteredFlexContainer padding="0 20px" marginBottom="0">
+                  <ResponsiveImage
+                    width="100px"
+                    height="100px"
+                    src={imageSrc}
+                  />
+                </CenteredFlexContainer>
+              ) : null}
             </Styled.InputRow>
-
             <Styled.InputRow>
               <AdminTextArea
                 name="descr"

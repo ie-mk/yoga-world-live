@@ -6,7 +6,6 @@ export const ButtonWrapper = styled.div`
   flex: 1;
   display: flex;
   justify-content: center;
-  margin-bottom: ${spacing.lg};
   color: black;
 `;
 
@@ -16,7 +15,14 @@ export const ButtonWrapper = styled.div`
 //   margin-right: 20px;
 // `;
 
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: ${({ width }) => width || 'auto'};
+`;
+
 export default {
   ButtonWrapper,
-  //CustomButton,
+  Wrapper,
 };

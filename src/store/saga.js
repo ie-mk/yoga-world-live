@@ -470,6 +470,9 @@ function* fetchLearningPath({ payload: docId }) {
 }
 
 function* createLearningPath({ payload: { data } }) {
+  if (data.images) {
+    data.imageSavePath = 'images/learningPaths';
+  }
   try {
     const learningPathId = yield api.resource.createResource(
       'learningPaths',
@@ -484,6 +487,9 @@ function* createLearningPath({ payload: { data } }) {
 }
 
 function* updateLearningPath({ payload: { docId, data } }) {
+  if (data.images) {
+    data.imageSavePath = 'images/learningPaths';
+  }
   try {
     yield api.resource.updateResource(`learningPaths/${docId}`, data);
     yield put(resourceActions.updateLearningPath.success());
