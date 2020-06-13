@@ -2,7 +2,14 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import CardTitle from '../../foundation/typography/CardTitle';
 import BodyHeader from '../../foundation/typography/BodyHeader';
+
 import ContainerBase from '../../foundation/ContainerBase';
+import {
+  background,
+  fontSizeMap,
+  spacing,
+  borderRadius,
+} from '../../../constants/styles';
 import Styled from './Preferences.styles';
 import Grid from '../../foundation/Grid';
 
