@@ -14,10 +14,10 @@ export const Label = styled.div`
   padding-bottom: ${spacing.xxxS};
   font-size: ${({ fontSize }) =>
     fontSizeMap[fontSize] ? fontSizeMap[fontSize] : fontSizeMap.textS};
-  // font-size: ${fontSizeMap.textS};
   ${media.belowTabletLarge`
     font-size: ${fontSizeMap.textMobile};
   `}
+  color: ${colors.white};
   margin-left: ${({ marginLeft }) => (marginLeft ? marginLeft : '')};
   margin-right: ${({ marginRight }) => (marginRight ? marginRight : '')};
 `;
@@ -37,7 +37,7 @@ export const InputStyles = styled.div`
     font-size: ${fontSizeMap.text};
     width: 100%;
     padding-left: ${spacing.sm};
-    border: 1px solid #909090;
+    //border: 1px solid #909090;
     border-radius: ${borderRadius.sm};
     opacity: 1;
   }
@@ -81,6 +81,8 @@ const Wrapper = styled.div`
   justify-content: ${({ displayLabelLeft }) =>
     displayLabelLeft ? 'center' : ''};
   color: ${colors.black};
+  margin-top: ${spacing.xl};
+  margin-bottom: ${spacing.xl};
 `;
 
 const UploadImageButton = styled.label`
