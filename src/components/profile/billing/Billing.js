@@ -99,7 +99,14 @@ const Billig = () => {
   const { t } = useTranslation();
 
   return (
-    <ContainerBase marginTop="xxxl">
+    <ContainerBase
+      marginTop="xxxl"
+      mediaConfig={{
+        belowTabletLarge: {
+          margin: '30px 0 0 0',
+        },
+      }}
+    >
       <Styled.BillingWrapper>
         <CustomCardTitle1 margin="0 0 44px 0" text="Your Membership" />
         <Grid
