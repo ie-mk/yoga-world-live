@@ -207,8 +207,12 @@ const ContainerRoot = styled.div`
   ${({ mediaConfig }) => (mediaConfig ? getMedia(mediaConfig) : '')}
 `;
 
-const ContainerBase = props => {
-  return <ContainerRoot {...props}>{props.children}</ContainerRoot>;
-};
+const ContainerBase = React.forwardRef((props, ref) => {
+  return (
+    <ContainerRoot ref={ref} {...props}>
+      {props.children}
+    </ContainerRoot>
+  );
+});
 
 export default ContainerBase;

@@ -29,6 +29,16 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
     dispatch(userActions.resetUser());
   };
 
+  const containerRef = useRef(null);
+
+  const handleMenuClick = () => {
+    // when the menu is clicked we want to collapse the menu
+    // but only for the mobile view
+    if (containerRef.current.offsetWidth < 1008) {
+      setShowMobileMenu(!showMobileMenu);
+    }
+  };
+
   const { t } = useTranslation();
 
   return (
@@ -38,6 +48,7 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
       position="absolute"
       top="0"
       width="100%"
+      ref={containerRef}
     >
       <Styled.Wrapper id="appBar">
         <Logo
@@ -46,7 +57,10 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
           marginRight={spacing.xxl}
           zIndex="9"
         />
-        <Styled.LinkWrapper showMobileMenu={showMobileMenu}>
+        <Styled.LinkWrapper
+          onClick={handleMenuClick}
+          showMobileMenu={showMobileMenu}
+        >
           <MenuLink noMargin={true} href="/">
             Home
           </MenuLink>
