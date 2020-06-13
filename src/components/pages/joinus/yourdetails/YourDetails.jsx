@@ -8,6 +8,7 @@ import FlexContainer from '../../../foundation/FlexContainer';
 import { Formik, ErrorMessage, Field } from 'formik';
 import SectionTitle from '../../../foundation/typography/SectionTitle';
 import { fontSizeMap, spacing } from '../../../../constants/styles';
+import Styled from './YourDetails.styles';
 
 const YourDetails = () => {
   return (
@@ -18,17 +19,12 @@ const YourDetails = () => {
       flexDirection="column"
       marginBottom="xxxl"
     >
-      <SectionTitle
-        text="Tell Us About Your Details"
-        marginBottom={spacing.xl}
-        marginTop={spacing.xl}
-      />
+      <SectionTitle text="Tell Us About Your Details" />
       <Formik
         initialValues={{ ...initialFormValues }}
         enableReinitialize={true}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
-
           setTimeout(() => setSubmitting(false), 1000);
         }}
       >
@@ -39,7 +35,7 @@ const YourDetails = () => {
               type="text"
               label="Name"
               backgroundColor="#293150"
-              width="400px"
+              width="600px"
               fontSize="h4"
             />
             <AdminInput
@@ -47,7 +43,7 @@ const YourDetails = () => {
               type="text"
               label="Email"
               backgroundColor="#293150"
-              width="100%"
+              width="600px"
               fontSize="h4"
             />
             <AdminInput
@@ -55,23 +51,23 @@ const YourDetails = () => {
               type="text"
               label="Mobile"
               backgroundColor="#293150"
-              width="100%"
+              width="600px"
               fontSize="h4"
             />
           </ContainerBase>
 
-          <CheckBoxWithText
-            label="I accept the terms of use"
-            width="100%"
-            color="white"
-            fontSize="h4"
-          />
-
-          <FlexContainer justifyContent="flex-start" marginTop="xxl">
+          <ContainerBase display="flex" flexDirection="row" marginTop="xxxls">
+            <Styled.CheckBox type="checkbox" />
+            <Styled.CheckBoxLabel>
+              I accept the
+              <Styled.CheckBoxLinkLabel>terms of use</Styled.CheckBoxLinkLabel>
+            </Styled.CheckBoxLabel>
+          </ContainerBase>
+          <Styled.ButtonWrapper>
             <Button type="primary" size="sm" padding="lg">
               Next
             </Button>
-          </FlexContainer>
+          </Styled.ButtonWrapper>
         </form>
       </Formik>
     </ContainerBase>

@@ -13,7 +13,7 @@ const steps = [
 ];
 
 const JoinUs = () => {
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(1);
 
   const showPage1 = activeStep === 0;
   const showPage2 = activeStep === 1;
