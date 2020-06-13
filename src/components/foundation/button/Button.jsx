@@ -78,7 +78,7 @@ const ButtonWrapper = styled.button`
     box-shadow: 0 0 2px 2px white;
   }
 
-  ${({ mediaConfig, mobileSameSize }) =>
+  ${({ mediaConfig, mobileSameSize, marginMobile }) =>
     mediaConfig
       ? getMedia(mediaConfig)
       : !mobileSameSize &&
@@ -86,7 +86,7 @@ const ButtonWrapper = styled.button`
           belowTablet: {
             padding: paddingMap.mobile,
             fontSize: fontSizeMap.mobile,
-            margin: `0 0 ${spacing.xl}`,
+            margin: marginMobile || `0 0 ${spacing.xl}`,
             width: 'auto',
             minWidth: '150px',
           },

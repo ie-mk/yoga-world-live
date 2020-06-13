@@ -56,7 +56,9 @@ const ContainerRoot = styled.div`
   ${({ marginLeft }) => (marginLeft ? getMarginLeft(marginLeft) : '')}
   ${({ marginRight }) => (marginRight ? getMarginRight(marginRight) : '')}
 
-  ${({ mediaConfig }) => (mediaConfig ? getMedia(mediaConfig) : '')}
+  ${({ marginRight }) => (marginRight ? getMarginRight(marginRight) : '')}
+
+  z-index: ${({ zIndex }) => (zIndex ? zIndex : '')};
 `;
 
 const withSpacing = Component => ({
@@ -71,6 +73,7 @@ const withSpacing = Component => ({
   marginBottom,
   marginLeft,
   mediaConfig,
+  zIndex,
   ...props
 }) => {
   return (
@@ -87,6 +90,7 @@ const withSpacing = Component => ({
         marginBottom,
         marginLeft,
         mediaConfig,
+        zIndex,
       }}
     >
       <Component {...props} />

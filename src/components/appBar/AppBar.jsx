@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import Styled from './AppBar.styles';
 import api from '../../api/api.min';
@@ -12,12 +12,18 @@ import ContainerBase from '../foundation/ContainerBase';
 import Logo from '../foundation/Logo';
 import { isStaff } from '../../store/selectors';
 import Router from 'next/router';
+import media from '../foundation/media';
 
 const LogoutButton = styled(Button)`
   margin-left: 10px;
+  ${media.belowTabletLarge`
+    margin: 0
+  `}
 `;
 
 const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+
   const handleLogout = () => {
     api.user.logout && api.user.logout();
     dispatch(userActions.resetUser());
@@ -29,81 +35,87 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
     <ContainerBase
       display="flex"
       justifyContent="center"
-      paddingTop="lg"
       position="absolute"
       top="0"
       width="100%"
     >
-      <ContainerBase
-        id="appBar"
-        padding="md"
-        alignItems="center"
-        display="flex"
-        justifyContent="space-between"
-        width="100%"
-        boxSizing="border-box"
-        height="65px"
-        zIndex="99"
-        paddingRight="xxxl"
-        maxWidth="1400px"
-      >
+      <Styled.Wrapper id="appBar">
         <Logo
           imgSrc="/logo/logo_with_name.png"
           width="200px"
           marginRight={spacing.xxl}
+          zIndex="9"
         />
-        <Styled.LinkWrapper>
-          <MenuLink href="/">Home</MenuLink>
-          <MenuLink href="/courses">Courses</MenuLink>
-          <MenuLink href="/">Community</MenuLink>
-          <MenuLink href="/stories">Stories</MenuLink>
+        <Styled.LinkWrapper showMobileMenu={showMobileMenu}>
+          <MenuLink noMargin={true} href="/">
+            Home
+          </MenuLink>
+          <MenuLink noMargin={true} href="/courses">
+            Courses
+          </MenuLink>
+          <MenuLink noMargin={true} href="/">
+            Community
+          </MenuLink>
+          <MenuLink noMargin={true} href="/stories">
+            Stories
+          </MenuLink>
+          <Styled.LoginWrapper>
+            {user && user.uid && isStaff && (
+              <MenuLink href="/dashboard">
+                <i className="fa fa-briefcase" />
+              </MenuLink>
+            )}
+            {user && user.uid && (
+              <MenuLink href="/profile">
+                <i className="fa fa-user" />
+              </MenuLink>
+            )}
+            {user && user.uid ? (
+              <LogoutButton type="secondary" onClick={handleLogout}>
+                {t('Logout')}
+              </LogoutButton>
+            ) : (
+              <>
+                <MenuLink
+                  dataTest="go-to-login-page"
+                  href="/login"
+                  text={t('LOGIN')}
+                />
+                <Button
+                  onClick={() =>
+                    Router.push('/joinus', '/joinus', { shallow: true })
+                  }
+                  type="primary"
+                  padding="17px 64px"
+                  fontSize="lg"
+                  margin="0"
+                  mobileSameSize={true}
+                >
+                  JOIN
+                </Button>
+              </>
+            )}
+            {/*<select*/}
+            {/*  value={userLanguage || 'en'}*/}
+            {/*  onChange={e => {*/}
+            {/*    dispatch(userActions.setLanguage(e.target.value));*/}
+            {/*  }}*/}
+            {/*>*/}
+            {/*  <option value="en">EN</option>*/}
+            {/*  <option value="lt">LT</option>*/}
+            {/*</select>*/}
+          </Styled.LoginWrapper>
         </Styled.LinkWrapper>
-
-        <Styled.LoginWrapper>
-          {user && user.uid && isStaff && (
-            <MenuLink href="/dashboard">
-              <i className="fa fa-briefcase" />
-            </MenuLink>
-          )}
-          {user && user.uid && (
-            <MenuLink href="/profile">
-              <i className="fa fa-user" />
-            </MenuLink>
-          )}
-          {user && user.uid ? (
-            <LogoutButton type="secondary" onClick={handleLogout}>
-              {t('Logout')}
-            </LogoutButton>
+        <Styled.MobileMenuWrapper
+          onClick={() => setShowMobileMenu(!showMobileMenu)}
+        >
+          {showMobileMenu ? (
+            <i className="fa fa-window-close-o" />
           ) : (
-            <>
-              <MenuLink
-                dataTest="go-to-login-page"
-                href="/login"
-                text={t('LOGIN')}
-              />
-              <Button
-                onClick={() =>
-                  Router.push('/joinus', '/joinus', { shallow: true })
-                }
-                type="primary"
-                padding="17px 64px"
-                fontSize="lg"
-              >
-                JOIN
-              </Button>
-            </>
+            <i className="fa fa-bars" />
           )}
-          {/*<select*/}
-          {/*  value={userLanguage || 'en'}*/}
-          {/*  onChange={e => {*/}
-          {/*    dispatch(userActions.setLanguage(e.target.value));*/}
-          {/*  }}*/}
-          {/*>*/}
-          {/*  <option value="en">EN</option>*/}
-          {/*  <option value="lt">LT</option>*/}
-          {/*</select>*/}
-        </Styled.LoginWrapper>
-      </ContainerBase>
+        </Styled.MobileMenuWrapper>
+      </Styled.Wrapper>
     </ContainerBase>
   );
 };
