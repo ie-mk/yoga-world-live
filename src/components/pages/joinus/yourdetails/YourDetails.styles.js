@@ -13,7 +13,7 @@ const ButtonWrapper = styled.div`
   justify-content: flex-start;
   align-items: center;
   margin-top: ${spacing.xxxl};
-  ${media.belowTablet`
+  ${media.belowMobileLarge`
     justify-content: center;
     margin-top: ${spacing.xl};
     flex-direction: row;
@@ -24,7 +24,8 @@ const CheckBox = styled.input`
   width: ${spacing.xl};
   height: ${spacing.xl};
   margin-right: ${spacing.xl};
-  ${media.belowTablet`
+  border-radius: 20px;
+  ${media.belowMobileLarge`
     width: ${spacing.md}; 
     height: ${spacing.md};
     margin-right: ${spacing.md};
@@ -33,7 +34,7 @@ const CheckBox = styled.input`
 
 const CheckBoxLabel = styled.label`
   font-size: ${spacing.xl};
-  ${media.belowTablet`
+  ${media.belowMobileLarge`
     font-size:${spacing.md};
   `}
 `;
@@ -44,8 +45,17 @@ const CheckBoxLinkLabel = styled.label`
   color: ${colors.bluishgreen};
   padding-left: ${spacing.sm};
   cursor: pointer;
-  ${media.belowTablet`
+  ${media.belowMobileLarge`
     font-size:${spacing.md};
+  `}
+`;
+
+const Wrapper = styled.div`
+  max-width: 600px;
+  width: 600px;
+  ${media.belowMobileLarge`
+    max-width : 300px;
+    width: 300px;
   `}
 `;
 
@@ -54,4 +64,5 @@ export default {
   CheckBox,
   CheckBoxLabel,
   CheckBoxLinkLabel,
+  Wrapper,
 };

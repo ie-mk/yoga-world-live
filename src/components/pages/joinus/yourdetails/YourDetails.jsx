@@ -29,13 +29,13 @@ const YourDetails = () => {
         }}
       >
         <form>
-          <ContainerBase>
+          <Styled.Wrapper>
             <AdminInput
               name="name"
               type="text"
               label="Name"
               backgroundColor="#293150"
-              width="600px"
+              width="100%"
               fontSize="h4"
             />
             <AdminInput
@@ -43,7 +43,7 @@ const YourDetails = () => {
               type="text"
               label="Email"
               backgroundColor="#293150"
-              width="600px"
+              width="100%"
               fontSize="h4"
             />
             <AdminInput
@@ -51,10 +51,10 @@ const YourDetails = () => {
               type="text"
               label="Mobile"
               backgroundColor="#293150"
-              width="600px"
+              width="100%"
               fontSize="h4"
             />
-          </ContainerBase>
+          </Styled.Wrapper>
 
           <ContainerBase display="flex" flexDirection="row" marginTop="xxxls">
             <Styled.CheckBox type="checkbox" />

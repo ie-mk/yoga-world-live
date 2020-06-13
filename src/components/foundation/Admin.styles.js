@@ -83,9 +83,6 @@ const Wrapper = styled.div`
   color: ${colors.black};
   margin-top: ${spacing.xl};
   margin-bottom: ${spacing.xl};
-  ${media.belowTabletLarge`
-  width: 300px;
-  `}
 `;
 
 const UploadImageButton = styled.label`
