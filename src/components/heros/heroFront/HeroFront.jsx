@@ -13,6 +13,11 @@ const HeroFront = () => {
         height="100vh"
         width="100%"
         position="absolute"
+        mediaConfig={{
+          belowTabletLarge: {
+            backgroundImage: 'url("/img/mobile/Background.png")',
+          },
+        }}
       />
       <Styled.Content>
         <Styled.HeaderWrapper>
