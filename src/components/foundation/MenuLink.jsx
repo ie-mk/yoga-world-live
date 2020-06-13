@@ -22,7 +22,7 @@ const LinkWrapper = styled.div`
   ${media.belowTabletLarge`
     width: 100%;
     justify-content: center;
-    margin: 30px 0;
+    margin: 15px 0;
   `}
 `;
 

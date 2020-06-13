@@ -159,7 +159,8 @@ const ContainerRoot = styled.div`
   ${({ fontSize }) => (fontSize ? getfontSize(fontSize) : '')}
 
   ${({ padding }) => (padding ? getPadding(padding) : '')}
-  ${({ margin }) => (margin ? getMargin(margin) : '')}
+  ${({ margin }) =>
+    margin ? (getMargin(margin) ? getMargin(margin) : margin) : ''}
   ${({ paddingBottom }) =>
     paddingBottom ? getPaddingBottom(paddingBottom) : ''}
   ${({ paddingTop }) => (paddingTop ? getPaddingTop(paddingTop) : '')}

@@ -54,8 +54,20 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
         <Logo
           imgSrc="/logo/logo_with_name.png"
           width="200px"
-          marginRight={spacing.xxl}
+          height="58px"
+          margin="20px 40px 0 0"
+          mediaConfig={{
+            belowTabletLarge: {
+              margin: '0 20px 0 10px',
+            },
+          }}
           zIndex="9"
+          imageMediaConfig={{
+            belowTabletLarge: {
+              width: '100px',
+              height: '29px',
+            },
+          }}
         />
         <Styled.LinkWrapper
           onClick={handleMenuClick}

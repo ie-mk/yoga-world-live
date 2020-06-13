@@ -50,7 +50,8 @@ const ContainerRoot = styled.div`
   ${({ paddingLeft }) => (paddingLeft ? getPaddingLeft(paddingLeft) : '')}
   ${({ paddingRight }) => (paddingRight ? getPaddingRight(paddingRight) : '')}
 
-  ${({ margin }) => (margin ? getMargin(margin) : '')}
+  ${({ margin }) =>
+    margin ? (getMargin(margin) ? getMargin(margin) : margin) : ''}
   ${({ marginBottom }) => (marginBottom ? getMarginBottom(marginBottom) : '')}
   ${({ marginTop }) => (marginTop ? getMarginTop(marginTop) : '')}
   ${({ marginLeft }) => (marginLeft ? getMarginLeft(marginLeft) : '')}
@@ -59,6 +60,8 @@ const ContainerRoot = styled.div`
   ${({ marginRight }) => (marginRight ? getMarginRight(marginRight) : '')}
 
   z-index: ${({ zIndex }) => (zIndex ? zIndex : '')};
+
+  ${({ mediaConfig }) => (mediaConfig ? getMedia(mediaConfig) : '')}
 `;
 
 const withSpacing = Component => ({

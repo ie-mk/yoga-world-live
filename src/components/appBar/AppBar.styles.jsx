@@ -33,6 +33,9 @@ const Wrapper = styled.div`
   padding-right: ${spacing.lg};
   position: absolute;
   z-index: 8;
+  ${media.belowTabletLarge`
+    padding: 11px;
+  `}
 `;
 
 const LinkWrapper = styled.div`
@@ -50,7 +53,7 @@ const LinkWrapper = styled.div`
     top: 0;
     margin-right: 0;
     padding: ${({ showMobileMenu }) =>
-      showMobileMenu ? '100px 0 70px 0' : '0'};
+      showMobileMenu ? '50px 0 40px 0' : '0'};
     left: 0;
     background: transparent linear-gradient(180deg, #222A48 0%, #191F37 100%) 0% 0% no-repeat padding-box;
   `}
@@ -65,6 +68,11 @@ const MobileMenuWrapper = styled.div`
   color: ${colors.white};
   ${media.aboveTabletLarge`
     display: none;
+  `}
+
+  ${media.belowTabletLarge`
+    padding: 10px 20px 0;
+    font-size: 32px;
   `}
   i {
     cursor: pointer;
