@@ -5,6 +5,7 @@ import media from '../media';
 
 const StyledH2 = styled.h2`
   font-size: ${fontSizeMap.h4};
+  font-weight: 500;
   margin: ${({ margin }) => margin || ''};
   ${media.aboveTablet`
     font-size: ${fontSizeMap.h2};
