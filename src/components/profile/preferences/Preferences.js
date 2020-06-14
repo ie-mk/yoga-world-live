@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import CardTitle from '../../foundation/typography/CardTitle';
-import BodyHeader from '../../foundation/typography/BodyHeader';
+import Text24 from '../../foundation/typography/Text24';
 
 import ContainerBase from '../../foundation/ContainerBase';
 import {
@@ -13,8 +13,8 @@ import {
 import Styled from './Preferences.styles';
 import Grid from '../../foundation/Grid';
 
-const CustomBodyHeader = props => (
-  <BodyHeader
+const CustomText24 = props => (
+  <Text24
     mediaConfig={{
       belowTabletLarge: {
         margin: '0 0 7px 0',
@@ -24,8 +24,8 @@ const CustomBodyHeader = props => (
   />
 );
 
-const CustomBodyHeader1 = props => (
-  <BodyHeader
+const CustomText241 = props => (
+  <Text24
     mediaConfig={{
       belowTabletLarge: {
         margin: '0 0 0 24px',
@@ -89,22 +89,22 @@ const Preferences = () => {
           gridGap={spacing.xxxxl}
         >
           <div>
-            <CustomBodyHeader margin="0 0 14px 0" text="Email" />
-            <CustomBodyHeader text="studentname@gmail.com" />
+            <CustomText24 margin="0 0 14px 0" text="Email" />
+            <CustomText24 text="studentname@gmail.com" />
           </div>
 
           <Styled.DesktopView>
-            <CustomBodyHeader margin="0 0 14px 0" text="Mobile" />
-            <CustomBodyHeader text="+44 2573 34785" />
+            <CustomText24 margin="0 0 14px 0" text="Mobile" />
+            <CustomText24 text="+44 2573 34785" />
           </Styled.DesktopView>
           <div>
-            <CustomBodyHeader margin="0 0 14px 0" text="Mobile" />
-            <CustomBodyHeader text="+44 2573 34785" />
+            <CustomText24 margin="0 0 14px 0" text="Mobile" />
+            <CustomText24 text="+44 2573 34785" />
           </div>
 
           <div>
-            <CustomBodyHeader margin="0 0 14px 0" text="Password" />
-            <CustomBodyHeader text="**********" />
+            <CustomText24 margin="0 0 14px 0" text="Password" />
+            <CustomText24 text="**********" />
           </div>
         </Grid>
         <CustomCardTitle2
@@ -114,32 +114,29 @@ const Preferences = () => {
 
         <Styled.CheckBoxItemWrapper>
           <Styled.CheckBox type="checkbox" />
-          <CustomBodyHeader1 margin="0 0 0 48px" text="Weekly newsletter" />
+          <CustomText241 margin="0 0 0 48px" text="Weekly newsletter" />
         </Styled.CheckBoxItemWrapper>
         <Styled.CheckBoxItemWrapper>
           <Styled.CheckBox type="checkbox" />
-          <CustomBodyHeader1 margin="0 0 0 48px" text="Course Updates" />
+          <CustomText241 margin="0 0 0 48px" text="Course Updates" />
         </Styled.CheckBoxItemWrapper>
         <Styled.CheckBoxItemWrapper>
           <Styled.CheckBox type="checkbox" />
-          <CustomBodyHeader1
+          <CustomText241
             margin="0 0 0 48px"
             text="Lesson progress notifications"
           />
         </Styled.CheckBoxItemWrapper>
         <Styled.CheckBoxItemWrapper>
           <Styled.CheckBox type="checkbox" />
-          <CustomBodyHeader1
+          <CustomText241
             margin="0 0 0 48px"
             text="Feedback from course authors"
           />
         </Styled.CheckBoxItemWrapper>
         <Styled.CheckBoxItemWrapper>
           <Styled.CheckBox type="checkbox" />
-          <CustomBodyHeader1
-            margin="0 0 0 48px"
-            text=" Message notifications"
-          />
+          <CustomText241 margin="0 0 0 48px" text=" Message notifications" />
         </Styled.CheckBoxItemWrapper>
       </Styled.BillingWrapper>
     </ContainerBase>

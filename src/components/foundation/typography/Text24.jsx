@@ -5,10 +5,10 @@ import media from '../media';
 import getMedia from '../../../utils/media';
 import withSpacing from '../withSpacing';
 
-const StyledH4 = styled.h4`
+const Text = styled.span`
   font-size: ${fontSizeMap.textMobile};
   font-weight: 400;
-  color: ${({ color }) => (color ? color : colors.text.primary)};
+  color: ${({ color }) => (color ? color : colors.white)};
   margin: ${({ margin }) => margin || ''};
   ${media.aboveTablet`
     font-size: ${fontSizeMap.h4};
@@ -17,12 +17,12 @@ const StyledH4 = styled.h4`
   ${({ mediaConfig }) => (mediaConfig ? getMedia(mediaConfig) : '')};
 `;
 
-const BodyHeader = ({ text, color }) => {
+const Text24 = ({ text, color }) => {
   return (
-    <StyledH4 color={color} margin="0">
+    <Text color={color} margin="0">
       {text}
-    </StyledH4>
+    </Text>
   );
 };
 
-export default withSpacing(BodyHeader);
+export default withSpacing(Text24);

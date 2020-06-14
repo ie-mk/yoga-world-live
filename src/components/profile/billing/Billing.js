@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import LearningPathCard from '../../foundation/learningPathCard/LearningPathCard';
 import CardTitle from '../../foundation/typography/CardTitle';
-import BodyHeader from '../../foundation/typography/BodyHeader';
+import Text24 from '../../foundation/typography/Text24';
 import BodyText from '../../foundation/typography/BodyText';
 import PathTitle from '../../foundation/typography/PathTitle';
 import CenteredFlexContainer from '../../foundation/CenteredFlexContainer';
@@ -41,8 +41,8 @@ const CustomButton = ({
   </Button>
 );
 
-const CustomBodyHeader = props => (
-  <BodyHeader
+const CustomText24 = props => (
+  <Text24
     mediaConfig={{
       belowTabletLarge: {
         margin: '0  0 15px 0',
@@ -123,7 +123,7 @@ const Billig = () => {
           gridGap={spacing.xxxxl}
         >
           <div>
-            <CustomBodyHeader margin="0 0 30px 0" text="MemberShip Type" />
+            <CustomText24 margin="0 0 30px 0" text="MemberShip Type" />
             <Styled.MembershipType>
               <CustomBodyText text="Paid" />
               <CustomButton
@@ -137,7 +137,7 @@ const Billig = () => {
           </div>
 
           <div>
-            <CustomBodyHeader margin="0 0 44px 0" text="MemberShip Fee" />
+            <CustomText24 margin="0 0 44px 0" text="MemberShip Fee" />
             <CustomBodyText
               text="€ 3999/ year"
               mediaConfig={{
@@ -148,7 +148,7 @@ const Billig = () => {
             />
           </div>
           <div>
-            <CustomBodyHeader margin="0 0 44px 0" text="Last Payment Date" />
+            <CustomText24 margin="0 0 44px 0" text="Last Payment Date" />
             <CustomBodyText text="March 23, 2020" />
           </div>
         </Grid>
@@ -166,16 +166,16 @@ const Billig = () => {
           gridGap={spacing.xxxxl}
         >
           <div>
-            <CustomBodyHeader margin="0 0 30px 0" text="Description" />
+            <CustomText24 margin="0 0 30px 0" text="Description" />
             <CustomPathTitle text="MemberShip Fee" />
           </div>
 
           <div>
-            <CustomBodyHeader margin="0 0 30px 0" text="Amount" />
+            <CustomText24 margin="0 0 30px 0" text="Amount" />
             <CustomPathTitle text="€ 3999" />
           </div>
           <div>
-            <CustomBodyHeader margin="0 0 30px 0" text="Date" />
+            <CustomText24 margin="0 0 30px 0" text="Date" />
             <CustomPathTitle text="March 23,2020" />
           </div>
           <div>
