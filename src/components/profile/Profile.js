@@ -8,9 +8,9 @@ import CardTitle from '../foundation/typography/CardTitle';
 import BodyText from '../foundation/typography/BodyText';
 import FlexContainer from '../foundation/FlexContainer';
 import Billing from './billing/Billing';
-
+import Preferences from './preferences/Preferences';
 const Profile = ({ user }) => {
-  const [activeTab, setActiveTab] = useState('billing');
+  const [activeTab, setActiveTab] = useState('preferences');
 
   const isActiveLearning = activeTab === 'learning';
   const isActiveInbox = activeTab === 'inbox';
@@ -110,6 +110,7 @@ const Profile = ({ user }) => {
         </Styled.Tab>
       </Styled.ProfileInfoPageWrapper>
       {isActiveBilling && <Billing />}
+      {isActivePreferences && <Preferences />}
     </ContainerBase>
   );
 };
