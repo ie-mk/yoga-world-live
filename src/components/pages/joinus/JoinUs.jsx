@@ -4,6 +4,7 @@ import { ContainerBase } from '../../foundation';
 import SectionCards from '../../heros/sectionCards/SectionCards';
 import SelectMembership from './selectMembership/SelectMembership';
 import YourDetails from './yourdetails/YourDetails';
+import Payment from './payment/Payment';
 
 const steps = [
   { title: 'Select Your Membership' },
@@ -13,7 +14,7 @@ const steps = [
 ];
 
 const JoinUs = () => {
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(2);
 
   const showPage1 = activeStep === 0;
   const showPage2 = activeStep === 1;
@@ -30,7 +31,7 @@ const JoinUs = () => {
       <ContainerBase marginTop="100px">
         {showPage1 && <SelectMembership />}
         {showPage2 && <YourDetails />}
-        {showPage3 && <div>this is step 3</div>}
+        {showPage3 && <Payment />}
         {showPage4 && <div>this is step 4</div>}
       </ContainerBase>
     </>
