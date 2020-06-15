@@ -62,6 +62,15 @@ function* fetchUserProfile({ payload: uid }) {
   }
 }
 
+function* fetchUsers() {
+  try {
+    const users = yield api.user.fetchUsers();
+    yield put(userActions.fetchUsers.success(users));
+  } catch (err) {
+    yield put(userActions.fetchUsers.failure(err));
+  }
+}
+
 function* updateUserProfilePicture({ payload: { uid, image } }) {
   try {
     yield api.user.updateProfilePicture(uid, image);
@@ -529,6 +538,7 @@ function* rootSaga() {
   yield all([
     takeLatest(userActions.saveUserInfoFromLoginProvider, handleLoginFlow),
   ]);
+  yield all([takeLatest(userActions.fetchUsers.request.type, fetchUsers)]);
   // ========================== COURSES ===============================
   yield all([
     takeLatest(resourceActions.fetchCourses.request.type, fetchCourses),
