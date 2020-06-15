@@ -51,6 +51,25 @@ const Wrapper = styled.div`
 
 const InputWrapper = styled.div`
   width: 250px;
+  ${media.belowMobileLarge`
+    max-width : 150px;
+    width: 150px;
+  `}
+`;
+
+const PaypalWrapper = styled.div`
+  width: 150px;
+  height: 50px;
+`;
+
+const RowContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  ${media.belowMobileLarge`
+   flex-direction: column;
+   justify-content: center;
+  `}
 `;
 
 export default {
@@ -59,4 +78,6 @@ export default {
   RadioButtonLabel,
   Wrapper,
   InputWrapper,
+  PaypalWrapper,
+  RowContainer,
 };

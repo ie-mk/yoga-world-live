@@ -9,6 +9,7 @@ import { Formik, ErrorMessage, Field } from 'formik';
 import SectionTitle from '../../../foundation/typography/SectionTitle';
 import { fontSizeMap, spacing } from '../../../../constants/styles';
 import Styled from './Payment.styles';
+import ResponsiveImage from '../../../foundation/ResponsiveImage.jsx';
 
 const YourDetails = () => {
   const [Paymentmethod, setPaymentmethod] = useState(1);
@@ -37,7 +38,7 @@ const YourDetails = () => {
             justifyContent="space-between"
             marginTop="xxxls"
           >
-            <div>
+            <Styled.RowContainer>
               <input
                 name="Paypal"
                 type="radio"
@@ -45,8 +46,15 @@ const YourDetails = () => {
                 value="Paypal"
                 onChange={setPaymentmethod}
               />
-              <Styled.RadioButtonLabel>Paypal</Styled.RadioButtonLabel>
-            </div>
+
+              <div>
+                <img
+                  src="/svg/paypal.svg"
+                  //   aria-hidden="true"
+                  alt="icon"
+                />
+              </div>
+            </Styled.RowContainer>
 
             <div>
               <input
