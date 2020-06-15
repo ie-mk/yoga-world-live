@@ -10,6 +10,8 @@ import SectionTitle from '../../../foundation/typography/SectionTitle';
 import { fontSizeMap, spacing } from '../../../../constants/styles';
 import Styled from './Payment.styles';
 import ResponsiveImage from '../../../foundation/ResponsiveImage.jsx';
+import media from '../../../foundation/media';
+import CenteredFlexContainer from '../../../foundation/CenteredFlexContainer';
 
 const YourDetails = () => {
   const [Paymentmethod, setPaymentmethod] = useState(1);
@@ -32,95 +34,102 @@ const YourDetails = () => {
         }}
       >
         <form>
-          <ContainerBase
-            display="flex"
-            flexDirection="row"
-            justifyContent="space-between"
-            marginTop="xxxls"
-          >
-            <Styled.RowContainer>
-              <input
-                name="Paypal"
-                type="radio"
-                id="Paypal"
-                value="Paypal"
-                onChange={setPaymentmethod}
-              />
-
-              <div>
-                <img
-                  src="/svg/paypal.svg"
-                  //   aria-hidden="true"
-                  alt="icon"
+          <CenteredFlexContainer>
+            <ContainerBase
+              display="flex"
+              flexDirection="row"
+              justifyContent="space-between"
+              marginTop="xxxls"
+              mediaConfig={{
+                belowTabletLarge: {
+                  flexDirection: 'column',
+                },
+              }}
+            >
+              <Styled.RowContainer>
+                <input
+                  name="paymentType"
+                  type="radio"
+                  id="paypal"
+                  value="paypal"
+                  onChange={setPaymentmethod}
                 />
-              </div>
-            </Styled.RowContainer>
+                <Styled.ImageWrapper>
+                  <img
+                    width="270px"
+                    height="90px"
+                    src="/svg/paypal.svg"
+                    alt="icon"
+                  />
+                </Styled.ImageWrapper>
+              </Styled.RowContainer>
 
-            <div>
-              <input
-                name="credit/debitcard"
-                type="radio"
-                id="credit/debitcard"
-                value="credit/debitcard"
-                onChange={setPaymentmethod}
-              />
-              <Styled.RadioButtonLabel>
-                Credit/Debit Card
-              </Styled.RadioButtonLabel>
-            </div>
-          </ContainerBase>
-          <Styled.Wrapper>
-            <AdminInput
-              name="name"
-              type="text"
-              label="Name on the card"
-              backgroundColor="#293150"
-              width="100%"
-              fontSize="h4"
-            />
-            <AdminInput
-              name="cardnumber"
-              type="text"
-              label="Card Number"
-              backgroundColor="#293150"
-              width="100%"
-              fontSize="h4"
-            />
-          </Styled.Wrapper>
-
-          <ContainerBase
-            display="flex"
-            flexDirection="row"
-            justifyContent="space-between"
-            marginTop="xxxls"
-          >
-            <Styled.InputWrapper>
+              <Styled.RowContainer>
+                <input
+                  name="paymentType"
+                  type="radio"
+                  id="credit/debitcard"
+                  value="card"
+                  onChange={setPaymentmethod}
+                />
+                <Styled.RadioButtonLabel>
+                  Credit/Debit Card
+                </Styled.RadioButtonLabel>
+              </Styled.RowContainer>
+            </ContainerBase>
+            <Styled.Wrapper>
               <AdminInput
-                name="expirydate"
+                name="name"
                 type="text"
-                label="Expiry Date"
-                backgroundColor="#293150"
-                width="100%"
-                fontSize="h4"
-                placeholder="MM/YY"
-              />
-            </Styled.InputWrapper>
-            <Styled.InputWrapper>
-              <AdminInput
-                name="cvv"
-                type="text"
-                label="CVV"
+                label="Name on the card"
                 backgroundColor="#293150"
                 width="100%"
                 fontSize="h4"
               />
-            </Styled.InputWrapper>
-          </ContainerBase>
-          <Styled.ButtonWrapper>
-            <Button type="primary" size="sm" padding="lg">
-              Pay $3999
-            </Button>
-          </Styled.ButtonWrapper>
+              <AdminInput
+                name="cardnumber"
+                type="text"
+                label="Card Number"
+                backgroundColor="#293150"
+                width="100%"
+                fontSize="h4"
+              />
+            </Styled.Wrapper>
+
+            <ContainerBase
+              display="flex"
+              flexDirection="row"
+              justifyContent="space-between"
+              marginTop="xxxls"
+            >
+              <Styled.InputWrapper>
+                <AdminInput
+                  name="expirydate"
+                  type="text"
+                  label="Expiry Date"
+                  backgroundColor="#293150"
+                  width="100%"
+                  fontSize="h4"
+                  placeholder="MM/YY"
+                />
+              </Styled.InputWrapper>
+              <Styled.InputWrapper>
+                <AdminInput
+                  name="cvv"
+                  type="text"
+                  label="CVV"
+                  backgroundColor="#293150"
+                  width="100%"
+                  fontSize="h4"
+                />
+              </Styled.InputWrapper>
+            </ContainerBase>
+            <Styled.ButtonWrapper>
+              <Button type="primary" size="sm" padding="lg">
+                Pay $3999
+              </Button>
+            </Styled.ButtonWrapper>
+          </CenteredFlexContainer>
         </form>
       </Formik>
     </ContainerBase>

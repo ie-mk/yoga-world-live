@@ -26,7 +26,7 @@ const RadioButton = styled.input`
   margin-right: ${spacing.xl};
   border-radius: 20px;
   ${media.belowMobileLarge`
-    width: ${spacing.md}; 
+    width: ${spacing.md};
     height: ${spacing.md};
     margin-right: ${spacing.md};
   `}
@@ -66,10 +66,25 @@ const RowContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  ${media.belowMobileLarge`
-   flex-direction: column;
-   justify-content: center;
-  `}
+  align-items: center;
+  input[type='radio'] {
+    width: 40px;
+    height: 40px;
+    margin-right: 40px;
+  }
+  margin-right: 40px;
+`;
+
+const ImageWrapper = styled.div`
+  background-color: ${colors.white};
+  width: 307px;
+  height: 127px;
+  flex: 0;
+  border-radius: 10px;
+  padding: 15px;
+  img {
+    object-fit: cover;
+  }
 `;
 
 export default {
@@ -80,4 +95,5 @@ export default {
   InputWrapper,
   PaypalWrapper,
   RowContainer,
+  ImageWrapper,
 };
