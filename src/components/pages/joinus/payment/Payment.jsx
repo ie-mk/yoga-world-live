@@ -100,7 +100,6 @@ const YourDetails = () => {
               display="flex"
               flexDirection="row"
               justifyContent="space-between"
-              marginTop="xxxls"
             >
               <Styled.InputWrapper>
                 <AdminInput
@@ -111,6 +110,7 @@ const YourDetails = () => {
                   width="100%"
                   fontSize="h4"
                   placeholder="MM/YY"
+                  noMargin={true}
                 />
               </Styled.InputWrapper>
               <Styled.InputWrapper>
@@ -121,6 +121,7 @@ const YourDetails = () => {
                   backgroundColor="#293150"
                   width="100%"
                   fontSize="h4"
+                  noMargin={true}
                 />
               </Styled.InputWrapper>
             </ContainerBase>
