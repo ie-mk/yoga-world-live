@@ -62,6 +62,15 @@ function* fetchUserProfile({ payload: uid }) {
   }
 }
 
+function* fetchUsers() {
+  try {
+    const users = yield api.user.fetchUsers();
+    yield put(userActions.fetchUsers.success(users));
+  } catch (err) {
+    yield put(userActions.fetchUsers.failure(err));
+  }
+}
+
 function* updateUserProfilePicture({ payload: { uid, image } }) {
   try {
     yield api.user.updateProfilePicture(uid, image);
@@ -175,7 +184,7 @@ function* fetchTasks({ payload = {} }) {
 
 function* fetchTask({ payload: docId }) {
   try {
-    const task = yield api.resource.fetchResource('tasks', docId);
+    const task = yield api.resource.fetchResource(`tasks/${docId}`);
     yield put(resourceActions.fetchTask.success({ [docId]: task }));
   } catch (err) {
     yield put(resourceActions.fetchTask.failure(err));
@@ -202,7 +211,7 @@ function* updateTask({ payload: { docId, data } }) {
 
 function* deleteTask({ payload: docId }) {
   try {
-    yield api.resource.deleteResource('tasks', docId);
+    yield api.resource.deleteResource(`tasks/${docId}`);
     yield put(resourceActions.deleteTask.success());
   } catch (err) {
     yield put(resourceActions.deleteTask.failure(err));
@@ -246,18 +255,26 @@ function* fetchChapter({ payload: chapterId }) {
   }
 }
 
-function* createChapter() {
+function* createChapter({ payload: { sequenceNr } }) {
+  const uid = yield select(getUID);
   const courseId = yield select(getEditingCourseId);
   try {
     const createdChapterId = yield api.resource.createResource(
       `courses/${courseId}/chapters`,
       {
         created: moment().format(),
-        courseId: courseId,
+        parentId: courseId,
+        ownerId: uid,
+        sequenceNr,
       },
     );
-    yield put(resourceActions.createChapter.success(createdChapterId));
-    yield fetchChapter({ payload: createdChapterId });
+
+    if (createdChapterId) {
+      yield put(resourceActions.createChapter.success(createdChapterId));
+      yield fetchChapter({ payload: createdChapterId });
+    } else {
+      throw 'create course chapter fail';
+    }
   } catch (err) {
     yield put(resourceActions.createChapter.failure(err));
   }
@@ -327,23 +344,30 @@ function* fetchLesson({ payload: { courseId, chapterId, lessonId } }) {
   }
 }
 
-function* createLesson({ payload: chapterId }) {
+function* createLesson({ payload: { chapterId, sequenceNr } }) {
+  const uid = yield select(getUID);
   const courseId = yield select(getEditingCourseId);
   try {
     const createdLessonId = yield api.resource.createResource(
       `courses/${courseId}/chapters/${chapterId}/lessons`,
       {
         created: moment().format(),
-        chapterId: chapterId,
+        parentId: chapterId,
         courseId: courseId,
+        ownerId: uid,
+        sequenceNr,
       },
     );
-    yield put(resourceActions.createLesson.success(createdLessonId));
-    // yield updateCourseEditedTime();
-    // yield fetchCourse({ payload: courseId });
-    yield fetchLesson({
-      payload: { courseId, chapterId, lessonId: createdLessonId },
-    });
+    if (createdLessonId) {
+      yield put(resourceActions.createLesson.success(createdLessonId));
+      // yield updateCourseEditedTime();
+      // yield fetchCourse({ payload: courseId });
+      yield fetchLesson({
+        payload: { courseId, chapterId, lessonId: createdLessonId },
+      });
+    } else {
+      console.error('Create lesson failure');
+    }
   } catch (err) {
     yield put(resourceActions.createLesson.failure(err));
   }
@@ -397,7 +421,7 @@ function* fetchMessages({ payload }) {
 
 function* fetchMessage({ payload: docId }) {
   try {
-    const result = yield api.resource.fetchResource('messages', docId);
+    const result = yield api.resource.fetchResource(`messages/${docId}`);
     yield put(resourceActions.fetchMessage.success({ [docId]: result }));
   } catch (err) {
     yield put(resourceActions.fetchMessage.failure(err));
@@ -422,9 +446,9 @@ function* updateMessage({ payload: { docId, data } }) {
   }
 }
 
-function* deleteMessage({ payload }) {
+function* deleteMessage({ payload: docId }) {
   try {
-    yield api.resource.deleteResource('messages', payload.docId);
+    yield api.resource.deleteResource(`messages/${docId}`);
     yield put(resourceActions.deleteMessage.success());
   } catch (err) {
     yield put(resourceActions.deleteMessage.failure(err));
@@ -447,7 +471,7 @@ function* fetchLearningPaths({ payload = {} }) {
 
 function* fetchLearningPath({ payload: docId }) {
   try {
-    const result = yield api.resource.fetchResource('learningPaths', docId);
+    const result = yield api.resource.fetchResource(`learningPaths/${docId}`);
     yield put(resourceActions.fetchLearningPath.success({ [docId]: result }));
   } catch (err) {
     yield put(resourceActions.fetchLearningPath.failure(err));
@@ -455,6 +479,9 @@ function* fetchLearningPath({ payload: docId }) {
 }
 
 function* createLearningPath({ payload: { data } }) {
+  if (data.images) {
+    data.imageSavePath = 'images/learningPaths';
+  }
   try {
     const learningPathId = yield api.resource.createResource(
       'learningPaths',
@@ -469,6 +496,10 @@ function* createLearningPath({ payload: { data } }) {
 }
 
 function* updateLearningPath({ payload: { docId, data } }) {
+  if (data.imagesToUpload) {
+    data.imageUploadPath = 'images/learningPaths';
+  }
+  debugger;
   try {
     yield api.resource.updateResource(`learningPaths/${docId}`, data);
     yield put(resourceActions.updateLearningPath.success());
@@ -480,11 +511,11 @@ function* updateLearningPath({ payload: { docId, data } }) {
   }
 }
 
-function* deleteLearningPath({ payload }) {
+function* deleteLearningPath({ payload: id }) {
   try {
-    yield api.resource.deleteResource('learningPaths', payload);
+    yield api.resource.deleteResource(`learningPaths/${id}`);
     yield put(resourceActions.deleteLearningPath.success());
-    yield put(resourceActions.deleteLearningPathFromState(payload));
+    yield put(resourceActions.deleteLearningPathFromState(id));
   } catch (err) {
     yield put(resourceActions.deleteLearningPath.failure(err));
   }
@@ -507,6 +538,7 @@ function* rootSaga() {
   yield all([
     takeLatest(userActions.saveUserInfoFromLoginProvider, handleLoginFlow),
   ]);
+  yield all([takeLatest(userActions.fetchUsers.request.type, fetchUsers)]);
   // ========================== COURSES ===============================
   yield all([
     takeLatest(resourceActions.fetchCourses.request.type, fetchCourses),

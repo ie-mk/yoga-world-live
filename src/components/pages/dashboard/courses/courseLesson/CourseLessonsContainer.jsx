@@ -8,36 +8,50 @@ import Button from '../../../../foundation/button/Button';
 import { resourceActions } from '../../../../../store/actions';
 import { connect } from 'react-redux';
 
-let CourseLessonsContainer = ({ dispatch, data, chapterId, courseId }) => {
+let CourseLessonsContainer = ({
+  dispatch,
+  data: lessons = {},
+  chapterId,
+  courseId,
+}) => {
   const createLesson = () => {
-    dispatch(resourceActions.createLesson.request(chapterId));
+    dispatch(
+      resourceActions.createLesson.request({
+        chapterId,
+        sequenceNr: Object.keys(lessons).length + 1,
+      }),
+    );
   };
 
   const [editMode, setEditMode] = useState(false);
-  const [activeLessonId, setActiveLessonId] = useState(Object.keys(data)[0]);
+  const [activeLessonId, setActiveLessonId] = useState(Object.keys(lessons)[0]);
 
   return (
     <Styled.Wrapper>
       <FlexContainer justifyContent="space-between">
         <ContainerBase width="40%">
-          {Object.keys(data).map((lessonId, idx) => {
-            const lesson = data[lessonId];
+          {Object.keys(lessons)
+            .sort(
+              (a, b) => lessons[a].sequenceNr - (lessons[b].sequenceNr || 999),
+            )
+            .map((lessonId, idx) => {
+              const lesson = lessons[lessonId];
 
-            return (
-              <CourseLessonHeader
-                key={lessonId}
-                courseId={courseId}
-                chapterId={chapterId}
-                lessonId={lessonId}
-                editMode={editMode}
-                setEditMode={setEditMode}
-                activeLessonId={activeLessonId}
-                setActiveLessonId={setActiveLessonId}
-                data={lesson}
-                idx={idx}
-              />
-            );
-          })}
+              return (
+                <CourseLessonHeader
+                  key={lessonId}
+                  courseId={courseId}
+                  chapterId={chapterId}
+                  lessonId={lessonId}
+                  editMode={editMode}
+                  setEditMode={setEditMode}
+                  activeLessonId={activeLessonId}
+                  setActiveLessonId={setActiveLessonId}
+                  data={lesson}
+                  idx={idx}
+                />
+              );
+            })}
           <Button
             onClick={createLesson}
             type="primary"
@@ -55,7 +69,7 @@ let CourseLessonsContainer = ({ dispatch, data, chapterId, courseId }) => {
               chapterId={chapterId}
               activeLessonId={activeLessonId}
               setActiveLessonId={setActiveLessonId}
-              data={data[activeLessonId]}
+              data={lessons[activeLessonId]}
               editMode={editMode}
               setEditMode={setEditMode}
             />

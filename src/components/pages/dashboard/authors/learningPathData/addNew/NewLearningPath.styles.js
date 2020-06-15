@@ -9,9 +9,8 @@ import {
 export const ModalWrapper = styled.div`
   position: absolute;
   top: 120px;
-left: 250px;
-width: 900px;
-height: 600px;
+  left: 250px;
+  width: 900px;
   padding: 20px;
   z-index: 500;
   background-color: white;
@@ -30,11 +29,10 @@ export const Title = styled.div`
 `;
 
 export const InputRow = styled.div`
-  flex: 1;
   display: flex;
   justify-content: space-between;
   padding-bottom: ${spacing.sm};
-  align-items: center;
+  align-items: flex-end;
 `;
 
 export const RowContainer = styled.div`

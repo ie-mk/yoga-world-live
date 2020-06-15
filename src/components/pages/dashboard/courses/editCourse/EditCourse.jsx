@@ -23,7 +23,11 @@ const EditCourse = ({
   }, []);
 
   const handleCreateNewChapter = () => {
-    dispatch(resourceActions.createChapter.request());
+    dispatch(
+      resourceActions.createChapter.request({
+        sequenceNr: Object.keys(chapters).length + 1,
+      }),
+    );
   };
 
   // console.log(`=========== course rendered id: ${courseId}`);

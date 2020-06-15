@@ -122,6 +122,8 @@ const LessonNumber = styled.span`
   align-items: center;
   font-size: ${fontSizeMap.h4s};
   font-weight: ${({ editing }) => (editing ? 'bold' : 'normal')};
+  cursor: pointer;
+
   input {
     margin-right: ${spacing.md};
     width: 28px;

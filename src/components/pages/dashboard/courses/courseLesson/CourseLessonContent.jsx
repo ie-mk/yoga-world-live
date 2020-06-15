@@ -4,7 +4,7 @@ import { ContainerBase } from '../../../../foundation';
 import AdminInput from '../../../../foundation/input/AdminInput';
 import AdminDropDown from '../../../../foundation/dropdown/AdminDropDown';
 import AdminTextArea from '../../../../foundation/textarea/AdminTextArea';
-import AdminUploadImage from '../../../../foundation/uploadimage/AdminUploadImage';
+import AdminUploadImage from '../../../../foundation/pictureUploader/PictureUploader';
 import Button from '../../../../foundation/button/Button';
 import { Formik, ErrorMessage, Field } from 'formik';
 import { resourceActions } from '../../../../../store/actions';
@@ -34,6 +34,7 @@ const CourseLessonContent = ({
   activeLessonId,
 }) => {
   const initialFormValues = {
+    sequenceNr: '',
     title: '',
     descr: '',
     videoLink: '',
@@ -64,6 +65,25 @@ const CourseLessonContent = ({
         {({ values, handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <Styled.LessonFormContainer>
+              <FlexContainer justifyContent="space-between">
+                <AdminInput
+                  name="sequenceNr"
+                  type="text"
+                  label="Sequence Nr"
+                  width="15%"
+                  backgroundColor="white"
+                  disabled={!editMode}
+                />
+                <AdminInput
+                  name="title"
+                  type="text"
+                  label="Lesson Title"
+                  placeholder="Lesson Title"
+                  width="80%"
+                  backgroundColor="white"
+                  disabled={!editMode}
+                />
+              </FlexContainer>
               <AdminInput
                 name="title"
                 type="text"

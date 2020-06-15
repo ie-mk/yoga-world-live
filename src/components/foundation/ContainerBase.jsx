@@ -159,7 +159,8 @@ const ContainerRoot = styled.div`
   ${({ fontSize }) => (fontSize ? getfontSize(fontSize) : '')}
 
   ${({ padding }) => (padding ? getPadding(padding) : '')}
-  ${({ margin }) => (margin ? getMargin(margin) : '')}
+  ${({ margin }) =>
+    margin ? (getMargin(margin) ? getMargin(margin) : margin) : ''}
   ${({ paddingBottom }) =>
     paddingBottom ? getPaddingBottom(paddingBottom) : ''}
   ${({ paddingTop }) => (paddingTop ? getPaddingTop(paddingTop) : '')}
@@ -207,8 +208,12 @@ const ContainerRoot = styled.div`
   ${({ mediaConfig }) => (mediaConfig ? getMedia(mediaConfig) : '')}
 `;
 
-const ContainerBase = props => {
-  return <ContainerRoot {...props}>{props.children}</ContainerRoot>;
-};
+const ContainerBase = React.forwardRef((props, ref) => {
+  return (
+    <ContainerRoot ref={ref} {...props}>
+      {props.children}
+    </ContainerRoot>
+  );
+});
 
 export default ContainerBase;

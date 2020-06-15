@@ -55,6 +55,7 @@ export const fontSizeMap = {
   text: '18px',
   textS: '14px',
   textMobile: '12px',
+  buttonMobile: '10px',
 };
 
 export const borderRadius = {

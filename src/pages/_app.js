@@ -11,9 +11,6 @@ import SetLanguageFromStoreWrapper from '../i18n/SetLanguageFromStoreWrapper';
 import '../i18n/i18n';
 import ScrollTracker from '../components/foundation/scrollTracker/ScrollTracker';
 import { IS_SERVER } from '../constants';
-import { getOrCreateStore } from '../store/store';
-import Router from 'next/router';
-import { getUID } from '../store/selectors';
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -23,20 +20,6 @@ class MyApp extends App {
 
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
-
-      if (!IS_SERVER) {
-        const path = window.location.pathname;
-        const needsLogin =
-          path.includes('dashboard') || path.includes('profile');
-
-        const state = getOrCreateStore().getState();
-        const uid = getUID(state);
-
-        if (needsLogin && !uid) {
-          const url = '/login';
-          Router.push(url, url, { shallow: true });
-        }
-      }
     }
 
     return { pageProps };
@@ -52,7 +35,7 @@ class MyApp extends App {
       <>
         {/*<ThemeProvider theme={{ myTheme, orbit: customTokens }}>*/}
         <Head>
-          <title>Rent a property</title>
+          <title>Code School</title>
           <link
             href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
             rel="stylesheet"

@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { ContainerBase } from '../../../foundation';
 import Button from '../../../foundation/button/Button';
-import Styled from './Staff.styles';
+import Styled from './User.styles';
 import Table from '../table/Table';
-import { Formik } from 'formik';
 import CustomAdminDropDown from '../practicalTasks/customAdminDropDown/CustomAdminDropDown';
-import AddNewMember from './addNew/AddNewMember';
+import AddNewMember from '../staff/addNew/addNewMember';
 
-const Users = () => {
+const PracticalTasks = () => {
   const messages = {
     '124jq23j234': {
       senderId: '845235o2u35',
@@ -92,17 +91,17 @@ const Users = () => {
           </Table>
         </Styled.TableWrapper>
         <Styled.ButtonWrapper>
-          <Button
-            type="primary"
-            width="200px"
-            borderRadius="sm"
-            height="45px"
-            size="sm"
-            onClick={() => setNewAdd(true)}
-          >
-            <i className="fa fa-plus" aria-hidden="true" />
-            ADD NEW
-          </Button>
+          {/*<Button*/}
+          {/*  type="primary"*/}
+          {/*  width="200px"*/}
+          {/*  borderRadius="sm"*/}
+          {/*  height="45px"*/}
+          {/*  size="sm"*/}
+          {/*  onClick={() => setNewAdd(true)}*/}
+          {/*>*/}
+          {/*  <i className="fa fa-plus" aria-hidden="true" />*/}
+          {/*  ADD NEW*/}
+          {/*</Button>*/}
         </Styled.ButtonWrapper>
       </ContainerBase>
 
@@ -119,4 +118,4 @@ const Users = () => {
   );
 };
 
-export default Users;
+export default PracticalTasks;

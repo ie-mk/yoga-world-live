@@ -20,12 +20,6 @@ const ImageContainer = styled.div`
   min-width: 0;
 
   ${({ mediaConfig }) => (mediaConfig ? getMedia(mediaConfig) : '')}
-
-  ${media.belowTablet`
-     max-width: 300px;
-     width: 100px;
-     height: 100px;
-  `}
 `;
 
 const ResponsiveImage = props => {
