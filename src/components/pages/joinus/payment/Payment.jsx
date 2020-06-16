@@ -19,7 +19,7 @@ const YourDetails = () => {
   return (
     <ContainerBase
       display="flex"
-      justifyContent="center"
+      //  justifyContent="center"
       alignItems="center"
       flexDirection="column"
       marginBottom="xxxl"
@@ -77,6 +77,7 @@ const YourDetails = () => {
                 </Styled.RadioButtonLabel>
               </Styled.RowContainer>
             </ContainerBase>
+
             <Styled.Wrapper>
               <AdminInput
                 name="name"
@@ -96,11 +97,7 @@ const YourDetails = () => {
               />
             </Styled.Wrapper>
 
-            <ContainerBase
-              display="flex"
-              flexDirection="row"
-              justifyContent="space-between"
-            >
+            <Styled.ExpiryDateCVVContainer>
               <Styled.InputWrapper>
                 <AdminInput
                   name="expirydate"
@@ -124,7 +121,7 @@ const YourDetails = () => {
                   noMargin={true}
                 />
               </Styled.InputWrapper>
-            </ContainerBase>
+            </Styled.ExpiryDateCVVContainer>
             <Styled.ButtonWrapper>
               <Button type="primary" size="sm" padding="lg">
                 Pay $3999

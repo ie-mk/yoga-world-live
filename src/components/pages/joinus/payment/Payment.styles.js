@@ -52,8 +52,8 @@ const Wrapper = styled.div`
 const InputWrapper = styled.div`
   width: 250px;
   ${media.belowMobileLarge`
-    max-width : 150px;
-    width: 150px;
+    max-width : 125px;
+    width: 125px;
   `}
 `;
 
@@ -84,7 +84,21 @@ const ImageWrapper = styled.div`
   padding: 15px;
   img {
     object-fit: cover;
+    ${media.belowMobileLarge`
+       width: 30px,
+       height: 50px,
+    `}
   }
+`;
+
+const ExpiryDateCVVContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 600px;
+  ${media.belowMobileLarge`
+    width: 300px;
+    justify-content: space-between;
+  `}
 `;
 
 export default {
@@ -96,4 +110,5 @@ export default {
   PaypalWrapper,
   RowContainer,
   ImageWrapper,
+  ExpiryDateCVVContainer,
 };
