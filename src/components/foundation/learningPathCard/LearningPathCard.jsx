@@ -27,7 +27,7 @@ const Wrapper = styled.div`
 
 const LearningPathCard = ({ imageSrc, title }) => {
   return (
-    <Wrapper>
+    <Wrapper background={background}>
       <ResponsiveImage height="120px" width="120px" src={imageSrc} />
       <PathTitle text={title} />
     </Wrapper>
