@@ -1,17 +1,17 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import LearningPathCard from '../../foundation/learningPathCard/LearningPathCard';
+
 import CardTitle from '../../foundation/typography/CardTitle';
 import Text24 from '../../foundation/typography/Text24';
 import BodyText from '../../foundation/typography/BodyText';
 import PathTitle from '../../foundation/typography/PathTitle';
-import CenteredFlexContainer from '../../foundation/CenteredFlexContainer';
 import ContainerBase from '../../foundation/ContainerBase';
-import { background, fontSizeMap, spacing } from '../../../constants/styles';
+import { fontSizeMap, spacing } from '../../../constants/styles';
 import Styled from './Billing.styles';
 import Grid from '../../foundation/Grid';
 import Button from '../../foundation/button/Button';
 import FlexContainer from '../../foundation/FlexContainer';
+import CustomCardTitle from '../customCardTitles/CustomCardTitle';
 
 const CustomButton = ({
   customMinWidth,
@@ -63,32 +63,6 @@ const CustomPathTitle = props => (
   />
 );
 
-const CustomCardTitle1 = ({ customMargin, ...props }) => (
-  <CardTitle
-    margin={customMargin}
-    fontWeight="500"
-    mediaConfig={{
-      belowTabletLarge: {
-        margin: '0 0 22px 0',
-      },
-    }}
-    {...props}
-  />
-);
-
-const CustomCardTitle2 = ({ customMargin, ...props }) => (
-  <CardTitle
-    margin={customMargin}
-    fontWeight="500"
-    mediaConfig={{
-      belowTabletLarge: {
-        margin: '56px 0 15px 0',
-      },
-    }}
-    {...props}
-  />
-);
-
 const CustomBodyText = props => (
   <BodyText color="#0EC9B0" fontWeight="400" {...props}>
     {props.text}
@@ -108,7 +82,11 @@ const Billig = () => {
       }}
     >
       <Styled.BillingWrapper>
-        <CustomCardTitle1 margin="0 0 44px 0" text="Your Membership" />
+        <CustomCardTitle
+          margin="0 0 44px 0"
+          mobileMargin="0 0 22px 0"
+          text="Your Membership"
+        />
         <Grid
           columns="1fr 1fr"
           marginBottom
@@ -152,7 +130,12 @@ const Billig = () => {
             <CustomBodyText text="March 23, 2020" />
           </div>
         </Grid>
-        <CustomCardTitle2 margin="113px 0 30px 0" media text="Invoices" />
+        <CustomCardTitle
+          margin="113px 0 30px 0"
+          mobileMargin="56px 0 15px 0"
+          media
+          text="Invoices"
+        />
         <Grid
           columns="1fr 1fr 1fr"
           mediaConfig={{
@@ -185,7 +168,11 @@ const Billig = () => {
           </div>
         </Grid>
 
-        <CustomCardTitle2 margin="113px 0 40px 0" text="Payment Methods" />
+        <CustomCardTitle
+          margin="113px 0 40px 0"
+          mobileMargin="56px 0 15px 0"
+          text="Payment Methods"
+        />
 
         <Grid
           columns="90px 1fr"
@@ -221,7 +208,11 @@ const Billig = () => {
         >
           Add Payment Method
         </CustomButton>
-        <CustomCardTitle2 text="Cancel Membership" margin="100px 0 30px 0" />
+        <CustomCardTitle
+          text="Cancel Membership"
+          margin="100px 0 30px 0"
+          mobileMargin="56px 0 15px 0"
+        />
         <CustomPathTitle text="you will loss access to your courses and program" />
         <CustomButton
           type="secondary"

@@ -11,24 +11,12 @@ import media from '../../../foundation/media';
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
+  width: 600px;
   align-items: center;
   margin-top: ${spacing.xxxl};
   ${media.belowMobileLarge`
     justify-content: center;
     margin-top: ${spacing.xl};
-    flex-direction: row;
-  `}
-`;
-
-const RadioButton = styled.input`
-  width: ${spacing.xl};
-  height: ${spacing.xl};
-  margin-right: ${spacing.xl};
-  border-radius: 20px;
-  ${media.belowMobileLarge`
-    width: ${spacing.md};
-    height: ${spacing.md};
-    margin-right: ${spacing.md};
   `}
 `;
 
@@ -57,15 +45,8 @@ const InputWrapper = styled.div`
   `}
 `;
 
-const PaypalWrapper = styled.div`
-  width: 150px;
-  height: 50px;
-`;
-
 const RowContainer = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
   input[type='radio'] {
     width: 40px;
@@ -73,6 +54,7 @@ const RowContainer = styled.div`
     margin-right: 40px;
   }
   margin-right: 40px;
+  margin-top: 40px;
 `;
 
 const ImageWrapper = styled.div`
@@ -83,12 +65,18 @@ const ImageWrapper = styled.div`
   border-radius: 10px;
   padding: 15px;
   img {
+    width: 270px;
+    height: 90px;
     object-fit: cover;
-    ${media.belowMobileLarge`
-       width: 30px,
-       height: 50px,
-    `}
   }
+  ${media.belowMobileLarge`
+  width: 180px;
+  height: 70px;
+  img {
+    width: 150px;
+    height: 30px;
+   }
+    `}
 `;
 
 const ExpiryDateCVVContainer = styled.div`
@@ -97,17 +85,14 @@ const ExpiryDateCVVContainer = styled.div`
   width: 600px;
   ${media.belowMobileLarge`
     width: 300px;
-    justify-content: space-between;
   `}
 `;
 
 export default {
   ButtonWrapper,
-  RadioButton,
   RadioButtonLabel,
   Wrapper,
   InputWrapper,
-  PaypalWrapper,
   RowContainer,
   ImageWrapper,
   ExpiryDateCVVContainer,
