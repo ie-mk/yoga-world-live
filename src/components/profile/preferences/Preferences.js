@@ -2,8 +2,8 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import CardTitle from '../../foundation/typography/CardTitle';
 import Text24 from '../../foundation/typography/Text24';
-
 import ContainerBase from '../../foundation/ContainerBase';
+import CustomCardTitle from '../customCardTitles/CustomCardTitle';
 import {
   background,
   fontSizeMap,
@@ -35,32 +35,6 @@ const CustomText241 = props => (
   />
 );
 
-const CustomCardTitle1 = ({ customMargin, ...props }) => (
-  <CardTitle
-    margin={customMargin}
-    fontWeight="500"
-    mediaConfig={{
-      belowTabletLarge: {
-        margin: '0 0 22px 0',
-      },
-    }}
-    {...props}
-  />
-);
-
-const CustomCardTitle2 = ({ customMargin, ...props }) => (
-  <CardTitle
-    margin={customMargin}
-    fontWeight="500"
-    mediaConfig={{
-      belowTabletLarge: {
-        margin: '56px 0 15px 0',
-      },
-    }}
-    {...props}
-  />
-);
-
 const Preferences = () => {
   const { t } = useTranslation();
 
@@ -74,7 +48,11 @@ const Preferences = () => {
       }}
     >
       <Styled.BillingWrapper>
-        <CustomCardTitle1 margin="0 0 44px 0" text="Your Account Details" />
+        <CustomCardTitle
+          margin="0 0 44px 0"
+          mobileMargin="0 0 22px 0"
+          text="Your Account Details"
+        />
         <Grid
           columns="1fr 1fr"
           marginBottom
@@ -107,8 +85,9 @@ const Preferences = () => {
             <CustomText24 text="**********" />
           </div>
         </Grid>
-        <CustomCardTitle2
+        <CustomCardTitle
           margin="81px 0 37px 0"
+          mobileMargin="56px 0 15px 0"
           text="Notifications You will recieve"
         />
 

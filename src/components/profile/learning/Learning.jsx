@@ -9,32 +9,7 @@ import Grid from '../../foundation/Grid';
 import Styled from './Learning.styles';
 import CardTitle from '../../foundation/typography/CardTitle';
 import Text24 from '../../foundation/typography/Text24';
-
-const CustomCardTitle1 = ({ customMargin, ...props }) => (
-  <CardTitle
-    margin={customMargin}
-    fontWeight="500"
-    mediaConfig={{
-      belowTabletLarge: {
-        margin: '0 0 22px 0',
-      },
-    }}
-    {...props}
-  />
-);
-
-const CustomCardTitle2 = ({ customMargin, ...props }) => (
-  <CardTitle
-    margin={customMargin}
-    fontWeight="500"
-    mediaConfig={{
-      belowTabletLarge: {
-        margin: '51px 0 22px 0',
-      },
-    }}
-    {...props}
-  />
-);
+import CustomCardTitle from '../customCardTitles/CustomCardTitle';
 
 const ChooseLearningPath = () => {
   const { t } = useTranslation();
@@ -49,7 +24,11 @@ const ChooseLearningPath = () => {
       }}
     >
       <Styled.LearningWrapper>
-        <CustomCardTitle1 margin="0 0 44px 0" text="Completed Courses" />
+        <CustomCardTitle
+          margin="0 0 44px 0"
+          mobileMargin="0 0 22px 0"
+          text="Completed Courses"
+        />
         <Grid
           columns="1fr"
           mediaConfig={{
@@ -82,8 +61,9 @@ const ChooseLearningPath = () => {
             background="transparent linear-gradient(180deg, #293150 0%, #1E2540 100%) 0% 0% no-repeat padding-box"
           />
         </Grid>
-        <CustomCardTitle2
+        <CustomCardTitle
           margin="106px 0 44px 0"
+          mobileMargin="51px 0 22px 0"
           text="Courses you are taking"
         />
         <Grid
@@ -123,9 +103,11 @@ const ChooseLearningPath = () => {
             background="transparent linear-gradient(180deg, #293150 0%, #1E2540 100%) 0% 0% no-repeat padding-box"
           />
         </Grid>
-
-        <CustomCardTitle2 margin="106px 0 53px 0" text="Your skillset" />
-
+        <CustomCardTitle
+          margin="106px 0 53px 0"
+          mobileMargin="51px 0 22px 0"
+          text="Your skillset"
+        />
         <Styled.DesktopView>
           <Styled.SkillSetItemWrapper>HTML</Styled.SkillSetItemWrapper>
           <Styled.SkillSetItemWrapper>CSS</Styled.SkillSetItemWrapper>
