@@ -39,10 +39,12 @@ const YourDetails = () => {
               display="flex"
               flexDirection="row"
               justifyContent="space-between"
-              marginTop="xxxls"
+              //    marginTop="xxxls"
               mediaConfig={{
                 belowTabletLarge: {
                   flexDirection: 'column',
+                  width: '300px',
+                  justifyContent: 'flex-start',
                 },
               }}
             >
@@ -55,12 +57,7 @@ const YourDetails = () => {
                   onChange={setPaymentmethod}
                 />
                 <Styled.ImageWrapper>
-                  <img
-                    width="270px"
-                    height="90px"
-                    src="/svg/paypal.svg"
-                    alt="icon"
-                  />
+                  <img src="/svg/paypal.svg" alt="icon" />
                 </Styled.ImageWrapper>
               </Styled.RowContainer>
 
