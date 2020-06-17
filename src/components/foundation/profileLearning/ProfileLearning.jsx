@@ -23,22 +23,19 @@ const Wrapper = styled.div`
   }
 `;
 
-const CustomText24 = props => (
-  <Text24
-    mediaConfig={{
-      belowTabletLarge: {
-        margin: '27px 0 10px 0',
-      },
-    }}
-    {...props}
-  />
-);
-
 const ProfileLearning = ({ imageSrc, subtitle, title, background }) => {
   return (
     <Wrapper background={background}>
       <ResponsiveImage height="100px" width="100px" src={imageSrc} />
-      <CustomText24 margin="54px 0 20px 0" text={title} />
+      <Text24
+        margin="54px 0 20px 0"
+        mediaConfig={{
+          belowTabletLarge: {
+            margin: '27px 0 10px 0',
+          },
+        }}
+        text={title}
+      />
       <BodyText>{subtitle}</BodyText>
     </Wrapper>
   );
