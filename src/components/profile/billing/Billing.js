@@ -1,13 +1,12 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import LearningPathCard from '../../foundation/learningPathCard/LearningPathCard';
+
 import CardTitle from '../../foundation/typography/CardTitle';
 import Text24 from '../../foundation/typography/Text24';
 import BodyText from '../../foundation/typography/BodyText';
 import PathTitle from '../../foundation/typography/PathTitle';
-import CenteredFlexContainer from '../../foundation/CenteredFlexContainer';
 import ContainerBase from '../../foundation/ContainerBase';
-import { background, fontSizeMap, spacing } from '../../../constants/styles';
+import { fontSizeMap, spacing } from '../../../constants/styles';
 import Styled from './Billing.styles';
 import Grid from '../../foundation/Grid';
 import Button from '../../foundation/button/Button';

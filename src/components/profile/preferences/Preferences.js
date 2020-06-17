@@ -1,15 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import CardTitle from '../../foundation/typography/CardTitle';
 import Text24 from '../../foundation/typography/Text24';
 import ContainerBase from '../../foundation/ContainerBase';
 import CustomCardTitle from '../customCardTitles/CustomCardTitle';
-import {
-  background,
-  fontSizeMap,
-  spacing,
-  borderRadius,
-} from '../../../constants/styles';
+import { spacing } from '../../../constants/styles';
 import Styled from './Preferences.styles';
 import Grid from '../../foundation/Grid';
 
