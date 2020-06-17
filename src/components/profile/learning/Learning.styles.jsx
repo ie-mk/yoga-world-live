@@ -23,34 +23,38 @@ export const SkillSetItemWrapper = styled.div`
   border-radius: 100px;
   font-size: 32px;
   background-color: #2385d92b;
-`;
-
-export const DesktopView = styled.div`
-  display: flex;
   ${media.belowTabletLarge`
-    display:none
+  display:none
 
 `}
 `;
 
-export const MobileView = styled.div`
+export const SkillWrapper = styled.div`
   display: flex;
-  ${media.aboveTabletLarge`
-    display:none
-
-`}
 `;
+
 export const SkillSetItemWrapper1 = styled.div`
   padding: 18px 30px;
   margin: 0 15px 33px 0;
   border-radius: 100px;
   font-size: 32px;
   background-color: #2385d92b;
+
   ${media.belowTabletLarge`
-    padding:9px 23px;
-   font-size:16px;
-   margin:0 9px 18px 0;
-  
+    display:none;
+
+`}
+`;
+
+export const SkillSetItemMobileWrapper1 = styled.div`
+  border-radius: 100px;
+
+  background-color: #2385d92b;
+  padding: 9px 23px;
+  font-size: 16px;
+  margin: 0 9px 18px 0;
+  ${media.aboveTabletLarge`
+    display:none;
 
 `}
 `;
@@ -61,6 +65,10 @@ export const SkillSetItemMobileWrapper = styled.div`
   border-radius: 50px;
   font-size: 16px;
   background-color: #2385d92b;
+  ${media.aboveTabletLarge`
+  display:none
+
+`}
 `;
 export const SkillSetItemWrapper2 = styled.div`
   padding: 18px 45px;
@@ -83,7 +91,7 @@ export default {
   SkillSetItemWrapper,
   SkillSetItemWrapper1,
   SkillSetItemWrapper2,
-  DesktopView,
-  MobileView,
+  SkillWrapper,
   SkillSetItemMobileWrapper,
+  SkillSetItemMobileWrapper1,
 };

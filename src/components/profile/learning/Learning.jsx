@@ -128,32 +128,32 @@ const ChooseLearningPath = () => {
           mobileMargin="51px 0 22px 0"
           text="Your skillset"
         />
-        <Styled.DesktopView>
+        <Styled.SkillWrapper>
           <Styled.SkillSetItemWrapper>HTML</Styled.SkillSetItemWrapper>
           <Styled.SkillSetItemWrapper>CSS</Styled.SkillSetItemWrapper>
           <Styled.SkillSetItemWrapper>JAVA</Styled.SkillSetItemWrapper>
           <Styled.SkillSetItemWrapper1>
             Responsive Design
           </Styled.SkillSetItemWrapper1>
-        </Styled.DesktopView>
-        <Styled.MobileView>
+        </Styled.SkillWrapper>
+        <Styled.SkillWrapper>
           <Styled.SkillSetItemMobileWrapper>
             HTML
           </Styled.SkillSetItemMobileWrapper>
           <Styled.SkillSetItemMobileWrapper>
             CSS
           </Styled.SkillSetItemMobileWrapper>
-        </Styled.MobileView>
-        <Styled.MobileView>
+        </Styled.SkillWrapper>
+        <Styled.SkillWrapper>
           <Styled.SkillSetItemMobileWrapper>
             JAVA
           </Styled.SkillSetItemMobileWrapper>
-        </Styled.MobileView>
-        <Styled.MobileView>
-          <Styled.SkillSetItemWrapper1>
+        </Styled.SkillWrapper>
+        <Styled.SkillWrapper>
+          <Styled.SkillSetItemMobileWrapper1>
             Responsive Design
-          </Styled.SkillSetItemWrapper1>
-        </Styled.MobileView>
+          </Styled.SkillSetItemMobileWrapper1>
+        </Styled.SkillWrapper>
         <Styled.SkillSetItemWrapper2 width="500px">
           Frontend Development
         </Styled.SkillSetItemWrapper2>
