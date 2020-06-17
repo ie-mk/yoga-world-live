@@ -12,9 +12,10 @@ const AdminInput = ({
   backgroundColor,
   disabled,
   fontSize,
+  noMargin,
 }) => {
   return (
-    <Styled.Wrapper width={width}>
+    <Styled.Wrapper width={width} noMargin={noMargin}>
       <Styled.Label fontSize={fontSize}>{label}</Styled.Label>
       <Styled.InputStyles backgroundColor={backgroundColor} disabled={disabled}>
         <Field

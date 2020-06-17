@@ -81,8 +81,8 @@ const Wrapper = styled.div`
   justify-content: ${({ displayLabelLeft }) =>
     displayLabelLeft ? 'center' : ''};
   color: ${colors.black};
-  margin-top: ${spacing.xl};
-  margin-bottom: ${spacing.xl};
+  margin-top: ${({ noMargin }) => (noMargin ? '0' : spacing.xl)};
+  margin-bottom: ${({ noMargin }) => (noMargin ? '0' : spacing.xl)};
 `;
 
 const UploadImageButton = styled.label`
