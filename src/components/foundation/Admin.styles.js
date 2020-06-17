@@ -17,7 +17,7 @@ export const Label = styled.div`
   ${media.belowTabletLarge`
     font-size: ${fontSizeMap.textMobile};
   `}
-  color: ${colors.white};
+  color: ${colors.black};
   margin-left: ${({ marginLeft }) => (marginLeft ? marginLeft : '')};
   margin-right: ${({ marginRight }) => (marginRight ? marginRight : '')};
 `;
