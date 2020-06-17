@@ -13,9 +13,11 @@ const StyledH3 = styled.h3`
 
   ${media.aboveTablet`
     font-size: ${fontSizeMap.h3s};
+   
   `};
   ${media.belowTablet`
      font-size: ${fontSizeMap.text};
+    
 
   `}
 
