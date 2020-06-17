@@ -136,24 +136,6 @@ const ChooseLearningPath = () => {
             Responsive Design
           </Styled.SkillSetItemWrapper1>
         </Styled.SkillWrapper>
-        <Styled.SkillWrapper>
-          <Styled.SkillSetItemMobileWrapper>
-            HTML
-          </Styled.SkillSetItemMobileWrapper>
-          <Styled.SkillSetItemMobileWrapper>
-            CSS
-          </Styled.SkillSetItemMobileWrapper>
-        </Styled.SkillWrapper>
-        <Styled.SkillWrapper>
-          <Styled.SkillSetItemMobileWrapper>
-            JAVA
-          </Styled.SkillSetItemMobileWrapper>
-        </Styled.SkillWrapper>
-        <Styled.SkillWrapper>
-          <Styled.SkillSetItemMobileWrapper1>
-            Responsive Design
-          </Styled.SkillSetItemMobileWrapper1>
-        </Styled.SkillWrapper>
         <Styled.SkillSetItemWrapper2 width="500px">
           Frontend Development
         </Styled.SkillSetItemWrapper2>
