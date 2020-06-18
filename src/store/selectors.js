@@ -26,3 +26,5 @@ export const getCourseChapters = state => state.courses.chapters;
 export const isStaff = state =>
   state.user.permissions.data &&
   (state.user.permissions.data.admin || state.user.permissions.data.author);
+
+export const getLearningPaths = state => state.learningPaths.data;

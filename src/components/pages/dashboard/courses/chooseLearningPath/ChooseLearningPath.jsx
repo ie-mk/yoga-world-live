@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import LearningPathCard from '../../../../foundation/learningPathCard/LearningPathCard';
 import BodyText from '../../../../foundation/typography/BodyText';
@@ -6,9 +6,16 @@ import CenteredFlexContainer from '../../../../foundation/CenteredFlexContainer'
 import SectionTitle from '../../../../foundation/typography/SectionTitle';
 import { background, spacing } from '../../../../../constants/styles';
 import Grid from '../../../../foundation/Grid';
+import { Router } from 'next/router';
+import { connect } from 'react-redux';
+import { resourceActions } from '../../../../../store/actions';
+import { getLearningPaths } from '../../../../../store/selectors';
+import { LEARNING_PATH } from '../../../../../constants';
 
-const ChooseLearningPath = () => {
-  const { t } = useTranslation();
+const ChooseLearningPath = ({ dispatch, learningPaths }) => {
+  useEffect(() => {
+    dispatch(resourceActions.fetchLearningPaths.request());
+  });
 
   return (
     <CenteredFlexContainer marginTop="xxl">
@@ -29,18 +36,32 @@ const ChooseLearningPath = () => {
         }}
         gridGap={spacing.xxxxl}
       >
-        <LearningPathCard
-          imageSrc="/svg/frontend.svg"
-          title="Frontend development"
-        />
-        <LearningPathCard
-          imageSrc="/svg/backend.svg"
-          title="Backend development"
-        />
-        <LearningPathCard imageSrc="/svg/design.svg" title="Design" />
+        {learningPaths &&
+          Object.keys(learningPaths).map(key => {
+            const data = learningPaths[key];
+            return (
+              <LearningPathCard
+                imageSrc={data && data.images && data.images[0]}
+                title={LEARNING_PATH[data.title]}
+              />
+            );
+          })}
+        {/*<LearningPathCard*/}
+        {/*  imageSrc="/svg/frontend.svg"*/}
+        {/*  title="Frontend development"*/}
+        {/*/>*/}
+        {/*<LearningPathCard*/}
+        {/*  imageSrc="/svg/backend.svg"*/}
+        {/*  title="Backend development"*/}
+        {/*/>*/}
+        {/*<LearningPathCard imageSrc="/svg/design.svg" title="Design" />*/}
       </Grid>
     </CenteredFlexContainer>
   );
 };
 
-export default ChooseLearningPath;
+const mapStateToProps = state => ({
+  learningPaths: getLearningPaths(state),
+});
+
+export default connect(mapStateToProps)(ChooseLearningPath);

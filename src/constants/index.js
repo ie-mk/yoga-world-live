@@ -22,6 +22,15 @@ export const LEARNING_PATH = {
   designer: 'Designer',
 };
 
+export const LEARNING_PATH_VALUES = Object.keys(LEARNING_PATH).reduce(
+  (acc, key) => {
+    const val = LEARNING_PATH[key].replace(' ', '');
+    acc[val] = key;
+    return acc;
+  },
+  {},
+);
+
 export const LEARNING_PATH_OPTIONS = Object.keys(LEARNING_PATH).map(key => {
   return (
     <option key={key} value={key}>
