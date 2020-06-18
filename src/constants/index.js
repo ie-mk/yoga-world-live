@@ -22,6 +22,7 @@ export const LEARNING_PATH = {
   designer: 'Designer',
 };
 
+// result is same object as LEARNING_PATH just values and keys are reversed
 export const LEARNING_PATH_VALUES = Object.keys(LEARNING_PATH).reduce(
   (acc, key) => {
     const val = LEARNING_PATH[key].replace(' ', '');

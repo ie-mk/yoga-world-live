@@ -5,19 +5,15 @@ import PageContent from '../../components/foundation/PageContent';
 import { connect } from 'react-redux';
 import { resourceActions } from '../../store/actions';
 import { LEARNING_PATH_VALUES } from '../../constants';
+import { getCourses } from '../../store/selectors';
 
-const Path = ({ dispatch }) => {
+const Path = ({ dispatch, courses }) => {
   const {
     query: { path },
   } = useRouter();
 
   useEffect(() => {
-    const b = LEARNING_PATH_VALUES;
-    const c = path.replace(' ', '');
-    const bla = LEARNING_PATH_VALUES[c];
-
-    debugger;
-
+    dispatch(resourceActions.resetCourses());
     dispatch(
       resourceActions.fetchCourses.request({
         queries: {
@@ -25,15 +21,24 @@ const Path = ({ dispatch }) => {
         },
       }),
     );
-  });
+  }, []);
 
   return (
     <ErrorBoundary>
       <PageContent hasDefaultMarginTop={true}>
         <h1>Learning path: {path}</h1>
+        {courses &&
+          Object.keys(courses).map(key => {
+            const course = courses[key];
+            return <h2>{course.title}</h2>;
+          })}
       </PageContent>
     </ErrorBoundary>
   );
 };
 
-export default connect()(Path);
+const mapStateToProps = state => ({
+  courses: getCourses(state),
+});
+
+export default connect(mapStateToProps)(Path);

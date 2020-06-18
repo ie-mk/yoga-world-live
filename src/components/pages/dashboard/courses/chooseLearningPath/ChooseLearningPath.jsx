@@ -46,15 +46,6 @@ const ChooseLearningPath = ({ dispatch, learningPaths }) => {
               />
             );
           })}
-        {/*<LearningPathCard*/}
-        {/*  imageSrc="/svg/frontend.svg"*/}
-        {/*  title="Frontend development"*/}
-        {/*/>*/}
-        {/*<LearningPathCard*/}
-        {/*  imageSrc="/svg/backend.svg"*/}
-        {/*  title="Backend development"*/}
-        {/*/>*/}
-        {/*<LearningPathCard imageSrc="/svg/design.svg" title="Design" />*/}
       </Grid>
     </CenteredFlexContainer>
   );
