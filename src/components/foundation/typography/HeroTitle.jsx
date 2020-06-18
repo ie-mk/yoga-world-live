@@ -5,15 +5,25 @@ import media from '../media';
 
 const StyledH2 = styled.h2`
   font-size: ${fontSizeMap.h4};
-  font-weight: 500;
-  margin: ${({ margin }) => margin || ''};
+  font-weight: ${({ fontWeight }) => fontWeight || '500'};
+  margin: ${({ mobileMargin }) => mobileMargin || ''};
   ${media.aboveTablet`
     font-size: ${fontSizeMap.h2};
+    margin: ${({ margin }) => margin || ''};
   `};
+  ${({ mediaConfig }) => (mediaConfig ? getMedia(mediaConfig) : '')};
 `;
 
-const HeroTitle = ({ text, margin }) => {
-  return <StyledH2 margin={margin}>{text}</StyledH2>;
+const HeroTitle = ({ text, fontWeight, margin, mobileMargin }) => {
+  return (
+    <StyledH2
+      margin={margin}
+      mobileMargin={mobileMargin}
+      fontWeight={fontWeight}
+    >
+      {text}
+    </StyledH2>
+  );
 };
 
 export default HeroTitle;
