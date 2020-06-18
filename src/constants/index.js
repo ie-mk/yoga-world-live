@@ -3,6 +3,7 @@ import React from 'react';
 export const IS_SERVER = typeof window === 'undefined';
 
 export const LEVEL = {
+  notAssigned: 'Please select',
   beginner: 'Beginner',
   intermediate: 'Intermediate',
   advanced: 'Advanced',
@@ -17,6 +18,7 @@ export const LEVEL_OPTIONS = Object.keys(LEVEL).map(key => {
 });
 
 export const LEARNING_PATH = {
+  notAssigned: 'Please select',
   frontend: 'Frontend developer',
   backend: 'Backend developer',
   designer: 'Designer',
