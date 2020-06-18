@@ -1,16 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import ContainerBase from '../../../foundation/ContainerBase';
 import { connect } from 'react-redux';
 import Button from '../../../foundation/button/Button';
 import AdminInput from '../../../foundation/input/AdminInput';
-import CheckBoxWithText from '../../../foundation/checkboxwithtext/CheckBoxWithText';
-import FlexContainer from '../../../foundation/FlexContainer';
 import { Formik, ErrorMessage, Field } from 'formik';
 import SectionTitle from '../../../foundation/typography/SectionTitle';
-import { fontSizeMap, spacing } from '../../../../constants/styles';
 import Styled from './Payment.styles';
-import ResponsiveImage from '../../../foundation/ResponsiveImage.jsx';
-import media from '../../../foundation/media';
 import CenteredFlexContainer from '../../../foundation/CenteredFlexContainer';
 
 const YourDetails = () => {
