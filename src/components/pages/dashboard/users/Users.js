@@ -8,6 +8,8 @@ import Table from '../table/Table';
 // import AddNewMember from '../staff/addNew/addNewMember';
 import needsAdmin from '../../../../utils/needsAdmin';
 import { adminActions } from '../../../../store/actions';
+import { getUsers } from '../../../../store/selectors';
+import ResponsiveImage from '../../../foundation/ResponsiveImage';
 
 const DashBoardUsers = ({ dispatch, users = {} }) => {
   useEffect(() => {
@@ -31,11 +33,15 @@ const DashBoardUsers = ({ dispatch, users = {} }) => {
               return (
                 <Table.Tr key={id}>
                   <Table.Td>{idx + 1}</Table.Td>
-                  <Table.Td>{rowData.memberName}</Table.Td>
+                  <Table.Td>{rowData.firstName}</Table.Td>
                   <Table.Td>{rowData.role}</Table.Td>
                   <Table.Td>
-                    {' '}
-                    <img src="svg/icon_profile.svg" />
+                    <ResponsiveImage
+                      width="30px"
+                      height="30px"
+                      borderRadius="50%"
+                      src={rowData.photoURL || 'svg/icon_profile.svg'}
+                    />
                   </Table.Td>
                   <Table.Td>
                     <Button
@@ -72,7 +78,7 @@ const DashBoardUsers = ({ dispatch, users = {} }) => {
 };
 
 const mapStateToProps = state => ({
-  users: state,
+  users: getUsers(state),
 });
 
 export default needsAdmin(connect(mapStateToProps)(DashBoardUsers));

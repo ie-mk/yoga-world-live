@@ -7,13 +7,49 @@ import {
   takeEvery,
   takeLatest,
 } from 'redux-saga/effects';
-import { adActions, userActions } from './actions';
+import { adminActions, userActions } from './actions';
 import api from '../api/api.min';
 import moment from 'moment';
 import { getUID, getEditingCourseId } from './selectors';
-import Router from 'next/router';
 import { resourceActions } from './actions';
-import { courseReducer } from './reducer';
+
+function* fetchUserPermissions({ payload }) {
+  try {
+    const res = yield api.user.fetchUserPermissions(payload);
+    yield put(adminActions.fetchUserPermissions.success(res));
+  } catch (e) {
+    yield put(adminActions.fetchUserPermissions.failure(e));
+  }
+}
+
+function* addUserPermission({ payload }) {
+  try {
+    yield api.user.addUserPermission(payload);
+    yield put(adminActions.addUserPermission.success());
+    yield fetchUserPermissions({ payload: payload.uid });
+  } catch (e) {
+    yield put(adminActions.addUserPermission.failure(e));
+  }
+}
+
+function* fetchUsers() {
+  try {
+    const users = yield api.user.fetchUsers();
+    yield put(adminActions.fetchUsers.success(users));
+  } catch (err) {
+    yield put(adminActions.fetchUsers.failure(err));
+  }
+}
+
+function* deleteUser({ payload }) {
+  try {
+    yield api.user.deleteUser(payload);
+    yield put(adminActions.deleteUser.success(payload));
+    yield fetchUsers();
+  } catch (e) {
+    yield put(adminActions.deleteUser.failure(e));
+  }
+}
 
 function* handleLoginFlow({ payload: user }) {
   const uid = user && user.uid;
@@ -59,15 +95,6 @@ function* fetchUserProfile({ payload: uid }) {
     yield put(userActions.fetchUserProfile.success(profile));
   } catch (err) {
     yield put(userActions.fetchUserProfile.failure(err));
-  }
-}
-
-function* fetchUsers() {
-  try {
-    const users = yield api.user.fetchUsers();
-    yield put(userActions.fetchUsers.success(users));
-  } catch (err) {
-    yield put(userActions.fetchUsers.failure(err));
   }
 }
 
@@ -640,6 +667,18 @@ function* rootSaga() {
       resourceActions.deleteLearningPath.request.type,
       deleteLearningPath,
     ),
+  ]);
+  // ========================= ADMIN USERS =========================
+  yield all([takeLatest(adminActions.fetchUsers.request.type, fetchUsers)]);
+  yield all([takeLatest(adminActions.deleteUser.request.type, deleteUser)]);
+  yield all([
+    takeLatest(
+      adminActions.fetchUserPermissions.request.type,
+      fetchUserPermissions,
+    ),
+  ]);
+  yield all([
+    takeLatest(adminActions.addUserPermission.request.type, addUserPermission),
   ]);
 }
 
