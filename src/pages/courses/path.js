@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import { resourceActions } from '../../store/actions';
 import { LEARNING_PATH_VALUES } from '../../constants';
 import { getCourses } from '../../store/selectors';
+import CoursesLearningPath from '../../components/pages/dashboard/courses/coursesLearningPath/CoursesLearningPath';
+import ContainerBase from '../../components/foundation/ContainerBase'; //'../../../../foundation/ContainerBase';
 
 const Path = ({ dispatch, courses }) => {
   const {
@@ -22,17 +24,20 @@ const Path = ({ dispatch, courses }) => {
       }),
     );
   }, []);
-
+  let heading = { path }.path + ' Learning Path';
   return (
     <ErrorBoundary>
-      <PageContent hasDefaultMarginTop={true}>
-        <h1>Learning path: {path}</h1>
+      {/* <PageContent hasDefaultMarginTop={true}> */}
+      {/* <h1>Learning path: {path}</h1> */}
+      <>
+        <CoursesLearningPath title={heading} />
         {courses &&
           Object.keys(courses).map(key => {
             const course = courses[key];
             return <h2>{course.title}</h2>;
           })}
-      </PageContent>
+      </>
+      {/* </PageContent> */}
     </ErrorBoundary>
   );
 };
