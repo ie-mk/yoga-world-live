@@ -39,22 +39,6 @@ export const adminReducer = handleActions(
 
     //=================================================================//
 
-    [adminActions.createAdFromJson.request.type]: state => ({
-      ...state,
-      loading: true,
-    }),
-    [adminActions.createAdFromJson.success.type]: (state, { payload }) => ({
-      ...state,
-      loading: false,
-    }),
-    [adminActions.createAdFromJson.failure.type]: (state, { payload }) => ({
-      ...state,
-      loading: false,
-      error: payload,
-    }),
-
-    //=================================================================//
-
     [adminActions.addUserPermission.request.type]: state => ({
       ...state,
       loading: true,

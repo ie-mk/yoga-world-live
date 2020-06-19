@@ -71,6 +71,13 @@ export const resourceActions = {
   deleteLearningPathFromState: createAction('delete-learning-path-from-state'),
 };
 
+export const adminActions = {
+  fetchUsers: createAsyncAction('admin-fetch-users'),
+  deleteUser: createAsyncAction('admin-delete-user'),
+  fetchUserPermissions: createAsyncAction('admin-fetch-user-permissions'),
+  addUserPermission: createAsyncAction('admin-add-user-permission'),
+};
+
 if (!IS_SERVER) {
   window.resourceActions = resourceActions;
 }
