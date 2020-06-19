@@ -17,6 +17,7 @@ const permissionConstants = {
   registered: true,
   admin: true,
   superAdmin: true,
+  author: true,
 };
 
 const options = Object.keys(permissionConstants).map(str => ({
@@ -24,8 +25,8 @@ const options = Object.keys(permissionConstants).map(str => ({
   value: str,
 }));
 
-const UserDetails = ({ dispatch, data, idx }) => {
-  const { displayName, email, uid, userPermissions, emailVerified } = data;
+const UserDetails = ({ dispatch, data, idx, userPermissions }) => {
+  const { displayName, email, uid, emailVerified } = data;
 
   const addPermission = e => {
     dispatch(
@@ -98,7 +99,13 @@ const UserDetails = ({ dispatch, data, idx }) => {
   );
 };
 
-const DashBoardUsers = ({ dispatch, users = {} }) => {
+const DashBoardUsers = ({
+  dispatch,
+  users = {},
+  updatingUserId,
+  permissions,
+  loading,
+}) => {
   useEffect(() => {
     dispatch(adminActions.fetchUsers.request());
   }, []);
@@ -127,10 +134,12 @@ const DashBoardUsers = ({ dispatch, users = {} }) => {
 
               return (
                 <UserDetails
-                  key={idx}
+                  key={id}
                   data={rowData}
-                  dispatch={dispatch}
                   idx={idx}
+                  updating={updatingUserId === id}
+                  userPermissions={permissions && permissions[id]}
+                  dispatch={dispatch}
                 />
               );
             })}
@@ -143,6 +152,9 @@ const DashBoardUsers = ({ dispatch, users = {} }) => {
 
 const mapStateToProps = state => ({
   users: getUsers(state),
+  updatingUserId: state.admin.users.updatingUserId,
+  permissions: state.admin.permissions,
+  loading: state.admin.loading,
 });
 
 export default needsAdmin(connect(mapStateToProps)(DashBoardUsers));
