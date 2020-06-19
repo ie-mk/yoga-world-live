@@ -17,6 +17,7 @@ const AdminDropDown = ({
   marginRight,
   backgroundColor,
   formikField = true,
+  onChange,
 }) => {
   return (
     <Styled.Wrapper width={width} displayLabelLeft={displayLabelLeft}>
@@ -38,7 +39,7 @@ const AdminDropDown = ({
             {options}
           </Field>
         ) : (
-          <select>
+          <select onChange={onChange}>
             {options.map(({ value, label }) => (
               <option value={value}>{label}</option>
             ))}
