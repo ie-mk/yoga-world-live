@@ -10,13 +10,108 @@ import needsAdmin from '../../../../utils/needsAdmin';
 import { adminActions } from '../../../../store/actions';
 import { getUsers } from '../../../../store/selectors';
 import ResponsiveImage from '../../../foundation/ResponsiveImage';
+import AdminDropDown from '../../../foundation/dropdown/AdminDropDown';
+
+const permissionConstants = {
+  guest: true,
+  registered: true,
+  admin: true,
+  superAdmin: true,
+};
+
+const options = Object.keys(permissionConstants).map(str => ({
+  label: str,
+  value: str,
+}));
+
+const UserDetails = ({ dispatch, data, idx }) => {
+  const { displayName, email, uid, userPermissions, emailVerified } = data;
+
+  const addPermission = e => {
+    dispatch(
+      adminActions.addUserPermission.request({
+        permission: { [e.target.value]: true },
+        uid,
+      }),
+    );
+  };
+
+  const fetchPermissions = () => {
+    dispatch(adminActions.fetchUserPermissions.request(uid));
+  };
+
+  const removePermission = permission => {
+    dispatch(
+      adminActions.addUserPermission.request({
+        permission: { [permission]: false },
+        uid,
+      }),
+    );
+  };
+
+  return (
+    <Table.Tr>
+      <Table.Td>{idx + 1}</Table.Td>
+      <Table.Td>{displayName}</Table.Td>
+      <Table.Td>{email}</Table.Td>
+      <Table.Td>
+        <AdminDropDown
+          onChange={addPermission}
+          options={options}
+          formikField={false}
+          size="small"
+        />
+      </Table.Td>
+      <Table.Td>
+        {userPermissions ? (
+          Object.keys(userPermissions).map(permission => {
+            return permissionConstants[permission] &&
+              userPermissions[permission] ? (
+              <Styled.PermissionTag
+                key={permission}
+                onClick={() => removePermission(permission)}
+              >
+                {permission}
+                <i className="fa fa-window-close" />
+              </Styled.PermissionTag>
+            ) : null;
+          })
+        ) : (
+          <Styled.FetchPermissionsButton onClick={fetchPermissions}>
+            Fetch roles
+          </Styled.FetchPermissionsButton>
+        )}
+      </Table.Td>
+      <Table.Td>{emailVerified ? 'Yes' : 'No'}</Table.Td>
+      <Table.Td>
+        <Styled.DeleteButton
+          onClick={() => {
+            if (confirm('Are you sure you want to delete this user?')) {
+              dispatch(adminActions.deleteUser.request(uid));
+            }
+          }}
+        >
+          Delete user
+        </Styled.DeleteButton>
+      </Table.Td>
+    </Table.Tr>
+  );
+};
 
 const DashBoardUsers = ({ dispatch, users = {} }) => {
   useEffect(() => {
     dispatch(adminActions.fetchUsers.request());
   }, []);
 
-  const columnHeaders = ['S.No', 'Member Name', 'Role', 'Image', 'Actions'];
+  const columnHeaders = [
+    'S.No',
+    'Name',
+    'Email',
+    'Assign',
+    'Roles',
+    'Email Verif',
+    'Actions',
+  ];
 
   const [newAdd, setNewAdd] = useState(false);
   const [edit, setEdit] = useState(false);
@@ -31,47 +126,16 @@ const DashBoardUsers = ({ dispatch, users = {} }) => {
               if (!rowData) return null;
 
               return (
-                <Table.Tr key={id}>
-                  <Table.Td>{idx + 1}</Table.Td>
-                  <Table.Td>{rowData.firstName}</Table.Td>
-                  <Table.Td>{rowData.role}</Table.Td>
-                  <Table.Td>
-                    <ResponsiveImage
-                      width="30px"
-                      height="30px"
-                      borderRadius="50%"
-                      src={rowData.photoURL || 'svg/icon_profile.svg'}
-                    />
-                  </Table.Td>
-                  <Table.Td>
-                    <Button
-                      margin="22px"
-                      width="100px"
-                      height="48px"
-                      type="action"
-                      fontSize="20px"
-                      borderRadius="sm"
-                      onClick={() => setEdit(true)}
-                    >
-                      Edit
-                    </Button>
-                    <Button
-                      width="100px"
-                      height="48px"
-                      type="action"
-                      fontSize="20px"
-                      borderRadius="sm"
-                      onClick={() => handleReply(id)}
-                    >
-                      Delete
-                    </Button>
-                  </Table.Td>
-                </Table.Tr>
+                <UserDetails
+                  key={idx}
+                  data={rowData}
+                  dispatch={dispatch}
+                  idx={idx}
+                />
               );
             })}
           </Table>
         </Styled.TableWrapper>
-        <Styled.ButtonWrapper></Styled.ButtonWrapper>
       </ContainerBase>
     </>
   );
