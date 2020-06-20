@@ -4,33 +4,40 @@ import { useRouter } from 'next/router';
 import PageContent from '../../components/foundation/PageContent';
 import { connect } from 'react-redux';
 import { resourceActions } from '../../store/actions';
-import { LEARNING_PATH_VALUES } from '../../constants';
-import { getCourses } from '../../store/selectors';
+import { LEARNING_PATH_VALUES, LEARNING_PATH } from '../../constants';
+import { getCourses, getLearningPaths } from '../../store/selectors';
 import CoursesLearningPath from '../../components/pages/dashboard/courses/coursesLearningPath/CoursesLearningPath';
 import ContainerBase from '../../components/foundation/ContainerBase'; //'../../../../foundation/ContainerBase';
 
-const Path = ({ dispatch, courses }) => {
+const Path = ({ dispatch, courses, learningPaths }) => {
   const {
-    query: { path },
+    query: { learningPathId },
   } = useRouter();
+
+  const learningPathData = learningPaths[learningPathId];
+  const title = learningPathData.title;
+
+  console.log('---learningPathData: ', learningPathData);
 
   useEffect(() => {
     dispatch(resourceActions.resetCourses());
     dispatch(
       resourceActions.fetchCourses.request({
         queries: {
-          learningPath: ['==', LEARNING_PATH_VALUES[path.replace(' ', '')]],
+          learningPath: ['==', LEARNING_PATH_VALUES[title.replace(' ', '')]],
         },
       }),
     );
   }, []);
-  let heading = { path }.path + ' Learning Path';
+
+  let heading = LEARNING_PATH[title] + ' Learning Path';
+
   return (
     <ErrorBoundary>
       {/* <PageContent hasDefaultMarginTop={true}> */}
       {/* <h1>Learning path: {path}</h1> */}
       <>
-        <CoursesLearningPath title={heading} />
+        <CoursesLearningPath title={heading} descr={learningPathData.descr} />
         {courses &&
           Object.keys(courses).map(key => {
             const course = courses[key];
@@ -44,6 +51,7 @@ const Path = ({ dispatch, courses }) => {
 
 const mapStateToProps = state => ({
   courses: getCourses(state),
+  learningPaths: getLearningPaths(state),
 });
 
 export default connect(mapStateToProps)(Path);

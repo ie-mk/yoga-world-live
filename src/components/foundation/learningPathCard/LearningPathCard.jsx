@@ -27,13 +27,13 @@ const Wrapper = styled.div`
   }
 `;
 
-const LearningPathCard = ({ imageSrc, title }) => {
+const LearningPathCard = ({ imageSrc, title, learningPathId }) => {
   const handlePathClick = () => {
     Router.push(
       {
         pathname: '/courses/path',
         query: {
-          path: title,
+          learningPathId,
         },
       },
       `courses/${title.split(' ')[0].toLowerCase()}`,

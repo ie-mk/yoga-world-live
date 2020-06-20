@@ -5,7 +5,7 @@ import BodyText from '../../../../foundation/typography/BodyText';
 import ContainerBase from '../../../../foundation/ContainerBase';
 import SectionTitle from '../../../../foundation/typography/SectionTitle';
 
-const CoursesLearningPath = ({ title }) => {
+const CoursesLearningPath = ({ title, descr }) => {
   return (
     <Styled.Wrapper>
       <ResponsiveImage
@@ -24,12 +24,7 @@ const CoursesLearningPath = ({ title }) => {
           <SectionTitle text={title} />
         </Styled.HeaderWrapper>
         <Styled.TextWrapper>
-          <BodyText>
-            With real world projects you’ll master the tech skills companies
-            want. Our knowledgeable mentors guide your learning and are focused
-            on answering your questions, motivating you and keeping you on
-            track. Get a custom learning plan tailored to fit your busy life.
-          </BodyText>
+          <BodyText>{descr}</BodyText>
         </Styled.TextWrapper>
         <ContainerBase position="relative">
           <ResponsiveImage
