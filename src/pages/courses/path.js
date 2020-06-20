@@ -17,8 +17,6 @@ const Path = ({ dispatch, courses, learningPaths }) => {
   const learningPathData = learningPaths[learningPathId];
   const title = learningPathData.title;
 
-  console.log('---learningPathData: ', learningPathData);
-
   useEffect(() => {
     dispatch(resourceActions.resetCourses());
     dispatch(
@@ -31,6 +29,7 @@ const Path = ({ dispatch, courses, learningPaths }) => {
   }, []);
 
   let heading = LEARNING_PATH[title] + ' Learning Path';
+  heading = heading.toUpperCase();
 
   return (
     <ErrorBoundary>
