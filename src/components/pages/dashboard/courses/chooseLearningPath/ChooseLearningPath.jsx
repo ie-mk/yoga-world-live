@@ -15,7 +15,7 @@ import { LEARNING_PATH } from '../../../../../constants';
 const ChooseLearningPath = ({ dispatch, learningPaths }) => {
   useEffect(() => {
     dispatch(resourceActions.fetchLearningPaths.request());
-  });
+  }, []);
 
   return (
     <CenteredFlexContainer marginTop="xxl">
