@@ -17,12 +17,14 @@ const Path = ({ dispatch, courses, learningPaths }) => {
   const learningPathData = learningPaths[learningPathId];
   const title = learningPathData.title;
 
+  console.log('------learningPathData: ', learningPathData);
+
   useEffect(() => {
     dispatch(resourceActions.resetCourses());
     dispatch(
       resourceActions.fetchCourses.request({
         queries: {
-          learningPath: ['==', LEARNING_PATH_VALUES[title.replace(' ', '')]],
+          learningPath: ['==', title],
         },
       }),
     );
