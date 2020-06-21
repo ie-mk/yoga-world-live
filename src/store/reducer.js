@@ -125,19 +125,19 @@ export const userReducer = handleActions(
 
     /*===============================================================*/
 
-    // [userActions.updateUserProfilePicture.request]: state => ({
-    //   ...state,
-    //   loadingPicture: true,
-    // }),
-    // [userActions.updateUserProfilePicture.success]: state => ({
-    //   ...state,
-    //   loadingPicture: false,
-    // }),
-    // [userActions.updateUserProfilePicture.failure]: (state, action) => ({
-    //   ...state,
-    //   loadingPicture: false,
-    //   saveProfilePictureError: action.payload,
-    // }),
+    [userActions.updateUserProfilePicture.request]: state => ({
+      ...state,
+      loadingPicture: true,
+    }),
+    [userActions.updateUserProfilePicture.success]: state => ({
+      ...state,
+      loadingPicture: false,
+    }),
+    [userActions.updateUserProfilePicture.failure]: (state, action) => ({
+      ...state,
+      loadingPicture: false,
+      saveProfilePictureError: action.payload,
+    }),
 
     ...getAsyncReducers({
       action: userActions.updateUserProfilePicture,

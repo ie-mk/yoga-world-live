@@ -72,6 +72,7 @@ function* fetchUsers() {
 }
 
 function* updateUserProfilePicture({ payload: { uid, image } }) {
+  console.log('hello world');
   try {
     yield api.user.updateProfilePicture(uid, image);
     yield put(userActions.updateUserProfilePicture.success());

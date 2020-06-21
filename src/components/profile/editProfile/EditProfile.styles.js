@@ -20,7 +20,15 @@ export const ProfileWrapper = styled.div`
   `}
 `;
 
+const RowContainer = styled.div`
+  display: flex;
+  align-items: center;
+
+  flex-wrap: wrap;
+`;
+
 export default {
   ProfileWrapper,
   Image,
+  RowContainer,
 };

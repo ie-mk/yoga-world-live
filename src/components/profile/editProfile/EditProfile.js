@@ -10,17 +10,27 @@ import AdminInput from '../../foundation/input/AdminInput';
 import ContainerBase from '../../foundation/ContainerBase';
 import Button from '../../foundation/button/Button';
 import { connect } from 'react-redux';
+import EditAccount from './editAccountDetails/EditAccountDetails';
+import BillingDetails from './billingDetails/BillingDetails';
+import { userActions } from '../../../store/actions';
 
-const EditProfile = ({ user }) => {
-  const [profile, setProfile] = useState(null);
+const EditProfile = ({ user, dispatch }) => {
   const fileInputRef = useRef(null);
+  const profileImage = user && (user.profileImage || user.photoURL);
+
+  console.log(user.uid);
   const handleChange = event => {
-    if (typeof event.target.files[0] !== 'undefined') {
-      setProfile(URL.createObjectURL(event.target.files[0]));
-    } else {
+    if (typeof event.target.files[0] === 'undefined') {
       return;
     }
+    dispatch(
+      userActions.updateUserProfilePicture.request({
+        image: event.target.files[0],
+        uid: user.uid,
+      }),
+    );
   };
+
   return (
     <CenteredFlexContainer>
       <HeroTitle
@@ -45,7 +55,7 @@ const EditProfile = ({ user }) => {
           <Styled.ProfileWrapper>
             <div>
               {' '}
-              <Styled.Image src={profile || user.photoURL} />
+              <Styled.Image src={profileImage} />
             </div>
             <div>
               <input
@@ -81,6 +91,7 @@ const EditProfile = ({ user }) => {
                 name="name"
                 type="text"
                 label="Full Name"
+                color="white"
                 backgroundColor="#293150"
                 width="600px"
                 mobileWidth="300px"
@@ -93,6 +104,7 @@ const EditProfile = ({ user }) => {
                 type="text"
                 label="Profile Title ( optional )"
                 backgroundColor="#293150"
+                color="white"
                 width="600px"
                 mobileWidth="300px"
                 fontSize="h4"
@@ -103,6 +115,7 @@ const EditProfile = ({ user }) => {
                 type="text"
                 label="Website ( optional )"
                 backgroundColor="#293150"
+                color="white"
                 width="600px"
                 mobileWidth="300px"
                 height="50px"
@@ -113,6 +126,7 @@ const EditProfile = ({ user }) => {
                 type="text"
                 label="Linkdin Profile ( optional )"
                 backgroundColor="#293150"
+                color="white"
                 width="600px"
                 mobileWidth="300px"
                 height="50px"
@@ -123,6 +137,7 @@ const EditProfile = ({ user }) => {
                 type="text"
                 label="Facebook Profile ( optional )"
                 backgroundColor="#293150"
+                color="white"
                 width="600px"
                 mobileWidth="300px"
                 height="50px"
@@ -133,6 +148,7 @@ const EditProfile = ({ user }) => {
                 type="text"
                 label="Instagram Profile ( optional )"
                 backgroundColor="#293150"
+                color="white"
                 width="600px"
                 mobileWidth="300px"
                 height="50px"
@@ -143,6 +159,7 @@ const EditProfile = ({ user }) => {
                 type="text"
                 label="Twitter Profile ( optional )"
                 backgroundColor="#293150"
+                color="white"
                 width="600px"
                 mobileWidth="300px"
                 height="50px"
@@ -152,6 +169,8 @@ const EditProfile = ({ user }) => {
           </Formik>
         </Grid>
       </CenteredFlexContainer>
+      <EditAccount />
+      <BillingDetails />
     </CenteredFlexContainer>
   );
 };
