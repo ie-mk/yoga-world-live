@@ -54,6 +54,7 @@ function* handleLoginFlow({ payload: user }) {
 }
 
 function* fetchUserProfile({ payload: uid }) {
+  debugger;
   try {
     const profile = yield api.user.fetchUserProfile(uid);
     yield put(userActions.fetchUserProfile.success(profile));

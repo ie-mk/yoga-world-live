@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Styled from './Profile.styles';
 import ContainerBase from '../foundation/ContainerBase';
 import { connect } from 'react-redux';
@@ -11,9 +11,15 @@ import Billing from './billing/Billing';
 import Preferences from './preferences/Preferences';
 import Learning from './learning/Learning';
 import Router from 'next/router';
+import { userActions } from '../../store/actions';
 
-const Profile = ({ user }) => {
+const Profile = ({ dispatch, user }) => {
   const [activeTab, setActiveTab] = useState('learning');
+
+  const uid = user && user.uid;
+  useEffect(() => {
+    dispatch(userActions.fetchUserProfile.request(uid));
+  }, [uid]);
 
   const isActiveLearning = activeTab === 'learning';
   const isActiveInbox = activeTab === 'inbox';
@@ -29,7 +35,7 @@ const Profile = ({ user }) => {
     <ContainerBase>
       <Styled.ProfileWrapper>
         <Styled.ImageWrapper>
-          <Styled.Image src={user.photoURL} />
+          <Styled.Image src={user.profileImage || user.photoURL} />
           <Button
             className="mobileView"
             type="primary"
@@ -127,7 +133,7 @@ const Profile = ({ user }) => {
 };
 
 const mapStateToProps = state => ({
-  user: state.user.loginProviderData,
+  user: state.user.profile,
 });
 
 export default connect(mapStateToProps)(Profile);
