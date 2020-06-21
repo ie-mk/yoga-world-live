@@ -16,6 +16,8 @@ const AdminDropDown = ({
   marginLeft,
   marginRight,
   backgroundColor,
+  formikField = true,
+  onChange,
 }) => {
   return (
     <Styled.Wrapper width={width} displayLabelLeft={displayLabelLeft}>
@@ -27,14 +29,22 @@ const AdminDropDown = ({
         height={height}
         backgroundColor={backgroundColor}
       >
-        <Field
-          className={classNameString}
-          name={name}
-          component={component}
-          placeholder={placeholder}
-        >
-          {options}
-        </Field>
+        {formikField ? (
+          <Field
+            className={classNameString}
+            name={name}
+            component={component}
+            placeholder={placeholder}
+          >
+            {options}
+          </Field>
+        ) : (
+          <select onChange={onChange}>
+            {options.map(({ value, label }) => (
+              <option value={value}>{label}</option>
+            ))}
+          </select>
+        )}
       </Styled.InputStyles>
     </Styled.Wrapper>
   );

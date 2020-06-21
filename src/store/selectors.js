@@ -2,6 +2,8 @@ import { createSelector } from 'reselect';
 
 export const getUserSelector = state => state.user;
 
+export const getUsers = state => state.admin.users;
+
 export const getUID = state =>
   state.user &&
   state.user.loginProviderData &&
