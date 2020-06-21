@@ -90,7 +90,6 @@ function* handleLoginFlow({ payload: user }) {
 }
 
 function* fetchUserProfile({ payload: uid }) {
-  debugger;
   try {
     const profile = yield api.user.fetchUserProfile(uid);
     yield put(userActions.fetchUserProfile.success(profile));
@@ -100,7 +99,6 @@ function* fetchUserProfile({ payload: uid }) {
 }
 
 function* updateUserProfilePicture({ payload: { uid, image } }) {
-  console.log('hello world');
   try {
     yield api.user.updateProfilePicture(uid, image);
     yield put(userActions.updateUserProfilePicture.success());
