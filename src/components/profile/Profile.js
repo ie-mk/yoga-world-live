@@ -13,10 +13,10 @@ import Learning from './learning/Learning';
 import Router from 'next/router';
 import { userActions } from '../../store/actions';
 
-const Profile = ({ dispatch, user }) => {
+const Profile = ({ dispatch, profile }) => {
   const [activeTab, setActiveTab] = useState('learning');
 
-  const uid = user && user.uid;
+  const uid = profile && profile.uid;
   useEffect(() => {
     dispatch(userActions.fetchUserProfile.request(uid));
   }, [uid]);
@@ -35,7 +35,7 @@ const Profile = ({ dispatch, user }) => {
     <ContainerBase>
       <Styled.ProfileWrapper>
         <Styled.ImageWrapper>
-          <Styled.Image src={user.profileImage || user.photoURL} />
+          <Styled.Image src={profile.profileImage || profile.photoURL} />
           <Button
             className="mobileView"
             type="primary"
@@ -133,7 +133,7 @@ const Profile = ({ dispatch, user }) => {
 };
 
 const mapStateToProps = state => ({
-  user: state.user.profile,
+  profile: state.user.profile,
 });
 
 export default connect(mapStateToProps)(Profile);
