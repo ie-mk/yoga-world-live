@@ -9,6 +9,7 @@ import {
 } from './reducer';
 
 import { reducer as notifReducer } from 'redux-notifications';
+import { adminReducer } from './adminReducers';
 
 const reducersCombined = combineReducers({
   user: userReducer,
@@ -18,6 +19,7 @@ const reducersCombined = combineReducers({
   messages: messageReducer,
   layout: layoutReducer,
   notifs: notifReducer,
+  admin: adminReducer,
 });
 
 export default reducersCombined;
