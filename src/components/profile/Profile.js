@@ -10,6 +10,8 @@ import FlexContainer from '../foundation/FlexContainer';
 import Billing from './billing/Billing';
 import Preferences from './preferences/Preferences';
 import Learning from './learning/Learning';
+import Router from 'next/router';
+
 const Profile = ({ user }) => {
   const [activeTab, setActiveTab] = useState('learning');
 
@@ -17,6 +19,11 @@ const Profile = ({ user }) => {
   const isActiveInbox = activeTab === 'inbox';
   const isActiveBilling = activeTab === 'billing';
   const isActivePreferences = activeTab === 'preferences';
+
+  const toEditPage = () =>
+    Router.push('/editProfile', '/editProfile', {
+      shallow: true,
+    });
 
   return (
     <ContainerBase>
@@ -32,6 +39,7 @@ const Profile = ({ user }) => {
             size="sm"
             margin="34px 0 0"
             mobileSameSize={true}
+            onClick={toEditPage}
           >
             Edit
           </Button>
@@ -71,6 +79,7 @@ const Profile = ({ user }) => {
               height="45px"
               size="sm"
               margin="0"
+              onClick={toEditPage}
             >
               Edit
             </Button>
