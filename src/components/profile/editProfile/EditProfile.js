@@ -13,12 +13,18 @@ import { connect } from 'react-redux';
 import EditAccount from './editAccountDetails/EditAccountDetails';
 import BillingDetails from './billingDetails/BillingDetails';
 import { userActions } from '../../../store/actions';
+import SpinnerLarge from '../../foundation/spinner/SpinnerLarge';
+import needsLoginWrapper from '../../../utils/needsLoginWrapper';
 
-const EditProfile = ({ user, dispatch }) => {
+const EditProfile = ({
+  user: { profile, loadingPicture: loading },
+  dispatch,
+}) => {
   const fileInputRef = useRef(null);
-  const profileImage = user && (user.profileImage || user.photoURL);
+  const profileImage = profile && (profile.profileImage || profile.photoURL);
 
-  console.log(user.uid);
+  const uid = profile.uid;
+
   const handleChange = event => {
     if (typeof event.target.files[0] === 'undefined') {
       return;
@@ -26,13 +32,14 @@ const EditProfile = ({ user, dispatch }) => {
     dispatch(
       userActions.updateUserProfilePicture.request({
         image: event.target.files[0],
-        uid: user.uid,
+        uid,
       }),
     );
   };
 
   return (
     <CenteredFlexContainer>
+      {loading ? <SpinnerLarge /> : null}
       <HeroTitle
         margin="30px 0 100px 0"
         mobileMargin="15px 0 50px 0"
@@ -182,6 +189,6 @@ const initialFormValues = {
 };
 
 const mapStateToProps = state => ({
-  user: state.user.loginProviderData,
+  user: state.user,
 });
-export default connect(mapStateToProps)(EditProfile);
+export default connect(mapStateToProps)(needsLoginWrapper(EditProfile));
