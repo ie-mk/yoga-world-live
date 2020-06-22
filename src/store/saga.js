@@ -110,6 +110,10 @@ function* updateUserProfilePicture({ payload: { uid, image } }) {
 
 // payload data should include uid
 function* updateUserProfile({ payload }) {
+  console.log('welcome');
+  console.log(payload);
+  console.log('welcome1');
+
   try {
     yield api.user.updateUserProfile(payload);
     yield fetchUserProfile({ payload: payload.uid });

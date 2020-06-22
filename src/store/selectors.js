@@ -11,6 +11,8 @@ export const getUID = state =>
 
 export const getPermissions = state => state.user.permissions;
 
+export const getUserProfileSelector = state => state.user && state.user.profile;
+
 export const getCourses = state => state.courses.data;
 
 export const getEditingCourseId = state => state.courses.editableCourseId;

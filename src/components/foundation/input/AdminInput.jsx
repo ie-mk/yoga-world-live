@@ -16,6 +16,7 @@ const AdminInput = ({
   height,
   mobileWidth,
   color,
+  inputColor,
 }) => {
   return (
     <Styled.Wrapper width={width} mobileWidth={mobileWidth} noMargin={noMargin}>
@@ -23,6 +24,7 @@ const AdminInput = ({
         {label}
       </Styled.Label>
       <Styled.InputStyles
+        inputColor={inputColor}
         height={height}
         backgroundColor={backgroundColor}
         disabled={disabled}

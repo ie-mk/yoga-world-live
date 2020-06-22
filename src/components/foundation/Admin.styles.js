@@ -35,6 +35,7 @@ export const InputStyles = styled.div`
       disabled ? lightenDarkenColor('#f0f0f7', -20) : ''};
     line-height: ${({ height }) => (height ? height : '40px')};
     font-size: ${fontSizeMap.text};
+    color: ${({ inputColor }) => (inputColor ? inputColor : '')};
     width: 100%;
     padding-left: ${spacing.sm};
     //border: 1px solid #909090;

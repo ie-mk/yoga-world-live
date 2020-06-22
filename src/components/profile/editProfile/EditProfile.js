@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import Styled from './EditProfile.styles';
-import ResponsiveImage from '../../foundation/ResponsiveImage';
 import CenteredFlexContainer from '../../foundation/CenteredFlexContainer';
 import HeroTitle from '../../foundation/typography/HeroTitle';
 import Grid from '../../foundation/Grid';
@@ -15,10 +14,15 @@ import BillingDetails from './billingDetails/BillingDetails';
 import { userActions } from '../../../store/actions';
 import SpinnerLarge from '../../foundation/spinner/SpinnerLarge';
 import needsLoginWrapper from '../../../utils/needsLoginWrapper';
+import {
+  getUserProfileSelector,
+  getUserSelector,
+} from '../../../store/selectors';
 
 const EditProfile = ({
   user: { profile, loadingPicture: loading },
   dispatch,
+  userProfile,
 }) => {
   const fileInputRef = useRef(null);
   const profileImage = profile && (profile.profileImage || profile.photoURL);
@@ -47,148 +51,202 @@ const EditProfile = ({
         text="Edit Your Profile"
       />
       <CenteredFlexContainer>
-        <Grid
-          columns="1fr"
-          mediaConfig={{
-            aboveTabletLarge: {
-              'grid-template-columns': '1fr 1fr',
-            },
-            belowDesktop: {
-              'grid-gap': spacing.xl,
-            },
+        <Formik
+          initialValues={{ ...userProfile }}
+          enableReinitialize={true}
+          onSubmit={(values, { setSubmitting }) => {
+            setSubmitting(true);
+            dispatch(userActions.updateUserProfile.request(values));
+            setTimeout(() => setSubmitting(false), 1000);
           }}
-          gridGap={spacing.xxxxl}
         >
-          <Styled.ProfileWrapper>
-            <div>
-              {' '}
-              <Styled.Image src={profileImage} />
-            </div>
-            <div>
-              <input
-                className="hidden"
-                type="file"
-                onChange={event => handleChange(event)}
-                ref={fileInputRef}
-              />
-              <Button
-                type="primary"
-                width="250px"
-                margin="55px 0 0 0"
-                height="45px"
-                marginMobile="30px 0 0 0"
-                size="sm"
-                onClick={() => fileInputRef.current.click()}
-              >
-                Upload Photo
-              </Button>
-            </div>
-          </Styled.ProfileWrapper>
+          {({ values, handleSubmit, setFieldValue }) => (
+            <form onSubmit={handleSubmit}>
+              <CenteredFlexContainer>
+                <Grid
+                  columns="1fr"
+                  marginBottom
+                  mediaConfig={{
+                    aboveTabletLarge: {
+                      'grid-template-columns': '1fr 1fr',
+                    },
+                    belowTabletLarge: {
+                      'grid-gap': spacing.xl,
+                    },
+                  }}
+                  gridGap={spacing.xxxxl}
+                >
+                  <Styled.ProfileWrapper>
+                    <div>
+                      {' '}
+                      <Styled.Image src={profileImage} />
+                    </div>
+                    <div>
+                      <input
+                        className="hidden"
+                        type="file"
+                        onChange={event => handleChange(event)}
+                        ref={fileInputRef}
+                      />
+                      <Button
+                        type="primary"
+                        width="250px"
+                        margin="55px 0 0 0"
+                        height="45px"
+                        marginMobile="30px 0 0 0"
+                        size="sm"
+                        onClick={() => fileInputRef.current.click()}
+                      >
+                        Upload Photo
+                      </Button>
+                    </div>
+                  </Styled.ProfileWrapper>
+                  <div>
+                    <AdminInput
+                      name="fullName"
+                      type="text"
+                      label="Full Name"
+                      color="white"
+                      backgroundColor="#293150"
+                      width="600px"
+                      inputColor="white"
+                      mobileWidth="300px"
+                      height="50px"
+                      fontSize="h4"
+                      noMargin="0"
+                    />
+                    <AdminInput
+                      name="profileTitle"
+                      type="text"
+                      label="Profile Title ( optional )"
+                      backgroundColor="#293150"
+                      color="white"
+                      inputColor="white"
+                      width="600px"
+                      mobileWidth="300px"
+                      fontSize="h4"
+                      height="50px"
+                    />
+                    <AdminInput
+                      name="website"
+                      type="text"
+                      label="Website ( optional )"
+                      backgroundColor="#293150"
+                      color="white"
+                      width="600px"
+                      inputColor="white"
+                      mobileWidth="300px"
+                      height="50px"
+                      fontSize="h4"
+                    />
+                    <AdminInput
+                      name="linkdinProfiile"
+                      type="text"
+                      label="Linkdin Profile ( optional )"
+                      backgroundColor="#293150"
+                      color="white"
+                      width="600px"
+                      inputColor="white"
+                      mobileWidth="300px"
+                      height="50px"
+                      fontSize="h4"
+                    />
+                    <AdminInput
+                      name="facebookProfile"
+                      type="text"
+                      label="Facebook Profile ( optional )"
+                      backgroundColor="#293150"
+                      color="white"
+                      width="600px"
+                      inputColor="white"
+                      mobileWidth="300px"
+                      height="50px"
+                      fontSize="h4"
+                    />
+                    <AdminInput
+                      name="instagramProfile"
+                      type="text"
+                      label="Instagram Profile ( optional )"
+                      backgroundColor="#293150"
+                      color="white"
+                      inputColor="white"
+                      width="600px"
+                      mobileWidth="300px"
+                      height="50px"
+                      fontSize="h4"
+                    />
+                    <AdminInput
+                      name="twitterProfiile"
+                      type="text"
+                      label="Twitter Profile ( optional )"
+                      backgroundColor="#293150"
+                      color="white"
+                      width="600px"
+                      inputColor="white"
+                      mobileWidth="300px"
+                      height="50px"
+                      fontSize="h4"
+                    />
+                  </div>
+                </Grid>
+                <EditAccount />
+                <BillingDetails />
+              </CenteredFlexContainer>
 
-          <Formik
-            initialValues={{ ...initialFormValues }}
-            enableReinitialize={true}
-            onSubmit={(values, { setSubmitting }) => {
-              setSubmitting(true);
-              setTimeout(() => setSubmitting(false), 1000);
-            }}
-          >
-            <form>
-              <AdminInput
-                name="name"
-                type="text"
-                label="Full Name"
-                color="white"
-                backgroundColor="#293150"
-                width="600px"
-                mobileWidth="300px"
-                height="50px"
-                fontSize="h4"
-                noMargin="0"
-              />
-              <AdminInput
-                name="profile title"
-                type="text"
-                label="Profile Title ( optional )"
-                backgroundColor="#293150"
-                color="white"
-                width="600px"
-                mobileWidth="300px"
-                fontSize="h4"
-                height="50px"
-              />
-              <AdminInput
-                name="website"
-                type="text"
-                label="Website ( optional )"
-                backgroundColor="#293150"
-                color="white"
-                width="600px"
-                mobileWidth="300px"
-                height="50px"
-                fontSize="h4"
-              />
-              <AdminInput
-                name="Linkdin Profiile"
-                type="text"
-                label="Linkdin Profile ( optional )"
-                backgroundColor="#293150"
-                color="white"
-                width="600px"
-                mobileWidth="300px"
-                height="50px"
-                fontSize="h4"
-              />
-              <AdminInput
-                name="Facebook Profile"
-                type="text"
-                label="Facebook Profile ( optional )"
-                backgroundColor="#293150"
-                color="white"
-                width="600px"
-                mobileWidth="300px"
-                height="50px"
-                fontSize="h4"
-              />
-              <AdminInput
-                name="Instagram Profile"
-                type="text"
-                label="Instagram Profile ( optional )"
-                backgroundColor="#293150"
-                color="white"
-                width="600px"
-                mobileWidth="300px"
-                height="50px"
-                fontSize="h4"
-              />
-              <AdminInput
-                name="Twitter Profiile"
-                type="text"
-                label="Twitter Profile ( optional )"
-                backgroundColor="#293150"
-                color="white"
-                width="600px"
-                mobileWidth="300px"
-                height="50px"
-                fontSize="h4"
-              />
+              <CenteredFlexContainer>
+                <Styled.RowContainer>
+                  <Button
+                    type="primary"
+                    width="250px"
+                    margin="0 40px 0 0"
+                    height="45px"
+                    marginMobile="35px 0 0 0"
+                    size="sm"
+                  >
+                    UPDATE MY PROFILE
+                  </Button>
+                  <Button
+                    type="action"
+                    width="250px"
+                    margin="0 0 0 0"
+                    height="45px"
+                    marginMobile="32px 0 0 0"
+                    size="sm"
+                    color="white"
+                  >
+                    CANCEL
+                  </Button>
+                </Styled.RowContainer>
+              </CenteredFlexContainer>
             </form>
-          </Formik>
-        </Grid>
+          )}
+        </Formik>
       </CenteredFlexContainer>
-      <EditAccount />
-      <BillingDetails />
     </CenteredFlexContainer>
   );
 };
 const initialFormValues = {
-  name: '',
-  cardnumber: '',
-  expirydate: '',
-  cvv: '',
+  fullName: '',
+  profileTitle: '',
+  website: '',
+  linkdinProfiile: '',
+  facebookProfile: '',
+  instagramProfile: '',
+  twitterProfiile: '',
+  addressLine01: '',
+  addressLine02: '',
+  city: '',
+  state: '',
+  postalCode: '',
+  country: '',
+  email: '',
+  password: '',
+  countryCode: '',
+  mobileNo: '',
 };
 
 const mapStateToProps = state => ({
-  user: state.user,
+  userProfile: { ...initialFormValues, ...getUserProfileSelector(state) },
+  user: getUserSelector(state),
 });
 export default connect(mapStateToProps)(needsLoginWrapper(EditProfile));
