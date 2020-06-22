@@ -126,7 +126,6 @@ function* fetchCourses({ payload = {} }) {
       'courses',
       payload.queries,
     );
-    debugger;
     yield put(resourceActions.fetchCourses.success(courses));
   } catch (err) {
     yield put(resourceActions.fetchCourses.failure(err));

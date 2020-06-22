@@ -4,10 +4,16 @@ import { useRouter } from 'next/router';
 import PageContent from '../../components/foundation/PageContent';
 import { connect } from 'react-redux';
 import { resourceActions } from '../../store/actions';
-import { LEARNING_PATH_VALUES, LEARNING_PATH } from '../../constants';
+import { LEARNING_PATH_VALUES, LEARNING_PATH, LEVEL } from '../../constants';
 import { getCourses, getLearningPaths } from '../../store/selectors';
 import CoursesLearningPath from '../../components/pages/dashboard/courses/coursesLearningPath/CoursesLearningPath';
 import ContainerBase from '../../components/foundation/ContainerBase'; //'../../../../foundation/ContainerBase';
+import LearningPathCard from '../../components/foundation/learningPathCard/LearningPathCard';
+import Grid from '../../components/foundation/Grid';
+import { background, spacing } from '../../constants/styles';
+import SectionTitle from '../../components/foundation/typography/SectionTitle';
+import ProfileLearning from '../../components/foundation/profileLearning/ProfileLearning';
+import CoursesLevel from '../../components/pages/dashboard/courses/coursesLevel/CoursesLevel';
 
 const Path = ({ dispatch, courses, learningPaths }) => {
   const {
@@ -32,20 +38,23 @@ const Path = ({ dispatch, courses, learningPaths }) => {
 
   let heading = LEARNING_PATH[title] + ' Learning Path';
   heading = heading.toUpperCase();
+  console.log('---courses--');
+  console.log(courses);
 
   return (
     <ErrorBoundary>
-      {/* <PageContent hasDefaultMarginTop={true}> */}
-      {/* <h1>Learning path: {path}</h1> */}
       <>
         <CoursesLearningPath title={heading} descr={learningPathData.descr} />
-        {courses &&
-          Object.keys(courses).map(key => {
-            const course = courses[key];
-            return <h2>{course.title}</h2>;
-          })}
+
+        <PageContent hasDefaultMarginTop={true} maxWidth="800px">
+          {
+            <CoursesLevel
+              courses={courses}
+              learningPathData={learningPathData}
+            />
+          }
+        </PageContent>
       </>
-      {/* </PageContent> */}
     </ErrorBoundary>
   );
 };
