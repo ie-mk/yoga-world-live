@@ -46,7 +46,7 @@ const Path = ({ dispatch, courses, learningPaths }) => {
       <>
         <CoursesLearningPath title={heading} descr={learningPathData.descr} />
 
-        <PageContent hasDefaultMarginTop={true} maxWidth="800px">
+        <PageContent hasDefaultMarginTop={true} maxWidth="1100px">
           {
             <CoursesLevel
               courses={courses}

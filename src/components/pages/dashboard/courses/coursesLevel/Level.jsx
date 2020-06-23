@@ -6,7 +6,9 @@ import ContainerBase from '../../../../foundation/ContainerBase';
 import SectionTitle from '../../../../foundation/typography/SectionTitle';
 import Grid from '../../../../foundation/Grid';
 import { fontSizeMap, spacing } from '../../../../../constants/styles';
+import CenteredFlexContainer from '../../../../foundation/CenteredFlexContainer';
 import ProfileLearning from '../../../../foundation/profileLearning/ProfileLearning';
+
 import {
   LEARNING_PATH_VALUES,
   LEARNING_PATH,
@@ -17,6 +19,7 @@ const Level = ({ courses, learningPathData, heading }) => {
   return (
     <Styled.Wrapper>
       <SectionTitle text={heading} />
+
       <Styled.TextWrapper>
         <BodyText>{learningPathData.descr}</BodyText>
       </Styled.TextWrapper>

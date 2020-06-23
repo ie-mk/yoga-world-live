@@ -4,13 +4,14 @@ import ResponsiveImage from '../../../../foundation/ResponsiveImage'; //'../../f
 import BodyText from '../../../../foundation/typography/BodyText';
 import ContainerBase from '../../../../foundation/ContainerBase';
 import SectionTitle from '../../../../foundation/typography/SectionTitle';
+import CenteredFlexContainer from '../../../../foundation/CenteredFlexContainer';
 
 const CoursesLearningPath = ({ title, descr }) => {
   return (
     <Styled.Wrapper>
       <ResponsiveImage
         src="/img/Background.png"
-        height="100vh"
+        height="120vh"
         width="100%"
         position="absolute"
         mediaConfig={{
@@ -26,14 +27,19 @@ const CoursesLearningPath = ({ title, descr }) => {
         <Styled.TextWrapper>
           <BodyText>{descr}</BodyText>
         </Styled.TextWrapper>
-        <ContainerBase position="relative">
+        {/* <ContainerBase 
+          position="relative"
+        > */}
+        <CenteredFlexContainer>
           <ResponsiveImage
             src="/img/Frontend_Dev_Illustration.png"
-            width="90%"
+            width="100%"
             padding="32%"
             backGroundSize="contain"
           />
-        </ContainerBase>
+        </CenteredFlexContainer>
+
+        {/* </ContainerBase> */}
       </Styled.Content>
     </Styled.Wrapper>
   );

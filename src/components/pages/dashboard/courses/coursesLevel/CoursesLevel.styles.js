@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 ${spacing.lg};
+  padding: 0 ${spacing.lg} 50px;
   margin-bottom: ${spacing.xxxxxxl};
 `;
 
@@ -36,13 +36,6 @@ const TextWrapper = styled.div`
     margin-left: auto;
     margin-right: auto;
 
-  `}
-`;
-const StyledH3 = styled.h3`
-  font-size: ${fontSizeMap.h3};
-  z-index: 1;
-  ${media.belowTabletLarge`
-    font-size: ${fontSizeMap.text};
   `}
 `;
 
