@@ -17,7 +17,7 @@ export const Label = styled.div`
   ${media.belowTabletLarge`
     font-size: ${fontSizeMap.textMobile};
   `}
-  color: ${colors.black};
+  color: ${({ color }) => (color ? color : colors.black)};
   margin-left: ${({ marginLeft }) => (marginLeft ? marginLeft : '')};
   margin-right: ${({ marginRight }) => (marginRight ? marginRight : '')};
 `;
@@ -33,13 +33,17 @@ export const InputStyles = styled.div`
       backgroundColor ? backgroundColor : '#f0f0f7'};
     background-color: ${({ disabled }) =>
       disabled ? lightenDarkenColor('#f0f0f7', -20) : ''};
-    line-height: 40px;
+    line-height: ${({ height }) => (height ? height : '40px')};
     font-size: ${fontSizeMap.text};
+    color: ${({ inputColor }) => (inputColor ? inputColor : '')};
     width: 100%;
     padding-left: ${spacing.sm};
     //border: 1px solid #909090;
     border-radius: ${borderRadius.sm};
     opacity: 1;
+    ${media.belowTabletLarge`
+    line-height: 40px;
+  `}
   }
 
   input[type='checkbox'] {
@@ -83,6 +87,9 @@ const Wrapper = styled.div`
   color: ${colors.black};
   margin-top: ${({ noMargin }) => (noMargin ? '0' : spacing.xl)};
   margin-bottom: ${({ noMargin }) => (noMargin ? '0' : spacing.xl)};
+  ${media.belowTabletLarge`
+  width: ${({ mobileWidth }) => (mobileWidth ? mobileWidth : '')};
+`}
 `;
 
 const UploadImageButton = styled.label`

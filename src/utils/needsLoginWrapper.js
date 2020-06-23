@@ -4,7 +4,7 @@ import { getOrCreateStore } from '../store/store';
 import { getUID } from '../store/selectors';
 import Router from 'next/router';
 
-const needsLoginWrapper = Component => () => {
+const needsLoginWrapper = Component => props => {
   if (!IS_SERVER) {
     const state = getOrCreateStore().getState();
     const uid = getUID(state);
@@ -16,7 +16,7 @@ const needsLoginWrapper = Component => () => {
       return null;
     }
   }
-  return <Component />;
+  return <Component {...props} />;
 };
 
 export default needsLoginWrapper;

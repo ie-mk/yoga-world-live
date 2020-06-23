@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Styled from './Profile.styles';
 import ContainerBase from '../foundation/ContainerBase';
 import { connect } from 'react-redux';
@@ -10,19 +10,32 @@ import FlexContainer from '../foundation/FlexContainer';
 import Billing from './billing/Billing';
 import Preferences from './preferences/Preferences';
 import Learning from './learning/Learning';
-const Profile = ({ user }) => {
+import Router from 'next/router';
+import { userActions } from '../../store/actions';
+
+const Profile = ({ dispatch, profile }) => {
   const [activeTab, setActiveTab] = useState('learning');
+
+  const uid = profile && profile.uid;
+  useEffect(() => {
+    dispatch(userActions.fetchUserProfile.request(uid));
+  }, [uid]);
 
   const isActiveLearning = activeTab === 'learning';
   const isActiveInbox = activeTab === 'inbox';
   const isActiveBilling = activeTab === 'billing';
   const isActivePreferences = activeTab === 'preferences';
 
+  const toEditPage = () =>
+    Router.push('/editProfile', '/editProfile', {
+      shallow: true,
+    });
+
   return (
     <ContainerBase>
       <Styled.ProfileWrapper>
         <Styled.ImageWrapper>
-          <Styled.Image src={user.photoURL} />
+          <Styled.Image src={profile.profileImage || profile.photoURL} />
           <Button
             className="mobileView"
             type="primary"
@@ -32,6 +45,7 @@ const Profile = ({ user }) => {
             size="sm"
             margin="34px 0 0"
             mobileSameSize={true}
+            onClick={toEditPage}
           >
             Edit
           </Button>
@@ -71,6 +85,7 @@ const Profile = ({ user }) => {
               height="45px"
               size="sm"
               margin="0"
+              onClick={toEditPage}
             >
               Edit
             </Button>
@@ -118,7 +133,7 @@ const Profile = ({ user }) => {
 };
 
 const mapStateToProps = state => ({
-  user: state.user.loginProviderData,
+  profile: state.user.profile,
 });
 
 export default connect(mapStateToProps)(Profile);
