@@ -9,16 +9,6 @@ import { connect } from 'react-redux';
 import Text24 from '../../../foundation/typography/Text24';
 import CenteredFlexContainer from '../../../foundation/CenteredFlexContainer';
 
-const CustomText24 = props => (
-  <Text24
-    mediaConfig={{
-      belowTabletLarge: {
-        margin: '0 0 7px 0',
-      },
-    }}
-    {...props}
-  />
-);
 const EditAccountDetails = () => {
   return (
     <>
@@ -29,8 +19,13 @@ const EditAccountDetails = () => {
           fontWeight="700"
           text="Account Details"
         />
-        <CustomText24
+        <Text24
           margin="0 0 65px 0"
+          mediaConfig={{
+            belowTabletLarge: {
+              margin: '0 0 7px 0',
+            },
+          }}
           text="Your account information is used to log in and for password recovery"
         />
       </CenteredFlexContainer>

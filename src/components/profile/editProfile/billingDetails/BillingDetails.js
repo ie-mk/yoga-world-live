@@ -9,16 +9,6 @@ import { connect } from 'react-redux';
 import Text24 from '../../../foundation/typography/Text24';
 import CenteredFlexContainer from '../../../foundation/CenteredFlexContainer';
 
-const CustomText24 = props => (
-  <Text24
-    mediaConfig={{
-      belowTabletLarge: {
-        margin: '0 0 7px 0',
-      },
-    }}
-    {...props}
-  />
-);
 const BillingDetails = () => {
   return (
     <>
