@@ -11,21 +11,6 @@ const Wrapper = styled.div`
   margin-bottom: ${spacing.xxl};
 `;
 
-const Content = styled.div`
-  max-width: 800px;
-  z-index: 1;
-  padding-top: ${spacing.xxxl};
-`;
-
-const HeaderWrapper = styled.div`
-  margin: 150px 50px 60px;
-  text-align: center;
-
-  ${media.aboveTablet`
-    margin: auto;
-  `}
-`;
-
 const TextWrapper = styled.div`
   margin: 0 30px 40px;
   text-align: center;
@@ -39,7 +24,5 @@ const TextWrapper = styled.div`
 
 export default {
   Wrapper,
-  Content,
-  HeaderWrapper,
   TextWrapper,
 };

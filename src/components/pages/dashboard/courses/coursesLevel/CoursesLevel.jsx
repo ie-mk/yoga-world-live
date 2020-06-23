@@ -3,8 +3,7 @@ import Level from './Level';
 
 const CoursesLevel = ({ courses, learningPathData }) => {
   const coursesData = Object.values(courses);
-  console.log('---coursesData--');
-  console.log(coursesData);
+
   const begginercourses = coursesData.filter(a => a.level == 'beginner');
 
   const intermediatecourses = coursesData.filter(
