@@ -140,7 +140,7 @@ const EditProfile = ({
                     fontSize="h4"
                   />
                   <AdminInput
-                    name="linkdinProfiile"
+                    name="linkdinProfile"
                     type="text"
                     label="Linkdin Profile ( optional )"
                     backgroundColor="#293150"
@@ -176,7 +176,7 @@ const EditProfile = ({
                     fontSize="h4"
                   />
                   <AdminInput
-                    name="twitterProfiile"
+                    name="twitterProfile"
                     type="text"
                     label="Twitter Profile ( optional )"
                     backgroundColor="#293150"
@@ -227,10 +227,10 @@ const initialFormValues = {
   fullName: '',
   profileTitle: '',
   website: '',
-  linkdinProfiile: '',
+  linkdinProfile: '',
   facebookProfile: '',
   instagramProfile: '',
-  twitterProfiile: '',
+  twitterProfile: '',
   addressLine01: '',
   addressLine02: '',
   city: '',
