@@ -11,7 +11,7 @@ const CoursesLearningPath = ({ title, descr }) => {
     <Styled.Wrapper>
       <ResponsiveImage
         src="/img/Background.png"
-        height="120vh"
+        height="100vh"
         width="100%"
         position="absolute"
         mediaConfig={{
@@ -27,7 +27,7 @@ const CoursesLearningPath = ({ title, descr }) => {
         <Styled.TextWrapper>
           <BodyText>{descr}</BodyText>
         </Styled.TextWrapper>
-        {/* <ContainerBase 
+        {/* <ContainerBase
           position="relative"
         > */}
         <CenteredFlexContainer>

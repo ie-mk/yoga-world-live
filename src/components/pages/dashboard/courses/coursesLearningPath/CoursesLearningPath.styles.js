@@ -3,16 +3,13 @@ import { fontSizeMap, spacing } from '../../../../../constants/styles';
 import media from '../../../../foundation/media';
 
 const Wrapper = styled.div`
-  height: 120vh;
+  height: 100vh;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0 ${spacing.lg};
   //margin-bottom: ${spacing.xxl};
-  ${media.belowTabletLarge`
-     height: 80vh;
-  `}
 `;
 
 const Content = styled.div`
