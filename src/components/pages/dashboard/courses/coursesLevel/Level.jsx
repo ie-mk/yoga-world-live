@@ -18,7 +18,7 @@ import {
 const Level = ({ courses, learningPathData, heading }) => {
   return (
     <Styled.Wrapper>
-      <SectionTitle text={heading} />
+      <SectionTitle text={heading} textAlign="center" />
 
       <Styled.TextWrapper>
         <BodyText>{learningPathData.descr}</BodyText>

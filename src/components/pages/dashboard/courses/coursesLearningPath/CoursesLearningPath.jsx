@@ -22,7 +22,7 @@ const CoursesLearningPath = ({ title, descr }) => {
       />
       <Styled.Content>
         <Styled.HeaderWrapper>
-          <SectionTitle text={title} />
+          <SectionTitle text={title} textAlign="center" />
         </Styled.HeaderWrapper>
         <Styled.TextWrapper>
           <BodyText>{descr}</BodyText>
@@ -34,7 +34,7 @@ const CoursesLearningPath = ({ title, descr }) => {
           <ResponsiveImage
             src="/img/Frontend_Dev_Illustration.png"
             width="100%"
-            padding="32%"
+            padding="25%"
             backGroundSize="contain"
           />
         </CenteredFlexContainer>
