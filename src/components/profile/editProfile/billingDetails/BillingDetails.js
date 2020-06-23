@@ -22,16 +22,23 @@ const CustomText24 = props => (
 const BillingDetails = () => {
   return (
     <>
-      <HeroTitle
-        margin="125px 0 46px 0"
-        mobileMargin="60px 0 23px 0"
-        fontWeight="700"
-        text="Billing Details"
-      />
-      <CustomText24
-        margin="0 0 65px 0"
-        text="Your address is used to prepare your invoices. Your city and country are shown on profile for networking fetures"
-      />
+      <CenteredFlexContainer>
+        <HeroTitle
+          margin="125px 0 46px 0"
+          mobileMargin="60px 0 23px 0"
+          fontWeight="700"
+          text="Billing Details"
+        />
+        <Text24
+          margin="0 0 65px 0"
+          mediaConfig={{
+            belowTabletLarge: {
+              margin: '0 0 7px 0',
+            },
+          }}
+          text="Your address is used to prepare your invoices. Your city and country are shown on profile for networking fetures"
+        />
+      </CenteredFlexContainer>
       <AdminInput
         name="addressLine01"
         type="text"
@@ -83,7 +90,6 @@ const BillingDetails = () => {
             mobileWidth="300px"
             height="50px"
             fontSize="h4"
-            noMargin="0"
           />
         </Styled.ViewWraper>
       </Styled.RowContainer>
@@ -99,6 +105,7 @@ const BillingDetails = () => {
           mobileWidth="300px"
           height="50px"
           fontSize="h4"
+          noMargin="0"
         />
         <Styled.ViewWraper>
           <AdminInput
@@ -112,7 +119,6 @@ const BillingDetails = () => {
             mobileWidth="300px"
             height="50px"
             fontSize="h4"
-            noMargin="0"
           />
         </Styled.ViewWraper>
       </Styled.RowContainer>

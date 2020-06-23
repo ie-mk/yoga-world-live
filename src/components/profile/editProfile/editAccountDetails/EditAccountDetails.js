@@ -7,6 +7,7 @@ import AdminInput from '../../../foundation/input/AdminInput';
 import Button from '../../../foundation/button/Button';
 import { connect } from 'react-redux';
 import Text24 from '../../../foundation/typography/Text24';
+import CenteredFlexContainer from '../../../foundation/CenteredFlexContainer';
 
 const CustomText24 = props => (
   <Text24
@@ -21,16 +22,18 @@ const CustomText24 = props => (
 const EditAccountDetails = () => {
   return (
     <>
-      <HeroTitle
-        margin="125px 0 46px 0"
-        mobileMargin="60px 0 23px 0"
-        fontWeight="700"
-        text="Account Details"
-      />
-      <CustomText24
-        margin="0 0 65px 0"
-        text="Your account information is used to log in and for password recovery"
-      />
+      <CenteredFlexContainer>
+        <HeroTitle
+          margin="125px 0 46px 0"
+          mobileMargin="60px 0 23px 0"
+          fontWeight="700"
+          text="Account Details"
+        />
+        <CustomText24
+          margin="0 0 65px 0"
+          text="Your account information is used to log in and for password recovery"
+        />
+      </CenteredFlexContainer>
       <Styled.RowContainer>
         <AdminInput
           name="email"
@@ -94,7 +97,7 @@ const EditAccountDetails = () => {
           fontSize="h4"
           noMargin="0"
         />
-        <div style={{ margin: '12px 0 0 20px' }}>
+        <Styled.ViewWrapper>
           <AdminInput
             name="mobileNo"
             type="text"
@@ -107,7 +110,7 @@ const EditAccountDetails = () => {
             fontSize="h4"
             noMargin="0"
           />
-        </div>
+        </Styled.ViewWrapper>
       </Styled.RowContainer>
     </>
   );

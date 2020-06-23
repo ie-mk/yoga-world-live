@@ -56,21 +56,21 @@ export const userReducer = handleActions(
       userLanguage: action.payload,
     }),
 
-    // /*===============================================================*/
-    // [userActions.fetchUserPermissions.success.type]: state => ({
-    //   ...state,
-    //   loading: true,
-    // }),
-    // [userActions.fetchUserPermissions.success.type]: (state, action) => ({
-    //   ...state,
-    //   loading: false,
-    //   permissions: action.payload,
-    // }),
-    // [userActions.fetchUserPermissions.failure.type]: (state, action) => ({
-    //   ...state,
-    //   loading: false,
-    //   fetchPermissionsError: action.payload,
-    // }),
+    /*===============================================================*/
+    [userActions.fetchUserPermissions.success.type]: state => ({
+      ...state,
+      loading: true,
+    }),
+    [userActions.fetchUserPermissions.success.type]: (state, action) => ({
+      ...state,
+      loading: false,
+      permissions: action.payload,
+    }),
+    [userActions.fetchUserPermissions.failure.type]: (state, action) => ({
+      ...state,
+      loading: false,
+      fetchPermissionsError: action.payload,
+    }),
     ...getAsyncReducers({
       action: userActions.fetchUserPermissions,
       resultProp: 'permissions',
@@ -79,20 +79,20 @@ export const userReducer = handleActions(
 
     /*===============================================================*/
 
-    // [userActions.fetchUserProfile.request.type]: state => ({
-    //   ...state,
-    //   loading: true,
-    // }),
-    // [userActions.fetchUserProfile.success.type]: (state, action) => ({
-    //   ...state,
-    //   loading: false,
-    //   profile: action.payload,
-    // }),
-    // [userActions.fetchUserProfile.failure.type]: (state, action) => ({
-    //   ...state,
-    //   loading: false,
-    //   fetchProfileError: action.payload,
-    // }),
+    [userActions.fetchUserProfile.request.type]: state => ({
+      ...state,
+      loading: true,
+    }),
+    [userActions.fetchUserProfile.success.type]: (state, action) => ({
+      ...state,
+      loading: false,
+      profile: action.payload,
+    }),
+    [userActions.fetchUserProfile.failure.type]: (state, action) => ({
+      ...state,
+      loading: false,
+      fetchProfileError: action.payload,
+    }),
 
     ...getAsyncReducers({
       action: userActions.fetchUserProfile,
@@ -102,20 +102,20 @@ export const userReducer = handleActions(
 
     /*===============================================================*/
 
-    // [userActions.updateUserProfile.request]: state => ({
-    //   ...state,
-    //   loading: true,
-    // }),
-    // [userActions.updateUserProfile.success]: (state, action) => ({
-    //   ...state,
-    //   loading: false,
-    //   profile: action.payload,
-    // }),
-    // [userActions.updateUserProfile.failure]: (state, action) => ({
-    //   ...state,
-    //   loading: false,
-    //   saveProfileError: action.payload,
-    // }),
+    [userActions.updateUserProfile.request]: state => ({
+      ...state,
+      loading: true,
+    }),
+    [userActions.updateUserProfile.success]: (state, action) => ({
+      ...state,
+      loading: false,
+      profile: action.payload,
+    }),
+    [userActions.updateUserProfile.failure]: (state, action) => ({
+      ...state,
+      loading: false,
+      saveProfileError: action.payload,
+    }),
 
     ...getAsyncReducers({
       action: userActions.updateUserProfile,

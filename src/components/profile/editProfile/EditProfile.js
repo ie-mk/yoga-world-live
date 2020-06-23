@@ -26,8 +26,9 @@ const EditProfile = ({
 }) => {
   const fileInputRef = useRef(null);
   const profileImage = profile && (profile.profileImage || profile.photoURL);
-
   const uid = profile.uid;
+
+  console.log(loading);
 
   const handleChange = event => {
     if (typeof event.target.files[0] === 'undefined') {
@@ -62,136 +63,134 @@ const EditProfile = ({
         >
           {({ values, handleSubmit, setFieldValue }) => (
             <form onSubmit={handleSubmit}>
-              <CenteredFlexContainer>
-                <Grid
-                  columns="1fr"
-                  marginBottom
-                  mediaConfig={{
-                    aboveTabletLarge: {
-                      'grid-template-columns': '1fr 1fr',
-                    },
-                    belowTabletLarge: {
-                      'grid-gap': spacing.xl,
-                    },
-                  }}
-                  gridGap={spacing.xxxxl}
-                >
-                  <Styled.ProfileWrapper>
-                    <div>
-                      {' '}
-                      <Styled.Image src={profileImage} />
-                    </div>
-                    <div>
-                      <input
-                        className="hidden"
-                        type="file"
-                        onChange={event => handleChange(event)}
-                        ref={fileInputRef}
-                      />
-                      <Button
-                        type="primary"
-                        width="250px"
-                        margin="55px 0 0 0"
-                        height="45px"
-                        marginMobile="30px 0 0 0"
-                        size="sm"
-                        onClick={() => fileInputRef.current.click()}
-                      >
-                        Upload Photo
-                      </Button>
-                    </div>
-                  </Styled.ProfileWrapper>
+              <Grid
+                columns="1fr"
+                marginBottom
+                mediaConfig={{
+                  aboveTabletLarge: {
+                    'grid-template-columns': '1fr 1fr',
+                  },
+                  belowTabletLarge: {
+                    'grid-gap': spacing.xl,
+                  },
+                }}
+                gridGap={spacing.xxxxl}
+              >
+                <Styled.ProfileWrapper>
                   <div>
-                    <AdminInput
-                      name="fullName"
-                      type="text"
-                      label="Full Name"
-                      color="white"
-                      backgroundColor="#293150"
-                      width="600px"
-                      inputColor="white"
-                      mobileWidth="300px"
-                      height="50px"
-                      fontSize="h4"
-                      noMargin="0"
-                    />
-                    <AdminInput
-                      name="profileTitle"
-                      type="text"
-                      label="Profile Title ( optional )"
-                      backgroundColor="#293150"
-                      color="white"
-                      inputColor="white"
-                      width="600px"
-                      mobileWidth="300px"
-                      fontSize="h4"
-                      height="50px"
-                    />
-                    <AdminInput
-                      name="website"
-                      type="text"
-                      label="Website ( optional )"
-                      backgroundColor="#293150"
-                      color="white"
-                      width="600px"
-                      inputColor="white"
-                      mobileWidth="300px"
-                      height="50px"
-                      fontSize="h4"
-                    />
-                    <AdminInput
-                      name="linkdinProfiile"
-                      type="text"
-                      label="Linkdin Profile ( optional )"
-                      backgroundColor="#293150"
-                      color="white"
-                      width="600px"
-                      inputColor="white"
-                      mobileWidth="300px"
-                      height="50px"
-                      fontSize="h4"
-                    />
-                    <AdminInput
-                      name="facebookProfile"
-                      type="text"
-                      label="Facebook Profile ( optional )"
-                      backgroundColor="#293150"
-                      color="white"
-                      width="600px"
-                      inputColor="white"
-                      mobileWidth="300px"
-                      height="50px"
-                      fontSize="h4"
-                    />
-                    <AdminInput
-                      name="instagramProfile"
-                      type="text"
-                      label="Instagram Profile ( optional )"
-                      backgroundColor="#293150"
-                      color="white"
-                      inputColor="white"
-                      width="600px"
-                      mobileWidth="300px"
-                      height="50px"
-                      fontSize="h4"
-                    />
-                    <AdminInput
-                      name="twitterProfiile"
-                      type="text"
-                      label="Twitter Profile ( optional )"
-                      backgroundColor="#293150"
-                      color="white"
-                      width="600px"
-                      inputColor="white"
-                      mobileWidth="300px"
-                      height="50px"
-                      fontSize="h4"
-                    />
+                    {' '}
+                    <Styled.Image src={profileImage} />
                   </div>
-                </Grid>
-                <EditAccount />
-                <BillingDetails />
-              </CenteredFlexContainer>
+                  <div>
+                    <input
+                      className="hidden"
+                      type="file"
+                      onChange={event => handleChange(event)}
+                      ref={fileInputRef}
+                    />
+                    <Button
+                      type="primary"
+                      width="250px"
+                      margin="55px 0 0 0"
+                      height="45px"
+                      marginMobile="30px 0 0 0"
+                      size="sm"
+                      onClick={() => fileInputRef.current.click()}
+                    >
+                      Upload Photo
+                    </Button>
+                  </div>
+                </Styled.ProfileWrapper>
+                <div>
+                  <AdminInput
+                    name="fullName"
+                    type="text"
+                    label="Full Name"
+                    color="white"
+                    backgroundColor="#293150"
+                    width="600px"
+                    inputColor="white"
+                    mobileWidth="300px"
+                    height="50px"
+                    fontSize="h4"
+                    noMargin="0"
+                  />
+                  <AdminInput
+                    name="profileTitle"
+                    type="text"
+                    label="Profile Title ( optional )"
+                    backgroundColor="#293150"
+                    color="white"
+                    inputColor="white"
+                    width="600px"
+                    mobileWidth="300px"
+                    fontSize="h4"
+                    height="50px"
+                  />
+                  <AdminInput
+                    name="website"
+                    type="text"
+                    label="Website ( optional )"
+                    backgroundColor="#293150"
+                    color="white"
+                    width="600px"
+                    inputColor="white"
+                    mobileWidth="300px"
+                    height="50px"
+                    fontSize="h4"
+                  />
+                  <AdminInput
+                    name="linkdinProfiile"
+                    type="text"
+                    label="Linkdin Profile ( optional )"
+                    backgroundColor="#293150"
+                    color="white"
+                    width="600px"
+                    inputColor="white"
+                    mobileWidth="300px"
+                    height="50px"
+                    fontSize="h4"
+                  />
+                  <AdminInput
+                    name="facebookProfile"
+                    type="text"
+                    label="Facebook Profile ( optional )"
+                    backgroundColor="#293150"
+                    color="white"
+                    width="600px"
+                    inputColor="white"
+                    mobileWidth="300px"
+                    height="50px"
+                    fontSize="h4"
+                  />
+                  <AdminInput
+                    name="instagramProfile"
+                    type="text"
+                    label="Instagram Profile ( optional )"
+                    backgroundColor="#293150"
+                    color="white"
+                    inputColor="white"
+                    width="600px"
+                    mobileWidth="300px"
+                    height="50px"
+                    fontSize="h4"
+                  />
+                  <AdminInput
+                    name="twitterProfiile"
+                    type="text"
+                    label="Twitter Profile ( optional )"
+                    backgroundColor="#293150"
+                    color="white"
+                    width="600px"
+                    inputColor="white"
+                    mobileWidth="300px"
+                    height="50px"
+                    fontSize="h4"
+                  />
+                </div>
+              </Grid>
+              <EditAccount />
+              <BillingDetails />
 
               <CenteredFlexContainer>
                 <Styled.RowContainer>
@@ -206,13 +205,12 @@ const EditProfile = ({
                     UPDATE MY PROFILE
                   </Button>
                   <Button
-                    type="action"
+                    type="secondary"
                     width="250px"
                     margin="0 0 0 0"
                     height="45px"
                     marginMobile="32px 0 0 0"
                     size="sm"
-                    color="white"
                   >
                     CANCEL
                   </Button>
