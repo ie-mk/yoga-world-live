@@ -4,41 +4,54 @@ import { useRouter } from 'next/router';
 import PageContent from '../../components/foundation/PageContent';
 import { connect } from 'react-redux';
 import { resourceActions } from '../../store/actions';
-import { LEARNING_PATH_VALUES } from '../../constants';
-import { getCourses } from '../../store/selectors';
+import { LEARNING_PATH_VALUES, LEARNING_PATH, LEVEL } from '../../constants';
+import { getCourses, getLearningPaths } from '../../store/selectors';
+import CoursesLearningPath from '../../components/pages/dashboard/courses/coursesLearningPath/CoursesLearningPath';
+import CoursesLevel from '../../components/pages/dashboard/courses/coursesLevel/CoursesLevel';
 
-const Path = ({ dispatch, courses }) => {
+const Path = ({ dispatch, courses, learningPaths }) => {
   const {
-    query: { path },
+    query: { learningPathId },
   } = useRouter();
+
+  const learningPathData = learningPaths[learningPathId];
+  const title = learningPathData.title;
 
   useEffect(() => {
     dispatch(resourceActions.resetCourses());
     dispatch(
       resourceActions.fetchCourses.request({
         queries: {
-          learningPath: ['==', LEARNING_PATH_VALUES[path.replace(' ', '')]],
+          learningPath: ['==', title],
         },
       }),
     );
   }, []);
 
+  let heading = LEARNING_PATH[title] + ' Learning Path';
+  heading = heading.toUpperCase();
+
   return (
     <ErrorBoundary>
-      <PageContent hasDefaultMarginTop={true}>
-        <h1>Learning path: {path}</h1>
-        {courses &&
-          Object.keys(courses).map(key => {
-            const course = courses[key];
-            return <h2>{course.title}</h2>;
-          })}
-      </PageContent>
+      <>
+        <CoursesLearningPath title={heading} descr={learningPathData.descr} />
+
+        <PageContent hasDefaultMarginTop={false} maxWidth="1100px">
+          {
+            <CoursesLevel
+              courses={courses}
+              learningPathData={learningPathData}
+            />
+          }
+        </PageContent>
+      </>
     </ErrorBoundary>
   );
 };
 
 const mapStateToProps = state => ({
   courses: getCourses(state),
+  learningPaths: getLearningPaths(state),
 });
 
 export default connect(mapStateToProps)(Path);

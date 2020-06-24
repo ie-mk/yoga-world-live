@@ -11,17 +11,19 @@ const Wrapper = styled.div`
 `;
 
 const Content = styled.div`
-  max-width: 1200px;
+  max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : '1200px')};
   width: 100%;
   padding: ${spacing.lg};
   margin-top: ${({ hasDefaultMarginTop }) =>
     hasDefaultMarginTop ? '100px' : ''};
 `;
 
-const PageContent = ({ children, hasDefaultMarginTop }) => {
+const PageContent = ({ children, hasDefaultMarginTop, maxWidth }) => {
   return (
     <Wrapper>
-      <Content hasDefaultMarginTop={hasDefaultMarginTop}>{children}</Content>
+      <Content hasDefaultMarginTop={hasDefaultMarginTop} maxWidth={maxWidth}>
+        {children}
+      </Content>
     </Wrapper>
   );
 };

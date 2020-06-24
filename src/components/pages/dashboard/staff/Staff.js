@@ -5,7 +5,7 @@ import Styled from './Staff.styles';
 import Table from '../table/Table';
 import { Formik } from 'formik';
 import CustomAdminDropDown from '../practicalTasks/customAdminDropDown/CustomAdminDropDown';
-import AddNewMember from './addNew/AddNewMember';
+import AddNewMember from './addNew/addNewMember';
 
 const Users = () => {
   const messages = {

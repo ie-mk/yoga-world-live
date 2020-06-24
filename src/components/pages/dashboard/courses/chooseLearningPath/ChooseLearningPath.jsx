@@ -15,7 +15,7 @@ import { LEARNING_PATH } from '../../../../../constants';
 const ChooseLearningPath = ({ dispatch, learningPaths }) => {
   useEffect(() => {
     dispatch(resourceActions.fetchLearningPaths.request());
-  });
+  }, []);
 
   return (
     <CenteredFlexContainer marginTop="xxl">
@@ -43,6 +43,7 @@ const ChooseLearningPath = ({ dispatch, learningPaths }) => {
               <LearningPathCard
                 imageSrc={data && data.images && data.images[0]}
                 title={LEARNING_PATH[data.title]}
+                learningPathId={key}
               />
             );
           })}
