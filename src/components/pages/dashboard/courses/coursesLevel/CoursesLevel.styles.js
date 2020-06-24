@@ -14,12 +14,6 @@ const Wrapper = styled.div`
 const TextWrapper = styled.div`
   margin: 0 30px 40px;
   text-align: center;
-
-  ${media.aboveTablet`
-    margin-left: auto;
-    margin-right: auto;
-
-  `}
 `;
 
 export default {

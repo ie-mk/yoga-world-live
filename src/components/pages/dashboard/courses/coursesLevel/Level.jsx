@@ -3,7 +3,7 @@ import Styled from './CoursesLevel.styles';
 import BodyText from '../../../../foundation/typography/BodyText';
 import SectionTitle from '../../../../foundation/typography/SectionTitle';
 import Grid from '../../../../foundation/Grid';
-import { fontSizeMap, spacing } from '../../../../../constants/styles';
+import { fontSizeMap, spacing, colors } from '../../../../../constants/styles';
 import ProfileLearning from '../../../../foundation/profileLearning/ProfileLearning';
 
 const Level = ({ courses, learningPathData, heading }) => {
@@ -34,7 +34,7 @@ const Level = ({ courses, learningPathData, heading }) => {
                 imageSrc={learningPathData.images[0]}
                 title={s.title}
                 subtitle={s.level}
-                background="transparent linear-gradient(180deg, #293150 0%, #1E2540 100%) 0% 0% no-repeat padding-box"
+                background={colors.background.violetprimary}
               />
             );
           })}

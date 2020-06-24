@@ -7,12 +7,6 @@ import { resourceActions } from '../../store/actions';
 import { LEARNING_PATH_VALUES, LEARNING_PATH, LEVEL } from '../../constants';
 import { getCourses, getLearningPaths } from '../../store/selectors';
 import CoursesLearningPath from '../../components/pages/dashboard/courses/coursesLearningPath/CoursesLearningPath';
-import ContainerBase from '../../components/foundation/ContainerBase'; //'../../../../foundation/ContainerBase';
-import LearningPathCard from '../../components/foundation/learningPathCard/LearningPathCard';
-import Grid from '../../components/foundation/Grid';
-import { background, spacing } from '../../constants/styles';
-import SectionTitle from '../../components/foundation/typography/SectionTitle';
-import ProfileLearning from '../../components/foundation/profileLearning/ProfileLearning';
 import CoursesLevel from '../../components/pages/dashboard/courses/coursesLevel/CoursesLevel';
 
 const Path = ({ dispatch, courses, learningPaths }) => {
@@ -22,8 +16,6 @@ const Path = ({ dispatch, courses, learningPaths }) => {
 
   const learningPathData = learningPaths[learningPathId];
   const title = learningPathData.title;
-
-  console.log('------learningPathData: ', learningPathData);
 
   useEffect(() => {
     dispatch(resourceActions.resetCourses());
@@ -38,8 +30,6 @@ const Path = ({ dispatch, courses, learningPaths }) => {
 
   let heading = LEARNING_PATH[title] + ' Learning Path';
   heading = heading.toUpperCase();
-  console.log('---courses--');
-  console.log(courses);
 
   return (
     <ErrorBoundary>
