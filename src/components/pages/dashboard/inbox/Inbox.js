@@ -42,7 +42,13 @@ const Inbox = ({ dispatch, profile }) => {
   const uid = profile && profile.uid;
   console.log(uid);
   useEffect(() => {
-    dispatch(resourceActions.fetchMessage.request(uid));
+    dispatch(
+      resourceActions.fetchMessages.request({
+        queries: {
+          recieverId: ['==', uid],
+        },
+      }),
+    );
   }, [uid]);
 
   return (
