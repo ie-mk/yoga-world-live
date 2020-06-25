@@ -9,10 +9,7 @@ import Button from '../../../../foundation/button/Button';
 
 let AddNewMessage = ({ dispatch, setNewAdd }) => {
   return (
-    <Styled.ModalWrapper>
-      <Styled.RowContainer>
-        <Styled.Title isStrong={true}>New Message</Styled.Title>
-      </Styled.RowContainer>
+    <div>
       <Formik
         initialValues={initialFormValues}
         enableReinitialize={true}
@@ -84,7 +81,7 @@ let AddNewMessage = ({ dispatch, setNewAdd }) => {
           </form>
         )}
       </Formik>
-    </Styled.ModalWrapper>
+    </div>
   );
 };
 
