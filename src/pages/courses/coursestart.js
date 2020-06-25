@@ -8,14 +8,10 @@ import { LEARNING_PATH_VALUES, LEARNING_PATH, LEVEL } from '../../constants';
 import { getCourses, getLearningPaths } from '../../store/selectors';
 import CoursesLearningPath from '../../components/pages/dashboard/courses/coursesLearningPath/CoursesLearningPath';
 
-const CourseStart = ({ dispatch, courses }) => {
+const CourseStart = ({ courses }) => {
   const {
     query: { courseId },
   } = useRouter();
-
-  useEffect(() => {
-    dispatch(resourceActions.fetchCourse.request(courseId));
-  }, []);
 
   let heading = 'HTML';
   heading = heading.toUpperCase();
