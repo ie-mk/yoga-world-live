@@ -40,7 +40,7 @@ const Inbox = ({ dispatch, profile }) => {
   const [newAdd, setNewAdd] = useState(false);
 
   const uid = profile && profile.uid;
-  console.log(uid);
+
   useEffect(() => {
     dispatch(
       resourceActions.fetchMessages.request({
