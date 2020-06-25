@@ -1,48 +1,55 @@
 import React from 'react';
 import Level from './Level';
+import { connect } from 'react-redux';
+import { getCoursesByLevel } from '../../../../../store/selectors';
 
-const CoursesLevel = ({ courses, learningPathData }) => {
-  const coursesData = Object.values(courses);
+const CoursesLevel = ({ coursesByLevel, learningPathData }) => {
+  // const coursesData = Object.values(courses);
 
-  const begginercourses = coursesData.filter(a => a.level === 'beginner');
+  const begginerCourses = coursesByLevel && coursesByLevel.beginner;
 
-  const intermediatecourses = coursesData.filter(
-    a => a.level === 'intermediate',
-  );
-  const advancedcourses = coursesData.filter(a => a.level === 'advanced');
+  const intermediateCourses = coursesByLevel && coursesByLevel.intermediate;
 
-  const BegginnerHeading =
-    'Part-01 : BEGGINER (' + begginercourses.length + ' COURSES)';
-  const IntermediateHeading =
-    'Part-02 : INTERMEDIATE (' + intermediatecourses.length + ' COURSES)';
-  const AdvancedHeading =
-    'Part-03 : ADVANCED (' + advancedcourses.length + ' COURSES)';
+  const advancedCourses = coursesByLevel && coursesByLevel.advanced;
+
+  const begginnerHeading =
+    'Part-01 : BEGGINER (' + Object.keys(begginerCourses).length + ' COURSES)';
+  const intermediateHeading =
+    'Part-02 : INTERMEDIATE (' +
+    Object.keys(intermediateCourses).length +
+    ' COURSES)';
+  const advancedHeading =
+    'Part-03 : ADVANCED (' + Object.keys(advancedCourses).length + ' COURSES)';
 
   return (
     <>
-      {begginercourses.length && (
+      {Object.keys(begginerCourses).length && (
         <Level
-          courses={begginercourses}
+          courses={begginerCourses}
           learningPathData={learningPathData}
-          heading={BegginnerHeading}
+          heading={begginnerHeading}
         />
       )}
-      {intermediatecourses.length && (
+      {Object.keys(intermediateCourses).length && (
         <Level
-          courses={intermediatecourses}
+          courses={intermediateCourses}
           learningPathData={learningPathData}
-          heading={IntermediateHeading}
+          heading={intermediateHeading}
         />
       )}
-      {advancedcourses.length && (
+      {Object.keys(advancedCourses).length && (
         <Level
-          courses={advancedcourses}
+          courses={advancedCourses}
           learningPathData={learningPathData}
-          heading={AdvancedHeading}
+          heading={advancedHeading}
         />
       )}
     </>
   );
 };
 
-export default CoursesLevel;
+const mapStateToProps = state => ({
+  coursesByLevel: getCoursesByLevel(state),
+});
+
+export default connect(mapStateToProps)(CoursesLevel);

@@ -11,14 +11,16 @@ const Level = ({ courses, learningPathData, heading }) => {
   console.log('---courses');
   console.log(courses);
 
-  const toCourseStartPage = ({ s }) => {
+  const toCourseStartPage = (courseId, title) => {
+    debugger;
     Router.push(
       {
-        pathname: '/courses/coursestart',
+        pathname: '/courses/courseStart',
         query: {
-          coursedata: s,
+          courseId,
         },
       },
+      `/course/${title.replace(' ', '')}/start`,
       { shallow: true },
     );
   };
@@ -43,15 +45,16 @@ const Level = ({ courses, learningPathData, heading }) => {
         gridGap={spacing.xxxxl}
       >
         {courses &&
-          courses.map((s, i) => {
+          Object.keys(courses).map((courseId, i) => {
+            const course = courses[courseId];
             return (
               <ProfileLearning
                 key={i}
                 imageSrc={learningPathData.images[0]}
-                title={s.title}
-                subtitle={s.level}
+                title={course.title}
+                subtitle={course.level}
                 background={colors.background.violetprimary}
-                onClick={toCourseStartPage(s)}
+                onClick={() => toCourseStartPage(courseId, course.title)}
               />
             );
           })}

@@ -10,31 +10,26 @@ import CoursesLearningPath from '../../components/pages/dashboard/courses/course
 
 const CourseStart = ({ dispatch, courses }) => {
   const {
-    query: { coursedata },
+    query: { courseId },
   } = useRouter();
 
-  //   useEffect(() => {
-  //     dispatch(resourceActions.resetCourses());
-  //     dispatch(
-  //       resourceActions.fetchCourses.request({  }),
-  //     );
-  //   }, []);
-
-  console.log(coursedata);
-  console.log('---coursedata');
+  useEffect(() => {
+    dispatch(resourceActions.fetchCourse.request(courseId));
+  }, []);
 
   let heading = 'HTML';
   heading = heading.toUpperCase();
+
+  const course = courses[courseId];
 
   return (
     <ErrorBoundary>
       <>
         <CoursesLearningPath title={heading} descr="adecd" />
 
-        <PageContent
-          hasDefaultMarginTop={false}
-          maxWidth="1100px"
-        ></PageContent>
+        <PageContent hasDefaultMarginTop={false} maxWidth="1100px">
+          <h1>{course.title}</h1>
+        </PageContent>
       </>
     </ErrorBoundary>
   );
