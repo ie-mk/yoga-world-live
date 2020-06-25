@@ -146,6 +146,12 @@ export const userReducer = handleActions(
     }),
 
     /*===============================================================*/
+    ...getAsyncReducers({
+      action: userActions.fetchAllUsersPublicInfo,
+      resultProp: 'allUsersPublicInfo',
+    }),
+
+    /*===============================================================*/
 
     [userActions.adToFavourites]: (state, action) => ({
       ...state,
@@ -176,6 +182,7 @@ export const userReducer = handleActions(
     loadingPicture: false,
     error: null,
     isFirstLogin: null,
+    allUsersPublicInfo: {},
   },
 );
 

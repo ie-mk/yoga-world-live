@@ -20,6 +20,7 @@ export const userActions = {
   fetchUsers: createAsyncAction('fetch-users'),
   fetchUserProfile: createAsyncAction('fetch-user-profile'),
   fetchUserPermissions: createAsyncAction('fetch-user-permissions'),
+  fetchAllUsersPublicInfo: createAsyncAction('fetch-all-users-public-info'),
 
   setIsFirstLogin: createAction('SET_IS_FIRST_LOGIN'),
 
