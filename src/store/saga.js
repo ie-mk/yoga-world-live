@@ -118,6 +118,17 @@ function* updateUserProfile({ payload }) {
   }
 }
 
+function* fetchAllUsersPublicInfo() {
+  try {
+    const allUsersPublicInfo = yield api.resource.fetchResources(
+      'usersPublicInfo',
+    );
+    yield userActions.fetchAllUsersPublicInfo.success(allUsersPublicInfo);
+  } catch (err) {
+    yield put(userActions.fetchAllUsersPublicInfo.failure(err));
+  }
+}
+
 // ============================ COURSES =====================================
 
 function* fetchCourses({ payload = {} }) {
@@ -566,6 +577,13 @@ function* rootSaga() {
     takeLatest(userActions.saveUserInfoFromLoginProvider, handleLoginFlow),
   ]);
   yield all([takeLatest(userActions.fetchUsers.request.type, fetchUsers)]);
+  yield all([
+    takeLatest(
+      userActions.fetchAllUsersPublicInfo.request.type,
+      fetchAllUsersPublicInfo,
+    ),
+  ]);
+
   // ========================== COURSES ===============================
   yield all([
     takeLatest(resourceActions.fetchCourses.request.type, fetchCourses),
