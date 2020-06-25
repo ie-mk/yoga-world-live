@@ -5,8 +5,24 @@ import SectionTitle from '../../../../foundation/typography/SectionTitle';
 import Grid from '../../../../foundation/Grid';
 import { fontSizeMap, spacing, colors } from '../../../../../constants/styles';
 import ProfileLearning from '../../../../foundation/profileLearning/ProfileLearning';
+import Router from 'next/router';
 
 const Level = ({ courses, learningPathData, heading }) => {
+  console.log('---courses');
+  console.log(courses);
+
+  const toCourseStartPage = ({ s }) => {
+    Router.push(
+      {
+        pathname: '/courses/coursestart',
+        query: {
+          coursedata: s,
+        },
+      },
+      { shallow: true },
+    );
+  };
+
   return (
     <Styled.Wrapper>
       <SectionTitle text={heading} textAlign="center" />
@@ -35,6 +51,7 @@ const Level = ({ courses, learningPathData, heading }) => {
                 title={s.title}
                 subtitle={s.level}
                 background={colors.background.violetprimary}
+                onClick={toCourseStartPage(s)}
               />
             );
           })}
