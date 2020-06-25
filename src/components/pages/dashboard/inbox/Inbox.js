@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { ContainerBase } from '../../../foundation';
 import Table from '../table/Table';
 import Button from '../../../foundation/button/Button';
@@ -31,12 +32,18 @@ const columnHeaders = [
   'Actions',
 ];
 
-const Inbox = () => {
+const Inbox = ({ dispatch, profile }) => {
   const handleReply = messageId => {
     // TODO
   };
-
+  console.log(profile);
   const [newAdd, setNewAdd] = useState(false);
+
+  const uid = profile && profile.uid;
+  console.log(uid);
+  useEffect(() => {
+    dispatch(resourceActions.fetchMessage.request(uid));
+  }, [uid]);
 
   return (
     <ContainerBase margin="25px" marginRight="25px" marginTop="30px">
@@ -88,5 +95,7 @@ const Inbox = () => {
     </ContainerBase>
   );
 };
-
-export default Inbox;
+const mapStateToProps = state => ({
+  profile: state.user.loginProviderData,
+});
+export default connect(mapStateToProps)(Inbox);

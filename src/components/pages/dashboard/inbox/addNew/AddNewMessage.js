@@ -7,7 +7,7 @@ import AdminTextArea from '../../../../foundation/textarea/AdminTextArea';
 import AdminUploadImage from '../../../../foundation/pictureUploader/PictureUploader';
 import Button from '../../../../foundation/button/Button';
 
-let AddNewMessage = ({ setNewAdd }) => {
+let AddNewMessage = ({ dispatch, setNewAdd }) => {
   return (
     <Styled.ModalWrapper>
       <Styled.RowContainer>
@@ -19,7 +19,7 @@ let AddNewMessage = ({ setNewAdd }) => {
         //  validationSchema={profileFormValidation}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
-          dispatch(userActions.updateUserProfile.request(values));
+          dispatch(resourceActions.createMessage.request({ data: values }));
           setTimeout(() => setSubmitting(false), 1000);
         }}
       >
@@ -94,4 +94,4 @@ const initialFormValues = {
   message: '',
 };
 
-export default AddNewMessage;
+export default connect()(AddNewMessage);

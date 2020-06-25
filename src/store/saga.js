@@ -447,6 +447,7 @@ function* fetchMessages({ payload }) {
 }
 
 function* fetchMessage({ payload: docId }) {
+  console.log(docId);
   try {
     const result = yield api.resource.fetchResource(`messages/${docId}`);
     yield put(resourceActions.fetchMessage.success({ [docId]: result }));

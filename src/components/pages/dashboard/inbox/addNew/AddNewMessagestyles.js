@@ -11,7 +11,7 @@ export const ModalWrapper = styled.div`
   top: 120px;
 left: 250px;
 width: 900px;
-height: 600px;
+height: 750px;
   padding: 20px;
   z-index: 500;
   background-color: white;
