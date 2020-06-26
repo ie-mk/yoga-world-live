@@ -1,4 +1,4 @@
-import React, { useState, memo } from 'react';
+import React, { useState, memo, useEffect } from 'react';
 import Styled from './AddNewMessagestyles';
 import { connect } from 'react-redux';
 import { Formik, ErrorMessage, Field } from 'formik';
@@ -6,13 +6,15 @@ import AdminInput from '../../../../foundation/input/AdminInput';
 import AdminTextArea from '../../../../foundation/textarea/AdminTextArea';
 import AdminUploadImage from '../../../../foundation/pictureUploader/PictureUploader';
 import Button from '../../../../foundation/button/Button';
+import { userActions, resourceActions } from '../../../../../store/actions';
 
 let AddNewMessage = ({ dispatch, setNewAdd }) => {
+  useEffect(() => {
+    dispatch(userActions.fetchAllUsersPublicInfo.request());
+  }, []);
+
   return (
-    <Styled.ModalWrapper>
-      <Styled.RowContainer>
-        <Styled.Title isStrong={true}>New Message</Styled.Title>
-      </Styled.RowContainer>
+    <div>
       <Formik
         initialValues={initialFormValues}
         enableReinitialize={true}
@@ -23,7 +25,7 @@ let AddNewMessage = ({ dispatch, setNewAdd }) => {
           setTimeout(() => setSubmitting(false), 1000);
         }}
       >
-        {({ values, handleSubmit, setFieldValue }) => (
+        {({ values, handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <Styled.InputRow>
               <AdminInput
@@ -84,7 +86,7 @@ let AddNewMessage = ({ dispatch, setNewAdd }) => {
           </form>
         )}
       </Formik>
-    </Styled.ModalWrapper>
+    </div>
   );
 };
 

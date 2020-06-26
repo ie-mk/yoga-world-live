@@ -5,6 +5,9 @@ import Table from '../table/Table';
 import Button from '../../../foundation/button/Button';
 import Styled from './Inbox.styles';
 import AddNewMessage from './addNew/AddNewMessage';
+import { resourceActions } from '../../../../store/actions';
+import Modal from '../../../modal/Modal';
+import { colors } from '../../../../constants/styles';
 
 const messages = {
   '124jq23j234': {
@@ -45,7 +48,7 @@ const Inbox = ({ dispatch, profile }) => {
     dispatch(
       resourceActions.fetchMessages.request({
         queries: {
-          recieverId: ['==', uid],
+          receiverId: ['==', uid],
         },
       }),
     );
@@ -96,7 +99,19 @@ const Inbox = ({ dispatch, profile }) => {
       </Styled.ButtonWrapper>
 
       <ContainerBase>
-        {newAdd && <AddNewMessage setNewAdd={setNewAdd} />}
+        {newAdd && (
+          <Modal
+            styles={{
+              width: '800px',
+              height: 'auto',
+              color: colors.black,
+            }}
+            onClose={() => setNewAdd(false)}
+            title="New message"
+          >
+            <AddNewMessage setNewAdd={setNewAdd} />
+          </Modal>
+        )}
       </ContainerBase>
     </ContainerBase>
   );

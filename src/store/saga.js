@@ -123,7 +123,7 @@ function* fetchAllUsersPublicInfo() {
     const allUsersPublicInfo = yield api.resource.fetchResources(
       'usersPublicInfo',
     );
-    yield userActions.fetchAllUsersPublicInfo.success(allUsersPublicInfo);
+    yield put(userActions.fetchAllUsersPublicInfo.success(allUsersPublicInfo));
   } catch (err) {
     yield put(userActions.fetchAllUsersPublicInfo.failure(err));
   }
