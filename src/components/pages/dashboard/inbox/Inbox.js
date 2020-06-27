@@ -104,10 +104,13 @@ const Inbox = ({ dispatch, profile }) => {
             styles={{
               width: '800px',
               height: 'auto',
-              color: colors.black,
+              color: 'black',
             }}
+            fontSize="24px"
+            marginTop="20px"
+            fontWeight="700"
             onClose={() => setNewAdd(false)}
-            title="New message"
+            title="New Message"
           >
             <AddNewMessage setNewAdd={setNewAdd} />
           </Modal>
