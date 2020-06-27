@@ -41,6 +41,7 @@ const SearchableInput = ({
     <Styled.Wrapper width={width} onKeyDown={handleKeyDown}>
       <Styled.Label>{label}</Styled.Label>
       <input
+        className="search-input"
         name={name}
         onChange={e => {
           setShowOptions(true);

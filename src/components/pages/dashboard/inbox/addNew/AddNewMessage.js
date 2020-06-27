@@ -11,6 +11,8 @@ import SearchableInput from '../../../../searchableInput/SearchableInput';
 import { getAllUsersPublicInfo } from '../../../../../store/selectors';
 
 const AddNewMessage = ({ dispatch, setNewAdd, allUsersPublicInfo }) => {
+  console.log('allUsersPublicInfo');
+
   useEffect(() => {
     dispatch(userActions.fetchAllUsersPublicInfo.request());
   }, [setNewAdd]);
@@ -43,7 +45,7 @@ const AddNewMessage = ({ dispatch, setNewAdd, allUsersPublicInfo }) => {
             <Styled.InputRow>
               <SearchableInput
                 label="Enter Member ID(Name / Email / Phone)"
-                width="60%"
+                width="450px"
                 placeholder="start typing user name"
                 callback={handleUserSearch(setFieldValue)}
                 options={Object.keys(userOptions)}

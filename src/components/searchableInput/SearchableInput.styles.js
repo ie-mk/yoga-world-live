@@ -11,11 +11,19 @@ import media from '../foundation/media';
 const Wrapper = styled.div`
   position: relative;
   width: ${({ width }) => width || ''};
+  .search-input {
+    width: ${({ width }) => width || ''};
+    line-height: 40px;
+    border-radius: ${borderRadius.sm};
+    padding-left: ${spacing.sm};
+    font-size: ${fontSizeMap.text};
+  }
 `;
 
 const OptionsContainer = styled.div`
   position: absolute;
-  top: 51px;
+  top: 71px;
+  width: 450px;
   left: 0;
   z-index: 9;
   background-color: ${colors.white};
