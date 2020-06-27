@@ -7,78 +7,33 @@ import AdminTextArea from '../../../../foundation/textarea/AdminTextArea';
 import AdminUploadImage from '../../../../foundation/pictureUploader/PictureUploader';
 import Button from '../../../../foundation/button/Button';
 import { userActions, resourceActions } from '../../../../../store/actions';
-import SearchInput, { createFilter } from 'react-search-input';
+import SearchableInput from '../../../../searchableInput/SearchableInput';
+import { getAllUsersPublicInfo } from '../../../../../store/selectors';
 
-const KEYS_TO_FILTERS = ['displayname'];
-
-const emails = [
-  {
-    id: 1,
-    user: {
-      name: 'Mathieu',
-    },
-    subject: 'Hi!',
-  },
-  {
-    id: 2,
-    user: {
-      name: 'Bruno',
-    },
-    subject: 'javascript',
-  },
-  {
-    id: 3,
-    user: {
-      name: 'you can search for me using a regex : `java$`',
-    },
-    subject: 'java',
-  },
-  {
-    id: 4,
-    user: {
-      name: 'you can search for me using a regex : `java$`',
-    },
-    subject: 'java',
-  },
-];
-
-let AddNewMessage = ({ dispatch, setNewAdd }) => {
-  const [searchTerm, setSearchTerm] = useState('');
-
+const AddNewMessage = ({ dispatch, setNewAdd, allUsersPublicInfo }) => {
   useEffect(() => {
     dispatch(userActions.fetchAllUsersPublicInfo.request());
   }, [setNewAdd]);
 
-  const filteredEmails = emails.filter(email => {
-    console.log(searchTerm);
-    return email.user.name.indexOf(searchTerm) !== -1;
+  const [selectedUserName, setSelectedUserName] = useState(null);
+
+  const userOptions = {};
+
+  Object.keys(allUsersPublicInfo).forEach(key => {
+    const userObject = allUsersPublicInfo[key];
+    userOptions[userObject.displayName] = key;
   });
 
-  const searchUpdated = term => {
-    console.log(term);
-    setSearchTerm(term);
-  };
+  console.log('------userId: ', userOptions[selectedUserName]);
+
+  // function onKeyDown(keyEvent) {
+  //   if ((keyEvent.charCode || keyEvent.keyCode) === 13) {
+  //     keyEvent.preventDefault();
+  //   }
+  // }
+
   return (
     <div>
-      <Styled.FilterWrapper>
-        <SearchInput className="search-input" onChange={searchUpdated} />
-        {!searchTerm &&
-          filteredEmails.map(email => {
-            return (
-              <div
-                style={{
-                  padding: '10px 0px',
-                  backgroundColor: 'green',
-                  position: 'absolute',
-                  zIndex: 500,
-                }}
-                key={email.id}
-              >
-                <div className="from">{email.user.name}</div>
-              </div>
-            );
-          })}
-      </Styled.FilterWrapper>
       <Formik
         initialValues={initialFormValues}
         enableReinitialize={true}
@@ -90,16 +45,19 @@ let AddNewMessage = ({ dispatch, setNewAdd }) => {
         }}
       >
         {({ values, handleSubmit }) => (
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} /*onKeyDown={onKeyDown}*/>
             <Styled.InputRow>
-              <AdminInput
-                name="memberId"
-                type="text"
+              <SearchableInput
                 label="Enter Member ID(Name / Email / Phone)"
                 width="60%"
-                backgroundColor="white"
-                placeholder="Enter name,email or phone"
-                noMargin="0"
+                placeholder="start typing user name"
+                callback={setSelectedUserName}
+                options={Object.keys(userOptions)}
+              />
+              <input
+                name="memberId"
+                className="hidden"
+                value={userOptions[selectedUserName]}
               />
               <AdminUploadImage width="40%" label="Attachements" />
             </Styled.InputRow>
@@ -162,4 +120,8 @@ const initialFormValues = {
   message: '',
 };
 
-export default connect()(AddNewMessage);
+const mapStateToProps = state => ({
+  allUsersPublicInfo: getAllUsersPublicInfo(state),
+});
+
+export default connect(mapStateToProps)(AddNewMessage);
