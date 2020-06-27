@@ -87,6 +87,8 @@ const Wrapper = styled.div`
   color: ${colors.black};
   margin-top: ${({ noMargin }) => (noMargin ? '0' : spacing.xl)};
   margin-bottom: ${({ noMargin }) => (noMargin ? '0' : spacing.xl)};
+  padding-top: ${({ padding }) => (padding ? spacing[padding] : '0')};
+  padding-bottom: ${({ padding }) => (padding ? spacing[padding] : '0')};
   ${media.belowTabletLarge`
   width: ${({ mobileWidth }) => (mobileWidth ? mobileWidth : '')};
 `}
@@ -118,7 +120,7 @@ const ItemContainer = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  padding: ${spacing.md} 0;
+  //padding: ${spacing.md} 0;
   font-size: ${fontSizeMap.h3};
   font-weight: 300;
   color: ${({ color }) => (color ? color : 'black')};

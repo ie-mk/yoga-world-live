@@ -7,24 +7,27 @@ import { resourceActions } from '../../store/actions';
 import { LEARNING_PATH_VALUES, LEARNING_PATH, LEVEL } from '../../constants';
 import { getCourses, getLearningPaths } from '../../store/selectors';
 import CoursesLearningPath from '../../components/pages/dashboard/courses/coursesLearningPath/CoursesLearningPath';
+import CourseHeader from '../../components/pages/dashboard/courses/courseHeader/CourseHeader';
+import CourseOutcome from '../../components/pages/dashboard/courses/courseOutcome/CourseOutcome';
 
 const CourseStart = ({ courses }) => {
   const {
     query: { courseId },
   } = useRouter();
 
-  let heading = 'HTML';
-  heading = heading.toUpperCase();
-
   const course = courses[courseId];
+
+  let heading = course.title;
+  heading = heading.toUpperCase();
 
   return (
     <ErrorBoundary>
       <>
-        <CoursesLearningPath title={heading} descr="adecd" />
+        <CourseHeader title={heading} descr="adecd" />
 
         <PageContent hasDefaultMarginTop={false} maxWidth="1100px">
-          <h1>{course.title}</h1>
+          {/* <h1>Course Outline</h1> */}
+          <CourseOutcome />
         </PageContent>
       </>
     </ErrorBoundary>
