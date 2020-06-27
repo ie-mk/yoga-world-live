@@ -458,7 +458,6 @@ function* fetchMessages({ payload }) {
 }
 
 function* fetchMessage({ payload: docId }) {
-  console.log(docId);
   try {
     const result = yield api.resource.fetchResource(`messages/${docId}`);
     yield put(resourceActions.fetchMessage.success({ [docId]: result }));
@@ -468,8 +467,14 @@ function* fetchMessage({ payload: docId }) {
 }
 
 function* createMessage({ payload }) {
+  const uid = yield select(getUID);
+  const data = {
+    ...payload.data,
+    senderId: uid,
+    created: moment().format(),
+  };
   try {
-    yield api.resource.createResource('messages', payload.data);
+    yield api.resource.createResource('messages', data);
     yield put(resourceActions.createMessage.success());
   } catch (err) {
     yield put(resourceActions.createMessage.failure(err));

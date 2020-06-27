@@ -10,34 +10,30 @@ const SearchableInput = ({
   label,
   placeholder,
 }) => {
-  const [selected, setSelected] = useState(null);
   const [showOptions, setShowOptions] = useState(true);
-  const [searchString, setSearchString] = useState(null);
+  const [searchString, setSearchString] = useState('');
   const [activeOption, setActiveOption] = useState(0);
 
   const matchingOptions = options.filter(opt =>
     opt.toLowerCase().includes(searchString && searchString.toLowerCase()),
   );
 
-  console.log('------activeOption: ', activeOption);
-  console.log('------matchingOptions: ', matchingOptions);
-  console.log('------searchString: ', searchString);
-
   function handleKeyDown(event) {
-    console.log('event.keyCode: ', event.keyCode);
-    // arrow down key
+    // key: arrow down
     if (event.keyCode === 40) {
       activeOption < matchingOptions.length - 1 &&
         setActiveOption(activeOption + 1);
     }
+    // key: arrow up
     if (event.keyCode === 38) {
       activeOption > 0 && setActiveOption(activeOption - 1);
     }
-
+    // key: enter
     if ((event.charCode || event.keyCode) === 13) {
       setSearchString(matchingOptions[activeOption]);
       setShowOptions(false);
       event.preventDefault();
+      callback(matchingOptions[activeOption]);
     }
   }
 
@@ -49,17 +45,24 @@ const SearchableInput = ({
         onChange={e => {
           setShowOptions(true);
           setSearchString(e.target.value);
-          callback(e.target.value);
           setActiveOption(0);
         }}
         type="text"
-        value={selected || searchString}
+        value={searchString}
         placeholder={placeholder}
       />
       {showOptions && searchString && matchingOptions ? (
         <Styled.OptionsContainer>
           {matchingOptions.map((opt, idx) => (
-            <Styled.Option key={idx} active={activeOption === idx}>
+            <Styled.Option
+              onClick={() => {
+                setSearchString(opt);
+                setShowOptions(false);
+                callback(opt);
+              }}
+              key={idx}
+              active={activeOption === idx}
+            >
               {opt}
             </Styled.Option>
           ))}

@@ -20,12 +20,18 @@ const OptionsContainer = styled.div`
   z-index: 9;
   background-color: ${colors.white};
   border: 1px solid gray;
+  max-height: 400px;
+  overflow: scroll;
 `;
 
 const Option = styled.div`
   border-bottom: 1px solid ${colors.gray};
   background-color: ${({ active }) => (active ? 'lightgray' : '')};
   padding: 10px 20px;
+  cursor: pointer;
+  &:hover {
+    background-color: lightgray;
+  }
 `;
 
 const Label = styled.div`

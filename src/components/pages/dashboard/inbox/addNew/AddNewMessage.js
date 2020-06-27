@@ -15,8 +15,6 @@ const AddNewMessage = ({ dispatch, setNewAdd, allUsersPublicInfo }) => {
     dispatch(userActions.fetchAllUsersPublicInfo.request());
   }, [setNewAdd]);
 
-  const [selectedUserName, setSelectedUserName] = useState(null);
-
   const userOptions = {};
 
   Object.keys(allUsersPublicInfo).forEach(key => {
@@ -24,13 +22,9 @@ const AddNewMessage = ({ dispatch, setNewAdd, allUsersPublicInfo }) => {
     userOptions[userObject.displayName] = key;
   });
 
-  console.log('------userId: ', userOptions[selectedUserName]);
-
-  // function onKeyDown(keyEvent) {
-  //   if ((keyEvent.charCode || keyEvent.keyCode) === 13) {
-  //     keyEvent.preventDefault();
-  //   }
-  // }
+  const handleUserSearch = setFieldValue => selectedName => {
+    setFieldValue('receiverId', userOptions[selectedName]);
+  };
 
   return (
     <div>
@@ -44,21 +38,17 @@ const AddNewMessage = ({ dispatch, setNewAdd, allUsersPublicInfo }) => {
           setTimeout(() => setSubmitting(false), 1000);
         }}
       >
-        {({ values, handleSubmit }) => (
+        {({ values, handleSubmit, setFieldValue }) => (
           <form onSubmit={handleSubmit} /*onKeyDown={onKeyDown}*/>
             <Styled.InputRow>
               <SearchableInput
                 label="Enter Member ID(Name / Email / Phone)"
                 width="60%"
                 placeholder="start typing user name"
-                callback={setSelectedUserName}
+                callback={handleUserSearch(setFieldValue)}
                 options={Object.keys(userOptions)}
               />
-              <input
-                name="memberId"
-                className="hidden"
-                value={userOptions[selectedUserName]}
-              />
+              <Field name="receiverId" className="hidden" />
               <AdminUploadImage width="40%" label="Attachements" />
             </Styled.InputRow>
             <Styled.InputRow>
@@ -115,7 +105,7 @@ const AddNewMessage = ({ dispatch, setNewAdd, allUsersPublicInfo }) => {
 };
 
 const initialFormValues = {
-  memberId: '',
+  receiverId: '',
   subject: '',
   message: '',
 };
