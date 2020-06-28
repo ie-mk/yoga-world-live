@@ -101,6 +101,8 @@ export const colors = {
       'transparent linear-gradient(90deg, #2385D9 0%, #0EC9B0 100%) 0% 0% no-repeat padding-box;',
     violetprimary:
       'transparent linear-gradient(180deg, #293150 0%, #1E2540 100%) 0% 0% no-repeat padding-box',
+    violetsecondary:
+      'transparent linear-gradient(90deg, #293150 0%, #1E2540 100%) 0% 0% no-repeat padding-box',
   },
   borders: {
     primary: '',

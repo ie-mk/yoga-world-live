@@ -9,9 +9,11 @@ const Wrapper = styled.div`
 const ContentWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  background:${colors.background.violetprimary};
+  background:${colors.background.violetsecondary};
   width: 100%;
   padding: 20px;
+  font-weight: bold;
+  border-bottom: 0.1px solid ${colors.primary};
   ${media.belowTabletLarge`
     padding: 5px;
   `}

@@ -1,5 +1,7 @@
 import React from 'react';
 import ExpandableContainer from '../../../../foundation/expandableContainer';
+import CollapseContainer from '../../../../foundation/collapseContainer';
+
 import styled from 'styled-components';
 import Styled from './CourseOutCome.styles';
 import ContainerBase from '../../../../foundation/ContainerBase';
@@ -27,7 +29,7 @@ const CourseOutcome = () => (
           const chapter = chapters[chapterId];
           const title = chapterId + ' : ' + chapter.title;
           return (
-            <ExpandableContainer title={title} isCollapsed={true} key={i}>
+            <CollapseContainer title={title} isCollapsed={true} key={i}>
               {lessons &&
                 Object.keys(lessons).map((lessonId, i) => {
                   const lesson = lessons[lessonId];
@@ -39,7 +41,7 @@ const CourseOutcome = () => (
                     </Styled.ContentWrapper>
                   );
                 })}
-            </ExpandableContainer>
+            </CollapseContainer>
           );
         })}
     </ContainerBase>
