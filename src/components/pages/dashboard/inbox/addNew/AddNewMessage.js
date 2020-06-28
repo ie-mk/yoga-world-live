@@ -11,8 +11,6 @@ import SearchableInput from '../../../../searchableInput/SearchableInput';
 import { getAllUsersPublicInfo } from '../../../../../store/selectors';
 
 const AddNewMessage = ({ dispatch, setNewAdd, allUsersPublicInfo }) => {
-  console.log('allUsersPublicInfo');
-
   useEffect(() => {
     dispatch(userActions.fetchAllUsersPublicInfo.request());
   }, [setNewAdd]);
@@ -38,6 +36,7 @@ const AddNewMessage = ({ dispatch, setNewAdd, allUsersPublicInfo }) => {
           setSubmitting(true);
           dispatch(resourceActions.createMessage.request({ data: values }));
           setTimeout(() => setSubmitting(false), 1000);
+          setNewAdd(false);
         }}
       >
         {({ values, handleSubmit, setFieldValue }) => (

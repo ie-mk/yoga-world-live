@@ -9,22 +9,22 @@ import { resourceActions } from '../../../../store/actions';
 import Modal from '../../../modal/Modal';
 import { colors } from '../../../../constants/styles';
 
-const messages = {
-  '124jq23j234': {
-    senderId: '845235o2u35',
-    senderName: 'John',
-    email: 'some@email.com',
-    senderPhone: '+44123874533',
-    message: 'Some text message',
-  },
-  '124jq23ddj234': {
-    senderId: '845235o2u35',
-    senderName: 'Jack',
-    email: 'some@email.com',
-    senderPhone: '+44123874533',
-    message: 'Some text message2',
-  },
-};
+// const messages = {
+//   '124jq23j234': {
+//     senderId: '845235o2u35',
+//     senderName: 'John',
+//     email: 'some@email.com',
+//     senderPhone: '+44123874533',
+//     message: 'Some text message',
+//   },
+//   '124jq23ddj234': {
+//     senderId: '845235o2u35',
+//     senderName: 'Jack',
+//     email: 'some@email.com',
+//     senderPhone: '+44123874533',
+//     message: 'Some text message2',
+//   },
+// };
 
 const columnHeaders = [
   'S.No',
@@ -35,11 +35,11 @@ const columnHeaders = [
   'Actions',
 ];
 
-const Inbox = ({ dispatch, profile }) => {
+const Inbox = ({ dispatch, profile, messages }) => {
   const handleReply = messageId => {
     // TODO
   };
-  console.log(profile);
+
   const [newAdd, setNewAdd] = useState(false);
 
   const uid = profile && profile.uid;
@@ -60,11 +60,11 @@ const Inbox = ({ dispatch, profile }) => {
         {Object.keys(messages).map((id, idx) => {
           const rowData = messages[id];
           if (!rowData) return null;
-
+          console.log(rowData);
           return (
             <Table.Tr key={id}>
               <Table.Td>{idx + 1}</Table.Td>
-              <Table.Td>{rowData.senderName}</Table.Td>
+              <Table.Td>{rowData.subject}</Table.Td>
               <Table.Td>{rowData.email}</Table.Td>
               <Table.Td>{rowData.senderPhone}</Table.Td>
               <Table.Td>{rowData.message}</Table.Td>
@@ -121,5 +121,6 @@ const Inbox = ({ dispatch, profile }) => {
 };
 const mapStateToProps = state => ({
   profile: state.user.loginProviderData,
+  messages: state.messages.data,
 });
 export default connect(mapStateToProps)(Inbox);
