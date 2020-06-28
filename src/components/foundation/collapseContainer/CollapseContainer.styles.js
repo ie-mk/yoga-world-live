@@ -39,6 +39,7 @@ const Wrapper = styled.div`
 
 const CollapseButton = styled.span`
   cursor: pointer;
+  padding-right: 30px;
   i {
     display: inline-block;
     margin-right: ${spacing.xS};
@@ -59,7 +60,6 @@ const Content = styled.div`
     collapsed && !renderHidden ? 'none' : 'block'};
   ${({ renderHidden, collapsed }) =>
     renderHidden && collapsed ? renderOutsideContainerCSS : ''};
- // box-shadow: inset 0 0 3px ${lightenDarkenColor(colors.gray, 80)};
 `;
 
 const Footer = styled.div`

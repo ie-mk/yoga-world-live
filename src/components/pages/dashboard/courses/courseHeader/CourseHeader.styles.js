@@ -58,14 +58,12 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   background:${colors.background.violetprimary};
-  
   align-items: center;
-  //height: 300px;
   width: 100%;
   padding: 20px;
   ${media.belowTabletLarge`
-    padding: 0;
-    height: 240px;
+    padding: 10px;
+    //height: 240px;
   `}
  
   }

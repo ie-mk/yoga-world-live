@@ -29,6 +29,8 @@ var data = [
   { Item: 'Take all our courses online' },
 ];
 
+const studentRating = '⭐⭐⭐⭐⭐';
+
 const CourseHeader = ({ title }) => {
   return (
     <Styled.Wrapper>
@@ -56,12 +58,13 @@ const CourseHeader = ({ title }) => {
             },
             belowDesktop: {
               'grid-gap': spacing.xl,
+              'grid-template-columns': '1fr 1fr',
             },
           }}
           gridGap={spacing.xl}
         >
           <Label keyname="Author" value="Stephen Segmister" />
-          <Label keyname="Student Rating" value="Stephen Segmister" />
+          <Label keyname="Student Rating" value={studentRating} />
           <Label keyname="Level" value="Beginner" />
           <Label keyname="Content" value="36 Lessons under 4 Chapters" />
           <Label keyname="Duration" value="4 weeks" />
