@@ -17,13 +17,13 @@ const CourseStart = ({ courses }) => {
 
   const course = courses[courseId];
 
-  let heading = course.title;
-  heading = heading.toUpperCase();
+  let courseTitle = course.title;
+  courseTitle = courseTitle.toUpperCase();
 
   return (
     <ErrorBoundary>
       <>
-        <CourseHeader title={heading} descr="adecd" />
+        <CourseHeader title={courseTitle} />
 
         <PageContent hasDefaultMarginTop={false} maxWidth="1100px">
           {/* <h1>Course Outline</h1> */}

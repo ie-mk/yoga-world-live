@@ -36,7 +36,7 @@ const CourseHeader = ({ title }) => {
     <Styled.Wrapper>
       <ResponsiveImage
         src="/img/Background.png"
-        height="100vh"
+        height="100%"
         width="100%"
         position="absolute"
         mediaConfig={{

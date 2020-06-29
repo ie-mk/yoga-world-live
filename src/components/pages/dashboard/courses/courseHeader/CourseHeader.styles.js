@@ -3,20 +3,20 @@ import { fontSizeMap, spacing, colors } from '../../../../../constants/styles';
 import media from '../../../../foundation/media';
 
 const Wrapper = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 ${spacing.lg};
-  //margin-bottom: ${spacing.xxl};
+  padding: 0 ${spacing.xxxl};
 `;
 
 const Content = styled.div`
   max-width: 1100px;
   z-index: 1;
+  margin-top: ${spacing.xxl};
   ${media.aboveTablet`
-   padding-top: ${spacing.xxxxl};
+   margin-top: ${spacing.xxxxl};
   `}
 `;
 
@@ -65,7 +65,7 @@ const ContentWrapper = styled.div`
     padding: 10px;
     //height: 240px;
   `}
- 
+
   }
 `;
 
