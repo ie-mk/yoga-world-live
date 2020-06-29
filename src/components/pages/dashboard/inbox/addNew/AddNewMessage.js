@@ -1,4 +1,4 @@
-import React, { useState, memo } from 'react';
+import React, { useState, memo, useEffect } from 'react';
 import Styled from './AddNewMessagestyles';
 import { connect } from 'react-redux';
 import { Formik, ErrorMessage, Field } from 'formik';
@@ -6,34 +6,50 @@ import AdminInput from '../../../../foundation/input/AdminInput';
 import AdminTextArea from '../../../../foundation/textarea/AdminTextArea';
 import AdminUploadImage from '../../../../foundation/pictureUploader/PictureUploader';
 import Button from '../../../../foundation/button/Button';
+import { userActions, resourceActions } from '../../../../../store/actions';
+import SearchableInput from '../../../../searchableInput/SearchableInput';
+import { getAllUsersPublicInfo } from '../../../../../store/selectors';
 
-let AddNewMessage = ({ setNewAdd }) => {
+const AddNewMessage = ({ dispatch, setNewAdd, allUsersPublicInfo }) => {
+  useEffect(() => {
+    dispatch(userActions.fetchAllUsersPublicInfo.request());
+  }, [setNewAdd]);
+
+  const userOptions = {};
+
+  Object.keys(allUsersPublicInfo).forEach(key => {
+    const userObject = allUsersPublicInfo[key];
+    userOptions[userObject.displayName] = key;
+  });
+
+  const handleUserSearch = setFieldValue => selectedName => {
+    setFieldValue('receiverId', userOptions[selectedName]);
+  };
+
   return (
-    <Styled.ModalWrapper>
-      <Styled.RowContainer>
-        <Styled.Title isStrong={true}>New Message</Styled.Title>
-      </Styled.RowContainer>
+    <div>
       <Formik
         initialValues={initialFormValues}
         enableReinitialize={true}
         //  validationSchema={profileFormValidation}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
-          dispatch(userActions.updateUserProfile.request(values));
+          dispatch(resourceActions.createMessage.request({ data: values }));
           setTimeout(() => setSubmitting(false), 1000);
+          setNewAdd(false);
         }}
       >
         {({ values, handleSubmit, setFieldValue }) => (
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} /*onKeyDown={onKeyDown}*/>
             <Styled.InputRow>
-              <AdminInput
-                name="memberId"
-                type="text"
+              <SearchableInput
                 label="Enter Member ID(Name / Email / Phone)"
-                width="60%"
-                backgroundColor="white"
-                placeholder="Enter name,email or phone"
+                width="450px"
+                placeholder="start typing user name"
+                callback={handleUserSearch(setFieldValue)}
+                options={Object.keys(userOptions)}
               />
+              <Field name="receiverId" className="hidden" />
               <AdminUploadImage width="40%" label="Attachements" />
             </Styled.InputRow>
             <Styled.InputRow>
@@ -57,6 +73,7 @@ let AddNewMessage = ({ setNewAdd }) => {
                 width="100%"
                 height="170px"
                 backgroundColor="white"
+                noMargin="0"
               />
             </Styled.InputRow>
             <Styled.ButtonWrapper>
@@ -84,14 +101,18 @@ let AddNewMessage = ({ setNewAdd }) => {
           </form>
         )}
       </Formik>
-    </Styled.ModalWrapper>
+    </div>
   );
 };
 
 const initialFormValues = {
-  memberId: '',
+  receiverId: '',
   subject: '',
   message: '',
 };
 
-export default AddNewMessage;
+const mapStateToProps = state => ({
+  allUsersPublicInfo: getAllUsersPublicInfo(state),
+});
+
+export default connect(mapStateToProps)(AddNewMessage);

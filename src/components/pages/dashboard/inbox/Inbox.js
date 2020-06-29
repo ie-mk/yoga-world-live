@@ -1,26 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { ContainerBase } from '../../../foundation';
 import Table from '../table/Table';
 import Button from '../../../foundation/button/Button';
 import Styled from './Inbox.styles';
 import AddNewMessage from './addNew/AddNewMessage';
-
-const messages = {
-  '124jq23j234': {
-    senderId: '845235o2u35',
-    senderName: 'John',
-    email: 'some@email.com',
-    senderPhone: '+44123874533',
-    message: 'Some text message',
-  },
-  '124jq23ddj234': {
-    senderId: '845235o2u35',
-    senderName: 'Jack',
-    email: 'some@email.com',
-    senderPhone: '+44123874533',
-    message: 'Some text message2',
-  },
-};
+import { resourceActions } from '../../../../store/actions';
+import Modal from '../../../modal/Modal';
+import { colors } from '../../../../constants/styles';
 
 const columnHeaders = [
   'S.No',
@@ -31,12 +18,24 @@ const columnHeaders = [
   'Actions',
 ];
 
-const Inbox = () => {
+const Inbox = ({ dispatch, profile, messages }) => {
   const handleReply = messageId => {
     // TODO
   };
 
   const [newAdd, setNewAdd] = useState(false);
+
+  const uid = profile && profile.uid;
+
+  useEffect(() => {
+    dispatch(
+      resourceActions.fetchMessages.request({
+        queries: {
+          receiverId: ['==', uid],
+        },
+      }),
+    );
+  }, [uid]);
 
   return (
     <ContainerBase margin="25px" marginRight="25px" marginTop="30px">
@@ -44,11 +43,11 @@ const Inbox = () => {
         {Object.keys(messages).map((id, idx) => {
           const rowData = messages[id];
           if (!rowData) return null;
-
+          console.log(rowData);
           return (
             <Table.Tr key={id}>
               <Table.Td>{idx + 1}</Table.Td>
-              <Table.Td>{rowData.senderName}</Table.Td>
+              <Table.Td>{rowData.subject}</Table.Td>
               <Table.Td>{rowData.email}</Table.Td>
               <Table.Td>{rowData.senderPhone}</Table.Td>
               <Table.Td>{rowData.message}</Table.Td>
@@ -83,10 +82,28 @@ const Inbox = () => {
       </Styled.ButtonWrapper>
 
       <ContainerBase>
-        {newAdd && <AddNewMessage setNewAdd={setNewAdd} />}
+        {newAdd && (
+          <Modal
+            styles={{
+              width: '800px',
+              height: 'auto',
+              color: 'black',
+            }}
+            fontSize="24px"
+            marginTop="20px"
+            fontWeight="700"
+            onClose={() => setNewAdd(false)}
+            title="New Message"
+          >
+            <AddNewMessage setNewAdd={setNewAdd} />
+          </Modal>
+        )}
       </ContainerBase>
     </ContainerBase>
   );
 };
-
-export default Inbox;
+const mapStateToProps = state => ({
+  profile: state.user.loginProviderData,
+  messages: state.messages.data,
+});
+export default connect(mapStateToProps)(Inbox);

@@ -123,7 +123,7 @@ function* fetchAllUsersPublicInfo() {
     const allUsersPublicInfo = yield api.resource.fetchResources(
       'usersPublicInfo',
     );
-    yield userActions.fetchAllUsersPublicInfo.success(allUsersPublicInfo);
+    yield put(userActions.fetchAllUsersPublicInfo.success(allUsersPublicInfo));
   } catch (err) {
     yield put(userActions.fetchAllUsersPublicInfo.failure(err));
   }
@@ -467,8 +467,14 @@ function* fetchMessage({ payload: docId }) {
 }
 
 function* createMessage({ payload }) {
+  const uid = yield select(getUID);
+  const data = {
+    ...payload.data,
+    senderId: uid,
+    created: moment().format(),
+  };
   try {
-    yield api.resource.createResource('messages', payload.data);
+    yield api.resource.createResource('messages', data);
     yield put(resourceActions.createMessage.success());
   } catch (err) {
     yield put(resourceActions.createMessage.failure(err));

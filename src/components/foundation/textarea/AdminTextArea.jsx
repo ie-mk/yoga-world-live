@@ -12,9 +12,10 @@ const AdminTextArea = ({
   placeholder,
   height,
   disabled,
+  noMargin,
 }) => {
   return (
-    <Styled.Wrapper width={width}>
+    <Styled.Wrapper width={width} noMargin={noMargin}>
       <Styled.Label>{label}</Styled.Label>
       <Styled.InputStyles
         backgroundColor={backgroundColor}
