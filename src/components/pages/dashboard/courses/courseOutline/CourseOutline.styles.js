@@ -4,6 +4,9 @@ import media from '../../../../foundation/media';
 
 const Wrapper = styled.div`
   margin-top: 100px;
+  ${media.belowTabletLarge`
+     padding: 0 ${spacing.md};
+  `}
 `;
 
 const ContentWrapper = styled.div`

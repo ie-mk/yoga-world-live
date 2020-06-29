@@ -3,7 +3,7 @@ import ExpandableContainer from '../../../../foundation/expandableContainer';
 import CollapseContainer from '../../../../foundation/collapseContainer';
 
 import styled from 'styled-components';
-import Styled from './CourseOutCome.styles';
+import Styled from './CourseOutline.styles';
 import ContainerBase from '../../../../foundation/ContainerBase';
 
 var chapters = {
@@ -20,7 +20,7 @@ var lessons = {
   'Lesson 04': { title: 'Fourth Lesson', duration: '12:48' },
 };
 
-const CourseOutcome = () => (
+const CourseOutline = () => (
   <Styled.Wrapper>
     <Styled.StyledHeader>Course Outline</Styled.StyledHeader>
     <ContainerBase marginTop="xl">
@@ -48,4 +48,4 @@ const CourseOutcome = () => (
   </Styled.Wrapper>
 );
 
-export default CourseOutcome;
+export default CourseOutline;

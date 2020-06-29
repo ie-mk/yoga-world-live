@@ -21,13 +21,12 @@ const Content = styled.div`
 `;
 
 const HeaderWrapper = styled.div`
-  // margin: 150px 50px 60px;
   text-align: center;
   ${media.aboveTablet`
-    margin: auto;
+     margin: 0px 50px 60px;
   `}
-  ${media.belowTabletLarge`
-    margin: auto;
+  ${media.belowMobileLarge`
+     margin-bottom: 30px;
   `}
 `;
 
@@ -61,11 +60,6 @@ const ContentWrapper = styled.div`
   align-items: center;
   width: 100%;
   padding: 20px;
-  ${media.belowTabletLarge`
-    padding: 10px;
-    //height: 240px;
-  `}
-
   }
 `;
 
@@ -80,7 +74,7 @@ const StyledHeader = styled.text`
 `;
 
 const ItemsWrapper = styled.div`
-  margin-bottom: ${spacing.xls};
+  margin-bottom: ${spacing.xxS};
 `;
 
 export default {

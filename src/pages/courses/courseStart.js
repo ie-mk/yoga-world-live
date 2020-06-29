@@ -3,12 +3,9 @@ import ErrorBoundary from '../../components/ErrorBoundary';
 import { useRouter } from 'next/router';
 import PageContent from '../../components/foundation/PageContent';
 import { connect } from 'react-redux';
-import { resourceActions } from '../../store/actions';
-import { LEARNING_PATH_VALUES, LEARNING_PATH, LEVEL } from '../../constants';
 import { getCourses, getLearningPaths } from '../../store/selectors';
-import CoursesLearningPath from '../../components/pages/dashboard/courses/coursesLearningPath/CoursesLearningPath';
 import CourseHeader from '../../components/pages/dashboard/courses/courseHeader/CourseHeader';
-import CourseOutcome from '../../components/pages/dashboard/courses/courseOutcome/CourseOutcome';
+import CourseOutline from '../../components/pages/dashboard/courses/courseOutline/CourseOutline';
 
 const CourseStart = ({ courses }) => {
   const {
@@ -26,8 +23,7 @@ const CourseStart = ({ courses }) => {
         <CourseHeader title={courseTitle} />
 
         <PageContent hasDefaultMarginTop={false} maxWidth="1100px">
-          {/* <h1>Course Outline</h1> */}
-          <CourseOutcome />
+          <CourseOutline />
         </PageContent>
       </>
     </ErrorBoundary>

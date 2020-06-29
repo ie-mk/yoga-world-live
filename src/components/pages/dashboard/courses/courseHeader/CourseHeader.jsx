@@ -11,14 +11,16 @@ import CheckBoxWithText from '../../../../foundation/checkboxwithtext/CheckBoxWi
 
 const Label = ({ keyname, value }) => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'row' }}>
+    // <div style={{ display: 'flex', flexDirection: 'row' }}>
+    <ContainerBase display="flex" flexDirection="row" paddingBottom="md">
       <Styled.Label color="Sapphire" fontSize="text">
         {keyname}:
       </Styled.Label>
       <Styled.Label color="white" fontSize="h5" fontWeight="bold">
         {value}
       </Styled.Label>
-    </div>
+    </ContainerBase>
+    // </div>
   );
 };
 
@@ -78,7 +80,7 @@ const CourseHeader = ({ title }) => {
             START Course
           </Button>
         </Grid>
-        <ContainerBase marginTop="xxl">
+        <ContainerBase marginTop="xxl" marginBottom="xxl">
           <Grid
             columns="1fr"
             mediaConfig={{
