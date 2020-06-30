@@ -8,7 +8,7 @@ import { Formik } from 'formik';
 import CustomAdminDropDown from './customAdminDropDown/CustomAdminDropDown';
 import AddNewTask from './addNew/AddNew';
 
-const PracticalTasks = ({ profile, dispatch }) => {
+const PracticalTasks = ({ profile, dispatch, tasks }) => {
   const messages = {
     '124jq23j234': {
       senderId: '845235o2u35',
@@ -194,6 +194,6 @@ const PracticalTasks = ({ profile, dispatch }) => {
 
 const mapStateToProps = state => ({
   profile: state.user.loginProviderData,
-  messages: state.messages.data,
+  tasks: state.tasks.data,
 });
 export default connect(mapStateToProps)(PracticalTasks);

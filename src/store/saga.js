@@ -211,7 +211,7 @@ function* deleteCourse({ payload: courseId }) {
 
 // ============================ COURSES =====================================
 
-function* fetchTasks({ payload }) {
+function* fetchTasks({ payload = {} }) {
   try {
     const tasks = yield api.resource.fetchResources('tasks', payload.queries);
     yield put(resourceActions.fetchTasks.success(tasks));
@@ -230,7 +230,6 @@ function* fetchTask({ payload: docId }) {
 }
 
 function* createTask({ payload: { data } }) {
-  debugger;
   try {
     yield api.resource.createResource('tasks', data);
     yield put(resourceActions.createTask.success());
