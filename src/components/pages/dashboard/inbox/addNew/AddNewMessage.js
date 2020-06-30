@@ -31,6 +31,7 @@ const AddNewMessage = ({ dispatch, setNewAdd, allUsersPublicInfo }) => {
       <Formik
         initialValues={initialFormValues}
         enableReinitialize={true}
+        resourceActions
         //  validationSchema={profileFormValidation}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);

@@ -29,7 +29,7 @@ const CustomText241 = props => (
   />
 );
 
-const Preferences = () => {
+const Preferences = ({ profile }) => {
   const { t } = useTranslation();
 
   return (
@@ -62,21 +62,21 @@ const Preferences = () => {
         >
           <div>
             <CustomText24 margin="0 0 14px 0" text="Email" />
-            <CustomText24 text="studentname@gmail.com" />
+            <CustomText24 text={profile.email} />
           </div>
 
           <Styled.DesktopView>
             <CustomText24 margin="0 0 14px 0" text="Mobile" />
-            <CustomText24 text="+44 2573 34785" />
+            <CustomText24 text={profile.mobileNo} />
           </Styled.DesktopView>
           <div>
             <CustomText24 margin="0 0 14px 0" text="Mobile" />
-            <CustomText24 text="+44 2573 34785" />
+            <CustomText24 text={profile.countryCode + ' ' + profile.mobileNo} />
           </div>
 
           <div>
             <CustomText24 margin="0 0 14px 0" text="Password" />
-            <CustomText24 text="**********" />
+            <CustomText24 text={profile.password} />
           </div>
         </Grid>
         <CustomCardTitle

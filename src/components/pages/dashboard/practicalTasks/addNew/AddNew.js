@@ -13,6 +13,7 @@ import AdminDropDown from '../../../../foundation/dropdown/AdminDropDown';
 import AdminTextArea from '../../../../foundation/textarea/AdminTextArea';
 import AdminUploadImage from '../../../../foundation/pictureUploader/PictureUploader';
 import Button from '../../../../foundation/button/Button';
+import { userActions, resourceActions } from '../../../../../store/actions';
 const StyledError = styled.div`
   color: red;
 `;
@@ -56,11 +57,12 @@ const leveloptions = levelarr.map(k => {
     </option>
   );
 });
-let AddNew = ({ editTask, setEdit, setNewAdd }) => {
+const AddNew = ({ editTask, setEdit, setNewAdd, dispatch }) => {
   const handleCancel = () => {
     setEdit(false);
     setNewAdd(false);
   };
+
   return (
     <ContainerBase paddingLeft="xxxl" paddingRight="xxxl">
       <Styled.RowContainer>
@@ -84,7 +86,11 @@ let AddNew = ({ editTask, setEdit, setNewAdd }) => {
         //  validationSchema={profileFormValidation}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
-          dispatch(userActions.updateUserProfile.request(values));
+          dispatch(
+            resourceActions.createTask.request({
+              data: values,
+            }),
+          );
           setTimeout(() => setSubmitting(false), 1000);
         }}
       >
@@ -195,4 +201,4 @@ const initialFormValues = {
   taskLink: '',
 };
 
-export default AddNew;
+export default connect()(AddNew);
