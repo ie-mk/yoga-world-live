@@ -52,27 +52,35 @@ const Profile = ({ dispatch, profile }) => {
         </Styled.ImageWrapper>
         <Styled.ProfileDetails>
           <Styled.DetailsWrapper>
-            <HeroTitle margin="0 0 16px 0" text="Student Name" />
+            <HeroTitle margin="0 0 16px 0" text={profile.fullName} />
             <CardTitle
               margin="0 0 16px 0"
               fontWeight="400"
-              text="Frontend Developer"
+              text={profile.profileTitle}
             />
             <FlexContainer margin="0 0 8px 0" alignItems="center">
               <i className="fa fa-map-marker" aria-hidden="true" />
-              <BodyText>Wembley</BodyText>
+              <BodyText>{profile.city}</BodyText>
             </FlexContainer>
 
             <FlexContainer margin="0 0 16px 0" alignItems="center">
               <i className="fa fa-globe" aria-hidden="true" />{' '}
-              <BodyText>www.studentwebsite.com</BodyText>
+              <BodyText>{profile.website}</BodyText>
             </FlexContainer>
             <Styled.ShowMobileOnly>
               <ContainerBase maxWidth="140px" margin="0 auto 0">
-                <Styled.SocialImage src="img/fb_image.png" />
-                <Styled.SocialImage src="img/instagram_image.png" />
-                <Styled.SocialImage src="img/twitter_image.png" />
-                <Styled.SocialImage src="img/linkdin_image.png" />
+                {profile.facebookProfile && (
+                  <Styled.SocialImage src="img/fb_image.png" />
+                )}
+                {profile.instagramProfile && (
+                  <Styled.SocialImage src="img/instagram_image.png" />
+                )}
+                {profile.twitterProfile && (
+                  <Styled.SocialImage src="img/twitter_image.png" />
+                )}
+                {profile.linkdinProfile && (
+                  <Styled.SocialImage src="img/linkdin_image.png" />
+                )}
               </ContainerBase>
             </Styled.ShowMobileOnly>
           </Styled.DetailsWrapper>
@@ -90,10 +98,18 @@ const Profile = ({ dispatch, profile }) => {
               Edit
             </Button>
             <div>
-              <Styled.SocialImage src="img/fb_image.png" />
-              <Styled.SocialImage src="img/instagram_image.png" />
-              <Styled.SocialImage src="img/twitter_image.png" />
-              <Styled.SocialImage src="img/linkdin_image.png" />
+              {profile.facebookProfile && (
+                <Styled.SocialImage src="img/fb_image.png" />
+              )}
+              {profile.instagramProfile && (
+                <Styled.SocialImage src="img/instagram_image.png" />
+              )}
+              {profile.twitterProfile && (
+                <Styled.SocialImage src="img/twitter_image.png" />
+              )}
+              {profile.linkdinProfile && (
+                <Styled.SocialImage src="img/linkdin_image.png" />
+              )}
             </div>
           </Styled.ShowDesktopOnly>
         </Styled.ProfileDetails>
@@ -126,7 +142,7 @@ const Profile = ({ dispatch, profile }) => {
         </Styled.Tab>
       </Styled.ProfileInfoPageWrapper>
       {isActiveBilling && <Billing />}
-      {isActivePreferences && <Preferences />}
+      {isActivePreferences && <Preferences profile={profile} />}
       {isActiveLearning && <Learning />}
     </ContainerBase>
   );

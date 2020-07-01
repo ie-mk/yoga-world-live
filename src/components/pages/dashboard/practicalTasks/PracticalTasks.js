@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { ContainerBase } from '../../../foundation';
 import Button from '../../../foundation/button/Button';
 import Styled from './PracticalTasks.style';
@@ -6,7 +7,8 @@ import Table from '../table/Table';
 import { Formik } from 'formik';
 import CustomAdminDropDown from './customAdminDropDown/CustomAdminDropDown';
 import AddNewTask from './addNew/AddNew';
-const PracticalTasks = () => {
+
+const PracticalTasks = ({ profile, dispatch, tasks }) => {
   const messages = {
     '124jq23j234': {
       senderId: '845235o2u35',
@@ -75,6 +77,18 @@ const PracticalTasks = () => {
 
   const [newAdd, setNewAdd] = useState(false);
   const [edit, setEdit] = useState(false);
+
+  const uid = profile && profile.uid;
+
+  useEffect(() => {
+    dispatch(
+      resourceActions.fetchTasks.request({
+        queries: {
+          receiverId: ['==', uid],
+        },
+      }),
+    );
+  }, [uid]);
 
   return (
     <>
@@ -178,4 +192,8 @@ const PracticalTasks = () => {
   );
 };
 
-export default PracticalTasks;
+const mapStateToProps = state => ({
+  profile: state.user.loginProviderData,
+  tasks: state.tasks.data,
+});
+export default connect(mapStateToProps)(PracticalTasks);
