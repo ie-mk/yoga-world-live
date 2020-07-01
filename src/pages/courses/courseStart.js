@@ -16,11 +16,13 @@ const CourseStart = ({ courses }) => {
 
   let courseTitle = course.title;
   courseTitle = courseTitle.toUpperCase();
+  console.log('---course-data');
+  console.log(course);
 
   return (
     <ErrorBoundary>
       <>
-        <CourseHeader title={courseTitle} />
+        <CourseHeader title={courseTitle} course={course} />
 
         <PageContent hasDefaultMarginTop={false} maxWidth="1100px">
           <CourseOutline />

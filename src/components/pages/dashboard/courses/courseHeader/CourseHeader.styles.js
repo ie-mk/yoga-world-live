@@ -14,9 +14,9 @@ const Wrapper = styled.div`
 const Content = styled.div`
   max-width: 1100px;
   z-index: 1;
-  margin-top: ${spacing.xxl};
+  margin-top: ${spacing.xxxl};
   ${media.aboveTablet`
-   margin-top: ${spacing.xxxxl};
+   margin-top: ${spacing.xxxxxl};
   `}
 `;
 
@@ -48,7 +48,7 @@ export const Label = styled.div`
   ${media.belowTabletLarge`
     font-size: ${fontSizeMap.textMobile};
   `}
-  color: ${({ color }) => (color ? colors[color] : colors.black)};
+  color: ${({ color }) => (color ? colors[color] : colors.text.primary)};
   font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : '')};
 `;
 
@@ -64,12 +64,13 @@ const ContentWrapper = styled.div`
 `;
 
 const StyledHeader = styled.text`
-  font-size: ${fontSizeMap.h4};
+  font-size: ${({ fontSize }) =>
+    fontSizeMap[fontSize] ? fontSizeMap[fontSize] : fontSizeMap.textS};
   z-index: 1;
   font-weight: bold;
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'left')};
   ${media.belowTabletLarge`
-    font-size: ${fontSizeMap.text};
+    font-size: ${fontSizeMap.h4};
   `}
 `;
 

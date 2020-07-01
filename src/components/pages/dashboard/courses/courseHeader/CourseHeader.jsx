@@ -7,20 +7,18 @@ import Grid from '../../../../foundation/Grid';
 import { fontSizeMap, spacing, colors } from '../../../../../constants/styles';
 import ContainerBase from '../../../../foundation/ContainerBase';
 import Button from '../../../../foundation/button/Button';
-import CheckBoxWithText from '../../../../foundation/checkboxwithtext/CheckBoxWithText';
+import GreenCheckBoxWithText from '../../../../foundation/greencheckboxwithtext/GreenCheckBoxWithText.jsx';
 
 const Label = ({ keyname, value }) => {
   return (
-    // <div style={{ display: 'flex', flexDirection: 'row' }}>
     <ContainerBase display="flex" flexDirection="row" paddingBottom="md">
-      <Styled.Label color="Sapphire" fontSize="text">
+      <Styled.Label color="bluelight" fontSize="text">
         {keyname}:
       </Styled.Label>
-      <Styled.Label color="white" fontSize="h5" fontWeight="bold">
+      <Styled.Label fontSize="h5" fontWeight="bold">
         {value}
       </Styled.Label>
     </ContainerBase>
-    // </div>
   );
 };
 
@@ -33,7 +31,7 @@ var data = [
 
 const studentRating = '⭐⭐⭐⭐⭐';
 
-const CourseHeader = ({ title }) => {
+const CourseHeader = ({ title, course }) => {
   return (
     <Styled.Wrapper>
       <ResponsiveImage
@@ -49,7 +47,7 @@ const CourseHeader = ({ title }) => {
       />
       <Styled.Content>
         <Styled.HeaderWrapper>
-          <SectionTitle text={title} textAlign="center" />
+          <Styled.StyledHeader fontSize="h2">{title}</Styled.StyledHeader>
         </Styled.HeaderWrapper>
 
         <Grid
@@ -67,9 +65,9 @@ const CourseHeader = ({ title }) => {
         >
           <Label keyname="Author" value="Stephen Segmister" />
           <Label keyname="Student Rating" value={studentRating} />
-          <Label keyname="Level" value="Beginner" />
-          <Label keyname="Content" value="36 Lessons under 4 Chapters" />
-          <Label keyname="Duration" value="4 weeks" />
+          <Label keyname="Level" value={course.level} />
+          <Label keyname="Content" value={course.numberOfChapters} />
+          <Label keyname="Duration" value={course.duration} />
           <Button
             type="primary"
             size="lg"
@@ -88,20 +86,22 @@ const CourseHeader = ({ title }) => {
                 'grid-template-columns': '1fr 1fr',
               },
               belowDesktop: {
-                'grid-gap': spacing.xl,
+                'grid-gap': spacing.xxl,
               },
             }}
             gridGap={spacing.xxxxl}
           >
             <Styled.ContentWrapper>
-              <Styled.StyledHeader>What you will learn </Styled.StyledHeader>
+              <Styled.StyledHeader fontSize="h3">
+                What you will learn{' '}
+              </Styled.StyledHeader>
               <Styled.ItemsWrapper>
                 {data.map((s, i) => {
                   return (
-                    <CheckBoxWithText
+                    <GreenCheckBoxWithText
                       key={i}
                       label={s.Item}
-                      color="white"
+                      color="#D5D5D5"
                       fontSize="text"
                       noMargin={true}
                       padding="sm"
@@ -111,14 +111,16 @@ const CourseHeader = ({ title }) => {
               </Styled.ItemsWrapper>
             </Styled.ContentWrapper>
             <Styled.ContentWrapper>
-              <Styled.StyledHeader>Requirements </Styled.StyledHeader>
+              <Styled.StyledHeader fontSize="h3">
+                Requirements{' '}
+              </Styled.StyledHeader>
               <Styled.ItemsWrapper>
                 {data.map((s, i) => {
                   return (
-                    <CheckBoxWithText
+                    <GreenCheckBoxWithText
                       key={i}
                       label={s.Item}
-                      color="white"
+                      color="#D5D5D5"
                       fontSize="text"
                       noMargin={true}
                       padding="sm"

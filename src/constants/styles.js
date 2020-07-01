@@ -83,6 +83,7 @@ export const colors = {
   white: '#FFFFFF',
   black: '#000000',
   blue: '#7D8399',
+  bluelight: '#2385D9',
   lightBlue: '#D7DDF3',
   bluishgreen: '#0EC9B0',
   Sapphire: '#3145A1',
