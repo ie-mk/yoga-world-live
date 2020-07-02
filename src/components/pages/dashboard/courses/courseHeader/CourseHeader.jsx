@@ -11,11 +11,16 @@ import GreenCheckBoxWithText from '../../../../foundation/greencheckboxwithtext/
 
 const Label = ({ keyname, value }) => {
   return (
-    <ContainerBase display="flex" flexDirection="row" paddingBottom="md">
-      <Styled.Label color="bluelight" fontSize="text">
+    <ContainerBase
+      display="flex"
+      flexDirection="row"
+      paddingBottom="md"
+      alignItems="center"
+    >
+      <Styled.Label color="bluelight" fontSize="h5">
         {keyname}:
       </Styled.Label>
-      <Styled.Label fontSize="h5" fontWeight="bold">
+      <Styled.Label fontSize="h4" fontWeight="500">
         {value}
       </Styled.Label>
     </ContainerBase>
@@ -47,7 +52,9 @@ const CourseHeader = ({ title, course }) => {
       />
       <Styled.Content>
         <Styled.HeaderWrapper>
-          <Styled.StyledHeader fontSize="h2">{title}</Styled.StyledHeader>
+          <Styled.StyledHeader fontSize="h2" mobileFontSize="h4">
+            {title}
+          </Styled.StyledHeader>
         </Styled.HeaderWrapper>
 
         <Grid
@@ -92,7 +99,7 @@ const CourseHeader = ({ title, course }) => {
             gridGap={spacing.xxxxl}
           >
             <Styled.ContentWrapper>
-              <Styled.StyledHeader fontSize="h3">
+              <Styled.StyledHeader fontSize="h3" mobileFontSize="h5">
                 What you will learn{' '}
               </Styled.StyledHeader>
               <Styled.ItemsWrapper>
@@ -111,7 +118,7 @@ const CourseHeader = ({ title, course }) => {
               </Styled.ItemsWrapper>
             </Styled.ContentWrapper>
             <Styled.ContentWrapper>
-              <Styled.StyledHeader fontSize="h3">
+              <Styled.StyledHeader fontSize="h3" mobileFontSize="h5">
                 Requirements{' '}
               </Styled.StyledHeader>
               <Styled.ItemsWrapper>

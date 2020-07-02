@@ -30,17 +30,19 @@ const CourseOutline = () => (
           const title = chapterId + ' : ' + chapter.title;
           return (
             <CollapseContainer title={title} isCollapsed={true} key={i}>
-              {lessons &&
-                Object.keys(lessons).map((lessonId, i) => {
-                  const lesson = lessons[lessonId];
-                  const title = lessonId + ' : ' + lesson.title;
-                  return (
-                    <Styled.ContentWrapper key={i}>
-                      <div>{title}</div>
-                      <div>{lesson.duration}</div>
-                    </Styled.ContentWrapper>
-                  );
-                })}
+              <Styled.ItemsContainer>
+                {lessons &&
+                  Object.keys(lessons).map((lessonId, i) => {
+                    const lesson = lessons[lessonId];
+                    const title = lessonId + ' : ' + lesson.title;
+                    return (
+                      <Styled.ContentWrapper key={i}>
+                        <div>{title}</div>
+                        <div>{lesson.duration}</div>
+                      </Styled.ContentWrapper>
+                    );
+                  })}
+              </Styled.ItemsContainer>
             </CollapseContainer>
           );
         })}

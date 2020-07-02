@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 `;
 
 const Content = styled.div`
-  max-width: 1100px;
+  max-width: 1400px;
   z-index: 1;
   margin-top: ${spacing.xxxl};
   ${media.aboveTablet`
@@ -40,8 +40,6 @@ const TextWrapper = styled.div`
 `;
 
 export const Label = styled.div`
-  padding-top: ${spacing.sm};
-  padding-bottom: ${spacing.xxxS};
   padding-left: ${spacing.sm};
   font-size: ${({ fontSize }) =>
     fontSizeMap[fontSize] ? fontSizeMap[fontSize] : fontSizeMap.textS};
@@ -67,10 +65,14 @@ const StyledHeader = styled.text`
   font-size: ${({ fontSize }) =>
     fontSizeMap[fontSize] ? fontSizeMap[fontSize] : fontSizeMap.textS};
   z-index: 1;
-  font-weight: bold;
+  font-weight: 500;
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'left')};
   ${media.belowTabletLarge`
-    font-size: ${fontSizeMap.h4};
+    // font-size: ${fontSizeMap.h5};
+    font-size:  ${({ mobileFontSize }) =>
+      fontSizeMap[mobileFontSize]
+        ? fontSizeMap[mobileFontSize]
+        : fontSizeMap.textS};
   `}
 `;
 

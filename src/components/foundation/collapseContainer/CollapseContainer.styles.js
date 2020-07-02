@@ -10,10 +10,10 @@ const Card = styled.div`
 const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  //border-bottom: 1px solid dimgray;
   position: relative;
-  padding: 10px;
-  font-weight: bold;
+  align-items: center;
+  padding: 20px;
+  font-weight: 500;
   border-radius: 10px;
   background: ${colors.background.violetsecondary};
 `;
@@ -39,12 +39,9 @@ const Wrapper = styled.div`
 
 const CollapseButton = styled.span`
   cursor: pointer;
-  padding-right: 30px;
-  i {
-    display: inline-block;
-    margin-right: ${spacing.xS};
-    font-size: ${fontSizeMap.title3};
-  }
+  padding-right: 20px;
+  font-size: 28px;
+  font-weight: 500;
 `;
 
 const renderOutsideContainerCSS = css`

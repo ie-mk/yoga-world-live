@@ -12,20 +12,29 @@ const Wrapper = styled.div`
 const ContentWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  background:${colors.background.violetsecondary};
   width: 100%;
   padding: 20px;
-  font-weight: bold;
-  border-bottom: 0.1px solid ${colors.primary};
+  font-weight: 500;
+  border-bottom: 1px solid ${colors.primary};
   ${media.belowTabletLarge`
     padding: 5px;
   `}
+`;
+
+const ItemsContainer = styled.div`
+  padding-left: 30px;
+  padding-right: 30px;
+  background: ${colors.background.violetsecondary};
+  border-radius: 10px;
+  div: last-child {
+    // background: #ff0000;
+    border-bottom: 0;
   }
 `;
 
 const StyledHeader = styled.text`
   font-size: ${fontSizeMap.h4};
-  font-weight: bold;
+  font-weight: 500;
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'left')};
   ${media.belowTabletLarge`
     font-size: ${fontSizeMap.text};
@@ -36,4 +45,5 @@ export default {
   Wrapper,
   ContentWrapper,
   StyledHeader,
+  ItemsContainer,
 };
