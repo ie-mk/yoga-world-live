@@ -5,6 +5,7 @@ import Table from '../table/Table';
 import Button from '../../../foundation/button/Button';
 import Styled from './Inbox.styles';
 import AddNewMessage from './addNew/AddNewMessage';
+import ReplyMessage from './addReply/ReplyMessage';
 import { resourceActions } from '../../../../store/actions';
 import Modal from '../../../modal/Modal';
 import { colors } from '../../../../constants/styles';
@@ -19,11 +20,15 @@ const columnHeaders = [
 ];
 
 const Inbox = ({ dispatch, profile, messages }) => {
-  const handleReply = messageId => {
+  const handleReply = id => {
+    setEdit(true);
+    setMessageId(id);
     // TODO
   };
 
   const [newAdd, setNewAdd] = useState(false);
+  const [edit, setEdit] = useState(false);
+  const [messageId, setMessageId] = useState('');
 
   const uid = profile && profile.uid;
 
@@ -95,6 +100,23 @@ const Inbox = ({ dispatch, profile, messages }) => {
             title="New Message"
           >
             <AddNewMessage setNewAdd={setNewAdd} />
+          </Modal>
+        )}
+
+        {edit && (
+          <Modal
+            styles={{
+              width: '800px',
+              height: 'auto',
+              color: 'black',
+            }}
+            fontSize="24px"
+            marginTop="20px"
+            fontWeight="700"
+            onClose={() => setEdit(false)}
+            title="Reply"
+          >
+            <ReplyMessage setEdit={setEdit} messageId={messageId} />
           </Modal>
         )}
       </ContainerBase>
