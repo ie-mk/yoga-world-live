@@ -7,13 +7,30 @@ import AdminTextArea from '../../../../foundation/textarea/AdminTextArea';
 import AdminUploadImage from '../../../../foundation/pictureUploader/PictureUploader';
 import Button from '../../../../foundation/button/Button';
 import { userActions, resourceActions } from '../../../../../store/actions';
-import SearchableInput from '../../../../searchableInput/SearchableInput';
 import { getAllUsersPublicInfo } from '../../../../../store/selectors';
 
-const AddNewMessage = ({ dispatch, setEdit, messageId }) => {
+const AddNewMessage = ({
+  dispatch,
+  setEdit,
+  messageData,
+  allUsersPublicInfo,
+}) => {
   useEffect(() => {
-    dispatch(resourceActions.fetchMessage.request(messageId));
+    dispatch(userActions.fetchAllUsersPublicInfo.request());
   }, [setEdit]);
+
+  initialFormValues.subject = 'RE: ' + messageData.subject;
+  initialFormValues.message =
+    messageData.message + '\n\n\n\n\n' + messageData.created;
+  initialFormValues.receiverId = messageData.receiverId;
+
+  let receiverName = '';
+  Object.keys(allUsersPublicInfo).forEach(key => {
+    const userObject = allUsersPublicInfo[key];
+    if (messageData.receiverId == key) {
+      receiverName = userObject.displayName;
+    }
+  });
 
   return (
     <div>
@@ -23,22 +40,21 @@ const AddNewMessage = ({ dispatch, setEdit, messageId }) => {
         //  validationSchema={profileFormValidation}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
-          dispatch(resourceActions.createMessage.request({ data: values }));
+          dispatch(
+            resourceActions.updateMessage.request({
+              docId: initialFormValues.receiverId,
+              data: values,
+            }),
+          );
           setTimeout(() => setSubmitting(false), 1000);
-          setNewAdd(false);
+          setEdit(false);
         }}
       >
         {({ values, handleSubmit, setFieldValue }) => (
           <form onSubmit={handleSubmit} /*onKeyDown={onKeyDown}*/>
             <Styled.InputRow>
-              <AdminInput
-                name="subject"
-                type="text"
-                label="Member ID(Name / Email / Phone)"
-                width="60%"
-                backgroundColor="white"
-                placeholder="Member ID(Name / Email / Phone)"
-              />
+              <input className="search-input" value={receiverName} />
+              <Field className="hidden" name="receiverId" />
               <AdminUploadImage width="40%" label="Attachements" />
             </Styled.InputRow>
             <Styled.InputRow>

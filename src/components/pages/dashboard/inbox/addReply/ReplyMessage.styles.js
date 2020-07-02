@@ -19,6 +19,13 @@ export const InputRow = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  .search-input {
+    width: 450px;
+    line-height: 40px;
+    border-radius: ${borderRadius.sm};
+    padding-left: ${spacing.sm};
+    font-size: ${fontSizeMap.text};
+  }
 `;
 
 export const ButtonWrapper = styled.div`

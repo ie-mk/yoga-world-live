@@ -20,15 +20,15 @@ const columnHeaders = [
 ];
 
 const Inbox = ({ dispatch, profile, messages }) => {
-  const handleReply = id => {
+  const handleReply = rowData => {
     setEdit(true);
-    setMessageId(id);
+    setMessageData(rowData);
     // TODO
   };
 
   const [newAdd, setNewAdd] = useState(false);
   const [edit, setEdit] = useState(false);
-  const [messageId, setMessageId] = useState('');
+  const [messageData, setMessageData] = useState('');
 
   const uid = profile && profile.uid;
 
@@ -62,7 +62,7 @@ const Inbox = ({ dispatch, profile, messages }) => {
                   type="action"
                   fontSize="20px"
                   borderRadius="sm"
-                  onClick={() => handleReply(id)}
+                  onClick={() => handleReply(rowData)}
                 >
                   Reply
                 </Button>
@@ -116,7 +116,7 @@ const Inbox = ({ dispatch, profile, messages }) => {
             onClose={() => setEdit(false)}
             title="Reply"
           >
-            <ReplyMessage setEdit={setEdit} messageId={messageId} />
+            <ReplyMessage setEdit={setEdit} messageData={messageData} />
           </Modal>
         )}
       </ContainerBase>
