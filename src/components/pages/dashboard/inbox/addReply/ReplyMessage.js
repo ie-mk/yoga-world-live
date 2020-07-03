@@ -9,7 +9,7 @@ import Button from '../../../../foundation/button/Button';
 import { userActions, resourceActions } from '../../../../../store/actions';
 import { getAllUsersPublicInfo } from '../../../../../store/selectors';
 
-const AddNewMessage = ({
+const ReplyMessage = ({
   dispatch,
   setEdit,
   messageData,
@@ -20,8 +20,7 @@ const AddNewMessage = ({
   }, [setEdit]);
 
   initialFormValues.subject = 'RE: ' + messageData.subject;
-  initialFormValues.message =
-    messageData.message + '\n\n\n\n\n' + messageData.created;
+  initialFormValues.message = messageData.message;
   initialFormValues.receiverId = messageData.receiverId;
 
   let receiverName = '';
@@ -40,12 +39,7 @@ const AddNewMessage = ({
         //  validationSchema={profileFormValidation}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
-          dispatch(
-            resourceActions.updateMessage.request({
-              docId: initialFormValues.receiverId,
-              data: values,
-            }),
-          );
+          dispatch(resourceActions.createMessage.request({ data: values }));
           setTimeout(() => setSubmitting(false), 1000);
           setEdit(false);
         }}
@@ -120,4 +114,4 @@ const mapStateToProps = state => ({
   allUsersPublicInfo: getAllUsersPublicInfo(state),
 });
 
-export default connect(mapStateToProps)(AddNewMessage);
+export default connect(mapStateToProps)(ReplyMessage);
