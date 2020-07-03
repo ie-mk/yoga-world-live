@@ -25,7 +25,8 @@ const ReplyMessage = ({
     sub.substring(0, 2) != 'RE'
       ? 'RE: ' + messageData.subject
       : messageData.subject;
-  initialFormValues.message = messageData.message;
+  initialFormValues.message =
+    messageData.message + '\n\n\n' + messageData.created;
   initialFormValues.receiverId = messageData.receiverId;
 
   let receiverName = '';
