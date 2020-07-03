@@ -19,7 +19,12 @@ const ReplyMessage = ({
     dispatch(userActions.fetchAllUsersPublicInfo.request());
   }, [setEdit]);
 
-  initialFormValues.subject = 'RE: ' + messageData.subject;
+  const sub = messageData.subject;
+
+  initialFormValues.subject =
+    sub.substring(0, 2) != 'RE'
+      ? 'RE: ' + messageData.subject
+      : messageData.subject;
   initialFormValues.message = messageData.message;
   initialFormValues.receiverId = messageData.receiverId;
 
