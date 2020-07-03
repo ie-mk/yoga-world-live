@@ -11,13 +11,13 @@ import { getAllUsersPublicInfo } from '../../../../../store/selectors';
 
 const ReplyMessage = ({
   dispatch,
-  setEdit,
+  setReply,
   messageData,
   allUsersPublicInfo,
 }) => {
   useEffect(() => {
     dispatch(userActions.fetchAllUsersPublicInfo.request());
-  }, [setEdit]);
+  }, [setReply]);
 
   const sub = messageData.subject;
 
@@ -57,7 +57,7 @@ const ReplyMessage = ({
           setSubmitting(true);
           dispatch(resourceActions.createMessage.request({ data: values }));
           setTimeout(() => setSubmitting(false), 1000);
-          setEdit(false);
+          setReply(false);
         }}
       >
         {({ values, handleSubmit }) => (
@@ -108,7 +108,8 @@ const ReplyMessage = ({
                 type="action"
                 fontSize="20px"
                 borderRadius="sm"
-                onClick={() => setEdit(false)}
+                size="sm"
+                onClick={() => setReply(false)}
               >
                 Cancel
               </Button>

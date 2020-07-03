@@ -8,7 +8,7 @@ import AddNewMessage from './addNew/AddNewMessage';
 import ReplyMessage from './addReply/ReplyMessage';
 import { resourceActions } from '../../../../store/actions';
 import Modal from '../../../modal/Modal';
-import { colors } from '../../../../constants/styles';
+import { spacing, fontSizeMap } from '../../../../constants/styles';
 
 const columnHeaders = [
   'S.No',
@@ -21,13 +21,13 @@ const columnHeaders = [
 
 const Inbox = ({ dispatch, profile, messages }) => {
   const handleReply = rowData => {
-    setEdit(true);
+    setReply(true);
     setMessageData(rowData);
     // TODO
   };
 
   const [newAdd, setNewAdd] = useState(false);
-  const [edit, setEdit] = useState(false);
+  const [reply, setReply] = useState(false);
   const [messageData, setMessageData] = useState('');
 
   const uid = profile && profile.uid;
@@ -57,10 +57,8 @@ const Inbox = ({ dispatch, profile, messages }) => {
               <Table.Td>{rowData.message}</Table.Td>
               <Table.Td>
                 <Button
-                  width="70px"
-                  height="40px"
                   type="action"
-                  fontSize="16px"
+                  size="sm"
                   borderRadius="sm"
                   onClick={() => handleReply(rowData)}
                 >
@@ -93,8 +91,8 @@ const Inbox = ({ dispatch, profile, messages }) => {
               height: 'auto',
               color: 'black',
             }}
-            fontSize="24px"
-            marginTop="20px"
+            fontSize={fontSizeMap.h4}
+            marginTop={spacing.lg}
             fontWeight="700"
             onClose={() => setNewAdd(false)}
             title="New Message"
@@ -103,20 +101,20 @@ const Inbox = ({ dispatch, profile, messages }) => {
           </Modal>
         )}
 
-        {edit && (
+        {reply && (
           <Modal
             styles={{
               width: '800px',
               height: 'auto',
               color: 'black',
             }}
-            fontSize="24px"
-            marginTop="20px"
+            fontSize={fontSizeMap.h4}
+            marginTop={spacing.lg}
             fontWeight="700"
-            onClose={() => setEdit(false)}
+            onClose={() => setReply(false)}
             title="Reply"
           >
-            <ReplyMessage setEdit={setEdit} messageData={messageData} />
+            <ReplyMessage setReply={setReply} messageData={messageData} />
           </Modal>
         )}
       </ContainerBase>
