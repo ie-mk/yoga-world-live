@@ -52,7 +52,7 @@ const ReplyMessage = ({
         {({ values, handleSubmit, setFieldValue }) => (
           <form onSubmit={handleSubmit} /*onKeyDown={onKeyDown}*/>
             <Styled.InputRow>
-              <input className="search-input" value={receiverName} />
+              <input className="name-input" value={receiverName} />
               <Field className="hidden" name="receiverId" />
               <AdminUploadImage width="40%" label="Attachements" />
             </Styled.InputRow>

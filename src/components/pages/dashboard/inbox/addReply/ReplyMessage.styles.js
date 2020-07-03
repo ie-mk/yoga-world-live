@@ -19,7 +19,7 @@ export const InputRow = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  .search-input {
+  .name-input {
     width: 450px;
     line-height: 40px;
     border-radius: ${borderRadius.sm};
