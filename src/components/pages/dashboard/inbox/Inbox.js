@@ -57,10 +57,10 @@ const Inbox = ({ dispatch, profile, messages }) => {
               <Table.Td>{rowData.message}</Table.Td>
               <Table.Td>
                 <Button
-                  width="100px"
-                  height="48px"
+                  width="70px"
+                  height="40px"
                   type="action"
-                  fontSize="20px"
+                  fontSize="16px"
                   borderRadius="sm"
                   onClick={() => handleReply(rowData)}
                 >
