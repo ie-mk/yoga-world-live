@@ -22,17 +22,27 @@ const ReplyMessage = ({
   const sub = messageData.subject;
 
   initialFormValues.subject =
-    sub.substring(0, 2) != 'RE'
+    sub.substring(0, 2) !== 'RE'
       ? 'RE: ' + messageData.subject
       : messageData.subject;
-  initialFormValues.message =
-    messageData.message + '\n\n\n' + messageData.created;
+  initialFormValues.message = `
+
+
+  ------------- Previous message ----------------------
+  Sender: ${allUsersPublicInfo &&
+    allUsersPublicInfo[messageData.senderId] &&
+    allUsersPublicInfo[messageData.senderId].displayName}
+  Date: ${messageData.created}
+
+    ${messageData.message}
+  `;
+
   initialFormValues.receiverId = messageData.receiverId;
 
   let receiverName = '';
   Object.keys(allUsersPublicInfo).forEach(key => {
     const userObject = allUsersPublicInfo[key];
-    if (messageData.receiverId == key) {
+    if (messageData.receiverId === key) {
       receiverName = userObject.displayName;
     }
   });
@@ -50,8 +60,8 @@ const ReplyMessage = ({
           setEdit(false);
         }}
       >
-        {({ values, handleSubmit, setFieldValue }) => (
-          <form onSubmit={handleSubmit} /*onKeyDown={onKeyDown}*/>
+        {({ values, handleSubmit }) => (
+          <form onSubmit={handleSubmit}>
             <Styled.InputRow>
               <input className="name-input" value={receiverName} />
               <Field className="hidden" name="receiverId" />
