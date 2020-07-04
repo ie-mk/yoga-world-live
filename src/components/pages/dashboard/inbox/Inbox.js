@@ -5,9 +5,10 @@ import Table from '../table/Table';
 import Button from '../../../foundation/button/Button';
 import Styled from './Inbox.styles';
 import AddNewMessage from './addNew/AddNewMessage';
+import ReplyMessage from './addReply/ReplyMessage';
 import { resourceActions } from '../../../../store/actions';
 import Modal from '../../../modal/Modal';
-import { colors } from '../../../../constants/styles';
+import { spacing, fontSizeMap } from '../../../../constants/styles';
 
 const columnHeaders = [
   'S.No',
@@ -19,11 +20,15 @@ const columnHeaders = [
 ];
 
 const Inbox = ({ dispatch, profile, messages }) => {
-  const handleReply = messageId => {
+  const handleReply = rowData => {
+    setReply(true);
+    setMessageData(rowData);
     // TODO
   };
 
   const [newAdd, setNewAdd] = useState(false);
+  const [reply, setReply] = useState(false);
+  const [messageData, setMessageData] = useState('');
 
   const uid = profile && profile.uid;
 
@@ -52,12 +57,10 @@ const Inbox = ({ dispatch, profile, messages }) => {
               <Table.Td>{rowData.message}</Table.Td>
               <Table.Td>
                 <Button
-                  width="100px"
-                  height="48px"
                   type="action"
-                  fontSize="20px"
+                  size="sm"
                   borderRadius="sm"
-                  onClick={() => handleReply(id)}
+                  onClick={() => handleReply(rowData)}
                 >
                   Reply
                 </Button>
@@ -88,13 +91,30 @@ const Inbox = ({ dispatch, profile, messages }) => {
               height: 'auto',
               color: 'black',
             }}
-            fontSize="24px"
-            marginTop="20px"
+            fontSize={fontSizeMap.h4}
+            marginTop={spacing.lg}
             fontWeight="700"
             onClose={() => setNewAdd(false)}
             title="New Message"
           >
             <AddNewMessage setNewAdd={setNewAdd} />
+          </Modal>
+        )}
+
+        {reply && (
+          <Modal
+            styles={{
+              width: '800px',
+              height: 'auto',
+              color: 'black',
+            }}
+            fontSize={fontSizeMap.h4}
+            marginTop={spacing.lg}
+            fontWeight="700"
+            onClose={() => setReply(false)}
+            title="Reply"
+          >
+            <ReplyMessage setReply={setReply} messageData={messageData} />
           </Modal>
         )}
       </ContainerBase>
