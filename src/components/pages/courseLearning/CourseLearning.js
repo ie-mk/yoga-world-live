@@ -10,17 +10,6 @@ import { spacing } from '../../../constants/styles';
 import Styled from './CourseLearning.styles';
 import CollapseContainer from '../collapaseContainer/CollapseContainer';
 
-const CustomText24 = props => (
-  <Text24
-    mediaConfig={{
-      belowTabletLarge: {
-        margin: '0 0 7px 0',
-      },
-    }}
-    {...props}
-  />
-);
-
 const CustomText241 = props => (
   <Text24
     mediaConfig={{
@@ -31,6 +20,18 @@ const CustomText241 = props => (
     {...props}
   />
 );
+var chapters = {
+  'chapter 01': {
+    title: 'title',
+    lessons: {
+      'Lesson 01': { title: 'Title' },
+      'Lesson 02': { title: 'Title' },
+      'Lesson 03': { title: 'Title' },
+    },
+  },
+  'chapter 02': { title: 'title' },
+  'chapter 03': { title: 'title' },
+};
 
 var questions = [
   'Does these courses need any special requirements?',
@@ -61,32 +62,35 @@ const CourseLearning = () => (
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <Styled.CourseHome>
               <CardTitle text="Course Home" />
-              <div>
-                <Styled.ChapterWrapper>
-                  <Styled.CheckBox type="checkbox" />
-                  <CustomText241 margin="0 0 0 20px" text="Chapter 01: Title" />
-                </Styled.ChapterWrapper>
-                <Styled.LessonWrapper>
-                  <Styled.CheckBox type="checkbox" />
-                  <CustomText241 margin="0 0 0 20px" text="Lesson 01: Title" />
-                </Styled.LessonWrapper>
-                <Styled.LessonWrapper>
-                  <Styled.CheckBox type="checkbox" />
-                  <CustomText241 margin="0 0 0 20px" text="Lesson 02: Title" />
-                </Styled.LessonWrapper>
-                <Styled.LessonWrapper>
-                  <Styled.CheckBox type="checkbox" />
-                  <CustomText241 margin="0 0 0 20px" text="Lesson 03: Title" />
-                </Styled.LessonWrapper>
-              </div>
-              <Styled.ChapterWrapper>
-                <Styled.CheckBox type="checkbox" />
-                <CustomText241 margin="0 0 0 20px" text="Chapter 02: Title" />
-              </Styled.ChapterWrapper>
-              <Styled.ChapterWrapper>
-                <Styled.CheckBox type="checkbox" />
-                <CustomText241 margin="0 0 0 20px" text="Chapter 03: Title" />
-              </Styled.ChapterWrapper>
+              {Object.keys(chapters).map((chapterId, i) => {
+                const chapter = chapters[chapterId];
+                const title = chapterId + ' : ' + chapter.title;
+
+                const lessons = chapters[chapterId].lessons;
+                return (
+                  <div>
+                    <Styled.ChapterWrapper>
+                      <Styled.CheckBox type="checkbox" />
+                      <CustomText241 margin="0 0 0 20px" text={title} />
+                    </Styled.ChapterWrapper>
+                    {lessons &&
+                      Object.keys(lessons).map((lessonId, i) => {
+                        const lesson = lessons[lessonId];
+
+                        const lessonTitle = lessonId + ' : ' + lesson.title;
+                        return (
+                          <Styled.LessonWrapper>
+                            <Styled.CheckBox type="checkbox" />
+                            <CustomText241
+                              margin="0 0 0 20px"
+                              text={lessonTitle}
+                            />
+                          </Styled.LessonWrapper>
+                        );
+                      })}
+                  </div>
+                );
+              })}
             </Styled.CourseHome>
             <Styled.MenuShowWrapper>
               <div>
