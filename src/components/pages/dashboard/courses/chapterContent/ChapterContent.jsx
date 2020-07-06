@@ -19,6 +19,8 @@ const ChapterContent = ({ dispatch, chapterId, chapters, courseId }) => {
 
   const lessons = chapter.lessons;
 
+  console.log('----lessons: ', lessons);
+
   return (
     <Styled.Wrapper>
       <CollapseContainer title={title} isCollapsed={true}>

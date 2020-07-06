@@ -22,17 +22,7 @@ import ChapterContent from '../chapterContent/ChapterContent';
 //   'Lesson 04': { title: 'Fourth Lesson', duration: '12:48' },
 // };
 
-const CourseOutline = ({ dispatch, chapters, courseId }) => {
-  // const CourseChapter = ({ dispatch, courseId, chapterId, data, idx }) => {
-  useEffect(() => {
-    dispatch(
-      resourceActions.fetchLessons.request({
-        courseId,
-        // chapterId,
-      }),
-    );
-  }, []);
-
+const CourseOutline = ({ chapters, courseId }) => {
   return (
     <Styled.Wrapper>
       <Styled.StyledHeader>Course Outline</Styled.StyledHeader>
