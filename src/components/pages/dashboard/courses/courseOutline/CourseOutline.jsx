@@ -2,10 +2,11 @@ import React, { useEffect } from 'react';
 import ExpandableContainer from '../../../../foundation/expandableContainer';
 import CollapseContainer from '../../../../foundation/collapseContainer';
 
-import styled from 'styled-components';
 import Styled from './CourseOutline.styles';
 import ContainerBase from '../../../../foundation/ContainerBase';
 import { resourceActions } from '../../../../../store/actions';
+import { connect } from 'react-redux';
+import ChapterContent from '../chapterContent/ChapterContent';
 
 // var chapters = {
 //   'chapter 01': { title: 'Introduction' },
@@ -14,16 +15,15 @@ import { resourceActions } from '../../../../../store/actions';
 //   'chapter 04': { title: 'Introduction' },
 // };
 
-var lessons = {
-  'Lesson 01': { title: 'First Lesson', duration: '07:28' },
-  'Lesson 02': { title: 'Second Lesson', duration: '12:48' },
-  'Lesson 03': { title: 'Third Lesson', duration: '12:48' },
-  'Lesson 04': { title: 'Fourth Lesson', duration: '12:48' },
-};
+// var lessons = {
+//   'Lesson 01': { title: 'First Lesson', duration: '07:28' },
+//   'Lesson 02': { title: 'Second Lesson', duration: '12:48' },
+//   'Lesson 03': { title: 'Third Lesson', duration: '12:48' },
+//   'Lesson 04': { title: 'Fourth Lesson', duration: '12:48' },
+// };
 
 const CourseOutline = ({ dispatch, chapters, courseId }) => {
   // const CourseChapter = ({ dispatch, courseId, chapterId, data, idx }) => {
-
   useEffect(() => {
     dispatch(
       resourceActions.fetchLessons.request({
@@ -33,8 +33,6 @@ const CourseOutline = ({ dispatch, chapters, courseId }) => {
     );
   }, []);
 
-  // const lessons = data.lessons;
-
   return (
     <Styled.Wrapper>
       <Styled.StyledHeader>Course Outline</Styled.StyledHeader>
@@ -43,26 +41,13 @@ const CourseOutline = ({ dispatch, chapters, courseId }) => {
           Object.keys(chapters)
             .reverse()
             .map((chapterId, i) => {
-              const chapter = chapters[chapterId];
-              const title =
-                'Chapter ' + chapter.sequenceNr + ' : ' + chapter.title;
               return (
-                <CollapseContainer title={title} isCollapsed={true} key={i}>
-                  <Styled.ItemsContainer>
-                    {chapters.lessons &&
-                      Object.keys(chapters.lessons).map((lessonId, i) => {
-                        const lesson = lessons[lessonId];
-                        const title =
-                          'Lesson ' + lesson.sequenceNr + ' : ' + lesson.title;
-                        return (
-                          <Styled.ContentWrapper key={i}>
-                            <div>{title}</div>
-                            <div>{lesson.videoLink}</div>
-                          </Styled.ContentWrapper>
-                        );
-                      })}
-                  </Styled.ItemsContainer>
-                </CollapseContainer>
+                <ChapterContent
+                  key={chapterId}
+                  chapterId={chapterId}
+                  courseId={courseId}
+                  chapters={chapters}
+                />
               );
             })}
       </ContainerBase>
@@ -70,4 +55,4 @@ const CourseOutline = ({ dispatch, chapters, courseId }) => {
   );
 };
 
-export default CourseOutline;
+export default connect()(CourseOutline);
