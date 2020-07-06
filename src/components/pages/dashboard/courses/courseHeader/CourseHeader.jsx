@@ -8,6 +8,7 @@ import { fontSizeMap, spacing, colors } from '../../../../../constants/styles';
 import ContainerBase from '../../../../foundation/ContainerBase';
 import Button from '../../../../foundation/button/Button';
 import GreenCheckBoxWithText from '../../../../foundation/greencheckboxwithtext/GreenCheckBoxWithText.jsx';
+import StarRating from '../../../../foundation/starRating/StarRating';
 
 const Label = ({ keyname, value }) => {
   return (
@@ -27,16 +28,21 @@ const Label = ({ keyname, value }) => {
   );
 };
 
-var data = [
-  { Item: 'Take all our courses online' },
-  { Item: 'Take all our courses online' },
-  { Item: 'Take all our courses online' },
-  { Item: 'Take all our courses online' },
-];
-
-const studentRating = '⭐⭐⭐⭐⭐';
-
+// const studentRating = '⭐⭐⭐⭐⭐';
 const CourseHeader = ({ title, course }) => {
+  const Rating = <StarRating rating="4.3" />;
+
+  // var data = [
+  //   { Item: 'Take all our courses online' },
+  //   { Item: 'Take all our courses online' },
+  //   { Item: 'Take all our courses online' },
+  //   { Item: 'Take all our courses online' },
+  // ];
+  const whatyouwilllearn = course.whatWillLearn;
+  const data = whatyouwilllearn.split(',');
+
+  const prerequisites = course.prerequisites;
+  const prerequisitesdata = prerequisites.split(',');
   return (
     <Styled.Wrapper>
       <ResponsiveImage
@@ -71,7 +77,7 @@ const CourseHeader = ({ title, course }) => {
           gridGap={spacing.xl}
         >
           <Label keyname="Author" value="Stephen Segmister" />
-          <Label keyname="Student Rating" value={studentRating} />
+          <Label keyname="Student Rating" value={Rating} />
           <Label keyname="Level" value={course.level} />
           <Label keyname="Content" value={course.numberOfChapters} />
           <Label keyname="Duration" value={course.duration} />
@@ -82,7 +88,7 @@ const CourseHeader = ({ title, course }) => {
             maxWidth="280px"
             margin="0"
           >
-            START Course
+            START COURSE
           </Button>
         </Grid>
         <ContainerBase marginTop="xxl" marginBottom="xxl">
@@ -103,11 +109,11 @@ const CourseHeader = ({ title, course }) => {
                 What you will learn{' '}
               </Styled.StyledHeader>
               <Styled.ItemsWrapper>
-                {data.map((s, i) => {
+                {data.map((item, i) => {
                   return (
                     <GreenCheckBoxWithText
                       key={i}
-                      label={s.Item}
+                      label={item}
                       color="#D5D5D5"
                       fontSize="text"
                       noMargin={true}
@@ -122,11 +128,11 @@ const CourseHeader = ({ title, course }) => {
                 Requirements{' '}
               </Styled.StyledHeader>
               <Styled.ItemsWrapper>
-                {data.map((s, i) => {
+                {prerequisitesdata.map((item, i) => {
                   return (
                     <GreenCheckBoxWithText
                       key={i}
-                      label={s.Item}
+                      label={item}
                       color="#D5D5D5"
                       fontSize="text"
                       noMargin={true}

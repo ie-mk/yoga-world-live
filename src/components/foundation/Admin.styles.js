@@ -91,8 +91,7 @@ const Wrapper = styled.div`
   padding-bottom: ${({ padding }) => (padding ? spacing[padding] : '0')};
   ${media.belowTabletLarge`
   width: ${({ mobileWidth }) => (mobileWidth ? mobileWidth : '')};
-  padding-top: ${spacing.xxxS};
-  padding-bottom: ${spacing.xxxS};
+  padding: ${({ paddingMobile }) => (paddingMobile ? paddingMobile : '0')};
 `}
 `;
 

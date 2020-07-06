@@ -18,6 +18,7 @@ const CourseStart = ({ courses }) => {
   courseTitle = courseTitle.toUpperCase();
   console.log('---course-data');
   console.log(course);
+  const chapters = course.chapters;
 
   return (
     <ErrorBoundary>
@@ -25,7 +26,7 @@ const CourseStart = ({ courses }) => {
         <CourseHeader title={courseTitle} course={course} />
 
         <PageContent hasDefaultMarginTop={false} maxWidth="1100px">
-          <CourseOutline />
+          <CourseOutline chapters={chapters} courseId={courseId} />
         </PageContent>
       </>
     </ErrorBoundary>
