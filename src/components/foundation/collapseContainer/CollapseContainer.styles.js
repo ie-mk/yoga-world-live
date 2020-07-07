@@ -12,34 +12,34 @@ const HeaderWrapper = styled.div`
   justify-content: space-between;
   position: relative;
   align-items: center;
-  padding: 20px;
+  padding: ${spacing.lg};
   font-weight: 500;
-  border-radius: 10px;
+  border-radius: ${spacing.xls};
   background: ${colors.background.violetsecondary};
 `;
 
 const Header = styled.div`
   display: flex;
-  margin-left: 20px;
+  margin-left: ${spacing.lg};
 `;
 
 const StyledHeaderTitle = styled.header`
-  margin-right: 30px;
+  margin-right: ${spacing.xl};
 `;
 
 const Wrapper = styled.div`
   box-shadow: 0 2px 0 rgba(0, 0, 0, 0.05);
   //background-color: ${colors.white};
-  margin-bottom: 10px;
+  margin-bottom: ${spacing.sm};
   &:first-child {
-    margin-top: 10px;
+    margin-top: ${spacing.sm};
   }
   color: ${colors.white};
 `;
 
 const CollapseButton = styled.span`
   cursor: pointer;
-  padding-right: 20px;
+  padding-right: ${spacing.lg};
   font-size: 28px;
   font-weight: 500;
 `;

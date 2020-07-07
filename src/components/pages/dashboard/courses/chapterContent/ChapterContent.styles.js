@@ -6,21 +6,20 @@ const ContentWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 20px;
-  font-weight: 500;
+  padding: ${spacing.lg};
+  font-weight: 400;
   border-bottom: 1px solid ${colors.primary};
   ${media.belowTabletLarge`
-    padding: 5px;
+    padding: ${spacing.xxxS};
   `}
 `;
 
 const ItemsContainer = styled.div`
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: ${spacing.xl};
+  padding-right: ${spacing.xl};
   background: ${colors.background.violetsecondary};
-  border-radius: 10px;
+  border-radius: ${spacing.sm};
   div: last-child {
-    // background: #ff0000;
     border-bottom: 0;
   }
 `;

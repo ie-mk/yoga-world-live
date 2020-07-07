@@ -16,8 +16,7 @@ const CourseStart = ({ courses }) => {
 
   let courseTitle = course.title;
   courseTitle = courseTitle.toUpperCase();
-  console.log('---course-data');
-  console.log(course);
+
   const chapters = course.chapters;
 
   return (

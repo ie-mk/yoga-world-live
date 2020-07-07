@@ -6,7 +6,7 @@ const Ratingbox = styled.div`
   display: inline-block;
 
   &:before {
-    content: '\f006 \f006 \f006 \f006 \f006';
+    content: '\f006   \f006   \f006   \f006   \f006';
   }
 `;
 
@@ -19,7 +19,7 @@ const Rating = styled.div`
   color: #d3b92e;
   width: ${({ width }) => (width ? width : 0)};
   &:before {
-    content: '\f005 \f005 \f005 \f005 \f005';
+    content: '\f005   \f005   \f005   \f005   \f005';
   }
 `;
 

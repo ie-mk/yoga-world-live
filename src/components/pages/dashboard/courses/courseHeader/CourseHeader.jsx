@@ -1,8 +1,6 @@
 import React from 'react';
 import Styled from './CourseHeader.styles';
-import ResponsiveImage from '../../../../foundation/ResponsiveImage'; //'../../foundation/ResponsiveImage';
-import SectionTitle from '../../../../foundation/typography/SectionTitle';
-import CenteredFlexContainer from '../../../../foundation/CenteredFlexContainer';
+import ResponsiveImage from '../../../../foundation/ResponsiveImage';
 import Grid from '../../../../foundation/Grid';
 import { fontSizeMap, spacing, colors } from '../../../../../constants/styles';
 import ContainerBase from '../../../../foundation/ContainerBase';
@@ -28,16 +26,9 @@ const Label = ({ keyname, value }) => {
   );
 };
 
-// const studentRating = '⭐⭐⭐⭐⭐';
 const CourseHeader = ({ title, course }) => {
   const Rating = <StarRating rating="4.3" />;
 
-  // var data = [
-  //   { Item: 'Take all our courses online' },
-  //   { Item: 'Take all our courses online' },
-  //   { Item: 'Take all our courses online' },
-  //   { Item: 'Take all our courses online' },
-  // ];
   const whatyouwilllearn = course.whatWillLearn;
   const data = whatyouwilllearn.split(',');
 
