@@ -99,54 +99,88 @@ const CourseLearning = () => (
             </Styled.MenuShowWrapper>
           </div>
         </div>
-        <Styled.Lesson>
-          <CardTitle margin="0 0 55px 0" text="Lesson Title" />
+        <div>
+          <Styled.Lesson>
+            <CardTitle margin="0 0 55px 0" text="Lesson Title" />
 
-          <video width="700" height="500" controls>
-            <source src="mov_bbb.mp4" type="video/mp4" />
-            <source src="mov_bbb.ogg" type="video/ogg" />
-            Your browser does not support HTML video.
-          </video>
-          <div style={{ margin: '0 0 0 20px' }}>
-            <CardTitle
-              margin="76px 0 23px 0"
-              text="What you will learn in this chapter"
-            />
-            <Text18 text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum" />
-            <CardTitle
-              margin="50px 0 29px 0"
-              text="Please complete the following assignment"
-            />
-            <Styled.AssignmentWrapper>Assignment 03</Styled.AssignmentWrapper>
-            <div>
-              <Text18
-                margin="65px 0 0 0"
-                text="NOTE : Once the assignment is complete then only the lesson marked as finished."
+            <Styled.DesktopVideoWrapper>
+              <video width="700" height="500" controls>
+                <source src="mov_bbb.mp4" type="video/mp4" />
+                <source src="mov_bbb.ogg" type="video/ogg" />
+                Your browser does not support HTML video.
+              </video>
+            </Styled.DesktopVideoWrapper>
+            <Styled.MobileVideoWrapper>
+              <video width="350" height="250" controls>
+                <source src="mov_bbb.mp4" type="video/mp4" />
+                <source src="mov_bbb.ogg" type="video/ogg" />
+                Your browser does not support HTML video.
+              </video>
+            </Styled.MobileVideoWrapper>
+
+            <Styled.LessonContent>
+              <CardTitle
+                margin="76px 0 23px 0"
+                mediaConfig={{
+                  belowTabletLarge: {
+                    margin: '38px 0 12px 0',
+                  },
+                }}
+                text="What you will learn in this chapter"
               />
-            </div>
+              <Text18 text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum" />
+              <CardTitle
+                margin="50px 0 29px 0"
+                mediaConfig={{
+                  belowTabletLarge: {
+                    margin: '25px 0 15px 0',
+                  },
+                }}
+                text="Please complete the following assignment"
+              />
+              <Styled.AssignmentWrapper>Assignment 03</Styled.AssignmentWrapper>
+              <div>
+                <Text18
+                  margin="65px 0 0 0"
+                  mediaConfig={{
+                    belowTabletLarge: {
+                      margin: '33px 0 0 0',
+                    },
+                  }}
+                  text="NOTE : Once the assignment is complete then only the lesson marked as finished."
+                />
+              </div>
+              <Styled.RowContainer>
+                <CardTitle
+                  mediaConfig={{
+                    belowTabletLarge: {
+                      margin: '0 0 39px  0',
+                    },
+                  }}
+                  text="Frequently Asked Questions"
+                />
+                <Styled.AskWrapper>Ask a question?</Styled.AskWrapper>
+              </Styled.RowContainer>
+            </Styled.LessonContent>
+            {questions.map((key, index) => (
+              <CollapseContainer
+                title={questions[index]}
+                isCollapsed={true}
+                key={index}
+              />
+            ))}
             <Styled.RowContainer>
-              <CardTitle text="Frequently Asked Questions" />
-              <Styled.AskWrapper>Ask a question?</Styled.AskWrapper>
+              <Styled.LessonMoveWrapper>
+                <i className="fa fa-angle-left fa-3x" aria-hidden="true" />
+                <PathTitle margin="0 0 0 20px" text="Lesson 02 : Title" />
+              </Styled.LessonMoveWrapper>
+              <Styled.LessonMoveWrapper>
+                <PathTitle margin="0 20px 0 0" text="Lesson 04 : Title" />
+                <i class="fa fa-angle-right fa-3x" aria-hidden="true" />
+              </Styled.LessonMoveWrapper>
             </Styled.RowContainer>
-          </div>
-          {questions.map((key, index) => (
-            <CollapseContainer
-              title={questions[index]}
-              isCollapsed={true}
-              key={index}
-            />
-          ))}
-          <Styled.RowContainer>
-            <Styled.LessonMoveWrapper>
-              <i className="fa fa-angle-left fa-3x" aria-hidden="true" />
-              <PathTitle margin="0 0 0 20px" text="Lesson 02 : Title" />
-            </Styled.LessonMoveWrapper>
-            <Styled.LessonMoveWrapper>
-              <PathTitle margin="0 20px 0 0" text="Lesson 04 : Title" />
-              <i class="fa fa-angle-right fa-3x" aria-hidden="true" />
-            </Styled.LessonMoveWrapper>
-          </Styled.RowContainer>
-        </Styled.Lesson>
+          </Styled.Lesson>
+        </div>
       </Grid>
     </CenteredFlexContainer>
   </CenteredFlexContainer>
