@@ -148,8 +148,9 @@ export const MenuShowWrapper = styled.div`
   z-index: 1;
 
   ${media.belowTabletLarge`
-     margin-top:0;
-
+     margin-top: 0;
+     top: 150px;
+     left: ${({ open }) => (open ? '342px' : '125px')};
   `}
 `;
 

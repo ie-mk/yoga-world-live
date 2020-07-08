@@ -91,7 +91,10 @@ const CourseLearning = () => {
           </Styled.CourseHome>
         </Styled.ViewCourseHomeWrapper>
         <Styled.ContentWrapper>
-          <Styled.MenuShowWrapper onClick={() => setMenuOpen(!menuOpen)}>
+          <Styled.MenuShowWrapper
+            open={menuOpen}
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
             <i className="fa fa-angle-left fa-4x" aria-hidden="true" />
           </Styled.MenuShowWrapper>
           <Styled.Lesson>
