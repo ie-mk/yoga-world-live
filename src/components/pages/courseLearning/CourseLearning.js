@@ -1,6 +1,6 @@
 import React from 'react';
 import CenteredFlexContainer from '../../foundation/CenteredFlexContainer';
-import HeroTitle from '../../foundation/typography/HeroTitle';
+import SectionTitle from '../../foundation/typography/SectionTitle';
 import CardTitle from '../../foundation/typography/CardTitle';
 import PathTitle from '../../foundation/typography/PathTitle';
 import Text24 from '../../foundation/typography/Text24';
@@ -43,7 +43,15 @@ var questions = [
 
 const CourseLearning = () => (
   <CenteredFlexContainer>
-    <HeroTitle margin="50px 0 50px 0" text="HTML,CSS & JAVA SCRIPT" />
+    <SectionTitle
+      margin="0 0 20px 0"
+      mediaConfig={{
+        belowTabletLarge: {
+          margin: '0 0 10px 0',
+        },
+      }}
+      text="HTML,CSS & JAVA SCRIPT"
+    />
     <CenteredFlexContainer>
       <Grid
         columns="1fr"
@@ -59,7 +67,7 @@ const CourseLearning = () => (
         gridGap={spacing.xl}
       >
         <div>
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <Styled.ViewCourseHomeWrapper>
             <Styled.CourseHome>
               <CardTitle text="Course Home" />
               {Object.keys(chapters).map((chapterId, i) => {
@@ -68,7 +76,7 @@ const CourseLearning = () => (
 
                 const lessons = chapters[chapterId].lessons;
                 return (
-                  <div>
+                  <>
                     <Styled.ChapterWrapper>
                       <Styled.CheckBox type="checkbox" />
                       <CustomText241 margin="0 0 0 20px" text={title} />
@@ -88,16 +96,14 @@ const CourseLearning = () => (
                           </Styled.LessonWrapper>
                         );
                       })}
-                  </div>
+                  </>
                 );
               })}
             </Styled.CourseHome>
             <Styled.MenuShowWrapper>
-              <div>
-                <i className="fa fa-angle-left fa-4x" aria-hidden="true" />
-              </div>
+              <i className="fa fa-angle-left fa-4x" aria-hidden="true" />
             </Styled.MenuShowWrapper>
-          </div>
+          </Styled.ViewCourseHomeWrapper>
         </div>
         <div>
           <Styled.Lesson>
@@ -139,18 +145,11 @@ const CourseLearning = () => (
                 text="Please complete the following assignment"
               />
               <Styled.AssignmentWrapper>Assignment 03</Styled.AssignmentWrapper>
-              <div>
-                <Text18
-                  margin="65px 0 0 0"
-                  mediaConfig={{
-                    belowTabletLarge: {
-                      margin: '33px 0 0 0',
-                    },
-                  }}
-                  text="NOTE : Once the assignment is complete then only the lesson marked as finished."
-                />
-              </div>
-              <Styled.RowContainer>
+              <Styled.NoteWrapper>
+                <Text18 color="#0EC9B0" text="NOTE:" fontWeight="700" />
+                <Text18 text="Once the assignment is complete then only the lesson marked as finished." />
+              </Styled.NoteWrapper>
+              <Styled.ViewLessonWrapper>
                 <CardTitle
                   mediaConfig={{
                     belowTabletLarge: {
@@ -160,7 +159,7 @@ const CourseLearning = () => (
                   text="Frequently Asked Questions"
                 />
                 <Styled.AskWrapper>Ask a question?</Styled.AskWrapper>
-              </Styled.RowContainer>
+              </Styled.ViewLessonWrapper>
             </Styled.LessonContent>
             {questions.map((key, index) => (
               <CollapseContainer

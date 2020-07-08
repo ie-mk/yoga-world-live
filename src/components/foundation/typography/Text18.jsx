@@ -7,7 +7,7 @@ import withSpacing from '../withSpacing';
 
 const Text = styled.span`
   font-size: ${fontSizeMap.textMobile};
-  font-weight: 400;
+  font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : '400')};
   color: ${({ color }) => (color ? color : colors.white)};
   margin: ${({ margin }) => margin || ''};
   ${media.aboveTablet`
@@ -17,9 +17,9 @@ const Text = styled.span`
   ${({ mediaConfig }) => (mediaConfig ? getMedia(mediaConfig) : '')};
 `;
 
-const Text24 = ({ text, color }) => {
+const Text24 = ({ text, color, fontWeight }) => {
   return (
-    <Text color={color} margin="0">
+    <Text color={color} fontWeight={fontWeight} margin="0">
       {text}
     </Text>
   );

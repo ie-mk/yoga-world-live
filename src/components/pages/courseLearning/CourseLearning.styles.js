@@ -2,15 +2,28 @@ import styled from 'styled-components';
 import media from '../../foundation/media';
 import { colors, spacing } from '../../../constants/styles';
 
+export const ViewCourseHomeWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  ${media.belowTabletLarge`
+     display:none;
+  `}
+`;
+
 export const CourseHome = styled.div`
   padding: 57px 30px 81px 91px;
   background-color: #1e2540;
   border-radius: 10px;
   width: 428px;
-  ${media.belowTabletLarge`
-     display:none;
-  `}
 `;
+export const NoteWrapper = styled.div`
+  display: flex;
+  margin: 65px 0 0 0;
+  ${media.belowTabletLarge`
+margin:35px 0 0 0;
+`}
+`;
+
 export const AssignmentWrapper = styled.div`
   text-decoration: underline;
   color: #0ec9b0;
@@ -46,13 +59,14 @@ export const MenuShowWrapper = styled.div`
   width: 49px;
   height: 70px;
   border-radius: 0 20px 20px 0;
+  padding: 10px;
   ${media.belowTabletLarge`
      margin-top:0;
 
   `}
 `;
 
-const RowContainer = styled.div`
+const ViewLessonWrapper = styled.div`
   margin: 46px 0 27px 0;
   ${media.aboveTabletLarge`
   flex: 1;
@@ -61,6 +75,13 @@ const RowContainer = styled.div`
   align-items: center;
   margin: 93px 0 54px 0;
   `}
+`;
+
+const RowContainer = styled.div`
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const ChapterWrapper = styled.div`
@@ -123,4 +144,7 @@ export default {
   LessonContent,
   MobileVideoWrapper,
   DesktopVideoWrapper,
+  ViewLessonWrapper,
+  ViewCourseHomeWrapper,
+  NoteWrapper,
 };
