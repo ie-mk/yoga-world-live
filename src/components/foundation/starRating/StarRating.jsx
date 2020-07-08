@@ -4,7 +4,6 @@ import Styled from './StarRating.styles';
 const StarRating = ({ rating }) => {
   const starTotal = 5;
   const starPercentage = (rating / starTotal) * 100;
-  //const starPercentageRounded = `${(Math.round(starPercentage / 10) * 10)}%`;
   const starPercentageRounded = `${starPercentage}%`;
   return (
     <Styled.Ratingbox>

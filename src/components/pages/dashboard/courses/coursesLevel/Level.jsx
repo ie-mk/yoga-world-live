@@ -8,11 +8,7 @@ import ProfileLearning from '../../../../foundation/profileLearning/ProfileLearn
 import Router from 'next/router';
 
 const Level = ({ courses, learningPathData, heading }) => {
-  console.log('---courses--');
-  console.log(courses);
-
   const toCourseStartPage = (courseId, title) => {
-    // debugger;
     Router.push(
       {
         pathname: '/courses/courseStart',

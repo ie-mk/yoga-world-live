@@ -27,7 +27,7 @@ const Label = ({ keyname, value }) => {
 };
 
 const CourseHeader = ({ title, course }) => {
-  const Rating = <StarRating rating="4.3" />;
+  const Rating = <StarRating rating={course.studentRating} />;
 
   const whatyouwilllearn = course.whatWillLearn;
   const data = whatyouwilllearn.split(',');
@@ -105,7 +105,7 @@ const CourseHeader = ({ title, course }) => {
                     <GreenCheckBoxWithText
                       key={i}
                       label={item}
-                      color="#D5D5D5"
+                      color={colors.text.primary}
                       fontSize="text"
                       noMargin={true}
                       padding="sm"
@@ -124,7 +124,7 @@ const CourseHeader = ({ title, course }) => {
                     <GreenCheckBoxWithText
                       key={i}
                       label={item}
-                      color="#D5D5D5"
+                      color={colors.text.primary}
                       fontSize="text"
                       noMargin={true}
                       padding="sm"

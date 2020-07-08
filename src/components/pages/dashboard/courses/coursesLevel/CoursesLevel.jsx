@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import { getCoursesByLevel } from '../../../../../store/selectors';
 
 const CoursesLevel = ({ coursesByLevel, learningPathData }) => {
-  // const coursesData = Object.values(courses);
-
   const begginerCourses = coursesByLevel && coursesByLevel.beginner;
 
   const intermediateCourses = coursesByLevel && coursesByLevel.intermediate;
