@@ -2,20 +2,6 @@ import styled from 'styled-components';
 import media from '../../foundation/media';
 import { colors, spacing } from '../../../constants/styles';
 
-export const ViewCourseHomeWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  ${media.belowTabletLarge`
-     display:none;
-  `}
-`;
-
-export const CourseHome = styled.div`
-  padding: 57px 30px 81px 91px;
-  background-color: #1e2540;
-  border-radius: 10px;
-  width: 428px;
-`;
 export const NoteWrapper = styled.div`
   display: flex;
   margin: 65px 0 0 0;
@@ -52,20 +38,6 @@ export const LessonMoveWrapper = styled.div`
   }
 `;
 
-export const MenuShowWrapper = styled.div`
-  margin-top: 400px;
-  background: transparent linear-gradient(180deg, #2385d9 0%, #0ec9b0 100%) 0%
-    0% no-repeat padding-box;
-  width: 49px;
-  height: 70px;
-  border-radius: 0 20px 20px 0;
-  padding: 10px;
-  ${media.belowTabletLarge`
-     margin-top:0;
-
-  `}
-`;
-
 const ViewLessonWrapper = styled.div`
   margin: 46px 0 27px 0;
   ${media.aboveTabletLarge`
@@ -100,8 +72,19 @@ const MobileVideoWrapper = styled.div`
    `}
 `;
 const DesktopVideoWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  padding: 40%;
+
+  video {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
   ${media.belowTabletLarge`
-      display:none;
+      position: absolute;
    `}
 `;
 
@@ -125,12 +108,62 @@ const CheckBox = styled.input`
   height: 28px;
 
   ${media.belowTabletLarge`
-   width: 14px; 
+   width: 14px;
       height: 14px;
      `}
 `;
 
+const ContentWrapper = styled.div`
+  position: relative;
+  flex: 1;
+`;
+
+export const ViewCourseHomeWrapper = styled.div`
+  position: relative;
+  margin-right: ${spacing.xxxxl};
+  width: ${({ open }) => (open ? '400px' : 0)};
+  display: flex;
+  transition: all 0.5s ease-in;
+  justify-content: center;
+  z-index: 1;
+  overflow: hidden;
+
+  ${media.belowTabletLarge`
+    position: absolute;
+    margin-right: 0;
+  `}
+`;
+
+export const MenuShowWrapper = styled.div`
+  position: absolute;
+  top: 300px;
+  left: -79px;
+  background: transparent linear-gradient(180deg, #2385d9 0%, #0ec9b0 100%) 0%
+    0% no-repeat padding-box;
+  width: 49px;
+  height: 70px;
+  border-radius: 0 20px 20px 0;
+  padding: 10px;
+  transition: all 0.5s ease-in;
+  z-index: 1;
+
+  ${media.belowTabletLarge`
+     margin-top:0;
+
+  `}
+`;
+
+export const CourseHome = styled.div`
+  opacity: ${({ open }) => (open ? '1' : '0')};
+  width: ${({ open }) => (open ? 'auto' : '0')};
+  padding: 57px 30px 81px 91px;
+  background-color: #1e2540;
+  border-radius: 10px;
+  transition: all 0.5s ease-in;
+`;
+
 export default {
+  ContentWrapper,
   RowContainer,
   CourseHome,
   CheckBox,

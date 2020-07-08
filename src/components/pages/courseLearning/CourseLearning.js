@@ -1,14 +1,14 @@
-import React from 'react';
-import CenteredFlexContainer from '../../foundation/CenteredFlexContainer';
+import React, { useState } from 'react';
 import SectionTitle from '../../foundation/typography/SectionTitle';
 import CardTitle from '../../foundation/typography/CardTitle';
 import PathTitle from '../../foundation/typography/PathTitle';
 import Text24 from '../../foundation/typography/Text24';
 import Text18 from '../../foundation/typography/Text18';
-import Grid from '../../foundation/Grid';
 import { spacing } from '../../../constants/styles';
 import Styled from './CourseLearning.styles';
 import CollapseContainer from '../collapaseContainer/CollapseContainer';
+import FlexContainer from '../../foundation/FlexContainer';
+import CenteredFlexContainer from '../../foundation/CenteredFlexContainer';
 
 const CustomText241 = props => (
   <Text24
@@ -41,89 +41,68 @@ var questions = [
   'What should I do after I finish the course?',
 ];
 
-const CourseLearning = () => (
-  <CenteredFlexContainer>
-    <SectionTitle
-      margin="0 0 20px 0"
-      mediaConfig={{
-        belowTabletLarge: {
-          margin: '0 0 10px 0',
-        },
-      }}
-      text="HTML,CSS & JAVA SCRIPT"
-    />
+const CourseLearning = () => {
+  const [menuOpen, setMenuOpen] = useState(true);
+
+  return (
     <CenteredFlexContainer>
-      <Grid
-        columns="1fr"
-        marginBottom
+      <SectionTitle
+        margin="0 0 20px 0"
         mediaConfig={{
-          aboveTabletLarge: {
-            'grid-template-columns': '0.5fr 1.5fr',
-          },
           belowTabletLarge: {
-            'grid-gap': spacing.xl,
+            margin: '0 0 10px 0',
           },
         }}
-        gridGap={spacing.xl}
-      >
-        <div>
-          <Styled.ViewCourseHomeWrapper>
-            <Styled.CourseHome>
-              <CardTitle text="Course Home" />
-              {Object.keys(chapters).map((chapterId, i) => {
-                const chapter = chapters[chapterId];
-                const title = chapterId + ' : ' + chapter.title;
+        text="HTML,CSS & JAVA SCRIPT"
+      />
+      <FlexContainer>
+        <Styled.ViewCourseHomeWrapper open={menuOpen}>
+          <Styled.CourseHome open={menuOpen}>
+            <CardTitle text="Course Home" />
+            {Object.keys(chapters).map((chapterId, i) => {
+              const chapter = chapters[chapterId];
+              const title = chapterId + ' : ' + chapter.title;
 
-                const lessons = chapters[chapterId].lessons;
-                return (
-                  <>
-                    <Styled.ChapterWrapper>
-                      <Styled.CheckBox type="checkbox" />
-                      <CustomText241 margin="0 0 0 20px" text={title} />
-                    </Styled.ChapterWrapper>
-                    {lessons &&
-                      Object.keys(lessons).map((lessonId, i) => {
-                        const lesson = lessons[lessonId];
+              const lessons = chapters[chapterId].lessons;
+              return (
+                <>
+                  <Styled.ChapterWrapper>
+                    <Styled.CheckBox type="checkbox" />
+                    <CustomText241 margin="0 0 0 20px" text={title} />
+                  </Styled.ChapterWrapper>
+                  {lessons &&
+                    Object.keys(lessons).map((lessonId, i) => {
+                      const lesson = lessons[lessonId];
 
-                        const lessonTitle = lessonId + ' : ' + lesson.title;
-                        return (
-                          <Styled.LessonWrapper>
-                            <Styled.CheckBox type="checkbox" />
-                            <CustomText241
-                              margin="0 0 0 20px"
-                              text={lessonTitle}
-                            />
-                          </Styled.LessonWrapper>
-                        );
-                      })}
-                  </>
-                );
-              })}
-            </Styled.CourseHome>
-            <Styled.MenuShowWrapper>
-              <i className="fa fa-angle-left fa-4x" aria-hidden="true" />
-            </Styled.MenuShowWrapper>
-          </Styled.ViewCourseHomeWrapper>
-        </div>
-        <div>
+                      const lessonTitle = lessonId + ' : ' + lesson.title;
+                      return (
+                        <Styled.LessonWrapper>
+                          <Styled.CheckBox type="checkbox" />
+                          <CustomText241
+                            margin="0 0 0 20px"
+                            text={lessonTitle}
+                          />
+                        </Styled.LessonWrapper>
+                      );
+                    })}
+                </>
+              );
+            })}
+          </Styled.CourseHome>
+        </Styled.ViewCourseHomeWrapper>
+        <Styled.ContentWrapper>
+          <Styled.MenuShowWrapper onClick={() => setMenuOpen(!menuOpen)}>
+            <i className="fa fa-angle-left fa-4x" aria-hidden="true" />
+          </Styled.MenuShowWrapper>
           <Styled.Lesson>
             <CardTitle margin="0 0 55px 0" text="Lesson Title" />
-
             <Styled.DesktopVideoWrapper>
-              <video width="700" height="500" controls>
+              <video width="100%" height="100%" controls>
                 <source src="mov_bbb.mp4" type="video/mp4" />
                 <source src="mov_bbb.ogg" type="video/ogg" />
                 Your browser does not support HTML video.
               </video>
             </Styled.DesktopVideoWrapper>
-            <Styled.MobileVideoWrapper>
-              <video width="350" height="250" controls>
-                <source src="mov_bbb.mp4" type="video/mp4" />
-                <source src="mov_bbb.ogg" type="video/ogg" />
-                Your browser does not support HTML video.
-              </video>
-            </Styled.MobileVideoWrapper>
-
             <Styled.LessonContent>
               <CardTitle
                 margin="76px 0 23px 0"
@@ -179,10 +158,10 @@ const CourseLearning = () => (
               </Styled.LessonMoveWrapper>
             </Styled.RowContainer>
           </Styled.Lesson>
-        </div>
-      </Grid>
+        </Styled.ContentWrapper>
+      </FlexContainer>
     </CenteredFlexContainer>
-  </CenteredFlexContainer>
-);
+  );
+};
 
 export default CourseLearning;
