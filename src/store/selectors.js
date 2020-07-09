@@ -17,6 +17,21 @@ export const getAllUsersPublicInfo = state => state.user.allUsersPublicInfo;
 
 export const getCourses = state => state.courses.data;
 
+export const getCoursesByLevel = createSelector(getCourses, courses => {
+  const result = {
+    beginner: {},
+    intermediate: {},
+    advanced: {},
+  };
+
+  Object.keys(courses).forEach(key => {
+    const course = courses[key];
+    result[course.level][key] = course;
+  });
+
+  return result;
+});
+
 export const getEditingCourseId = state => state.courses.editableCourseId;
 
 export const getEditableCourseData = createSelector(

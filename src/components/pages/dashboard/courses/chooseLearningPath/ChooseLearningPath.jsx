@@ -41,6 +41,7 @@ const ChooseLearningPath = ({ dispatch, learningPaths }) => {
             const data = learningPaths[key];
             return (
               <LearningPathCard
+                key={key}
                 imageSrc={data && data.images && data.images[0]}
                 title={LEARNING_PATH[data.title]}
                 learningPathId={key}
