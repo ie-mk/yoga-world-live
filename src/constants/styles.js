@@ -83,8 +83,10 @@ export const colors = {
   white: '#FFFFFF',
   black: '#000000',
   blue: '#7D8399',
+  bluelight: '#2385D9',
   lightBlue: '#D7DDF3',
   bluishgreen: '#0EC9B0',
+  Sapphire: '#3145A1',
   label: {
     primary: '#414141',
   },
@@ -100,6 +102,8 @@ export const colors = {
       'transparent linear-gradient(90deg, #2385D9 0%, #0EC9B0 100%) 0% 0% no-repeat padding-box;',
     violetprimary:
       'transparent linear-gradient(180deg, #293150 0%, #1E2540 100%) 0% 0% no-repeat padding-box',
+    violetsecondary:
+      'transparent linear-gradient(90deg, #293150 0%, #1E2540 100%) 0% 0% no-repeat padding-box',
   },
   borders: {
     primary: '',

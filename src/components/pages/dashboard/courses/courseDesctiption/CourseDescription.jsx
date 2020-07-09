@@ -135,10 +135,16 @@ let CourseDescription = ({ dispatch, editableCourseData }) => {
                 width="30%"
               />
               <AdminInput
+                name="studentRating"
+                type="text"
+                label="Student Rating"
+                width="30%"
+              />
+              <AdminInput
                 name="published"
                 type="checkbox"
                 label="Published"
-                width="30%"
+                width="10%"
                 disabled={true}
               />
               <Button
@@ -199,6 +205,7 @@ const initialFormValues = {
   difficulty: '',
   duration: '',
   numberOfChapters: '',
+  studentRating: '',
   author: '',
   learningPath: '',
   whatWillLearn: '',

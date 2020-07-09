@@ -5,8 +5,22 @@ import SectionTitle from '../../../../foundation/typography/SectionTitle';
 import Grid from '../../../../foundation/Grid';
 import { fontSizeMap, spacing, colors } from '../../../../../constants/styles';
 import ProfileLearning from '../../../../foundation/profileLearning/ProfileLearning';
+import Router from 'next/router';
 
 const Level = ({ courses, learningPathData, heading }) => {
+  const toCourseStartPage = (courseId, title) => {
+    Router.push(
+      {
+        pathname: '/courses/courseStart',
+        query: {
+          courseId,
+        },
+      },
+      `/course/${title.replace(' ', '')}/start`,
+      { shallow: true },
+    );
+  };
+
   return (
     <Styled.Wrapper>
       <SectionTitle text={heading} textAlign="center" />
@@ -27,14 +41,16 @@ const Level = ({ courses, learningPathData, heading }) => {
         gridGap={spacing.xxxxl}
       >
         {courses &&
-          courses.map((s, i) => {
+          Object.keys(courses).map((courseId, i) => {
+            const course = courses[courseId];
             return (
               <ProfileLearning
                 key={i}
                 imageSrc={learningPathData.images[0]}
-                title={s.title}
-                subtitle={s.level}
+                title={course.title}
+                subtitle={course.level}
                 background={colors.background.violetprimary}
+                onClick={() => toCourseStartPage(courseId, course.title)}
               />
             );
           })}

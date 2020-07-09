@@ -87,8 +87,11 @@ const Wrapper = styled.div`
   color: ${colors.black};
   margin-top: ${({ noMargin }) => (noMargin ? '0' : spacing.xl)};
   margin-bottom: ${({ noMargin }) => (noMargin ? '0' : spacing.xl)};
+  padding: ${({ padding }) => (padding ? padding : '0')};
+
   ${media.belowTabletLarge`
   width: ${({ mobileWidth }) => (mobileWidth ? mobileWidth : '')};
+  padding: ${({ paddingMobile }) => (paddingMobile ? paddingMobile : '0')};
 `}
 `;
 

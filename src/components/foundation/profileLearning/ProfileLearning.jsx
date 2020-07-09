@@ -23,9 +23,15 @@ const Wrapper = styled.div`
   }
 `;
 
-const ProfileLearning = ({ imageSrc, subtitle, title, background }) => {
+const ProfileLearning = ({
+  imageSrc,
+  subtitle,
+  title,
+  background,
+  onClick,
+}) => {
   return (
-    <Wrapper background={background}>
+    <Wrapper background={background} onClick={onClick}>
       <ResponsiveImage height="100px" width="100px" src={imageSrc} />
       <Text24
         margin="54px 0 20px 0"

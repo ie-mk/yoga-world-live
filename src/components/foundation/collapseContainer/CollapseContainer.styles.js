@@ -10,40 +10,38 @@ const Card = styled.div`
 const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid dimgray;
   position: relative;
-  padding: 10px;
-  font-weight: bold;
-  background-color: ${colors.lightBlue};
-  border-radius: 10px;
+  align-items: center;
+  padding: ${spacing.lg};
+  font-weight: 500;
+  border-radius: ${spacing.xls};
+  background: ${colors.background.violetsecondary};
 `;
 
 const Header = styled.div`
   display: flex;
-  margin-left: 20px;
+  margin-left: ${spacing.lg};
 `;
 
 const StyledHeaderTitle = styled.header`
-  margin-right: 30px;
+  margin-right: ${spacing.xl};
 `;
 
 const Wrapper = styled.div`
   box-shadow: 0 2px 0 rgba(0, 0, 0, 0.05);
   //background-color: ${colors.white};
-  margin-bottom: 10px;
+  margin-bottom: ${spacing.sm};
   &:first-child {
-    margin-top: 10px;
+    margin-top: ${spacing.sm};
   }
-  color: black;
+  color: ${colors.white};
 `;
 
 const CollapseButton = styled.span`
   cursor: pointer;
-  i {
-    display: inline-block;
-    margin-right: ${spacing.xS};
-    font-size: ${fontSizeMap.title3};
-  }
+  padding-right: ${spacing.lg};
+  font-size: 28px;
+  font-weight: 500;
 `;
 
 const renderOutsideContainerCSS = css`
@@ -53,13 +51,12 @@ const renderOutsideContainerCSS = css`
 `;
 
 const Content = styled.div`
-  padding: ${spacing.xxl};
+  padding: ${spacing.md};
   color: white;
   display: ${({ collapsed, renderHidden }) =>
     collapsed && !renderHidden ? 'none' : 'block'};
   ${({ renderHidden, collapsed }) =>
     renderHidden && collapsed ? renderOutsideContainerCSS : ''};
-  box-shadow: inset 0 0 3px ${lightenDarkenColor(colors.gray, 80)};
 `;
 
 const Footer = styled.div`
