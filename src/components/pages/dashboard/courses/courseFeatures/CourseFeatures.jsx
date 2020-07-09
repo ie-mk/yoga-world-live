@@ -59,8 +59,8 @@ const CourseFeatures = () => {
                   <CheckBoxWithText
                     key={i}
                     label={s.Feature}
-                    // width="30%"
                     color="white"
+                    noMargin={true}
                     fontSize="text"
                   />
                 );

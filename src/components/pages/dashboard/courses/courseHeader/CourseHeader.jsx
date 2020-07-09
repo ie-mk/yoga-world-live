@@ -108,7 +108,6 @@ const CourseHeader = ({ title, course }) => {
                       color={colors.text.primary}
                       fontSize="text"
                       noMargin={true}
-                      padding="sm"
                     />
                   );
                 })}
