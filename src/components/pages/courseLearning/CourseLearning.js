@@ -67,7 +67,7 @@ const CourseLearning = () => {
               return (
                 <>
                   <Styled.ChapterWrapper>
-                    <Styled.CheckBox type="checkbox" />
+                    <i class="fa fa-circle fa-2x" aria-hidden="true" />
                     <CustomText241 margin="0 0 0 20px" text={title} />
                   </Styled.ChapterWrapper>
                   {lessons &&
@@ -77,7 +77,10 @@ const CourseLearning = () => {
                       const lessonTitle = lessonId + ' : ' + lesson.title;
                       return (
                         <Styled.LessonWrapper>
-                          <Styled.CheckBox type="checkbox" />
+                          <i
+                            class="fa fa-check-circle fa-2x"
+                            aria-hidden="true"
+                          />
                           <CustomText241
                             margin="0 0 0 20px"
                             text={lessonTitle}
@@ -95,7 +98,11 @@ const CourseLearning = () => {
             open={menuOpen}
             onClick={() => setMenuOpen(!menuOpen)}
           >
-            <i className="fa fa-angle-left fa-4x" aria-hidden="true" />
+            {menuOpen ? (
+              <i className="fa fa-angle-left fa-4x" aria-hidden="true" />
+            ) : (
+              <i className="fa fa-angle-right fa-4x" aria-hidden="true" />
+            )}
           </Styled.MenuShowWrapper>
           <Styled.Lesson>
             <CardTitle margin="0 0 55px 0" text="Lesson Title" />

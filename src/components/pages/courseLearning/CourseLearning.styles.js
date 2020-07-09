@@ -26,7 +26,7 @@ export const AskWrapper = styled.div`
 export const Lesson = styled.div`
   margin: 57px 0 0 0;
   ${media.belowTabletLarge`
-  padding: 0px 200px 0 200px;
+  //padding: 0px 200px 0 200px;
   `}
 `;
 
@@ -62,7 +62,7 @@ const ChapterWrapper = styled.div`
   margin: 70px 0 44px 0;
 
   ${media.belowTabletLarge`
-   margin:0 0 22px 19px;
+   margin:50px 0 22px 19px;
    `}
 `;
 
@@ -84,7 +84,7 @@ const DesktopVideoWrapper = styled.div`
     right: 0;
   }
   ${media.belowTabletLarge`
-      position: absolute;
+      
    `}
 `;
 
@@ -92,10 +92,9 @@ const LessonWrapper = styled.div`
   display: flex;
   align-items: center;
   margin: 59px 0 44px 44px;
-
-  ${media.belowTabletLarge`
-   margin:0 0 22px 19px;
-   `}
+  i {
+    color: #0ec9b0;
+  }
 `;
 
 const LessonContent = styled.div`
@@ -131,6 +130,8 @@ export const ViewCourseHomeWrapper = styled.div`
   ${media.belowTabletLarge`
     position: absolute;
     margin-right: 0;
+    width: ${({ open }) => (open ? '400px' : 0)};
+    left:-70px;
   `}
 `;
 
@@ -150,7 +151,12 @@ export const MenuShowWrapper = styled.div`
   ${media.belowTabletLarge`
      margin-top: 0;
      top: 150px;
-     left: ${({ open }) => (open ? '342px' : '125px')};
+     left: ${({ open }) => (open ? '223px' : '-35px')};
+     width: 30px;
+  height: 60px;
+  border-radius: 0 10px 10px 0;
+  padding:5px;
+  
   `}
 `;
 
@@ -161,6 +167,10 @@ export const CourseHome = styled.div`
   background-color: #1e2540;
   border-radius: 10px;
   transition: all 0.5s ease-in;
+  ${media.belowTabletLarge`
+  padding: 30px 30px 41px 46px;
+  
+  `}
 `;
 
 export default {
