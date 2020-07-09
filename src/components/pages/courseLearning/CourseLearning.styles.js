@@ -138,7 +138,7 @@ export const ViewCourseHomeWrapper = styled.div`
 export const MenuShowWrapper = styled.div`
   position: absolute;
   top: 300px;
-  left: -79px;
+  left: -83px;
   background: transparent linear-gradient(180deg, #2385d9 0%, #0ec9b0 100%) 0%
     0% no-repeat padding-box;
   width: 49px;
