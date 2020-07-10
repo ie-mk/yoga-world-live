@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SectionTitle from '../../foundation/typography/SectionTitle';
 import CardTitle from '../../foundation/typography/CardTitle';
 import PathTitle from '../../foundation/typography/PathTitle';
 import Text24 from '../../foundation/typography/Text24';
+import { connect } from 'react-redux';
+
 import Text18 from '../../foundation/typography/Text18';
 import { spacing } from '../../../constants/styles';
 import Styled from './CourseLearning.styles';
@@ -41,8 +43,12 @@ var questions = [
   'What should I do after I finish the course?',
 ];
 
-const CourseLearning = () => {
+const CourseLearning = ({ courseId, dispatch }) => {
   const [menuOpen, setMenuOpen] = useState(true);
+
+  useEffect(() => {
+    dispatch(resourceActions.fetchCourse.request(courseId));
+  }, [courseId]);
 
   return (
     <CenteredFlexContainer>
@@ -174,4 +180,4 @@ const CourseLearning = () => {
   );
 };
 
-export default CourseLearning;
+export default connect()(CourseLearning);

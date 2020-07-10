@@ -22,7 +22,7 @@ const CourseStart = ({ courses }) => {
   return (
     <ErrorBoundary>
       <>
-        <CourseHeader title={courseTitle} course={course} />
+        <CourseHeader title={courseTitle} course={course} courseId={courseId} />
 
         <PageContent hasDefaultMarginTop={false} maxWidth="1100px">
           <CourseOutline chapters={chapters} courseId={courseId} />

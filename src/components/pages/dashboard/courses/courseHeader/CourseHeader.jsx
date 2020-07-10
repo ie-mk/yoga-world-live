@@ -7,6 +7,7 @@ import ContainerBase from '../../../../foundation/ContainerBase';
 import Button from '../../../../foundation/button/Button';
 import GreenCheckBoxWithText from '../../../../foundation/greencheckboxwithtext/GreenCheckBoxWithText.jsx';
 import StarRating from '../../../../foundation/starRating/StarRating';
+import Router from 'next/router';
 
 const Label = ({ keyname, value }) => {
   return (
@@ -26,7 +27,7 @@ const Label = ({ keyname, value }) => {
   );
 };
 
-const CourseHeader = ({ title, course }) => {
+const CourseHeader = ({ title, course, courseId }) => {
   const Rating = <StarRating rating={course.studentRating} />;
 
   const whatyouwilllearn = course.whatWillLearn;
@@ -34,6 +35,20 @@ const CourseHeader = ({ title, course }) => {
 
   const prerequisites = course.prerequisites;
   const prerequisitesdata = prerequisites.split(',');
+
+  const startCourse = title => {
+    Router.push(
+      {
+        pathname: '/courseLearning',
+        query: {
+          courseId,
+        },
+      },
+      `/course/${title.replace(' ', '')}/startLearning`,
+      { shallow: true },
+    );
+  };
+
   return (
     <Styled.Wrapper>
       <ResponsiveImage
@@ -78,6 +93,7 @@ const CourseHeader = ({ title, course }) => {
             padding="10px 30px"
             maxWidth="280px"
             margin="0"
+            onClick={() => startCourse(course.title)}
           >
             START COURSE
           </Button>
