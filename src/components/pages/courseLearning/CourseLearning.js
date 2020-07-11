@@ -11,6 +11,7 @@ import Styled from './CourseLearning.styles';
 import CollapseContainer from '../collapaseContainer/CollapseContainer';
 import FlexContainer from '../../foundation/FlexContainer';
 import CenteredFlexContainer from '../../foundation/CenteredFlexContainer';
+import CourseHomeChapters from '../dashboard/courses/courseHomeChapters/courseHomeChapters';
 
 const CustomText241 = props => (
   <Text24
@@ -22,18 +23,6 @@ const CustomText241 = props => (
     {...props}
   />
 );
-var chapters = {
-  'chapter 01': {
-    title: 'title',
-    lessons: {
-      'Lesson 01': { title: 'Title' },
-      'Lesson 02': { title: 'Title' },
-      'Lesson 03': { title: 'Title' },
-    },
-  },
-  'chapter 02': { title: 'title' },
-  'chapter 03': { title: 'title' },
-};
 
 var questions = [
   'Does these courses need any special requirements?',
@@ -43,8 +32,10 @@ var questions = [
   'What should I do after I finish the course?',
 ];
 
-const CourseLearning = ({ courseId, dispatch }) => {
+const CourseLearning = ({ courseId, dispatch, course }) => {
   const [menuOpen, setMenuOpen] = useState(true);
+
+  const chapters = course.chapters;
 
   useEffect(() => {
     dispatch(resourceActions.fetchCourse.request(courseId));
@@ -65,38 +56,20 @@ const CourseLearning = ({ courseId, dispatch }) => {
         <Styled.ViewCourseHomeWrapper open={menuOpen}>
           <Styled.CourseHome open={menuOpen}>
             <CardTitle text="Course Home" />
-            {Object.keys(chapters).map((chapterId, i) => {
-              const chapter = chapters[chapterId];
-              const title = chapterId + ' : ' + chapter.title;
-
-              const lessons = chapters[chapterId].lessons;
-              return (
-                <>
-                  <Styled.ChapterWrapper>
-                    <i class="fa fa-circle fa-2x" aria-hidden="true" />
-                    <CustomText241 margin="0 0 0 20px" text={title} />
-                  </Styled.ChapterWrapper>
-                  {lessons &&
-                    Object.keys(lessons).map((lessonId, i) => {
-                      const lesson = lessons[lessonId];
-
-                      const lessonTitle = lessonId + ' : ' + lesson.title;
-                      return (
-                        <Styled.LessonWrapper>
-                          <i
-                            class="fa fa-check-circle fa-2x"
-                            aria-hidden="true"
-                          />
-                          <CustomText241
-                            margin="0 0 0 20px"
-                            text={lessonTitle}
-                          />
-                        </Styled.LessonWrapper>
-                      );
-                    })}
-                </>
-              );
-            })}
+            {/* */}
+            {chapters &&
+              Object.keys(chapters)
+                .reverse()
+                .map((chapterId, i) => {
+                  return (
+                    <CourseHomeChapters
+                      key={chapterId}
+                      chapterId={chapterId}
+                      courseId={courseId}
+                      chapters={chapters}
+                    />
+                  );
+                })}
           </Styled.CourseHome>
         </Styled.ViewCourseHomeWrapper>
         <Styled.ContentWrapper>

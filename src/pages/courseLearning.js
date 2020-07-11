@@ -3,19 +3,26 @@ import CourseLearningPage from '../components/pages/courseLearning/CourseLearnin
 import ErrorBoundary from '../components/ErrorBoundary';
 import PageContent from '../components/foundation/PageContent';
 import { useRouter } from 'next/router';
+import { connect } from 'react-redux';
+import { getCourses, getLearningPaths } from '../store/selectors';
 
-const CourseLearning = () => {
+const CourseLearning = ({ courses }) => {
   const {
     query: { courseId },
   } = useRouter();
 
+  const course = courses[courseId];
+
   return (
     <ErrorBoundary>
       <PageContent hasDefaultMarginTop={true}>
-        <CourseLearningPage courseId={courseId} />
+        <CourseLearningPage course={course} courseId={courseId} />
       </PageContent>
     </ErrorBoundary>
   );
 };
 
-export default CourseLearning;
+const mapStateToProps = state => ({
+  courses: getCourses(state),
+});
+export default connect(mapStateToProps)(CourseLearning);

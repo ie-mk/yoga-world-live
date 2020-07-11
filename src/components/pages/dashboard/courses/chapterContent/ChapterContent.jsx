@@ -26,9 +26,11 @@ const ChapterContent = ({ dispatch, chapterId, chapters, courseId }) => {
           {lessons &&
             Object.keys(lessons).map((lessonId, i) => {
               const lesson = lessons && lessons[lessonId];
+
               if (!lesson) return null;
               const title =
                 'Lesson ' + lesson.sequenceNr + ' : ' + lesson.title;
+              console.log('mm' + title);
               return (
                 <Styled.ContentWrapper key={i}>
                   <div>{title}</div>

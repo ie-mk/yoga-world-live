@@ -1,0 +1,96 @@
+import React, { useState, useEffect } from 'react';
+
+import Text24 from '../../../../foundation/typography/Text24';
+import { connect } from 'react-redux';
+
+import Styled from './courseHomeChapters.styles';
+
+const CustomText241 = props => (
+  <Text24
+    mediaConfig={{
+      belowTabletLarge: {
+        margin: '0 0 0 24px',
+      },
+    }}
+    {...props}
+  />
+);
+
+const courseHomeChapters = ({ dispatch, chapterId, chapters, courseId }) => {
+  const chapter = chapters[chapterId];
+  const title = 'Chapter ' + chapter.sequenceNr + ' : ' + chapter.title;
+
+  useEffect(() => {
+    dispatch(
+      resourceActions.fetchLessons.request({
+        courseId,
+        chapterId,
+      }),
+    );
+  }, []);
+
+  const lessons = chapter.lessons;
+
+  return (
+    <>
+      <Styled.ChapterWrapper>
+        <i class="fa fa-circle fa-2x" aria-hidden="true" />
+        <CustomText241 margin="0 0 0 20px" text={title} />
+      </Styled.ChapterWrapper>
+
+      {lessons &&
+        Object.keys(lessons).map((lessonId, i) => {
+          const lesson = lessons && lessons[lessonId];
+
+          if (!lesson) return null;
+          const lessonTitle =
+            'Lesson ' + lesson.sequenceNr + ' : ' + lesson.title;
+          console.log('11 ' + lesson.title);
+          return (
+            <Styled.LessonWrapper key={i}>
+              <i class="fa fa-check-circle fa-2x" aria-hidden="true" />
+              <CustomText241 margin="0 0 0 20px" text={lessonTitle} />
+            </Styled.LessonWrapper>
+          );
+        })}
+    </>
+  );
+};
+//   return (
+//     {Object.keys(chapters).map((chapterId, i) => {
+//         const chapter = chapters[chapterId];
+//         const title = 'chapter '+(i+1)+ ' : ' + chapter.title;
+
+//         const lessons = chapters[chapterId].lessons;
+//         return (
+//           <>
+//             <Styled.ChapterWrapper>
+//               <i class="fa fa-circle fa-2x" aria-hidden="true" />
+//               <CustomText241 margin="0 0 0 20px" text={title} />
+//             </Styled.ChapterWrapper>
+//             {lessons &&
+//               Object.keys(lessons).map((lessonId, i) => {
+//                 const lesson = lessons[lessonId];
+
+//                 const lessonTitle = 'lesson '+(i+1)+  ' : ' + lesson.title;
+//                 return (
+//                   <Styled.LessonWrapper>
+//                     <i
+//                       class="fa fa-check-circle fa-2x"
+//                       aria-hidden="true"
+//                     />
+//                     <CustomText241
+//                       margin="0 0 0 20px"
+//                       text={lessonTitle}
+//                     />
+//                   </Styled.LessonWrapper>
+//                 );
+//               })}
+//           </>
+//         );
+//       })}
+
+//   );
+//  }
+
+export default connect()(courseHomeChapters);
