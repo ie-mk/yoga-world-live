@@ -49,48 +49,12 @@ const courseHomeChapters = ({ dispatch, chapterId, chapters, courseId }) => {
           return (
             <Styled.LessonWrapper key={i}>
               <i class="fa fa-check-circle fa-2x" aria-hidden="true" />
-              <CustomText241 margin="0 0 0 20px" text={lessonTitle} />
+              <CustomText241 margin="0 0 0 20px" text="hello" />
             </Styled.LessonWrapper>
           );
         })}
     </>
   );
 };
-//   return (
-//     {Object.keys(chapters).map((chapterId, i) => {
-//         const chapter = chapters[chapterId];
-//         const title = 'chapter '+(i+1)+ ' : ' + chapter.title;
-
-//         const lessons = chapters[chapterId].lessons;
-//         return (
-//           <>
-//             <Styled.ChapterWrapper>
-//               <i class="fa fa-circle fa-2x" aria-hidden="true" />
-//               <CustomText241 margin="0 0 0 20px" text={title} />
-//             </Styled.ChapterWrapper>
-//             {lessons &&
-//               Object.keys(lessons).map((lessonId, i) => {
-//                 const lesson = lessons[lessonId];
-
-//                 const lessonTitle = 'lesson '+(i+1)+  ' : ' + lesson.title;
-//                 return (
-//                   <Styled.LessonWrapper>
-//                     <i
-//                       class="fa fa-check-circle fa-2x"
-//                       aria-hidden="true"
-//                     />
-//                     <CustomText241
-//                       margin="0 0 0 20px"
-//                       text={lessonTitle}
-//                     />
-//                   </Styled.LessonWrapper>
-//                 );
-//               })}
-//           </>
-//         );
-//       })}
-
-//   );
-//  }
 
 export default connect()(courseHomeChapters);
