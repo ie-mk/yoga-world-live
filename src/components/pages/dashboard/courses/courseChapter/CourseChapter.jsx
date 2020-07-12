@@ -18,6 +18,7 @@ const CourseChapter = ({ dispatch, courseId, chapterId, data, idx }) => {
       resourceActions.fetchLessons.request({
         courseId,
         chapterId,
+        //forceFetch: true,
       }),
     );
   }, []);

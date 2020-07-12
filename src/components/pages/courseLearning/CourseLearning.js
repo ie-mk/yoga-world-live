@@ -12,7 +12,7 @@ import CollapseContainer from '../collapaseContainer/CollapseContainer';
 import FlexContainer from '../../foundation/FlexContainer';
 import CenteredFlexContainer from '../../foundation/CenteredFlexContainer';
 import CourseHomeChapters from '../dashboard/courses/courseHomeChapters/CourseHomeChapters';
-import ChapterContent from '../dashboard/courses/chapterContent/ChapterContent';
+import { resourceActions } from '../../../store/actions';
 
 const CustomText241 = props => (
   <Text24

@@ -10,7 +10,7 @@ import {
 import { adminActions, userActions } from './actions';
 import api from '../api/api.min';
 import moment from 'moment';
-import { getUID, getEditingCourseId } from './selectors';
+import { getUID, getEditingCourseId, getCourses } from './selectors';
 import { resourceActions } from './actions';
 
 function* fetchUserPermissions({ payload }) {
@@ -144,6 +144,9 @@ function* fetchCourses({ payload = {} }) {
 }
 
 function* fetchCourse({ payload: courseId }) {
+  const courses = yield select(getCourses);
+  if (courses && courses[courseId]) return;
+
   try {
     const course = yield api.resource.fetchResource(`courses/${courseId}`);
     yield put(resourceActions.fetchCourse.success({ [courseId]: course }));
@@ -347,21 +350,48 @@ function* deleteChapter({ payload: chapterId }) {
 
 // ============================ LESSONS =====================================
 
-function* fetchLessons({ payload: { courseId, chapterId } }) {
-  try {
-    const lessons = yield api.resource.fetchResources(
-      `courses/${courseId}/chapters/${chapterId}/lessons`,
-    );
+function* fetchLessons({
+  payload: { courseId, chapterId, forceFetch = false },
+}) {
+  const courses = select(getCourses);
 
-    yield put(
-      resourceActions.fetchLessons.success({
-        courseId,
-        chapterId,
-        lessons,
-      }),
-    );
-  } catch (err) {
-    yield put(resourceActions.fetchLessons.failure(err));
+  const checkIfcourseFetched = () => {
+    return courses && courses[courseId];
+  };
+  // we want to make sure that the course data has been fetched already
+  // otherwise if the course data are fetched later it will override the data
+  // with empty object
+  if (!checkIfcourseFetched) {
+    setTimeout(() => {
+      fetchLessons({
+        payload: { courseId, chapterId },
+      });
+    }, 100);
+    return;
+  }
+
+  // skip fetching
+  // const chapter = courses[courseId].chapters[chapterId];
+  // if (!forceFetch && chapter && Object.keys(chapter.lessons).length > 0) return;
+
+  yield fetchData();
+
+  function* fetchData() {
+    try {
+      const lessons = yield api.resource.fetchResources(
+        `courses/${courseId}/chapters/${chapterId}/lessons`,
+      );
+
+      yield put(
+        resourceActions.fetchLessons.success({
+          courseId,
+          chapterId,
+          lessons,
+        }),
+      );
+    } catch (err) {
+      yield put(resourceActions.fetchLessons.failure(err));
+    }
   }
 }
 
