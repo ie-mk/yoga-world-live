@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Text24 from '../../../../foundation/typography/Text24';
 import { connect } from 'react-redux';
 
-import Styled from './courseHomeChapters.styles';
+import Styled from './CourseHomeChapters.styles';
 
 const CustomText241 = props => (
   <Text24
@@ -16,7 +16,7 @@ const CustomText241 = props => (
   />
 );
 
-const courseHomeChapters = ({ dispatch, chapterId, chapters, courseId }) => {
+const CourseHomeChapters = ({ dispatch, chapterId, chapters, courseId }) => {
   const chapter = chapters[chapterId];
   const title = 'Chapter ' + chapter.sequenceNr + ' : ' + chapter.title;
 
@@ -27,9 +27,10 @@ const courseHomeChapters = ({ dispatch, chapterId, chapters, courseId }) => {
         chapterId,
       }),
     );
-  }, []);
+  }, [chapterId]);
 
   const lessons = chapter.lessons;
+  console.log(lessons);
 
   return (
     <>
@@ -49,7 +50,7 @@ const courseHomeChapters = ({ dispatch, chapterId, chapters, courseId }) => {
           return (
             <Styled.LessonWrapper key={i}>
               <i class="fa fa-check-circle fa-2x" aria-hidden="true" />
-              <CustomText241 margin="0 0 0 20px" text="hello" />
+              <CustomText241 margin="0 0 0 20px" text={lessonTitle} />
             </Styled.LessonWrapper>
           );
         })}
@@ -57,4 +58,4 @@ const courseHomeChapters = ({ dispatch, chapterId, chapters, courseId }) => {
   );
 };
 
-export default connect()(courseHomeChapters);
+export default connect()(CourseHomeChapters);

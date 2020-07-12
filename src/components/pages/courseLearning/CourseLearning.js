@@ -11,7 +11,8 @@ import Styled from './CourseLearning.styles';
 import CollapseContainer from '../collapaseContainer/CollapseContainer';
 import FlexContainer from '../../foundation/FlexContainer';
 import CenteredFlexContainer from '../../foundation/CenteredFlexContainer';
-import CourseHomeChapters from '../dashboard/courses/courseHomeChapters/courseHomeChapters';
+import CourseHomeChapters from '../dashboard/courses/courseHomeChapters/CourseHomeChapters';
+import ChapterContent from '../dashboard/courses/chapterContent/ChapterContent';
 
 const CustomText241 = props => (
   <Text24
@@ -50,28 +51,31 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
             margin: '0 0 10px 0',
           },
         }}
-        text="HTML,CSS & JAVA SCRIPT"
+        text={course.title}
       />
+
       <FlexContainer>
-        <Styled.ViewCourseHomeWrapper open={menuOpen}>
-          <Styled.CourseHome open={menuOpen}>
-            <CardTitle text="Course Home" />
-            {/* */}
-            {chapters &&
-              Object.keys(chapters)
-                .reverse()
-                .map((chapterId, i) => {
-                  return (
-                    <CourseHomeChapters
-                      key={chapterId}
-                      chapterId={chapterId}
-                      courseId={courseId}
-                      chapters={chapters}
-                    />
-                  );
-                })}
-          </Styled.CourseHome>
-        </Styled.ViewCourseHomeWrapper>
+        <div>
+          <Styled.ViewCourseHomeWrapper open={menuOpen}>
+            <Styled.CourseHome open={menuOpen}>
+              <CardTitle text="Course Home" />
+              {/* */}
+              {chapters &&
+                Object.keys(chapters)
+                  .reverse()
+                  .map((chapterId, i) => {
+                    return (
+                      <CourseHomeChapters
+                        key={chapterId}
+                        chapterId={chapterId}
+                        courseId={courseId}
+                        chapters={chapters}
+                      />
+                    );
+                  })}
+            </Styled.CourseHome>
+          </Styled.ViewCourseHomeWrapper>
+        </div>
         <Styled.ContentWrapper>
           <Styled.MenuShowWrapper
             open={menuOpen}
