@@ -8,13 +8,14 @@ import CardTitle from '../foundation/typography/CardTitle';
 import BodyText from '../foundation/typography/BodyText';
 import FlexContainer from '../foundation/FlexContainer';
 import Billing from './billing/Billing';
+import Inbox from './inbox/Inbox';
 import Preferences from './preferences/Preferences';
 import Learning from './learning/Learning';
 import Router from 'next/router';
 import { userActions } from '../../store/actions';
 
 const Profile = ({ dispatch, profile }) => {
-  const [activeTab, setActiveTab] = useState('learning');
+  const [activeTab, setActiveTab] = useState('inbox');
 
   const uid = profile && profile.uid;
   useEffect(() => {
@@ -142,6 +143,7 @@ const Profile = ({ dispatch, profile }) => {
         </Styled.Tab>
       </Styled.ProfileInfoPageWrapper>
       {isActiveBilling && <Billing />}
+      {isActiveInbox && <Inbox />}
       {isActivePreferences && <Preferences profile={profile} />}
       {isActiveLearning && <Learning />}
     </ContainerBase>
