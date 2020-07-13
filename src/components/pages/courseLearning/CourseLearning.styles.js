@@ -26,7 +26,8 @@ export const AskWrapper = styled.div`
 export const Lesson = styled.div`
   margin: 57px 0 0 0;
   ${media.belowTabletLarge`
-  //padding: 0px 200px 0 200px;
+  margin: 25px 0 0 0;
+  
   `}
 `;
 
@@ -151,7 +152,7 @@ export const MenuShowWrapper = styled.div`
   ${media.belowTabletLarge`
      margin-top: 0;
      top: 150px;
-     left: ${({ open }) => (open ? '223px' : '-35px')};
+     left: ${({ open }) => (open ? '267px' : '-35px')};
      width: 30px;
   height: 60px;
   border-radius: 0 10px 10px 0;

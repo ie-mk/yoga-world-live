@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import Text18 from '../../foundation/typography/Text18';
 import { spacing } from '../../../constants/styles';
 import Styled from './CourseLearning.styles';
-import CollapseContainer from '../collapaseContainer/CollapseContainer';
+import CollapseContainer from '../../foundation/collapseContainer/CollapseContainer';
 import FlexContainer from '../../foundation/FlexContainer';
 import CenteredFlexContainer from '../../foundation/CenteredFlexContainer';
 import CourseHomeChapters from '../dashboard/courses/courseHomeChapters/CourseHomeChapters';
@@ -45,10 +45,10 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
   return (
     <CenteredFlexContainer>
       <SectionTitle
-        margin="0 0 20px 0"
+        margin="50px 0 20px 0"
         mediaConfig={{
           belowTabletLarge: {
-            margin: '0 0 10px 0',
+            margin: '20px 0 0 0',
           },
         }}
         text={course.title}
@@ -106,7 +106,7 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
                 }}
                 text="What you will learn in this chapter"
               />
-              <Text18 text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum" />
+              <Text18 text={course.whatWillLearn} />
               <CardTitle
                 margin="50px 0 29px 0"
                 mediaConfig={{

@@ -15,7 +15,7 @@ const CourseLearning = ({ courses }) => {
 
   return (
     <ErrorBoundary>
-      <PageContent hasDefaultMarginTop={true}>
+      <PageContent>
         <CourseLearningPage course={course} courseId={courseId} />
       </PageContent>
     </ErrorBoundary>

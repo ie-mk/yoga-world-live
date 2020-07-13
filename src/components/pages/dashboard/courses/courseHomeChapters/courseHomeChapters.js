@@ -30,7 +30,6 @@ const CourseHomeChapters = ({ dispatch, chapterId, chapters, courseId }) => {
   }, [chapterId]);
 
   const lessons = chapter.lessons;
-  console.log(lessons);
 
   return (
     <>
@@ -46,7 +45,7 @@ const CourseHomeChapters = ({ dispatch, chapterId, chapters, courseId }) => {
           if (!lesson) return null;
           const lessonTitle =
             'Lesson ' + lesson.sequenceNr + ' : ' + lesson.title;
-          console.log('11 ' + lesson.title);
+
           return (
             <Styled.LessonWrapper key={i}>
               <i class="fa fa-check-circle fa-2x" aria-hidden="true" />
