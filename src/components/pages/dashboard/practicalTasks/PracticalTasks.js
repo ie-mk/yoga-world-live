@@ -72,31 +72,27 @@ const PracticalTasks = ({ dispatch, tasks }) => {
         <ContainerBase marginTop="30px">
           <Formik>
             <form>
-              <Styled.DropdownWrapper>
-                <Styled.DropdownItemWrapper>
-                  <CustomAdminDropDown
-                    label="Course"
-                    name="course"
-                    placeholder="Choose course"
-                    options={categoryoptions}
-                  />
-                </Styled.DropdownItemWrapper>
-                {/*<Styled.DropdownItemWrapper>*/}
-                {/*  <CustomAdminDropDown*/}
-                {/*    name="skill"*/}
-                {/*    label="Skill"*/}
-                {/*    placeholder="Choose Skill"*/}
-                {/*    options={skilloptions}*/}
-                {/*  />*/}
-                {/*</Styled.DropdownItemWrapper>*/}
-                {/*<Styled.DropdownItemWrapper>*/}
-                {/*  <CustomAdminDropDown*/}
-                {/*    name="level"*/}
-                {/*    label="Level"*/}
-                {/*    options={leveloptions}*/}
-                {/*  />*/}
-                {/*</Styled.DropdownItemWrapper>*/}
-              </Styled.DropdownWrapper>
+              <CustomAdminDropDown
+                label="Course"
+                name="course"
+                placeholder="Choose course"
+                options={categoryoptions}
+              />
+              {/*<Styled.DropdownItemWrapper>*/}
+              {/*  <CustomAdminDropDown*/}
+              {/*    name="skill"*/}
+              {/*    label="Skill"*/}
+              {/*    placeholder="Choose Skill"*/}
+              {/*    options={skilloptions}*/}
+              {/*  />*/}
+              {/*</Styled.DropdownItemWrapper>*/}
+              {/*<Styled.DropdownItemWrapper>*/}
+              {/*  <CustomAdminDropDown*/}
+              {/*    name="level"*/}
+              {/*    label="Level"*/}
+              {/*    options={leveloptions}*/}
+              {/*  />*/}
+              {/*</Styled.DropdownItemWrapper>*/}
             </form>
           </Formik>
 
