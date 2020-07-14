@@ -12,7 +12,7 @@ import Inbox from './inbox/Inbox';
 import DashboardCourses from './courses/DashboardCourses';
 import PracticalTasks from './practicalTasks/PracticalTasks';
 import Students from './students/Students';
-import Authors from './authors/Authors';
+import AuthorsAndLearningPath from './authors/AuthorsAndLearningPath';
 import Staff from './staff/Staff';
 import Users from './users/Users';
 
@@ -69,7 +69,7 @@ const Dashboard = ({ dispatch, user }) => {
             {courses && <DashboardCourses />}
             {practicalTasks && <PracticalTasks />}
             {students && <Students />}
-            {authors && <Authors />}
+            {authors && <AuthorsAndLearningPath />}
             {staff && <Staff />}
             {users && <Users />}
           </Styled.Wrapper>

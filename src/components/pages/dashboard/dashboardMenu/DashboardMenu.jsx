@@ -35,27 +35,27 @@ const DashboardMenu = ({ setActiveComponent, active }) => {
           <img src="svg/icon_practical_task.svg" />
           <Styled.Label>Practical Tasks</Styled.Label>
         </Styled.MenuItem>
-        <Styled.MenuItem
-          active={active === 'students'}
-          onClick={() => setActiveComponent('students')}
-        >
-          <img src="svg/icon_student.svg" />
-          <Styled.Label>Students</Styled.Label>
-        </Styled.MenuItem>
+        {/*<Styled.MenuItem*/}
+        {/*  active={active === 'students'}*/}
+        {/*  onClick={() => setActiveComponent('students')}*/}
+        {/*>*/}
+        {/*  <img src="svg/icon_student.svg" />*/}
+        {/*  <Styled.Label>Students</Styled.Label>*/}
+        {/*</Styled.MenuItem>*/}
         <Styled.MenuItem
           active={active === 'authors'}
           onClick={() => setActiveComponent('authors')}
         >
           <img src="svg/icon_Authors & Learning Paths.svg" />
-          <Styled.Label>Authors & Learning Paths</Styled.Label>
+          <Styled.Label>Learning Paths</Styled.Label>
         </Styled.MenuItem>
-        <Styled.MenuItem
-          active={active === 'staff'}
-          onClick={() => setActiveComponent('staff')}
-        >
-          <i className="fa fa-user-secret" aria-hidden="true" />
-          <Styled.Label>Staff</Styled.Label>
-        </Styled.MenuItem>
+        {/*<Styled.MenuItem*/}
+        {/*  active={active === 'staff'}*/}
+        {/*  onClick={() => setActiveComponent('staff')}*/}
+        {/*>*/}
+        {/*  <i className="fa fa-user-secret" aria-hidden="true" />*/}
+        {/*  <Styled.Label>Staff</Styled.Label>*/}
+        {/*</Styled.MenuItem>*/}
         <Styled.MenuItem
           active={active === 'users'}
           onClick={() => setActiveComponent('users')}
