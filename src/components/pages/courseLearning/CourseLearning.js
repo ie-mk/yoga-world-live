@@ -2,28 +2,14 @@ import React, { useState, useEffect } from 'react';
 import SectionTitle from '../../foundation/typography/SectionTitle';
 import CardTitle from '../../foundation/typography/CardTitle';
 import PathTitle from '../../foundation/typography/PathTitle';
-import Text24 from '../../foundation/typography/Text24';
 import { connect } from 'react-redux';
-
 import Text18 from '../../foundation/typography/Text18';
-import { spacing } from '../../../constants/styles';
 import Styled from './CourseLearning.styles';
-import CollapseContainer from '../../foundation/collapseContainer/CollapseContainer';
 import FlexContainer from '../../foundation/FlexContainer';
 import CenteredFlexContainer from '../../foundation/CenteredFlexContainer';
 import CourseHomeChapters from '../dashboard/courses/courseHomeChapters/CourseHomeChapters';
 import { resourceActions } from '../../../store/actions';
-
-const CustomText241 = props => (
-  <Text24
-    mediaConfig={{
-      belowTabletLarge: {
-        margin: '0 0 0 24px',
-      },
-    }}
-    {...props}
-  />
-);
+import CollapseContainer from '../../foundation/collapseContainer';
 
 var questions = [
   'Does these courses need any special requirements?',
@@ -147,7 +133,7 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
               </Styled.LessonMoveWrapper>
               <Styled.LessonMoveWrapper>
                 <PathTitle margin="0 20px 0 0" text="Lesson 04 : Title" />
-                <i class="fa fa-angle-right fa-3x" aria-hidden="true" />
+                <i className="fa fa-angle-right fa-3x" aria-hidden="true" />
               </Styled.LessonMoveWrapper>
             </Styled.RowContainer>
           </Styled.Lesson>
