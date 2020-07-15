@@ -18,6 +18,7 @@ import {
   getUserProfileSelector,
   getUserSelector,
 } from '../../../store/selectors';
+import BackButton from '../../foundation/button/BackButton';
 
 const EditProfile = ({
   user: { profile, loadingPicture: loading },
@@ -43,7 +44,7 @@ const EditProfile = ({
   };
 
   return (
-    <CenteredFlexContainer>
+    <CenteredFlexContainer position="relative">
       {loading ? <SpinnerLarge /> : null}
       <HeroTitle
         margin="30px 0 100px 0"
@@ -51,6 +52,9 @@ const EditProfile = ({
         fontWeight="700"
         text="Edit Your Profile"
       />
+      <Styled.BackButtonContainer>
+        <BackButton />
+      </Styled.BackButtonContainer>
       <CenteredFlexContainer>
         <Formik
           initialValues={{ ...userProfile }}

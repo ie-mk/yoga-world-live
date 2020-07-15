@@ -87,7 +87,6 @@ const ButtonWrapper = styled.button`
             padding: paddingMap.mobile,
             fontSize: fontSizeMap.mobile,
             margin: marginMobile || `0 0 ${spacing.xl}`,
-            width: 'auto',
             minWidth: '150px',
           },
         })}

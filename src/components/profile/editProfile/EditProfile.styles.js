@@ -27,8 +27,19 @@ const RowContainer = styled.div`
   flex-wrap: wrap;
 `;
 
+const BackButtonContainer = styled.div`
+  position: absolute;
+  left: ${spacing.xl};
+  top: 0;
+  ${media.belowTabletLarge`
+    top: -50px;
+    left: 0;
+  `}
+`;
+
 export default {
   ProfileWrapper,
   Image,
   RowContainer,
+  BackButtonContainer,
 };
