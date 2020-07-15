@@ -81,11 +81,8 @@ const EditProfile = ({
                 gridGap={spacing.xxxxl}
               >
                 <Styled.ProfileWrapper>
-                  <div>
-                    {' '}
+                  <CenteredFlexContainer>
                     <Styled.Image src={profileImage} />
-                  </div>
-                  <div>
                     <input
                       className="hidden"
                       type="file"
@@ -103,7 +100,7 @@ const EditProfile = ({
                     >
                       Upload Photo
                     </Button>
-                  </div>
+                  </CenteredFlexContainer>
                 </Styled.ProfileWrapper>
                 <div>
                   <AdminInput
