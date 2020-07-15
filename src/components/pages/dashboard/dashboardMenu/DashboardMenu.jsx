@@ -63,6 +63,13 @@ const DashboardMenu = ({ setActiveComponent, active }) => {
           <i className="fa fa-users" aria-hidden="true" />
           <Styled.Label>Users</Styled.Label>
         </Styled.MenuItem>
+        <Styled.MenuItem
+          active={active === 'users'}
+          onClick={() => setActiveComponent('myAuthorProfile')}
+        >
+          <img src="svg/icon_student.svg" />
+          <Styled.Label>My Author Profile</Styled.Label>
+        </Styled.MenuItem>
       </ContainerBase>
     </Styled.Wrapper>
   );

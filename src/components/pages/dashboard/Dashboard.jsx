@@ -15,6 +15,7 @@ import Students from './students/Students';
 import AuthorsAndLearningPath from './authors/AuthorsAndLearningPath';
 import Staff from './staff/Staff';
 import Users from './users/Users';
+import AuthorProfile from './authors/authorProfile/AuthorProfile';
 
 const Dashboard = ({ dispatch, user }) => {
   useEffect(() => {
@@ -42,6 +43,7 @@ const Dashboard = ({ dispatch, user }) => {
   const authors = activeTab === 'authors';
   const staff = activeTab === 'staff';
   const users = activeTab === 'users';
+  const authorProfile = activeTab === 'myAuthorProfile';
 
   return (
     <Styled.Wrapper>
@@ -72,6 +74,7 @@ const Dashboard = ({ dispatch, user }) => {
             {authors && <AuthorsAndLearningPath />}
             {staff && <Staff />}
             {users && <Users />}
+            {authorProfile && <AuthorProfile />}
           </Styled.Wrapper>
         </div>
       </Grid>
