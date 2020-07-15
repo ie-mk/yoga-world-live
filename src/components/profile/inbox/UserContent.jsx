@@ -51,7 +51,7 @@ const UserContent = ({
           </Styled.TextContainer>
         </Styled.RowContainer>
         <Styled.TextContainer fontSize="textS">
-          {item.message.length > 25
+          {item.message && item.message.length > 25
             ? item.message.substring(0, 22) + '...'
             : item.message}
         </Styled.TextContainer>
