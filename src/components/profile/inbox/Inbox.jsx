@@ -5,53 +5,24 @@ import Grid from '../../foundation/Grid';
 import Styled from './Inbox.styles';
 import Button from '../../foundation/button/Button';
 import { connect } from 'react-redux';
-import { resourceActions } from '../../../store/actions';
+import { userActions, resourceActions } from '../../../store/actions';
 import moment from 'moment';
 import Modal from '../../modal/Modal';
 import AddNewMessage from '../../../components/pages/dashboard/inbox/addNew/AddNewMessage';
 import ReplyMessage from '../../../components/pages/dashboard/inbox/addReply/ReplyMessage';
+import UserContent from './UserContent';
+import { getAllUsersPublicInfo } from '../../../store/selectors';
 
-// const students = {
-//   'id_01':{
-
-//    name: 'Keshava',
-//    message:'this is javascript',
-//    date: 'July 11, 2020'
-//   },
-//   'id_02': {
-//   name: 'Shiva',
-//   message:'this is html',
-//   date: 'July 11, 2020'
-//   },
-//   'id_03':{
-//   name: 'Rama',
-//   message:'this is python',
-//   date: 'July 11, 2020'
-//   },
-//   'id_04':{
-//     name: 'Shiva',
-//     message:'this is java',
-//     date: 'July 11, 2020'
-//     },
-//     'id_05':  {
-//     name: 'Rama',
-//     message:'this is react',
-//     date: 'July 11, 2020'
-//     },
-//   }
-
-const Inbox = ({ dispatch, profile, messages }) => {
+const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
   const [message, setMessage] = useState(null);
   const [reply, setReply] = useState(false);
   const [messageData, setMessageData] = useState('');
 
   const handleReply = () => {
     setReply(true);
-    // setMessageData(item);
-    // TODO
   };
-  const getMessage = key => {
-    const item = messages[key];
+  const getMessage = messageid => {
+    const item = messages[messageid];
     setMessage(item.message);
     setMessageData(item);
   };
@@ -67,6 +38,10 @@ const Inbox = ({ dispatch, profile, messages }) => {
       }),
     );
   }, [uid]);
+
+  useEffect(() => {
+    dispatch(userActions.fetchAllUsersPublicInfo.request());
+  }, []);
 
   return (
     <ContainerBase
@@ -91,24 +66,34 @@ const Inbox = ({ dispatch, profile, messages }) => {
       >
         <Styled.ItemWrapper>
           {messages &&
-            Object.keys(messages).map((key, i) => {
-              const item = messages[key];
+            Object.keys(messages).map((messageid, i) => {
+              const item = messages[messageid];
+
+              const userinfo =
+                allUsersPublicInfo && allUsersPublicInfo[item.senderId];
+
               return (
-                <Styled.ContentWrapper key={i} onClick={() => getMessage(key)}>
+                <Styled.ContentWrapper
+                  key={i}
+                  onClick={() => getMessage(messageid)}
+                >
                   <Styled.Image
-                    src={profile.profileImage || profile.photoURL}
+                  //src={userinfo.profileImage || userinfo.photoURL}
                   />
                   <Styled.Wrapper>
                     <Styled.RowContainer>
                       <Styled.TextContainer fontSize="text">
-                        {profile.displayName}
+                        kk
+                        {/* {userinfo.displayName} */}
                       </Styled.TextContainer>
                       <Styled.TextContainer fontSize="textMobile">
                         {moment(item.date).format('ll')}
                       </Styled.TextContainer>
                     </Styled.RowContainer>
                     <Styled.TextContainer fontSize="textS">
-                      {item.message}
+                      {item.message.length > 25
+                        ? item.message.substring(0, 22) + '......'
+                        : item.message}
                     </Styled.TextContainer>
                   </Styled.Wrapper>
                 </Styled.ContentWrapper>
@@ -135,23 +120,6 @@ const Inbox = ({ dispatch, profile, messages }) => {
         </div>
       </Grid>
       <ContainerBase>
-        {/* {newAdd && (
-          <Modal
-            styles={{
-              width: '800px',
-              height: 'auto',
-              color: 'black',
-            }}
-            fontSize={fontSizeMap.h4}
-            marginTop={spacing.lg}
-            fontWeight="700"
-            onClose={() => setNewAdd(false)}
-            title="New Message"
-          >
-            <AddNewMessage setNewAdd={setNewAdd} />
-          </Modal>
-        )} */}
-
         {reply && (
           <Modal
             styles={{
@@ -176,6 +144,7 @@ const Inbox = ({ dispatch, profile, messages }) => {
 const mapStateToProps = state => ({
   profile: state.user.loginProviderData,
   messages: state.messages.data,
+  allUsersPublicInfo: getAllUsersPublicInfo(state),
 });
 
 export default connect(mapStateToProps)(Inbox);
