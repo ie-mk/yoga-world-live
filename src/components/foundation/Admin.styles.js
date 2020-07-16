@@ -87,6 +87,7 @@ const Wrapper = styled.div`
   color: ${colors.black};
   margin-top: ${({ noMargin }) => (noMargin ? '0' : spacing.xl)};
   margin-bottom: ${({ noMargin }) => (noMargin ? '0' : spacing.xl)};
+  margin: ${({ margin }) => (margin ? margin : '')};
   padding: ${({ padding }) => (padding ? padding : '0')};
 
   ${media.belowTabletLarge`

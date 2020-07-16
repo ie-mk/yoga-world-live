@@ -13,13 +13,19 @@ const AdminInput = ({
   disabled,
   fontSize,
   noMargin,
+  margin,
   height,
   mobileWidth,
   color,
   inputColor,
 }) => {
   return (
-    <Styled.Wrapper width={width} mobileWidth={mobileWidth} noMargin={noMargin}>
+    <Styled.Wrapper
+      margin={margin}
+      width={width}
+      mobileWidth={mobileWidth}
+      noMargin={noMargin}
+    >
       <Styled.Label color={color} fontSize={fontSize}>
         {label}
       </Styled.Label>

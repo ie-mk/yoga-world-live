@@ -34,9 +34,20 @@ margin: 24px 0 0 48px;
 `}
 `;
 
+const BackButtonContainer = styled.div`
+  position: absolute;
+  left: ${spacing.xl};
+  top: 0;
+  ${media.belowTabletLarge`
+    top: -50px;
+    left: 0;
+  `}
+`;
+
 export default {
   ProfileWrapper,
   Image,
   RowContainer,
   ViewWrapper,
+  BackButtonContainer,
 };

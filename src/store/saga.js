@@ -129,6 +129,29 @@ function* fetchAllUsersPublicInfo() {
   }
 }
 
+function* fetchUserPublicInfo({ payload: uid }) {
+  const userId = uid ? uid : yield select(getUID);
+  try {
+    const data = yield api.resource.fetchResource(`usersPublicInfo/${userId}`);
+    yield put(userActions.fetchUserPublicInfo.success({ uid: userId, data }));
+  } catch (err) {
+    yield put(userActions.fetchUserPublicInfo.failure(err));
+  }
+}
+
+function* updateUserPublicInfo({ payload: { data } }) {
+  const uid = yield select(getUID);
+  try {
+    yield api.resource.updateResource(`usersPublicInfo/${uid}`, data);
+    yield put(userActions.updateUserPublicInfo.success());
+    yield fetchUserPublicInfo({
+      payload: uid,
+    });
+  } catch (err) {
+    yield put(userActions.updateUserPublicInfo.failure(err));
+  }
+}
+
 // ============================ COURSES =====================================
 
 function* fetchCourses({ payload = {} }) {
@@ -573,7 +596,6 @@ function* updateLearningPath({ payload: { docId, data } }) {
   if (data.imagesToUpload) {
     data.imageUploadPath = 'images/learningPaths';
   }
-  debugger;
   try {
     yield api.resource.updateResource(`learningPaths/${docId}`, data);
     yield put(resourceActions.updateLearningPath.success());
@@ -617,6 +639,19 @@ function* rootSaga() {
     takeLatest(
       userActions.fetchAllUsersPublicInfo.request.type,
       fetchAllUsersPublicInfo,
+    ),
+  ]);
+  yield all([
+    takeLatest(
+      userActions.updateUserPublicInfo.request.type,
+      updateUserPublicInfo,
+    ),
+  ]);
+
+  yield all([
+    takeEvery(
+      userActions.fetchUserPublicInfo.request.type,
+      fetchUserPublicInfo,
     ),
   ]);
 

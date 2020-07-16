@@ -150,6 +150,33 @@ export const userReducer = handleActions(
       action: userActions.fetchAllUsersPublicInfo,
       resultProp: 'allUsersPublicInfo',
     }),
+    ...getAsyncReducers({
+      action: userActions.updateUserPublicInfo,
+      resultProp: 'allUsersPublicInfo',
+    }),
+    ...getAsyncReducers({
+      action: userActions.fetchUserPublicInfo,
+      exclude: { success: true },
+      resultProp: 'allUsersPublicInfo',
+    }),
+
+    [userActions.fetchUserPublicInfo.success.type]: (
+      state,
+      { payload: { uid, data } },
+    ) => {
+      const newState = {
+        ...state,
+        loading: false,
+      };
+
+      const allUsersPublicInfo = cloneDeep(state.allUsersPublicInfo);
+
+      allUsersPublicInfo[uid] = data;
+
+      newState.allUsersPublicInfo = allUsersPublicInfo;
+
+      return newState;
+    },
 
     /*===============================================================*/
 

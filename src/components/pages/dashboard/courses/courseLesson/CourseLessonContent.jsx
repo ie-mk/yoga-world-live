@@ -84,15 +84,6 @@ const CourseLessonContent = ({
                   disabled={!editMode}
                 />
               </FlexContainer>
-              <AdminInput
-                name="title"
-                type="text"
-                label="Lesson Title"
-                placeholder="Lesson Title"
-                width="100%"
-                backgroundColor="white"
-                disabled={!editMode}
-              />
               <AdminTextArea
                 name="descr"
                 rows="5"
