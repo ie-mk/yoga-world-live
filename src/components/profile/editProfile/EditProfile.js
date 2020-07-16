@@ -139,6 +139,35 @@ const EditProfile = ({
                     height="50px"
                     fontSize="h4"
                   />
+                  <Styled.RowContainer>
+                    <AdminInput
+                      name="countryCode"
+                      type="text"
+                      label="Mobile"
+                      backgroundColor="#293150"
+                      color="white"
+                      inputColor="white"
+                      width="138px"
+                      mobileWidth="65px"
+                      height="50px"
+                      fontSize="h4"
+                      noMargin="0"
+                    />
+                    <Styled.ViewWrapper>
+                      <AdminInput
+                        name="mobileNo"
+                        type="text"
+                        backgroundColor="#293150"
+                        color="white"
+                        width="413px"
+                        inputColor="white"
+                        mobileWidth="215px"
+                        height="50px"
+                        fontSize="h4"
+                        noMargin="0"
+                      />
+                    </Styled.ViewWrapper>
+                  </Styled.RowContainer>
                   <AdminInput
                     name="linkdinProfile"
                     type="text"
@@ -189,7 +218,7 @@ const EditProfile = ({
                   />
                 </div>
               </Grid>
-              <EditAccount password={userProfile.password} />
+              {/* //<EditAccount password={userProfile.password} /> */}
               <BillingDetails />
 
               <CenteredFlexContainer>
