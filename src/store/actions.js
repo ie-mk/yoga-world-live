@@ -16,10 +16,12 @@ export const userActions = {
   setLanguage: createAction('SET_LANGUAGE'),
   updateUserProfile: createAsyncAction('update-user-profile'),
   updateUserProfilePicture: createAsyncAction('update-user-profile-picture'),
+  updateUserPublicInfo: createAsyncAction('update-user-public-info'),
 
   fetchUsers: createAsyncAction('fetch-users'),
   fetchUserProfile: createAsyncAction('fetch-user-profile'),
   fetchUserPermissions: createAsyncAction('fetch-user-permissions'),
+  fetchUserPublicInfo: createAsyncAction('fetch-user-public-info'),
   fetchAllUsersPublicInfo: createAsyncAction('fetch-all-users-public-info'),
 
   setIsFirstLogin: createAction('SET_IS_FIRST_LOGIN'),

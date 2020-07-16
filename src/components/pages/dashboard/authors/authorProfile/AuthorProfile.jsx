@@ -11,6 +11,7 @@ import AdminTextArea from '../../../../foundation/textarea/AdminTextArea';
 import Grid from '../../../../foundation/Grid';
 import CenteredFlexContainer from '../../../../foundation/CenteredFlexContainer';
 import SectionTitle from '../../../../foundation/typography/SectionTitle';
+import Button from '../../../../foundation/button/Button';
 
 const AuthorProfile = ({ dispatch, userProfile }) => {
   return (
@@ -51,9 +52,14 @@ const AuthorProfile = ({ dispatch, userProfile }) => {
           rows="5"
           width="100%"
           name="skills"
-          label="Skils"
-          placeholder="HTML, CSS"
+          label="Skills"
+          placeholder="example: HTML, CSS, ...."
         />
+        <FlexContainer justifyContent="flex-end">
+          <Button type="primary" size="lg">
+            Update
+          </Button>
+        </FlexContainer>
       </Styled.Wrapper>
     </Formik>
   );

@@ -129,6 +129,29 @@ function* fetchAllUsersPublicInfo() {
   }
 }
 
+function* fetchUserPublicInfo({ payload: uid }) {
+  try {
+    const data = yield api.resource.fetchResource(`usersPublicInfo/${uid}`);
+    yield put(userActions.fetchUserPublicInfo.success(data));
+  } catch (err) {
+    yield put(userActions.fetchUserPublicInfo.failure(err));
+  }
+}
+
+function* updateUserPublicInfo({ payload: { data } }) {
+  const uid = yield select(getUID);
+
+  try {
+    yield api.resource.updateResource(`usersPublicInfo/${uid}`, data);
+    yield put(userActions.updateUserPublicInfo.success());
+    yield fetchUserPublicInfo({
+      payload: uid,
+    });
+  } catch (err) {
+    yield put(userActions.updateUserPublicInfo.failure(err));
+  }
+}
+
 // ============================ COURSES =====================================
 
 function* fetchCourses({ payload = {} }) {
@@ -617,6 +640,12 @@ function* rootSaga() {
     takeLatest(
       userActions.fetchAllUsersPublicInfo.request.type,
       fetchAllUsersPublicInfo,
+    ),
+  ]);
+  yield all([
+    takeLatest(
+      userActions.updateUserPublicInfo.request.type,
+      updateUserPublicInfo,
     ),
   ]);
 
