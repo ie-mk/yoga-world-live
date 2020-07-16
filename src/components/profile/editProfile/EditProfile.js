@@ -9,7 +9,6 @@ import AdminInput from '../../foundation/input/AdminInput';
 import ContainerBase from '../../foundation/ContainerBase';
 import Button from '../../foundation/button/Button';
 import { connect } from 'react-redux';
-import EditAccount from './editAccountDetails/EditAccountDetails';
 import BillingDetails from './billingDetails/BillingDetails';
 import { userActions } from '../../../store/actions';
 import SpinnerLarge from '../../foundation/spinner/SpinnerLarge';
