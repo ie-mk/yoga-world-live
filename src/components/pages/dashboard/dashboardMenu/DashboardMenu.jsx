@@ -64,7 +64,7 @@ const DashboardMenu = ({ setActiveComponent, active }) => {
           <Styled.Label>Users</Styled.Label>
         </Styled.MenuItem>
         <Styled.MenuItem
-          active={active === 'users'}
+          active={active === 'myAuthorProfile'}
           onClick={() => setActiveComponent('myAuthorProfile')}
         >
           <img src="svg/icon_student.svg" />

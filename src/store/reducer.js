@@ -151,6 +151,10 @@ export const userReducer = handleActions(
       resultProp: 'allUsersPublicInfo',
     }),
     ...getAsyncReducers({
+      action: userActions.updateUserPublicInfo,
+      resultProp: 'allUsersPublicInfo',
+    }),
+    ...getAsyncReducers({
       action: userActions.fetchUserPublicInfo,
       exclude: { success: true },
       resultProp: 'allUsersPublicInfo',

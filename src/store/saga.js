@@ -141,7 +141,6 @@ function* fetchUserPublicInfo({ payload: uid }) {
 
 function* updateUserPublicInfo({ payload: { data } }) {
   const uid = yield select(getUID);
-  debugger;
   try {
     yield api.resource.updateResource(`usersPublicInfo/${uid}`, data);
     yield put(userActions.updateUserPublicInfo.success());
@@ -597,7 +596,6 @@ function* updateLearningPath({ payload: { docId, data } }) {
   if (data.imagesToUpload) {
     data.imageUploadPath = 'images/learningPaths';
   }
-  debugger;
   try {
     yield api.resource.updateResource(`learningPaths/${docId}`, data);
     yield put(resourceActions.updateLearningPath.success());
