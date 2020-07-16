@@ -189,7 +189,7 @@ const EditProfile = ({
                   />
                 </div>
               </Grid>
-              <EditAccount />
+              <EditAccount password={userProfile.password} />
               <BillingDetails />
 
               <CenteredFlexContainer>

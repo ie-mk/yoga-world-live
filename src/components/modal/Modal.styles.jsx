@@ -15,6 +15,7 @@ const ModalOverlay = styled.div`
 
 const ModalContainer = styled.div`
   position: fixed;
+ 
   ${({ fullPageWidth }) =>
     fullPageWidth
       ? css`
@@ -60,7 +61,8 @@ const Header = styled.div`
   font-size: ${({ fontSize }) => fontSize || '18px'};
   font-weight: ${({ fontWeight }) => fontWeight || '500'};
   z-index: 100;
-  background-color: white;
+
+  background-color: ${({ backgroundColor }) => backgroundColor || 'white'};
 `;
 
 const Content = styled.div`

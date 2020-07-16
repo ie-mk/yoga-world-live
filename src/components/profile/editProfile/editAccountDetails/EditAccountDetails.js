@@ -3,13 +3,19 @@ import Styled from './EditAccountDetails.styles';
 import HeroTitle from '../../../foundation/typography/HeroTitle';
 import { Formik, ErrorMessage, Field } from 'formik';
 import AdminInput from '../../../foundation/input/AdminInput';
-
+import ContainerBase from '../../../foundation/ContainerBase';
 import Button from '../../../foundation/button/Button';
 import { connect } from 'react-redux';
 import Text24 from '../../../foundation/typography/Text24';
 import CenteredFlexContainer from '../../../foundation/CenteredFlexContainer';
+import Router from 'next/router';
+import Modal from '../../../modal/Modal';
+import ChangePassword from './changePassword/ChangePassword';
+import { spacing, fontSizeMap } from '../../../../constants/styles';
 
 const EditAccountDetails = () => {
+  const [changePassword, setChangePassword] = useState(false);
+
   return (
     <>
       <CenteredFlexContainer>
@@ -74,6 +80,7 @@ const EditAccountDetails = () => {
           height="45px"
           marginMobile="0"
           size="sm"
+          onClick={() => setChangePassword(true)}
         >
           Change Password
         </Button>
@@ -107,6 +114,27 @@ const EditAccountDetails = () => {
           />
         </Styled.ViewWrapper>
       </Styled.RowContainer>
+      <ContainerBase>
+        {changePassword && (
+          <Modal
+            styles={{
+              width: '800px',
+              height: 'auto',
+              color: 'white',
+              background:
+                'transparent linear-gradient(180deg,#1A2036 0%,#191F37 51%,#191F37 100%) 0% 0% no-repeat padding-box',
+            }}
+            fontSize={fontSizeMap.h2}
+            marginTop={spacing.xxl}
+            background="transparent linear-gradient(180deg,#1A2036 0%,#191F37 51%,#191F37 100%) 0% 0% no-repeat padding-box"
+            fontWeight="700"
+            onClose={() => setChangePassword(false)}
+            title="Change Password"
+          >
+            <ChangePassword setChangePassword={setChangePassword} />
+          </Modal>
+        )}
+      </ContainerBase>
     </>
   );
 };
