@@ -156,7 +156,7 @@ export const userReducer = handleActions(
       resultProp: 'allUsersPublicInfo',
     }),
 
-    [userActions.fetchUserPubicInfo.success.type]: (
+    [userActions.fetchUserPublicInfo.success.type]: (
       state,
       { payload: { uid, data } },
     ) => {

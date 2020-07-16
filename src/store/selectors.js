@@ -11,11 +11,19 @@ export const getUID = state =>
   state.user.loginProviderData &&
   state.user.loginProviderData.uid;
 
+export const getAllUsersPublicInfo = state => state.user.allUsersPublicInfo;
+
+export const getUserPublicInfo = createSelector(
+  getUID,
+  getAllUsersPublicInfo,
+  (uid, publicInfo) => {
+    return publicInfo[uid];
+  },
+);
+
 export const getPermissions = state => state.user.permissions;
 
 export const getUserProfileSelector = state => state.user && state.user.profile;
-
-export const getAllUsersPublicInfo = state => state.user.allUsersPublicInfo;
 
 export const getCourses = state => state.courses.data;
 
