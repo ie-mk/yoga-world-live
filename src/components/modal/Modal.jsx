@@ -12,7 +12,6 @@ const Modal = ({
   fullPageWidth,
   fontWeight,
   fontSize,
-  background,
   marginTop,
 }) => {
   return ReactDOM.createPortal(
@@ -23,7 +22,6 @@ const Modal = ({
         fullPageWidth={fullPageWidth}
       >
         <Styled.Header
-          backgroundColor={background}
           fontWeight={fontWeight}
           fontSize={fontSize}
           marginTop={marginTop}

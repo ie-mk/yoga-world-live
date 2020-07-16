@@ -61,8 +61,7 @@ const Header = styled.div`
   font-size: ${({ fontSize }) => fontSize || '18px'};
   font-weight: ${({ fontWeight }) => fontWeight || '500'};
   z-index: 100;
-
-  background-color: ${({ backgroundColor }) => backgroundColor || 'white'};
+  background-color: white;
 `;
 
 const Content = styled.div`

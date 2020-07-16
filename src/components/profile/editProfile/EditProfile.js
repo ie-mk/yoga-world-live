@@ -219,7 +219,7 @@ const EditProfile = ({
                   />
                 </div>
               </Grid>
-              {/* //<EditAccount password={userProfile.password} /> */}
+
               <BillingDetails />
 
               <CenteredFlexContainer>
