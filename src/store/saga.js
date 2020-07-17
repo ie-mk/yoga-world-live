@@ -59,7 +59,6 @@ function* handleLoginFlow({ payload: user }) {
     const profile = yield api.user.fetchUserProfile(uid);
 
     if (profile) {
-      const profile = yield api.user.fetchUserProfile(uid);
       const permissions = yield api.user.fetchUserPermissions(uid);
 
       yield put(userActions.fetchUserProfile.success(profile));
@@ -82,6 +81,16 @@ function* handleLoginFlow({ payload: user }) {
         lastName,
         firstLogin: moment().format(),
         lastLogin: moment().format(),
+      });
+
+      yield createUserPublicInfo({
+        payload: {
+          data: {
+            firstName,
+            lastName,
+            profileImage: user.photoURL,
+          },
+        },
       });
     }
   } catch (err) {
@@ -136,6 +145,28 @@ function* fetchUserPublicInfo({ payload: uid }) {
     yield put(userActions.fetchUserPublicInfo.success({ uid: userId, data }));
   } catch (err) {
     yield put(userActions.fetchUserPublicInfo.failure(err));
+  }
+}
+
+function* createUserPublicInfo({ payload: { data } }) {
+  const uid = yield select(getUID);
+
+  // remove falsy values from object otherwise firebase will complain
+  for (var k in data) {
+    if (data.hasOwnProperty(k) && !data[k]) {
+      delete data[k];
+    }
+  }
+  const bla = data;
+  debugger;
+  try {
+    yield api.resource.createResourceWithId('usersPublicInfo', uid, data);
+    yield put(userActions.createUserPublicInfo.success());
+    yield fetchUserPublicInfo({
+      payload: uid,
+    });
+  } catch (err) {
+    yield put(userActions.createUserPublicInfo.failure(err));
   }
 }
 
