@@ -10,13 +10,14 @@ import {
 } from '../../../constants/styles';
 
 export const ItemWrapper = styled.div`
+  //margin-left: ${spacing.xl};
   padding-left: ${spacing.xl};
   padding-right: ${spacing.xl};
   background: ${colors.background.violetsecondary};
   border-radius: ${spacing.sm};
   overflow-y: auto;
   height: 300px;
-
+  width: 500px;
   div: last-child {
     border-bottom: 0;
   }
@@ -24,7 +25,7 @@ export const ItemWrapper = styled.div`
 
 const ContentWrapper = styled.div`
   display: flex;
-  width: 100%;
+  width: 433px;
   align-items: center;
   padding: ${spacing.lg} 0;
   font-weight: 400;
@@ -44,6 +45,12 @@ const RowContainer = styled.div`
 const TextContainer = styled.div`
   font-size: ${({ fontSize }) =>
     fontSizeMap[fontSize] ? fontSizeMap[fontSize] : '12px'};
+    opacity: ${({ opacity }) => (opacity ? opacity : '')}; //0.5;
+  padding-top : ${({ paddingTop }) =>
+    spacing[paddingTop] ? spacing[paddingTop] : ' '};
+    spacing[paddingTop] ? spacing[paddingTop] : ' '};
+  font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : '')}; 
+
 `;
 export const Image = styled.img`
   width: 60px;
@@ -65,7 +72,8 @@ const MessageBody = styled.div`
   padding: ${spacing.lg};
   border: 1px solid ${colors.white};
   border-radius: 10px;
-  margin-left: 15%;
+  padding-left: 5%;
+  width: 600px;
 `;
 
 const ButtonWrapper = styled.div`

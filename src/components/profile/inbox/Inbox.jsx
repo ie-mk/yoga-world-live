@@ -10,7 +10,6 @@ import moment from 'moment';
 import Modal from '../../modal/Modal';
 import AddNewMessage from '../../../components/pages/dashboard/inbox/addNew/AddNewMessage';
 import ReplyMessage from '../../../components/pages/dashboard/inbox/addReply/ReplyMessage';
-import UserContent from './UserContent';
 import { getAllUsersPublicInfo } from '../../../store/selectors';
 
 const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
@@ -52,7 +51,7 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
         },
       }}
     >
-      <Grid
+      {/* <Grid
         columns="1fr 2fr"
         mediaConfig={{
           aboveTabletLarge: {
@@ -63,7 +62,8 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
           },
         }}
         gridGap={spacing.xls}
-      >
+      > */}
+      <Styled.RowContainer>
         <Styled.ItemWrapper>
           {messages &&
             Object.keys(messages).map((messageid, i) => {
@@ -82,14 +82,14 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
                   />
                   <Styled.Wrapper>
                     <Styled.RowContainer>
-                      <Styled.TextContainer fontSize="text">
+                      <Styled.TextContainer fontSize="text" fontWeight="500">
                         {userinfo.displayName}
                       </Styled.TextContainer>
-                      <Styled.TextContainer fontSize="textMobile">
+                      <Styled.TextContainer fontSize="textMobile" opacity="0.5">
                         {moment(item.date).format('ll')}
                       </Styled.TextContainer>
                     </Styled.RowContainer>
-                    <Styled.TextContainer fontSize="textS">
+                    <Styled.TextContainer fontSize="textS" paddingTop="xxS">
                       {item.message && item.message.length > 25
                         ? item.message.substring(0, 22) + '......'
                         : item.message}
@@ -117,7 +117,8 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
             </Styled.ButtonWrapper>
           )}
         </div>
-      </Grid>
+      </Styled.RowContainer>
+      {/* </Grid> */}
       <ContainerBase>
         {reply && (
           <Modal
