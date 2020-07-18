@@ -51,18 +51,6 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
         },
       }}
     >
-      {/* <Grid
-        columns="1fr 2fr"
-        mediaConfig={{
-          aboveTabletLarge: {
-            'grid-template-columns': '1fr 2fr',
-          },
-          belowTabletLarge: {
-            'grid-gap': spacing.xS,
-          },
-        }}
-        gridGap={spacing.xls}
-      > */}
       <Styled.RowContainer>
         <Styled.ItemWrapper>
           {messages &&
@@ -72,13 +60,17 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
               const userinfo =
                 allUsersPublicInfo && allUsersPublicInfo[item.senderId];
 
+              console.log('typeof userinfo', typeof userinfo, userinfo);
+              var src = '/svg/icon_profile.svg';
+
               return (
                 <Styled.ContentWrapper
                   key={i}
                   onClick={() => getMessage(messageid)}
                 >
                   <Styled.Image
-                    src={userinfo.profileImage || userinfo.photoURL}
+                    // src={userinfo.profileImage || userinfo.photoURL}
+                    src={src}
                   />
                   <Styled.Wrapper>
                     <Styled.RowContainer>
@@ -99,7 +91,7 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
               );
             })}
         </Styled.ItemWrapper>
-        <div>
+        <Styled.MessageBodyWrapper>
           {message && <Styled.MessageBody>{message}</Styled.MessageBody>}
 
           {message && (
@@ -116,9 +108,8 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
               </Button>
             </Styled.ButtonWrapper>
           )}
-        </div>
+        </Styled.MessageBodyWrapper>
       </Styled.RowContainer>
-      {/* </Grid> */}
       <ContainerBase>
         {reply && (
           <Modal

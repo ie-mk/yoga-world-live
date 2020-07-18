@@ -10,14 +10,17 @@ import {
 } from '../../../constants/styles';
 
 export const ItemWrapper = styled.div`
-  //margin-left: ${spacing.xl};
-  padding-left: ${spacing.xl};
-  padding-right: ${spacing.xl};
+  padding: 0 ${spacing.xl};
   background: ${colors.background.violetsecondary};
   border-radius: ${spacing.sm};
   overflow-y: auto;
   height: 300px;
   width: 500px;
+  ${media.belowTabletLarge`
+     width: 350px;
+     padding: 0 ${spacing.md};
+
+  `};
   div: last-child {
     border-bottom: 0;
   }
@@ -31,14 +34,14 @@ const ContentWrapper = styled.div`
   font-weight: 400;
   border-bottom: 1px solid ${colors.primary};
   ${media.belowTabletLarge`
-    padding: ${spacing.xxxS};
+    padding: ${spacing.xS} 0;
+    width: 300px;
   `}
 `;
 
 const RowContainer = styled.div`
   flex: 1;
   display: flex;
-  align-items: center;
   justify-content: space-between;
 `;
 
@@ -58,8 +61,8 @@ export const Image = styled.img`
   border-radius: 50%;
   margin-right: 20px;
   ${media.belowTabletLarge`
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
   `}
 `;
 
@@ -68,12 +71,20 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
+const MessageBodyWrapper = styled.div`
+  flex: 1;
+  flex-direction: column;
+  margin-left: 10px;
+  ${media.belowTabletLarge`
+    display: none;
+  `}
+`;
+
 const MessageBody = styled.div`
   padding: ${spacing.lg};
   border: 1px solid ${colors.white};
   border-radius: 10px;
-  padding-left: 5%;
-  width: 600px;
+  width: 100%;
 `;
 
 const ButtonWrapper = styled.div`
@@ -91,4 +102,5 @@ export default {
   Wrapper,
   MessageBody,
   ButtonWrapper,
+  MessageBodyWrapper,
 };
