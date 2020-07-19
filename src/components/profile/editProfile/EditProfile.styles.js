@@ -44,10 +44,48 @@ const BackButtonContainer = styled.div`
   `}
 `;
 
+export const PhoneInputStyles = styled.div`
+  padding-left: ${spacing.sm};
+  border: 1px solid green;
+  border-radius: 20px;
+  .PhoneInput {
+    height: 40px;
+  }
+  .PhoneInputInput {
+    height: 35px;
+    border: none;
+    font-size: 24px;
+  }
+  .PhoneInputInput:focus {
+    outline: none;
+  }
+`;
+export const Label = styled.div`
+  padding-top: ${spacing.sm};
+  padding-bottom: ${spacing.xxxS};
+  color: gray;
+`;
+
+export const Container = styled.div`
+  width: 100%;
+`;
+
+export const InputRow = styled.div`
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: ${spacing.sm};
+  align-items: center;
+`;
+
 export default {
   ProfileWrapper,
   Image,
   RowContainer,
   ViewWrapper,
   BackButtonContainer,
+  PhoneInputStyles,
+  Label,
+  InputRow,
+  Container,
 };

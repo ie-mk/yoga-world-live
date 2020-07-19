@@ -13,6 +13,7 @@ import BillingDetails from './billingDetails/BillingDetails';
 import { userActions } from '../../../store/actions';
 import SpinnerLarge from '../../foundation/spinner/SpinnerLarge';
 import needsLoginWrapper from '../../../utils/needsLoginWrapper';
+import PhoneInput from 'react-phone-number-input';
 import {
   getUserProfileSelector,
   getUserSelector,
@@ -59,7 +60,9 @@ const EditProfile = ({
           initialValues={{ ...userProfile }}
           enableReinitialize={true}
           onSubmit={(values, { setSubmitting }) => {
+            console.log('hello');
             setSubmitting(true);
+
             dispatch(userActions.updateUserProfile.request(values));
             setTimeout(() => setSubmitting(false), 1000);
           }}
@@ -168,6 +171,19 @@ const EditProfile = ({
                       />
                     </Styled.ViewWrapper>
                   </Styled.RowContainer>
+
+                  <Styled.InputRow>
+                    <Styled.Container>
+                      <Styled.Label>Phone</Styled.Label>
+                      <Styled.PhoneInputStyles>
+                        <PhoneInput
+                          name="phoneNumber"
+                          international
+                          defaultCountry="CA"
+                        />
+                      </Styled.PhoneInputStyles>
+                    </Styled.Container>
+                  </Styled.InputRow>
                   <AdminInput
                     name="linkdinProfile"
                     type="text"
@@ -230,6 +246,7 @@ const EditProfile = ({
                     height="45px"
                     marginMobile="35px 0 0 0"
                     size="sm"
+                    submit={true}
                   >
                     UPDATE MY PROFILE
                   </Button>
