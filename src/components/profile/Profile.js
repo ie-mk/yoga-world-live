@@ -10,7 +10,7 @@ import FlexContainer from '../foundation/FlexContainer';
 import Billing from './billing/Billing';
 import Preferences from './preferences/Preferences';
 import Learning from './learning/Learning';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 import { userActions } from '../../store/actions';
 
 const Profile = ({ dispatch, profile }) => {
@@ -26,8 +26,10 @@ const Profile = ({ dispatch, profile }) => {
   const isActiveBilling = activeTab === 'billing';
   const isActivePreferences = activeTab === 'preferences';
 
+  const router = useRouter();
+
   const toEditPage = () =>
-    Router.push('/editProfile', '/editProfile', {
+    router.push('/editProfile', '/editProfile', {
       shallow: true,
     });
 

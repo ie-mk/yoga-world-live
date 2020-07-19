@@ -4,7 +4,7 @@ import ResponsiveImage from '../ResponsiveImage';
 import PathTitle from '../typography/PathTitle';
 import media from '../media';
 import { spacing } from '../../../constants/styles';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 
 const Wrapper = styled.div`
   display: flex;
@@ -28,8 +28,10 @@ const Wrapper = styled.div`
 `;
 
 const LearningPathCard = ({ imageSrc, title, learningPathId }) => {
+  const router = useRouter();
+
   const handlePathClick = () => {
-    Router.push(
+    router.push(
       {
         pathname: '/courses/path',
         query: {

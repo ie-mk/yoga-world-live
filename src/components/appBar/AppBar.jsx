@@ -11,7 +11,7 @@ import MenuLink from '../foundation/MenuLink';
 import ContainerBase from '../foundation/ContainerBase';
 import Logo from '../foundation/Logo';
 import { isStaff } from '../../store/selectors';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 import media from '../foundation/media';
 
 const LogoutButton = styled(Button)`
@@ -40,6 +40,8 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
   };
 
   const { t } = useTranslation();
+
+  const router = useRouter();
 
   return (
     <ContainerBase
@@ -109,7 +111,7 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
                 />
                 <Button
                   onClick={() =>
-                    Router.push('/joinus', '/joinus', { shallow: true })
+                    router.push('/joinus', '/joinus', { shallow: true })
                   }
                   type="primary"
                   padding="17px 64px"

@@ -5,11 +5,13 @@ import SectionTitle from '../../../../foundation/typography/SectionTitle';
 import Grid from '../../../../foundation/Grid';
 import { fontSizeMap, spacing, colors } from '../../../../../constants/styles';
 import ProfileLearning from '../../../../foundation/profileLearning/ProfileLearning';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 
 const Level = ({ courses, learningPathData, heading }) => {
+  const router = useRouter();
+
   const toCourseStartPage = (courseId, title) => {
-    Router.push(
+    router.push(
       {
         pathname: '/courses/courseStart',
         query: {

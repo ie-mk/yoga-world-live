@@ -7,7 +7,7 @@ import ContainerBase from '../../../../foundation/ContainerBase';
 import Button from '../../../../foundation/button/Button';
 import GreenCheckBoxWithText from '../../../../foundation/greencheckboxwithtext/GreenCheckBoxWithText.jsx';
 import StarRating from '../../../../foundation/starRating/StarRating';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 
 const Label = ({ keyname, value }) => {
   return (
@@ -36,8 +36,10 @@ const CourseHeader = ({ title, course, courseId }) => {
   const prerequisites = course.prerequisites;
   const prerequisitesdata = prerequisites.split(',');
 
+  const router = useRouter();
+
   const startCourse = title => {
-    Router.push(
+    router.push(
       {
         pathname: '/courseLearning',
         query: {

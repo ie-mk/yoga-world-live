@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ContainerBase, Grid, Container } from '../../foundation';
 import DashboardMenu from './dashboardMenu/DashboardMenu';
 import { connect } from 'react-redux';
-import Router, { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import { userActions } from '../../../store/actions';
 import Styled from './Dashboard.styles';
 import Logo from '../../foundation/Logo';
@@ -18,10 +18,12 @@ import Users from './users/Users';
 import AuthorProfile from './authors/authorProfile/AuthorProfile';
 
 const Dashboard = ({ dispatch, user }) => {
+  const router = useRouter();
+
   useEffect(() => {
     if (!user) return;
     if (!user.uid) {
-      Router.push('/login');
+      router.push('/login');
     }
     dispatch(userActions.fetchUserProfile.request(user.uid));
   }, user && user.uid);
@@ -30,7 +32,7 @@ const Dashboard = ({ dispatch, user }) => {
 
   const makeActive = activeTab => {
     const url = `/dashboard?activeTab=${activeTab}`;
-    Router.push(url, url, { shallow: true });
+    router.push(url, url, { shallow: true });
   };
 
   const activeTab = query && query.activeTab;

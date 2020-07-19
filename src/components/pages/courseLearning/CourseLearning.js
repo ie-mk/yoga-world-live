@@ -10,6 +10,8 @@ import CenteredFlexContainer from '../../foundation/CenteredFlexContainer';
 import CourseHomeChapters from '../dashboard/courses/courseHomeChapters/CourseHomeChapters';
 import { resourceActions } from '../../../store/actions';
 import CollapseContainer from '../../foundation/collapseContainer';
+import Button from '../../foundation/button/Button';
+import { useRouter } from 'next/router';
 
 var questions = [
   'Does these courses need any special requirements?',
@@ -21,6 +23,8 @@ var questions = [
 
 const CourseLearning = ({ courseId, dispatch, course }) => {
   const [menuOpen, setMenuOpen] = useState(true);
+
+  const router = useRouter();
 
   const chapters = course.chapters;
 
