@@ -4,15 +4,11 @@ import Styled from './MessageModel.styles';
 import Button from '../../../foundation/button/Button';
 
 const Modal = ({
-  children,
   title,
   onClose,
   elementSelector = '__next',
   styles,
   fullPageWidth,
-  fontWeight,
-  fontSize,
-  marginTop,
   image,
   message,
 }) => {
@@ -28,12 +24,9 @@ const Modal = ({
             <Styled.Image src={image} />
             <Styled.TextContainer fontSize="h4">{title}</Styled.TextContainer>
           </Styled.Wrapper>
-          <Styled.CloseButton
-            onClick={() => onClose()}
-            fontSize="h2"
-            fontWeight="300"
-          >
-            x{/* <i className="fa fa-close" />{' '} */}
+          <Styled.CloseButton onClick={() => onClose()}>
+            {/*<div>x</div>*/}
+            <i className="fa fa-close" />{' '}
           </Styled.CloseButton>
         </Styled.RowContainer>
 
@@ -48,7 +41,7 @@ const Modal = ({
                 padding="10px 30px"
                 maxWidth="80px"
                 margin="0"
-                onClick={() => handleReply()}
+                onClick={() => {}}
               >
                 REPLY
               </Button>

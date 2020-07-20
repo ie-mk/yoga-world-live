@@ -70,36 +70,33 @@ const Header = styled.div`
   z-index: 100;
   background: '#1B3052';
 `;
-
-const Content = styled.div`
-  overflow-y: auto;
-  height: 94%;
-  padding: 20px;
-`;
+//
+// const Content = styled.div`
+//   overflow-y: auto;
+//   height: 94%;
+//   padding: 20px;
+// `;
 
 const CloseButton = styled.div`
-  // width: 54px;
-  // height: 54px;
+  width: 36px;
+  height: 36px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   color: ${colors.white};
-  font-size: ${({ fontSize }) =>
-    fontSizeMap[fontSize] ? fontSizeMap[fontSize] : '32px'};
-  font-weight: ${({ fontWeight }) => fontWeight || '500'};
+  font-size: ${fontSizeMap.h4};
+  font-weight: 400;
   border: 1px solid ${colors.white};
   border-radius: 10px;
 `;
 
 const RowContainer = styled.div`
-  flex: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: ${colors.violet};
   padding: ${spacing.lg};
-  height: 80px;
   // border-bottom: 1px solid white;
 `;
 
@@ -177,7 +174,6 @@ export default {
   ModalOverlay,
   CloseButton,
   Header,
-  Content,
   RowContainer,
   Image,
   ContentWrapper,
