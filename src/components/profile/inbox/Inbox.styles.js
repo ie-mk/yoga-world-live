@@ -75,7 +75,7 @@ const MessageBodyWrapper = styled.div`
   flex: 1;
   flex-direction: column;
   margin-left: 10px;
-  ${media.belowTabletLarge`
+  ${media.belowTablet`
     display: none;
   `}
 `;

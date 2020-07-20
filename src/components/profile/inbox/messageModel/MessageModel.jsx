@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Styled from './MessageModel.styles'; //'./MessageModal.styles.js';
+import Styled from './MessageModel.styles';
 import Button from '../../../foundation/button/Button';
 
 const Modal = ({
@@ -23,29 +23,20 @@ const Modal = ({
         style={styles}
         fullPageWidth={fullPageWidth}
       >
-        {/* <Styled.Header
-          fontWeight={fontWeight}
-          fontSize={fontSize}
-          marginTop={marginTop}
-        > */}
         <Styled.RowContainer>
           <Styled.Wrapper>
             <Styled.Image src={image} />
             <Styled.TextContainer fontSize="h4">{title}</Styled.TextContainer>
           </Styled.Wrapper>
-          <Styled.CloseButtonWrapper>
-            <Styled.TextContainer
-              onClick={() => onClose()}
-              fontSize="h2"
-              fontWeight="300"
-            >
-              x{/* <i className="fa fa-close" />{' '} */}
-            </Styled.TextContainer>
-          </Styled.CloseButtonWrapper>
+          <Styled.CloseButton
+            onClick={() => onClose()}
+            fontSize="h2"
+            fontWeight="300"
+          >
+            x{/* <i className="fa fa-close" />{' '} */}
+          </Styled.CloseButton>
         </Styled.RowContainer>
 
-        {/* </Styled.Header> */}
-        {/* <Styled.Content>{children}</Styled.Content> */}
         <Styled.MessageBodyWrapper>
           {message && <Styled.MessageBody>{message}</Styled.MessageBody>}
 

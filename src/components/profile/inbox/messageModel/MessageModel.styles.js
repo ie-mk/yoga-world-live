@@ -77,13 +77,19 @@ const Content = styled.div`
   padding: 20px;
 `;
 
-const CloseButton = styled.span`
-  width: 54px;
-  height: 54px;
-  fill: gray;
+const CloseButton = styled.div`
+  // width: 54px;
+  // height: 54px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
-  color: gray;
-  font-size: 34px;
+  color: ${colors.white};
+  font-size: ${({ fontSize }) =>
+    fontSizeMap[fontSize] ? fontSizeMap[fontSize] : '32px'};
+  font-weight: ${({ fontWeight }) => fontWeight || '500'};
+  border: 1px solid ${colors.white};
+  border-radius: 10px;
 `;
 
 const RowContainer = styled.div`
@@ -91,7 +97,6 @@ const RowContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // background: #1B3052 0% 0% no-repeat padding-box;
   background: ${colors.violet};
   padding: ${spacing.lg};
   height: 80px;
@@ -124,12 +129,10 @@ const ContentWrapper = styled.div`
 const TextContainer = styled.div`
   font-size: ${({ fontSize }) =>
     fontSizeMap[fontSize] ? fontSizeMap[fontSize] : '12px'};
-    opacity: ${({ opacity }) => (opacity ? opacity : '')};
-  padding-top : ${({ paddingTop }) =>
-    spacing[paddingTop] ? spacing[paddingTop] : ' '};
-    spacing[paddingTop] ? spacing[paddingTop] : ' '};
-  font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : '')}; 
-  color: white;
+  opacity: ${({ opacity }) => (opacity ? opacity : '')};
+
+  font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : '')};
+  color: ${colors.white};
 `;
 
 const Wrapper = styled.div`
@@ -139,6 +142,9 @@ const Wrapper = styled.div`
 `;
 
 const CloseButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: 1px solid white;
   border-radius: 10px;
   cursor: pointer;
@@ -149,7 +155,7 @@ const MessageBodyWrapper = styled.div`
   flex-direction: column;
  // background: ${colors.violet};
   padding: ${spacing.lg};
-  color: white;
+  color: ${colors.white};
 
 `;
 
