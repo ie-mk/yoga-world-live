@@ -11,19 +11,28 @@ import Modal from '../../modal/Modal';
 import AddNewMessage from '../../../components/pages/dashboard/inbox/addNew/AddNewMessage';
 import ReplyMessage from '../../../components/pages/dashboard/inbox/addReply/ReplyMessage';
 import { getAllUsersPublicInfo } from '../../../store/selectors';
+import MessageModel from './messageModel/MessageModel';
 
 const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
   const [message, setMessage] = useState(null);
   const [reply, setReply] = useState(false);
   const [messageData, setMessageData] = useState('');
+  const [MobileModelDisplay, setMobileModelDisplay] = useState(false);
+  const [userInfo, setUserInfo] = useState('');
 
   const handleReply = () => {
     setReply(true);
   };
-  const getMessage = messageid => {
+  const getMessage = (messageid, userinfo) => {
     const item = messages[messageid];
+    console.log('window.screen.width-- ', window.screen.width);
     setMessage(item.message);
     setMessageData(item);
+    if (window.screen.width < 700) {
+      setMobileModelDisplay(true);
+      setUserInfo(userinfo);
+      console.log('typeof userinfo', typeof userinfo, userinfo);
+    }
   };
 
   const uid = profile && profile.uid;
@@ -41,7 +50,7 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
   useEffect(() => {
     dispatch(userActions.fetchAllUsersPublicInfo.request());
   }, []);
-
+  var defaultImage = '/svg/icon_profile.svg';
   return (
     <ContainerBase
       marginTop="xxxl"
@@ -60,17 +69,18 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
               const userinfo =
                 allUsersPublicInfo && allUsersPublicInfo[item.senderId];
 
-              console.log('typeof userinfo', typeof userinfo, userinfo);
               var src = '/svg/icon_profile.svg';
+
+              if (!userinfo) return null;
 
               return (
                 <Styled.ContentWrapper
                   key={i}
-                  onClick={() => getMessage(messageid)}
+                  onClick={() => getMessage(messageid, userinfo)}
                 >
                   <Styled.Image
-                    // src={userinfo.profileImage || userinfo.photoURL}
-                    src={src}
+                    src={userinfo.profileImage || userinfo.photoURL || src}
+                    // src={src}
                   />
                   <Styled.Wrapper>
                     <Styled.RowContainer>
@@ -126,6 +136,27 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
           >
             <ReplyMessage setReply={setReply} messageData={messageData} />
           </Modal>
+        )}
+      </ContainerBase>
+      <ContainerBase>
+        {MobileModelDisplay && (
+          <MessageModel
+            styles={{
+              width: '100vw',
+              height: 'auto',
+              color: 'black',
+            }}
+            fontSize={fontSizeMap.h4}
+            marginTop={spacing.lg}
+            fontWeight="700"
+            onClose={() => setReply(false)}
+            title={userInfo.displayName}
+            image={defaultImage}
+            message={message}
+            onClose={() => setMobileModelDisplay(false)}
+          >
+            {/* <ReplyMessage setReply={setReply} messageData={messageData} /> */}
+          </MessageModel>
         )}
       </ContainerBase>
     </ContainerBase>
