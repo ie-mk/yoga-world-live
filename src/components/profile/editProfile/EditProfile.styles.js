@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import media from '../../foundation/media';
-import { colors, spacing } from '../../../constants/styles';
+import { borderRadius, spacing, fontSizeMap } from '../../../constants/styles';
 
 export const Image = styled.img`
   width: 250px;
@@ -46,15 +46,23 @@ const BackButtonContainer = styled.div`
 
 export const PhoneInputStyles = styled.div`
   padding-left: ${spacing.sm};
-  border: 1px solid green;
-  border-radius: 20px;
+
   .PhoneInput {
     height: 40px;
   }
   .PhoneInputInput {
-    height: 35px;
-    border: none;
-    font-size: 24px;
+    height: 60px;
+    opacity: 1;
+    font-size: ${fontSizeMap.h4};
+    background-color: #293150;
+    color: white;
+    border-radius: ${borderRadius.sm};
+
+    ${media.belowTabletLarge`
+    height: 44px;
+  
+    font-size: ${fontSizeMap.textS};
+`}
   }
   .PhoneInputInput:focus {
     outline: none;
@@ -62,12 +70,18 @@ export const PhoneInputStyles = styled.div`
 `;
 export const Label = styled.div`
   padding-top: ${spacing.sm};
-  padding-bottom: ${spacing.xxxS};
-  color: gray;
+  padding-bottom: ${spacing.sm};
+  font-size: ${fontSizeMap.h4};
+  ${media.belowTabletLarge`
+  font-size: ${fontSizeMap.textS};
+`}
 `;
 
 export const Container = styled.div`
-  width: 100%;
+  width: 600px;
+  ${media.belowTabletLarge`
+    width:300px;
+`}
 `;
 
 export const InputRow = styled.div`

@@ -142,44 +142,16 @@ const EditProfile = ({
                     height="50px"
                     fontSize="h4"
                   />
-                  <Styled.RowContainer>
-                    <AdminInput
-                      name="countryCode"
-                      type="text"
-                      label="Mobile"
-                      backgroundColor="#293150"
-                      color="white"
-                      inputColor="white"
-                      width="138px"
-                      mobileWidth="65px"
-                      height="50px"
-                      fontSize="h4"
-                      noMargin="0"
-                    />
-                    <Styled.ViewWrapper>
-                      <AdminInput
-                        name="mobileNo"
-                        type="text"
-                        backgroundColor="#293150"
-                        color="white"
-                        width="413px"
-                        inputColor="white"
-                        mobileWidth="215px"
-                        height="50px"
-                        fontSize="h4"
-                        noMargin="0"
-                      />
-                    </Styled.ViewWrapper>
-                  </Styled.RowContainer>
-
                   <Styled.InputRow>
                     <Styled.Container>
-                      <Styled.Label>Phone</Styled.Label>
+                      <Styled.Label>Mobile</Styled.Label>
                       <Styled.PhoneInputStyles>
                         <PhoneInput
-                          name="phoneNumber"
+                          name="mobileNo"
                           international
                           defaultCountry="CA"
+                          value={values.mobileNo || ''}
+                          onChange={val => setFieldValue('mobileNo', val)}
                         />
                       </Styled.PhoneInputStyles>
                     </Styled.Container>
@@ -285,7 +257,6 @@ const initialFormValues = {
   country: '',
   email: '',
   password: '',
-  countryCode: '',
   mobileNo: '',
 };
 
