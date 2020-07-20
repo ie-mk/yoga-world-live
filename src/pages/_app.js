@@ -6,6 +6,7 @@ import { logIsServer } from '../utils/utils';
 import AppBar from '../components/appBar/AppBar';
 import Footer from '../components/footer/Footer';
 import '../css/global.css';
+import 'react-phone-number-input/style.css';
 import Head from 'next/head';
 import SetLanguageFromStoreWrapper from '../i18n/SetLanguageFromStoreWrapper';
 import '../i18n/i18n';
