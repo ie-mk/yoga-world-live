@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { getCourses, getLearningPaths } from '../../store/selectors';
 import CourseHeader from '../../components/pages/dashboard/courses/courseHeader/CourseHeader';
 import CourseOutline from '../../components/pages/dashboard/courses/courseOutline/CourseOutline';
+import needsLoginWrapper from '../../utils/needsLoginWrapper';
 
 const CourseStart = ({ courses }) => {
   const {

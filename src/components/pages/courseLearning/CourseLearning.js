@@ -12,6 +12,7 @@ import { resourceActions } from '../../../store/actions';
 import CollapseContainer from '../../foundation/collapseContainer';
 import Button from '../../foundation/button/Button';
 import { useRouter } from 'next/router';
+import needsLoginWrapper from '../../../utils/needsLoginWrapper';
 
 var questions = [
   'Does these courses need any special requirements?',
@@ -147,4 +148,4 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
   );
 };
 
-export default connect()(CourseLearning);
+export default connect()(needsLoginWrapper(CourseLearning));
