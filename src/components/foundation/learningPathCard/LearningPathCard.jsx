@@ -15,6 +15,8 @@ const Wrapper = styled.div`
   width: 100%;
   padding: 30px;
   cursor: pointer;
+  background: linear-gradient(180deg, #293150 0%, #1e2540 100%) 0% 0% no-repeat
+    padding-box;
   ${media.belowTabletLarge`
     padding: 0;
     height: 240px;
@@ -46,7 +48,7 @@ const LearningPathCard = ({ imageSrc, title, learningPathId }) => {
   return (
     <Wrapper onClick={() => handlePathClick()}>
       <ResponsiveImage height="120px" width="120px" src={imageSrc} />
-      <PathTitle text={title} />
+      <PathTitle margin="30px 0 0" fontWeight="500" text={title} />
     </Wrapper>
   );
 };

@@ -20,7 +20,7 @@ const ChooseLearningPath = ({ dispatch, learningPaths }) => {
   return (
     <CenteredFlexContainer marginTop="xxl">
       <SectionTitle text="Choose a Learning Path" />
-      <BodyText>
+      <BodyText margin="0 0 40px 0">
         Learning paths guide you through exactly what you need to learn to build
         a solid foundation for a career or skillset
       </BodyText>
