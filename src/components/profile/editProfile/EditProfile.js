@@ -9,11 +9,11 @@ import AdminInput from '../../foundation/input/AdminInput';
 import ContainerBase from '../../foundation/ContainerBase';
 import Button from '../../foundation/button/Button';
 import { connect } from 'react-redux';
-import EditAccount from './editAccountDetails/EditAccountDetails';
 import BillingDetails from './billingDetails/BillingDetails';
 import { userActions } from '../../../store/actions';
 import SpinnerLarge from '../../foundation/spinner/SpinnerLarge';
 import needsLoginWrapper from '../../../utils/needsLoginWrapper';
+import PhoneInput from 'react-phone-number-input';
 import {
   getUserProfileSelector,
   getUserSelector,
@@ -60,7 +60,9 @@ const EditProfile = ({
           initialValues={{ ...userProfile }}
           enableReinitialize={true}
           onSubmit={(values, { setSubmitting }) => {
+            console.log('hello');
             setSubmitting(true);
+
             dispatch(userActions.updateUserProfile.request(values));
             setTimeout(() => setSubmitting(false), 1000);
           }}
@@ -140,6 +142,20 @@ const EditProfile = ({
                     height="50px"
                     fontSize="h4"
                   />
+                  <Styled.InputRow>
+                    <Styled.Container>
+                      <Styled.Label>Mobile</Styled.Label>
+                      <Styled.PhoneInputStyles>
+                        <PhoneInput
+                          name="mobileNo"
+                          international
+                          defaultCountry="CA"
+                          value={values.mobileNo || ''}
+                          onChange={val => setFieldValue('mobileNo', val)}
+                        />
+                      </Styled.PhoneInputStyles>
+                    </Styled.Container>
+                  </Styled.InputRow>
                   <AdminInput
                     name="linkdinProfile"
                     type="text"
@@ -190,7 +206,7 @@ const EditProfile = ({
                   />
                 </div>
               </Grid>
-              <EditAccount />
+
               <BillingDetails />
 
               <CenteredFlexContainer>
@@ -202,6 +218,7 @@ const EditProfile = ({
                     height="45px"
                     marginMobile="35px 0 0 0"
                     size="sm"
+                    submit={true}
                   >
                     UPDATE MY PROFILE
                   </Button>
@@ -240,7 +257,6 @@ const initialFormValues = {
   country: '',
   email: '',
   password: '',
-  countryCode: '',
   mobileNo: '',
 };
 
