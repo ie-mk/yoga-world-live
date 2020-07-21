@@ -11,15 +11,17 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   background:${({ background }) => (background ? background : '')};
-  
+
   align-items: center;
   height: 300px;
   width: 100%;
+
+  cursor: pointer;
   ${media.belowTabletLarge`
     padding: 0;
     height: 240px;
   `}
- 
+
   }
 `;
 
