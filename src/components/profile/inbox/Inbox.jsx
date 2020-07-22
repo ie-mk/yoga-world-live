@@ -24,7 +24,7 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
   const [replyMobileModelDisplay, setReplyMobileModelDisplay] = useState(false);
 
   const handleReply = () => {
-    if (window.screen.width < 700) {
+    if (window.screen.width < 756) {
       setReplyMobileModelDisplay(true);
     } else {
       setReply(true);
@@ -36,7 +36,7 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
     console.log('window.screen.width-- ', window.screen.width);
     setMessage(item.message);
     setMessageData(item);
-    if (window.screen.width < 700) {
+    if (window.screen.width < 756) {
       setMobileModelDisplay(true);
       setUserInfo(userinfo);
       console.log('typeof userinfo', typeof userinfo, userinfo);

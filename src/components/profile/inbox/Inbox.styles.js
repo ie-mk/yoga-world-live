@@ -16,8 +16,8 @@ export const ItemWrapper = styled.div`
   overflow-y: auto;
   height: 300px;
   width: 500px;
-  ${media.belowTabletLarge`
-     width: 350px;
+  ${media.belowTablet`
+     width: 100%;
      padding: 0 ${spacing.md};
 
   `};
@@ -33,9 +33,9 @@ const ContentWrapper = styled.div`
   padding: ${spacing.lg} 0;
   font-weight: 400;
   border-bottom: 1px solid ${colors.primary};
-  ${media.belowTabletLarge`
+  ${media.belowTablet`
     padding: ${spacing.xS} 0;
-    width: 300px;
+    width: 100%;
   `}
 `;
 
@@ -60,7 +60,7 @@ export const Image = styled.img`
   height: 60px;
   border-radius: 50%;
   margin-right: 20px;
-  ${media.belowTabletLarge`
+  ${media.belowTablet`
     width: 40px;
     height: 40px;
   `}
