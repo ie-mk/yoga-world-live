@@ -11,6 +11,7 @@ const Modal = ({
   fullPageWidth,
   image,
   message,
+  onClickReply,
 }) => {
   return ReactDOM.createPortal(
     <Styled.ModalOverlay>
@@ -41,7 +42,7 @@ const Modal = ({
                 padding="10px 30px"
                 maxWidth="80px"
                 margin="0"
-                onClick={() => {}}
+                onClick={() => onClickReply()}
               >
                 REPLY
               </Button>

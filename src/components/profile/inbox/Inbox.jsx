@@ -12,6 +12,8 @@ import AddNewMessage from '../../../components/pages/dashboard/inbox/addNew/AddN
 import ReplyMessage from '../../../components/pages/dashboard/inbox/addReply/ReplyMessage';
 import { getAllUsersPublicInfo } from '../../../store/selectors';
 import MessageModel from './messageModel/MessageModel';
+import ReplyModel from './replyModel/ReplyModel';
+import ReplyMobileModelMessage from './replyModel/replyMobileModelMessage/ReplyMobileModelMessage';
 
 const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
   const [message, setMessage] = useState(null);
@@ -19,10 +21,16 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
   const [messageData, setMessageData] = useState('');
   const [MobileModelDisplay, setMobileModelDisplay] = useState(false);
   const [userInfo, setUserInfo] = useState('');
+  const [replyMobileModelDisplay, setReplyMobileModelDisplay] = useState(false);
 
   const handleReply = () => {
-    setReply(true);
+    if (window.screen.width < 700) {
+      setReplyMobileModelDisplay(true);
+    } else {
+      setReply(true);
+    }
   };
+
   const getMessage = (messageid, userinfo) => {
     const item = messages[messageid];
     console.log('window.screen.width-- ', window.screen.width);
@@ -149,14 +157,35 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
             fontSize={fontSizeMap.h4}
             marginTop={spacing.lg}
             fontWeight="700"
-            onClose={() => setReply(false)}
+            //   onClose={() => setReply(false)}
             title={userInfo.displayName}
             image={defaultImage}
             message={message}
             onClose={() => setMobileModelDisplay(false)}
+            onClickReply={() => handleReply()}
           >
             {/* <ReplyMessage setReply={setReply} messageData={messageData} /> */}
           </MessageModel>
+        )}
+
+        {replyMobileModelDisplay && (
+          <ReplyModel
+            styles={{
+              width: '100%',
+              height: 'auto',
+              color: 'black',
+            }}
+            fontSize={fontSizeMap.h4}
+            marginTop={spacing.lg}
+            fontWeight="700"
+            onClose={() => setReplyMobileModelDisplay(false)}
+            title="Reply"
+          >
+            <ReplyMobileModelMessage
+              setReply={setReplyMobileModelDisplay}
+              messageData={messageData}
+            />
+          </ReplyModel>
         )}
       </ContainerBase>
     </ContainerBase>
