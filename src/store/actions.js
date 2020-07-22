@@ -24,6 +24,8 @@ export const userActions = {
   fetchUserPublicInfo: createAsyncAction('fetch-user-public-info'),
   fetchAllUsersPublicInfo: createAsyncAction('fetch-all-users-public-info'),
 
+  getIntouchMessage: createAsyncAction('get-in-touch-message'),
+
   setIsFirstLogin: createAction('SET_IS_FIRST_LOGIN'),
 
   resetUser: createAction('RESET_USER'),

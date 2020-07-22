@@ -81,9 +81,9 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
           <MenuLink noMargin={true} href="/courses">
             Courses
           </MenuLink>
-          <MenuLink noMargin={true} href="/">
-            Community
-          </MenuLink>
+          {/*<MenuLink noMargin={true} href="/">*/}
+          {/*  Community*/}
+          {/*</MenuLink>*/}
           <MenuLink noMargin={true} href="/stories">
             Stories
           </MenuLink>
