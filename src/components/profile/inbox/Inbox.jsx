@@ -24,7 +24,7 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
   const [replyMobileModelDisplay, setReplyMobileModelDisplay] = useState(false);
 
   const handleReply = () => {
-    if (window.screen.width < 756) {
+    if (window.innerWidth < 756) {
       setReplyMobileModelDisplay(true);
     } else {
       setReply(true);
@@ -33,10 +33,11 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
 
   const getMessage = (messageid, userinfo) => {
     const item = messages[messageid];
-    console.log('window.screen.width-- ', window.screen.width);
+    console.log('window.screen.width-- ', window.innerWidth);
+    console.log('innerWidth--', window.innerWidth);
     setMessage(item.message);
     setMessageData(item);
-    if (window.screen.width < 756) {
+    if (window.innerWidth < 756) {
       setMobileModelDisplay(true);
       setUserInfo(userinfo);
       console.log('typeof userinfo', typeof userinfo, userinfo);
@@ -73,7 +74,6 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
           {messages &&
             Object.keys(messages).map((messageid, i) => {
               const item = messages[messageid];
-
               const userinfo =
                 allUsersPublicInfo && allUsersPublicInfo[item.senderId];
 
@@ -96,7 +96,7 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
                         {userinfo.displayName}
                       </Styled.TextContainer>
                       <Styled.TextContainer fontSize="textMobile" opacity="0.5">
-                        {moment(item.date).format('ll')}
+                        {moment(item.created).format('ll')}
                       </Styled.TextContainer>
                     </Styled.RowContainer>
                     <Styled.TextContainer fontSize="textS" paddingTop="xxS">

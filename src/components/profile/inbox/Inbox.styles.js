@@ -33,6 +33,7 @@ const ContentWrapper = styled.div`
   padding: ${spacing.lg} 0;
   font-weight: 400;
   border-bottom: 1px solid ${colors.primary};
+  cursor: pointer;
   ${media.belowTablet`
     padding: ${spacing.xS} 0;
     width: 100%;
