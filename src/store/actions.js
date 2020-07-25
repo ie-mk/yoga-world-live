@@ -24,7 +24,7 @@ export const userActions = {
   fetchUserPublicInfo: createAsyncAction('fetch-user-public-info'),
   fetchAllUsersPublicInfo: createAsyncAction('fetch-all-users-public-info'),
 
-  getIntouchMessage: createAsyncAction('get-in-touch-message'),
+  createGetIntouchMessage: createAsyncAction('create-get-in-touch-message'),
 
   setIsFirstLogin: createAction('SET_IS_FIRST_LOGIN'),
 
@@ -81,10 +81,13 @@ export const adminActions = {
   deleteUser: createAsyncAction('admin-delete-user'),
   fetchUserPermissions: createAsyncAction('admin-fetch-user-permissions'),
   addUserPermission: createAsyncAction('admin-add-user-permission'),
+  fetchGetIntouchMessages: createAsyncAction('fetch-get-in-touch-messages'),
 };
 
 if (!IS_SERVER) {
   window.resourceActions = resourceActions;
+  window.adminActions = adminActions;
+  window.userActions = userActions;
 }
 
 export const layoutActions = {

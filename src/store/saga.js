@@ -12,6 +12,7 @@ import api from '../api/api.min';
 import moment from 'moment';
 import { getUID, getEditingCourseId, getCourses } from './selectors';
 import { resourceActions } from './actions';
+import { IS_SERVER } from '../constants';
 
 function* fetchUserPermissions({ payload }) {
   try {
@@ -157,8 +158,7 @@ function* createUserPublicInfo({ payload: { data } }) {
       delete data[k];
     }
   }
-  const bla = data;
-  debugger;
+
   try {
     yield api.resource.createResourceWithId('usersPublicInfo', uid, data);
     yield put(userActions.createUserPublicInfo.success());
@@ -180,6 +180,34 @@ function* updateUserPublicInfo({ payload: { data } }) {
     });
   } catch (err) {
     yield put(userActions.updateUserPublicInfo.failure(err));
+  }
+}
+
+function* createGetInTouchMessage({ payload }) {
+  const uid = yield select(getUID);
+
+  const data = {
+    ...payload.data,
+    ownerId: uid,
+    read: false,
+    created: new Date(),
+  };
+
+  debugger;
+  try {
+    const messageId = yield api.resource.createResource('getInTouch', data);
+    yield put(userActions.createGetIntouchMessage.success(messageId));
+  } catch (err) {
+    yield put(userActions.createGetIntouchMessage.failure(err));
+  }
+}
+
+function* fetchGetIntouchMessages() {
+  try {
+    const messages = yield api.resource.fetchResources('getInTouch');
+    yield put(adminActions.fetchGetIntouchMessages.success(messages));
+  } catch (err) {
+    yield put(adminActions.fetchGetIntouchMessages.failure(err));
   }
 }
 
@@ -686,6 +714,13 @@ function* rootSaga() {
     ),
   ]);
 
+  yield all([
+    takeLatest(
+      userActions.createGetIntouchMessage.request.type,
+      createGetInTouchMessage,
+    ),
+  ]);
+
   // ========================== COURSES ===============================
   yield all([
     takeLatest(resourceActions.fetchCourses.request.type, fetchCourses),
@@ -799,6 +834,19 @@ function* rootSaga() {
   yield all([
     takeLatest(adminActions.addUserPermission.request.type, addUserPermission),
   ]);
+
+  yield all([
+    takeLatest(
+      adminActions.fetchGetIntouchMessages.request.type,
+      fetchGetIntouchMessages,
+    ),
+  ]);
 }
 
+if (!IS_SERVER) {
+  window.createGetInTouchMessage = createGetInTouchMessage;
+  window.fetchGetIntouchMessages = fetchGetIntouchMessages;
+}
+
+createGetInTouchMessage;
 export default rootSaga;

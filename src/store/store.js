@@ -3,6 +3,8 @@ import reducer from './reducersCombined';
 import createSagaMiddleware from 'redux-saga';
 import { loadState, subscribeToSaveOnLocalStorage } from './localStorage';
 import rootSaga from './saga';
+import { IS_SERVER } from '../constants';
+import { adminActions, resourceActions, userActions } from './actions';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -35,6 +37,10 @@ const initStore = initialState => {
   );
 
   store.sagaTask = sagaMiddleware.run(rootSaga);
+
+  if (!IS_SERVER) {
+    window.distpatch = store.dispatch;
+  }
 
   return store;
 };
