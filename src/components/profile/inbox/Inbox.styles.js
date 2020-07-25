@@ -27,18 +27,13 @@ export const ItemWrapper = styled.div`
 `;
 
 const TextAreaWrapper = styled.textarea`
-   ${'' /* textarea { */}
-    color: ${colors.white};
-    background: ${colors.background.violetsecondary};
-    
-    ${'' /* height: ${({ height }) => (height ? height : 'auto')}; */}
-    ${'' /* font-size: ${fontSizeMap.text}; */}
-    width: 100%;
-    padding: ${spacing.sm};
-    border: 1px solid #909090;
-    border-radius: ${borderRadius.sm};
-    opacity: 1;
-  ${'' /* } */}
+  color: ${colors.white};
+  background: ${colors.background.violetsecondary};
+  width: 100%;
+  padding: ${spacing.sm};
+  border: 1px solid #909090;
+  border-radius: ${borderRadius.sm};
+  opacity: 1;
 `;
 
 const ContentWrapper = styled.div`
