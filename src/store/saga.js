@@ -848,5 +848,4 @@ if (!IS_SERVER) {
   window.fetchGetIntouchMessages = fetchGetIntouchMessages;
 }
 
-createGetInTouchMessage;
 export default rootSaga;
