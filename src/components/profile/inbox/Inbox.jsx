@@ -33,14 +33,12 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
 
   const getMessage = (messageid, userinfo) => {
     const item = messages[messageid];
-    console.log('window.screen.width-- ', window.innerWidth);
-    console.log('innerWidth--', window.innerWidth);
+
     setMessage(item.message);
     setMessageData(item);
     if (window.innerWidth < 756) {
       setMobileModelDisplay(true);
       setUserInfo(userinfo);
-      console.log('typeof userinfo', typeof userinfo, userinfo);
     }
   };
 
@@ -60,6 +58,9 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
     dispatch(userActions.fetchAllUsersPublicInfo.request());
   }, []);
   var defaultImage = '/svg/icon_profile.svg';
+
+  var noofLines = message && message.split(/\r\n|\r|\n/).length;
+
   return (
     <ContainerBase
       marginTop="xxxl"
@@ -110,8 +111,16 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
             })}
         </Styled.ItemWrapper>
         <Styled.MessageBodyWrapper>
-          {message && <Styled.MessageBody>{message}</Styled.MessageBody>}
-
+          {/* {message && <Styled.MessageBody>{message}</Styled.MessageBody>} */}
+          {message && (
+            <Styled.TextAreaWrapper
+              name="message"
+              rows={noofLines}
+              // cols="60"
+              label="Type Your Message( Login details, portal links and guidelines)"
+              defaultValue={message}
+            />
+          )}
           {message && (
             <Styled.ButtonWrapper>
               <Button
