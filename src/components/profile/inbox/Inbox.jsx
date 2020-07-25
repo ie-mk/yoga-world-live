@@ -115,10 +115,9 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
           {message && (
             <Styled.TextAreaWrapper
               name="message"
-              rows={noofLines}
-              // cols="60"
+              rows={noofLines < 10 ? noofLines : 10}
               label="Type Your Message( Login details, portal links and guidelines)"
-              defaultValue={message}
+              value={message}
             />
           )}
           {message && (
