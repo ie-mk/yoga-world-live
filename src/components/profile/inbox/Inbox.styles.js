@@ -14,7 +14,7 @@ export const ItemWrapper = styled.div`
   background: ${colors.background.violetsecondary};
   border-radius: ${spacing.sm};
   overflow-y: auto;
-  height: 300px;
+  height: 500px;
   width: 500px;
   ${media.belowTablet`
      width: 100%;
@@ -30,6 +30,7 @@ const TextAreaWrapper = styled.textarea`
   color: ${colors.white};
   background: ${colors.background.violetsecondary};
   width: 100%;
+  max-height: 400px;
   padding: ${spacing.sm};
   border: 1px solid #909090;
   border-radius: ${borderRadius.sm};

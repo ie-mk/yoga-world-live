@@ -31,8 +31,8 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
     }
   };
 
-  const getMessage = (messageid, userinfo) => {
-    const item = messages[messageid];
+  const getMessage = (item, userinfo) => {
+    // const item = messages[messageid];
 
     setMessage(item.message);
     setMessageData(item);
@@ -57,10 +57,18 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
   useEffect(() => {
     dispatch(userActions.fetchAllUsersPublicInfo.request());
   }, []);
+
   var defaultImage = '/svg/icon_profile.svg';
 
   var noofLines = message && message.split(/\r\n|\r|\n/).length;
 
+  const sortedMessages =
+    messages &&
+    Object.values(messages).sort(
+      (a, b) => new Date(b.created) - new Date(a.created),
+    ); // b.created - a.created)
+
+  // console.log('sortedMessages--',sortedMessages);
   return (
     <ContainerBase
       marginTop="xxxl"
@@ -72,9 +80,8 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
     >
       <Styled.RowContainer>
         <Styled.ItemWrapper>
-          {messages &&
-            Object.keys(messages).map((messageid, i) => {
-              const item = messages[messageid];
+          {sortedMessages &&
+            sortedMessages.map((item, i) => {
               const userinfo =
                 allUsersPublicInfo && allUsersPublicInfo[item.senderId];
 
@@ -85,7 +92,7 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
               return (
                 <Styled.ContentWrapper
                   key={i}
-                  onClick={() => getMessage(messageid, userinfo)}
+                  onClick={() => getMessage(item, userinfo)}
                 >
                   <Styled.Image
                     src={userinfo.profileImage || userinfo.photoURL || src}
@@ -111,11 +118,10 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
             })}
         </Styled.ItemWrapper>
         <Styled.MessageBodyWrapper>
-          {/* {message && <Styled.MessageBody>{message}</Styled.MessageBody>} */}
           {message && (
             <Styled.TextAreaWrapper
               name="message"
-              rows={noofLines < 10 ? noofLines : 10}
+              rows={noofLines < 15 ? noofLines : 15}
               label="Type Your Message( Login details, portal links and guidelines)"
               value={message}
             />
