@@ -76,6 +76,7 @@ export const InputStyles = styled.div`
     border: 1px solid #909090;
     border-radius: ${borderRadius.sm};
     opacity: 1;
+    color: ${({ inputColor }) => (inputColor ? inputColor : '')};
   }
 `;
 

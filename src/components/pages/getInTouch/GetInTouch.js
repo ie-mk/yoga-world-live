@@ -5,12 +5,16 @@ import HeroTitle from '../../foundation/typography/HeroTitle';
 import Text24 from '../../foundation/typography/Text24';
 import { Formik, ErrorMessage, Field } from 'formik';
 import AdminInput from '../../foundation/input/AdminInput';
+import AdminTextArea from '../../foundation/textarea/AdminTextArea';
 import Button from '../../foundation/button/Button';
 import { connect } from 'react-redux';
 import { userActions } from '../../../store/actions';
 import PhoneInput from 'react-phone-number-input';
+import { useRouter } from 'next/router';
 
 const getInTouch = ({ dispatch }) => {
+  const router = useRouter();
+
   return (
     <CenteredFlexContainer position="relative">
       <HeroTitle
@@ -30,6 +34,7 @@ const getInTouch = ({ dispatch }) => {
 
             dispatch(userActions.createGetIntouchMessage.request(values));
             setTimeout(() => setSubmitting(false), 1000);
+            router.back();
           }}
         >
           {({ values, handleSubmit, setFieldValue }) => (
@@ -74,7 +79,22 @@ const getInTouch = ({ dispatch }) => {
                     </Styled.PhoneInputStyles>
                   </Styled.Container>
                 </Styled.InputRow>
-
+                <Styled.InputRow>
+                  <AdminTextArea
+                    name="message"
+                    rows="10"
+                    cols="110"
+                    component="textarea"
+                    label="Type Your Message"
+                    color="white"
+                    inputColor="white"
+                    backgroundColor="#293150"
+                    width="600px"
+                    height="120px"
+                    mobileWidth="300px"
+                    fontSize="h4"
+                  />
+                </Styled.InputRow>
                 <Styled.CheckBoxItemWrapper>
                   <Styled.CheckBox type="checkbox" />
                   <Text24
@@ -113,6 +133,7 @@ const initialFormValues = {
   name: '',
   email: '',
   mobileNo: '',
+  message: '',
 };
 
 export default connect()(getInTouch);
