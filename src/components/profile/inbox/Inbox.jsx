@@ -10,7 +10,10 @@ import moment from 'moment';
 import Modal from '../../modal/Modal';
 import AddNewMessage from '../../../components/pages/dashboard/inbox/addNew/AddNewMessage';
 import ReplyMessage from '../../../components/pages/dashboard/inbox/addReply/ReplyMessage';
-import { getAllUsersPublicInfo } from '../../../store/selectors';
+import {
+  getAllUsersPublicInfo,
+  getSortedMessages,
+} from '../../../store/selectors';
 import MessageModel from './messageModel/MessageModel';
 import ReplyModel from './replyModel/ReplyModel';
 import ReplyMobileModelMessage from './replyModel/replyMobileModelMessage/ReplyMobileModelMessage';
@@ -62,13 +65,7 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
 
   var noofLines = message && message.split(/\r\n|\r|\n/).length;
 
-  const sortedMessages =
-    messages &&
-    Object.values(messages).sort(
-      (a, b) => new Date(b.created) - new Date(a.created),
-    ); // b.created - a.created)
-
-  // console.log('sortedMessages--',sortedMessages);
+  console.log('sortedMessages--', messages);
   return (
     <ContainerBase
       marginTop="xxxl"
@@ -80,8 +77,8 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
     >
       <Styled.RowContainer>
         <Styled.ItemWrapper>
-          {sortedMessages &&
-            sortedMessages.map((item, i) => {
+          {messages &&
+            messages.map((item, i) => {
               const userinfo =
                 allUsersPublicInfo && allUsersPublicInfo[item.senderId];
 
@@ -208,7 +205,7 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
 
 const mapStateToProps = state => ({
   profile: state.user.loginProviderData,
-  messages: state.messages.data,
+  messages: getSortedMessages(state),
   allUsersPublicInfo: getAllUsersPublicInfo(state),
 });
 
