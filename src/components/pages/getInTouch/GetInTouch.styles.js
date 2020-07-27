@@ -63,6 +63,27 @@ export const InputRow = styled.div`
   justify-content: space-between;
   padding-bottom: ${spacing.sm};
   align-items: center;
+  .name-input {
+    background-color: #293150;
+    color: white;
+
+    width: 600px;
+
+    height: 50px;
+    border-radius: ${borderRadius.sm};
+    ${media.belowTabletLarge`
+   width: 300px; 
+     
+     `}
+  }
+`;
+
+const EmailLabel = styled.div`
+  font-size: ${fontSizeMap.h4};
+  ${media.belowTabletLarge`
+    font-size:${fontSizeMap.textS};
+     
+     `}
 `;
 
 const CheckBox = styled.input`
@@ -95,4 +116,5 @@ export default {
   Container,
   CheckBoxItemWrapper,
   CheckBox,
+  EmailLabel,
 };

@@ -11,8 +11,13 @@ import { connect } from 'react-redux';
 import { userActions } from '../../../store/actions';
 import PhoneInput from 'react-phone-number-input';
 import { useRouter } from 'next/router';
+import needsLoginWrapper from '../../../utils/needsLoginWrapper';
+import {
+  getUserProfileSelector,
+  getUserSelector,
+} from '../../../store/selectors';
 
-const getInTouch = ({ dispatch }) => {
+const getInTouch = ({ dispatch, userDetails }) => {
   const router = useRouter();
 
   return (
@@ -26,7 +31,7 @@ const getInTouch = ({ dispatch }) => {
 
       <CenteredFlexContainer>
         <Formik
-          initialValues={{ ...initialFormValues }}
+          initialValues={{ ...userDetails }}
           enableReinitialize={true}
           onSubmit={(values, { setSubmitting }) => {
             console.log('hello');
@@ -51,9 +56,13 @@ const getInTouch = ({ dispatch }) => {
                   mobileWidth="300px"
                   height="50px"
                   fontSize="h4"
-                  noMargin="0"
                 />
-                <AdminInput
+                <Styled.EmailLabel>Email</Styled.EmailLabel>
+                <Styled.InputRow>
+                  <input className="name-input" value={values.email} />
+                  <Field className="hidden" name="email" />
+                </Styled.InputRow>
+                {/* <AdminInput
                   name="email"
                   type="text"
                   label="Email"
@@ -64,7 +73,7 @@ const getInTouch = ({ dispatch }) => {
                   mobileWidth="300px"
                   fontSize="h4"
                   height="50px"
-                />
+                /> */}
                 <Styled.InputRow>
                   <Styled.Container>
                     <Styled.Label>Mobile</Styled.Label>
@@ -135,5 +144,8 @@ const initialFormValues = {
   mobileNo: '',
   message: '',
 };
-
-export default connect()(getInTouch);
+const mapStateToProps = state => ({
+  userDetails: { ...initialFormValues, ...getUserProfileSelector(state) },
+  user: getUserSelector(state),
+});
+export default connect(mapStateToProps)(needsLoginWrapper(getInTouch));
