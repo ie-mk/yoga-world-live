@@ -66,9 +66,9 @@ export const InputRow = styled.div`
   .name-input {
     background-color: #293150;
     color: white;
-
+    padding-left: ${spacing.sm};
     width: 600px;
-
+    font-size: ${fontSizeMap.text};
     height: 50px;
     border-radius: ${borderRadius.sm};
     ${media.belowTabletLarge`
