@@ -19,7 +19,7 @@ import {
 
 const getInTouch = ({ dispatch, userDetails }) => {
   const router = useRouter();
-
+  initialFormValues.email = userDetails.loginProviderData.email;
   return (
     <CenteredFlexContainer position="relative">
       <HeroTitle
@@ -31,13 +31,15 @@ const getInTouch = ({ dispatch, userDetails }) => {
 
       <CenteredFlexContainer>
         <Formik
-          initialValues={{ ...userDetails }}
+          initialValues={{ ...initialFormValues }}
           enableReinitialize={true}
           onSubmit={(values, { setSubmitting }) => {
             console.log('hello');
             setSubmitting(true);
 
-            dispatch(userActions.createGetIntouchMessage.request(values));
+            dispatch(
+              userActions.createGetIntouchMessage.request({ data: values }),
+            );
             setTimeout(() => setSubmitting(false), 1000);
             router.back();
           }}
@@ -145,7 +147,6 @@ const initialFormValues = {
   message: '',
 };
 const mapStateToProps = state => ({
-  userDetails: { ...initialFormValues, ...getUserProfileSelector(state) },
-  user: getUserSelector(state),
+  userDetails: state.user,
 });
 export default connect(mapStateToProps)(needsLoginWrapper(getInTouch));
