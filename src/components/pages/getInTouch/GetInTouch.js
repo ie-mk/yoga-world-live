@@ -64,18 +64,6 @@ const getInTouch = ({ dispatch, userDetails }) => {
                   <input className="name-input" value={values.email} />
                   <Field className="hidden" name="email" />
                 </Styled.InputRow>
-                {/* <AdminInput
-                  name="email"
-                  type="text"
-                  label="Email"
-                  backgroundColor="#293150"
-                  color="white"
-                  inputColor="white"
-                  width="600px"
-                  mobileWidth="300px"
-                  fontSize="h4"
-                  height="50px"
-                /> */}
                 <Styled.InputRow>
                   <Styled.Container>
                     <Styled.Label>Mobile</Styled.Label>
