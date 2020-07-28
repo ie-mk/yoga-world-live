@@ -19,11 +19,16 @@ import ReplyModel from './replyModel/ReplyModel';
 import ReplyMobileModelMessage from './replyModel/replyMobileModelMessage/ReplyMobileModelMessage';
 
 const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
-  const [message, setMessage] = useState(null);
+  const firstMessageInfo = messages && messages[0];
+  const firstMessage = firstMessageInfo && firstMessageInfo.message;
+  const firstSenderId = firstMessageInfo && firstMessageInfo.senderId;
+  const firstuserinfo = allUsersPublicInfo && allUsersPublicInfo[firstSenderId];
+
+  const [message, setMessage] = useState(firstMessage);
   const [reply, setReply] = useState(false);
   const [messageData, setMessageData] = useState('');
   const [MobileModelDisplay, setMobileModelDisplay] = useState(false);
-  const [userInfo, setUserInfo] = useState('');
+  const [userInfo, setUserInfo] = useState(firstuserinfo);
   const [replyMobileModelDisplay, setReplyMobileModelDisplay] = useState(false);
 
   const handleReply = () => {

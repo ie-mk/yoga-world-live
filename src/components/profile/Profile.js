@@ -15,7 +15,7 @@ import Router from 'next/router';
 import { userActions } from '../../store/actions';
 
 const Profile = ({ dispatch, profile }) => {
-  const [activeTab, setActiveTab] = useState('inbox');
+  const [activeTab, setActiveTab] = useState('learning');
 
   const uid = profile && profile.uid;
   useEffect(() => {
