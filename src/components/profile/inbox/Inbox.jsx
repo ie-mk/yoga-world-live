@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ContainerBase from '../../foundation/ContainerBase';
-import { fontSizeMap, spacing } from '../../../constants/styles';
+import { fontSizeMap, spacing, colors } from '../../../constants/styles';
 import Grid from '../../foundation/Grid';
 import Styled from './Inbox.styles';
 import Button from '../../foundation/button/Button';
@@ -30,6 +30,7 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
   const [MobileModelDisplay, setMobileModelDisplay] = useState(false);
   const [userInfo, setUserInfo] = useState(firstuserinfo);
   const [replyMobileModelDisplay, setReplyMobileModelDisplay] = useState(false);
+  const [displayedMessageIndex, setDisplayedMessageIndex] = useState(0);
 
   const handleReply = () => {
     if (window.innerWidth < 756) {
@@ -39,11 +40,13 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
     }
   };
 
-  const getMessage = (item, userinfo) => {
+  const getMessage = (i, item, userinfo) => {
     // const item = messages[messageid];
 
     setMessage(item.message);
     setMessageData(item);
+    setDisplayedMessageIndex(i);
+
     if (window.innerWidth < 756) {
       setMobileModelDisplay(true);
       setUserInfo(userinfo);
@@ -91,10 +94,19 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
 
               if (!userinfo) return null;
 
+              {
+                /* const isActiveMessage = displayedMessageIndex === i; */
+              }
+
               return (
                 <Styled.ContentWrapper
                   key={i}
-                  onClick={() => getMessage(item, userinfo)}
+                  onClick={() => getMessage(i, item, userinfo)}
+                  background={
+                    displayedMessageIndex === i
+                      ? colors.background.SteelBlue
+                      : ''
+                  }
                 >
                   <Styled.Image
                     src={userinfo.profileImage || userinfo.photoURL || src}

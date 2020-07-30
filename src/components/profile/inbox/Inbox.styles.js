@@ -7,6 +7,7 @@ import {
   fontSizeMap,
   spacing,
   dashboard,
+  background,
 } from '../../../constants/styles';
 
 export const ItemWrapper = styled.div`
@@ -45,6 +46,7 @@ const ContentWrapper = styled.div`
   font-weight: 400;
   border-bottom: 1px solid ${colors.primary};
   cursor: pointer;
+  background: ${({ background }) => (background ? background : '')};
   ${media.belowTablet`
     padding: ${spacing.xS} 0;
     width: 100%;
