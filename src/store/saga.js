@@ -193,7 +193,6 @@ function* createGetInTouchMessage({ payload }) {
     created: new Date(),
   };
 
-  debugger;
   try {
     const messageId = yield api.resource.createResource('getInTouch', data);
     yield put(userActions.createGetIntouchMessage.success(messageId));

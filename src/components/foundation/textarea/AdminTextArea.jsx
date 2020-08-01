@@ -13,14 +13,21 @@ const AdminTextArea = ({
   height,
   disabled,
   noMargin,
+  color,
+  fontSize,
+  mobileWidth,
+  inputColor,
 }) => {
   return (
-    <Styled.Wrapper width={width} noMargin={noMargin}>
-      <Styled.Label>{label}</Styled.Label>
+    <Styled.Wrapper mobileWidth={mobileWidth} width={width} noMargin={noMargin}>
+      <Styled.Label color={color} fontSize={fontSize}>
+        {label}
+      </Styled.Label>
       <Styled.InputStyles
         backgroundColor={backgroundColor}
         height={height}
         disabled={disabled}
+        inputColor={inputColor}
       >
         <Field
           className="textarea"
