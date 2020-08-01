@@ -8,6 +8,7 @@ import CardTitle from '../foundation/typography/CardTitle';
 import BodyText from '../foundation/typography/BodyText';
 import FlexContainer from '../foundation/FlexContainer';
 import Billing from './billing/Billing';
+import Inbox from './inbox/Inbox';
 import Preferences from './preferences/Preferences';
 import Learning from './learning/Learning';
 import { useRouter } from 'next/router';
@@ -144,6 +145,7 @@ const Profile = ({ dispatch, profile }) => {
         </Styled.Tab>
       </Styled.ProfileInfoPageWrapper>
       {isActiveBilling && <Billing />}
+      {isActiveInbox && <Inbox />}
       {isActivePreferences && <Preferences profile={profile} />}
       {isActiveLearning && <Learning />}
     </ContainerBase>

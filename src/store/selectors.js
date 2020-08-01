@@ -59,3 +59,10 @@ export const isStaff = state =>
   (state.user.permissions.data.admin || state.user.permissions.data.author);
 
 export const getLearningPaths = state => state.learningPaths.data;
+
+export const getSortedMessages = state =>
+  state.messages &&
+  state.messages.data &&
+  Object.values(state.messages.data).sort(
+    (a, b) => new Date(b.created) - new Date(a.created),
+  );
