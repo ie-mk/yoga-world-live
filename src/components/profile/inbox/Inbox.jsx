@@ -18,19 +18,27 @@ import MessageModel from './messageModel/MessageModel';
 import ReplyModel from './replyModel/ReplyModel';
 import ReplyMobileModelMessage from './replyModel/replyMobileModelMessage/ReplyMobileModelMessage';
 
-const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
-  const firstMessageInfo = messages && messages[0];
-  const firstMessage = firstMessageInfo && firstMessageInfo.message;
-  const firstSenderId = firstMessageInfo && firstMessageInfo.senderId;
-  const firstuserinfo = allUsersPublicInfo && allUsersPublicInfo[firstSenderId];
-
-  const [message, setMessage] = useState(firstMessage);
+const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages = [] }) => {
+  const [userInfo, setUserInfo] = useState({});
+  const [message, setMessage] = useState('');
   const [reply, setReply] = useState(false);
   const [messageData, setMessageData] = useState('');
   const [MobileModelDisplay, setMobileModelDisplay] = useState(false);
-  const [userInfo, setUserInfo] = useState(firstuserinfo);
   const [replyMobileModelDisplay, setReplyMobileModelDisplay] = useState(false);
   const [displayedMessageIndex, setDisplayedMessageIndex] = useState(0);
+
+  useEffect(() => {
+    if (!message) {
+      const firstMessageInfo = messages && messages[0];
+      const firstMessage = firstMessageInfo && firstMessageInfo.message;
+      const firstSenderId = firstMessageInfo && firstMessageInfo.senderId;
+      const firstUserInfo =
+        allUsersPublicInfo && allUsersPublicInfo[firstSenderId];
+
+      setMessage(firstMessage);
+      setUserInfo(firstUserInfo);
+    }
+  }, [messages.length]);
 
   const handleReply = () => {
     if (window.innerWidth < 756) {
@@ -73,7 +81,6 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
 
   var noofLines = message && message.split(/\r\n|\r|\n/).length;
 
-  console.log('sortedMessages--', messages);
   return (
     <ContainerBase
       marginTop="xxxl"
@@ -93,10 +100,6 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
               var src = '/svg/icon_profile.svg';
 
               if (!userinfo) return null;
-
-              {
-                /* const isActiveMessage = displayedMessageIndex === i; */
-              }
 
               return (
                 <Styled.ContentWrapper
@@ -191,9 +194,7 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages }) => {
             message={message}
             onClose={() => setMobileModelDisplay(false)}
             onClickReply={() => handleReply()}
-          >
-            {/* <ReplyMessage setReply={setReply} messageData={messageData} /> */}
-          </MessageModel>
+          />
         )}
 
         {replyMobileModelDisplay && (
