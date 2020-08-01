@@ -149,6 +149,7 @@ const getInTouch = ({ dispatch, userDetails }) => {
                       height="45px"
                       marginMobile="35px 0 0 0"
                       size="sm"
+                      onClick={() => router.back()}
                       submit={true}
                     >
                       CANCEL
