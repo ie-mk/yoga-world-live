@@ -12,10 +12,15 @@ import { userActions } from '../../../store/actions';
 import PhoneInput from 'react-phone-number-input';
 import { useRouter } from 'next/router';
 import needsLoginWrapper from '../../../utils/needsLoginWrapper';
+import styled from 'styled-components';
 import {
   getUserProfileSelector,
   getUserSelector,
 } from '../../../store/selectors';
+
+const StyledError = styled.div`
+  color: red;
+`;
 
 const getInTouch = ({ dispatch, userDetails }) => {
   const router = useRouter();
@@ -33,6 +38,16 @@ const getInTouch = ({ dispatch, userDetails }) => {
         <Formik
           initialValues={{ ...initialFormValues }}
           enableReinitialize={true}
+          validate={values => {
+            const errors = {};
+            if (!values.message) {
+              errors.message = 'Please enter your message';
+            }
+            if (!values.name) {
+              errors.name = 'Please enter name';
+            }
+            return errors;
+          }}
           onSubmit={(values, { setSubmitting }) => {
             console.log('hello');
             setSubmitting(true);
@@ -44,7 +59,7 @@ const getInTouch = ({ dispatch, userDetails }) => {
             router.back();
           }}
         >
-          {({ values, handleSubmit, setFieldValue }) => (
+          {({ values, errors, touched, handleSubmit, setFieldValue }) => (
             <form onSubmit={handleSubmit}>
               <div>
                 <AdminInput
@@ -58,7 +73,11 @@ const getInTouch = ({ dispatch, userDetails }) => {
                   mobileWidth="300px"
                   height="50px"
                   fontSize="h4"
+                  noMargin="0"
                 />
+                <StyledError>
+                  {errors.name && touched.name && errors.name}
+                </StyledError>
                 <Styled.EmailLabel>Email</Styled.EmailLabel>
                 <Styled.InputRow>
                   <input className="name-input" value={values.email} />
@@ -92,8 +111,12 @@ const getInTouch = ({ dispatch, userDetails }) => {
                     height="120px"
                     mobileWidth="300px"
                     fontSize="h4"
+                    noMargin="0"
                   />
                 </Styled.InputRow>
+                <StyledError>
+                  {errors.message && touched.message && errors.message}
+                </StyledError>
                 <Styled.CheckBoxItemWrapper>
                   <Styled.CheckBox type="checkbox" />
                   <Text24
@@ -106,20 +129,32 @@ const getInTouch = ({ dispatch, userDetails }) => {
                     text="I agree to receive other communications from Code School. You may unsubscribe from these communications at any time."
                   />
                 </Styled.CheckBoxItemWrapper>
-
-                <Styled.RowContainer>
-                  <Button
-                    type="primary"
-                    width="170px"
-                    margin="50px 40px 0 0"
-                    height="45px"
-                    marginMobile="35px 0 0 0"
-                    size="sm"
-                    submit={true}
-                  >
-                    CONFIRM
-                  </Button>
-                </Styled.RowContainer>
+                <CenteredFlexContainer>
+                  <Styled.RowContainer>
+                    <Button
+                      type="primary"
+                      width="170px"
+                      margin="50px 40px 0 0"
+                      height="45px"
+                      marginMobile="35px 0 0 0"
+                      size="sm"
+                      submit={true}
+                    >
+                      CONFIRM
+                    </Button>
+                    <Button
+                      type="secondary"
+                      width="170px"
+                      margin="50px 40px 0 0"
+                      height="45px"
+                      marginMobile="35px 0 0 0"
+                      size="sm"
+                      submit={true}
+                    >
+                      CANCEL
+                    </Button>
+                  </Styled.RowContainer>
+                </CenteredFlexContainer>
               </div>
             </form>
           )}

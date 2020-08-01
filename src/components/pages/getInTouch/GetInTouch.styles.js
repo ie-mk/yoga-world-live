@@ -62,6 +62,7 @@ export const InputRow = styled.div`
   display: flex;
   justify-content: space-between;
   padding-bottom: ${spacing.sm};
+
   align-items: center;
   .name-input {
     background-color: #293150;
@@ -71,6 +72,7 @@ export const InputRow = styled.div`
     font-size: ${fontSizeMap.text};
     height: 50px;
     border-radius: ${borderRadius.sm};
+
     ${media.belowTabletLarge`
    width: 300px; 
      
@@ -80,6 +82,7 @@ export const InputRow = styled.div`
 
 const EmailLabel = styled.div`
   font-size: ${fontSizeMap.h4};
+  margin-top: ${spacing.md};
   ${media.belowTabletLarge`
     font-size:${fontSizeMap.textS};
      
