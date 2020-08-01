@@ -36,6 +36,7 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages = [] }) => {
         allUsersPublicInfo && allUsersPublicInfo[firstSenderId];
 
       setMessage(firstMessage);
+      setMessageData(firstMessageInfo);
       setUserInfo(firstUserInfo);
     }
   }, [messages.length]);
