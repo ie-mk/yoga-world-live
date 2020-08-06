@@ -81,11 +81,19 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
           <Styled.Lesson>
             <CardTitle margin="0 0 55px 0" text="Lesson Title" />
             <Styled.DesktopVideoWrapper>
-              <video width="100%" height="100%" controls>
+              {/* <video width="100%" height="100%" controls>
                 <source src="mov_bbb.mp4" type="video/mp4" />
                 <source src="mov_bbb.ogg" type="video/ogg" />
                 Your browser does not support HTML video.
-              </video>
+              </video> */}
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/0CvFEDZRa-o"
+                frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
             </Styled.DesktopVideoWrapper>
             <Styled.LessonContent>
               <CardTitle
