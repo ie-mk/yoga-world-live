@@ -7,6 +7,7 @@ import { fontSizeMap, spacing, colors } from '../../../../../constants/styles';
 import ProfileLearning from '../../../../foundation/profileLearning/ProfileLearning';
 import { useRouter } from 'next/router';
 import ErrorBoundary from '../../../../ErrorBoundary';
+import { ErrorMessage } from 'formik';
 
 const Level = ({ courses, learningPathData, heading }) => {
   const router = useRouter();
@@ -30,9 +31,8 @@ const Level = ({ courses, learningPathData, heading }) => {
     <ErrorBoundary>
       <Styled.Wrapper>
         <SectionTitle text={heading} textAlign="center" />
-
         <Styled.TextWrapper>
-          <BodyText>{learningPathData.descr}</BodyText>
+          <BodyText>{learningPathData && learningPathData.descr}</BodyText>
         </Styled.TextWrapper>
         <Grid
           columns="1fr"
@@ -49,11 +49,15 @@ const Level = ({ courses, learningPathData, heading }) => {
           {courses &&
             Object.keys(courses).map((courseId, i) => {
               const course = courses[courseId];
+              if (!course) return null;
+
               return (
                 <ProfileLearning
                   key={i}
                   imageSrc={
-                    learningPathData.images && learningPathData.image[0]
+                    learningPathData &&
+                    learningPathData.images &&
+                    learningPathData.images[0]
                   }
                   title={course.title}
                   subtitle={course.level}
