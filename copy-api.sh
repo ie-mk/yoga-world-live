@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cp ../code-school-ssr-api/src/api/api.min.js ./src/api/
+cp ../yoga-world-live-api/src/api/api.min.js ./src/api/
