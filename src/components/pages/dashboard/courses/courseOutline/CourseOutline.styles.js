@@ -12,7 +12,7 @@ const StyledHeader = styled.text`
 `;
 
 const Wrapper = styled.div`
-  margin-top: ${spacing.xxxxxl};
+  margin-top: ${spacing.xl};
   ${media.belowTabletLarge`
      padding: 0 ${spacing.md};
   `}

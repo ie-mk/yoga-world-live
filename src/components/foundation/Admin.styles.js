@@ -123,7 +123,7 @@ const ItemContainer = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  padding: ${spacing.md} 0;
+  padding: ${spacing.xs} 0;
   font-size: ${fontSizeMap.h3};
   font-weight: 300;
   color: ${({ color }) => (color ? color : 'black')};

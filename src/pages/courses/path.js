@@ -40,10 +40,6 @@ const Path = ({ dispatch, courses, learningPaths }) => {
   let heading = LEARNING_PATH[title] + ' Learning Path';
   heading = heading.toUpperCase();
 
-  const bla = learningPathId;
-
-  debugger;
-
   if (!learningPathData) return null;
 
   return (
