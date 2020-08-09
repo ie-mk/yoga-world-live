@@ -22,27 +22,27 @@ const CoursesLevel = ({ coursesByLevel, learningPathData }) => {
 
   return (
     <ErrorBoundary>
-      {Object.keys(begginerCourses).length && (
+      {Object.keys(begginerCourses).length ? (
         <Level
           courses={begginerCourses}
           learningPathData={learningPathData}
           heading={begginnerHeading}
         />
-      )}
-      {Object.keys(intermediateCourses).length && (
+      ) : null}
+      {Object.keys(intermediateCourses).length ? (
         <Level
           courses={intermediateCourses}
           learningPathData={learningPathData}
           heading={intermediateHeading}
         />
-      )}
-      {Object.keys(advancedCourses).length && (
+      ) : null}
+      {Object.keys(advancedCourses).length ? (
         <Level
           courses={advancedCourses}
           learningPathData={learningPathData}
           heading={advancedHeading}
         />
-      )}
+      ) : null}
     </ErrorBoundary>
   );
 };
