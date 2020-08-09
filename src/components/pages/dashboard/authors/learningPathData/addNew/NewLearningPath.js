@@ -38,7 +38,8 @@ let NewLearningPath = ({
 
   const data = learningPaths[ediTableLearningPathId];
   const imageSrc =
-    newImageSrc || (Array.isArray(data.images) && data.images[0]);
+    newImageSrc ||
+    (data && data.images && Array.isArray(data.images) && data.images[0]);
 
   return (
     <Styled.ModalWrapper>

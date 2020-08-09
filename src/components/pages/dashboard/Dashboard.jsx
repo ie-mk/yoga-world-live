@@ -57,7 +57,8 @@ const Dashboard = ({ dispatch, user }) => {
       >
         <Styled.MenuWrapper>
           <Logo
-            imgSrc="/logo/logo_with_name.png"
+            title="YOGA WORLD"
+            //imgSrc="/logo/logo_with_name.png"
             width="150px"
             height="50px"
             padding="30px 50px 50px"

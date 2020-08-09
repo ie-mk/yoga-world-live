@@ -27,10 +27,9 @@ const ChooseLearningPath = ({ dispatch, learningPaths }) => {
         },
       }}
     >
-      <SectionTitle text="Choose a Learning Path" />
+      <SectionTitle text="Choose Your Yoga" />
       <BodyText margin="0 0 40px 0">
-        Learning paths guide you through exactly what you need to learn to build
-        a solid foundation for a career or skillset
+        Learning paths guide you through .......
       </BodyText>
       <Grid
         columns="1fr"

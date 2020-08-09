@@ -13,6 +13,8 @@ const ImageContainer = styled.div`
   background-image: url(${({ src }) => src});
   background-repeat: no-repeat;
   background-size: ${({ backGroundSize }) => backGroundSize || 'cover'};
+  background-position: ${({ backGroundPosition }) =>
+    backGroundPosition || 'center'};
   flex: ${({ flex }) => flex || ''};
   cursor: ${({ cursor }) => cursor || ''};
   position: ${({ position }) => position || ''};

@@ -85,7 +85,7 @@ const CourseFeatures = () => {
             }}
           >
             <ResponsiveImage
-              src="/img/Learning_Path_Illustration.png"
+              src="/img/yoga-girl.svg"
               width="100%"
               padding="32%"
               backGroundSize="contain"
@@ -103,11 +103,7 @@ const CourseFeatures = () => {
                 gridRow: 2,
               },
             }}
-          >
-            <Styled.FootWrapper>
-              Learn new skills and grow your career
-            </Styled.FootWrapper>
-          </ContainerBase>
+          ></ContainerBase>
         </Grid>
       </Styled.Content>
     </Styled.Wrapper>

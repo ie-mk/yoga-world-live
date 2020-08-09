@@ -20,10 +20,11 @@ const HeroFront = () => {
   return (
     <Styled.Wrapper>
       <ResponsiveImage
-        src="/img/krsna-playing-flute.png"
+        src="/img/yoga-girls.svg"
         height="100vh"
         width="100%"
         position="absolute"
+        backGroundSize="contain"
         mediaConfig={{
           belowTabletLarge: {
             //backgroundImage: 'url("/img/mobile/Background.png")',

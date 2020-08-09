@@ -19,9 +19,9 @@ export const LEVEL_OPTIONS = Object.keys(LEVEL).map(key => {
 
 export const LEARNING_PATH = {
   notAssigned: 'Please select',
-  frontend: 'Frontend developer',
-  backend: 'Backend developer',
-  designer: 'Designer',
+  hatha: 'Hatha Yoga',
+  kundalini: 'Kundalini Yoga',
+  raja: 'Raja Yoga',
 };
 
 // result is same object as LEARNING_PATH just values and keys are reversed

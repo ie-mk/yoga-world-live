@@ -36,7 +36,7 @@ class MyApp extends App {
       <>
         {/*<ThemeProvider theme={{ myTheme, orbit: customTokens }}>*/}
         <Head>
-          <title>Code School</title>
+          <title>YOGA WORLD</title>
           <link
             href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
             rel="stylesheet"
