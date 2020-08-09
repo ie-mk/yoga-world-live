@@ -54,7 +54,8 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
     >
       <Styled.Wrapper id="appBar">
         <Logo
-          imgSrc="/logo/logo_with_name.png"
+          // imgSrc="/logo/logo_with_name.png"
+          title="YOGA WORLD"
           width="200px"
           height="58px"
           margin="20px 40px 0 0"
@@ -84,9 +85,9 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
           {/*<MenuLink noMargin={true} href="/">*/}
           {/*  Community*/}
           {/*</MenuLink>*/}
-          <MenuLink noMargin={true} href="/stories">
-            Stories
-          </MenuLink>
+          {/*<MenuLink noMargin={true} href="/stories">*/}
+          {/*  Stories*/}
+          {/*</MenuLink>*/}
           <Styled.LoginWrapper>
             {user && user.uid && isStaff && (
               <MenuLink href="/dashboard">
