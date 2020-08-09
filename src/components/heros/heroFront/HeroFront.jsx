@@ -13,7 +13,7 @@ const HeroFront = () => {
       {
         pathname: '/getInTouch',
       },
-      `/getInTouch`,
+      '/getInTouch',
     );
   };
 

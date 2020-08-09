@@ -33,16 +33,19 @@ const LearningPathCard = ({ imageSrc, title, learningPathId }) => {
   const router = useRouter();
 
   const handlePathClick = () => {
-    router.push(
-      {
-        pathname: '/courses/path',
-        query: {
-          learningPathId,
-        },
-      },
-      `courses/${title.split(' ')[0].toLowerCase()}`,
-      { shallow: true },
-    );
+    // router.push(
+    //   {
+    //     pathname: '/courses/path',
+    //     query: {
+    //       learningPathId,
+    //     },
+    //   },
+    //   `courses/${title.split(' ')[0].toLowerCase()}`,
+    //   { shallow: true },
+    // );
+
+    const path = `/courses/path?learningPathId=${learningPathId}`;
+    router.push(path, path, { shallow: true });
   };
 
   return (

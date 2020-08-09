@@ -97,8 +97,20 @@ body {
     no-repeat padding-box;
 }
 
+main {
+  min-height: calc(100vh);
+  background: transparent
+    linear-gradient(180deg, #1a2036 0%, #191f37 51%, #191f37 100%) 0% 0%
+    no-repeat padding-box;
+}
+
 button {
   font-family: inherit;
+}
+
+input,
+textarea {
+  border: none;
 }
 
 .darkTheme {

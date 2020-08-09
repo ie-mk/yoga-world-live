@@ -6,18 +6,18 @@ import getMedia from '../../../utils/media';
 import withSpacing from '../withSpacing';
 
 const Text = styled.span`
-  font-size: ${fontSizeMap.textS};
+  font-size: ${fontSizeMap.textMobile};
   font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : '400')};
   color: ${({ color }) => (color ? color : colors.white)};
   margin: ${({ margin }) => margin || ''};
   ${media.aboveTablet`
-    font-size: ${fontSizeMap.textS};
+    font-size: ${fontSizeMap.text};
   `};
 
   ${({ mediaConfig }) => (mediaConfig ? getMedia(mediaConfig) : '')};
 `;
 
-const Text12 = ({ text, color, fontWeight }) => {
+const Text24 = ({ text, color, fontWeight }) => {
   return (
     <Text color={color} fontWeight={fontWeight} margin="0">
       {text}
@@ -25,4 +25,4 @@ const Text12 = ({ text, color, fontWeight }) => {
   );
 };
 
-export default withSpacing(Text12);
+export default withSpacing(Text24);

@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import Styled from './GetInTouch.styles';
 import CenteredFlexContainer from '../../foundation/CenteredFlexContainer';
 import HeroTitle from '../../foundation/typography/HeroTitle';
-import Text24 from '../../foundation/typography/Text24';
+import Text18 from '../../foundation/typography/Text18';
 import { Formik, ErrorMessage, Field } from 'formik';
 import AdminInput from '../../foundation/input/AdminInput';
 import AdminTextArea from '../../foundation/textarea/AdminTextArea';
@@ -13,10 +13,11 @@ import PhoneInput from 'react-phone-number-input';
 import { useRouter } from 'next/router';
 import needsLoginWrapper from '../../../utils/needsLoginWrapper';
 import styled from 'styled-components';
-import {
-  getUserProfileSelector,
-  getUserSelector,
-} from '../../../store/selectors';
+import SectionTitle from '../../foundation/typography/SectionTitle';
+// import {
+//   getUserProfileSelector,
+//   getUserSelector,
+// } from '../../../store/selectors';
 
 const StyledError = styled.div`
   color: red;
@@ -27,14 +28,14 @@ const getInTouch = ({ dispatch, userDetails }) => {
   initialFormValues.email = userDetails.loginProviderData.email;
   return (
     <CenteredFlexContainer position="relative">
-      <HeroTitle
-        margin="0 0 48px 0"
-        mobileMargin="0 0 24px 0"
-        fontWeight="700"
+      <SectionTitle
+        noMargin={true}
+        mobileMargin="0"
+        fontWeight="600"
         text="Get in Touch"
       />
 
-      <CenteredFlexContainer>
+      <CenteredFlexContainer padding="0">
         <Formik
           initialValues={{ ...initialFormValues }}
           enableReinitialize={true}
@@ -49,7 +50,6 @@ const getInTouch = ({ dispatch, userDetails }) => {
             return errors;
           }}
           onSubmit={(values, { setSubmitting }) => {
-            console.log('hello');
             setSubmitting(true);
 
             dispatch(
@@ -71,8 +71,8 @@ const getInTouch = ({ dispatch, userDetails }) => {
                   width="600px"
                   inputColor="white"
                   mobileWidth="300px"
-                  height="50px"
-                  fontSize="h4"
+                  height="40px"
+                  fontSize="h6"
                   noMargin="0"
                 />
                 <StyledError>
@@ -110,8 +110,9 @@ const getInTouch = ({ dispatch, userDetails }) => {
                     width="600px"
                     height="120px"
                     mobileWidth="300px"
-                    fontSize="h4"
+                    fontSize="h6"
                     noMargin="0"
+                    border="none"
                   />
                 </Styled.InputRow>
                 <StyledError>
@@ -119,8 +120,8 @@ const getInTouch = ({ dispatch, userDetails }) => {
                 </StyledError>
                 <Styled.CheckBoxItemWrapper>
                   <Styled.CheckBox type="checkbox" />
-                  <Text24
-                    margin="0 0 0 23px"
+                  <Text18
+                    margin="0 0 0 12px"
                     mediaConfig={{
                       belowTabletLarge: {
                         margin: '0 0 0 12px',
@@ -129,23 +130,23 @@ const getInTouch = ({ dispatch, userDetails }) => {
                     text="I agree to receive other communications from Code School. You may unsubscribe from these communications at any time."
                   />
                 </Styled.CheckBoxItemWrapper>
-                <CenteredFlexContainer>
+                <CenteredFlexContainer padding="0">
                   <Styled.RowContainer>
                     <Button
                       type="primary"
                       width="170px"
-                      margin="50px 40px 0 0"
+                      margin="20px 40px 0 0"
                       height="45px"
                       marginMobile="35px 0 0 0"
                       size="sm"
                       submit={true}
                     >
-                      CONFIRM
+                      SEND
                     </Button>
                     <Button
                       type="secondary"
                       width="170px"
-                      margin="50px 40px 0 0"
+                      margin="20px 40px 0 0"
                       height="45px"
                       marginMobile="35px 0 0 0"
                       size="sm"

@@ -15,21 +15,36 @@ const Path = ({ dispatch, courses, learningPaths }) => {
   } = useRouter();
 
   const learningPathData = learningPaths[learningPathId];
-  const title = learningPathData.title;
+
+  const title = learningPathData && learningPathData.title;
+
+  useEffect(() => {
+    if (!learningPathData) {
+      dispatch(resourceActions.fetchLearningPaths.request());
+    }
+  }, [learningPathData]);
 
   useEffect(() => {
     dispatch(resourceActions.resetCourses());
-    dispatch(
-      resourceActions.fetchCourses.request({
-        queries: {
-          learningPath: ['==', title],
-        },
-      }),
-    );
-  }, []);
+    if (title) {
+      dispatch(
+        resourceActions.fetchCourses.request({
+          queries: {
+            learningPath: ['==', title],
+          },
+        }),
+      );
+    }
+  }, [title]);
 
   let heading = LEARNING_PATH[title] + ' Learning Path';
   heading = heading.toUpperCase();
+
+  const bla = learningPathId;
+
+  debugger;
+
+  if (!learningPathData) return null;
 
   return (
     <ErrorBoundary>

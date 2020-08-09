@@ -17,6 +17,7 @@ const AdminTextArea = ({
   fontSize,
   mobileWidth,
   inputColor,
+  border,
 }) => {
   return (
     <Styled.Wrapper mobileWidth={mobileWidth} width={width} noMargin={noMargin}>
@@ -28,6 +29,7 @@ const AdminTextArea = ({
         height={height}
         disabled={disabled}
         inputColor={inputColor}
+        border={border}
       >
         <Field
           className="textarea"

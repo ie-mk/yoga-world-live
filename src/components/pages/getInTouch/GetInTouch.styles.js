@@ -23,8 +23,9 @@ export const PhoneInputStyles = styled.div`
     height: 40px;
   }
   .PhoneInputInput {
-    height: 60px;
+    height: 50px;
     opacity: 1;
+    padding-left: 10px;
     font-size: ${fontSizeMap.h4};
     background-color: #293150;
     color: white;
@@ -32,7 +33,7 @@ export const PhoneInputStyles = styled.div`
 
     ${media.belowTabletLarge`
     height: 44px;
-  
+
     font-size: ${fontSizeMap.textS};
 `}
   }
@@ -43,7 +44,7 @@ export const PhoneInputStyles = styled.div`
 export const Label = styled.div`
   padding-top: ${spacing.sm};
   padding-bottom: ${spacing.md};
-  font-size: ${fontSizeMap.h4};
+  font-size: ${fontSizeMap.h6};
   ${media.belowTabletLarge`
   font-size: ${fontSizeMap.textS};
   padding-bottom: ${spacing.sm};
@@ -74,18 +75,18 @@ export const InputRow = styled.div`
     border-radius: ${borderRadius.sm};
 
     ${media.belowTabletLarge`
-   width: 300px; 
-     
+   width: 300px;
+
      `}
   }
 `;
 
 const EmailLabel = styled.div`
-  font-size: ${fontSizeMap.h4};
+  font-size: ${fontSizeMap.h6};
   margin-top: ${spacing.md};
   ${media.belowTabletLarge`
     font-size:${fontSizeMap.textS};
-     
+
      `}
 `;
 
@@ -94,7 +95,7 @@ const CheckBox = styled.input`
   height: 28px;
 
   ${media.belowTabletLarge`
-   width: 50px; 
+   width: 50px;
       height: 14px;
      `}
 `;
@@ -103,10 +104,10 @@ const CheckBoxItemWrapper = styled.div`
   display: flex;
   align-items: center;
   width: 600px;
-  margin-top: 44px;
+  margin-top: 22px;
 
   ${media.belowTabletLarge`
-  margin-top:24px;
+  margin-top:22px;
    width:300px;
    `}
 `;

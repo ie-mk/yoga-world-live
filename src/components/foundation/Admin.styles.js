@@ -57,7 +57,7 @@ export const InputStyles = styled.div`
     font-size: ${fontSizeMap.text};
     width: ${({ dropdownWidth }) => (dropdownWidth ? dropdownWidth : '100%')};
     padding-left: ${spacing.sm};
-    border: 1px solid #909090;
+    border: ${({ border }) => (border ? border : '1px solid #909090')};
     border-radius: ${borderRadius.sm};
     text-align-last: center;
     background-color: ${({ backgroundColor }) =>
@@ -73,7 +73,7 @@ export const InputStyles = styled.div`
     font-size: ${fontSizeMap.text};
     width: 100%;
     padding-left: ${spacing.sm};
-    border: 1px solid #909090;
+    border: ${({ border }) => (border ? border : '1px solid #909090')};
     border-radius: ${borderRadius.sm};
     opacity: 1;
     color: ${({ inputColor }) => (inputColor ? inputColor : '')};
