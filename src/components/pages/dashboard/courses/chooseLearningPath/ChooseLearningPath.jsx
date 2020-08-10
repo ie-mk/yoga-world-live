@@ -47,6 +47,7 @@ const ChooseLearningPath = ({ dispatch, learningPaths }) => {
         {learningPaths &&
           Object.keys(learningPaths).map(key => {
             const data = learningPaths[key];
+            debugger;
             return (
               <LearningPathCard
                 key={key}

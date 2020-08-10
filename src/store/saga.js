@@ -634,8 +634,8 @@ function* fetchLearningPath({ payload: docId }) {
 }
 
 function* createLearningPath({ payload: { data } }) {
-  if (data.images) {
-    data.imageSavePath = 'images/learningPaths';
+  if (data.imagesToUpload) {
+    data.imageUploadPath = 'images/learningPaths';
   }
   try {
     const learningPathId = yield api.resource.createResource(
