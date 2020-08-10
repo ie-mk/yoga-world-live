@@ -13,7 +13,7 @@ const Front = () => {
     <>
       <HeroFront />
       <PageContent>
-        <SectionPictureDescButton />
+        {/*<SectionPictureDescButton />*/}
         {/*<SectionCards title="How it works" />*/}
       </PageContent>
     </>

@@ -45,7 +45,11 @@ const Path = ({ dispatch, courses, learningPaths }) => {
   return (
     <ErrorBoundary>
       <>
-        <CoursesLearningPath title={heading} descr={learningPathData.descr} />
+        <CoursesLearningPath
+          img={learningPathData.images && learningPathData.images[0]}
+          title={heading}
+          descr={learningPathData.descr}
+        />
 
         <PageContent hasDefaultMarginTop={false} maxWidth="1100px">
           {

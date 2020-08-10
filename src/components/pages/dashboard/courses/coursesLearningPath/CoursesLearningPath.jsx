@@ -5,17 +5,17 @@ import BodyText from '../../../../foundation/typography/BodyText';
 import SectionTitle from '../../../../foundation/typography/SectionTitle';
 import CenteredFlexContainer from '../../../../foundation/CenteredFlexContainer';
 
-const CoursesLearningPath = ({ title, descr }) => {
+const CoursesLearningPath = ({ title, descr, img }) => {
   return (
     <Styled.Wrapper>
       <ResponsiveImage
-        src="/img/Background.png"
+        src={img || '/img/sitting.png'}
         height="100vh"
         width="100%"
         position="absolute"
         mediaConfig={{
           belowTabletLarge: {
-            backgroundImage: 'url("/img/mobile/Background.png")',
+            backgroundImage: 'url("/img/sitting.png")',
           },
         }}
       />
@@ -29,7 +29,7 @@ const CoursesLearningPath = ({ title, descr }) => {
 
         <CenteredFlexContainer>
           <ResponsiveImage
-            src="/img/Frontend_Dev_Illustration.png"
+            src="/img/sitting.png"
             width="100%"
             padding="25%"
             backGroundSize="contain"
