@@ -19,6 +19,7 @@ const ChooseLearningPath = ({ dispatch, learningPaths }) => {
 
   return (
     <CenteredFlexContainer
+      id="chooseYourYoga"
       marginTop="xxl"
       marginBottom="xxxxxl"
       mediaConfig={{

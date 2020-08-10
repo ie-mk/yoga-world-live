@@ -12,13 +12,11 @@ const CoursesLevel = ({ coursesByLevel, learningPathData }) => {
   const advancedCourses = coursesByLevel && coursesByLevel.advanced;
 
   const begginnerHeading =
-    'Part-01 : BEGGINER (' + Object.keys(begginerCourses).length + ' COURSES)';
+    'BEGGINER (' + Object.keys(begginerCourses).length + ' COURSES)';
   const intermediateHeading =
-    'Part-02 : INTERMEDIATE (' +
-    Object.keys(intermediateCourses).length +
-    ' COURSES)';
+    'INTERMEDIATE (' + Object.keys(intermediateCourses).length + ' COURSES)';
   const advancedHeading =
-    'Part-03 : ADVANCED (' + Object.keys(advancedCourses).length + ' COURSES)';
+    'ADVANCED (' + Object.keys(advancedCourses).length + ' COURSES)';
 
   return (
     <ErrorBoundary>

@@ -16,6 +16,10 @@ var data = [
 ];
 
 const CourseFeatures = () => {
+  const startLearning = () => {
+    location.hash = '#chooseYourYoga';
+  };
+
   return (
     <Styled.Wrapper>
       <ResponsiveImage
@@ -72,6 +76,7 @@ const CourseFeatures = () => {
               padding="20px 50px"
               maxWidth="280px"
               margin="0"
+              onClick={startLearning}
             >
               START LEARNING
             </Button>
@@ -103,7 +108,7 @@ const CourseFeatures = () => {
                 gridRow: 2,
               },
             }}
-          ></ContainerBase>
+          />
         </Grid>
       </Styled.Content>
     </Styled.Wrapper>

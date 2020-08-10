@@ -17,6 +17,15 @@ const HeroFront = () => {
     );
   };
 
+  const goToCourses = () => {
+    router.push(
+      {
+        pathname: '/courses',
+      },
+      '/courses',
+    );
+  };
+
   return (
     <Styled.Wrapper>
       <ResponsiveImage
@@ -39,7 +48,7 @@ const HeroFront = () => {
           <BodyText>Welcome ....</BodyText>
         </Styled.TextWrapper>
         <Styled.ButtonWrapper>
-          <Button size="lg" type="primary">
+          <Button size="lg" type="primary" onClick={goToCourses}>
             COURSES
           </Button>
           <Button size="lg" type="secondary" onClick={getInTouch}>
