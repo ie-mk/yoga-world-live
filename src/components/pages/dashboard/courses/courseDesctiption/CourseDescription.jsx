@@ -17,52 +17,11 @@ import {
   LEVEL,
   LEVEL_OPTIONS,
 } from '../../../../../constants';
+import PictureUploader from '../../../../foundation/pictureUploader/PictureUploader';
+import CenteredFlexContainer from '../../../../foundation/CenteredFlexContainer';
+import ResponsiveImage from '../../../../foundation/ResponsiveImage';
 
-const durationarr = [
-  { show: 'Set duration', value: '' },
-  { show: '1', value: '1' },
-  { show: '2', value: '2' },
-  { show: '3', value: '3' },
-];
-const durationoptions = durationarr.map(k => {
-  return (
-    <option key={k.show} value={k.value}>
-      {k.show}
-    </option>
-  );
-});
-
-const authorarr = [
-  { show: 'Select Author', value: '' },
-  { show: '1', value: '1' },
-  { show: '2', value: '2' },
-  { show: '3', value: '3' },
-];
-
-const authoroptions = authorarr.map(k => {
-  return (
-    <option key={k.show} value={k.value}>
-      {k.show}
-    </option>
-  );
-});
-
-const categoryarr = [
-  { show: 'Choose category', value: '' },
-  { show: '1', value: '1' },
-  { show: '2', value: '2' },
-  { show: '3', value: '3' },
-];
-
-const categoryoptions = categoryarr.map(k => {
-  return (
-    <option key={k.show} value={k.value}>
-      {k.show}
-    </option>
-  );
-});
-
-let CourseDescription = ({ dispatch, editableCourseData }) => {
+const CourseDescription = ({ dispatch, editableCourseData }) => {
   const published = editableCourseData.published;
 
   const handlePublish = e => {
@@ -72,6 +31,15 @@ let CourseDescription = ({ dispatch, editableCourseData }) => {
       resourceActions.updateCourse.request({ data: { published: !published } }),
     );
   };
+
+  const [selectedImages, setSelectedImages] = useState(null);
+  const newImageSrc = selectedImages && selectedImages.fileUrls[0];
+  const imageSrc =
+    newImageSrc ||
+    (editableCourseData &&
+      editableCourseData.images &&
+      Array.isArray(editableCourseData.images) &&
+      editableCourseData.images[0]);
 
   return (
     <ContainerBase
@@ -84,8 +52,14 @@ let CourseDescription = ({ dispatch, editableCourseData }) => {
         enableReinitialize={true}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
-          // debugger;
-          dispatch(resourceActions.updateCourse.request({ data: values }));
+
+          let finalValues = { ...values };
+
+          if (selectedImages) {
+            finalValues.imagesToUpload = selectedImages.files;
+          }
+
+          dispatch(resourceActions.updateCourse.request({ data: finalValues }));
           setTimeout(() => setSubmitting(false), 1000);
         }}
       >
@@ -97,8 +71,21 @@ let CourseDescription = ({ dispatch, editableCourseData }) => {
                 type="text"
                 label="Course Title"
                 width="65%"
+                border={true}
               />
-              <AdminUploadImage width="30%" label="Thumbnail" />
+              <PictureUploader
+                width="30%"
+                setSelectedImages={setSelectedImages}
+              />
+              {imageSrc ? (
+                <CenteredFlexContainer padding="0 20px" marginBottom="0">
+                  <ResponsiveImage
+                    width="100px"
+                    height="100px"
+                    src={imageSrc}
+                  />
+                </CenteredFlexContainer>
+              ) : null}
             </Styled.InputRow>
             <Styled.InputRow>
               <AdminDropDown
@@ -125,6 +112,7 @@ let CourseDescription = ({ dispatch, editableCourseData }) => {
                 label="Duration"
                 width="30%"
                 placeholder="...hours, days, weeks"
+                border={true}
               />
             </Styled.InputRow>
             <Styled.InputRow>
@@ -133,12 +121,14 @@ let CourseDescription = ({ dispatch, editableCourseData }) => {
                 type="text"
                 label="Number of chapters"
                 width="30%"
+                border={true}
               />
               <AdminInput
                 name="studentRating"
                 type="text"
                 label="Student Rating"
                 width="30%"
+                border={true}
               />
               <AdminInput
                 name="published"
@@ -146,6 +136,7 @@ let CourseDescription = ({ dispatch, editableCourseData }) => {
                 label="Published"
                 width="10%"
                 disabled={true}
+                border={true}
               />
               <Button
                 onClick={handlePublish}

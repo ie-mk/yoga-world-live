@@ -38,7 +38,12 @@ export const InputStyles = styled.div`
     color: ${({ inputColor }) => (inputColor ? inputColor : '')};
     width: 100%;
     padding-left: ${spacing.sm};
-    //border: 1px solid #909090;
+    border: ${({ border }) =>
+      border
+        ? typeof border === 'boolean'
+          ? '1px solid #909090'
+          : border
+        : ''};
     border-radius: ${borderRadius.sm};
     opacity: 1;
     ${media.belowTabletLarge`

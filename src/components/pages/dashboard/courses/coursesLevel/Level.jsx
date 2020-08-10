@@ -55,9 +55,10 @@ const Level = ({ courses, learningPathData, heading }) => {
                 <ProfileLearning
                   key={i}
                   imageSrc={
-                    learningPathData &&
-                    learningPathData.images &&
-                    learningPathData.images[0]
+                    (course && course.images && course.images[0]) ||
+                    (learningPathData &&
+                      learningPathData.images &&
+                      learningPathData.images[0])
                   }
                   title={course.title}
                   subtitle={course.level}
