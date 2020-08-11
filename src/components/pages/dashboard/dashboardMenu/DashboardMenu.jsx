@@ -5,7 +5,7 @@ import { ContainerBase } from '../../../foundation';
 const DashboardMenu = ({ setActiveComponent, active }) => {
   return (
     <Styled.Wrapper>
-      <ContainerBase minWidth="300px">
+      <ContainerBase>
         <Styled.MenuItem
           active={active === 'dashboard' || !active}
           onClick={() => setActiveComponent('dashboard')}

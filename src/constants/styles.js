@@ -52,7 +52,7 @@ export const fontSizeMap = {
   h4m: '22px',
   h4s: '21px',
   h5: '20px',
-  text: '18px',
+  text: '16px',
   textS: '14px',
   textMobile: '12px',
   buttonMobile: '10px',

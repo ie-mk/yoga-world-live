@@ -64,7 +64,7 @@ let CourseLessonsContainer = ({
           </Button>
         </ContainerBase>
         <ContainerBase width="55%">
-          {activeLessonId !== null ? (
+          {activeLessonId ? (
             <CourseLessonContent
               chapterId={chapterId}
               activeLessonId={activeLessonId}

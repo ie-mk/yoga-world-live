@@ -42,11 +42,7 @@ const CourseDescription = ({ dispatch, editableCourseData }) => {
       editableCourseData.images[0]);
 
   return (
-    <ContainerBase
-      paddingLeft="xxxl"
-      paddingRight="xxxl"
-      paddingBottom="xxxxxl"
-    >
+    <ContainerBase paddingLeft="xl" paddingRight="xl" paddingBottom="xxl">
       <Formik
         initialValues={editableCourseData}
         enableReinitialize={true}
@@ -70,18 +66,18 @@ const CourseDescription = ({ dispatch, editableCourseData }) => {
                 name="title"
                 type="text"
                 label="Course Title"
-                width="65%"
+                width="30%"
                 border={true}
               />
-              <PictureUploader
-                width="30%"
-                setSelectedImages={setSelectedImages}
-              />
+              <ContainerBase marginTop="md" width="30%">
+                <PictureUploader setSelectedImages={setSelectedImages} />
+              </ContainerBase>
               {imageSrc ? (
                 <CenteredFlexContainer padding="0 20px" marginBottom="0">
                   <ResponsiveImage
                     width="100px"
                     height="100px"
+                    backgroundSize="contain"
                     src={imageSrc}
                   />
                 </CenteredFlexContainer>
@@ -142,7 +138,7 @@ const CourseDescription = ({ dispatch, editableCourseData }) => {
                 onClick={handlePublish}
                 type="button"
                 size="sm"
-                margin="45px 40px 0 0"
+                margin="26px 40px 0 0"
               >
                 {published ? 'Unpublish' : 'Publish'}
               </Button>
@@ -150,7 +146,7 @@ const CourseDescription = ({ dispatch, editableCourseData }) => {
             <Styled.InputRow>
               <AdminTextArea
                 name="whatWillLearn"
-                rows="5"
+                rows="2"
                 cols="110"
                 component="textarea"
                 label="What you will learn ?"
@@ -160,7 +156,7 @@ const CourseDescription = ({ dispatch, editableCourseData }) => {
             <Styled.InputRow>
               <AdminTextArea
                 name="prerequisites"
-                rows="5"
+                rows="2"
                 cols="110"
                 component="textarea"
                 label="Pre-requisites ?"

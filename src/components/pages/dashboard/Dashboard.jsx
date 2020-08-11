@@ -16,6 +16,7 @@ import AuthorsAndLearningPath from './authors/AuthorsAndLearningPath';
 import Staff from './staff/Staff';
 import Users from './users/Users';
 import AuthorProfile from './authors/authorProfile/AuthorProfile';
+import FlexContainer from '../../foundation/FlexContainer';
 
 const Dashboard = ({ dispatch, user }) => {
   const router = useRouter();
@@ -49,24 +50,20 @@ const Dashboard = ({ dispatch, user }) => {
 
   return (
     <Styled.Wrapper>
-      <Grid
-        columns="0.5fr 2.5fr"
-        mediaColConfig={{
-          belowTablet: '1fr',
-        }}
-      >
-        <Styled.MenuWrapper>
-          <Logo
-            title="YOGA WORLD"
-            //imgSrc="/logo/logo_with_name.png"
-            width="150px"
-            height="50px"
-            padding="30px 50px 50px"
-          />
-          <DashboardMenu active={activeTab} setActiveComponent={makeActive} />
-        </Styled.MenuWrapper>
-
-        <div>
+      <FlexContainer>
+        <ContainerBase width="20%" minWidth="200px">
+          <Styled.MenuWrapper>
+            <Logo
+              title="YOGA WORLD"
+              //imgSrc="/logo/logo_with_name.png"
+              width="150px"
+              height="50px"
+              padding="30px 50px 50px"
+            />
+            <DashboardMenu active={activeTab} setActiveComponent={makeActive} />
+          </Styled.MenuWrapper>
+        </ContainerBase>
+        <ContainerBase width="80%">
           <DashboardHeader user={user} />
           <Styled.Wrapper>
             {dashboard && <DashboardTab />}
@@ -79,8 +76,8 @@ const Dashboard = ({ dispatch, user }) => {
             {users && <Users />}
             {authorProfile && <AuthorProfile />}
           </Styled.Wrapper>
-        </div>
-      </Grid>
+        </ContainerBase>
+      </FlexContainer>
     </Styled.Wrapper>
   );
 };
