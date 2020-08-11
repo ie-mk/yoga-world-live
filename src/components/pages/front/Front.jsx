@@ -12,10 +12,10 @@ const Front = () => {
   return (
     <>
       <HeroFront />
-      <PageContent>
-        {/*<SectionPictureDescButton />*/}
-        {/*<SectionCards title="How it works" />*/}
-      </PageContent>
+      {/*<PageContent>*/}
+      {/*<SectionPictureDescButton />*/}
+      {/*<SectionCards title="How it works" />*/}
+      {/*</PageContent>*/}
     </>
   );
 };
