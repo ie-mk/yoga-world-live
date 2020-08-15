@@ -29,7 +29,7 @@ const SectionPictureDescButton = () => {
             src="/img/Online_Courses_Illustration.png"
             width="100%"
             padding="32%"
-            backGroundSize="contain"
+            backgroundSize="contain"
           />
         </ContainerBase>
         <ContainerBase

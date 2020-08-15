@@ -33,7 +33,7 @@ const HeroFront = () => {
         height="100vh"
         width="100%"
         position="absolute"
-        backGroundSize="contain"
+        backgroundSize="contain"
         mediaConfig={{
           belowTabletLarge: {
             //backgroundImage: 'url("/img/mobile/Background.png")',

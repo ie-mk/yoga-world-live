@@ -93,7 +93,7 @@ const CourseFeatures = () => {
               src="/img/yoga-girl.svg"
               width="100%"
               padding="32%"
-              backGroundSize="contain"
+              backgroundSize="contain"
             />
           </ContainerBase>
           <ContainerBase
