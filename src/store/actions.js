@@ -28,6 +28,8 @@ export const userActions = {
 
   setIsFirstLogin: createAction('SET_IS_FIRST_LOGIN'),
 
+  startCourse: createAsyncAction('user-start-course'),
+
   resetUser: createAction('RESET_USER'),
   adToFavourites: createAction('AD_TO_FAVOURITES'),
 };

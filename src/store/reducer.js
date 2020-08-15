@@ -160,6 +160,15 @@ export const userReducer = handleActions(
       resultProp: 'allUsersPublicInfo',
     }),
 
+    /*===============================================================*/
+    ...getAsyncReducers({
+      action: userActions.startCourse,
+      loadingProp: 'startingCourseLoading',
+      errorProp: 'startingCourseError',
+    }),
+
+    /*===============================================================*/
+
     [userActions.fetchUserPublicInfo.success.type]: (
       state,
       { payload: { uid, data } },
@@ -207,6 +216,8 @@ export const userReducer = handleActions(
     permissions: {},
     loading: false,
     loadingPicture: false,
+    startingCourseLoading: false,
+    startingCourseError: null,
     error: null,
     isFirstLogin: null,
     allUsersPublicInfo: {},

@@ -30,13 +30,13 @@ const DashboardCourses = ({ dispatch, loading, editableCourseId }) => {
           onClick={() => setActiveTab('published')}
           active={showPublished}
         >
-          Published(10)
+          Published
         </Styled.Title>
         <Styled.Title
           onClick={() => setActiveTab('unpublished')}
           active={showUnpublished}
         >
-          Unpublished(06)
+          Unpublished
         </Styled.Title>
         <Styled.Title onClick={handleCreateNew} active={showNew}>
           Add New

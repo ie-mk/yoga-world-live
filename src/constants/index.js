@@ -22,6 +22,7 @@ export const LEARNING_PATH = {
   hatha: 'Hatha Yoga',
   kundalini: 'Kundalini Yoga',
   raja: 'Raja Yoga',
+  mindfulness: 'Mindfulness',
 };
 
 // result is same object as LEARNING_PATH just values and keys are reversed

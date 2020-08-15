@@ -61,7 +61,7 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const StyledHeader = styled.text`
+const StyledHeader = styled.span`
   font-size: ${({ fontSize }) =>
     fontSizeMap[fontSize] ? fontSizeMap[fontSize] : fontSizeMap.textS};
   z-index: 1;

@@ -210,6 +210,25 @@ function* fetchGetIntouchMessages() {
   }
 }
 
+function* startCourse({ payload: courseId }) {
+  const uid = yield select(getUID);
+
+  const data = {
+    uid,
+    courses: {
+      [courseId]: true,
+    },
+  };
+
+  try {
+    yield updateUserProfile({ payload: data });
+    yield put(userActions.startCourse.success());
+    yield fetchUserProfile({ payload: { uid } });
+  } catch (err) {
+    yield put(userActions.startCourse.failure(err));
+  }
+}
+
 // ============================ COURSES =====================================
 
 function* fetchCourses({ payload = {} }) {
@@ -719,6 +738,8 @@ function* rootSaga() {
       createGetInTouchMessage,
     ),
   ]);
+
+  yield all([takeLatest(userActions.startCourse.request.type, startCourse)]);
 
   // ========================== COURSES ===============================
   yield all([

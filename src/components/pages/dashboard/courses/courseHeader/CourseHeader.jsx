@@ -39,16 +39,9 @@ const CourseHeader = ({ title, course, courseId }) => {
   const router = useRouter();
 
   const startCourse = title => {
-    router.push(
-      {
-        pathname: '/courseLearning',
-        query: {
-          courseId,
-        },
-      },
-      `/course/${title.replace(' ', '')}/startLearning`,
-      { shallow: true },
-    );
+    const url = `/courseLearning?course=${title}&courseId=${courseId}`;
+
+    router.push(url, url, { shallow: true });
   };
 
   return (
