@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import Text24 from '../../../../foundation/typography/Text24';
 import { connect } from 'react-redux';
 import { resourceActions } from '../../../../../store/actions';
-
 import Styled from './CourseHomeChapters.styles';
 
 const CustomText241 = props => (
