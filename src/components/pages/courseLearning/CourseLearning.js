@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import SectionTitle from '../../foundation/typography/SectionTitle';
 import CardTitle from '../../foundation/typography/CardTitle';
 import PathTitle from '../../foundation/typography/PathTitle';
@@ -25,14 +25,56 @@ var questions = [
 const CourseLearning = ({ courseId, dispatch, course }) => {
   const [menuOpen, setMenuOpen] = useState(true);
 
-  const router = useRouter();
-
   useEffect(() => {
     dispatch(resourceActions.fetchCourse.request(courseId));
   }, [courseId]);
 
+  const [activeChapterIdx, setActiveChapterIdx] = useState(0);
+
+  const chapters = (course && course.chapters) || {};
+
+  const chaptersArr = useMemo(() => {
+    return Object.keys(chapters)
+      .map(key => {
+        const chapterClone = { ...chapters[key] };
+        chapterClone.id = key;
+
+        return chapterClone;
+      })
+      .sort((a, b) => a.sequenceNr - b.sequenceNr);
+  }, [course]);
+
+  const lessonsArr = useMemo(
+    () => {
+      const activeChapter = chaptersArr[activeChapterIdx];
+      const activeChapterLessons = activeChapter && activeChapter.lessons;
+      if (!activeChapterLessons) return null;
+
+      return Object.keys(activeChapterLessons)
+        .map(lessonId => {
+          const lessonsClone = { ...activeChapterLessons[lessonId] };
+          lessonsClone.id = lessonId;
+          return lessonsClone;
+        })
+        .sort((a, b) => a.sequenceNr - b.sequenceNr);
+    },
+    activeChapterIdx,
+    chaptersArr,
+  );
+
+  const [activeLessonId, setActiveLessonId] = useState(null);
+
+  useEffect(() => {
+    if (!activeLessonId && lessonsArr.length) {
+      setActiveLessonId(lessonsArr[0].id);
+    }
+  }, [lessonsArr]);
+
+  console.log('-----lessonsArr', lessonsArr);
+
+  // CONTINUE FROM HERE
+
   if (!course) return null;
-  const chapters = course.chapters;
 
   return (
     <CenteredFlexContainer>
@@ -48,10 +90,9 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
 
       <FlexContainer>
         <div>
-          <Styled.ViewCourseHomeWrapper open={menuOpen}>
-            <Styled.CourseHome open={menuOpen}>
-              <CardTitle text="Course Home" />
-              {/* */}
+          <Styled.ViewCourseMenuWrapper open={menuOpen}>
+            <Styled.CourseMenu open={menuOpen}>
+              <CardTitle text="Content" />
               {chapters &&
                 Object.keys(chapters)
                   .reverse()
@@ -65,8 +106,8 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
                       />
                     );
                   })}
-            </Styled.CourseHome>
-          </Styled.ViewCourseHomeWrapper>
+            </Styled.CourseMenu>
+          </Styled.ViewCourseMenuWrapper>
         </div>
         <Styled.ContentWrapper>
           <Styled.MenuShowWrapper
@@ -80,13 +121,8 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
             )}
           </Styled.MenuShowWrapper>
           <Styled.Lesson>
-            <CardTitle margin="0 0 55px 0" text="Lesson Title" />
+            <CardTitle margin="0 0 0 0" text="Lesson Title" />
             <Styled.DesktopVideoWrapper>
-              {/* <video width="100%" height="100%" controls>
-                <source src="mov_bbb.mp4" type="video/mp4" />
-                <source src="mov_bbb.ogg" type="video/ogg" />
-                Your browser does not support HTML video.
-              </video> */}
               <iframe
                 width="560"
                 height="315"

@@ -4,7 +4,7 @@ import media from '../../../../foundation/media';
 const LessonWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin: 59px 0 44px 44px;
+  margin: 30px 0 22px 22px;
   i {
     color: #0ec9b0;
   }
@@ -13,11 +13,11 @@ const LessonWrapper = styled.div`
 const ChapterWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin: 70px 0 44px 0;
+  margin: 35px 0 22px 0;
 
   ${media.belowTabletLarge`
-   margin:50px 0 22px 19px;
-   `}
+    margin: 25px 0 12px 10px;
+  `}
 `;
 
 export default {

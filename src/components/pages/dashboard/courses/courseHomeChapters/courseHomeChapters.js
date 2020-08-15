@@ -17,7 +17,7 @@ const CustomText241 = props => (
 
 const CourseHomeChapters = ({ dispatch, chapterId, chapters, courseId }) => {
   const chapter = chapters[chapterId];
-  const title = 'Chapter ' + chapter.sequenceNr + ' : ' + chapter.title;
+  const title = chapter && chapter.title;
 
   useEffect(() => {
     dispatch(
@@ -47,7 +47,7 @@ const CourseHomeChapters = ({ dispatch, chapterId, chapters, courseId }) => {
 
           return (
             <Styled.LessonWrapper key={i}>
-              <i class="fa fa-check-circle fa-2x" aria-hidden="true" />
+              <i className="fa fa-check-circle fa-2x" aria-hidden="true" />
               <CustomText241 margin="0 0 0 20px" text={lessonTitle} />
             </Styled.LessonWrapper>
           );

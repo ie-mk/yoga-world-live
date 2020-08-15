@@ -24,10 +24,10 @@ export const AskWrapper = styled.div`
 `;
 
 export const Lesson = styled.div`
-  margin: 57px 0 0 0;
+  margin: 0 0 0 30px;
   ${media.belowTabletLarge`
   margin: 25px 0 0 0;
-  
+
   `}
 `;
 
@@ -74,19 +74,6 @@ const MobileVideoWrapper = styled.div`
 `;
 const DesktopVideoWrapper = styled.div`
   position: relative;
-  width: 100%;
-  padding: 40%;
-
-  video {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
-  ${media.belowTabletLarge`
-      
-   `}
 `;
 
 const LessonWrapper = styled.div`
@@ -118,9 +105,9 @@ const ContentWrapper = styled.div`
   flex: 1;
 `;
 
-export const ViewCourseHomeWrapper = styled.div`
+export const ViewCourseMenuWrapper = styled.div`
   position: relative;
-  margin-right: ${spacing.xxxxl};
+  margin-right: ${spacing.xl};
   width: ${({ open }) => (open ? '400px' : 0)};
   display: flex;
   transition: all 0.5s ease-in;
@@ -138,8 +125,8 @@ export const ViewCourseHomeWrapper = styled.div`
 
 export const MenuShowWrapper = styled.div`
   position: absolute;
-  top: 300px;
-  left: -83px;
+  top: 152px;
+  left: -30px;
   background: transparent linear-gradient(180deg, #2385d9 0%, #0ec9b0 100%) 0%
     0% no-repeat padding-box;
   width: 49px;
@@ -157,27 +144,27 @@ export const MenuShowWrapper = styled.div`
   height: 60px;
   border-radius: 0 10px 10px 0;
   padding:5px;
-  
+
   `}
 `;
 
-export const CourseHome = styled.div`
+export const CourseMenu = styled.div`
   opacity: ${({ open }) => (open ? '1' : '0')};
   width: ${({ open }) => (open ? 'auto' : '0')};
-  padding: 57px 30px 81px 91px;
+  padding: 30px 14px 40px 30px;
   background-color: #1e2540;
   border-radius: 10px;
   transition: all 0.5s ease-in;
   ${media.belowTabletLarge`
-  padding: 30px 30px 41px 46px;
-  
+  padding: 15px 15px 20px 22px;
+
   `}
 `;
 
 export default {
   ContentWrapper,
   RowContainer,
-  CourseHome,
+  CourseMenu,
   CheckBox,
   ChapterWrapper,
   LessonWrapper,
@@ -190,6 +177,6 @@ export default {
   MobileVideoWrapper,
   DesktopVideoWrapper,
   ViewLessonWrapper,
-  ViewCourseHomeWrapper,
+  ViewCourseMenuWrapper,
   NoteWrapper,
 };

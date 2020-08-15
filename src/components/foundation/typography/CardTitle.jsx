@@ -5,19 +5,19 @@ import withSpacing from '../withSpacing';
 import media from '../media';
 import getMedia from '../../../utils/media';
 
-const StyledH3 = styled.h3`
+const StyledH5 = styled.h5`
   font-size: ${fontSizeMap.text};
   width: ${({ width }) => width || ''};
   margin: ${({ margin }) => margin || ''};
   font-weight: ${({ fontWeight }) => fontWeight || ''};
 
   ${media.aboveTablet`
-    font-size: ${fontSizeMap.h3s};
-   
+    font-size: ${fontSizeMap.h5};
+
   `};
   ${media.belowTablet`
      font-size: ${fontSizeMap.text};
-    
+
 
   `}
 
@@ -26,9 +26,9 @@ const StyledH3 = styled.h3`
 
 const CardTitle = ({ text, fontWeight, width }) => {
   return (
-    <StyledH3 margin="0" width={width} fontWeight={fontWeight}>
+    <StyledH5 margin="0" width={width} fontWeight={fontWeight}>
       {text}
-    </StyledH3>
+    </StyledH5>
   );
 };
 

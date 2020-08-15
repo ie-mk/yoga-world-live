@@ -95,13 +95,11 @@ const CourseChapter = ({ dispatch, courseId, chapterId, data, idx }) => {
             </form>
           )}
         </Formik>
-        {lessons && (
-          <CourseLessonsContainer
-            courseId={courseId}
-            chapterId={chapterId}
-            data={lessons}
-          />
-        )}
+        <CourseLessonsContainer
+          courseId={courseId}
+          chapterId={chapterId}
+          data={lessons}
+        />
       </Styled.Content>
     </ContainerBase>
   );
