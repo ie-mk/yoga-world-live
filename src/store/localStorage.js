@@ -1,8 +1,10 @@
 import Immutable from 'seamless-immutable';
 
+const localStorageName = 'code-school-storage';
+
 export const loadState = persistWhitelist => {
   try {
-    const serializedState = localStorage.getItem('state');
+    const serializedState = localStorage.getItem(localStorageName);
     if (serializedState === null) {
       return undefined;
     }
@@ -51,7 +53,7 @@ export const saveState = (state, persistWhitelist) => {
 
   try {
     const serializedState = JSON.stringify(stateFiltered);
-    localStorage.setItem('code-school-storage', serializedState);
+    localStorage.setItem(localStorageName, serializedState);
   } catch (err) {
     console.error('state save failed', err);
   }
