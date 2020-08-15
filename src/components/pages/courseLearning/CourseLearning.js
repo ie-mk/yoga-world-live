@@ -27,11 +27,12 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
 
   const router = useRouter();
 
-  const chapters = course.chapters;
-
   useEffect(() => {
     dispatch(resourceActions.fetchCourse.request(courseId));
   }, [courseId]);
+
+  if (!course) return null;
+  const chapters = course.chapters;
 
   return (
     <CenteredFlexContainer>
@@ -93,7 +94,7 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
                 frameborder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen
-              ></iframe>
+              />
             </Styled.DesktopVideoWrapper>
             <Styled.LessonContent>
               <CardTitle

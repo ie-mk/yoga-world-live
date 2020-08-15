@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useEffect } from 'react';
 import Text24 from '../../../../foundation/typography/Text24';
 import { connect } from 'react-redux';
+import { resourceActions } from '../../../../../store/actions';
 
 import Styled from './CourseHomeChapters.styles';
 
@@ -34,7 +34,7 @@ const CourseHomeChapters = ({ dispatch, chapterId, chapters, courseId }) => {
   return (
     <>
       <Styled.ChapterWrapper>
-        <i class="fa fa-circle fa-2x" aria-hidden="true" />
+        <i className="fa fa-circle fa-2x" aria-hidden="true" />
         <CustomText241 margin="0 0 0 20px" text={title} />
       </Styled.ChapterWrapper>
 

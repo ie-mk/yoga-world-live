@@ -9,12 +9,14 @@ import CourseOutline from '../../components/pages/dashboard/courses/courseOutlin
 import needsLoginWrapper from '../../utils/needsLoginWrapper';
 import SpinnerLarge from '../../components/foundation/spinner/SpinnerLarge';
 
-const CourseStart = ({ courses, userProfile, loading }) => {
+const StartPage = ({ courses, userProfile, loading }) => {
   const {
     query: { courseId },
   } = useRouter();
 
   const course = courses[courseId];
+
+  if (!course) return null;
 
   let courseTitle = course.title;
   courseTitle = courseTitle.toUpperCase();
@@ -40,4 +42,4 @@ const mapStateToProps = state => ({
   userProfile: getUserProfile(state),
 });
 
-export default connect(mapStateToProps)(CourseStart);
+export default connect(mapStateToProps)(StartPage);

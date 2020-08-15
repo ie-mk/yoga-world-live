@@ -27,20 +27,39 @@ export const getUserProfileSelector = state => state.user && state.user.profile;
 
 export const getCourses = state => state.courses.data;
 
-export const getCoursesByLevel = createSelector(getCourses, courses => {
-  const result = {
-    beginner: {},
-    intermediate: {},
-    advanced: {},
-  };
+export const getPublishedCourses = createSelector(getCourses, courses => {
+  const result = {};
+  if (!Object.keys(courses).length) return result;
 
   Object.keys(courses).forEach(key => {
     const course = courses[key];
-    result[course.level][key] = course;
+    if (course.published) {
+      result[key] = course;
+    }
   });
 
   return result;
 });
+
+export const getCoursesByLevel = createSelector(
+  getPublishedCourses,
+  courses => {
+    const result = {
+      beginner: {},
+      intermediate: {},
+      advanced: {},
+    };
+
+    if (!courses) return result;
+
+    Object.keys(courses).forEach(key => {
+      const course = courses[key];
+      result[course.level][key] = course;
+    });
+
+    return result;
+  },
+);
 
 export const getEditingCourseId = state => state.courses.editableCourseId;
 

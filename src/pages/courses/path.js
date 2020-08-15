@@ -31,6 +31,7 @@ const Path = ({ dispatch, courses, learningPaths }) => {
         resourceActions.fetchCourses.request({
           queries: {
             learningPath: ['==', title],
+            published: ['==', true],
           },
         }),
       );

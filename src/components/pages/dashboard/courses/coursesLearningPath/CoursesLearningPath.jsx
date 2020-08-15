@@ -13,6 +13,7 @@ const CoursesLearningPath = ({ title, descr, img }) => {
         height="100vh"
         width="100%"
         position="absolute"
+        backgroundSize="contain"
         mediaConfig={{
           belowTabletLarge: {
             backgroundImage: 'url("/img/sitting.png")',
@@ -26,15 +27,6 @@ const CoursesLearningPath = ({ title, descr, img }) => {
         <Styled.TextWrapper>
           <BodyText>{descr}</BodyText>
         </Styled.TextWrapper>
-
-        <CenteredFlexContainer>
-          <ResponsiveImage
-            src="/img/sitting.png"
-            width="100%"
-            padding="25%"
-            backGroundSize="contain"
-          />
-        </CenteredFlexContainer>
       </Styled.Content>
     </Styled.Wrapper>
   );
