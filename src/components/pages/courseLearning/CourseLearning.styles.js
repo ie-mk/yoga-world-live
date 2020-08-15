@@ -74,6 +74,7 @@ const MobileVideoWrapper = styled.div`
 `;
 const DesktopVideoWrapper = styled.div`
   position: relative;
+  margin-bottom: ${spacing.xl};
 `;
 
 const LessonWrapper = styled.div`

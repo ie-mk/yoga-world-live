@@ -62,19 +62,17 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
     chaptersArr,
   );
 
-  const [activeLessonId, setActiveLessonId] = useState(null);
+  const [activeLessonIdx, setActiveLessonIdx] = useState(null);
 
   useEffect(() => {
-    if (!activeLessonId && lessonsArr.length) {
-      setActiveLessonId(lessonsArr[0].id);
+    if (!activeLessonIdx && lessonsArr.length) {
+      setActiveLessonIdx(0);
     }
   }, [lessonsArr]);
 
-  console.log('-----lessonsArr', lessonsArr);
-
-  // CONTINUE FROM HERE
-
   if (!course) return null;
+
+  const activeLesson = lessonsArr[activeLessonIdx];
 
   return (
     <CenteredFlexContainer>
@@ -123,52 +121,62 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
           <Styled.Lesson>
             <CardTitle margin="0 0 0 0" text="Lesson Title" />
             <Styled.DesktopVideoWrapper>
-              <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/0CvFEDZRa-o"
-                frameborder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-              />
+              {activeLesson && activeLesson.videoLink ? (
+                // <iframe
+                //   width="560"
+                //   height="315"
+                //   src={activeLesson.videoLink}
+                //   frameborder="0"
+                //   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                //   allowfullscreen
+                // />
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/v7AYKMP6rOE"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              ) : null}
             </Styled.DesktopVideoWrapper>
-            <Styled.LessonContent>
+            {/*<Styled.LessonContent>*/}
+            {/*  <CardTitle*/}
+            {/*    margin="76px 0 23px 0"*/}
+            {/*    mediaConfig={{*/}
+            {/*      belowTabletLarge: {*/}
+            {/*        margin: '38px 0 12px 0',*/}
+            {/*      },*/}
+            {/*    }}*/}
+            {/*    text="What you will learn in this chapter"*/}
+            {/*  />*/}
+            {/*  <Text18 text={course.whatWillLearn} />*/}
+            {/*  <CardTitle*/}
+            {/*    margin="50px 0 29px 0"*/}
+            {/*    mediaConfig={{*/}
+            {/*      belowTabletLarge: {*/}
+            {/*        margin: '25px 0 15px 0',*/}
+            {/*      },*/}
+            {/*    }}*/}
+            {/*    text="Please complete the following assignment"*/}
+            {/*  />*/}
+            {/*  <Styled.AssignmentWrapper>Assignment 03</Styled.AssignmentWrapper>*/}
+            {/*  <Styled.NoteWrapper>*/}
+            {/*    <Text18 color="#0EC9B0" text="NOTE:" fontWeight="700" />*/}
+            {/*    <Text18 text="Once the assignment is complete then only the lesson marked as finished." />*/}
+            {/*  </Styled.NoteWrapper>*/}
+            <Styled.ViewLessonWrapper>
               <CardTitle
-                margin="76px 0 23px 0"
                 mediaConfig={{
                   belowTabletLarge: {
-                    margin: '38px 0 12px 0',
+                    margin: '0 0 39px  0',
                   },
                 }}
-                text="What you will learn in this chapter"
+                text="Frequently Asked Questions"
               />
-              <Text18 text={course.whatWillLearn} />
-              <CardTitle
-                margin="50px 0 29px 0"
-                mediaConfig={{
-                  belowTabletLarge: {
-                    margin: '25px 0 15px 0',
-                  },
-                }}
-                text="Please complete the following assignment"
-              />
-              <Styled.AssignmentWrapper>Assignment 03</Styled.AssignmentWrapper>
-              <Styled.NoteWrapper>
-                <Text18 color="#0EC9B0" text="NOTE:" fontWeight="700" />
-                <Text18 text="Once the assignment is complete then only the lesson marked as finished." />
-              </Styled.NoteWrapper>
-              <Styled.ViewLessonWrapper>
-                <CardTitle
-                  mediaConfig={{
-                    belowTabletLarge: {
-                      margin: '0 0 39px  0',
-                    },
-                  }}
-                  text="Frequently Asked Questions"
-                />
-                <Styled.AskWrapper>Ask a question?</Styled.AskWrapper>
-              </Styled.ViewLessonWrapper>
-            </Styled.LessonContent>
+              <Styled.AskWrapper>Ask a question?</Styled.AskWrapper>
+            </Styled.ViewLessonWrapper>
+            {/*</Styled.LessonContent>*/}
             {questions.map((key, index) => (
               <CollapseContainer
                 title={questions[index]}
