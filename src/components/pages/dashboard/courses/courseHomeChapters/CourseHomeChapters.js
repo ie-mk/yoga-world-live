@@ -3,12 +3,13 @@ import Text24 from '../../../../foundation/typography/Text24';
 import { connect } from 'react-redux';
 import { resourceActions } from '../../../../../store/actions';
 import Styled from './CourseHomeChapters.styles';
+import Text18 from '../../../../foundation/typography/Text18';
 
 const CustomText241 = props => (
-  <Text24
+  <Text18
     mediaConfig={{
       belowTabletLarge: {
-        margin: '0 0 0 24px',
+        margin: '0 0 0 12px',
       },
     }}
     {...props}
@@ -34,7 +35,7 @@ const CourseHomeChapters = ({ dispatch, chapterId, chapters, courseId }) => {
     <>
       <Styled.ChapterWrapper>
         <i className="fa fa-circle fa-2x" aria-hidden="true" />
-        <CustomText241 margin="0 0 0 20px" text={title} />
+        <CustomText241 margin="0 0 0 10px" text={title} />
       </Styled.ChapterWrapper>
 
       {lessons &&
@@ -42,8 +43,7 @@ const CourseHomeChapters = ({ dispatch, chapterId, chapters, courseId }) => {
           const lesson = lessons && lessons[lessonId];
 
           if (!lesson) return null;
-          const lessonTitle =
-            'Lesson ' + lesson.sequenceNr + ' : ' + lesson.title;
+          const lessonTitle = lesson.title;
 
           return (
             <Styled.LessonWrapper key={i}>

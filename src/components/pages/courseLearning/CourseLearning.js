@@ -52,24 +52,19 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
       .sort((a, b) => a.sequenceNr - b.sequenceNr);
   }, [chapters]);
 
-  const lessonsArr = useMemo(
-    () => {
-      const activeChapter = chaptersArr[activeChapterIdx];
-      const activeChapterLessons = activeChapter && activeChapter.lessons;
-      if (!activeChapterLessons) return null;
+  const lessonsArr = useMemo(() => {
+    const activeChapter = chaptersArr[activeChapterIdx];
+    const activeChapterLessons = activeChapter && activeChapter.lessons;
+    if (!activeChapterLessons) return null;
 
-      return Object.keys(activeChapterLessons)
-        .map(lessonId => {
-          const lessonsClone = { ...activeChapterLessons[lessonId] };
-          lessonsClone.id = lessonId;
-          return lessonsClone;
-        })
-        .sort((a, b) => a.sequenceNr - b.sequenceNr);
-    },
-    activeChapterIdx,
-    chaptersArr,
-    chapters,
-  );
+    return Object.keys(activeChapterLessons)
+      .map(lessonId => {
+        const lessonsClone = { ...activeChapterLessons[lessonId] };
+        lessonsClone.id = lessonId;
+        return lessonsClone;
+      })
+      .sort((a, b) => a.sequenceNr - b.sequenceNr);
+  }, [activeChapterIdx, chaptersArr, chapters]);
 
   const [activeLessonIdx, setActiveLessonIdx] = useState(null);
 
@@ -84,14 +79,16 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
   const activeLesson =
     lessonsArr && activeLessonIdx !== null && lessonsArr[activeLessonIdx];
 
-  const bla = course;
-  const b = courseId;
-  const lessArr = lessonsArr;
-  const chaptArr = chaptersArr;
-  debugger;
+  // const bla = course;
+  // const b = courseId;
+  // const lessArr = lessonsArr;
+  // const chaptArr = chaptersArr;
+  // const actIdx = activeLessonIdx;
+  // const chapIdx = activeChapterIdx;
+  // debugger;
 
   return (
-    <CenteredFlexContainer>
+    <CenteredFlexContainer width="100%" marginTop="xxl">
       <SectionTitle
         margin="50px 0 20px 0"
         mediaConfig={{
@@ -102,7 +99,7 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
         text={course.title}
       />
 
-      <FlexContainer>
+      <FlexContainer width="100%">
         <div>
           <Styled.ViewCourseMenuWrapper open={menuOpen}>
             <Styled.CourseMenu open={menuOpen}>
@@ -124,23 +121,23 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
           </Styled.ViewCourseMenuWrapper>
         </div>
         <Styled.ContentWrapper>
-          <Styled.MenuShowWrapper
-            open={menuOpen}
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            {menuOpen ? (
-              <i className="fa fa-angle-left fa-4x" aria-hidden="true" />
-            ) : (
-              <i className="fa fa-angle-right fa-4x" aria-hidden="true" />
-            )}
-          </Styled.MenuShowWrapper>
           <Styled.Lesson>
+            <Styled.MenuShowWrapper
+              open={menuOpen}
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              {menuOpen ? (
+                <i className="fa fa-angle-left fa-4x" aria-hidden="true" />
+              ) : (
+                <i className="fa fa-angle-right fa-4x" aria-hidden="true" />
+              )}
+            </Styled.MenuShowWrapper>
             <CardTitle margin="0 0 0 0" text="Lesson Title" />
             <Styled.DesktopVideoWrapper>
               {activeLesson && activeLesson.videoLink ? (
                 <iframe
-                  width="560"
-                  height="315"
+                  width="100%"
+                  height="400px"
                   src={activeLesson.videoLink}
                   frameborder="0"
                   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"

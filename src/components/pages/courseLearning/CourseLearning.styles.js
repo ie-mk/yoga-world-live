@@ -104,61 +104,62 @@ const CheckBox = styled.input`
 const ContentWrapper = styled.div`
   position: relative;
   flex: 1;
+  width: 100%;
 `;
 
 export const ViewCourseMenuWrapper = styled.div`
   position: relative;
   margin-right: ${spacing.xl};
-  width: ${({ open }) => (open ? '400px' : 0)};
+  width: ${({ open }) => (open ? '300px' : 0)};
   display: flex;
   transition: all 0.5s ease-in;
   justify-content: center;
   z-index: 1;
-  overflow: hidden;
 
   ${media.belowTabletLarge`
     position: absolute;
     margin-right: 0;
-    width: ${({ open }) => (open ? '400px' : 0)};
-    left:-70px;
+    width: ${({ open }) => (open ? '300px' : 0)};
+    top: 150px;
+    left: 0;
   `}
 `;
 
 export const MenuShowWrapper = styled.div`
   position: absolute;
-  top: 152px;
+  top: 0px;
   left: -30px;
   background: transparent linear-gradient(180deg, #2385d9 0%, #0ec9b0 100%) 0%
     0% no-repeat padding-box;
-  width: 49px;
-  height: 70px;
-  border-radius: 0 20px 20px 0;
-  padding: 10px;
+  width: 25px;
+  height: 45px;
+  border-radius: 0 5px 5px 0;
+  padding: 10px 0 0 7px;
   transition: all 0.5s ease-in;
   z-index: 1;
 
+  i {
+    font-size: 25px;
+  }
+
   ${media.belowTabletLarge`
-     margin-top: 0;
-     top: 150px;
-     left: ${({ open }) => (open ? '267px' : '-35px')};
-     width: 30px;
-  height: 60px;
-  border-radius: 0 10px 10px 0;
-  padding:5px;
+    margin-top: 0;
+    top: 150px;
+    left: ${({ open }) => (open ? '264px' : '-36px')};
+    border-radius: 0 10px 10px 0;
 
   `}
 `;
 
 export const CourseMenu = styled.div`
   opacity: ${({ open }) => (open ? '1' : '0')};
-  width: ${({ open }) => (open ? 'auto' : '0')};
-  padding: 30px 14px 40px 30px;
+  width: ${({ open }) => (open ? '100%' : '0')};
+  padding: 27px;
   background-color: #1e2540;
   border-radius: 10px;
   transition: all 0.5s ease-in;
   ${media.belowTabletLarge`
-  padding: 15px 15px 20px 22px;
-
+    padding: 15px 15px 20px 22px;
   `}
 `;
 
