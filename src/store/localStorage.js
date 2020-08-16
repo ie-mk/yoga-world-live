@@ -1,6 +1,6 @@
 import Immutable from 'seamless-immutable';
 
-const localStorageName = 'code-school-storage';
+const localStorageName = 'yoga-world-live';
 
 export const loadState = persistWhitelist => {
   try {
