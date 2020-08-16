@@ -257,6 +257,9 @@ function* fetchCourse({ payload: courseId }) {
 
   try {
     const course = yield api.resource.fetchResource(`courses/${courseId}`);
+    // clean leaking chapters which comes only partially for unknown reason
+    delete course.chapters;
+
     yield put(resourceActions.fetchCourse.success({ [courseId]: course }));
   } catch (err) {
     yield put(resourceActions.fetchCourse.failure(err));
@@ -376,6 +379,12 @@ function* fetchCourseChapters({ payload: courseId }) {
       `courses/${courseId}/chapters`,
     );
 
+    // clean leaking lessons which comes only partially for unknown reason
+    Object.keys(chapters).forEach(key => {
+      const chapter = chapters[key];
+      delete chapter.lessons;
+    });
+
     yield put(
       resourceActions.fetchCourseChapters.success({
         courseId,
@@ -390,13 +399,17 @@ function* fetchCourseChapters({ payload: courseId }) {
 function* fetchChapter({ payload: chapterId }) {
   const courseId = yield select(getEditingCourseId);
   try {
-    const result = yield api.resource.fetchResource(
+    const chapter = yield api.resource.fetchResource(
       `courses/${courseId}/chapters/${chapterId}`,
     );
+
+    // clean leaking lessons which comes only partially for unknown reason
+    delete chapter.lessons;
+
     yield put(
       resourceActions.fetchChapter.success({
         courseId,
-        data: { [chapterId]: result },
+        data: { [chapterId]: chapter },
       }),
     );
   } catch (err) {

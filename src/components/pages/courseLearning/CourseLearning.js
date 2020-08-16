@@ -26,8 +26,16 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
   const [menuOpen, setMenuOpen] = useState(true);
 
   useEffect(() => {
-    dispatch(resourceActions.fetchCourse.request(courseId));
-  }, [courseId]);
+    if (!course) {
+      dispatch(resourceActions.fetchCourse.request(courseId));
+    }
+  }, [courseId, course]);
+
+  useEffect(() => {
+    if (course && !course.chapters) {
+      dispatch(resourceActions.fetchCourseChapters.request(courseId));
+    }
+  }, [courseId, course]);
 
   const [activeChapterIdx, setActiveChapterIdx] = useState(0);
 
@@ -42,7 +50,7 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
         return chapterClone;
       })
       .sort((a, b) => a.sequenceNr - b.sequenceNr);
-  }, [course]);
+  }, [chapters]);
 
   const lessonsArr = useMemo(
     () => {
@@ -60,6 +68,7 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
     },
     activeChapterIdx,
     chaptersArr,
+    chapters,
   );
 
   const [activeLessonIdx, setActiveLessonIdx] = useState(null);
@@ -75,6 +84,10 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
   const activeLesson =
     lessonsArr && activeLessonIdx !== null && lessonsArr[activeLessonIdx];
 
+  const bla = course;
+  const b = courseId;
+  const lessArr = lessonsArr;
+  const chaptArr = chaptersArr;
   debugger;
 
   return (
@@ -93,10 +106,10 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
         <div>
           <Styled.ViewCourseMenuWrapper open={menuOpen}>
             <Styled.CourseMenu open={menuOpen}>
-              <CardTitle text="Content" />
+              <CardTitle text="Content:" />
               {chapters &&
                 Object.keys(chapters)
-                  .reverse()
+                  .sort((a, b) => a.sequenceNr - b.sequenceNr)
                   .map((chapterId, i) => {
                     return (
                       <CourseHomeChapters
