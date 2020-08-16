@@ -73,7 +73,9 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
   if (!course) return null;
 
   const activeLesson =
-    lessonsArr && activeLessonIdx && lessonsArr[activeLessonIdx];
+    lessonsArr && activeLessonIdx !== null && lessonsArr[activeLessonIdx];
+
+  debugger;
 
   return (
     <CenteredFlexContainer>
@@ -123,22 +125,14 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
             <CardTitle margin="0 0 0 0" text="Lesson Title" />
             <Styled.DesktopVideoWrapper>
               {activeLesson && activeLesson.videoLink ? (
-                // <iframe
-                //   width="560"
-                //   height="315"
-                //   src={activeLesson.videoLink}
-                //   frameborder="0"
-                //   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                //   allowfullscreen
-                // />
                 <iframe
                   width="560"
                   height="315"
-                  src="https://www.youtube.com/embed/v7AYKMP6rOE"
-                  frameBorder="0"
+                  src={activeLesson.videoLink}
+                  frameborder="0"
                   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
+                  allowfullscreen
+                />
               ) : null}
             </Styled.DesktopVideoWrapper>
             {/*<Styled.LessonContent>*/}
