@@ -13,6 +13,7 @@ import moment from 'moment';
 import { getUID, getEditingCourseId, getCourses } from './selectors';
 import { resourceActions } from './actions';
 import { IS_SERVER } from '../constants';
+import { cloneDeep } from 'lodash';
 
 function* fetchUserPermissions({ payload }) {
   try {
@@ -237,6 +238,13 @@ function* fetchCourses({ payload = {} }) {
       'courses',
       payload.queries,
     );
+
+    // clean leaking chapters which comes only partially for unknown reason
+    Object.keys(courses).forEach(key => {
+      const course = courses[key];
+      delete course.chapters;
+    });
+
     yield put(resourceActions.fetchCourses.success(courses));
   } catch (err) {
     yield put(resourceActions.fetchCourses.failure(err));
