@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ContainerBase } from '../../../foundation';
-import AddNewCourse from './editCourse/EditCourse';
+import EditCourse from './editCourse/EditCourse';
 import CenteredFlexContainer from '../../../foundation/CenteredFlexContainer';
 import Styled from './DashboardCourses.styles';
 import CoursesTable from './coursesTable/CoursesTable';
@@ -48,7 +48,7 @@ const DashboardCourses = ({ dispatch, loading, editableCourseId }) => {
           setActiveTab={setActiveTab}
         />
       ) : null}
-      {showNew && editableCourseId ? <AddNewCourse /> : null}
+      {showNew && editableCourseId ? <EditCourse /> : null}
     </>
   );
 };

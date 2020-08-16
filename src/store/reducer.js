@@ -260,11 +260,11 @@ export const courseReducer = handleActions(
     ...getAsyncReducers({ action: resourceActions.updateChapter }),
 
     ...getAsyncReducers({
-      action: resourceActions.fetchChapters,
+      action: resourceActions.fetchCourseChapters,
       exclude: { success: true },
     }),
 
-    [resourceActions.fetchChapters.success.type]: (
+    [resourceActions.fetchCourseChapters.success.type]: (
       state,
       { payload: { courseId, chapters } },
     ) => {

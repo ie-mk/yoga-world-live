@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 
 let CourseLessonsContainer = ({
   dispatch,
-  data: lessons = {},
+  lessons = {},
   chapterId,
   courseId,
 }) => {
@@ -25,6 +25,8 @@ let CourseLessonsContainer = ({
 
   const [editMode, setEditMode] = useState(false);
   const [activeLessonId, setActiveLessonId] = useState(Object.keys(lessons)[0]);
+
+  console.log('----lessons: ', lessons);
 
   return (
     <Styled.Wrapper>

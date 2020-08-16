@@ -65,14 +65,15 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
   const [activeLessonIdx, setActiveLessonIdx] = useState(null);
 
   useEffect(() => {
-    if (!activeLessonIdx && lessonsArr.length) {
+    if (!activeLessonIdx && lessonsArr && lessonsArr.length) {
       setActiveLessonIdx(0);
     }
   }, [lessonsArr]);
 
   if (!course) return null;
 
-  const activeLesson = lessonsArr[activeLessonIdx];
+  const activeLesson =
+    lessonsArr && activeLessonIdx && lessonsArr[activeLessonIdx];
 
   return (
     <CenteredFlexContainer>

@@ -262,7 +262,7 @@ function* createCourse({ payload = {} }) {
     ...payload.data,
     ownerId: uid,
     published: false,
-    edited: moment().format(),
+    editedOnDate: moment().format(),
   };
   try {
     const courseId = yield api.resource.createResource('courses', data);
@@ -279,7 +279,7 @@ function* updateCourse({ payload }) {
   try {
     yield api.resource.updateResource(`courses/${courseId}`, {
       ...payload.data,
-      edited: moment().format(),
+      editedOnDate: moment().format(),
     });
     yield put(resourceActions.updateCourse.success());
     yield fetchCourse({ payload: courseId });
@@ -293,7 +293,7 @@ function* updateCourseEditedTime() {
 
   try {
     yield api.resource.updateResource(`courses/${courseId}`, {
-      edited: moment().format(),
+      editedOnDate: moment().format(),
     });
     yield put(resourceActions.updateCourse.success());
     yield fetchCourse({ payload: courseId });
@@ -361,21 +361,21 @@ function* deleteTask({ payload: docId }) {
 
 // ============================ CHAPTERS =====================================
 
-function* fetchChapters() {
-  const courseId = yield select(getEditingCourseId);
+function* fetchCourseChapters({ payload: courseId }) {
+  // const courseId = yield select(getEditingCourseId);
   try {
     const chapters = yield api.resource.fetchResources(
       `courses/${courseId}/chapters`,
     );
 
     yield put(
-      resourceActions.fetchChapters.success({
+      resourceActions.fetchCourseChapters.success({
         courseId,
         chapters,
       }),
     );
   } catch (err) {
-    yield put(resourceActions.fetchChapters.failure(err));
+    yield put(resourceActions.fetchCourseChapters.failure(err));
   }
 }
 
@@ -759,7 +759,10 @@ function* rootSaga() {
   ]);
   // ========================== CHAPTERS ===============================
   yield all([
-    takeEvery(resourceActions.fetchChapters.request.type, fetchChapters),
+    takeEvery(
+      resourceActions.fetchCourseChapters.request.type,
+      fetchCourseChapters,
+    ),
   ]);
   yield all([
     takeLatest(resourceActions.fetchChapter.request.type, fetchChapter),

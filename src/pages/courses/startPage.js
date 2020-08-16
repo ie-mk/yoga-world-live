@@ -3,23 +3,32 @@ import ErrorBoundary from '../../components/ErrorBoundary';
 import { useRouter } from 'next/router';
 import PageContent from '../../components/foundation/PageContent';
 import { connect } from 'react-redux';
-import { getCourses, getUserProfile } from '../../store/selectors';
+import {
+  getCourses,
+  getEditingCourseId,
+  getUserProfile,
+} from '../../store/selectors';
 import CourseHeader from '../../components/pages/dashboard/courses/courseHeader/CourseHeader';
 import CourseOutline from '../../components/pages/dashboard/courses/courseOutline/CourseOutline';
 import needsLoginWrapper from '../../utils/needsLoginWrapper';
 import SpinnerLarge from '../../components/foundation/spinner/SpinnerLarge';
+import { resourceActions } from '../../store/actions';
 
-const StartPage = ({ courses, userProfile, loading }) => {
+const StartPage = ({ dispatch, courses, userProfile, loading }) => {
   const {
     query: { courseId },
   } = useRouter();
+
+  useEffect(() => {
+    dispatch(resourceActions.fetchCourseChapters.request(courseId));
+  }, []);
 
   const course = courses[courseId];
 
   if (!course) return null;
 
   let courseTitle = course.title;
-  courseTitle = courseTitle.toUpperCase();
+  courseTitle = courseTitle && courseTitle.toUpperCase();
 
   const chapters = course.chapters;
 
@@ -42,4 +51,4 @@ const mapStateToProps = state => ({
   userProfile: getUserProfile(state),
 });
 
-export default connect(mapStateToProps)(StartPage);
+export default connect(mapStateToProps)(needsLoginWrapper(StartPage));

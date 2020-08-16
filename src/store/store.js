@@ -19,7 +19,6 @@ const composeEnhancers =
 
 const persistWhitelist = {
   user: true,
-  courses: true,
   learningPaths: true,
 };
 

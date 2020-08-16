@@ -44,13 +44,13 @@ class MyApp extends App {
         </Head>
         <Provider store={store}>
           <SetLanguageFromStoreWrapper>
-            <ScrollTracker>
-              {showAppbar ? <AppBar /> : null}
-              <main className={showAppbar ? 'darkTheme' : ''}>
-                <Component {...pageProps} />
-              </main>
-              {showAppbar ? <Footer /> : null}
-            </ScrollTracker>
+            {/*<ScrollTracker>*/}
+            {showAppbar ? <AppBar /> : null}
+            <main className={showAppbar ? 'darkTheme' : ''}>
+              <Component {...pageProps} />
+            </main>
+            {showAppbar ? <Footer /> : null}
+            {/*</ScrollTracker>*/}
           </SetLanguageFromStoreWrapper>
         </Provider>
         {/*</ThemeProvider>*/}

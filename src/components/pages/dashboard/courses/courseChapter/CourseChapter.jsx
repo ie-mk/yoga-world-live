@@ -14,14 +14,15 @@ const CourseChapter = ({ dispatch, courseId, chapterId, data, idx }) => {
   const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
-    dispatch(
-      resourceActions.fetchLessons.request({
-        courseId,
-        chapterId,
-        //forceFetch: true,
-      }),
-    );
-  }, []);
+    expanded &&
+      dispatch(
+        resourceActions.fetchLessons.request({
+          courseId,
+          chapterId,
+          //forceFetch: true,
+        }),
+      );
+  }, [expanded]);
 
   const handleChapterDelete = () => {
     if (confirm('Are you sure you want to delete this chapter?')) {
@@ -98,7 +99,7 @@ const CourseChapter = ({ dispatch, courseId, chapterId, data, idx }) => {
         <CourseLessonsContainer
           courseId={courseId}
           chapterId={chapterId}
-          data={lessons}
+          lessons={lessons}
         />
       </Styled.Content>
     </ContainerBase>

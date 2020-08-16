@@ -11,8 +11,8 @@ const CourseOutline = ({ chapters, courseId }) => {
       <ContainerBase marginTop="xl">
         {chapters &&
           Object.keys(chapters)
-            .reverse()
-            .map((chapterId, i) => {
+            .sort((a, b) => a.sequenceNr - b.sequenceNr)
+            .map(chapterId => {
               return (
                 <ChapterContent
                   key={chapterId}
