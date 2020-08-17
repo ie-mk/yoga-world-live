@@ -79,13 +79,13 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
   const activeLesson =
     lessonsArr && activeLessonIdx !== null && lessonsArr[activeLessonIdx];
 
-  // const bla = course;
-  // const b = courseId;
-  // const lessArr = lessonsArr;
-  // const chaptArr = chaptersArr;
-  // const actIdx = activeLessonIdx;
-  // const chapIdx = activeChapterIdx;
-  // debugger;
+  const bla = course;
+  const b = courseId;
+  const lessArr = lessonsArr;
+  const chaptArr = chaptersArr;
+  const actIdx = activeLessonIdx;
+  const chapIdx = activeChapterIdx;
+  debugger;
 
   return (
     <CenteredFlexContainer width="100%" marginTop="xxl">
@@ -107,13 +107,18 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
               {chapters &&
                 Object.keys(chapters)
                   .sort((a, b) => a.sequenceNr - b.sequenceNr)
-                  .map((chapterId, i) => {
+                  .map((chapterId, idx) => {
                     return (
                       <CourseHomeChapters
                         key={chapterId}
                         chapterId={chapterId}
                         courseId={courseId}
                         chapters={chapters}
+                        setActiveLessonIdx={setActiveLessonIdx}
+                        activeLessonIdx={activeLessonIdx}
+                        chapterIdx={idx}
+                        setActiveChapterIdx={setActiveChapterIdx}
+                        activeChapterIdx={activeChapterIdx}
                       />
                     );
                   })}

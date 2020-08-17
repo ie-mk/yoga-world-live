@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import media from '../../../../foundation/media';
+import { lightenDarkenColor } from '../../../../../utils/colors';
 
 const LessonWrapper = styled.div`
   display: flex;
@@ -8,6 +9,10 @@ const LessonWrapper = styled.div`
   i {
     color: #0ec9b0;
   }
+  cursor: pointer;
+  background-color: ${({ active }) => (active ? 'gray' : '')};
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
 `;
 
 const ChapterWrapper = styled.div`
