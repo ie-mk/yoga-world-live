@@ -170,7 +170,6 @@ let CourseAddNew = () => {
                     backgroundColor="white"
                     width="70%"
                   />
-                  <Styled.Upload marginTop="xxl">upload</Styled.Upload>
                 </ContainerBase>
                 <AdminInput
                   name="chapter01Title"
