@@ -28,8 +28,7 @@ const borderRadiusMap = {
 };
 
 const backGroundMap = {
-  primary:
-    'transparent linear-gradient(90deg, #2385D9 0%, #0EC9B0 100%) 0% 0% no-repeat padding-box;',
+  primary: '#9DBE55',
   button: 'gray',
 };
 
@@ -38,12 +37,12 @@ const colorMap = {
   warning: colors.button.warning,
   danger: 'red',
   action: 'black',
-  secondary: 'white',
+  secondary: '#9DBE55',
   button: 'black',
 };
 
 const borderMap = {
-  secondary: '2px solid white',
+  secondary: '2px solid #9DBE55',
   action: '1px solid #909090',
   button: '1px solid #909090',
 };

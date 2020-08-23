@@ -20,18 +20,23 @@ const ChooseLearningPath = ({ dispatch, learningPaths }) => {
   return (
     <CenteredFlexContainer
       id="chooseYourYoga"
-      marginTop="xxl"
+      marginTop="xxxxl"
       marginBottom="xxxxxl"
       mediaConfig={{
         belowDesktop: {
           marginBottom: 'lg',
+          marginTop: 'xxl',
         },
       }}
     >
-      <SectionTitle text="Choose Your Yoga" />
-      <BodyText margin="0 0 40px 0">
-        Learning paths guide you through .......
-      </BodyText>
+      <SectionTitle
+        noMargin={true}
+        text="Choose Your Yoga"
+        marginBottom="xxl"
+      />
+      {/*<BodyText margin="0 0 40px 0">*/}
+      {/*  Learning paths guide you through .......*/}
+      {/*</BodyText>*/}
       <Grid
         columns="1fr"
         mediaConfig={{

@@ -5,7 +5,7 @@ import media from '../foundation/media';
 
 const Wrapper = styled.div`
   display: flex;
-  color: ${colors.white};
+  color: white;
   width: 100%;
   height: 250px;
   ${media.belowTabletLarge`

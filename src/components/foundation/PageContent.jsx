@@ -16,6 +16,7 @@ const Content = styled.div`
   padding: 0 ${spacing.lg};
   margin-top: ${({ hasDefaultMarginTop }) =>
     hasDefaultMarginTop ? '100px' : ''};
+  color: ${colors.text.secondary};
 `;
 
 const PageContent = ({ children, hasDefaultMarginTop, maxWidth }) => {

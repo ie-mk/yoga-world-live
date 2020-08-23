@@ -29,7 +29,7 @@ const HeroFront = () => {
   return (
     <Styled.Wrapper>
       <ResponsiveImage
-        src="/img/yoga-girls.svg"
+        src=""
         height="100vh"
         width="100%"
         position="absolute"
@@ -45,7 +45,7 @@ const HeroFront = () => {
           <HeroTitle text="YOGA WORLD PLATFORM" />
         </Styled.HeaderWrapper>
         <Styled.TextWrapper>
-          <BodyText>Welcome ....</BodyText>
+          <div>THE SMARTER WAY TO LEARN ANYTHING FROM HOME</div>
         </Styled.TextWrapper>
         <Styled.ButtonWrapper>
           <Button size="lg" type="primary" onClick={goToCourses}>

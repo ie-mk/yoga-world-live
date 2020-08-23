@@ -8,8 +8,7 @@ export const background = {
   DashboardMenuItemBackgroundColor: '#4A6A8F',
   cardBackground:
     'transparent linear-gradient(180deg, #293150 0%, #1E2540 100%) 0% 0% no-repeat padding-box',
-  footer:
-    'transparent linear-gradient(180deg, #1F9888 0%, #2385D9 100%) 0% 0% no-repeat padding-box',
+  footer: '#9DBE55 0% 0% no-repeat padding-box',
 };
 export const boxShadow = {
   DashboardBoxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
@@ -71,8 +70,8 @@ export const borders = {
 };
 
 export const colors = {
-  primary: 'gray',
-  secondary: 'blue',
+  primary: '#FCE0D0C7',
+  secondary: '#9DBE55',
   danger: 'red',
   warning: 'darkorange',
   success: 'green',
@@ -80,7 +79,7 @@ export const colors = {
   spinner: '#f3f3f3',
   header: '#1A2036',
   pink: '#C86DD7',
-  white: '#FFFFFF',
+  white: '#A29F9E',
   black: '#000000',
   blue: '#7D8399',
   bluelight: '#2385D9',
@@ -92,20 +91,21 @@ export const colors = {
     primary: '#414141',
   },
   text: {
-    primary: '#D5D5D5',
+    primary: '#A29F9E',
+    secondary: '#455325',
   },
   background: {
     primary: '#1A2036',
     secondary: '#191F37',
     SteelBlue: '#2385D92B',
     gradient:
-      'transparent linear-gradient(180deg, #1A2036 0%, #191F37 51%, #191F37 100%) 0% 0% no-repeat padding-box',
+      'transparent linear-gradient(180deg, #FDF1EA 0%, #FCE0D0C7 51%, #FCE0D0C7 100%) 0% 0% no-repeat padding-box',
     decorprimary:
-      'transparent linear-gradient(90deg, #2385D9 0%, #0EC9B0 100%) 0% 0% no-repeat padding-box;',
+      'transparent linear-gradient(180deg, #FDF1EA 0%, #FCE0D0C7 51%, #FCE0D0C7 100%) 0% 0% no-repeat padding-box',
     violetprimary:
-      'transparent linear-gradient(180deg, #293150 0%, #1E2540 100%) 0% 0% no-repeat padding-box',
+      'transparent linear-gradient(180deg, #FDF1EA 0%, #FCE0D0C7 51%, #FCE0D0C7 100%) 0% 0% no-repeat padding-box',
     violetsecondary:
-      'transparent linear-gradient(90deg, #293150 0%, #1E2540 100%) 0% 0% no-repeat padding-box',
+      'transparent linear-gradient(180deg, #FDF1EA 0%, #FCE0D0C7 51%, #FCE0D0C7 100%) 0% 0% no-repeat padding-box',
   },
   borders: {
     primary: '',
@@ -114,10 +114,10 @@ export const colors = {
     enabled: 'black',
   },
   button: {
-    background: '#ffffff',
+    background: '##9DBE55',
   },
   defaultButton: {
-    background: 'orange',
+    background: '#9DBE55',
   },
   modal: {
     border: '#ccc',

@@ -11,7 +11,7 @@ const LinkWrapper = styled.div`
   font-size: ${fontSizeMap.h5};
   font-weight: 600;
   a {
-    color: white;
+    color: #455325;
     text-decoration: none;
     display: inline-block;
     margin-right: ${({ noMargin }) => (noMargin ? '0' : spacing.xxl)};

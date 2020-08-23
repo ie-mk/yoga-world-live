@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { fontSizeMap } from '../../../constants/styles';
+import { colors, fontSizeMap } from '../../../constants/styles';
 import withSpacing from '../withSpacing';
 import media from '../media';
 
 const StyledH3 = styled.h3`
+  color: ${colors.text.secondary};
   font-size: ${fontSizeMap.h3};
   z-index: 1;
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'left')};

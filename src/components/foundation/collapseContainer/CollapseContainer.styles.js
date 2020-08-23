@@ -15,7 +15,7 @@ const HeaderWrapper = styled.div`
   padding: ${spacing.lg};
   font-weight: 500;
   border-radius: ${spacing.xls};
-  background: ${colors.background.violetsecondary};
+  background: transparent linear-gradient(180deg, #e8ddd7 0%, #bcaba2 100%);
 `;
 
 const Header = styled.div`
@@ -28,7 +28,7 @@ const StyledHeaderTitle = styled.header`
 `;
 
 const Wrapper = styled.div`
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.05);
+  //box-shadow: 0 2px 0 rgba(0, 0, 0, 0.05);
   //background-color: ${colors.white};
   margin-bottom: ${spacing.sm};
   &:first-child {

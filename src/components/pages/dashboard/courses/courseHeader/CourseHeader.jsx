@@ -17,9 +17,7 @@ const Label = ({ keyname, value }) => {
       paddingBottom="md"
       alignItems="center"
     >
-      <Styled.Label color="bluelight" fontSize="h5">
-        {keyname}:
-      </Styled.Label>
+      <Styled.Label fontSize="h5">{keyname}:</Styled.Label>
       <Styled.Label fontSize="h4" fontWeight="500">
         {value}
       </Styled.Label>
@@ -46,17 +44,17 @@ const CourseHeader = ({ title, course, courseId }) => {
 
   return (
     <Styled.Wrapper>
-      <ResponsiveImage
-        src="/img/Background.png"
-        height="100%"
-        width="100%"
-        position="absolute"
-        mediaConfig={{
-          belowTabletLarge: {
-            backgroundImage: 'url("/img/mobile/Background.png")',
-          },
-        }}
-      />
+      {/*<ResponsiveImage*/}
+      {/*  src="/img/Background.png"*/}
+      {/*  height="100%"*/}
+      {/*  width="100%"*/}
+      {/*  position="absolute"*/}
+      {/*  mediaConfig={{*/}
+      {/*    belowTabletLarge: {*/}
+      {/*      backgroundImage: 'url("/img/mobile/Background.png")',*/}
+      {/*    },*/}
+      {/*  }}*/}
+      {/*/>*/}
       <Styled.Content>
         <Styled.HeaderWrapper>
           <Styled.StyledHeader fontSize="h2" mobileFontSize="h4">
@@ -78,9 +76,9 @@ const CourseHeader = ({ title, course, courseId }) => {
           gridGap={spacing.xl}
         >
           <Label keyname="Author" value="Stephen Segmister" />
-          <Label keyname="Student Rating" value={Rating} />
+          {/*<Label keyname="Student Rating" value={Rating} />*/}
           <Label keyname="Level" value={course.level} />
-          <Label keyname="Content" value={course.numberOfChapters} />
+          {/*<Label keyname="Content" value={course.numberOfChapters} />*/}
           <Label keyname="Duration" value={course.duration} />
           <Button
             type="primary"
@@ -106,43 +104,43 @@ const CourseHeader = ({ title, course, courseId }) => {
             }}
             gridGap={spacing.xxxxl}
           >
-            <Styled.ContentWrapper>
-              <Styled.StyledHeader fontSize="h3" mobileFontSize="h5">
-                What you will learn{' '}
-              </Styled.StyledHeader>
-              <Styled.ItemsWrapper>
-                {willLearnArr.map((item, i) => {
-                  return (
-                    <GreenCheckBoxWithText
-                      key={i}
-                      label={item}
-                      color={colors.text.primary}
-                      fontSize="text"
-                      noMargin={true}
-                    />
-                  );
-                })}
-              </Styled.ItemsWrapper>
-            </Styled.ContentWrapper>
-            <Styled.ContentWrapper>
-              <Styled.StyledHeader fontSize="h3" mobileFontSize="h5">
-                Requirements{' '}
-              </Styled.StyledHeader>
-              <Styled.ItemsWrapper>
-                {prereqArr.map((item, i) => {
-                  return (
-                    <GreenCheckBoxWithText
-                      key={i}
-                      label={item}
-                      color={colors.text.primary}
-                      fontSize="text"
-                      noMargin={true}
-                      padding="sm"
-                    />
-                  );
-                })}
-              </Styled.ItemsWrapper>
-            </Styled.ContentWrapper>
+            {/*<Styled.ContentWrapper>*/}
+            {/*  <Styled.StyledHeader fontSize="h3" mobileFontSize="h5">*/}
+            {/*    What you will learn{' '}*/}
+            {/*  </Styled.StyledHeader>*/}
+            {/*  <Styled.ItemsWrapper>*/}
+            {/*    {willLearnArr.map((item, i) => {*/}
+            {/*      return (*/}
+            {/*        <GreenCheckBoxWithText*/}
+            {/*          key={i}*/}
+            {/*          label={item}*/}
+            {/*          color={colors.text.primary}*/}
+            {/*          fontSize="text"*/}
+            {/*          noMargin={true}*/}
+            {/*        />*/}
+            {/*      );*/}
+            {/*    })}*/}
+            {/*  </Styled.ItemsWrapper>*/}
+            {/*</Styled.ContentWrapper>*/}
+            {/*<Styled.ContentWrapper>*/}
+            {/*  <Styled.StyledHeader fontSize="h3" mobileFontSize="h5">*/}
+            {/*    Requirements{' '}*/}
+            {/*  </Styled.StyledHeader>*/}
+            {/*  <Styled.ItemsWrapper>*/}
+            {/*    {prereqArr.map((item, i) => {*/}
+            {/*      return (*/}
+            {/*        <GreenCheckBoxWithText*/}
+            {/*          key={i}*/}
+            {/*          label={item}*/}
+            {/*          color={colors.text.primary}*/}
+            {/*          fontSize="text"*/}
+            {/*          noMargin={true}*/}
+            {/*          padding="sm"*/}
+            {/*        />*/}
+            {/*      );*/}
+            {/*    })}*/}
+            {/*  </Styled.ItemsWrapper>*/}
+            {/*</Styled.ContentWrapper>*/}
           </Grid>
         </ContainerBase>
       </Styled.Content>

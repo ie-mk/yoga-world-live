@@ -54,8 +54,7 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
     >
       <Styled.Wrapper id="appBar">
         <Logo
-          // imgSrc="/logo/logo_with_name.png"
-          title="YOGA WORLD"
+          imgSrc="/logo/LOGO_DARK.svg"
           width="200px"
           height="58px"
           margin="20px 40px 0 0"
@@ -110,18 +109,18 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
                   href="/login"
                   text={t('LOGIN')}
                 />
-                <Button
-                  onClick={() =>
-                    router.push('/joinus', '/joinus', { shallow: true })
-                  }
-                  type="primary"
-                  padding="17px 64px"
-                  fontSize="lg"
-                  margin="0"
-                  mobileSameSize={true}
-                >
-                  JOIN
-                </Button>
+                {/*<Button*/}
+                {/*  onClick={() =>*/}
+                {/*    router.push('/joinus', '/joinus', { shallow: true })*/}
+                {/*  }*/}
+                {/*  type="primary"*/}
+                {/*  padding="17px 64px"*/}
+                {/*  fontSize="lg"*/}
+                {/*  margin="0"*/}
+                {/*  mobileSameSize={true}*/}
+                {/*>*/}
+                {/*  JOIN*/}
+                {/*</Button>*/}
               </>
             )}
             {/*<select*/}

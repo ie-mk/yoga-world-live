@@ -31,8 +31,8 @@ const Footer = () => {
         >
           <Styled.Column>
             <Logo
-              //imgSrc="/logo/logo-footer-with-name.png"
-              title="YOGA WORLD"
+              imgSrc="/logo/LOGO_BRIGHT.svg"
+              //title="YOGA WORLD"
               width="210px"
               height="50px"
             />

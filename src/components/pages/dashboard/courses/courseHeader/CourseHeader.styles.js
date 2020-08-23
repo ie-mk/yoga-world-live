@@ -8,6 +8,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   padding: 0 ${spacing.xl};
+  color: ${colors.text.secondary};
 `;
 
 const Content = styled.div`
@@ -45,7 +46,7 @@ export const Label = styled.div`
   ${media.belowTabletLarge`
     font-size: ${fontSizeMap.textMobile};
   `}
-  color: ${({ color }) => (color ? colors[color] : colors.text.primary)};
+  color: ${({ color }) => (color ? colors[color] : colors.text.secondary)};
   font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : '')};
 `;
 

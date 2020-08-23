@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { fontSizeMap, spacing } from '../../../constants/styles';
+import { colors, fontSizeMap, spacing } from '../../../constants/styles';
 import media from '../../foundation/media';
 
 const Wrapper = styled.div`
@@ -30,7 +30,7 @@ const ButtonWrapper = styled.div`
 `;
 
 const HeaderWrapper = styled.div`
-  margin: 150px 50px 60px;
+  margin: 150px 50px 20px;
   text-align: center;
 
   ${media.aboveTablet`
@@ -39,12 +39,15 @@ const HeaderWrapper = styled.div`
 `;
 
 const TextWrapper = styled.div`
+  max-width: 500px;
   margin: 0 30px 40px;
   text-align: center;
-
+  font-size: 28px;
+  font-weight: 600;
+  color: ${colors.text.secondary};
   ${media.aboveTablet`
     margin: auto;
-  `}
+  `};
 `;
 
 export default {
