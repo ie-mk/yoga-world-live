@@ -55,7 +55,6 @@ const Level = ({ courses, learningPathData, heading }) => {
                   }
                   title={course.title}
                   subtitle={course.level}
-                  background={colors.background.violetprimary}
                   onClick={() => toCourseStartPage(courseId, course.title)}
                 />
               );

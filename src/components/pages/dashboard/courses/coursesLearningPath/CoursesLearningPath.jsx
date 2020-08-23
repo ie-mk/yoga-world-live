@@ -10,23 +10,23 @@ const CoursesLearningPath = ({ title, descr, img }) => {
     <Styled.Wrapper>
       <ResponsiveImage
         src={img || '/img/sitting.png'}
-        height="100vh"
-        width="100%"
+        height="32vh"
+        width="50%"
         position="absolute"
         backgroundSize="contain"
         mediaConfig={{
           belowTabletLarge: {
-            backgroundImage: 'url("/img/sitting.png")',
+            // backgroundImage: 'url("/img/sitting.png")',
           },
         }}
       />
       <Styled.Content>
         <Styled.HeaderWrapper>
-          <SectionTitle text={title} textAlign="center" />
+          <SectionTitle text={title} textAlign="center" marginTop />
         </Styled.HeaderWrapper>
-        <Styled.TextWrapper>
-          <BodyText>{descr}</BodyText>
-        </Styled.TextWrapper>
+        {/*<Styled.TextWrapper>*/}
+        {/*  <BodyText>{descr}</BodyText>*/}
+        {/*</Styled.TextWrapper>*/}
       </Styled.Content>
     </Styled.Wrapper>
   );

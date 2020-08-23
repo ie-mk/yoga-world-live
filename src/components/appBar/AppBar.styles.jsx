@@ -55,7 +55,7 @@ const LinkWrapper = styled.div`
     padding: ${({ showMobileMenu }) =>
       showMobileMenu ? '50px 0 40px 0' : '0'};
     left: 0;
-    background: transparent linear-gradient(180deg, #222A48 0%, #191F37 100%) 0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(180deg, #d6eaa6 0%, #758944 100%) 0% 0% no-repeat padding-box;
   `}
 `;
 

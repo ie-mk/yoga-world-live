@@ -87,7 +87,6 @@ const ChooseLearningPath = () => {
                 imageSrc={Data.image}
                 title={Data.title}
                 subtitle={Data.subtitle}
-                background="transparent linear-gradient(180deg, #293150 0%, #1E2540 100%) 0% 0% no-repeat padding-box"
               />
             );
           })}
@@ -118,7 +117,6 @@ const ChooseLearningPath = () => {
                 imageSrc={Data.image}
                 title={Data.title}
                 subtitle={Data.subtitle}
-                background="transparent linear-gradient(180deg, #293150 0%, #1E2540 100%) 0% 0% no-repeat padding-box"
               />
             );
           })}

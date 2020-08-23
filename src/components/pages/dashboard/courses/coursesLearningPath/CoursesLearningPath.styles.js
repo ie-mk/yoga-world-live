@@ -10,6 +10,9 @@ const Wrapper = styled.div`
   align-items: center;
   padding: 0 ${spacing.lg};
   //margin-bottom: ${spacing.xxl};
+  ${media.belowTabletLarge`
+    height: 30vh;
+  `}
 `;
 
 const Content = styled.div`
@@ -24,10 +27,7 @@ const HeaderWrapper = styled.div`
   margin: 150px 50px 60px;
   text-align: center;
   ${media.aboveTablet`
-    margin: auto;
-  `}
-  ${media.belowTabletLarge`
-    margin: auto;
+    margin-top: 300px;
   `}
 `;
 

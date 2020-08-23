@@ -11,7 +11,10 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background:${({ background }) => (background ? background : '')};
+  background:${({ background }) =>
+    background
+      ? background
+      : 'linear-gradient(180deg,#fce0d0c7 0%,#9dbe55 100%)'};
 
   align-items: center;
   height: 300px;
