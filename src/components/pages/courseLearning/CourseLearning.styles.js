@@ -127,10 +127,9 @@ export const ViewCourseMenuWrapper = styled.div`
 
 export const MenuShowWrapper = styled.div`
   position: absolute;
-  top: 0px;
+  top: 20px;
   left: -30px;
-  background: transparent linear-gradient(180deg, #2385d9 0%, #0ec9b0 100%) 0%
-    0% no-repeat padding-box;
+  background: linear-gradient(180deg, #bcaba2 0%, #917f75 100%);
   width: 25px;
   height: 45px;
   border-radius: 0 5px 5px 0;
@@ -155,7 +154,7 @@ export const CourseMenu = styled.div`
   opacity: ${({ open }) => (open ? '1' : '0')};
   width: ${({ open }) => (open ? '100%' : '0')};
   padding: 27px;
-  background-color: #1e2540;
+  background: linear-gradient(180deg, #e0f2b5 0%, #c1d398 100%);
   border-radius: 10px;
   transition: all 0.5s ease-in;
   ${media.belowTabletLarge`

@@ -7,10 +7,10 @@ const LessonWrapper = styled.div`
   align-items: center;
   margin: 18px 0 12px 12px;
   i {
-    color: #0ec9b0;
+    color: #7d8c5b;
   }
   cursor: pointer;
-  background-color: ${({ active }) => (active ? 'gray' : '')};
+  background-color: ${({ active }) => (active ? '#c1d398' : '')};
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
 `;
