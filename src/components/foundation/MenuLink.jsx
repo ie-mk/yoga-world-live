@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-import { fontSizeMap, spacing } from '../../constants/styles';
+import { fontSizeMap, spacing, colors } from '../../constants/styles';
 import media from './media';
 
 const LinkWrapper = styled.div`
@@ -11,7 +11,7 @@ const LinkWrapper = styled.div`
   font-size: ${fontSizeMap.h5};
   font-weight: 600;
   a {
-    color: #455325;
+    color: ${colors.matterhorn};
     text-decoration: none;
     display: inline-block;
     margin-right: ${({ noMargin }) => (noMargin ? '0' : spacing.xxl)};

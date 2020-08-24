@@ -49,6 +49,12 @@ const TextWrapper = styled.div`
     margin: auto;
   `};
 `;
+const RowContainer = styled.div`
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  ${'' /* align-items: left; */}
+`;
 
 export default {
   Wrapper,
@@ -56,4 +62,5 @@ export default {
   ButtonWrapper,
   HeaderWrapper,
   TextWrapper,
+  RowContainer,
 };

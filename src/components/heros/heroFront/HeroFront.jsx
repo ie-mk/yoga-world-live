@@ -44,17 +44,19 @@ const HeroFront = () => {
         <Styled.HeaderWrapper>
           <HeroTitle text="YOGA WORLD PLATFORM" />
         </Styled.HeaderWrapper>
+        {/* <Styled.RowContainer> */}
         <Styled.TextWrapper>
           <div>THE SMARTER WAY TO LEARN ANYTHING FROM HOME</div>
         </Styled.TextWrapper>
         <Styled.ButtonWrapper>
           <Button size="lg" type="primary" onClick={goToCourses}>
-            COURSES
+            VIEW COURSES
           </Button>
           <Button size="lg" type="secondary" onClick={getInTouch}>
             GET IN TOUCH
           </Button>
         </Styled.ButtonWrapper>
+        {/* </Styled.RowContainer> */}
       </Styled.Content>
     </Styled.Wrapper>
   );
