@@ -9,11 +9,12 @@ const LinkWrapper = styled.div`
   align-items: center;
   margin-left: ${({ noMargin }) => (noMargin ? '0' : '10px')};
   font-size: ${fontSizeMap.h5};
-  font-weight: 600;
   a {
     color: ${colors.matterhorn};
     text-decoration: none;
     display: inline-block;
+    font-weight: 600;
+     ${'' /* //${({ active }) => (active ? '600' : '0')}; */}
     margin-right: ${({ noMargin }) => (noMargin ? '0' : spacing.xxl)};
     ${media.belowTabletLarge`
         margin: 0;
@@ -26,12 +27,15 @@ const LinkWrapper = styled.div`
   `}
 `;
 
-const MenuLink = ({ href, as, text, children, dataTest, noMargin }) => (
-  <LinkWrapper noMargin={noMargin}>
-    <Link href={href} as={as}>
-      <a data-test={dataTest}>{children ? children : text}</a>
-    </Link>
-  </LinkWrapper>
-);
+const MenuLink = ({ href, as, text, children, dataTest, noMargin, active }) => {
+  console.log('active--- ', active);
 
+  return (
+    <LinkWrapper noMargin={noMargin} active={active}>
+      <Link href={href} as={as}>
+        <a data-test={dataTest}>{children ? children : text}</a>
+      </Link>
+    </LinkWrapper>
+  );
+};
 export default MenuLink;

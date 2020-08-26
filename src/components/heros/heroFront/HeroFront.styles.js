@@ -4,8 +4,9 @@ import media from '../../foundation/media';
 
 const Wrapper = styled.div`
   height: 100vh;
-  position: relative;
+  // position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 0 ${spacing.lg};
@@ -19,12 +20,12 @@ const Content = styled.div`
 const ButtonWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  //justify-content: center;
   align-items: center;
-
+  ${'' /* height: 80px; */}
   ${media.aboveTablet`
     justify-content: space-around;
-    margin-top: ${spacing.xxxl};
+   // margin-top: ${spacing.xxxl};
     flex-direction: row;
   `}
 `;
@@ -53,7 +54,9 @@ const RowContainer = styled.div`
   flex: 1;
   display: flex;
   justify-content: space-between;
-  ${'' /* align-items: left; */}
+  align-items: center;
+  margin-top: 50px;
+  align-items: left;
 `;
 
 export default {

@@ -23,6 +23,7 @@ const LogoutButton = styled(Button)`
 
 const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [activePage, setActivePage] = useState('home');
 
   const handleLogout = () => {
     api.user.logout && api.user.logout();
@@ -75,10 +76,20 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
           onClick={handleMenuClick}
           showMobileMenu={showMobileMenu}
         >
-          <MenuLink noMargin={true} href="/">
+          <MenuLink
+            noMargin={true}
+            href="/"
+            active={activePage === 'home'}
+            onClick={() => setActivePage('home')}
+          >
             Home
           </MenuLink>
-          <MenuLink noMargin={true} href="/courses">
+          <MenuLink
+            noMargin={true}
+            href="/courses"
+            active={activePage === 'courses'}
+            onClick={() => setActivePage('courses')}
+          >
             Courses
           </MenuLink>
           {/*<MenuLink noMargin={true} href="/">*/}
