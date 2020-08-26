@@ -4,7 +4,6 @@ import media from '../../foundation/media';
 
 const Wrapper = styled.div`
   height: 100vh;
-  // position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,7 +17,7 @@ const Content = styled.div`
   ${media.belowTablet`
      max-width: 100%;
      height: 100vh;
-     margin-top: 60px;
+     margin-top: ${spacing.xxxl};
   `};
 `;
 
@@ -33,17 +32,8 @@ const ButtonWrapper = styled.div`
   `};
 `;
 
-const HeaderWrapper = styled.div`
-  margin: 150px 50px 20px;
-  text-align: center;
-  ${media.aboveTablet`
-    margin: auto;
-  `}
-`;
-
 const TextWrapper = styled.div`
   max-width: 500px;
-  // margin: 0 30px 40px;
   text-align: left;
   font-size: 28px;
   font-weight: 600;
@@ -52,15 +42,15 @@ const TextWrapper = styled.div`
     margin: auto;
   `};
   ${media.belowTablet`
-    font-size: 20px;
-    margin: 0 30px 40px;
+    font-size: ${fontSizeMap.h5};
+    margin: 0 ${spacing.xl} ${spacing.xxl};
   `};
 `;
 const RowContainer = styled.div`
   flex: 1;
   display: flex;
   justify-content: space-between;
-  margin-top: 50px;
+  margin-top: ${spacing.xxxls};
   ${media.belowTablet`
     flex-direction: column;
   `};
@@ -70,7 +60,6 @@ export default {
   Wrapper,
   Content,
   ButtonWrapper,
-  HeaderWrapper,
   TextWrapper,
   RowContainer,
 };
