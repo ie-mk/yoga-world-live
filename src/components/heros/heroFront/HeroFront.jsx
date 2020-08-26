@@ -33,25 +33,30 @@ const HeroFront = () => {
         height="350px"
         width="100%"
         margin="50px 0 0 0"
-        // padding="50px"
-        //  position="absolute"
         backgroundSize="contain"
         mediaConfig={{
-          belowTabletLarge: {
-            //backgroundImage: 'url("/img/mobile/Background.png")',
+          belowTablet: {
+            display: 'none',
           },
         }}
       />
       <Styled.Content>
-        {/* <Styled.HeaderWrapper>
-          <HeroTitle text="YOGA WORLD PLATFORM" />
-        </Styled.HeaderWrapper> */}
         <Styled.RowContainer>
           <Styled.TextWrapper>
-            {/* <div> */}
             THE SMARTER WAY TO LEARN ANYTHING FROM HOME
-            {/* </div> */}
           </Styled.TextWrapper>
+          <ResponsiveImage
+            src="/svg/Mobile_BG_V1.svg"
+            height="250px"
+            width="100%"
+            margin="0 0 50px 0"
+            backgroundSize="contain"
+            mediaConfig={{
+              aboveTablet: {
+                display: 'none',
+              },
+            }}
+          />
           <Styled.ButtonWrapper>
             <Button size="sm" type="primary" onClick={goToCourses}>
               VIEW COURSES

@@ -13,8 +13,7 @@ const LinkWrapper = styled.div`
     color: ${colors.matterhorn};
     text-decoration: none;
     display: inline-block;
-    font-weight: 600;
-     ${'' /* //${({ active }) => (active ? '600' : '0')}; */}
+    font-weight: ${({ active }) => (active ? '600' : '0')};
     margin-right: ${({ noMargin }) => (noMargin ? '0' : spacing.xxl)};
     ${media.belowTabletLarge`
         margin: 0;
@@ -27,11 +26,17 @@ const LinkWrapper = styled.div`
   `}
 `;
 
-const MenuLink = ({ href, as, text, children, dataTest, noMargin, active }) => {
-  console.log('active--- ', active);
-
+const MenuLink = ({
+  href,
+  as,
+  text,
+  children,
+  dataTest,
+  noMargin,
+  isActive,
+}) => {
   return (
-    <LinkWrapper noMargin={noMargin} active={active}>
+    <LinkWrapper noMargin={noMargin} active={isActive}>
       <Link href={href} as={as}>
         <a data-test={dataTest}>{children ? children : text}</a>
       </Link>
