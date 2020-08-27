@@ -29,32 +29,43 @@ const HeroFront = () => {
   return (
     <Styled.Wrapper>
       <ResponsiveImage
-        src=""
-        height="100vh"
+        src="/svg/Landing_Page_BG_Desktop.svg"
+        height="350px"
         width="100%"
-        position="absolute"
+        margin="50px 0 0 0"
         backgroundSize="contain"
         mediaConfig={{
-          belowTabletLarge: {
-            //backgroundImage: 'url("/img/mobile/Background.png")',
+          belowTablet: {
+            display: 'none',
           },
         }}
       />
       <Styled.Content>
-        <Styled.HeaderWrapper>
-          <HeroTitle text="YOGA WORLD PLATFORM" />
-        </Styled.HeaderWrapper>
-        <Styled.TextWrapper>
-          <div>THE SMARTER WAY TO LEARN ANYTHING FROM HOME</div>
-        </Styled.TextWrapper>
-        <Styled.ButtonWrapper>
-          <Button size="lg" type="primary" onClick={goToCourses}>
-            COURSES
-          </Button>
-          <Button size="lg" type="secondary" onClick={getInTouch}>
-            GET IN TOUCH
-          </Button>
-        </Styled.ButtonWrapper>
+        <Styled.RowContainer>
+          <Styled.TextWrapper>
+            THE SMARTER WAY TO LEARN ANYTHING FROM HOME
+          </Styled.TextWrapper>
+          <ResponsiveImage
+            src="/svg/Mobile_BG_V1.svg"
+            height="250px"
+            width="100%"
+            margin="0 0 50px 0"
+            backgroundSize="contain"
+            mediaConfig={{
+              aboveTablet: {
+                display: 'none',
+              },
+            }}
+          />
+          <Styled.ButtonWrapper>
+            <Button size="sm" type="primary" onClick={goToCourses}>
+              VIEW COURSES
+            </Button>
+            <Button size="sm" type="secondary" onClick={getInTouch}>
+              GET IN TOUCH
+            </Button>
+          </Styled.ButtonWrapper>
+        </Styled.RowContainer>
       </Styled.Content>
     </Styled.Wrapper>
   );
