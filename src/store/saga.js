@@ -13,7 +13,15 @@ import moment from 'moment';
 import { getUID, getEditingCourseId, getCourses } from './selectors';
 import { resourceActions } from './actions';
 import { IS_SERVER } from '../constants';
-import { cloneDeep } from 'lodash';
+
+const cleanObject = obj => {
+  for (var k in obj) {
+    if (obj.hasOwnProperty(k) && !obj[k]) {
+      delete obj[k];
+    }
+  }
+  return obj;
+};
 
 function* fetchUserPermissions({ payload }) {
   try {
@@ -55,6 +63,7 @@ function* deleteUser({ payload }) {
 
 function* handleLoginFlow({ payload: user }) {
   const uid = user && user.uid;
+
   if (!uid) return;
 
   try {
@@ -70,28 +79,32 @@ function* handleLoginFlow({ payload: user }) {
       yield put(userActions.setIsFirstLogin(true));
       const firstName = user.displayName.split(' ')[0];
       const lastName = user.displayName.split(' ')[1];
-      // remove falsy values from object otherwise firebase will complain
-      for (var k in user) {
-        if (user.hasOwnProperty(k) && !user[k]) {
-          delete user[k];
-        }
-      }
 
-      yield api.user.createUserProfile({
+      const newUserObject = {
         ...user,
         firstName,
         lastName,
         firstLogin: moment().format(),
         lastLogin: moment().format(),
-      });
+      };
+
+      // remove falsy values from object otherwise firebase will complain
+      cleanObject(newUserObject);
+
+      yield api.user.createUserProfile(newUserObject);
+
+      const newPublicProfile = {
+        firstName,
+        lastName,
+        profileImage: user.photoURL,
+      };
+
+      // remove falsy values from object otherwise firebase will complain
+      cleanObject(newPublicProfile);
 
       yield createUserPublicInfo({
         payload: {
-          data: {
-            firstName,
-            lastName,
-            profileImage: user.photoURL,
-          },
+          data: newPublicProfile,
         },
       });
     }
@@ -162,12 +175,12 @@ function* createUserPublicInfo({ payload: { data } }) {
 
   try {
     yield api.resource.createResourceWithId('usersPublicInfo', uid, data);
-    yield put(userActions.createUserPublicInfo.success());
+    yield put(userActions.updateUserPublicInfo.success());
     yield fetchUserPublicInfo({
       payload: uid,
     });
   } catch (err) {
-    yield put(userActions.createUserPublicInfo.failure(err));
+    yield put(userActions.updateUserPublicInfo.failure(err));
   }
 }
 
@@ -372,7 +385,7 @@ function* deleteTask({ payload: docId }) {
 
 // ============================ CHAPTERS =====================================
 
-function* fetchCourseChapters({ payload: courseId }) {
+function* fetchChapters({ payload: courseId }) {
   // const courseId = yield select(getEditingCourseId);
   try {
     const chapters = yield api.resource.fetchResources(
@@ -386,13 +399,13 @@ function* fetchCourseChapters({ payload: courseId }) {
     });
 
     yield put(
-      resourceActions.fetchCourseChapters.success({
+      resourceActions.fetchChapters.success({
         courseId,
         chapters,
       }),
     );
   } catch (err) {
-    yield put(resourceActions.fetchCourseChapters.failure(err));
+    yield put(resourceActions.fetchChapters.failure(err));
   }
 }
 
@@ -780,10 +793,7 @@ function* rootSaga() {
   ]);
   // ========================== CHAPTERS ===============================
   yield all([
-    takeEvery(
-      resourceActions.fetchCourseChapters.request.type,
-      fetchCourseChapters,
-    ),
+    takeEvery(resourceActions.fetchChapters.request.type, fetchChapters),
   ]);
   yield all([
     takeLatest(resourceActions.fetchChapter.request.type, fetchChapter),
