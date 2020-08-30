@@ -15,9 +15,8 @@ const Wrapper = styled.div`
   width: 100%;
   padding: 30px;
   cursor: pointer;
-  ${'' /* background: linear-gradient(180deg, #fce0d0c7 0%, #9dbe55 100%) 0% 0%
-    no-repeat padding-box; */}
-  background: transparent linear-gradient(180deg, #A29F9E4D 0%, #A29F9E 100%) 0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(180deg, #a29f9e4d 0%, #a29f9e 100%) 0%
+    0% no-repeat padding-box;
   ${media.belowTabletLarge`
     padding: 0;
     height: 240px;
