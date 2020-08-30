@@ -33,7 +33,7 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
 
   useEffect(() => {
     if (course && !course.chapters) {
-      dispatch(resourceActions.fetchCourseChapters.request(courseId));
+      dispatch(resourceActions.fetchChapters.request(courseId));
     }
   }, [courseId, course]);
 

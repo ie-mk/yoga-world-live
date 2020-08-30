@@ -47,7 +47,7 @@ export const resourceActions = {
   createChapter: createAsyncAction('create-chapter'),
   updateChapter: createAsyncAction('update-chapter'),
   deleteChapter: createAsyncAction('delete-chapter'),
-  fetchCourseChapters: createAsyncAction('fetch-chapters'),
+  fetchChapters: createAsyncAction('fetch-chapters'),
   fetchChapter: createAsyncAction('fetch-chapter'),
   deleteChapterFromState: createAction('delete-chapter-from-state'),
 
