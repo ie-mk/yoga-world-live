@@ -34,9 +34,10 @@ const ChooseLearningPath = ({ dispatch, learningPaths }) => {
         text="Choose Your Yoga"
         marginBottom="xxl"
       />
-      {/*<BodyText margin="0 0 40px 0">*/}
-      {/*  Learning paths guide you through .......*/}
-      {/*</BodyText>*/}
+      <BodyText margin="0 0 40px 0">
+        Learning paths guide you through exactly what you need to learn to build
+        a solid foundation for a yoga or skill.
+      </BodyText>
       <Grid
         columns="1fr"
         mediaConfig={{

@@ -8,6 +8,12 @@ import { LEARNING_PATH_VALUES, LEARNING_PATH, LEVEL } from '../../constants';
 import { getCourses, getLearningPaths } from '../../store/selectors';
 import CoursesLearningPath from '../../components/pages/dashboard/courses/coursesLearningPath/CoursesLearningPath';
 import CoursesLevel from '../../components/pages/dashboard/courses/coursesLevel/CoursesLevel';
+import styled from 'styled-components';
+import { colors, spacing } from '../../constants/styles';
+
+const Content = styled.div`
+  margin-top: 100px;
+`;
 
 const Path = ({ dispatch, courses, learningPaths }) => {
   const {
@@ -38,28 +44,24 @@ const Path = ({ dispatch, courses, learningPaths }) => {
     }
   }, [title]);
 
-  let heading = LEARNING_PATH[title] + ' Learning Path';
-  heading = heading.toUpperCase();
+  let heading = LEARNING_PATH[title];
 
   if (!learningPathData) return null;
 
   return (
     <ErrorBoundary>
       <>
-        <CoursesLearningPath
-          img={learningPathData.images && learningPathData.images[0]}
-          title={heading}
-          descr={learningPathData.descr}
-        />
-
-        <PageContent hasDefaultMarginTop={false} maxWidth="1100px">
-          {
-            <CoursesLevel
-              courses={courses}
-              learningPathData={learningPathData}
-            />
-          }
-        </PageContent>
+        <Content>
+          <PageContent hasDefaultMarginTop={false} maxWidth="1100px">
+            {
+              <CoursesLevel
+                title={heading}
+                courses={courses}
+                learningPathData={learningPathData}
+              />
+            }
+          </PageContent>
+        </Content>
       </>
     </ErrorBoundary>
   );
