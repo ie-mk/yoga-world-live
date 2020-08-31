@@ -26,9 +26,16 @@ const HeroFront = () => {
     );
   };
 
+  var imgsrc = ' ';
+
+  if (window.innerWidth < 756) {
+    imgsrc = '/svg/Mobile_BG_V1.svg';
+  } else {
+    imgsrc = '/svg/Landing_Page_BG_Desktop.svg';
+  }
   return (
     <Styled.Wrapper>
-      <ResponsiveImage
+      {/* <ResponsiveImage
         src="/svg/Landing_Page_BG_Desktop.svg"
         height="350px"
         width="100%"
@@ -39,21 +46,21 @@ const HeroFront = () => {
             display: 'none',
           },
         }}
-      />
+      /> */}
       <Styled.Content>
         <Styled.RowContainer>
           <Styled.TextWrapper>
             THE SMARTER WAY TO LEARN ANYTHING FROM HOME
           </Styled.TextWrapper>
           <ResponsiveImage
-            src="/svg/Mobile_BG_V1.svg"
+            src={imgsrc}
             height="250px"
             width="100%"
             margin="0 0 50px 0"
             backgroundSize="contain"
             mediaConfig={{
               aboveTablet: {
-                display: 'none',
+                //  display: 'none',
               },
             }}
           />
