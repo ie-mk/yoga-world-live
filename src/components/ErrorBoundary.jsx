@@ -1,4 +1,5 @@
 import React from 'react';
+import CenteredFlexContainer from './foundation/CenteredFlexContainer';
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -19,7 +20,11 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       // You can render any custom fallback UI
-      return <h1 className="error-message">Something went wrong.</h1>;
+      return (
+        <CenteredFlexContainer marginTop="200px">
+          <h1 className="error-message">Something went wrong.</h1>
+        </CenteredFlexContainer>
+      );
     }
 
     return this.props.children;

@@ -20,7 +20,7 @@ const StartPage = ({ dispatch, courses, userProfile, loading }) => {
   } = useRouter();
 
   useEffect(() => {
-    dispatch(resourceActions.fetchCourseChapters.request(courseId));
+    dispatch(resourceActions.fetchChapters.request(courseId));
   }, []);
 
   const course = courses[courseId];
