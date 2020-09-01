@@ -15,8 +15,11 @@ const TextWrapper = styled.div`
   margin: 0 30px 40px;
   text-align: center;
 `;
-
+const RowWrapper = styled.div`
+  display: flex;
+`;
 export default {
   Wrapper,
   TextWrapper,
+  RowWrapper,
 };

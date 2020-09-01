@@ -48,6 +48,7 @@ const ProfileLearning = ({
             },
           }}
           text={title}
+          color="white"
         />
         <BodyText>{subtitle}</BodyText>
       </Wrapper>

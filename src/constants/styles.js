@@ -76,6 +76,7 @@ export const colors = {
   warning: 'darkorange',
   success: 'green',
   gray: '#696969',
+  matterhorn: '#555555',
   spinner: '#f3f3f3',
   header: '#1A2036',
   pink: '#C86DD7',

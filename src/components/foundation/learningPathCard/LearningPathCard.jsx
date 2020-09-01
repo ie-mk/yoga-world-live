@@ -15,8 +15,8 @@ const Wrapper = styled.div`
   width: 100%;
   padding: 30px;
   cursor: pointer;
-  background: linear-gradient(180deg, #fce0d0c7 0%, #9dbe55 100%) 0% 0%
-    no-repeat padding-box;
+  background: transparent linear-gradient(180deg, #a29f9e4d 0%, #a29f9e 100%) 0%
+    0% no-repeat padding-box;
   ${media.belowTabletLarge`
     padding: 0;
     height: 240px;
@@ -33,17 +33,6 @@ const LearningPathCard = ({ imageSrc, title, learningPathId }) => {
   const router = useRouter();
 
   const handlePathClick = () => {
-    // router.push(
-    //   {
-    //     pathname: '/courses/path',
-    //     query: {
-    //       learningPathId,
-    //     },
-    //   },
-    //   `courses/${title.split(' ')[0].toLowerCase()}`,
-    //   { shallow: true },
-    // );
-
     const path = `/courses/path?learningPathId=${learningPathId}`;
     router.push(path, path, { shallow: true });
   };

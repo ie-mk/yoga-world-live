@@ -42,6 +42,7 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
   const { t } = useTranslation();
 
   const router = useRouter();
+  console.log('router-- ', router);
 
   return (
     <ContainerBase
@@ -75,18 +76,17 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
           onClick={handleMenuClick}
           showMobileMenu={showMobileMenu}
         >
-          <MenuLink noMargin={true} href="/">
+          <MenuLink noMargin={true} href="/" isActive={router.pathname === '/'}>
             Home
           </MenuLink>
-          <MenuLink noMargin={true} href="/courses">
+          <MenuLink
+            noMargin={true}
+            href="/courses"
+            isActive={router.pathname === '/courses'}
+          >
             Courses
           </MenuLink>
-          {/*<MenuLink noMargin={true} href="/">*/}
-          {/*  Community*/}
-          {/*</MenuLink>*/}
-          {/*<MenuLink noMargin={true} href="/stories">*/}
-          {/*  Stories*/}
-          {/*</MenuLink>*/}
+
           <Styled.LoginWrapper>
             {user && user.uid && isStaff && (
               <MenuLink href="/dashboard">
@@ -109,29 +109,20 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
                   href="/login"
                   text={t('LOGIN')}
                 />
-                {/*<Button*/}
-                {/*  onClick={() =>*/}
-                {/*    router.push('/joinus', '/joinus', { shallow: true })*/}
-                {/*  }*/}
-                {/*  type="primary"*/}
-                {/*  padding="17px 64px"*/}
-                {/*  fontSize="lg"*/}
-                {/*  margin="0"*/}
-                {/*  mobileSameSize={true}*/}
-                {/*>*/}
-                {/*  JOIN*/}
-                {/*</Button>*/}
+                <Button
+                  onClick={() =>
+                    router.push('/joinus', '/joinus', { shallow: true })
+                  }
+                  type="primary"
+                  padding="17px 64px"
+                  fontSize="lg"
+                  margin="0"
+                  mobileSameSize={true}
+                >
+                  JOIN
+                </Button>
               </>
             )}
-            {/*<select*/}
-            {/*  value={userLanguage || 'en'}*/}
-            {/*  onChange={e => {*/}
-            {/*    dispatch(userActions.setLanguage(e.target.value));*/}
-            {/*  }}*/}
-            {/*>*/}
-            {/*  <option value="en">EN</option>*/}
-            {/*  <option value="lt">LT</option>*/}
-            {/*</select>*/}
           </Styled.LoginWrapper>
         </Styled.LinkWrapper>
         <Styled.MobileMenuWrapper

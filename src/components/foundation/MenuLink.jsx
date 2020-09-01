@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-import { fontSizeMap, spacing } from '../../constants/styles';
+import { fontSizeMap, spacing, colors } from '../../constants/styles';
 import media from './media';
 
 const LinkWrapper = styled.div`
@@ -9,11 +9,11 @@ const LinkWrapper = styled.div`
   align-items: center;
   margin-left: ${({ noMargin }) => (noMargin ? '0' : '10px')};
   font-size: ${fontSizeMap.h5};
-  font-weight: 600;
   a {
-    color: #455325;
+    color: ${colors.matterhorn};
     text-decoration: none;
     display: inline-block;
+    font-weight: ${({ active }) => (active ? '600' : '0')};
     margin-right: ${({ noMargin }) => (noMargin ? '0' : spacing.xxl)};
     ${media.belowTabletLarge`
         margin: 0;
@@ -26,12 +26,21 @@ const LinkWrapper = styled.div`
   `}
 `;
 
-const MenuLink = ({ href, as, text, children, dataTest, noMargin }) => (
-  <LinkWrapper noMargin={noMargin}>
-    <Link href={href} as={as}>
-      <a data-test={dataTest}>{children ? children : text}</a>
-    </Link>
-  </LinkWrapper>
-);
-
+const MenuLink = ({
+  href,
+  as,
+  text,
+  children,
+  dataTest,
+  noMargin,
+  isActive,
+}) => {
+  return (
+    <LinkWrapper noMargin={noMargin} active={isActive}>
+      <Link href={href} as={as}>
+        <a data-test={dataTest}>{children ? children : text}</a>
+      </Link>
+    </LinkWrapper>
+  );
+};
 export default MenuLink;

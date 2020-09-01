@@ -3,23 +3,26 @@ import Level from './Level';
 import { connect } from 'react-redux';
 import { getCoursesByLevel } from '../../../../../store/selectors';
 import ErrorBoundary from '../../../../ErrorBoundary';
+import PathTitle from '../../../../foundation/typography/PathTitle';
+import Styled from './CoursesLevel.styles';
 
-const CoursesLevel = ({ coursesByLevel, learningPathData }) => {
+const CoursesLevel = ({ coursesByLevel, learningPathData, title }) => {
   const begginerCourses = coursesByLevel && coursesByLevel.beginner;
 
   const intermediateCourses = coursesByLevel && coursesByLevel.intermediate;
 
   const advancedCourses = coursesByLevel && coursesByLevel.advanced;
 
-  const begginnerHeading =
-    'BEGGINER (' + Object.keys(begginerCourses).length + ' COURSES)';
-  const intermediateHeading =
-    'INTERMEDIATE (' + Object.keys(intermediateCourses).length + ' COURSES)';
-  const advancedHeading =
-    'ADVANCED (' + Object.keys(advancedCourses).length + ' COURSES)';
+  const begginnerHeading = 'BEGGINER';
+  const intermediateHeading = 'INTERMEDIATE';
+  const advancedHeading = 'ADVANCED';
 
   return (
     <ErrorBoundary>
+      <Styled.RowWrapper>
+        <PathTitle text="Courses >" color="#555555" />
+        <PathTitle text={title} color="#555555" fontWeight="600" />
+      </Styled.RowWrapper>
       {Object.keys(begginerCourses).length ? (
         <Level
           courses={begginerCourses}
