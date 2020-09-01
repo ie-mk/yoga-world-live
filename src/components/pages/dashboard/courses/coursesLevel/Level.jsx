@@ -25,8 +25,7 @@ const Level = ({ courses, learningPathData, heading }) => {
       <Styled.Wrapper>
         <SectionTitle text={heading} textAlign="center" />
         <Styled.TextWrapper>
-          {/* <BodyText>{learningPathData && learningPathData.descr}</BodyText> */}
-          <BodyText>
+          <BodyText color="#455325">
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
             nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
             erat, sed diam voluptua. At vero eos et
@@ -59,7 +58,6 @@ const Level = ({ courses, learningPathData, heading }) => {
                       learningPathData.images[0])
                   }
                   title={course.title}
-                  //   subtitle={course.level}
                   background="transparent linear-gradient(180deg, #A29F9E4D 0%, #A29F9E 100%) 0% 0% no-repeat padding-box"
                   onClick={() => toCourseStartPage(courseId, course.title)}
                 />

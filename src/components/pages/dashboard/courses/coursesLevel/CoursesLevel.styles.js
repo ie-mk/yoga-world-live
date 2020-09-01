@@ -17,8 +17,6 @@ const TextWrapper = styled.div`
 `;
 const RowWrapper = styled.div`
   display: flex;
-  //flex-direction: column;
-  //justify-content: center;
 `;
 export default {
   Wrapper,
