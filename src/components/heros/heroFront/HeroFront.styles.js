@@ -16,8 +16,6 @@ const Content = styled.div`
   z-index: 1;
   ${media.belowTablet`
      max-width: 100%;
-    ${'' /* // height: 100vh; */}
-     ${'' /* margin-top: ${spacing.xxxl}; */}
   `};
 `;
 
