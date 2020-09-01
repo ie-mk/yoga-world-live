@@ -45,7 +45,7 @@ const HeroFront = () => {
         height="50vh"
         width="100%"
         backgroundSize="contain"
-        margin="150px 0 0"
+        margin="0 0 50px 0"
         mediaConfig={{
           aboveTabletLarge: {
             backgroundImage: 'url(/svg/Landing_Page_BG_Desktop.svg)',

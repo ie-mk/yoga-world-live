@@ -16,8 +16,8 @@ const Content = styled.div`
   z-index: 1;
   ${media.belowTablet`
      max-width: 100%;
-     height: 100vh;
-     margin-top: ${spacing.xxxl};
+    ${'' /* // height: 100vh; */}
+     ${'' /* margin-top: ${spacing.xxxl}; */}
   `};
 `;
 
@@ -43,7 +43,7 @@ const TextWrapper = styled.div`
   `};
   ${media.belowTablet`
     font-size: ${fontSizeMap.h5};
-    margin: 0 ${spacing.xl} ${spacing.xxl};
+    margin: 100px ${spacing.xl} ${spacing.xxl};
   `};
 `;
 const RowContainer = styled.div`
@@ -53,6 +53,8 @@ const RowContainer = styled.div`
   margin-top: ${spacing.xxxls};
   ${media.belowTablet`
     flex-direction: column;
+    margin-top: 0;
+
   `};
 `;
 
