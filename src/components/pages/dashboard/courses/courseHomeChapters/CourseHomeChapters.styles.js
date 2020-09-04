@@ -7,7 +7,7 @@ const LessonWrapper = styled.div`
   align-items: center;
   margin: 18px 0 12px 12px;
   i {
-    color: #7d8c5b;
+    color: white;
   }
   cursor: pointer;
   background-color: ${({ active }) => (active ? '#c1d398' : '')};

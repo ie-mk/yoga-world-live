@@ -40,13 +40,13 @@ export const LessonMoveWrapper = styled.div`
 `;
 
 const ViewLessonWrapper = styled.div`
-  margin: 46px 0 27px 0;
+  margin: 25px 0 15px 0;
+
   ${media.aboveTabletLarge`
   flex: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 93px 0 54px 0;
   `}
 `;
 
@@ -75,6 +75,7 @@ const MobileVideoWrapper = styled.div`
 const DesktopVideoWrapper = styled.div`
   position: relative;
   margin-bottom: ${spacing.xl};
+  margin-top: 30px;
 `;
 
 const LessonWrapper = styled.div`
@@ -115,6 +116,7 @@ export const ViewCourseMenuWrapper = styled.div`
   transition: all 0.5s ease-in;
   justify-content: center;
   z-index: 1;
+  color: white;
 
   ${media.belowTabletLarge`
     position: absolute;
@@ -129,14 +131,14 @@ export const MenuShowWrapper = styled.div`
   position: absolute;
   top: 20px;
   left: -30px;
-  background: linear-gradient(180deg, #bcaba2 0%, #917f75 100%);
+  background: #9dbe55 0% 0% no-repeat padding-box;
   width: 25px;
   height: 45px;
   border-radius: 0 5px 5px 0;
   padding: 10px 0 0 7px;
   transition: all 0.5s ease-in;
   z-index: 1;
-
+  color: white;
   i {
     font-size: 25px;
   }
@@ -154,7 +156,8 @@ export const CourseMenu = styled.div`
   opacity: ${({ open }) => (open ? '1' : '0')};
   width: ${({ open }) => (open ? '100%' : '0')};
   padding: 27px;
-  background: linear-gradient(180deg, #e0f2b5 0%, #c1d398 100%);
+  background: #b4b2b0 0% 0% no-repeat padding-box;
+  color: white;
   border-radius: 10px;
   transition: all 0.5s ease-in;
   ${media.belowTabletLarge`

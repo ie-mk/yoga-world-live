@@ -13,8 +13,7 @@ const Level = ({ courses, learningPathData, heading }) => {
   const router = useRouter();
 
   const toCourseStartPage = (courseId, title) => {
-    const url = `/courses/startPage?title=${title}&courseId=${courseId}`;
-
+    const url = `/courseLearning?course=${title}&courseId=${courseId}`;
     router.push(url, url, { shallow: true });
   };
 

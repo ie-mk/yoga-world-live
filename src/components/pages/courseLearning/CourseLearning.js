@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import SectionTitle from '../../foundation/typography/SectionTitle';
+import BodyText from '../../foundation/typography/BodyText';
 import CardTitle from '../../foundation/typography/CardTitle';
 import PathTitle from '../../foundation/typography/PathTitle';
 import { connect } from 'react-redux';
@@ -103,7 +104,7 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
         <div>
           <Styled.ViewCourseMenuWrapper open={menuOpen}>
             <Styled.CourseMenu open={menuOpen}>
-              <CardTitle text="Content:" />
+              <CardTitle text="Course Home" />
               {chapters &&
                 Object.keys(chapters)
                   .sort((a, b) => a.sequenceNr - b.sequenceNr)
@@ -150,31 +151,7 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
                 />
               ) : null}
             </Styled.DesktopVideoWrapper>
-            {/*<Styled.LessonContent>*/}
-            {/*  <CardTitle*/}
-            {/*    margin="76px 0 23px 0"*/}
-            {/*    mediaConfig={{*/}
-            {/*      belowTabletLarge: {*/}
-            {/*        margin: '38px 0 12px 0',*/}
-            {/*      },*/}
-            {/*    }}*/}
-            {/*    text="What you will learn in this chapter"*/}
-            {/*  />*/}
-            {/*  <Text18 text={course.whatWillLearn} />*/}
-            {/*  <CardTitle*/}
-            {/*    margin="50px 0 29px 0"*/}
-            {/*    mediaConfig={{*/}
-            {/*      belowTabletLarge: {*/}
-            {/*        margin: '25px 0 15px 0',*/}
-            {/*      },*/}
-            {/*    }}*/}
-            {/*    text="Please complete the following assignment"*/}
-            {/*  />*/}
-            {/*  <Styled.AssignmentWrapper>Assignment 03</Styled.AssignmentWrapper>*/}
-            {/*  <Styled.NoteWrapper>*/}
-            {/*    <Text18 color="#0EC9B0" text="NOTE:" fontWeight="700" />*/}
-            {/*    <Text18 text="Once the assignment is complete then only the lesson marked as finished." />*/}
-            {/*  </Styled.NoteWrapper>*/}
+
             <Styled.ViewLessonWrapper>
               <CardTitle
                 mediaConfig={{
@@ -182,28 +159,15 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
                     margin: '0 0 39px  0',
                   },
                 }}
-                text="Frequently Asked Questions"
+                text="What you will learn in this lesson"
               />
-              <Styled.AskWrapper>Ask a question?</Styled.AskWrapper>
             </Styled.ViewLessonWrapper>
-            {/*</Styled.LessonContent>*/}
-            {questions.map((key, index) => (
-              <CollapseContainer
-                title={questions[index]}
-                isCollapsed={true}
-                key={index}
-              />
-            ))}
-            <Styled.RowContainer>
-              <Styled.LessonMoveWrapper>
-                <i className="fa fa-angle-left fa-3x" aria-hidden="true" />
-                <PathTitle margin="0 0 0 20px" text="Lesson 02 : Title" />
-              </Styled.LessonMoveWrapper>
-              <Styled.LessonMoveWrapper>
-                <PathTitle margin="0 20px 0 0" text="Lesson 04 : Title" />
-                <i className="fa fa-angle-right fa-3x" aria-hidden="true" />
-              </Styled.LessonMoveWrapper>
-            </Styled.RowContainer>
+            <BodyText color="#455325">
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+              nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+              erat, sed diam voluptua. At vero eos et
+            </BodyText>
+            <Styled.RowContainer></Styled.RowContainer>
           </Styled.Lesson>
         </Styled.ContentWrapper>
       </FlexContainer>

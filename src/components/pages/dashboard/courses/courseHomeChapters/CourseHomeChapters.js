@@ -44,8 +44,7 @@ const CourseHomeChapters = ({
   return (
     <>
       <Styled.ChapterWrapper>
-        {/*<i className="fa fa-circle fa-2x" aria-hidden="true" />*/}
-        <CustomText18 margin="0 0 0 10px" text={title} />
+        <CustomText18 margin="0 0 0 10px" text={title} color="white" />
       </Styled.ChapterWrapper>
 
       {lessons &&
@@ -70,7 +69,11 @@ const CourseHomeChapters = ({
                 active={active}
               >
                 <i className="fa fa-check-circle fa-2x" aria-hidden="true" />
-                <CustomText18 margin="0 0 0 20px" text={lessonTitle} />
+                <CustomText18
+                  margin="0 0 0 20px"
+                  text={lessonTitle}
+                  color="white"
+                />
               </Styled.LessonWrapper>
             );
           })}
