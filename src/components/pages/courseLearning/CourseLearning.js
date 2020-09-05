@@ -76,7 +76,6 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
   }, [lessonsArr]);
 
   if (!course) return null;
-  console.log('course--- ', course);
   const activeLesson =
     lessonsArr && activeLessonIdx !== null && lessonsArr[activeLessonIdx];
 
@@ -86,7 +85,9 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
   const chaptArr = chaptersArr;
   const actIdx = activeLessonIdx;
   const chapIdx = activeChapterIdx;
-  debugger;
+  // debugger;
+
+  console.log('course--- ', course, 'activeLesson--', activeLesson);
 
   return (
     <CenteredFlexContainer width="100%" marginTop="xxl">
@@ -162,8 +163,7 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
                 text="What you will learn in this lesson"
               />
             </Styled.ViewLessonWrapper>
-            <BodyText color="#455325">{course.whatWillLearn}</BodyText>
-            <Styled.RowContainer></Styled.RowContainer>
+            <BodyText color="#455325">{activeLesson.descr}</BodyText>
           </Styled.Lesson>
         </Styled.ContentWrapper>
       </FlexContainer>
