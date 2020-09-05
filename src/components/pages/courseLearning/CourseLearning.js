@@ -76,7 +76,7 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
   }, [lessonsArr]);
 
   if (!course) return null;
-
+  console.log('course--- ', course);
   const activeLesson =
     lessonsArr && activeLessonIdx !== null && lessonsArr[activeLessonIdx];
 
@@ -162,11 +162,7 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
                 text="What you will learn in this lesson"
               />
             </Styled.ViewLessonWrapper>
-            <BodyText color="#455325">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-              erat, sed diam voluptua. At vero eos et
-            </BodyText>
+            <BodyText color="#455325">{course.whatWillLearn}</BodyText>
             <Styled.RowContainer></Styled.RowContainer>
           </Styled.Lesson>
         </Styled.ContentWrapper>

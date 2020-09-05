@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { resourceActions } from '../../../../../store/actions';
 import Styled from './CourseHomeChapters.styles';
 import Text18 from '../../../../foundation/typography/Text18';
+import { colors } from '../../../../../constants/styles';
 
 const CustomText18 = props => (
   <Text18
@@ -44,7 +45,11 @@ const CourseHomeChapters = ({
   return (
     <>
       <Styled.ChapterWrapper>
-        <CustomText18 margin="0 0 0 10px" text={title} color="white" />
+        <CustomText18
+          margin="0 0 0 10px"
+          text={title}
+          color={colors.text.white}
+        />
       </Styled.ChapterWrapper>
 
       {lessons &&
@@ -72,7 +77,8 @@ const CourseHomeChapters = ({
                 <CustomText18
                   margin="0 0 0 20px"
                   text={lessonTitle}
-                  color="white"
+                  // color="white"
+                  color={colors.text.white}
                 />
               </Styled.LessonWrapper>
             );
