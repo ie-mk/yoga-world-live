@@ -163,7 +163,9 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
                 text="What you will learn in this lesson"
               />
             </Styled.ViewLessonWrapper>
-            <BodyText color="#455325">{activeLesson.descr}</BodyText>
+            <BodyText color="#455325">
+              {activeLesson && activeLesson.descr}
+            </BodyText>
           </Styled.Lesson>
         </Styled.ContentWrapper>
       </FlexContainer>
