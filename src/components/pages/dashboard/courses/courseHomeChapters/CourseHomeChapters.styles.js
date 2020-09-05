@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 import media from '../../../../foundation/media';
 import { lightenDarkenColor } from '../../../../../utils/colors';
+import { spacing, colors } from '../../../../../constants/styles';
 
 const LessonWrapper = styled.div`
   display: flex;
   align-items: center;
   margin: 18px 0 12px 12px;
   i {
-    color: white;
+    color: ${colors.text.white};
   }
   cursor: pointer;
   background-color: ${({ active }) => (active ? '#c1d398' : '')};

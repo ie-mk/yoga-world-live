@@ -94,6 +94,7 @@ export const colors = {
   text: {
     primary: '#A29F9E',
     secondary: '#455325',
+    white: '#FFFFFF',
   },
   background: {
     primary: '#1A2036',

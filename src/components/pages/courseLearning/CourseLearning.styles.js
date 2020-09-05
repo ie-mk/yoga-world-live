@@ -116,8 +116,7 @@ export const ViewCourseMenuWrapper = styled.div`
   transition: all 0.5s ease-in;
   justify-content: center;
   z-index: 1;
-  color: white;
-
+  color: ${colors.text.white};
   ${media.belowTabletLarge`
     position: absolute;
     margin-right: 0;
@@ -138,7 +137,7 @@ export const MenuShowWrapper = styled.div`
   padding: 10px 0 0 7px;
   transition: all 0.5s ease-in;
   z-index: 1;
-  color: white;
+  color: ${colors.text.white};
   i {
     font-size: 25px;
   }
@@ -157,7 +156,7 @@ export const CourseMenu = styled.div`
   width: ${({ open }) => (open ? '100%' : '0')};
   padding: 27px;
   background: #b4b2b0 0% 0% no-repeat padding-box;
-  color: white;
+  color: ${colors.text.white};
   border-radius: 10px;
   transition: all 0.5s ease-in;
   ${media.belowTabletLarge`
