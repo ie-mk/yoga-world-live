@@ -24,11 +24,11 @@ const Level = ({ courses, learningPathData, heading }) => {
       <Styled.Wrapper>
         <SectionTitle text={heading} textAlign="center" />
         <Styled.TextWrapper>
-          <BodyText color="#455325">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua. At vero eos et
-          </BodyText>
+          {/*<BodyText color="#455325">*/}
+          {/*  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam*/}
+          {/*  nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam*/}
+          {/*  erat, sed diam voluptua. At vero eos et*/}
+          {/*</BodyText>*/}
         </Styled.TextWrapper>
         <Grid
           columns="1fr"
