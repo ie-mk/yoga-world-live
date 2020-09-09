@@ -109,18 +109,18 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
                   href="/login"
                   text={t('LOGIN')}
                 />
-                <Button
-                  onClick={() =>
-                    router.push('/joinus', '/joinus', { shallow: true })
-                  }
-                  type="primary"
-                  padding="17px 64px"
-                  fontSize="lg"
-                  margin="0"
-                  mobileSameSize={true}
-                >
-                  JOIN
-                </Button>
+                {/*<Button*/}
+                {/*  onClick={() =>*/}
+                {/*    router.push('/joinus', '/joinus', { shallow: true })*/}
+                {/*  }*/}
+                {/*  type="primary"*/}
+                {/*  padding="17px 64px"*/}
+                {/*  fontSize="lg"*/}
+                {/*  margin="0"*/}
+                {/*  mobileSameSize={true}*/}
+                {/*>*/}
+                {/*  JOIN*/}
+                {/*</Button>*/}
               </>
             )}
           </Styled.LoginWrapper>
