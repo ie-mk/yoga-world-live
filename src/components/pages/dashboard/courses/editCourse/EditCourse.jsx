@@ -21,6 +21,8 @@ const EditCourse = ({ dispatch, courseId, courseData, loading }) => {
 
   const chapters = courseData && courseData.chapters;
   const editedOnDate = courseData && courseData.editedOnDate;
+  console.log('---------chapters: ', chapters);
+  debugger;
 
   const handleCreateNewChapter = () => {
     setForceDescriptionSubmit(true);
@@ -36,7 +38,7 @@ const EditCourse = ({ dispatch, courseId, courseData, loading }) => {
   };
 
   return (
-    <ContainerBase key={editedOnDate}>
+    <ContainerBase key={editedOnDate && editedOnDate.seconds}>
       {loading && <SpinnerLarge />}
       <CourseDescription forceDescriptionSubmit={forceDescriptionSubmit} />
       {chapters &&

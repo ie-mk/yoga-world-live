@@ -70,7 +70,7 @@ const CourseDescription = ({
           }
 
           dispatch(resourceActions.updateCourse.request({ data: finalValues }));
-          setTimeout(() => setSubmitting(false), 1000);
+          setTimeout(() => setSubmitting(false), 100);
         }}
       >
         {({ values, handleSubmit }) => (

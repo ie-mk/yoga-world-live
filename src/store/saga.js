@@ -84,8 +84,8 @@ function* handleLoginFlow({ payload: user }) {
         ...user,
         firstName,
         lastName,
-        firstLogin: moment().format(),
-        lastLogin: moment().format(),
+        firstLogin: new Date(),
+        lastLogin: new Date(),
       };
 
       // remove falsy values from object otherwise firebase will complain
@@ -209,7 +209,9 @@ function* createGetInTouchMessage({ payload }) {
 
   try {
     const messageId = yield api.resource.createResource('getInTouch', data);
-    yield put(userActions.createGetIntouchMessage.success(messageId));
+    if (messageId) {
+      yield put(userActions.createGetIntouchMessage.success());
+    }
   } catch (err) {
     yield put(userActions.createGetIntouchMessage.failure(err));
   }
@@ -283,7 +285,7 @@ function* createCourse({ payload = {} }) {
     ...payload.data,
     ownerId: uid,
     published: false,
-    editedOnDate: moment().format(),
+    editedOnDate: new Date(),
   };
   try {
     const courseId = yield api.resource.createResource('courses', data);
@@ -300,7 +302,7 @@ function* updateCourse({ payload }) {
   try {
     yield api.resource.updateResource(`courses/${courseId}`, {
       ...payload.data,
-      editedOnDate: moment().format(),
+      editedOnDate: new Date(),
     });
     yield put(resourceActions.updateCourse.success());
     yield fetchCourse({ payload: courseId });
@@ -314,7 +316,7 @@ function* updateCourseEditedTime() {
 
   try {
     yield api.resource.updateResource(`courses/${courseId}`, {
-      editedOnDate: moment().format(),
+      editedOnDate: new Date(),
     });
     yield put(resourceActions.updateCourse.success());
     yield fetchCourse({ payload: courseId });
@@ -434,7 +436,7 @@ function* createChapter({ payload: { sequenceNr } }) {
     const createdChapterId = yield api.resource.createResource(
       `courses/${courseId}/chapters`,
       {
-        created: moment().format(),
+        created: new Date(),
         parentId: courseId,
         ownerId: uid,
         sequenceNr,
@@ -442,8 +444,14 @@ function* createChapter({ payload: { sequenceNr } }) {
     );
 
     if (createdChapterId) {
-      yield put(resourceActions.createChapter.success(createdChapterId));
+      yield put(resourceActions.createChapter.success());
       yield fetchChapter({ payload: createdChapterId });
+      yield updateCourse({
+        payload: courseId,
+        data: {
+          editedOnDate: new Date(),
+        },
+      });
     } else {
       throw 'create course chapter fail';
     }
@@ -461,6 +469,12 @@ function* updateChapter({ payload: { chapterId, data } }) {
     );
     yield put(resourceActions.updateChapter.success());
     yield fetchChapter({ payload: chapterId });
+    yield updateCourse({
+      payload: courseId,
+      data: {
+        editedOnDate: new Date(),
+      },
+    });
   } catch (err) {
     yield put(resourceActions.updateChapter.failure(err));
   }
@@ -550,7 +564,7 @@ function* createLesson({ payload: { chapterId, sequenceNr } }) {
     const createdLessonId = yield api.resource.createResource(
       `courses/${courseId}/chapters/${chapterId}/lessons`,
       {
-        created: moment().format(),
+        created: new Date(),
         parentId: chapterId,
         courseId: courseId,
         ownerId: uid,
@@ -558,7 +572,7 @@ function* createLesson({ payload: { chapterId, sequenceNr } }) {
       },
     );
     if (createdLessonId) {
-      yield put(resourceActions.createLesson.success(createdLessonId));
+      yield put(resourceActions.createLesson.success());
       // yield updateCourseEditedTime();
       // yield fetchCourse({ payload: courseId });
       yield fetchLesson({
@@ -632,7 +646,7 @@ function* createMessage({ payload }) {
   const data = {
     ...payload.data,
     senderId: uid,
-    created: moment().format(),
+    created: new Date(),
   };
   try {
     yield api.resource.createResource('messages', data);

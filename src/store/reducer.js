@@ -241,6 +241,9 @@ export const courseReducer = handleActions(
     ) => {
       const newState = {
         ...state,
+        // we need this line only to trigger recalculate in the selector
+        // as otherwise data stays same object and the selector will return prev value
+        data: { ...state.data },
       };
       // we want to keep chapters;
       const chapters = state.data[courseId].chapters;
@@ -314,7 +317,7 @@ export const courseReducer = handleActions(
     ) => {
       const chapterId = data && Object.keys(data)[0];
 
-      if (!chapterId && courseId) {
+      if (!chapterId || !courseId) {
         console.error('not enough data');
         return state;
       }
@@ -328,10 +331,16 @@ export const courseReducer = handleActions(
       };
 
       try {
+        let lessons;
+        const chapters = newState.data[courseId].chapters;
+        const existinglessons =
+          chapters && chapters[chapterId] && chapters[chapterId].lessons;
         // we want to preserve lessons
-        const lessons = {
-          ...newState.data[courseId].chapters[chapterId].lessons,
-        };
+        if (existinglessons) {
+          lessons = {
+            ...existinglessons,
+          };
+        }
 
         // we need to create new objects for the data so it is caught by React and selectors
         newState.data[courseId] = { ...state.data[courseId] };
@@ -340,9 +349,11 @@ export const courseReducer = handleActions(
           ...data,
         };
 
-        newState.data[courseId].chapters[chapterId].lessons = lessons;
+        if (existinglessons) {
+          newState.data[courseId].chapters[chapterId].lessons = lessons;
+        }
       } catch (e) {
-        //
+        console.error('--------fetchChapter error: ', e);
       }
 
       return newState;
