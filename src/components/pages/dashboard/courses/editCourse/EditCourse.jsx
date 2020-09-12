@@ -21,8 +21,6 @@ const EditCourse = ({ dispatch, courseId, courseData, loading }) => {
 
   const chapters = courseData && courseData.chapters;
   const editedOnDate = courseData && courseData.editedOnDate;
-  console.log('---------chapters: ', chapters);
-  debugger;
 
   const handleCreateNewChapter = () => {
     setForceDescriptionSubmit(true);
