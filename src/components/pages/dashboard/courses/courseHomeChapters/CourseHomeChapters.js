@@ -5,6 +5,7 @@ import { resourceActions } from '../../../../../store/actions';
 import Styled from './CourseHomeChapters.styles';
 import Text18 from '../../../../foundation/typography/Text18';
 import { colors } from '../../../../../constants/styles';
+import { getLessonsByChapterId } from '../../../../../store/selectors';
 
 const CustomText18 = props => (
   <Text18
@@ -27,6 +28,7 @@ const CourseHomeChapters = ({
   setActiveChapterIdx,
   activeChapterIdx,
   chapterIdx,
+  lessonsByChapter,
 }) => {
   const chapter = chapters[chapterId];
   const title = chapter && chapter.title;
@@ -40,7 +42,7 @@ const CourseHomeChapters = ({
     );
   }, [chapterId]);
 
-  const lessons = chapter.lessons;
+  const lessons = lessonsByChapter[chapterId] || {};
 
   return (
     <>
@@ -87,4 +89,8 @@ const CourseHomeChapters = ({
   );
 };
 
-export default connect()(CourseHomeChapters);
+const mapStateToProps = state => ({
+  lessonsByChapter: getLessonsByChapterId(state),
+});
+
+export default connect(mapStateToProps)(CourseHomeChapters);

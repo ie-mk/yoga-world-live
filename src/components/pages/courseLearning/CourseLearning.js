@@ -79,12 +79,12 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
   const activeLesson =
     lessonsArr && activeLessonIdx !== null && lessonsArr[activeLessonIdx];
 
-  const bla = course;
-  const b = courseId;
-  const lessArr = lessonsArr;
-  const chaptArr = chaptersArr;
-  const actIdx = activeLessonIdx;
-  const chapIdx = activeChapterIdx;
+  // const bla = course;
+  // const b = courseId;
+  // const lessArr = lessonsArr;
+  // const chaptArr = chaptersArr;
+  // const actIdx = activeLessonIdx;
+  // const chapIdx = activeChapterIdx;
   // debugger;
 
   console.log('course--- ', course, 'activeLesson--', activeLesson);
@@ -146,9 +146,9 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
                   width="100%"
                   height="400px"
                   src={activeLesson.videoLink}
-                  frameborder="0"
+                  frameBorder="0"
                   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
+                  allowFullScreen
                 />
               ) : null}
             </Styled.DesktopVideoWrapper>

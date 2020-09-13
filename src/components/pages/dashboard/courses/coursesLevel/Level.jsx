@@ -43,37 +43,39 @@ const Level = ({ courses, learningPathData, heading }) => {
           gridGap={spacing.xxxxl}
         >
           {courses &&
-            Object.keys(courses).map((courseId, i) => {
-              const course = courses[courseId];
-              if (!course) return null;
+            Object.keys(courses)
+              .filter(id => courses[id].published)
+              .map((courseId, i) => {
+                const course = courses[courseId];
+                if (!course) return null;
 
-              const title = course.title;
-              // skip test courses rendering if contains test
-              if (
-                title &&
-                typeof title === 'string' &&
-                title.toLowerCase().includes('test') &&
-                window &&
-                window.location.hostname !== 'localhost'
-              ) {
-                return null;
-              }
+                const title = course.title;
+                // skip test courses rendering if contains test
+                if (
+                  title &&
+                  typeof title === 'string' &&
+                  title.toLowerCase().includes('test') &&
+                  window &&
+                  window.location.hostname !== 'localhost'
+                ) {
+                  return null;
+                }
 
-              return (
-                <ProfileLearning
-                  key={i}
-                  imageSrc={
-                    (course && course.images && course.images[0]) ||
-                    (learningPathData &&
-                      learningPathData.images &&
-                      learningPathData.images[0])
-                  }
-                  title={course.title}
-                  background="transparent linear-gradient(180deg, #A29F9E4D 0%, #A29F9E 100%) 0% 0% no-repeat padding-box"
-                  onClick={() => toCourseStartPage(courseId, course.title)}
-                />
-              );
-            })}
+                return (
+                  <ProfileLearning
+                    key={i}
+                    imageSrc={
+                      (course && course.images && course.images[0]) ||
+                      (learningPathData &&
+                        learningPathData.images &&
+                        learningPathData.images[0])
+                    }
+                    title={course.title}
+                    background="transparent linear-gradient(180deg, #A29F9E4D 0%, #A29F9E 100%) 0% 0% no-repeat padding-box"
+                    onClick={() => toCourseStartPage(courseId, course.title)}
+                  />
+                );
+              })}
         </Grid>
       </Styled.Wrapper>
     </ErrorBoundary>
