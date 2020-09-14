@@ -30,7 +30,7 @@ export const InputStyles = styled.div`
   color: ${colors.black};
   input {
     background-color: ${({ backgroundColor }) =>
-      backgroundColor ? backgroundColor : '#f0f0f7'};
+      backgroundColor ? backgroundColor : 'white'};
     background-color: ${({ disabled }) =>
       disabled ? lightenDarkenColor('#f0f0f7', -20) : ''};
     line-height: ${({ height }) => (height ? height : '35px')};

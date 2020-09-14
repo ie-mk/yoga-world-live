@@ -34,7 +34,6 @@ const YourDetails = () => {
               name="name"
               type="text"
               label="Name"
-              backgroundColor="#293150"
               width="100%"
               fontSize="h4"
             />
@@ -42,7 +41,6 @@ const YourDetails = () => {
               name="email"
               type="text"
               label="Email"
-              backgroundColor="#293150"
               width="100%"
               fontSize="h4"
             />
@@ -50,7 +48,6 @@ const YourDetails = () => {
               name="mobile"
               type="text"
               label="Mobile"
-              backgroundColor="#293150"
               width="100%"
               fontSize="h4"
             />

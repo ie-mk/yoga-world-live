@@ -75,7 +75,6 @@ const YourDetails = () => {
                 name="name"
                 type="text"
                 label="Name on the card"
-                backgroundColor="#293150"
                 width="100%"
                 fontSize="h4"
               />
@@ -83,7 +82,6 @@ const YourDetails = () => {
                 name="cardnumber"
                 type="text"
                 label="Card Number"
-                backgroundColor="#293150"
                 width="100%"
                 fontSize="h4"
               />
@@ -95,7 +93,6 @@ const YourDetails = () => {
                   name="expirydate"
                   type="text"
                   label="Expiry Date"
-                  backgroundColor="#293150"
                   width="100%"
                   fontSize="h4"
                   placeholder="MM/YY"
@@ -107,7 +104,6 @@ const YourDetails = () => {
                   name="cvv"
                   type="text"
                   label="CVV"
-                  backgroundColor="#293150"
                   width="100%"
                   fontSize="h4"
                   noMargin={true}

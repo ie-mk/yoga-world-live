@@ -109,10 +109,9 @@ const EditProfile = ({
                     name="fullName"
                     type="text"
                     label="Full Name"
-                    color="white"
-                    backgroundColor="#293150"
+                    color="black"
                     width="600px"
-                    inputColor="white"
+                    inputColor="black"
                     mobileWidth="300px"
                     height="50px"
                     fontSize="h4"
@@ -122,9 +121,8 @@ const EditProfile = ({
                     name="profileTitle"
                     type="text"
                     label="Profile Title ( optional )"
-                    backgroundColor="#293150"
-                    color="white"
-                    inputColor="white"
+                    color="black"
+                    inputColor="black"
                     width="600px"
                     mobileWidth="300px"
                     fontSize="h4"
@@ -134,10 +132,9 @@ const EditProfile = ({
                     name="website"
                     type="text"
                     label="Website ( optional )"
-                    backgroundColor="#293150"
-                    color="white"
+                    color="black"
                     width="600px"
-                    inputColor="white"
+                    inputColor="black"
                     mobileWidth="300px"
                     height="50px"
                     fontSize="h4"
@@ -156,26 +153,24 @@ const EditProfile = ({
                       </Styled.PhoneInputStyles>
                     </Styled.Container>
                   </Styled.InputRow>
-                  <AdminInput
-                    name="linkdinProfile"
-                    type="text"
-                    label="Linkdin Profile ( optional )"
-                    backgroundColor="#293150"
-                    color="white"
-                    width="600px"
-                    inputColor="white"
-                    mobileWidth="300px"
-                    height="50px"
-                    fontSize="h4"
-                  />
+                  {/*<AdminInput*/}
+                  {/*  name="linkdinProfile"*/}
+                  {/*  type="text"*/}
+                  {/*  label="Linkdin Profile ( optional )"*/}
+                  {/*  color="black"*/}
+                  {/*  width="600px"*/}
+                  {/*  inputColor="black"*/}
+                  {/*  mobileWidth="300px"*/}
+                  {/*  height="50px"*/}
+                  {/*  fontSize="h4"*/}
+                  {/*/>*/}
                   <AdminInput
                     name="facebookProfile"
                     type="text"
                     label="Facebook Profile ( optional )"
-                    backgroundColor="#293150"
-                    color="white"
+                    color="black"
                     width="600px"
-                    inputColor="white"
+                    inputColor="black"
                     mobileWidth="300px"
                     height="50px"
                     fontSize="h4"
@@ -184,9 +179,8 @@ const EditProfile = ({
                     name="instagramProfile"
                     type="text"
                     label="Instagram Profile ( optional )"
-                    backgroundColor="#293150"
-                    color="white"
-                    inputColor="white"
+                    color="black"
+                    inputColor="black"
                     width="600px"
                     mobileWidth="300px"
                     height="50px"
@@ -196,10 +190,9 @@ const EditProfile = ({
                     name="twitterProfile"
                     type="text"
                     label="Twitter Profile ( optional )"
-                    backgroundColor="#293150"
-                    color="white"
+                    color="black"
                     width="600px"
-                    inputColor="white"
+                    inputColor="black"
                     mobileWidth="300px"
                     height="50px"
                     fontSize="h4"
@@ -207,7 +200,7 @@ const EditProfile = ({
                 </div>
               </Grid>
 
-              <BillingDetails />
+              {/*<BillingDetails />*/}
 
               <CenteredFlexContainer>
                 <Styled.RowContainer>
@@ -222,16 +215,16 @@ const EditProfile = ({
                   >
                     UPDATE MY PROFILE
                   </Button>
-                  <Button
-                    type="secondary"
-                    width="250px"
-                    margin="0 0 0 0"
-                    height="45px"
-                    marginMobile="32px 0 0 0"
-                    size="sm"
-                  >
-                    CANCEL
-                  </Button>
+                  {/*<Button*/}
+                  {/*  type="secondary"*/}
+                  {/*  width="250px"*/}
+                  {/*  margin="0 0 0 0"*/}
+                  {/*  height="45px"*/}
+                  {/*  marginMobile="32px 0 0 0"*/}
+                  {/*  size="sm"*/}
+                  {/*>*/}
+                  {/*  CANCEL*/}
+                  {/*</Button>*/}
                 </Styled.RowContainer>
               </CenteredFlexContainer>
             </form>

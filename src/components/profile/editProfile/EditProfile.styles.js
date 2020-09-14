@@ -54,13 +54,13 @@ export const PhoneInputStyles = styled.div`
     height: 60px;
     opacity: 1;
     font-size: ${fontSizeMap.h4};
-    background-color: #293150;
-    color: white;
+    background-color: white;
+    color: black;
     border-radius: ${borderRadius.sm};
 
     ${media.belowTabletLarge`
     height: 44px;
-  
+
     font-size: ${fontSizeMap.textS};
 `}
   }

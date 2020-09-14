@@ -118,36 +118,36 @@ const Profile = ({ dispatch, profile }) => {
         </Styled.ProfileDetails>
       </Styled.ProfileWrapper>
 
-      <Styled.ProfileInfoPageWrapper>
-        <Styled.Tab
-          activeTab={activeTab === 'learning'}
-          onClick={() => setActiveTab('learning')}
-        >
-          Learning
-        </Styled.Tab>
-        <Styled.Tab
-          activeTab={activeTab === 'inbox'}
-          onClick={() => setActiveTab('inbox')}
-        >
-          Inbox
-        </Styled.Tab>
-        <Styled.Tab
-          activeTab={activeTab === 'billing'}
-          onClick={() => setActiveTab('billing')}
-        >
-          Billing
-        </Styled.Tab>
-        <Styled.Tab
-          activeTab={activeTab === 'preferences'}
-          onClick={() => setActiveTab('preferences')}
-        >
-          Preferences
-        </Styled.Tab>
-      </Styled.ProfileInfoPageWrapper>
-      {isActiveBilling && <Billing />}
-      {isActiveInbox && <Inbox />}
-      {isActivePreferences && <Preferences profile={profile} />}
-      {isActiveLearning && <Learning />}
+      {/*<Styled.ProfileInfoPageWrapper>*/}
+      {/*  <Styled.Tab*/}
+      {/*    activeTab={activeTab === 'learning'}*/}
+      {/*    onClick={() => setActiveTab('learning')}*/}
+      {/*  >*/}
+      {/*    Learning*/}
+      {/*  </Styled.Tab>*/}
+      {/*  <Styled.Tab*/}
+      {/*    activeTab={activeTab === 'inbox'}*/}
+      {/*    onClick={() => setActiveTab('inbox')}*/}
+      {/*  >*/}
+      {/*    Inbox*/}
+      {/*  </Styled.Tab>*/}
+      {/*  <Styled.Tab*/}
+      {/*    activeTab={activeTab === 'billing'}*/}
+      {/*    onClick={() => setActiveTab('billing')}*/}
+      {/*  >*/}
+      {/*    Billing*/}
+      {/*  </Styled.Tab>*/}
+      {/*  <Styled.Tab*/}
+      {/*    activeTab={activeTab === 'preferences'}*/}
+      {/*    onClick={() => setActiveTab('preferences')}*/}
+      {/*  >*/}
+      {/*    Preferences*/}
+      {/*  </Styled.Tab>*/}
+      {/*</Styled.ProfileInfoPageWrapper>*/}
+      {/*{isActiveBilling && <Billing />}*/}
+      {/*{isActiveInbox && <Inbox />}*/}
+      {/*{isActivePreferences && <Preferences profile={profile} />}*/}
+      {/*{isActiveLearning && <Learning />}*/}
     </ContainerBase>
   );
 };
