@@ -9,7 +9,7 @@ import {
 const Wrapper = styled.div`
   flex: 1;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 `;
 
 const SearchWrapper = styled.div`
@@ -46,6 +46,7 @@ const NotificationIcon = styled.img`
 const Label = styled.label`
   font-size: ${fontSizeMap.text};
   color: ${colors.label.primary};
+  margin-right: 30px;
 `;
 
 export default {
