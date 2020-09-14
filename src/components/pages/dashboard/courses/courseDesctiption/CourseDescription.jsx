@@ -1,4 +1,4 @@
-import React, { useState, memo } from 'react';
+import React, { useState, useEffect } from 'react';
 import Styled from './CourseDescription.styles';
 import { connect } from 'react-redux';
 import { Formik, useFormikContext } from 'formik';
@@ -23,7 +23,7 @@ import ResponsiveImage from '../../../../foundation/ResponsiveImage';
 const SubmitFormFromOutside = ({ forceDescriptionSubmit }) => {
   // Grab values and submitForm from context
   const { submitForm } = useFormikContext();
-  React.useEffect(() => {
+  useEffect(() => {
     if (forceDescriptionSubmit) {
       submitForm();
     }
@@ -154,7 +154,7 @@ const CourseDescription = ({
                 size="sm"
                 margin="26px 40px 0 0"
               >
-                {published ? 'Unpublish' : 'Publish'}
+                {values.published ? 'Unpublish' : 'Publish'}
               </Button>
             </Styled.InputRow>
             <Styled.InputRow>
@@ -214,6 +214,7 @@ const initialFormValues = {
   learningPath: '',
   whatWillLearn: '',
   prerequisites: '',
+  published: '',
 };
 
 const mapStateToProps = state => ({
