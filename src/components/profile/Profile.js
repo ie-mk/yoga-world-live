@@ -61,15 +61,19 @@ const Profile = ({ dispatch, profile }) => {
               fontWeight="400"
               text={profile.profileTitle}
             />
-            <FlexContainer margin="0 0 8px 0" alignItems="center">
-              <i className="fa fa-map-marker" aria-hidden="true" />
-              <BodyText>{profile.city}</BodyText>
-            </FlexContainer>
+            {profile.city ? (
+              <FlexContainer margin="0 0 8px 0" alignItems="center">
+                <i className="fa fa-map-marker" aria-hidden="true" />
+                <BodyText>{profile.city}</BodyText>
+              </FlexContainer>
+            ) : null}
 
-            <FlexContainer margin="0 0 16px 0" alignItems="center">
-              <i className="fa fa-globe" aria-hidden="true" />{' '}
-              <BodyText>{profile.website}</BodyText>
-            </FlexContainer>
+            {profile.website ? (
+              <FlexContainer margin="0 0 16px 0" alignItems="center">
+                <i className="fa fa-globe" aria-hidden="true" />{' '}
+                <BodyText>{profile.website}</BodyText>
+              </FlexContainer>
+            ) : null}
             <Styled.ShowMobileOnly>
               <ContainerBase maxWidth="140px" margin="0 auto 0">
                 {profile.facebookProfile && (

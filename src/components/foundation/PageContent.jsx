@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   justify-content: center;
   position: relative;
   min-height: calc(100vh - 315px);
-  background: ${colors.background.gradient};
+  //background: ${colors.background.gradient};
 `;
 
 const Content = styled.div`

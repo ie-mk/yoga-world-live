@@ -10,7 +10,6 @@ import media from '../foundation/media';
 
 export const ProfileWrapper = styled.div`
   display: flex;
-  background-color: #2385d92b;
   padding: 86px 90px 86px 165px;
   ${media.belowTabletLarge`
     padding: 42px 20px;
@@ -30,7 +29,6 @@ export const ProfileInfoPageWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #2385d92b;
   opacity: 0.4;
   padding: 43px 278px 36px 298px;
   ${media.belowTabletLarge`
