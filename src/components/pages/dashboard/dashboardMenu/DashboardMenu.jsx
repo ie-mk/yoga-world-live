@@ -22,7 +22,7 @@ const DashboardMenu = ({ setActiveComponent, active, isAdmin }) => {
         </Styled.MenuItem>
         <Styled.MenuItem
           data-test="results-properties"
-          active={active === 'courses'}
+          active={active === 'courses' || !active}
           onClick={() => setActiveComponent('courses')}
         >
           <img src="svg/icon_courses.svg" />
