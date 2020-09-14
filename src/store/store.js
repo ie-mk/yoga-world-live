@@ -4,7 +4,6 @@ import createSagaMiddleware from 'redux-saga';
 import { loadState, subscribeToSaveOnLocalStorage } from './localStorage';
 import rootSaga from './saga';
 import { IS_SERVER } from '../constants';
-import { adminActions, resourceActions, userActions } from './actions';
 
 const sagaMiddleware = createSagaMiddleware();
 

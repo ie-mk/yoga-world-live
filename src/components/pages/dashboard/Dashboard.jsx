@@ -17,9 +17,9 @@ import Staff from './staff/Staff';
 import Users from './users/Users';
 import AuthorProfile from './authors/authorProfile/AuthorProfile';
 import FlexContainer from '../../foundation/FlexContainer';
-import { isAdmin } from '../../../store/selectors';
+import { getIsAdmin } from '../../../store/selectors';
 
-const Dashboard = ({ dispatch, user }) => {
+const Dashboard = ({ dispatch, user, isAdmin }) => {
   const router = useRouter();
 
   useEffect(() => {
@@ -71,14 +71,13 @@ const Dashboard = ({ dispatch, user }) => {
         <ContainerBase width="80%">
           <DashboardHeader user={user} />
           <Styled.Wrapper>
-            {dashboard && <DashboardTab />}
+            {/*{dashboard && <DashboardTab />}*/}
             {inbox && <Inbox />}
             {courses && <DashboardCourses />}
-            {practicalTasks && <PracticalTasks />}
-            {students && <Students />}
-            {authors && <AuthorsAndLearningPath />}
-            {staff && <Staff />}
-            {users && <Users />}
+            {/*{students && <Students />}*/}
+            {authors && isAdmin && <AuthorsAndLearningPath />}
+            {staff && isAdmin && <Staff />}
+            {users && isAdmin && <Users />}
             {authorProfile && <AuthorProfile />}
           </Styled.Wrapper>
         </ContainerBase>
@@ -89,7 +88,7 @@ const Dashboard = ({ dispatch, user }) => {
 
 const mapStateToProps = state => ({
   user: state.user.loginProviderData,
-  isAdmin: isAdmin(state),
+  isAdmin: getIsAdmin(state),
 });
 
 export default connect(mapStateToProps)(Dashboard);
