@@ -5,7 +5,7 @@ import ContainerBase from '../../../../foundation/ContainerBase';
 import { spacing } from '../../../../../constants/styles';
 import { connect } from 'react-redux';
 import { resourceActions } from '../../../../../store/actions';
-import { getCourses, getUID } from '../../../../../store/selectors';
+import { getCourses, getIsAdmin, getUID } from '../../../../../store/selectors';
 import Button from '../../../../foundation/button/Button';
 import { LEARNING_PATH, LEVEL } from '../../../../../constants';
 
@@ -15,18 +15,21 @@ const CoursesTable = ({
   showPublished,
   setActiveTab,
   uid,
+  isAdmin,
 }) => {
   useEffect(() => {
     dispatch(resourceActions.resetCourses());
 
-    dispatch(
-      resourceActions.fetchCourses.request({
-        queries: {
-          published: ['==', showPublished],
-          ownerId: ['==', uid],
-        },
-      }),
-    );
+    const queries = {
+      published: ['==', showPublished],
+      ownerId: ['==', uid],
+    };
+
+    if (isAdmin) {
+      delete queries.ownerId;
+    }
+
+    dispatch(resourceActions.fetchCourses.request({ queries }));
   }, [showPublished]);
 
   const handleEdit = courseId => {
@@ -55,7 +58,7 @@ const CoursesTable = ({
         ]}
       >
         {Object.keys(courses)
-          .filter(id => courses[id].ownerId === uid)
+          .filter(id => courses[id].ownerId === uid || isAdmin)
           .map((courseId, idx) => {
             const data = courses[courseId];
             return (
@@ -101,6 +104,7 @@ const CoursesTable = ({
 const mapStateToProps = state => ({
   courses: getCourses(state),
   uid: getUID(state),
+  isAdmin: getIsAdmin(state),
 });
 
 export default connect(mapStateToProps)(CoursesTable);
