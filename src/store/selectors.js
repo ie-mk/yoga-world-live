@@ -21,7 +21,7 @@ export const getUserPublicInfo = createSelector(
   },
 );
 
-export const getPermissions = state => state.user.permissions;
+export const getPermissions = state => state.user.permissions.data;
 
 export const getIsAdmin = createSelector(getPermissions, perm => perm.admin);
 

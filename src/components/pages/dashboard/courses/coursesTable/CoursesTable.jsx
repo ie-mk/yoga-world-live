@@ -28,9 +28,11 @@ const CoursesTable = ({
     if (isAdmin) {
       delete queries.ownerId;
     }
+    console.log('--------isAdmin: ', isAdmin);
+    console.log('--------queries: ', queries);
 
     dispatch(resourceActions.fetchCourses.request({ queries }));
-  }, [showPublished]);
+  }, [showPublished, isAdmin]);
 
   const handleEdit = courseId => {
     setActiveTab('addNew');
