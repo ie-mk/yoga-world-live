@@ -9,7 +9,7 @@ import {
 const Wrapper = styled.div`
   flex: 1;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 `;
 
 const SearchWrapper = styled.div`
@@ -31,6 +31,7 @@ const ProfileIcon = styled.img`
   width: 38px;
   height: 38px;
   border-radius: ${borderRadius.profile};
+  margin-right: 30px;
 `;
 const ProfileWrapper = styled.div`
   display: flex;
@@ -43,7 +44,6 @@ const NotificationIcon = styled.img`
   margin-right: ${spacing.xxl};
 `;
 const Label = styled.label`
-  margin-left: ${spacing.xls};
   font-size: ${fontSizeMap.text};
   color: ${colors.label.primary};
 `;

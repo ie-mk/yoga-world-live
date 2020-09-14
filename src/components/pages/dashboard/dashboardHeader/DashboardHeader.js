@@ -12,17 +12,17 @@ const DashBoardHeader = ({ user }) => {
     >
       <Styled.Wrapper>
         <Styled.SearchWrapper>
-          <Styled.SearchIcon src="svg/icon_search.svg" />
-          <Styled.Input
-            type="text"
-            name="name"
-            placeholder="students,courses or onsite locations"
-          />
+          {/*<Styled.SearchIcon src="svg/icon_search.svg" />*/}
+          {/*<Styled.Input*/}
+          {/*  type="text"*/}
+          {/*  name="name"*/}
+          {/*  placeholder="students,courses or onsite locations"*/}
+          {/*/>*/}
         </Styled.SearchWrapper>
         <Styled.ProfileWrapper>
           <Styled.ProfileIcon src={user.photoURL} />
           <Styled.Label>{user.displayName}</Styled.Label>
-          <Styled.NotificationIcon src="svg/icon_notification_2.svg" />
+          <div />
         </Styled.ProfileWrapper>
       </Styled.Wrapper>
     </ContainerBase>
