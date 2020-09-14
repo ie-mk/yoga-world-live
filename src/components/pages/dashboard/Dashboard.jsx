@@ -17,6 +17,7 @@ import Staff from './staff/Staff';
 import Users from './users/Users';
 import AuthorProfile from './authors/authorProfile/AuthorProfile';
 import FlexContainer from '../../foundation/FlexContainer';
+import { isAdmin } from '../../../store/selectors';
 
 const Dashboard = ({ dispatch, user }) => {
   const router = useRouter();
@@ -38,9 +39,9 @@ const Dashboard = ({ dispatch, user }) => {
 
   const activeTab = query && query.activeTab;
 
-  const dashboard = activeTab === 'dashboard' || !activeTab;
+  const dashboard = activeTab === 'dashboard';
   const inbox = activeTab === 'inbox';
-  const courses = activeTab === 'courses';
+  const courses = activeTab === 'courses' || !activeTab;
   const practicalTasks = activeTab === 'practicalTasks';
   const students = activeTab === 'students';
   const authors = activeTab === 'authors';
@@ -60,7 +61,11 @@ const Dashboard = ({ dispatch, user }) => {
               height="50px"
               padding="30px 50px 50px"
             />
-            <DashboardMenu active={activeTab} setActiveComponent={makeActive} />
+            <DashboardMenu
+              active={activeTab}
+              isAdmin={isAdmin}
+              setActiveComponent={makeActive}
+            />
           </Styled.MenuWrapper>
         </ContainerBase>
         <ContainerBase width="80%">
@@ -84,6 +89,7 @@ const Dashboard = ({ dispatch, user }) => {
 
 const mapStateToProps = state => ({
   user: state.user.loginProviderData,
+  isAdmin: isAdmin(state),
 });
 
 export default connect(mapStateToProps)(Dashboard);

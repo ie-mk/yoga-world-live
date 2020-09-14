@@ -120,4 +120,4 @@ const mapStateToProps = state => ({
   lessonsByChapter: getLessonsByChapterId(state),
 });
 
-export default connect(mapStateToProps())(CourseChapter);
+export default connect(mapStateToProps)(CourseChapter);
