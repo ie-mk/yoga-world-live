@@ -74,22 +74,22 @@ const Profile = ({ dispatch, profile }) => {
                 <BodyText>{profile.website}</BodyText>
               </FlexContainer>
             ) : null}
-            <Styled.ShowMobileOnly>
-              <ContainerBase maxWidth="140px" margin="0 auto 0">
-                {profile.facebookProfile && (
-                  <Styled.SocialImage src="img/fb_image.png" />
-                )}
-                {profile.instagramProfile && (
-                  <Styled.SocialImage src="img/instagram_image.png" />
-                )}
-                {profile.twitterProfile && (
-                  <Styled.SocialImage src="img/twitter_image.png" />
-                )}
-                {profile.linkdinProfile && (
-                  <Styled.SocialImage src="img/linkdin_image.png" />
-                )}
-              </ContainerBase>
-            </Styled.ShowMobileOnly>
+            {/*<Styled.ShowMobileOnly>*/}
+            {/*  <ContainerBase maxWidth="140px" margin="0 auto 0">*/}
+            {/*    {profile.facebookProfile && (*/}
+            {/*      <Styled.SocialImage src="img/fb_image.png" />*/}
+            {/*    )}*/}
+            {/*    {profile.instagramProfile && (*/}
+            {/*      <Styled.SocialImage src="img/instagram_image.png" />*/}
+            {/*    )}*/}
+            {/*    {profile.twitterProfile && (*/}
+            {/*      <Styled.SocialImage src="img/twitter_image.png" />*/}
+            {/*    )}*/}
+            {/*    {profile.linkdinProfile && (*/}
+            {/*      <Styled.SocialImage src="img/linkdin_image.png" />*/}
+            {/*    )}*/}
+            {/*  </ContainerBase>*/}
+            {/*</Styled.ShowMobileOnly>*/}
           </Styled.DetailsWrapper>
 
           <Styled.ShowDesktopOnly>
@@ -104,20 +104,20 @@ const Profile = ({ dispatch, profile }) => {
             >
               Edit
             </Button>
-            <div>
-              {profile.facebookProfile && (
-                <Styled.SocialImage src="img/fb_image.png" />
-              )}
-              {profile.instagramProfile && (
-                <Styled.SocialImage src="img/instagram_image.png" />
-              )}
-              {profile.twitterProfile && (
-                <Styled.SocialImage src="img/twitter_image.png" />
-              )}
-              {profile.linkdinProfile && (
-                <Styled.SocialImage src="img/linkdin_image.png" />
-              )}
-            </div>
+            {/*<div>*/}
+            {/*  {profile.facebookProfile && (*/}
+            {/*    <Styled.SocialImage src="img/fb_image.png" />*/}
+            {/*  )}*/}
+            {/*  {profile.instagramProfile && (*/}
+            {/*    <Styled.SocialImage src="img/instagram_image.png" />*/}
+            {/*  )}*/}
+            {/*  {profile.twitterProfile && (*/}
+            {/*    <Styled.SocialImage src="img/twitter_image.png" />*/}
+            {/*  )}*/}
+            {/*  {profile.linkdinProfile && (*/}
+            {/*    <Styled.SocialImage src="img/linkdin_image.png" />*/}
+            {/*  )}*/}
+            {/*</div>*/}
           </Styled.ShowDesktopOnly>
         </Styled.ProfileDetails>
       </Styled.ProfileWrapper>
