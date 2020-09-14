@@ -289,8 +289,10 @@ function* createCourse({ payload = {} }) {
   };
   try {
     const courseId = yield api.resource.createResource('courses', data);
+
     yield put(resourceActions.createCourse.success());
     yield put(resourceActions.setEditableCourseId(courseId));
+    yield fetchCourse({ payload: courseId });
   } catch (err) {
     yield put(resourceActions.createCourse.failure(err));
   }

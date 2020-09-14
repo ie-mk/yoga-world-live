@@ -106,15 +106,15 @@ const CourseLessonContent = ({
                   disabled={!editMode}
                 />
               </ContainerBase>
-              <AdminInput
-                name="assignment"
-                type="text"
-                label="Practice Page Link/Assignment"
-                placeholder="Assignment"
-                backgroundColor="white"
-                width="100%"
-                disabled={!editMode}
-              />
+              {/*<AdminInput*/}
+              {/*  name="assignment"*/}
+              {/*  type="text"*/}
+              {/*  label="Practice Page Link/Assignment"*/}
+              {/*  placeholder="Assignment"*/}
+              {/*  backgroundColor="white"*/}
+              {/*  width="100%"*/}
+              {/*  disabled={!editMode}*/}
+              {/*/>*/}
               {editMode ? (
                 <FlexContainer
                   justifyContent="flex-end"

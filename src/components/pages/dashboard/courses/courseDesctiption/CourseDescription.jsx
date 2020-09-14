@@ -19,6 +19,7 @@ import {
 import PictureUploader from '../../../../foundation/pictureUploader/PictureUploader';
 import CenteredFlexContainer from '../../../../foundation/CenteredFlexContainer';
 import ResponsiveImage from '../../../../foundation/ResponsiveImage';
+import FlexContainer from '../../../../foundation/FlexContainer';
 
 const SubmitFormFromOutside = ({ forceDescriptionSubmit }) => {
   // Grab values and submitForm from context
@@ -125,21 +126,21 @@ const CourseDescription = ({
                 border={true}
               />
             </Styled.InputRow>
-            <Styled.InputRow>
-              <AdminInput
-                name="numberOfChapters"
-                type="text"
-                label="Number of chapters"
-                width="30%"
-                border={true}
-              />
-              <AdminInput
-                name="studentRating"
-                type="text"
-                label="Student Rating"
-                width="30%"
-                border={true}
-              />
+            <FlexContainer justifyContent="flex-end">
+              {/*<AdminInput*/}
+              {/*  name="numberOfChapters"*/}
+              {/*  type="text"*/}
+              {/*  label="Number of chapters"*/}
+              {/*  width="30%"*/}
+              {/*  border={true}*/}
+              {/*/>*/}
+              {/*<AdminInput*/}
+              {/*  name="studentRating"*/}
+              {/*  type="text"*/}
+              {/*  label="Student Rating"*/}
+              {/*  width="30%"*/}
+              {/*  border={true}*/}
+              {/*/>*/}
               <AdminInput
                 name="published"
                 type="checkbox"
@@ -156,7 +157,7 @@ const CourseDescription = ({
               >
                 {values.published ? 'Unpublish' : 'Publish'}
               </Button>
-            </Styled.InputRow>
+            </FlexContainer>
             <Styled.InputRow>
               <AdminTextArea
                 name="whatWillLearn"
