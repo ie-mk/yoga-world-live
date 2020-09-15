@@ -144,7 +144,7 @@ export const MenuShowWrapper = styled.div`
 
   ${media.belowTabletLarge`
     margin-top: 0;
-    top: 150px;
+    top: 50px;
     left: ${({ open }) => (open ? '264px' : '-36px')};
     border-radius: 0 10px 10px 0;
 
