@@ -79,19 +79,21 @@ export const getChapters = state => state.courses.chapters;
 
 export const getChaptersByCourseId = createSelector(getChapters, chapters => {
   const result = {};
-  Object.keys(chapters).map(id => {
-    const chapter = chapters[id];
-    const courseId = chapter.parentId;
+  Object.keys(chapters)
+    .sort((a, b) => chapters[a].sequenceNr - chapters[b].sequenceNr)
+    .map(id => {
+      const chapter = chapters[id];
+      const courseId = chapter.parentId;
 
-    if (!result[courseId]) {
-      result[courseId] = {};
-    }
+      if (!result[courseId]) {
+        result[courseId] = {};
+      }
 
-    result[courseId][id] = {
-      id,
-      ...chapter,
-    };
-  });
+      result[courseId][id] = {
+        id,
+        ...chapter,
+      };
+    });
 
   return result;
 });
@@ -100,19 +102,21 @@ export const getLessons = state => state.courses.lessons;
 
 export const getLessonsByChapterId = createSelector(getLessons, lessons => {
   const result = {};
-  Object.keys(lessons).map(id => {
-    const lesson = lessons[id];
-    const chapterId = lesson.parentId;
+  Object.keys(lessons)
+    .sort((a, b) => lessons[a].sequenceNr - lessons[b].sequenceNr)
+    .map(id => {
+      const lesson = lessons[id];
+      const chapterId = lesson.parentId;
 
-    if (!result[chapterId]) {
-      result[chapterId] = {};
-    }
+      if (!result[chapterId]) {
+        result[chapterId] = {};
+      }
 
-    result[chapterId][id] = {
-      id,
-      ...lesson,
-    };
-  });
+      result[chapterId][id] = {
+        id,
+        ...lesson,
+      };
+    });
 
   return result;
 });

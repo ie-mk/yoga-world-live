@@ -14,16 +14,28 @@ import CollapseContainer from '../../foundation/collapseContainer';
 import Button from '../../foundation/button/Button';
 import { useRouter } from 'next/router';
 import needsLoginWrapper from '../../../utils/needsLoginWrapper';
+import {
+  getChaptersByCourseId,
+  getEditableCourseData,
+  getEditingCourseId,
+  getLessonsByChapterId,
+} from '../../../store/selectors';
 
-var questions = [
-  'Does these courses need any special requirements?',
-  'Who are the authors of these courses?',
-  'Is it possible to pay by instalments?',
-  'Can I start an internship after I finish the course?',
-  'What should I do after I finish the course?',
-];
+// var questions = [
+//   'Does these courses need any special requirements?',
+//   'Who are the authors of these courses?',
+//   'Is it possible to pay by instalments?',
+//   'Can I start an internship after I finish the course?',
+//   'What should I do after I finish the course?',
+// ];
 
-const CourseLearning = ({ courseId, dispatch, course }) => {
+const CourseLearning = ({
+  courseId,
+  dispatch,
+  course,
+  chaptersByCourse,
+  lessonsByChapter,
+}) => {
   const [menuOpen, setMenuOpen] = useState(true);
 
   useEffect(() => {
@@ -33,29 +45,18 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
   }, [courseId, course]);
 
   useEffect(() => {
-    if (course && !course.chapters) {
-      dispatch(resourceActions.fetchChapters.request(courseId));
-    }
-  }, [courseId, course]);
+    dispatch(resourceActions.fetchChapters.request(courseId));
+  }, [courseId]);
 
   const [activeChapterIdx, setActiveChapterIdx] = useState(0);
+  const [activeLessonIdx, setActiveLessonIdx] = useState(0);
 
-  const chapters = (course && course.chapters) || {};
-
-  const chaptersArr = useMemo(() => {
-    return Object.keys(chapters)
-      .map(key => {
-        const chapterClone = { ...chapters[key] };
-        chapterClone.id = key;
-
-        return chapterClone;
-      })
-      .sort((a, b) => a.sequenceNr - b.sequenceNr);
-  }, [chapters]);
+  const chapters = chaptersByCourse[courseId] || {};
 
   const lessonsArr = useMemo(() => {
-    const activeChapter = chaptersArr[activeChapterIdx];
-    const activeChapterLessons = activeChapter && activeChapter.lessons;
+    const activeChapterLessons =
+      lessonsByChapter[Object.keys(chapters)[activeChapterIdx]];
+
     if (!activeChapterLessons) return null;
 
     return Object.keys(activeChapterLessons)
@@ -65,19 +66,10 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
         return lessonsClone;
       })
       .sort((a, b) => a.sequenceNr - b.sequenceNr);
-  }, [activeChapterIdx, chaptersArr, chapters]);
-
-  const [activeLessonIdx, setActiveLessonIdx] = useState(null);
-
-  useEffect(() => {
-    if (!activeLessonIdx && lessonsArr && lessonsArr.length) {
-      setActiveLessonIdx(0);
-    }
-  }, [lessonsArr]);
+  }, [activeChapterIdx, lessonsByChapter]);
 
   if (!course) return null;
-  const activeLesson =
-    lessonsArr && activeLessonIdx !== null && lessonsArr[activeLessonIdx];
+  const activeLesson = lessonsArr && lessonsArr[activeLessonIdx];
 
   // const bla = course;
   // const b = courseId;
@@ -173,4 +165,9 @@ const CourseLearning = ({ courseId, dispatch, course }) => {
   );
 };
 
-export default connect()(needsLoginWrapper(CourseLearning));
+const mapStateToProps = state => ({
+  chaptersByCourse: getChaptersByCourseId(state),
+  lessonsByChapter: getLessonsByChapterId(state),
+});
+
+export default connect(mapStateToProps)(needsLoginWrapper(CourseLearning));
