@@ -17,7 +17,10 @@ const Level = ({ courses, learningPathData, heading }) => {
     router.push(url, url, { shallow: true });
   };
 
-  if (!learningPathData) return null;
+  const publishedCoursesKeys =
+    (courses && Object.keys(courses).filter(id => courses[id].published)) || [];
+
+  if (!learningPathData || !publishedCoursesKeys.length) return null;
 
   return (
     <ErrorBoundary>
