@@ -9,7 +9,6 @@ import {
 } from 'redux-saga/effects';
 import { adminActions, userActions } from './actions';
 import api from '../api/api.min';
-import moment from 'moment';
 import { getUID, getEditingCourseId, getCourses } from './selectors';
 import { resourceActions } from './actions';
 import { IS_SERVER } from '../constants';
